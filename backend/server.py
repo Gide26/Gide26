@@ -119,10 +119,11 @@ async def register(user_data: UserCreate):
     hashed_password = hash_password(user_data.password)
     user_dict = user_data.dict()
     del user_dict["password"]
-    user_dict["password_hash"] = hashed_password
     
     user = User(**user_dict)
-    await db.users.insert_one(user.dict())
+    user_doc = user.dict()
+    user_doc["password_hash"] = hashed_password
+    await db.users.insert_one(user_doc)
     
     token = create_token(user.id)
     return {"token": token, "user": user}
