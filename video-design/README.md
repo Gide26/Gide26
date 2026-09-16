@@ -3,7 +3,11 @@
 A complete, CapCut-oriented design sequence for a 60-second film about **recreation**,
 **Kinyarwanda dance**, the **beauty of nature** and the **beauty of people** in Rwanda.
 
-**Open `index.html` in a browser** for the landing page, or go straight to `storyboard.html`.
+**New to the project?** Open **[`START-HERE.md`](START-HERE.md)** — it is the session-by-session
+guide to actually building this in CapCut, starting with a 30-minute proof-of-concept test you
+should run before spending any money on footage.
+
+Otherwise open `index.html` in a browser for the landing page, or go straight to `storyboard.html`.
 
 **Sourcing mode: licensed stock libraries.** Read [`STOCK-SOURCING.md`](STOCK-SOURCING.md) before
 you buy anything — 40 of the 63 shots are readily buyable, 23 need a substitution or an
@@ -11,6 +15,7 @@ in-editor build, and the dance act sits right in the middle of a licensing trap.
 
 | File | What it is |
 |---|---|
+| [`START-HERE.md`](START-HERE.md) | **New here? Start with this.** Session-by-session CapCut build guide: setup, the music bed and beat grid, a 10-second proof-of-concept test before you buy footage, the assembly pass, the treatment pass, shortcuts, and the eight first-timer mistakes |
 | [`STOCK-SOURCING.md`](STOCK-SOURCING.md) | **Read first.** Availability audit of every shot, the editorial-licence problem in Act 4, three sourcing strategies, library-by-library plan, frame-rate re-specs, match-cut fixes, licensing checklist, zero-budget path |
 | [`storyboard.html`](storyboard.html) | Visual storyboard: beat map, 63 shot cards with timecodes, CapCut treatments and availability tiers, match-cut spine, grade table, build order, on-screen copy |
 | [`DESIGN-SEQUENCE.md`](DESIGN-SEQUENCE.md) | Master treatment — concept, delivery specs, audio architecture, act-by-act shot sequence, title copy, variant cutdowns, pre-flight checklist |
