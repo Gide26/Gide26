@@ -1,0 +1,14 @@
+tc_start,tc_end,act,section_name,rhythm_mode,shots,note
+00:00.000,00:05.000,1,IMPUMURO / The First Breath,FREE TIME,1.01-1.04,No cuts on beat. Ambient. Title lands on the riser.
+00:05.000,00:05.000,-,DROP 1,HARD CUT,2.01,"Freeze 3 frames on the hit, then release."
+00:05.000,00:14.000,2,KWITEGURA / The Preparation,GROOVE A - cut on beats 1 and 3,2.01-2.11,0.7-1.2s per shot.
+00:14.000,00:24.000,3,KWIDAGADURA / Recreation,GROOVE B - add off-beat cuts,3.01-3.12,0.6-1.0s per shot. Energy climbs.
+00:24.000,00:27.000,-,BREAKDOWN,MUSIC OUT,3.13 + 4A,Near-silence. Wind + heartbeat drum + riser. Umushagiriro plays over it.
+00:27.000,00:27.000,-,DROP 2,HARD CUT,4.04,THE LEAP. Sub-boom. Fastest cutting begins.
+00:27.500,00:38.000,4B,INTORE / UMUHAMIRIZO,GROOVE C - cut on every beat,4.04-4.19,0.4-0.5s per shot. Triples on drum rolls.
+00:34.500,00:38.000,-,HANDOFF,crowd clap carries,4.19 -> 5.01,Clap audio bridges into the exhale.
+00:38.000,00:41.000,5,THE EXHALE,"SUSTAINED - one shot, no cuts",5.01,3 seconds held. Music swells underneath.
+00:41.000,00:48.000,5,ABANTU / The People and the Land,"GROOVE D - beats 1 and 3, wider",5.02-5.07,1.0-1.5s per shot. Reverent.
+00:48.000,00:56.800,6,UMUNSI MUSHYA / Together,GROOVE D continues,6.01-6.06,Communal. Everyone dancing.
+00:56.800,00:56.800,-,FINAL DRUM HIT,inside 6.07,6.07,Music decays to ambience only. Hit lands inside the held face.
+00:56.800,01:00.000,6,OUTRO,AMBIENCE ONLY,6.08-6.09,Fade to black over the last 12 frames.
