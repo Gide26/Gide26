@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Document — Umuriro w'Urwanda</title>
+<style>
+:root{--bg:#0d0b0a;--panel:#171412;--line:#2e2823;--ink:#f3ece2;--ink2:#b9ac9d;--ink3:#8a7d6f;
+--gold:#e6b45c;--terra:#d1603d;--mono:"SFMono-Regular",ui-monospace,Menlo,Consolas,monospace;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);line-height:1.68;
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Arial,sans-serif;font-size:15.5px}
+nav{position:sticky;top:0;z-index:9;background:rgba(13,11,10,.94);backdrop-filter:blur(12px);
+border-bottom:1px solid var(--line);display:flex;align-items:center;gap:14px;height:50px;padding:0 22px}
+nav a{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);text-decoration:none}
+nav a:hover{color:var(--gold)}
+nav .sp{flex:1}
+nav .fn{font-family:var(--mono);font-size:11px;color:var(--ink3);letter-spacing:.06em}
+main{max-width:900px;margin:0 auto;padding:46px 22px 90px}
+h1{font-size:clamp(28px,5vw,42px);line-height:1.08;letter-spacing:-.025em;margin:0 0 8px;font-weight:800}
+h2{font-size:23px;margin:44px 0 12px;padding-top:20px;border-top:1px solid var(--line);letter-spacing:-.015em}
+h3{font-size:17.5px;margin:30px 0 10px;color:var(--gold)}
+h4{font-size:15px;margin:22px 0 8px;color:var(--ink)}
+p{margin:12px 0}
+a{color:var(--gold)}
+ul,ol{padding-left:22px;margin:12px 0}
+li{margin:6px 0}
+li>ul,li>ol{margin:6px 0}
+code{font-family:var(--mono);font-size:.86em;background:var(--panel);border:1px solid var(--line);
+padding:1.5px 5px;border-radius:2px;color:var(--gold)}
+pre{background:var(--panel);border:1px solid var(--line);padding:16px 18px;overflow-x:auto;margin:16px 0}
+pre code{background:none;border:0;padding:0;color:var(--ink2);font-size:12.5px;line-height:1.6}
+blockquote{margin:18px 0;padding:12px 20px;background:var(--panel);border-left:3px solid var(--terra);color:var(--ink2)}
+blockquote p{margin:6px 0}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+strong{color:var(--ink);font-weight:680}
+em{color:#e8d9c4}
+table{width:100%;border-collapse:collapse;margin:18px 0;font-size:13.5px;display:block;overflow-x:auto}
+th{text-align:left;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+color:var(--ink3);padding:9px 12px;border-bottom:1px solid var(--line);font-weight:500;white-space:nowrap}
+td{padding:10px 12px;border-bottom:1px solid var(--line);color:var(--ink2);vertical-align:top}
+tr:hover td{background:var(--panel)}
+td:first-child{color:var(--ink)}
+.err{color:var(--terra);font-family:var(--mono)}
+@media print{body{background:#fff;color:#111}nav{display:none}main{padding:0;max-width:none}
+pre,blockquote,td,th{border-color:#ccc;background:#faf7f3;color:#222}h2{border-color:#ddd}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html">← Package</a>
+  <a href="storyboard.html">Storyboard</a>
+  <span class="sp"></span>
+  <span class="fn" id="fname"></span>
+</nav>
+<main id="doc"><p class="err">Loading…</p></main>
+<script>
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function inline(s){
+  s = esc(s);
+  s = s.replace(/`([^`]+)`/g,'<code>$1</code>');
+  s = s.replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>');
+  s = s.replace(/(^|[^*])\*([^*\n]+)\*/g,'$1<em>$2</em>');
+  s = s.replace(/\[([^\]]+)\]\(([^)]+)\)/g,'<a href="$2">$1</a>');
+  return s;
+}
+function md(src){
+  const lines = src.replace(/\r\n/g,'\n').split('\n');
+  let out='', i=0, inList=null;
+  const closeList=()=>{ if(inList){ out+='</'+inList+'>'; inList=null; } };
+  while(i<lines.length){
+    let L=lines[i];
+    // fenced code
+    if(/^```/.test(L)){
+      closeList(); let buf=[]; i++;
+      while(i<lines.length && !/^```/.test(lines[i])){ buf.push(lines[i]); i++; }
+      i++; out+='<pre><code>'+esc(buf.join('\n'))+'</code></pre>'; continue;
+    }
+    // table
+    if(/^\s*\|/.test(L) && i+1<lines.length && /^\s*\|[\s:\-|]+\|?\s*$/.test(lines[i+1])){
+      closeList();
+      const cells=r=>r.replace(/^\s*\|/,'').replace(/\|\s*$/,'').split('|').map(c=>c.trim());
+      let head=cells(L); i+=2; let body=[];
+      while(i<lines.length && /^\s*\|/.test(lines[i])){ body.push(cells(lines[i])); i++; }
+      out+='<table><thead><tr>'+head.map(h=>'<th>'+inline(h)+'</th>').join('')+'</tr></thead><tbody>'
+        +body.map(r=>'<tr>'+r.map(c=>'<td>'+inline(c)+'</td>').join('')+'</tr>').join('')+'</tbody></table>';
+      continue;
+    }
+    // heading
+    let m=/^(#{1,6})\s+(.*)$/.exec(L);
+    if(m){ closeList(); const n=m[1].length; out+='<h'+n+'>'+inline(m[2])+'</h'+n+'>'; i++; continue; }
+    // hr
+    if(/^\s*(-{3,}|\*{3,})\s*$/.test(L)){ closeList(); out+='<hr>'; i++; continue; }
+    // blockquote
+    if(/^\s*>/.test(L)){
+      closeList(); let buf=[];
+      while(i<lines.length && /^\s*>/.test(lines[i])){ buf.push(lines[i].replace(/^\s*>\s?/,'')); i++; }
+      out+='<blockquote>'+md(buf.join('\n'))+'</blockquote>'; continue;
+    }
+    // lists
+    m=/^\s*([-*+]|\d+\.)\s+(.*)$/.exec(L);
+    if(m){
+      const type=/^\d+\./.test(m[1])?'ol':'ul';
+      if(inList!==type){ closeList(); out+='<'+type+'>'; inList=type; }
+      let item=m[2]; i++;
+      while(i<lines.length && /^\s{2,}\S/.test(lines[i]) && !/^\s*([-*+]|\d+\.)\s+/.test(lines[i])){
+        item+=' '+lines[i].trim(); i++;
+      }
+      // task list
+      item=item.replace(/^\[([ xX])\]\s*/,(a,c)=> c.toLowerCase()==='x' ? '☑ ' : '☐ ');
+      out+='<li>'+inline(item)+'</li>'; continue;
+    }
+    // blank
+    if(/^\s*$/.test(L)){ closeList(); i++; continue; }
+    // paragraph
+    closeList(); let buf=[L]; i++;
+    while(i<lines.length && !/^\s*$/.test(lines[i]) && !/^(#{1,6}\s|\s*\||```|\s*>|\s*([-*+]|\d+\.)\s)/.test(lines[i])){
+      buf.push(lines[i]); i++;
+    }
+    out+='<p>'+inline(buf.join(' '))+'</p>';
+  }
+  closeList();
+  return out;
+}
+const params=new URLSearchParams(location.search);
+const file=params.get('file')||'DESIGN-SEQUENCE.md';
+document.getElementById('fname').textContent=file;
+document.title=file+' — Umuriro w\u2019Urwanda';
+fetch(file).then(r=>{ if(!r.ok) throw new Error(r.status); return r.text(); })
+  .then(t=>{ document.getElementById('doc').innerHTML=md(t); })
+  .catch(e=>{ document.getElementById('doc').innerHTML=
+    '<p class="err">Could not load '+file+' ('+e.message+'). Open it from the repository instead.</p>'; });
+</script>
+</body>
+</html>

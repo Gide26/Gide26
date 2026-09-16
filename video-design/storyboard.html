@@ -137,6 +137,14 @@ section.act { border-bottom:1px solid var(--line); }
 .tc { left:8px; top:8px; }
 .dur { right:8px; top:8px; }
 .sid { left:8px; bottom:8px; font-weight:700; }
+.tier { position:absolute; right:8px; bottom:8px; z-index:3; width:24px; height:24px;
+  display:grid; place-items:center; border-radius:50%; background:var(--tc);
+  color:#150f08; font-family:var(--mono); font-size:12px; font-weight:800;
+  box-shadow:0 0 0 2px rgba(0,0,0,.45); }
+.cbody dd.kw { font-family:var(--mono); font-size:11.5px; color:var(--ink); }
+.cbody dd.fb { color:var(--terra); }
+.cbody dd.lic-warn { color:#e0a13c; font-family:var(--mono); font-size:10.5px;
+  letter-spacing:.06em; text-transform:uppercase; }
 .cbody { padding:14px 15px 16px; display:flex; flex-direction:column; gap:11px; flex:1; }
 .cbody h4 { margin:0; font-size:14px; line-height:1.42; font-weight:650; letter-spacing:-.005em; }
 .cbody dl { margin:0; display:grid; grid-template-columns:58px 1fr; gap:3px 10px; }
@@ -146,6 +154,12 @@ section.act { border-bottom:1px solid var(--line); }
 .cbody dd.cc { color:var(--gold); font-size:12px; }
 .note { margin:0; font-size:12px; color:var(--terra); border-top:1px solid var(--line);
   padding-top:9px; }
+
+.tiergrid { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:12px; margin-top:8px; }
+.tg { background:var(--panel); border:1px solid var(--line); border-top:3px solid var(--tc); padding:16px 18px; }
+.tg b { font-family:var(--mono); font-size:26px; color:var(--tc); line-height:1; }
+.tg .n { float:right; font-family:var(--mono); font-size:22px; color:var(--ink3); line-height:1.1; }
+.tg p { margin:10px 0 0; font-size:12.5px; color:var(--ink2); }
 
 /* ---------- tables ---------- */
 section.ref { padding:56px 0; border-bottom:1px solid var(--line); }
@@ -216,6 +230,7 @@ footer .mono { color:var(--ink2); }
     <a href="#act-4B">4B · Intore</a>
     <a href="#act-5">5 · Abantu</a>
     <a href="#act-6">6 · Umunsi Mushya</a>
+    <a href="#sourcing">Sourcing</a>
     <a href="#matchcuts">Match cuts</a>
     <a href="#grade">Grade</a>
     <a href="#build">Build order</a>
@@ -286,6 +301,7 @@ footer .mono { color:var(--ink2); }
         <li><b>Rhythm</b> FREE TIME</li>
         <li><b>Cutting</b> 1.2–1.8 s / shot</li>
         <li><b>Shots</b> 4</li>
+        <li><b>Stock tiers</b> <b>A</b> 4</li>
       </ul>
     </header>
     <div class="grid">
@@ -295,6 +311,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:00.0</span>
           <span class="dur">1.8s</span>
           <span class="sid">1.01</span>
+          <span class="tier" style="--tc:#4f9c6a">A</span>
         </div>
         <div class="cbody">
           <h4>Mist filling a valley at first light, Virunga silhouettes behind</h4>
@@ -305,7 +322,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>Fade from black</dd>
             <dt>CapCut</dt><dd class="cc">Fade in 12f; Film Grain 15; temp -10, highlights -15, fade 8</dd>
             <dt>Audio</dt><dd>Deep ingoma hit + wind ambience</dd>
-            <dt>Where</dt><dd>Virunga / Musanze</dd>
+            <dt>Search</dt><dd class="kw">Rwanda mountains mist dawn aerial</dd><dt>Libs</dt><dd>Artgrid, Pond5, Shutterstock, Getty</dd><dt>Licence</dt><dd class="">Commercial</dd>
           </dl>
           <p class="note">Cold blue-grey. No beat yet.</p>
         </div>
@@ -316,6 +333,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:01.8</span>
           <span class="dur">1.4s</span>
           <span class="sid">1.02</span>
+          <span class="tier" style="--tc:#4f9c6a">A</span>
         </div>
         <div class="cbody">
           <h4>Slow push across terraced tea hill, rows vanishing into cloud</h4>
@@ -326,7 +344,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>D</dd>
             <dt>CapCut</dt><dd class="cc">Keyframe Scale 100&gt;108; Soft Focus 10 on first 8f</dd>
             <dt>Audio</dt><dd>Wind in leaves</dd>
-            <dt>Where</dt><dd>Gisakura / Nyungwe</dd>
+            <dt>Search</dt><dd class="kw">Rwanda tea plantation aerial terraced</dd><dt>Libs</dt><dd>Artgrid, Pond5, Shutterstock</dd><dt>Licence</dt><dd class="">Commercial</dd>
           </dl>
           <p class="note">Golden-grade base begins here.</p>
         </div>
@@ -337,6 +355,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:03.2</span>
           <span class="dur">1.0s</span>
           <span class="sid">1.03</span>
+          <span class="tier" style="--tc:#4f9c6a">A</span>
         </div>
         <div class="cbody">
           <h4>Mirror-still water, single fisher&#x27;s boat off-centre</h4>
@@ -347,7 +366,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>D</dd>
             <dt>CapCut</dt><dd class="cc">Shadows +10, contrast -8 (flatten water to glass)</dd>
             <dt>Audio</dt><dd>Water lap</dd>
-            <dt>Where</dt><dd>Lake Kivu</dd>
+            <dt>Search</dt><dd class="kw">Lake Kivu sunrise boat</dd><dt>Libs</dt><dd>Artgrid, Pond5, Getty</dd><dt>Licence</dt><dd class="">Commercial</dd>
           </dl>
           <p class="note">Colour rhyme with 5.07 and 6.08.</p>
         </div>
@@ -358,6 +377,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:04.2</span>
           <span class="dur">0.8s</span>
           <span class="sid">1.04</span>
+          <span class="tier" style="--tc:#4f9c6a">A</span>
         </div>
         <div class="cbody">
           <h4>TITLE rises over the lake</h4>
@@ -368,7 +388,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>H on riser</dd>
             <dt>CapCut</dt><dd class="cc">Text In: Fade+Blur 8f; Light Leak 20 behind type; sub-boom SFX</dd>
             <dt>Audio</dt><dd>Sub-boom</dd>
-            <dt>Where</dt><dd>-</dd>
+            <dt>Search</dt><dd class="kw">Lake Kivu sunrise boat (same as 1.03, wider/longer)</dd><dt>Licence</dt><dd class="">Commercial</dd><dt>Fallback</dt><dd class="fb">Use a longer cut of the 1.03 clip and keyframe a slow push under the title.</dd>
           </dl>
           <p class="note">Lock text frame to the riser peak.</p>
         </div>
@@ -385,6 +405,7 @@ footer .mono { color:var(--ink2); }
         <li><b>Rhythm</b> GROOVE A · beats 1 &amp; 3</li>
         <li><b>Cutting</b> 0.7–1.2 s / shot</li>
         <li><b>Shots</b> 11</li>
+        <li><b>Stock tiers</b> <b>A</b> 2 · <b>B</b> 3 · <b>C</b> 5 · <b>D</b> 1</li>
       </ul>
     </header>
     <div class="grid">
@@ -394,6 +415,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:05.0</span>
           <span class="dur">0.9s</span>
           <span class="sid">2.01</span>
+          <span class="tier" style="--tc:#e0a13c">C</span>
         </div>
         <div class="cbody">
           <h4>Hands tightening the beaded igikubwe band on a dancer&#x27;s forehead</h4>
@@ -404,7 +426,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>H (DROP 1)</dd>
             <dt>CapCut</dt><dd class="cc">Freeze first 3 frames on the hit, then release</dd>
             <dt>Audio</dt><dd>Fabric + breath</dd>
-            <dt>Where</dt><dd>Cultural village / Kigali</dd>
+            <dt>Search</dt><dd class="kw">Intore dancer costume beads close up</dd><dt>Libs</dt><dd>Pond5, Shutterstock, Getty (often editorial)</dd><dt>Licence</dt><dd class="lic-warn">EDITORIAL likely - verify</dd><dt>Fallback</dt><dd class="fb">Substitute: macro of beaded jewellery / hands tying fabric (plentiful), and sell the &#x27;dancer&#x27; read via the next shot.</dd>
           </dl>
           <p class="note">Micro-stop sells the drop.</p>
         </div>
@@ -415,6 +437,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:05.9</span>
           <span class="dur">0.7s</span>
           <span class="sid">2.02</span>
+          <span class="tier" style="--tc:#e0a13c">C</span>
         </div>
         <div class="cbody">
           <h4>Sisal umugara mane combed out, fibres catching backlight</h4>
@@ -425,7 +448,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>B</dd>
             <dt>CapCut</dt><dd class="cc">Highlights +12, Glow 15</dd>
             <dt>Audio</dt><dd>Sisal rasp</dd>
-            <dt>Where</dt><dd>Cultural village</dd>
+            <dt>Search</dt><dd class="kw">sisal headdress Rwandan dancer backlit</dd><dt>Libs</dt><dd>Pond5, Shutterstock</dd><dt>Licence</dt><dd class="lic-warn">EDITORIAL likely</dd><dt>Fallback</dt><dd class="fb">Substitute: backlit grass/pampas fibres in wind (plentiful) - same texture, same golden rim.</dd>
           </dl>
           <p class="note">Backlight is essential.</p>
         </div>
@@ -436,6 +459,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:06.6</span>
           <span class="dur">0.8s</span>
           <span class="sid">2.03</span>
+          <span class="tier" style="--tc:#e0a13c">C</span>
         </div>
         <div class="cbody">
           <h4>Beadwork - ibitako shoulder ornaments, fingers threading beads</h4>
@@ -446,7 +470,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>B</dd>
             <dt>CapCut</dt><dd class="cc">Speed 0.7x if hands rush</dd>
             <dt>Audio</dt><dd>Beads clicking</dd>
-            <dt>Where</dt><dd>Craft workshop</dd>
+            <dt>Search</dt><dd class="kw">African beadwork hands macro</dd><dt>Libs</dt><dd>Shutterstock, Pond5, Adobe Stock</dd><dt>Licence</dt><dd class="">Commercial</dd><dt>Fallback</dt><dd class="fb">Substitute: any hands-threading-beads macro; keep it non-specific.</dd>
           </dl>
           <p class="note">Hands, not faces.</p>
         </div>
@@ -457,6 +481,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:07.4</span>
           <span class="dur">0.7s</span>
           <span class="sid">2.04</span>
+          <span class="tier" style="--tc:#4f9c6a">A</span>
         </div>
         <div class="cbody">
           <h4>Elder&#x27;s weathered face, laughing at something off-frame</h4>
@@ -467,7 +492,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>B</dd>
             <dt>CapCut</dt><dd class="cc">HSL Orange luminance +12; keep the laugh</dd>
             <dt>Audio</dt><dd>Laughter (A2 -12dB)</dd>
-            <dt>Where</dt><dd>Community</dd>
+            <dt>Search</dt><dd class="kw">elderly Rwandan man portrait smiling</dd><dt>Libs</dt><dd>Getty, Shutterstock, Artgrid, Pond5</dd><dt>Licence</dt><dd class="">Commercial (check model release)</dd>
           </dl>
           <p class="note">Do not correct the expression out.</p>
         </div>
@@ -478,6 +503,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:08.1</span>
           <span class="dur">0.8s</span>
           <span class="sid">2.05</span>
+          <span class="tier" style="--tc:#8fae4f">B</span>
         </div>
         <div class="cbody">
           <h4>Drummer&#x27;s palm strikes the ingoma skin, dust jumps off the head</h4>
@@ -488,7 +514,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>B</dd>
             <dt>CapCut</dt><dd class="cc">Speed Curve Bullet: 0.3x for 6f then snap to 1x</dd>
             <dt>Audio</dt><dd>DRUM HIT at full level (A3)</dd>
-            <dt>Where</dt><dd>Drum ensemble</dd>
+            <dt>Search</dt><dd class="kw">African drum hands close up slow motion</dd><dt>Libs</dt><dd>Artgrid, Pond5, Shutterstock, Filmsupply</dd><dt>Licence</dt><dd class="">Commercial</dd>
           </dl>
           <p class="note">Signature ramp #1.</p>
         </div>
@@ -499,6 +525,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:08.9</span>
           <span class="dur">0.7s</span>
           <span class="sid">2.06</span>
+          <span class="tier" style="--tc:#d1603d">D</span>
         </div>
         <div class="cbody">
           <h4>Anklet of bells (amayugi) being tied</h4>
@@ -509,7 +536,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>B</dd>
             <dt>CapCut</dt><dd class="cc">Bell SFX -10dB in the gap between beats</dd>
             <dt>Audio</dt><dd>Bells</dd>
-            <dt>Where</dt><dd>Backstage</dd>
+            <dt>Search</dt><dd class="kw">ankle bells dancer feet close up</dd><dt>Libs</dt><dd>Pond5, Getty (editorial)</dd><dt>Licence</dt><dd class="lic-warn">EDITORIAL likely</dd><dt>Fallback</dt><dd class="fb">BUILD IT: buy a wide stomp shot, crop in tight (Scale keyframe 100-&gt;220) on the feet, add library bell SFX in A3.</dd>
           </dl>
           <p class="note">Shape echo -&gt; 3.02 spinning wheel.</p>
         </div>
@@ -520,6 +547,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:09.6</span>
           <span class="dur">0.9s</span>
           <span class="sid">2.07</span>
+          <span class="tier" style="--tc:#e0a13c">C</span>
         </div>
         <div class="cbody">
           <h4>Woman adjusts her umushanana sash; fabric slides</h4>
@@ -530,7 +558,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>B</dd>
             <dt>CapCut</dt><dd class="cc">Speed 0.6x - fabric moves like water</dd>
             <dt>Audio</dt><dd>Fabric slide</dd>
-            <dt>Where</dt><dd>Backstage</dd>
+            <dt>Search</dt><dd class="kw">African woman traditional dress fabric flowing</dd><dt>Libs</dt><dd>Pond5, Getty, Shutterstock</dd><dt>Licence</dt><dd class="lic-warn">EDITORIAL likely</dd><dt>Fallback</dt><dd class="fb">Substitute: any flowing-fabric slow motion in warm light (very plentiful); the audience reads &#x27;ceremony&#x27;, not the specific garment.</dd>
           </dl>
           <p class="note">Visual seed for Act 4A.</p>
         </div>
@@ -541,6 +569,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:10.5</span>
           <span class="dur">0.8s</span>
           <span class="sid">2.08</span>
+          <span class="tier" style="--tc:#e0a13c">C</span>
         </div>
         <div class="cbody">
           <h4>Spears and shields stacked, morning light raking across</h4>
@@ -551,7 +580,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>B</dd>
             <dt>CapCut</dt><dd class="cc">Contrast +10, shadows -8</dd>
             <dt>Audio</dt><dd>Wood + metal</dd>
-            <dt>Where</dt><dd>Backstage</dd>
+            <dt>Search</dt><dd class="kw">African spears shields stacked</dd><dt>Libs</dt><dd>Shutterstock, Pond5, Getty</dd><dt>Licence</dt><dd class="lic-warn">Commercial or editorial</dd><dt>Fallback</dt><dd class="fb">Substitute: graphic still - buy a single spear/shield object shot and build the rest with mask + grain.</dd>
           </dl>
           <p class="note">Graphic hardness.</p>
         </div>
@@ -562,6 +591,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:11.3</span>
           <span class="dur">0.9s</span>
           <span class="sid">2.09</span>
+          <span class="tier" style="--tc:#4f9c6a">A</span>
         </div>
         <div class="cbody">
           <h4>A child peeks through a gap at the dancers</h4>
@@ -572,7 +602,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>B</dd>
             <dt>CapCut</dt><dd class="cc">Hold one beat longer than feels right</dd>
             <dt>Audio</dt><dd>Crowd murmur</dd>
-            <dt>Where</dt><dd>Audience</dd>
+            <dt>Search</dt><dd class="kw">child peeking doorway curious Africa</dd><dt>Libs</dt><dd>Getty, Shutterstock, Pond5</dd><dt>Licence</dt><dd class="">Commercial (model release)</dd>
           </dl>
           <p class="note">The child is the audience surrogate.</p>
         </div>
@@ -583,6 +613,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:12.2</span>
           <span class="dur">0.9s</span>
           <span class="sid">2.10</span>
+          <span class="tier" style="--tc:#8fae4f">B</span>
         </div>
         <div class="cbody">
           <h4>Dancers walking into frame in a line, backs to camera</h4>
@@ -593,7 +624,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>B</dd>
             <dt>CapCut</dt><dd class="cc">Keyframe Position to nudge with them (fake parallax)</dd>
             <dt>Audio</dt><dd>Footsteps on earth</dd>
-            <dt>Where</dt><dd>Performance ground</dd>
+            <dt>Search</dt><dd class="kw">African dancers walking line formation</dd><dt>Libs</dt><dd>Pond5, Getty, Shutterstock</dd><dt>Licence</dt><dd class="lic-warn">EDITORIAL likely</dd>
           </dl>
           <p class="note">Symmetry matters.</p>
         </div>
@@ -604,6 +635,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:13.1</span>
           <span class="dur">0.9s</span>
           <span class="sid">2.11</span>
+          <span class="tier" style="--tc:#8fae4f">B</span>
         </div>
         <div class="cbody">
           <h4>Reverse angle: the line stops and turns as one to face us</h4>
@@ -614,7 +646,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>B -&gt; X</dd>
             <dt>CapCut</dt><dd class="cc">Cut on the exact frame the heads finish turning</dd>
             <dt>Audio</dt><dd>Unison footfall</dd>
-            <dt>Where</dt><dd>Performance ground</dd>
+            <dt>Search</dt><dd class="kw">African dancers turn to camera group</dd><dt>Libs</dt><dd>Pond5, Getty</dd><dt>Licence</dt><dd class="lic-warn">EDITORIAL likely</dd>
           </dl>
           <p class="note">Match cut to 3.01 via circle shape.</p>
         </div>
@@ -631,6 +663,7 @@ footer .mono { color:var(--ink2); }
         <li><b>Rhythm</b> GROOVE B · add off-beats</li>
         <li><b>Cutting</b> 0.6–1.0 s / shot</li>
         <li><b>Shots</b> 13</li>
+        <li><b>Stock tiers</b> <b>A</b> 5 · <b>B</b> 6 · <b>C</b> 1 · <b>D</b> 1</li>
       </ul>
     </header>
     <div class="grid">
@@ -640,6 +673,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:14.0</span>
           <span class="dur">0.9s</span>
           <span class="sid">3.01</span>
+          <span class="tier" style="--tc:#8fae4f">B</span>
         </div>
         <div class="cbody">
           <h4>Lake Kivu kayak/paddleboard at sunrise, paddle spray, rider grinning</h4>
@@ -650,7 +684,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>X from 2.11</dd>
             <dt>CapCut</dt><dd class="cc">Speed Curve Hero: 1.4x in, 0.4x through splash, 1x out</dd>
             <dt>Audio</dt><dd>Water spray + laughter</dd>
-            <dt>Where</dt><dd>Lake Kivu</dd>
+            <dt>Search</dt><dd class="kw">kayak sunrise lake splash slow motion</dd><dt>Libs</dt><dd>Artgrid, Filmsupply, Pond5, Shutterstock</dd><dt>Licence</dt><dd class="">Commercial</dd><dt>Fallback</dt><dd class="fb">Plentiful as generic &#x27;kayak sunrise&#x27;; Rwanda-specific is scarce. Generic reads fine here.</dd>
           </dl>
           <p class="note">Money frame = droplets in air.</p>
         </div>
@@ -661,6 +695,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:14.9</span>
           <span class="dur">0.8s</span>
           <span class="sid">3.02</span>
+          <span class="tier" style="--tc:#8fae4f">B</span>
         </div>
         <div class="cbody">
           <h4>Cycling the Congo-Nile trail - wheel spinning, red earth, green blur</h4>
@@ -671,7 +706,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>B</dd>
             <dt>CapCut</dt><dd class="cc">Bling Shake 8 synced to wheel rotation</dd>
             <dt>Audio</dt><dd>Tyre on gravel</dd>
-            <dt>Where</dt><dd>Congo-Nile trail</dd>
+            <dt>Search</dt><dd class="kw">mountain bike wheel spinning dirt</dd><dt>Libs</dt><dd>Artgrid, Filmsupply, Pond5</dd><dt>Licence</dt><dd class="">Commercial</dd>
           </dl>
           <p class="note">Rotation rhyme with 2.06.</p>
         </div>
@@ -682,6 +717,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:15.7</span>
           <span class="dur">0.7s</span>
           <span class="sid">3.03</span>
+          <span class="tier" style="--tc:#8fae4f">B</span>
         </div>
         <div class="cbody">
           <h4>Rider POV over the handlebars, hills dropping away</h4>
@@ -692,7 +728,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>B</dd>
             <dt>CapCut</dt><dd class="cc">STABILIZE on (Recommended); Bling Zoom 6</dd>
             <dt>Audio</dt><dd>Wind + freewheel</dd>
-            <dt>Where</dt><dd>Congo-Nile trail</dd>
+            <dt>Search</dt><dd class="kw">mountain biking POV handlebars</dd><dt>Libs</dt><dd>Filmsupply, Artgrid, Pond5</dd><dt>Licence</dt><dd class="">Commercial</dd><dt>Fallback</dt><dd class="fb">Stabilise in CapCut regardless - POV stock is often shaky.</dd>
           </dl>
           <p class="note">POV needs stabilisation.</p>
         </div>
@@ -703,6 +739,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:16.4</span>
           <span class="dur">0.8s</span>
           <span class="sid">3.04</span>
+          <span class="tier" style="--tc:#4f9c6a">A</span>
         </div>
         <div class="cbody">
           <h4>Hiking the Virunga - hand grabs a root, boots on wet rock, tilt up to volcano</h4>
@@ -713,7 +750,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>B</dd>
             <dt>CapCut</dt><dd class="cc">Whoosh SFX on the tilt</dd>
             <dt>Audio</dt><dd>Grit + breath</dd>
-            <dt>Where</dt><dd>Virunga / Musanze</dd>
+            <dt>Search</dt><dd class="kw">hiking hand grabs rock root</dd><dt>Libs</dt><dd>Artgrid, Filmsupply, Pond5</dd><dt>Licence</dt><dd class="">Commercial</dd>
           </dl>
           <p class="note">Two shots in one move.</p>
         </div>
@@ -724,6 +761,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:17.2</span>
           <span class="dur">0.9s</span>
           <span class="sid">3.05</span>
+          <span class="tier" style="--tc:#e0a13c">C</span>
         </div>
         <div class="cbody">
           <h4>Nyungwe canopy walk - steps onto the swaying bridge, looks down, laughs nervously</h4>
@@ -734,7 +772,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>B</dd>
             <dt>CapCut</dt><dd class="cc">Keep the nervous laugh in A2 at -14dB</dd>
             <dt>Audio</dt><dd>Nervous laugh + creak</dd>
-            <dt>Where</dt><dd>Nyungwe</dd>
+            <dt>Search</dt><dd class="kw">canopy walk bridge rainforest</dd><dt>Libs</dt><dd>Pond5, Shutterstock, Getty</dd><dt>Licence</dt><dd class="">Commercial</dd><dt>Fallback</dt><dd class="fb">Substitute: generic suspension bridge in forest + a separate &#x27;looking down and laughing&#x27; portrait shot cut together.</dd>
           </dl>
           <p class="note">Most human sound in Act 3.</p>
         </div>
@@ -745,6 +783,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:18.1</span>
           <span class="dur">0.7s</span>
           <span class="sid">3.06</span>
+          <span class="tier" style="--tc:#8fae4f">B</span>
         </div>
         <div class="cbody">
           <h4>Zipline / tree swing through rainforest</h4>
@@ -755,7 +794,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>B</dd>
             <dt>CapCut</dt><dd class="cc">Speed 0.8x; Bling Shake 10 on launch frame</dd>
             <dt>Audio</dt><dd>Zip cable whoosh</dd>
-            <dt>Where</dt><dd>Nyungwe</dd>
+            <dt>Search</dt><dd class="kw">zipline rainforest</dd><dt>Libs</dt><dd>Artgrid, Pond5, Shutterstock</dd><dt>Licence</dt><dd class="">Commercial</dd>
           </dl>
           <p class="note">Launch frame = effect frame.</p>
         </div>
@@ -766,6 +805,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:18.8</span>
           <span class="dur">0.8s</span>
           <span class="sid">3.07</span>
+          <span class="tier" style="--tc:#4f9c6a">A</span>
         </div>
         <div class="cbody">
           <h4>Swimming - someone breaks the lake surface, backlit spray</h4>
@@ -776,7 +816,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>B</dd>
             <dt>CapCut</dt><dd class="cc">Speed Curve Bullet: 0.3x at surface break</dd>
             <dt>Audio</dt><dd>Water break</dd>
-            <dt>Where</dt><dd>Lake Kivu</dd>
+            <dt>Search</dt><dd class="kw">swimming surface break slow motion backlit</dd><dt>Libs</dt><dd>Artgrid, Filmsupply, Pond5</dd><dt>Licence</dt><dd class="">Commercial</dd><dt>Fallback</dt><dd class="fb">Buy NATIVE slow motion for this one - it is the shot most damaged by faking it.</dd>
           </dl>
           <p class="note">Signature ramp #2.</p>
         </div>
@@ -787,6 +827,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:19.6</span>
           <span class="dur">0.9s</span>
           <span class="sid">3.08</span>
+          <span class="tier" style="--tc:#8fae4f">B</span>
         </div>
         <div class="cbody">
           <h4>Coffee/tea pickers at work, laughing between rows, baskets on heads</h4>
@@ -797,7 +838,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>B</dd>
             <dt>CapCut</dt><dd class="cc">Keep voices; warm grade</dd>
             <dt>Audio</dt><dd>Voices + leaves</dd>
-            <dt>Where</dt><dd>Gisakura / Mata</dd>
+            <dt>Search</dt><dd class="kw">tea pickers working laughing</dd><dt>Libs</dt><dd>Pond5, Shutterstock, Getty</dd><dt>Licence</dt><dd class="lic-warn">Commercial or editorial</dd>
           </dl>
           <p class="note">Labour as recreation - do not silence it.</p>
         </div>
@@ -808,6 +849,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:20.5</span>
           <span class="dur">0.8s</span>
           <span class="sid">3.09</span>
+          <span class="tier" style="--tc:#8fae4f">B</span>
         </div>
         <div class="cbody">
           <h4>Drumming workshop - visitors and locals both hitting drums, happily</h4>
@@ -818,7 +860,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>B</dd>
             <dt>CapCut</dt><dd class="cc">A3 drum audio swells here</dd>
             <dt>Audio</dt><dd>Mixed drums</dd>
-            <dt>Where</dt><dd>Cultural centre</dd>
+            <dt>Search</dt><dd class="kw">drumming workshop group people</dd><dt>Libs</dt><dd>Pond5, Shutterstock, Getty</dd><dt>Licence</dt><dd class="lic-warn">Commercial or editorial</dd>
           </dl>
           <p class="note">PIVOT SHOT: recreation &gt; dance.</p>
         </div>
@@ -829,6 +871,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:21.3</span>
           <span class="dur">0.8s</span>
           <span class="sid">3.10</span>
+          <span class="tier" style="--tc:#d1603d">D</span>
         </div>
         <div class="cbody">
           <h4>Imigongo art being painted - geometric ochre patterns, hand draws a spiral</h4>
@@ -839,7 +882,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>B</dd>
             <dt>CapCut</dt><dd class="cc">-</dd>
             <dt>Audio</dt><dd>Brush on panel</dd>
-            <dt>Where</dt><dd>Kibungo / craft co-op</dd>
+            <dt>Search</dt><dd class="kw">imigongo art painting Rwanda</dd><dt>Libs</dt><dd>Pond5, Getty (editorial)</dd><dt>Licence</dt><dd class="lic-warn">EDITORIAL likely</dd><dt>Fallback</dt><dd class="fb">BUILD IT: photograph a printed imigongo pattern yourself, animate a hand-drawn reveal with Mask -&gt; Film, or replace with a spinning potter&#x27;s wheel (plentiful) so the spiral match still works.</dd>
           </dl>
           <p class="note">Spiral echoes into 4.01 wrist turn.</p>
         </div>
@@ -850,6 +893,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:22.1</span>
           <span class="dur">0.9s</span>
           <span class="sid">3.11</span>
+          <span class="tier" style="--tc:#4f9c6a">A</span>
         </div>
         <div class="cbody">
           <h4>Akagera - herd, giraffe neck, tall grass bending in wind</h4>
@@ -860,7 +904,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>B</dd>
             <dt>CapCut</dt><dd class="cc">Temp +8, Glow 12</dd>
             <dt>Audio</dt><dd>Savanna ambience</dd>
-            <dt>Where</dt><dd>Akagera NP</dd>
+            <dt>Search</dt><dd class="kw">Akagera savanna giraffe tall grass</dd><dt>Libs</dt><dd>Artgrid, Getty, Pond5</dd><dt>Licence</dt><dd class="">Commercial</dd>
           </dl>
           <p class="note">Compression flattens the heat.</p>
         </div>
@@ -871,6 +915,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:23.0</span>
           <span class="dur">1.0s</span>
           <span class="sid">3.12</span>
+          <span class="tier" style="--tc:#4f9c6a">A</span>
         </div>
         <div class="cbody">
           <h4>A silverback in the bamboo, calmly chewing, looks up into the lens</h4>
@@ -881,7 +926,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>B -&gt; break</dd>
             <dt>CapCut</dt><dd class="cc">HELD FRAME - let the look land</dd>
             <dt>Audio</dt><dd>Forest silence + one breath</dd>
-            <dt>Where</dt><dd>Volcanoes NP</dd>
+            <dt>Search</dt><dd class="kw">silverback gorilla close up eating</dd><dt>Libs</dt><dd>Getty, Artgrid, Pond5, Shutterstock</dd><dt>Licence</dt><dd class="">Commercial</dd><dt>Fallback</dt><dd class="fb">Plentiful but EXPENSIVE. Worth the splurge - it is the film&#x27;s most arresting image.</dd>
           </dl>
           <p class="note">Cut to blackout/music-out on the gaze.</p>
         </div>
@@ -892,6 +937,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:24.0</span>
           <span class="dur">3.0s</span>
           <span class="sid">3.13</span>
+          <span class="tier" style="--tc:#4f9c6a">A</span>
         </div>
         <div class="cbody">
           <h4>BREAKDOWN - music drops out completely</h4>
@@ -902,7 +948,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>-</dd>
             <dt>CapCut</dt><dd class="cc">Split A1 at 24.0 and 27.0; middle piece -14dB with 0.4s fades; fill with A2 wind + one slow heartbeat drum + low riser</dd>
             <dt>Audio</dt><dd>Wind, single heartbeat drum, riser</dd>
-            <dt>Where</dt><dd>-</dd>
+            <dt>Search</dt><dd class="kw">-</dd><dt>Fallback</dt><dd class="fb">No picture needed: this is the music-out breakdown. Reuse a slowed tail of 3.12 or hold the last gorilla frame.</dd>
           </dl>
           <p class="note">3 seconds of near-silence. Do not fill it.</p>
         </div>
@@ -919,6 +965,7 @@ footer .mono { color:var(--ink2); }
         <li><b>Rhythm</b> BREAKDOWN · drums only</li>
         <li><b>Cutting</b> 1.0–1.4 s / shot · 0.35–0.4× slow-mo</li>
         <li><b>Shots</b> 3</li>
+        <li><b>Stock tiers</b> <b>C</b> 2 · <b>D</b> 1</li>
       </ul>
     </header>
     <div class="grid">
@@ -928,6 +975,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:24.0</span>
           <span class="dur">1.4s</span>
           <span class="sid">4.01</span>
+          <span class="tier" style="--tc:#e0a13c">C</span>
         </div>
         <div class="cbody">
           <h4>Woman in umushanana begins umushagiriro - arms rising like inyambo horns</h4>
@@ -938,7 +986,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>D from 3.12</dd>
             <dt>CapCut</dt><dd class="cc">Speed 0.4x + Smooth slow-mo OPTICAL FLOW. If fabric smears, back off to 0.6x</dd>
             <dt>Audio</dt><dd>Drums only</dd>
-            <dt>Where</dt><dd>Performance ground</dd>
+            <dt>Search</dt><dd class="kw">Rwandan woman traditional dance graceful</dd><dt>Libs</dt><dd>Pond5, Getty (editorial), Shutterstock</dd><dt>Licence</dt><dd class="lic-warn">EDITORIAL likely</dd><dt>Fallback</dt><dd class="fb">Substitute: &#x27;African woman dancing flowing dress slow motion&#x27; (plentiful, commercial) - arms raised. The horn-gesture specificity is lost; the grace is not.</dd>
           </dl>
           <p class="note">Must be butter.</p>
         </div>
@@ -949,6 +997,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:25.4</span>
           <span class="dur">1.1s</span>
           <span class="sid">4.02</span>
+          <span class="tier" style="--tc:#d1603d">D</span>
         </div>
         <div class="cbody">
           <h4>Her hands - wrist turning, fingers extending</h4>
@@ -959,7 +1008,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>-</dd>
             <dt>CapCut</dt><dd class="cc">0.4x Optical Flow; HSL Orange: skin luminance +10, sat +4</dd>
             <dt>Audio</dt><dd>Drums only</dd>
-            <dt>Where</dt><dd>Performance ground</dd>
+            <dt>Search</dt><dd class="kw">dancer hands wrist turning close up</dd><dt>Libs</dt><dd>Filmsupply, Artgrid, Pond5</dd><dt>Licence</dt><dd class="">Commercial</dd><dt>Fallback</dt><dd class="fb">BUILD IT: crop in from 4.01 with a Scale keyframe to 200% on the hands. Only works if 4.01 is 4K.</dd>
           </dl>
           <p class="note">Do not over-smooth skin.</p>
         </div>
@@ -970,6 +1019,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:26.5</span>
           <span class="dur">1.0s</span>
           <span class="sid">4.03</span>
+          <span class="tier" style="--tc:#e0a13c">C</span>
         </div>
         <div class="cbody">
           <h4>Fabric of the umushanana sliding, sash trailing</h4>
@@ -980,7 +1030,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>-</dd>
             <dt>CapCut</dt><dd class="cc">Speed 0.3x; Soft Focus 8</dd>
             <dt>Audio</dt><dd>Fabric</dd>
-            <dt>Where</dt><dd>Performance ground</dd>
+            <dt>Search</dt><dd class="kw">flowing fabric slow motion backlit</dd><dt>Libs</dt><dd>Filmsupply, Artgrid, Shutterstock</dd><dt>Licence</dt><dd class="">Commercial</dd><dt>Fallback</dt><dd class="fb">Very plentiful as generic fabric - loses the umushanana specificity but keeps the beauty.</dd>
           </dl>
           <p class="note">The breath before the storm.</p>
         </div>
@@ -997,6 +1047,7 @@ footer .mono { color:var(--ink2); }
         <li><b>Rhythm</b> GROOVE C · every beat</li>
         <li><b>Cutting</b> 0.4–0.5 s / shot</li>
         <li><b>Shots</b> 16</li>
+        <li><b>Stock tiers</b> <b>A</b> 3 · <b>B</b> 4 · <b>C</b> 6 · <b>D</b> 3</li>
       </ul>
     </header>
     <div class="grid">
@@ -1006,6 +1057,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:27.5</span>
           <span class="dur">0.5s</span>
           <span class="sid">4.04</span>
+          <span class="tier" style="--tc:#8fae4f">B</span>
         </div>
         <div class="cbody">
           <h4>THE LEAP - full Intore line jumps simultaneously, manes airborne, spears up</h4>
@@ -1016,7 +1068,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>H (DROP 2)</dd>
             <dt>CapCut</dt><dd class="cc">Speed Customized: 1x &gt; 0.5x at apex &gt; 1x on landing. Apex sits ON the downbeat. Sub-boom + real stomp at -3dB</dd>
             <dt>Audio</dt><dd>Sub-boom + stomp + crowd</dd>
-            <dt>Where</dt><dd>Performance ground</dd>
+            <dt>Search</dt><dd class="kw">Intore dance jump warriors Rwanda</dd><dt>Libs</dt><dd>Pond5, Getty (editorial), Shutterstock, Artgrid</dd><dt>Licence</dt><dd class="lic-warn">EDITORIAL likely</dd><dt>Fallback</dt><dd class="fb">THE critical buy. Search every library; check Rwandan contributors on Pond5 directly. If no group leap exists: use a single-dancer leap and build the &#x27;line&#x27; with three jump cuts (see 4.16).</dd>
           </dl>
           <p class="note">Signature shot. Ramp OFF the beat, not into it.</p>
         </div>
@@ -1027,6 +1079,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:28.0</span>
           <span class="dur">0.4s</span>
           <span class="sid">4.05</span>
+          <span class="tier" style="--tc:#e0a13c">C</span>
         </div>
         <div class="cbody">
           <h4>Landing - feet hit earth, dust explodes upward</h4>
@@ -1037,7 +1090,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>B</dd>
             <dt>CapCut</dt><dd class="cc">Speed Customized: 1x &gt; 0.2x for 5f &gt; 1.2x. Bling Shake 12 for 4 frames only</dd>
             <dt>Audio</dt><dd>LOUD IMPACT - loudest point in the whole mix</dd>
-            <dt>Where</dt><dd>Performance ground</dd>
+            <dt>Search</dt><dd class="kw">dust explosion feet stomp ground slow motion</dd><dt>Libs</dt><dd>Artgrid, Filmsupply, Pond5</dd><dt>Licence</dt><dd class="">Commercial</dd><dt>Fallback</dt><dd class="fb">Substitute: generic &#x27;feet hitting dusty ground&#x27; slo-mo (plentiful in Western/African desert stock) + the real stomp audio from A3. The audience will not question the geography.</dd>
           </dl>
           <p class="note">THE signature shot of the film.</p>
         </div>
@@ -1048,6 +1101,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:28.4</span>
           <span class="dur">0.4s</span>
           <span class="sid">4.06</span>
+          <span class="tier" style="--tc:#8fae4f">B</span>
         </div>
         <div class="cbody">
           <h4>Dancer&#x27;s face mid-cry, sweat, mane across the eyes</h4>
@@ -1058,7 +1112,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>B</dd>
             <dt>CapCut</dt><dd class="cc">Freeze 2 frames on beat then release; contrast +12, clarity +15</dd>
             <dt>Audio</dt><dd>War cry</dd>
-            <dt>Where</dt><dd>Performance ground</dd>
+            <dt>Search</dt><dd class="kw">African dancer face intense close up</dd><dt>Libs</dt><dd>Filmsupply, Getty, Pond5</dd><dt>Licence</dt><dd class="lic-warn">Commercial or editorial</dd>
           </dl>
           
         </div>
@@ -1069,6 +1123,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:28.8</span>
           <span class="dur">0.4s</span>
           <span class="sid">4.07</span>
+          <span class="tier" style="--tc:#e0a13c">C</span>
         </div>
         <div class="cbody">
           <h4>Spear thrust forward into the lens</h4>
@@ -1079,7 +1134,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>B</dd>
             <dt>CapCut</dt><dd class="cc">Bling Zoom 15 on thrust frame; hard whoosh</dd>
             <dt>Audio</dt><dd>Whoosh + spear cut</dd>
-            <dt>Where</dt><dd>Performance ground</dd>
+            <dt>Search</dt><dd class="kw">spear thrust toward camera</dd><dt>Libs</dt><dd>Shutterstock, Pond5, Getty</dd><dt>Licence</dt><dd class="lic-warn">Commercial or editorial</dd><dt>Fallback</dt><dd class="fb">Substitute: a stick/staff thrust toward lens (plentiful as martial-arts or tribal stock) reads identically at 4 frames.</dd>
           </dl>
           
         </div>
@@ -1090,6 +1145,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:29.2</span>
           <span class="dur">0.5s</span>
           <span class="sid">4.08</span>
+          <span class="tier" style="--tc:#e0a13c">C</span>
         </div>
         <div class="cbody">
           <h4>Shields clashing in unison across the line</h4>
@@ -1100,7 +1156,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>B</dd>
             <dt>CapCut</dt><dd class="cc">A3 shield-clack full level; duck A1 by 5dB for 8 frames</dd>
             <dt>Audio</dt><dd>Shield clack</dd>
-            <dt>Where</dt><dd>Performance ground</dd>
+            <dt>Search</dt><dd class="kw">shields clashing warriors</dd><dt>Libs</dt><dd>Pond5, Getty, Shutterstock</dd><dt>Licence</dt><dd class="lic-warn">EDITORIAL likely</dd><dt>Fallback</dt><dd class="fb">Substitute: two hands clapping hard in unison (plentiful) + shield-clack SFX. Cut to it fast enough and it reads.</dd>
           </dl>
           
         </div>
@@ -1111,6 +1167,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:29.7</span>
           <span class="dur">0.5s</span>
           <span class="sid">4.09</span>
+          <span class="tier" style="--tc:#d1603d">D</span>
         </div>
         <div class="cbody">
           <h4>Ankle bells in a blur of stomp</h4>
@@ -1121,7 +1178,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>B</dd>
             <dt>CapCut</dt><dd class="cc">Speed 0.35x; bell audio isolated, pitched slightly up</dd>
             <dt>Audio</dt><dd>amayugi bells</dd>
-            <dt>Where</dt><dd>Performance ground</dd>
+            <dt>Search</dt><dd class="kw">ankle bells blur stomp feet</dd><dt>Libs</dt><dd>Pond5, Getty</dd><dt>Licence</dt><dd class="lic-warn">EDITORIAL likely</dd><dt>Fallback</dt><dd class="fb">BUILD IT: same as 2.06 - crop a wide stomp shot, add bell SFX. Or cut to a dust-cloud close-up instead.</dd>
           </dl>
           
         </div>
@@ -1132,6 +1189,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:30.2</span>
           <span class="dur">0.5s</span>
           <span class="sid">4.10</span>
+          <span class="tier" style="--tc:#d1603d">D</span>
         </div>
         <div class="cbody">
           <h4>Formation change - line collapses and reforms</h4>
@@ -1142,7 +1200,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>B</dd>
             <dt>CapCut</dt><dd class="cc">Keyframe Rotation 0&gt;8deg over the clip</dd>
             <dt>Audio</dt><dd>Stomps</dd>
-            <dt>Where</dt><dd>Performance ground</dd>
+            <dt>Search</dt><dd class="kw">top down dancers formation drone</dd><dt>Libs</dt><dd>Artgrid, Pond5</dd><dt>Licence</dt><dd class="">Commercial</dd><dt>Fallback</dt><dd class="fb">BUILD IT: take any wide performance shot and keyframe Rotation + Scale to fake a top-down drift. Or drop the shot and re-time the act.</dd>
           </dl>
           <p class="note">Top-down = graphic relief.</p>
         </div>
@@ -1153,6 +1211,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:30.7</span>
           <span class="dur">0.4s</span>
           <span class="sid">4.11</span>
+          <span class="tier" style="--tc:#e0a13c">C</span>
         </div>
         <div class="cbody">
           <h4>A woman dancing umuhamirizo - reclaiming the warrior dance, full commitment leap</h4>
@@ -1163,7 +1222,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>B</dd>
             <dt>CapCut</dt><dd class="cc">0.5x curve. Hold her leap as long as the men&#x27;s</dd>
             <dt>Audio</dt><dd>War cry</dd>
-            <dt>Where</dt><dd>Performance ground</dd>
+            <dt>Search</dt><dd class="kw">woman warrior dance jump Africa</dd><dt>Libs</dt><dd>Pond5, Getty, Shutterstock</dd><dt>Licence</dt><dd class="lic-warn">EDITORIAL likely</dd><dt>Fallback</dt><dd class="fb">Substitute: any woman leaping in traditional dress. Keep this shot - the inclusion is a deliberate creative decision, not a nice-to-have.</dd>
           </dl>
           <p class="note">Deliberate inclusion. Non-negotiable.</p>
         </div>
@@ -1174,6 +1233,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:31.1</span>
           <span class="dur">0.4s</span>
           <span class="sid">4.12</span>
+          <span class="tier" style="--tc:#4f9c6a">A</span>
         </div>
         <div class="cbody">
           <h4>Drummers - full umutagara ensemble, sticks blurring</h4>
@@ -1184,7 +1244,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>B</dd>
             <dt>CapCut</dt><dd class="cc">Speed 1.1x (over real time reads as frenzy)</dd>
             <dt>Audio</dt><dd>Full ensemble</dd>
-            <dt>Where</dt><dd>Drum line</dd>
+            <dt>Search</dt><dd class="kw">African drummers ensemble playing</dd><dt>Libs</dt><dd>Artgrid, Pond5, Shutterstock, Getty</dd><dt>Licence</dt><dd class="lic-warn">Commercial or editorial</dd>
           </dl>
           
         </div>
@@ -1195,6 +1255,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:31.5</span>
           <span class="dur">0.5s</span>
           <span class="sid">4.13</span>
+          <span class="tier" style="--tc:#4f9c6a">A</span>
         </div>
         <div class="cbody">
           <h4>A child mimics the leap in the foreground, delighted; dancers soft behind</h4>
@@ -1205,7 +1266,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>B</dd>
             <dt>CapCut</dt><dd class="cc">Blur 20 on the background plane (depth-of-field effect)</dd>
             <dt>Audio</dt><dd>Child giggle</dd>
-            <dt>Where</dt><dd>Audience edge</dd>
+            <dt>Search</dt><dd class="kw">children dancing playing Africa joyful</dd><dt>Libs</dt><dd>Getty, Shutterstock, Pond5</dd><dt>Licence</dt><dd class="">Commercial (model release)</dd><dt>Fallback</dt><dd class="fb">Plentiful. Use the depth-of-field effect to separate the planes.</dd>
           </dl>
           <p class="note">Two-plane depth = production value.</p>
         </div>
@@ -1216,6 +1277,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:32.0</span>
           <span class="dur">0.5s</span>
           <span class="sid">4.14</span>
+          <span class="tier" style="--tc:#d1603d">D</span>
         </div>
         <div class="cbody">
           <h4>Ibyivugo - poet steps forward reciting self-praise verse, arm outstretched</h4>
@@ -1226,7 +1288,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>B</dd>
             <dt>CapCut</dt><dd class="cc">Keyframe Scale 100&gt;106. If he speaks, duck A1 to -10dB for the line</dd>
             <dt>Audio</dt><dd>Ibyivugo voice (A5)</dd>
-            <dt>Where</dt><dd>Performance ground</dd>
+            <dt>Search</dt><dd class="kw">African elder speaking reciting gesture</dd><dt>Libs</dt><dd>Getty, Pond5</dd><dt>Licence</dt><dd class="lic-warn">EDITORIAL likely</dd><dt>Fallback</dt><dd class="fb">BUILD IT: buy a &#x27;man speaking/gesturing&#x27; MCU and put a real ibyivugo recording on A5. The voice carries the verse; the face does not need to be a poet.</dd>
           </dl>
           <p class="note">Optional spoken line #1.</p>
         </div>
@@ -1237,6 +1299,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:32.5</span>
           <span class="dur">0.4s</span>
           <span class="sid">4.15</span>
+          <span class="tier" style="--tc:#e0a13c">C</span>
         </div>
         <div class="cbody">
           <h4>Horn (amakondera) player, cheeks full - the traditional arrival cue</h4>
@@ -1247,7 +1310,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>B</dd>
             <dt>CapCut</dt><dd class="cc">Real horn hit in A3</dd>
             <dt>Audio</dt><dd>Horn</dd>
-            <dt>Where</dt><dd>Performance ground</dd>
+            <dt>Search</dt><dd class="kw">African horn trumpet player</dd><dt>Libs</dt><dd>Pond5, Getty, Shutterstock</dd><dt>Licence</dt><dd class="lic-warn">EDITORIAL likely</dd><dt>Fallback</dt><dd class="fb">Substitute: a drum or flute close-up + a real horn hit in A3. Or buy any &#x27;brass/horn player&#x27; - at 4 frames the specificity is unreadable.</dd>
           </dl>
           <p class="note">Horns announce the Intore&#x27;s arrival.</p>
         </div>
@@ -1258,6 +1321,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:32.9</span>
           <span class="dur">0.5s</span>
           <span class="sid">4.16</span>
+          <span class="tier" style="--tc:#8fae4f">B</span>
         </div>
         <div class="cbody">
           <h4>Three leaps, jump-cut in sequence, same framing, different dancers</h4>
@@ -1268,7 +1332,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>B x3</dd>
             <dt>CapCut</dt><dd class="cc">Three 5-frame cuts inside one beat cluster - reads as a drum roll</dd>
             <dt>Audio</dt><dd>Three stomps</dd>
-            <dt>Where</dt><dd>Performance ground</dd>
+            <dt>Search</dt><dd class="kw">three dancers jumping sequence</dd><dt>Libs</dt><dd>Pond5, Getty, Shutterstock</dd><dt>Licence</dt><dd class="lic-warn">EDITORIAL likely</dd><dt>Fallback</dt><dd class="fb">BUILD IT from 4.04: three separate jump cuts of the same clip at different in-points, re-cropped left/centre/right. Reads as a drum roll.</dd>
           </dl>
           <p class="note">Identical framing is what makes it work.</p>
         </div>
@@ -1279,6 +1343,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:33.4</span>
           <span class="dur">0.5s</span>
           <span class="sid">4.17</span>
+          <span class="tier" style="--tc:#e0a13c">C</span>
         </div>
         <div class="cbody">
           <h4>The mane filling the frame, whipping sideways in slow motion</h4>
@@ -1289,7 +1354,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>B</dd>
             <dt>CapCut</dt><dd class="cc">Speed 0.3x; Glow 20, highlights +15</dd>
             <dt>Audio</dt><dd>Sisal whoosh</dd>
-            <dt>Where</dt><dd>Performance ground</dd>
+            <dt>Search</dt><dd class="kw">sisal mane hair whipping slow motion</dd><dt>Libs</dt><dd>Filmsupply, Artgrid, Pond5</dd><dt>Licence</dt><dd class="">Commercial</dd><dt>Fallback</dt><dd class="fb">Substitute: generic long hair/fibre whipping in backlight (very plentiful). Arguably more beautiful than the real thing at 0.3x.</dd>
           </dl>
           <p class="note">Most beautiful texture in the film. Shape echo -&gt; 5.05.</p>
         </div>
@@ -1300,6 +1365,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:33.9</span>
           <span class="dur">0.6s</span>
           <span class="sid">4.18</span>
+          <span class="tier" style="--tc:#8fae4f">B</span>
         </div>
         <div class="cbody">
           <h4>Whole line at the apex of a leap, silhouetted against a low sun</h4>
@@ -1310,7 +1376,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>B</dd>
             <dt>CapCut</dt><dd class="cc">Exposure -15 (crush to silhouette), highlights +20 (keep the rim)</dd>
             <dt>Audio</dt><dd>Unison stomp</dd>
-            <dt>Where</dt><dd>Performance ground</dd>
+            <dt>Search</dt><dd class="kw">dancers silhouette sunset jump</dd><dt>Libs</dt><dd>Artgrid, Filmsupply, Getty</dd><dt>Licence</dt><dd class="">Commercial</dd>
           </dl>
           
         </div>
@@ -1321,6 +1387,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:34.5</span>
           <span class="dur">0.5s</span>
           <span class="sid">4.19</span>
+          <span class="tier" style="--tc:#4f9c6a">A</span>
         </div>
         <div class="cbody">
           <h4>Crowd clapping, hands in unison, faces lit</h4>
@@ -1331,7 +1398,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>B</dd>
             <dt>CapCut</dt><dd class="cc">Crowd clap at -4dB - carries into Act 5</dd>
             <dt>Audio</dt><dd>CROWD CLAP</dd>
-            <dt>Where</dt><dd>Audience</dd>
+            <dt>Search</dt><dd class="kw">crowd clapping hands audience</dd><dt>Libs</dt><dd>Getty, Shutterstock, Filmsupply</dd><dt>Licence</dt><dd class="">Commercial</dd>
           </dl>
           <p class="note">The handoff to the exhale.</p>
         </div>
@@ -1348,6 +1415,7 @@ footer .mono { color:var(--ink2); }
         <li><b>Rhythm</b> EXHALE → GROOVE D</li>
         <li><b>Cutting</b> 1.0–2.0 s / shot</li>
         <li><b>Shots</b> 7</li>
+        <li><b>Stock tiers</b> <b>A</b> 5 · <b>B</b> 1 · <b>C</b> 1</li>
       </ul>
     </header>
     <div class="grid">
@@ -1357,6 +1425,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:38.0</span>
           <span class="dur">3.0s</span>
           <span class="sid">5.01</span>
+          <span class="tier" style="--tc:#e0a13c">C</span>
         </div>
         <div class="cbody">
           <h4>THE EXHALE - one held shot: dancer chest heaving, sweat, a slow smile breaking; or dust hanging in golden light as everything goes quiet</h4>
@@ -1367,7 +1436,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>from 4.19</dd>
             <dt>CapCut</dt><dd class="cc">Speed 0.35x + Optical Flow. Halo Blur 12. ONE CONTINUOUS SHOT - do not cut it. Protect from effects creep.</dd>
             <dt>Audio</dt><dd>Music sustains under, near-silence</dd>
-            <dt>Where</dt><dd>Performance ground</dd>
+            <dt>Search</dt><dd class="kw">dancer breathing sweat slow motion smile</dd><dt>Libs</dt><dd>Filmsupply, Artgrid, Getty</dd><dt>Licence</dt><dd class="">Commercial</dd><dt>Fallback</dt><dd class="fb">THE exhale. Buy the best face you can afford here - three seconds of it is the emotional peak. Prefer native slow motion.</dd>
           </dl>
           <p class="note">Emotional peak of the film.</p>
         </div>
@@ -1378,6 +1447,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:41.0</span>
           <span class="dur">1.5s</span>
           <span class="sid">5.02</span>
+          <span class="tier" style="--tc:#8fae4f">B</span>
         </div>
         <div class="cbody">
           <h4>Grandmother&#x27;s hands weaving agaseke (peace basket), geometric coil</h4>
@@ -1388,7 +1458,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>D</dd>
             <dt>CapCut</dt><dd class="cc">Keyframe Scale 100&gt;104; temp +12, Glow 10</dd>
             <dt>Audio</dt><dd>Fibre rasp</dd>
-            <dt>Where</dt><dd>Craft co-op</dd>
+            <dt>Search</dt><dd class="kw">agaseke basket weaving Rwanda hands</dd><dt>Libs</dt><dd>Pond5, Shutterstock, Getty</dd><dt>Licence</dt><dd class="lic-warn">Commercial or editorial</dd>
           </dl>
           <p class="note">Abantu n&#x27;igihugu card at 00:41.2</p>
         </div>
@@ -1399,6 +1469,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:42.5</span>
           <span class="dur">1.2s</span>
           <span class="sid">5.03</span>
+          <span class="tier" style="--tc:#4f9c6a">A</span>
         </div>
         <div class="cbody">
           <h4>An elder&#x27;s face, full frame, still - he looks into the lens and holds it</h4>
@@ -1409,7 +1480,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>D</dd>
             <dt>CapCut</dt><dd class="cc">Grain 12, soft vignette 8. NO other effect. Hold it.</dd>
             <dt>Audio</dt><dd>Silence + distant drum</dd>
-            <dt>Where</dt><dd>Community</dd>
+            <dt>Search</dt><dd class="kw">elderly African man portrait still face</dd><dt>Libs</dt><dd>Getty, Artgrid, Pond5</dd><dt>Licence</dt><dd class="">Commercial (model release)</dd>
           </dl>
           <p class="note">Stillness after 38s of movement is the point.</p>
         </div>
@@ -1420,6 +1491,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:43.7</span>
           <span class="dur">1.2s</span>
           <span class="sid">5.04</span>
+          <span class="tier" style="--tc:#4f9c6a">A</span>
         </div>
         <div class="cbody">
           <h4>Children running a dirt path between banana trees, laughing, toward camera</h4>
@@ -1430,7 +1502,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>B</dd>
             <dt>CapCut</dt><dd class="cc">Speed 0.7x; laughter A2 -10dB</dd>
             <dt>Audio</dt><dd>Children laughing</dd>
-            <dt>Where</dt><dd>Rural path</dd>
+            <dt>Search</dt><dd class="kw">children running path banana trees</dd><dt>Libs</dt><dd>Getty, Shutterstock, Pond5</dd><dt>Licence</dt><dd class="">Commercial (model release)</dd>
           </dl>
           
         </div>
@@ -1441,6 +1513,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:44.9</span>
           <span class="dur">1.3s</span>
           <span class="sid">5.05</span>
+          <span class="tier" style="--tc:#4f9c6a">A</span>
         </div>
         <div class="cbody">
           <h4>Rolling hills at golden hour, terraced, mist returning - full circle to Act 1</h4>
@@ -1451,7 +1524,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>X</dd>
             <dt>CapCut</dt><dd class="cc">Effects Nature Sunset 15 OR manual: temp +14, highlights -10, shadows +8, Glow 18</dd>
             <dt>Audio</dt><dd>Wind</dd>
-            <dt>Where</dt><dd>Thousand hills</dd>
+            <dt>Search</dt><dd class="kw">Rwanda rolling hills golden hour aerial</dd><dt>Libs</dt><dd>Artgrid, Pond5, Shutterstock</dd><dt>Licence</dt><dd class="">Commercial</dd>
           </dl>
           <p class="note">Shape echo from 4.17 mane.</p>
         </div>
@@ -1462,6 +1535,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:46.2</span>
           <span class="dur">1.0s</span>
           <span class="sid">5.06</span>
+          <span class="tier" style="--tc:#4f9c6a">A</span>
         </div>
         <div class="cbody">
           <h4>A face in the crowd watching the dancers - tears or laughter, ambiguous, alive</h4>
@@ -1472,7 +1546,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>D</dd>
             <dt>CapCut</dt><dd class="cc">HSL Orange luminance +10. NO effect. Faces don&#x27;t need help.</dd>
             <dt>Audio</dt><dd>Crowd murmur</dd>
-            <dt>Where</dt><dd>Audience</dd>
+            <dt>Search</dt><dd class="kw">face in crowd watching emotional</dd><dt>Libs</dt><dd>Getty, Filmsupply, Pond5</dd><dt>Licence</dt><dd class="">Commercial (model release)</dd>
           </dl>
           
         </div>
@@ -1483,6 +1557,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:47.2</span>
           <span class="dur">0.8s</span>
           <span class="sid">5.07</span>
+          <span class="tier" style="--tc:#4f9c6a">A</span>
         </div>
         <div class="cbody">
           <h4>Water again - Lake Kivu, now gold instead of grey, sun on the surface</h4>
@@ -1493,7 +1568,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>D</dd>
             <dt>CapCut</dt><dd class="cc">Direct colour rhyme with 1.03: same framing, opposite temperature</dd>
             <dt>Audio</dt><dd>Water lap</dd>
-            <dt>Where</dt><dd>Lake Kivu</dd>
+            <dt>Search</dt><dd class="kw">Lake Kivu sunset gold water</dd><dt>Libs</dt><dd>Artgrid, Pond5, Getty</dd><dt>Licence</dt><dd class="">Commercial</dd><dt>Fallback</dt><dd class="fb">Buy the same contributor/series as 1.03 if possible so the colour rhyme is a real rhyme.</dd>
           </dl>
           
         </div>
@@ -1510,6 +1585,7 @@ footer .mono { color:var(--ink2); }
         <li><b>Rhythm</b> GROOVE D → AMBIENCE</li>
         <li><b>Cutting</b> 1.0–1.6 s / shot</li>
         <li><b>Shots</b> 9</li>
+        <li><b>Stock tiers</b> <b>A</b> 4 · <b>B</b> 3 · <b>C</b> 2</li>
       </ul>
     </header>
     <div class="grid">
@@ -1519,6 +1595,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:48.0</span>
           <span class="dur">1.2s</span>
           <span class="sid">6.01</span>
+          <span class="tier" style="--tc:#e0a13c">C</span>
         </div>
         <div class="cbody">
           <h4>Everyone dancing - a visitor, clumsy and joyful, pulled into the line by a dancer</h4>
@@ -1529,7 +1606,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>B</dd>
             <dt>CapCut</dt><dd class="cc">Speed 0.8x; crowd + drum audio full</dd>
             <dt>Audio</dt><dd>Full crowd + drums</dd>
-            <dt>Where</dt><dd>Community ground</dd>
+            <dt>Search</dt><dd class="kw">group dancing together joyful Africa</dd><dt>Libs</dt><dd>Getty, Pond5, Shutterstock</dd><dt>Licence</dt><dd class="lic-warn">Commercial or editorial</dd><dt>Fallback</dt><dd class="fb">Substitute: any joyful mixed-group dancing wide. The &#x27;visitor pulled into the line&#x27; specificity will almost certainly have to be dropped or staged locally.</dd>
           </dl>
           <p class="note">THESIS SHOT: recreation as belonging.</p>
         </div>
@@ -1540,6 +1617,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:49.2</span>
           <span class="dur">1.0s</span>
           <span class="sid">6.02</span>
+          <span class="tier" style="--tc:#4f9c6a">A</span>
         </div>
         <div class="cbody">
           <h4>Hands clapping across the circle cut with feet stomping earth</h4>
@@ -1550,7 +1628,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>B x2</dd>
             <dt>CapCut</dt><dd class="cc">Two 4-frame cuts. Pure rhythm.</dd>
             <dt>Audio</dt><dd>Claps + stomps</dd>
-            <dt>Where</dt><dd>Community ground</dd>
+            <dt>Search</dt><dd class="kw">hands clapping feet stomping close up</dd><dt>Libs</dt><dd>Filmsupply, Artgrid, Shutterstock</dd><dt>Licence</dt><dd class="">Commercial</dd>
           </dl>
           
         </div>
@@ -1561,6 +1639,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:50.2</span>
           <span class="dur">1.2s</span>
           <span class="sid">6.03</span>
+          <span class="tier" style="--tc:#8fae4f">B</span>
         </div>
         <div class="cbody">
           <h4>Full troupe + crowd, one frame, dancing together at golden hour</h4>
@@ -1571,7 +1650,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>B</dd>
             <dt>CapCut</dt><dd class="cc">Keyframe Scale 100&gt;90 AND Position Y +120px together (drone-lift feel)</dd>
             <dt>Audio</dt><dd>Ensemble</dd>
-            <dt>Where</dt><dd>Community ground</dd>
+            <dt>Search</dt><dd class="kw">dancers crowd golden hour wide aerial</dd><dt>Libs</dt><dd>Artgrid, Pond5, Getty</dd><dt>Licence</dt><dd class="lic-warn">Commercial or editorial</dd><dt>Fallback</dt><dd class="fb">Fake the drone lift with Scale 100-&gt;90 + Position keyframes on a locked wide.</dd>
           </dl>
           
         </div>
@@ -1582,6 +1661,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:51.4</span>
           <span class="dur">1.0s</span>
           <span class="sid">6.04</span>
+          <span class="tier" style="--tc:#8fae4f">B</span>
         </div>
         <div class="cbody">
           <h4>A dancer&#x27;s leap against the setting sun, silhouette</h4>
@@ -1592,7 +1672,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>B</dd>
             <dt>CapCut</dt><dd class="cc">Exposure -18, rim highlights +22</dd>
             <dt>Audio</dt><dd>Stomp</dd>
-            <dt>Where</dt><dd>Community ground</dd>
+            <dt>Search</dt><dd class="kw">dancer leap silhouette sunset</dd><dt>Libs</dt><dd>Artgrid, Filmsupply, Getty</dd><dt>Licence</dt><dd class="">Commercial</dd><dt>Fallback</dt><dd class="fb">Thumbnail candidate - buy this one well.</dd>
           </dl>
           <p class="note">Thumbnail candidate.</p>
         </div>
@@ -1603,6 +1683,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:52.4</span>
           <span class="dur">1.4s</span>
           <span class="sid">6.05</span>
+          <span class="tier" style="--tc:#e0a13c">C</span>
         </div>
         <div class="cbody">
           <h4>Lake Kivu at dusk, longhorn inyambo cattle silhouetted along the shore</h4>
@@ -1613,7 +1694,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>D</dd>
             <dt>CapCut</dt><dd class="cc">Sunset Rays 18 low intensity; temp +16</dd>
             <dt>Audio</dt><dd>Cattle + water</dd>
-            <dt>Where</dt><dd>Lake Kivu shore</dd>
+            <dt>Search</dt><dd class="kw">Ankole cattle long horns sunset silhouette</dd><dt>Libs</dt><dd>Pond5, Getty, Shutterstock</dd><dt>Licence</dt><dd class="lic-warn">Commercial or editorial</dd><dt>Fallback</dt><dd class="fb">Substitute: &#x27;African cattle herd sunset&#x27; (plentiful). Ankole/inyambo specific is scarce but does exist on Pond5 and Getty.</dd>
           </dl>
           
         </div>
@@ -1624,6 +1705,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:53.8</span>
           <span class="dur">1.4s</span>
           <span class="sid">6.06</span>
+          <span class="tier" style="--tc:#4f9c6a">A</span>
         </div>
         <div class="cbody">
           <h4>Night - a fire, sparks rising, faces lit orange, drumming continuing off-frame</h4>
@@ -1634,7 +1716,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>D</dd>
             <dt>CapCut</dt><dd class="cc">Particles/Sparkle 12 for embers; firelight in A3</dd>
             <dt>Audio</dt><dd>Fire crackle + distant drums</dd>
-            <dt>Where</dt><dd>Night camp</dd>
+            <dt>Search</dt><dd class="kw">campfire night sparks faces</dd><dt>Libs</dt><dd>Artgrid, Filmsupply, Pond5</dd><dt>Licence</dt><dd class="">Commercial</dd>
           </dl>
           
         </div>
@@ -1645,6 +1727,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:55.2</span>
           <span class="dur">1.6s</span>
           <span class="sid">6.07</span>
+          <span class="tier" style="--tc:#8fae4f">B</span>
         </div>
         <div class="cbody">
           <h4>THE LAST FACE - a dancer catching breath, looks straight into the lens and smiles. Hold.</h4>
@@ -1655,7 +1738,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>D</dd>
             <dt>CapCut</dt><dd class="cc">Speed 0.8x. HOLD for the final drum hit at 00:56.8</dd>
             <dt>Audio</dt><dd>Breath, then final drum hit</dd>
-            <dt>Where</dt><dd>Night camp</dd>
+            <dt>Search</dt><dd class="kw">person close up smile into camera warm</dd><dt>Libs</dt><dd>Filmsupply, Getty, Artgrid</dd><dt>Licence</dt><dd class="">Commercial (model release)</dd><dt>Fallback</dt><dd class="fb">The last face. Buy direct eye contact - many stock portraits have the subject looking away.</dd>
           </dl>
           <p class="note">Music decays to ambience only.</p>
         </div>
@@ -1666,6 +1749,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:56.8</span>
           <span class="dur">2.0s</span>
           <span class="sid">6.08</span>
+          <span class="tier" style="--tc:#4f9c6a">A</span>
         </div>
         <div class="cbody">
           <h4>Wide of the hills at dusk, mist returning - the same valley as 1.01. Full circle.</h4>
@@ -1676,7 +1760,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>D</dd>
             <dt>CapCut</dt><dd class="cc">Same grade as 1.01 but warmer. Ends in the same place, changed.</dd>
             <dt>Audio</dt><dd>Ambience only</dd>
-            <dt>Where</dt><dd>Virunga valley</dd>
+            <dt>Search</dt><dd class="kw">hills dusk mist valley wide</dd><dt>Libs</dt><dd>Artgrid, Pond5, Shutterstock</dd><dt>Licence</dt><dd class="">Commercial</dd><dt>Fallback</dt><dd class="fb">Match the composition of 1.01 as closely as the library allows - ideally the SAME clip, regraded warmer.</dd>
           </dl>
           
         </div>
@@ -1687,6 +1771,7 @@ footer .mono { color:var(--ink2); }
           <span class="tc">00:58.8</span>
           <span class="dur">1.2s</span>
           <span class="sid">6.09</span>
+          <span class="tier" style="--tc:#4f9c6a">A</span>
         </div>
         <div class="cbody">
           <h4>CLOSING CARD</h4>
@@ -1697,7 +1782,7 @@ footer .mono { color:var(--ink2); }
             <dt>Cut</dt><dd>Fade</dd>
             <dt>CapCut</dt><dd class="cc">Text In: Fade+Blur; Out: Fade. Fade to black over last 12 frames.</dd>
             <dt>Audio</dt><dd>Ambience tail</dd>
-            <dt>Where</dt><dd>-</dd>
+            <dt>Search</dt><dd class="kw">-</dd><dt>Fallback</dt><dd class="fb">No picture needed: closing card over the tail of 6.08, or over black.</dd>
           </dl>
           <p class="note">3 stacked text blocks, staggered 6 frames apart.</p>
         </div>
@@ -1705,8 +1790,52 @@ footer .mono { color:var(--ink2); }
     </div>
   </section>
 
+
+<section class="ref" id="sourcing"><div class="wrap">
+  <h2 class="sec">02 — Sourcing from stock libraries</h2>
+  <p class="secdesc">This build is <b>stock-sourced</b>. Every shot below carries an availability
+  tier badge, primary search keywords, suggested libraries, a licence caution and a fallback.
+  Full detail in <span class="mono">STOCK-SOURCING.md</span> and <span class="mono">assets/stock-shot-list.csv</span>.</p>
+  <div class="tiergrid">
+    <div class="tg" style="--tc:#4f9c6a"><b>A</b><span class="n">23</span><p>Plentiful — buy immediately, ~10 min of searching</p></div>
+    <div class="tg" style="--tc:#8fae4f"><b>B</b><span class="n">17</span><p>Findable — allow real search time, several candidates</p></div>
+    <div class="tg" style="--tc:#e0a13c"><b>C</b><span class="n">17</span><p>Scarce — you will probably need a substitution</p></div>
+    <div class="tg" style="--tc:#d1603d"><b>D</b><span class="n">6</span><p>Not available — crop, stitch or build it in CapCut</p></div>
+  </div>
+  <div class="callout"><h4>The problem at the centre of this film</h4>
+  <p>Real Intore and Umushagiriro performance footage in libraries is overwhelmingly
+  <b>Editorial Use Only</b>, not model-released, 1080p and 25–29.97 fps. A representative
+  Intore spear-dance clip on Pond5 is marked <span class="mono">Usage: Editorial ·
+  Model Released: false</span> — which disqualifies it from any commercial or tourism-board
+  delivery, and whose frame rate disqualifies it from the 0.35× slow motion this sequence is
+  designed around. <b>Filter by licence before you filter by relevance.</b></p></div>
+  <div class="callout warn"><h4>Three ways out — decide before you search</h4>
+  <ul>
+    <li><b>Option 1 · License direct from Rwandan sources</b> (recommended) — Rwanda Cultural Heritage Academy, Urukerereza (National Ballet), Inganzo Ngari, Ingoma Nshya, RDB, and individual Rwandan contributors on Pond5 and Vimeo Stock. They hold the 4K/60 fps material the libraries do not, and a written licence with confirmed model releases.</li>
+    <li><b>Option 2 · Substitute gracefully</b> — take the fallbacks in the CSV. You lose specificity in ~12 shots and keep the rhythm, beauty and arc. Safe only for a non-Rwandan audience and client; Rwandan viewers will notice.</li>
+    <li><b>Option 3 · Hybrid</b> (what I would do) — license the dance direct for Acts 4A and 4B only (~19 shots), buy everything else from libraries. The dance is the subject; landscape and recreation are the setting, and setting footage is commodity.</li>
+  </ul></div>
+  <div class="callout warn"><h4>Frame rate is the bigger trap than licensing</h4>
+  <p>Stock is overwhelmingly 24/25/30 fps. Pushed to 0.35×, CapCut's Optical Flow invents
+  roughly <b>80% of the frames</b> — and it fails on exactly this film's material: flying sisal
+  fibres, splashing water, patterned beadwork, fast limbs. Buy <b>native slow motion</b> for
+  3.07, 4.04, 4.05, 4.17 and 5.01. Where it is unavailable, never go below 0.5×, switch to
+  <span class="mono">Frame blending</span>, or use a 8–12 frame <b>freeze</b> instead — which
+  reads as a stylistic choice rather than a technical failure.</p></div>
+  <div class="tbl-scroll"><table>
+    <thead><tr><th>The five shots worth spending real money on</th><th>Why</th><th>Target spec</th></tr></thead>
+    <tbody>
+      <tr><td><b>4.04</b> Intore group leap</td><td>The drop, the title, the thumbnail. If this shot is weak the film is weak.</td><td class="meth">4K · highest fps available · real Intore line</td></tr>
+      <tr><td><b>3.12</b> Silverback eye contact</td><td>The held frame that cuts the music out. Most arresting image in the film.</td><td class="meth">4K · telephoto · eyes sharp</td></tr>
+      <tr><td><b>5.01</b> The exhale</td><td>Three full seconds on one face — the emotional peak. Must be flawless.</td><td class="meth">4K · 100 fps+ native · clean skin</td></tr>
+      <tr><td><b>4.05</b> Feet landing, dust</td><td>Loudest point in the mix and the signature ramp. Needs real slow motion.</td><td class="meth">4K · 120–240 fps native</td></tr>
+      <tr><td><b>6.04</b> Silhouette leap</td><td>Closing image and second thumbnail candidate.</td><td class="meth">4K · backlit · clean rim</td></tr>
+    </tbody>
+  </table></div>
+</div></section>
+
 <section class="ref" id="matchcuts"><div class="wrap">
-  <h2 class="sec">02 — The match-cut spine</h2>
+  <h2 class="sec">03 — The match-cut spine</h2>
   <p class="secdesc">The film is stitched by <b>shape echoes</b>: every act hands its last image to the
   next act as a shape. This is the thing that makes it feel designed rather than compiled.
   In CapCut these are built with <span class="mono">Mask → Circle</span> + <span class="mono">Transitions → Camera → Pull</span>
@@ -1726,7 +1855,7 @@ footer .mono { color:var(--ink2); }
 </div></section>
 
 <section class="ref" id="grade"><div class="wrap">
-  <h2 class="sec">03 — Colour: the three-temperature arc</h2>
+  <h2 class="sec">04 — Colour: the three-temperature arc</h2>
   <p class="secdesc">Grade with <b>adjustment clips on V5, one per act</b> — never per clip, or you get
   sixty different looks. Cool blue-grey mist → warm earth green and amber → deep golden hour.</p>
   <div class="tbl-scroll"><table class="gr">
@@ -1746,11 +1875,11 @@ footer .mono { color:var(--ink2); }
 </div></section>
 
 <section class="ref" id="build"><div class="wrap">
-  <h2 class="sec">04 — CapCut build order</h2>
+  <h2 class="sec">05 — CapCut build order</h2>
   <p class="secdesc">Follow the phases in this order. Effects-first editing is the number one reason
   amateur cuts feel cluttered — if the assembly is rhythmic with nothing on it, every effect you add
   later is a gain.</p>
-  <ol class="phases"><li><span class="pn">0</span><div><b>Project setup</b><p>Ratio 9:16 · 60 fps locked from frame one · act folders on disk · track map V1–V5 / A1–A5</p></div></li><li><span class="pn">1</span><div><b>Music bed &amp; beat grid</b><p>Lay A1, align first drop to 00:05.0, Auto-generate beats, add 7 structural markers, split &amp; duck the breakdown</p></div></li><li><span class="pn">2</span><div><b>Assembly pass</b><p>All 63 shots snapped to beat markers. NO effects, NO filters, NO text. Watch it muted — is it rhythmic?</p></div></li><li><span class="pn">3</span><div><b>Speed work</b><p>Normal speed for grace material + Optical Flow; Customized curves on the 5 signature ramps</p></div></li><li><span class="pn">4</span><div><b>Match-cut spine</b><p>8 shape echoes built with Circle-mask reveals, scale-match keyframes, camera-pull and freeze-release</p></div></li><li><span class="pn">5</span><div><b>Keyframed motion</b><p>House moves: slow push-in 100→108, drone lift, drift rotate, fake handheld, text nudge</p></div></li><li><span class="pn">6</span><div><b>Colour</b><p>Adjustment clips on V5 per act. Three-temperature arc. HSL Orange for skin, Blue for water. Never per-clip filters at 100%</p></div></li><li><span class="pn">7</span><div><b>Effects &amp; overlays</b><p>Grain whole-film · dust in 3–4 · light leak in 1 &amp; 6 · Shake/Zoom for 4–6 frames only. Max 2 effects at once</p></div></li><li><span class="pn">8</span><div><b>Transitions</b><p>≤ 12 in the whole film. Hard cuts in Act 4. Dissolves in 1, 5, 6. Whip/blur in 3</p></div></li><li><span class="pn">9</span><div><b>Titles &amp; captions</b><p>One display + one body face · #F5EFE6 · letter-spacing +4 · shadow on · In Fade+Blur, Out Fade · bottom 250 px safe</p></div></li><li><span class="pn">10</span><div><b>Audio polish</b><p>Duck A1 under A3/A5 · loudest point is 4.05 · 6-frame fades everywhere · protect the silence at 00:24</p></div></li><li><span class="pn">11</span><div><b>Export &amp; QC</b><p>2160×3840 / 60 fps / H.264 / higher bit rate · watch the exported file · watch on a phone · run the checklist</p></div></li></ol>
+  <ol class="phases"><li><span class="pn">0</span><div><b>Project setup</b><p>Ratio 9:16 · 60 fps locked from frame one · act folders on disk · track map V1–V5 / A1–A5</p></div></li><li><span class="pn">0.5</span><div><b>Stock ingestion</b><p>Log every clip (shot ID, library, licence, model release, invoice) · rename on download · preview at 100% · neutralise baked-in grades · Colour Match per act · upscale weak clips individually · check fps before any ramp · global Film Grain last</p></div></li><li><span class="pn">1</span><div><b>Music bed &amp; beat grid</b><p>Lay A1, align first drop to 00:05.0, Auto-generate beats, add 7 structural markers, split &amp; duck the breakdown</p></div></li><li><span class="pn">2</span><div><b>Assembly pass</b><p>All 63 shots snapped to beat markers. NO effects, NO filters, NO text. Watch it muted — is it rhythmic?</p></div></li><li><span class="pn">3</span><div><b>Speed work</b><p>Normal speed for grace material + Optical Flow; Customized curves on the 5 signature ramps</p></div></li><li><span class="pn">4</span><div><b>Match-cut spine</b><p>8 shape echoes built with Circle-mask reveals, scale-match keyframes, camera-pull and freeze-release</p></div></li><li><span class="pn">5</span><div><b>Keyframed motion</b><p>House moves: slow push-in 100→108, drone lift, drift rotate, fake handheld, text nudge</p></div></li><li><span class="pn">6</span><div><b>Colour</b><p>Adjustment clips on V5 per act. Three-temperature arc. HSL Orange for skin, Blue for water. Never per-clip filters at 100%</p></div></li><li><span class="pn">7</span><div><b>Effects &amp; overlays</b><p>Grain whole-film · dust in 3–4 · light leak in 1 &amp; 6 · Shake/Zoom for 4–6 frames only. Max 2 effects at once</p></div></li><li><span class="pn">8</span><div><b>Transitions</b><p>≤ 12 in the whole film. Hard cuts in Act 4. Dissolves in 1, 5, 6. Whip/blur in 3</p></div></li><li><span class="pn">9</span><div><b>Titles &amp; captions</b><p>One display + one body face · #F5EFE6 · letter-spacing +4 · shadow on · In Fade+Blur, Out Fade · bottom 250 px safe</p></div></li><li><span class="pn">10</span><div><b>Audio polish</b><p>Duck A1 under A3/A5 · loudest point is 4.05 · 6-frame fades everywhere · protect the silence at 00:24</p></div></li><li><span class="pn">11</span><div><b>Export &amp; QC</b><p>2160×3840 / 60 fps / H.264 / higher bit rate · watch the exported file · watch on a phone · run the checklist</p></div></li></ol>
 
   <div class="callout warn"><h4>Budget and restraint</h4>
   <ul>
@@ -1763,7 +1892,7 @@ footer .mono { color:var(--ink2); }
 </div></section>
 
 <section class="ref" id="copy"><div class="wrap">
-  <h2 class="sec">05 — On-screen copy</h2>
+  <h2 class="sec">06 — On-screen copy</h2>
   <p class="secdesc">One display face plus one body face, maximum. Colour <span class="mono">#F5EFE6</span> —
   warm off-white, never pure #FFF, which reads as digital. Letter-spacing +2 to +6 so apostrophes in
   Kinyarwanda don't crowd. Always <span class="mono">Text → Animation → Out → Fade</span> at 8 frames.

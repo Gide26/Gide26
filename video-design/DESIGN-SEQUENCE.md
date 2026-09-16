@@ -1,6 +1,13 @@
 # **"UMURIRO W'URWANDA"** — *The Fire of Rwanda*
 ### A 60-second recreation + Kinyarwanda dance + nature-and-people film
-### CapCut-native design sequence · Build v1.0
+### CapCut-native design sequence · Build v1.1 · **stock-sourced**
+
+> **v1.1 change:** this film is now sourced from **licensed stock libraries** rather than
+> a shoot. The sequence, rhythm and CapCut design are unchanged; what changes is that 23 of
+> the 63 shots need a substitution or an in-editor build, and the frame-rate assumptions of
+> the slow-motion design have to be re-speced. Read **`STOCK-SOURCING.md` before anything else** —
+> it audits every shot for availability and explains the editorial-licence trap that sits at
+> the centre of Act 4. Per-shot keywords and fallbacks: **`assets/stock-shot-list.csv`**.
 
 ---
 
@@ -51,17 +58,30 @@ a sustained slow-motion *exhale* in the middle, then a final sprint.
 | Audio | −14 LUFS integrated, true peak −1 dB | −14 LUFS | −16 LUFS |
 | Safe margins | 250 px bottom (UI), 180 px top | same | none |
 
-**Shoot spec:** 4K, 60 fps, **shutter 1/120** for normal motion · 120–240 fps for the
-Act 4 leaps and Act 6 confetti/petal moments · log or flat profile if the camera allows
-(easier grade in CapCut's *Adjust* panel). Lock white balance manually — auto WB will
-flicker across the golden-hour material and fight the grade.
+**Sourcing spec (stock):** the sequence was originally written for footage shot at 4K / 60 fps
+with 120–240 fps for the slow-motion beats. Sourced from libraries, that becomes:
 
-**Naming convention (do this before you import — it saves hours):**
+| Requirement | Target | Minimum acceptable |
+|---|---|---|
+| Resolution | 4K (3840×2160) | 1080p — only for cuts under 0.6 s |
+| Frame rate | 60 fps, or **native slow motion** for the ramp shots | 30 fps — but see §5 of `STOCK-SOURCING.md` |
+| Native slow motion required | **3.07, 4.04, 4.05, 4.17, 5.01** | If unavailable, re-spec per `STOCK-SOURCING.md` §5 |
+| Licence | Royalty-Free with commercial use + **model release** for every identifiable face | Editorial-only is acceptable **only** for a non-commercial delivery |
+| Consistency | Buy Acts 1, 5 and 6 from a single collection per act so grain, lens and colour temperature already match | — |
+
+**Availability audit of all 63 shots:** 23 Tier A (plentiful) · 17 Tier B (findable) ·
+17 Tier C (scarce, may need substitution) · 6 Tier D (must be cropped, stitched or built
+in CapCut). Nature, recreation and people are well covered. **The dance is the whole risk** —
+search Act 4 first, not last.
+
+**Naming convention (rename on download — it saves hours at assembly):**
 ```
-ACT{1-6}_{SHOT##}_{descriptor}_{fps}_{take}
-ACT3_007_kivu-kayak-sunrise_120_t2.mp4
-ACT4_011_intore-leap-front_240_t1.mp4
+ACT{1-6}_{SHOT##}_{descriptor}_{lib}_{fps}
+ACT4_004_intore-group-leap_pond5_30.mp4
+ACT3_012_silverback-eye-contact_filmsupply_60.mp4
 ```
+Keep a parallel `00_LICENSES/` folder holding the licence PDF or invoice for every clip,
+named with the same shot ID.
 
 ---
 
@@ -288,17 +308,20 @@ Keep every title inside the bottom-250 px safe zone on 9:16 so platform UI never
 
 ## 8. Pre-flight checklist
 
-**Before shooting**
-- [ ] Music track chosen, licensed, and its BPM/drop structure confirmed
+**Before sourcing**
+- [ ] **Decision written down:** license the dance direct from a Rwandan troupe (Option 1), substitute from libraries (Option 2), or hybrid (Option 3) — see `STOCK-SOURCING.md` §2
+- [ ] Delivery use confirmed (commercial / editorial / personal) — this determines whether editorial-only clips are usable at all
+- [ ] Music track chosen and **licensed separately from the footage**; no CapCut library audio for any commercial delivery
 - [ ] Native-speaker sign-off on all Kinyarwanda text and any spoken lines
-- [ ] Permissions for filming people, children (guardian consent), and on protected land (RDB/park permits)
-- [ ] Drummers and dancers briefed: we need **isolated sound** takes (30 s of drums alone, bells alone, crowd clap alone)
-- [ ] Shoot list printed from `assets/shot-list.csv` and sorted by location, not by act order
-- [ ] 240 fps capability confirmed on the primary camera; ND filters packed for 1/120 at f/2.8 in daylight
+- [ ] Act 4 searched **first** across Pond5, Getty, Shutterstock and Rwandan contributors, using Kinyarwanda keywords (Intore, Umushagiriro, umuhamirizo, ingoma, amayugi)
+- [ ] The five hero shots budgeted properly: 4.04, 3.12, 5.01, 4.05, 6.04
+- [ ] `00_LICENSES/` folder created; licence PDF saved for every clip as it is bought
+- [ ] Every clip with an identifiable face checked for **model release**
 
 **Before editing**
-- [ ] All footage renamed to the convention in §3
-- [ ] Proxies or a clean folder structure — Act folders, not one flat dump
+- [ ] All clips renamed to the convention in §3 and filed by act
+- [ ] Every clip's resolution and frame rate logged — the ramp shots are re-speced if they came in at 30 fps
+- [ ] Colour-neutralised the baked-in looks before applying act grades (`STOCK-SOURCING.md` §7)
 - [ ] Music bed laid on the timeline and beats marked **before any picture edit**
 - [ ] A CapCut project saved at 60 fps and the correct ratio from frame one (changing later forces re-cropping)
 
@@ -317,8 +340,10 @@ Keep every title inside the bottom-250 px safe zone on 9:16 so platform UI never
 
 | File | What it is |
 |---|---|
+| **`STOCK-SOURCING.md`** | **Read first.** Availability audit of all 63 shots, the editorial-licence trap in Act 4, three sourcing strategies, library-by-library plan, frame-rate re-specs, match-cut fixes, licensing checklist, zero-budget path |
 | `storyboard.html` | Visual storyboard + beat map + CapCut build order — open in a browser, print to PDF |
 | `CAPCUT-PLAYBOOK.md` | Tool-by-tool CapCut workflow: every phase, with exact menu paths and settings |
-| `assets/shot-list.csv` | The 60 shots as a sortable shooting/assembly list |
+| `assets/stock-shot-list.csv` | **The working sourcing list** — all 63 shots with availability tier, primary and alternate search keywords, suggested libraries, frame-rate notes, licence cautions and a fallback for each |
+| `assets/shot-list.csv` | The 63 shots as a sortable assembly list (creative fields only) |
 | `assets/beat-grid.csv` | Cut points mapped to the beat structure, for timeline marking |
-| `assets/sequence.json` | Machine-readable sequence data, for re-use or scripting |
+| `assets/sequence.json` | Machine-readable sequence data, including the per-shot `stock` sourcing object |

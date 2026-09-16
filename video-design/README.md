@@ -5,14 +5,33 @@ A complete, CapCut-oriented design sequence for a 60-second film about **recreat
 
 **Open `index.html` in a browser** for the landing page, or go straight to `storyboard.html`.
 
+**Sourcing mode: licensed stock libraries.** Read [`STOCK-SOURCING.md`](STOCK-SOURCING.md) before
+you buy anything — 40 of the 63 shots are readily buyable, 23 need a substitution or an
+in-editor build, and the dance act sits right in the middle of a licensing trap.
+
 | File | What it is |
 |---|---|
-| [`storyboard.html`](storyboard.html) | Visual storyboard: beat map, 63 shot cards with timecodes and CapCut treatments, match-cut spine, grade table, build order, on-screen copy |
+| [`STOCK-SOURCING.md`](STOCK-SOURCING.md) | **Read first.** Availability audit of every shot, the editorial-licence problem in Act 4, three sourcing strategies, library-by-library plan, frame-rate re-specs, match-cut fixes, licensing checklist, zero-budget path |
+| [`storyboard.html`](storyboard.html) | Visual storyboard: beat map, 63 shot cards with timecodes, CapCut treatments and availability tiers, match-cut spine, grade table, build order, on-screen copy |
 | [`DESIGN-SEQUENCE.md`](DESIGN-SEQUENCE.md) | Master treatment — concept, delivery specs, audio architecture, act-by-act shot sequence, title copy, variant cutdowns, pre-flight checklist |
-| [`CAPCUT-PLAYBOOK.md`](CAPCUT-PLAYBOOK.md) | Tool-by-tool CapCut workflow, phases 0–11, with exact menu paths, settings, a free-vs-Pro table and failure-mode fixes |
-| [`assets/shot-list.csv`](assets/shot-list.csv) | 63 shots as a sortable shooting / assembly list (14 columns) |
+| [`CAPCUT-PLAYBOOK.md`](CAPCUT-PLAYBOOK.md) | Tool-by-tool CapCut workflow, phases 0–11 plus stock ingestion, with exact menu paths, settings, a free-vs-Pro table and failure-mode fixes |
+| [`assets/stock-shot-list.csv`](assets/stock-shot-list.csv) | **The working sourcing list** — availability tier, primary and alternate keywords, libraries, fps notes, licence cautions and a fallback per shot |
+| [`assets/shot-list.csv`](assets/shot-list.csv) | 63 shots as a sortable assembly list (creative fields only) |
 | [`assets/beat-grid.csv`](assets/beat-grid.csv) | Cut points mapped to the beat structure, for timeline marking |
-| [`assets/sequence.json`](assets/sequence.json) | Machine-readable sequence data, for re-use or scripting |
+| [`assets/sequence.json`](assets/sequence.json) | Machine-readable sequence data, including the per-shot `stock` object |
+
+## Availability at a glance
+
+| Tier | Meaning | Shots |
+|---|---|---|
+| **A** | Plentiful — buy immediately | 23 |
+| **B** | Findable — allow real search time | 17 |
+| **C** | Scarce — likely needs a substitution | 17 |
+| **D** | Not available — crop, stitch or build it in CapCut | 6 |
+
+Nature, recreation and people are well covered by the libraries. **The dance is the whole
+risk** — so search Act 4 first, not last, and decide up front whether to license it directly
+from a Rwandan troupe.
 
 ## At a glance
 
@@ -41,5 +60,7 @@ ACT 6  00:48–01:00  Umunsi Mushya       Together / The New Day    groove D    
 ## Before delivery
 
 - [ ] All Kinyarwanda text and any spoken line verified by a native speaker
-- [ ] Music and all footage licensed for the intended distribution (no trending CapCut library audio for commercial use)
-- [ ] Filming permits for protected areas (RDB / national parks) and guardian consent for children
+- [ ] Music licensed **separately from the footage** — CapCut's built-in library audio is not cleared for commercial use
+- [ ] Per-clip licence register complete: shot ID → library → licence type → model release → invoice
+- [ ] No editorial-only clip in a commercial delivery; if one survives, the delivery is stated in writing as non-commercial only
+- [ ] Every identifiable face has a model release

@@ -30,30 +30,62 @@ padding:15px 18px;text-decoration:none;color:var(--ink)}
 .files b{font-size:14.5px}
 .files span{font-family:var(--mono);font-size:11px;color:var(--ink3)}
 .files em{grid-column:1/-1;font-style:normal;font-size:13px;color:var(--ink2)}
+  .btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+a.hero-btn.alt{background:transparent;color:var(--gold);border:1px solid #4a3a20;font-weight:650}
+a.hero-btn.alt:hover{background:#1e1a17}
+.btns a.hero-btn{margin-top:0}
+.tiers{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}
+.tiers div{flex:1 1 140px;background:var(--panel);border:1px solid var(--line);padding:14px 16px}
+.tiers b{display:block;font-family:var(--mono);font-size:26px;line-height:1}
+.tiers span{display:block;margin-top:6px;font-size:12px;color:var(--ink2)}
+.warn{margin-top:20px;background:#1d1512;border:1px solid #3a2a1c;border-left:3px solid var(--terra);
+padding:15px 18px;font-size:13.5px;color:var(--ink2)}
+.warn b{color:var(--ink)}
 .meta{margin-top:26px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--ink3)}
 </style>
 </head>
 <body>
 <div class="box">
-  <p class="eyebrow">Video design package · CapCut-native · Build v1.0</p>
+  <p class="eyebrow">Video design package · CapCut-native · Build v1.1 · stock-sourced</p>
   <h1>Umuriro w'Urwanda</h1>
   <p class="sub">The Fire of Rwanda</p>
   <p class="desc">A 60-second design sequence built on four pillars — recreation, Kinyarwanda dance,
   the beauty of nature and the beauty of people. 63 shots across 7 act blocks, cut to an
-  <em>ingoma</em> drum grid, with a full tool-by-tool CapCut build path.</p>
+  <em>ingoma</em> drum grid, with a full tool-by-tool CapCut build path — and every shot sourced
+  from licensed stock libraries.</p>
+  <div class="tiers">
+    <div><b style="color:#4f9c6a">23</b><span>Tier A · plentiful</span></div>
+    <div><b style="color:#8fae4f">17</b><span>Tier B · findable</span></div>
+    <div><b style="color:#e0a13c">17</b><span>Tier C · may substitute</span></div>
+    <div><b style="color:#d1603d">6</b><span>Tier D · build it</span></div>
+  </div>
+  <p class="warn">⚠ Real Intore performance footage in libraries is overwhelmingly <b>editorial-only and not
+  model-released</b>, at 1080p / 29.97 fps. Nature, recreation and people are easy to source —
+  <b>the dance act is the whole risk.</b> Read the sourcing guide before you buy anything.</p>
   <p class="tag">Come to rest. Leave dancing.</p>
-  <a class="hero-btn" href="storyboard.html">Open the visual storyboard →</a>
+  <div class="btns">
+    <a class="hero-btn" href="storyboard.html">Open the visual storyboard →</a>
+    <a class="hero-btn alt" href="STOCK-SOURCING.md">Read the sourcing guide first</a>
+  </div>
 
   <div class="files">
-    <a href="storyboard.html"><b>storyboard.html</b><span>visual</span><em>Beat map, 63 shot cards with timecodes and CapCut treatments, match-cut spine, grade table, build order</em></a>
+    <a href="STOCK-SOURCING.md"><b>STOCK-SOURCING.md</b><span>read first</span><em>Availability audit of all 63 shots · the editorial-licence trap in Act 4 · three sourcing strategies · library plan · frame-rate re-specs · licensing checklist · zero-budget path</em></a>
+    <a href="storyboard.html"><b>storyboard.html</b><span>visual</span><em>Beat map, 63 shot cards with timecodes, CapCut treatments and availability tiers, match-cut spine, grade table, build order</em></a>
     <a href="DESIGN-SEQUENCE.md"><b>DESIGN-SEQUENCE.md</b><span>treatment</span><em>The full master document — concept, delivery specs, audio architecture, shot-by-shot sequence, copy, variants, checklist</em></a>
     <a href="CAPCUT-PLAYBOOK.md"><b>CAPCUT-PLAYBOOK.md</b><span>workflow</span><em>Phases 0–11 with exact menu paths and settings, plus a free-vs-Pro table and failure-mode fixes</em></a>
-    <a href="assets/shot-list.csv"><b>assets/shot-list.csv</b><span>data</span><em>63 shots as a sortable shooting and assembly list — 14 columns</em></a>
+    <a href="assets/stock-shot-list.csv"><b>assets/stock-shot-list.csv</b><span>data · working list</span><em>63 shots with availability tier, primary and alternate search keywords, libraries, fps notes, licence cautions and a fallback for each</em></a>
+    <a href="assets/shot-list.csv"><b>assets/shot-list.csv</b><span>data</span><em>63 shots as a sortable assembly list — creative fields only</em></a>
     <a href="assets/beat-grid.csv"><b>assets/beat-grid.csv</b><span>data</span><em>Cut points mapped to the beat structure, for timeline marking</em></a>
     <a href="assets/sequence.json"><b>assets/sequence.json</b><span>data</span><em>Machine-readable sequence, for re-use or scripting</em></a>
   </div>
 
-  <p class="meta">60.0 s · 9:16 · 60 fps · 4K H.264 · −14 LUFS · CapCut Desktop</p>
+  <p class="meta">60.0 s · 9:16 · 60 fps · 4K H.264 · −14 LUFS · CapCut Desktop · 63 shots · stock-sourced</p>
 </div>
+<script>
+// render .md links in-page rather than downloading raw text
+document.querySelectorAll('a[href$=".md"]').forEach(a=>{
+  a.href = 'doc.html?file=' + encodeURIComponent(a.getAttribute('href'));
+});
+</script>
 </body>
 </html>

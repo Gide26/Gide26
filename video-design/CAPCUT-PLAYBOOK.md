@@ -47,6 +47,33 @@ stabilisation). Mobile notes are flagged where the UI differs. Menu paths are gi
 
 ---
 
+## Phase 0.5 — Stock ingestion (only for the stock-sourced build)
+
+Read `STOCK-SOURCING.md` first. Then, per clip:
+
+1. **Log it before you import it.** One row per clip: shot ID → library → clip URL →
+   resolution → frame rate → licence type → model release (Y/N) → invoice file.
+   Assembling this after delivery takes five times as long.
+2. **Rename on download** to `ACT{n}_{SHOT##}_{descriptor}_{lib}_{fps}` and file by act.
+3. **Preview at 100%, not fit-to-screen.** Stock is full of soft focus and compression
+   artefacts invisible in a thumbnail grid.
+4. **Neutralise baked-in looks before grading.** Most stock arrives pre-graded
+   teal-and-orange. On the clip: `Adjust → Saturation −10`, `Temp → 0`, then let the
+   per-act adjustment clip on V5 do the real work.
+5. **Match mismatched clips** with desktop `Adjust → Colour Match`, using the best-looking
+   clip in the act as the reference.
+6. **Upscale weak clips individually** (Pro `Video Enhancement`), not the whole timeline —
+   it oversharpens faces if applied globally. Compare before/after every time.
+7. **Check frame rate before you ramp.** If a shot written at 0.35× came in at 30 fps,
+   re-spec it per `STOCK-SOURCING.md` §5 — do not let Optical Flow invent 80% of the frames.
+8. **Add grain globally last.** `Effects → Retro → Film Grain` at 12–18 on V2 across the
+   whole film. This is the single most effective trick for making 63 clips from 8 libraries
+   look like one camera.
+9. **Watch for flicker** in auto-exposed drone and handheld stock. Counter it with a
+   keyframed `Exposure` drift, or replace the clip.
+
+---
+
 ## Phase 1 — Music bed and beat grid (20 min) · *do this before picture*
 
 1. Drag the licensed track to **A1**. Trim to exactly **60.0 s** — align the track's
@@ -400,3 +427,15 @@ worth it for one shot: tracking the words `INTORE` onto the leaping line at 4.04
 | The middle feels long | Act 4B cuts are longer than 0.5 s | They must be 0.4–0.5 s. Trim 4 frames off each and it will snap |
 | The ending feels abrupt | 6.07 not held long enough | Hold the last face for a full 1.6 s with the drum hit at 00:56.8 inside it |
 | Edit feels like a template | Too many transitions and effects | Delete half of them. Hard cuts and clean colour are the look |
+
+### Stock-sourced build — additional failure modes
+
+| Symptom | Cause | Fix |
+|---|---|---|
+| Slow-mo smears on the sisal mane and splashing water | 30 fps source pushed to 0.35×; Optical Flow inventing ~80% of frames | Buy native slow motion, or soften to 0.5×, or switch to `Frame blending`. For a held moment use a 8–12 frame **freeze** instead — see `STOCK-SOURCING.md` §5 |
+| The film looks like 8 different films | Clips from different libraries with different lenses, grain and baked-in grades | Neutralise each clip first (Sat −10, Temp 0), then grade with **one adjustment clip per act** on V5, then add global Film Grain 12–18 on V2 |
+| Match cuts don't land | Two contributors never shared a shape, a screen size or a focal length | Reframe with Scale/Position keyframes (needs 4K bought for a 1080p delivery), bridge with a `Mask → Circle` wipe, insert a 4-frame abstract, or drop the match and cut on the beat |
+| Faces look softer than the landscapes | Mixed 1080p and 4K sources; global upscaling softening skin | Upscale per clip, not globally. Or replace the 1080p face shot — portraits are Tier A and cheap |
+| A clip flickers in brightness | Auto-exposed drone or handheld stock | Keyframe a counter-drift on `Exposure`, or replace the clip |
+| Legal asks where the footage came from | No licence log kept during sourcing | Rebuild it now from your invoices and download history. Never deliver a commercial film without a per-clip licence register |
+| An editorial-only clip is in the cut | Licence not checked before falling in love with the shot | Filter by licence **before** relevance in every library. If it stays in, the delivery is non-commercial only and that must be stated in writing to the client |
