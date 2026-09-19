@@ -1,11 +1,12 @@
 /* Circadia service worker — offline shell + reminder notifications */
-const CACHE = "circadia-v3";
+const CACHE = "circadia-v4";
 const ASSETS = [
   "./",
   "./index.html",
   "./css/app.css",
   "./js/db.js",
   "./js/reminders.js",
+  "./js/planner.js",
   "./js/app.js",
   "./manifest.json",
   "./icons/icon-192.png",

@@ -41,6 +41,8 @@
     soundOn: true,
     hour12: false,
     drag: null,
+    plan: null,
+    draftPlan: null,
   };
 
   /* ——— persistence of events in memory ——— */
@@ -52,6 +54,7 @@
     applyToggles();
     CircadiaReminders.setSound(state.soundOn);
     CircadiaReminders.setHour12(state.hour12);
+    state.plan = (await CircadiaDB.getMeta("plan", null)) || null;
   }
 
   function eventsOn(day) {
@@ -83,21 +86,23 @@
     $("ambient").style.background = bg;
   }
 
+  let lastAgendaMin = -1;
   function tickClock() {
     const now = new Date();
     $("coreTime").textContent = formatClock(now).replace(/ am| pm/i, "");
-    $("coreKicker").textContent = state.hour12
-      ? now.getHours() >= 12
-        ? "afternoon · now"
-        : "morning · now"
-      : "local time";
     if (state.hour12) {
       $("coreKicker").textContent = now.getHours() >= 12 ? "pm · now" : "am · now";
+    } else {
+      $("coreKicker").textContent = "local time";
     }
     setAmbient(now.getHours());
     drawNowNeedle(now);
     updateCoreNext(now);
-    highlightNowCards(now);
+    const stamp = now.getHours() * 60 + now.getMinutes();
+    if (stamp !== lastAgendaMin) {
+      lastAgendaMin = stamp;
+      renderAgenda();
+    }
   }
 
   function updateCoreNext(now) {
@@ -473,6 +478,7 @@
     drawArcs();
     tickClock();
     renderAgenda();
+    renderPlanCard();
   }
 
   /* ——— composer ——— */
@@ -778,6 +784,249 @@
     }
     await CircadiaDB.setMeta("seeded", true);
   }
+
+  /* ——— The Brief ——— */
+  function esc(s) {
+    return String(s || "").replace(/[&<>"']/g, (c) => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;",
+    })[c]);
+  }
+
+  function bindChipGroup(rootId, attr, onPick) {
+    const root = $(rootId);
+    if (!root) return;
+    root.addEventListener("click", (e) => {
+      const chip = e.target.closest(".chip");
+      if (!chip) return;
+      root.querySelectorAll(".chip").forEach((c) => c.classList.remove("is-on"));
+      chip.classList.add("is-on");
+      if (onPick) onPick(chip.dataset[attr]);
+    });
+  }
+
+  function selectedChip(rootId, attr, fallback) {
+    return $(rootId).querySelector(".chip.is-on")?.dataset[attr] || fallback;
+  }
+
+  function renderFreeDayChips(selected) {
+    const root = $("freeDayChips");
+    const on = selected && selected.length ? selected : [2, 4, 6];
+    root.innerHTML = CircadiaPlanner.DAY_S.map(
+      (label, i) =>
+        `<button type="button" class="chip${on.includes(i) ? " is-on" : ""}" data-day="${i}">${label}</button>`
+    ).join("");
+  }
+
+  $("freeDayChips").addEventListener("click", (e) => {
+    const chip = e.target.closest(".chip");
+    if (!chip) return;
+    chip.classList.toggle("is-on");
+  });
+
+  bindChipGroup("kindChips", "kind");
+  bindChipGroup("timeChips", "time");
+  bindChipGroup("styleChips", "style");
+
+  function defaultDeadline() {
+    const d = new Date();
+    d.setDate(d.getDate() + 70);
+    return dateStr(d);
+  }
+
+  function fillBriefForm(brief) {
+    const form = $("briefForm");
+    form.goal.value = brief?.goal || "";
+    form.hoursPerWeek.value = brief?.hoursPerWeek || 6;
+    form.deadline.value = brief?.deadline || defaultDeadline();
+    form.reviewWeeks.value = String(brief?.reviewWeeks || 2);
+    form.accountability.checked = !!brief?.accountability;
+    form.commitments.value = brief?.commitments || "";
+    form.startingPoint.value = brief?.startingPoint || "";
+    form.target.value = brief?.target || "";
+    const kind = brief?.kind || "learn";
+    $("kindChips").querySelectorAll(".chip").forEach((c) => c.classList.toggle("is-on", c.dataset.kind === kind));
+    const time = brief?.timeOfDay || "evening";
+    $("timeChips").querySelectorAll(".chip").forEach((c) => c.classList.toggle("is-on", c.dataset.time === time));
+    const style = brief?.sessionStyle || "daily";
+    $("styleChips").querySelectorAll(".chip").forEach((c) => c.classList.toggle("is-on", c.dataset.style === style));
+    renderFreeDayChips(brief?.freeDays);
+  }
+
+  function readBriefForm() {
+    const form = $("briefForm");
+    const freeDays = [...$("freeDayChips").querySelectorAll(".chip.is-on")].map((c) => Number(c.dataset.day));
+    return {
+      goal: form.goal.value.trim(),
+      kind: selectedChip("kindChips", "kind", "learn"),
+      hoursPerWeek: Number(form.hoursPerWeek.value),
+      deadline: form.deadline.value,
+      freeDays,
+      timeOfDay: selectedChip("timeChips", "time", "evening"),
+      sessionStyle: selectedChip("styleChips", "style", "daily"),
+      reviewWeeks: Number(form.reviewWeeks.value),
+      accountability: form.accountability.checked,
+      commitments: form.commitments.value.trim(),
+      startingPoint: form.startingPoint.value.trim(),
+      target: form.target.value.trim(),
+    };
+  }
+
+  function showBriefForm() {
+    $("briefForm").classList.remove("hidden");
+    $("briefResult").classList.add("hidden");
+  }
+  function showBriefResult() {
+    $("briefForm").classList.add("hidden");
+    $("briefResult").classList.remove("hidden");
+  }
+
+  function openBrief(mode) {
+    if (mode === "result" && (state.draftPlan || state.plan)) {
+      renderBriefResult(state.draftPlan || state.plan);
+      showBriefResult();
+    } else {
+      fillBriefForm(state.plan?.brief || state.draftPlan?.brief);
+      showBriefForm();
+    }
+    $("brief").classList.add("open");
+  }
+  function closeBrief() {
+    $("brief").classList.remove("open");
+  }
+
+  function renderBriefResult(plan) {
+    state.draftPlan = plan;
+    const g = plan.brief.goal || "this work";
+    $("resultTitle").textContent = g;
+    $("resultLede").textContent =
+      `${plan.weeks} weeks · ${plan.hoursPerWeek}h / week · ${plan.kindLabel.toLowerCase()} · on track by ${CircadiaPlanner.fmt(plan.deadline)}` +
+      (plan.brief.startingPoint ? `. Starting from: ${plan.brief.startingPoint}` : "") +
+      (plan.brief.target ? ` Target: ${plan.brief.target}` : "");
+
+    $("resultFlags").innerHTML = (plan.flags || [])
+      .map(
+        (f) =>
+          `<div class="flag ${f.level === "info" ? "info" : ""}"><span class="k">${
+            f.level === "warn" ? "Unrealistic as written" : "A note"
+          }</span>${esc(f.text)}<div class="alt">${esc(f.alternative)}</div></div>`
+      )
+      .join("");
+
+    $("resultPhases").innerHTML = plan.phases
+      .map(
+        (p) => `<article class="phase">
+        <div class="when">${esc(CircadiaPlanner.fmt(p.start))}<br>→ ${esc(CircadiaPlanner.fmt(p.end))}<br>${p.weeks} wk · ${p.hours}h</div>
+        <div>
+          <h4>${esc(p.name)}</h4>
+          <p class="mile">${esc(p.milestone)}</p>
+          <ul>${p.focus.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>
+        </div>
+      </article>`
+      )
+      .join("");
+
+    const byDay = new Map(plan.weekly.map((s) => [s.day, s]));
+    $("resultWeek").innerHTML = CircadiaPlanner.DAY_S.map((label, i) => {
+      const s = byDay.get(i);
+      if (!s) {
+        return `<div class="wo-day is-rest"><div class="dn">${label}</div><div class="slot">Rest</div></div>`;
+      }
+      const mins = s.minutes;
+      const dur = mins >= 60 ? `${Math.round((mins / 60) * 10) / 10}h` : `${mins}m`;
+      return `<div class="wo-day is-on"><div class="dn">${label}</div><div class="slot">${s.start}–${s.end}<br>${dur}</div></div>`;
+    }).join("");
+
+    $("resultTable").innerHTML =
+      `<thead><tr><th>Week</th><th>Dates</th><th>Phase</th><th>Focus</th><th>Review</th></tr></thead><tbody>` +
+      plan.weekByWeek
+        .map(
+          (w) => `<tr>
+          <td>${w.week}</td>
+          <td>${esc(CircadiaPlanner.fmt(w.from))} – ${esc(CircadiaPlanner.fmt(w.to))}</td>
+          <td>${esc(w.phase)}</td>
+          <td>${esc(w.focus)}</td>
+          <td>${w.review ? esc(CircadiaPlanner.fmt(w.review)) : "—"}</td>
+        </tr>`
+        )
+        .join("") +
+      `</tbody>`;
+
+    $("resultChecks").innerHTML = plan.checkpoints
+      .map(
+        (c) =>
+          `<div class="flag info"><span class="k">Week ${c.week} · ${esc(CircadiaPlanner.fmt(c.date))}</span><strong>${esc(
+            c.title
+          )}</strong><div class="alt">${esc(c.notes)}</div></div>`
+      )
+      .join("");
+  }
+
+  function renderPlanCard() {
+    const card = $("planCard");
+    if (!state.plan) {
+      card.classList.add("hidden");
+      return;
+    }
+    card.classList.remove("hidden");
+    const today = dateStr(new Date());
+    const phase = state.plan.phases.find((p) => today >= p.start && today <= p.end) || state.plan.phases[0];
+    const nextReview = (state.plan.checkpoints || []).find((c) => c.date >= today);
+    $("planCardTitle").textContent = state.plan.brief.goal || "Active brief";
+    $("planCardMeta").textContent = `${phase.name} · ${phase.weeks} wk phase · next review ${
+      nextReview ? CircadiaPlanner.fmt(nextReview.date) : "—"
+    }`;
+  }
+
+  $("btnBrief").addEventListener("click", () => openBrief(state.plan ? "result" : "form"));
+  $("btnOpenPlan").addEventListener("click", () => openBrief("result"));
+  $("btnBriefClose").addEventListener("click", closeBrief);
+  $("btnBriefDismiss").addEventListener("click", async () => {
+    if (state.draftPlan) {
+      const stored = { ...state.draftPlan, events: [] };
+      await CircadiaDB.setMeta("plan", stored);
+      state.plan = stored;
+      renderPlanCard();
+    }
+    closeBrief();
+  });
+  $("btnBriefRewrite").addEventListener("click", () => {
+    fillBriefForm(state.draftPlan?.brief || state.plan?.brief);
+    showBriefForm();
+  });
+  $("brief").addEventListener("click", (e) => {
+    if (e.target === $("brief")) closeBrief();
+  });
+
+  $("briefForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const brief = readBriefForm();
+    if (!brief.goal) return;
+    const plan = CircadiaPlanner.weave(brief);
+    renderBriefResult(plan);
+    showBriefResult();
+    $("brief").querySelector(".sheet").scrollTop = 0;
+  });
+
+  $("btnBriefStitch").addEventListener("click", async () => {
+    const plan = state.draftPlan;
+    if (!plan) return;
+    const old = state.events.filter((ev) => ev.source === "plan");
+    for (const ev of old) await CircadiaDB.deleteEvent(ev.id);
+    state.events = state.events.filter((ev) => ev.source !== "plan");
+    for (const ev of plan.events) {
+      await CircadiaDB.putEvent(ev);
+      state.events.push(ev);
+    }
+    await CircadiaDB.setMeta("plan", plan);
+    state.plan = plan;
+    closeBrief();
+    refresh();
+    CircadiaReminders.scheduleTriggers(state.events);
+  });
 
   async function boot() {
     buildStaticDial();

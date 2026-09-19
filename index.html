@@ -36,6 +36,7 @@
             <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9c.3.6.9 1 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/>
           </svg>
         </button>
+        <button class="ghost-btn" id="btnBrief">Brief</button>
         <button class="gold-btn" id="btnNew">+ Thread</button>
       </div>
     </header>
@@ -59,6 +60,13 @@
         <div class="cats">
           <p class="rail-kicker">Threads</p>
           <div id="catList"></div>
+        </div>
+
+        <div class="plan-card hidden" id="planCard">
+          <p class="pk">The Brief</p>
+          <h4 id="planCardTitle">—</h4>
+          <p id="planCardMeta"></p>
+          <button class="ghost-btn" id="btnOpenPlan" type="button">Open plan</button>
         </div>
 
         <p class="hint">
@@ -210,6 +218,110 @@
     </div>
   </div>
 
+  <!-- The Brief: intake + generated plan -->
+  <div class="overlay" id="brief" role="dialog" aria-modal="true" aria-labelledby="briefTitle">
+    <div class="sheet wide">
+      <form id="briefForm">
+        <h3 id="briefTitle">The Brief</h3>
+        <p class="brief-lede">
+          Tell the loom what you're building, the hours you actually have, and when "on track" is.
+          It will cut a season into phases, a weekly rhythm, and review checkpoints — then stitch them onto the ring.
+          Nothing leaves this device.
+        </p>
+        <div class="fields">
+          <label class="field">What you're building
+            <input name="goal" required maxlength="120" placeholder="Learning Python toward data science" autocomplete="off" />
+          </label>
+          <label class="field">Kind of work
+            <div class="chips" id="kindChips">
+              <button type="button" class="chip is-on" data-kind="learn">Learn</button>
+              <button type="button" class="chip" data-kind="train">Train</button>
+              <button type="button" class="chip" data-kind="create">Create</button>
+              <button type="button" class="chip" data-kind="launch">Launch</button>
+              <button type="button" class="chip" data-kind="custom">Other</button>
+            </div>
+          </label>
+          <div class="row">
+            <label class="field">Hours per week
+              <input name="hoursPerWeek" type="number" min="1" max="30" step="0.5" value="6" required />
+            </label>
+            <label class="field">On track by
+              <input name="deadline" type="date" required />
+            </label>
+          </div>
+          <label class="field">Days that are actually free
+            <div class="chips day-set" id="freeDayChips"></div>
+          </label>
+          <label class="field">When you work best
+            <div class="chips" id="timeChips">
+              <button type="button" class="chip" data-time="dawn">Dawn</button>
+              <button type="button" class="chip" data-time="morning">Morning</button>
+              <button type="button" class="chip" data-time="afternoon">Afternoon</button>
+              <button type="button" class="chip is-on" data-time="evening">Evening</button>
+              <button type="button" class="chip" data-time="night">Night</button>
+            </div>
+          </label>
+          <label class="field">Session shape
+            <div class="chips" id="styleChips">
+              <button type="button" class="chip is-on" data-style="daily">Short daily sessions</button>
+              <button type="button" class="chip" data-style="blocks">Longer blocks</button>
+            </div>
+          </label>
+          <div class="row">
+            <label class="field">Review every
+              <select name="reviewWeeks">
+                <option value="2" selected>2 weeks</option>
+                <option value="3">3 weeks</option>
+                <option value="4">4 weeks</option>
+              </select>
+            </label>
+            <label class="field check" style="padding-top: 22px;">
+              <input name="accountability" type="checkbox" /> Sharper reminder popups
+            </label>
+          </div>
+          <label class="field">Current commitments
+            <textarea name="commitments" maxlength="400" placeholder="Workdays 9–5, family evenings, church Sunday morning…"></textarea>
+          </label>
+          <label class="field">Starting point
+            <textarea name="startingPoint" maxlength="400" placeholder="Where you are now — tools, fitness, a half-built thing…"></textarea>
+          </label>
+          <label class="field">What “done” looks like
+            <textarea name="target" maxlength="400" placeholder="A portfolio project, a 5-rep max, ten published videos…"></textarea>
+          </label>
+        </div>
+        <div class="sheet-actions">
+          <button type="button" class="ghost-btn" id="btnBriefClose">Close</button>
+          <div class="right">
+            <button type="submit" class="gold-btn">Cut the plan</button>
+          </div>
+        </div>
+      </form>
+
+      <div id="briefResult" class="hidden">
+        <h3 id="resultTitle">Your season</h3>
+        <p class="brief-lede" id="resultLede"></p>
+        <div id="resultFlags"></div>
+        <p class="section-kicker">Phases</p>
+        <div class="phase-list" id="resultPhases"></div>
+        <p class="section-kicker">A typical week</p>
+        <div class="week-outline" id="resultWeek"></div>
+        <p class="section-kicker">Week by week</p>
+        <div style="overflow-x:auto">
+          <table class="wk-table" id="resultTable"></table>
+        </div>
+        <p class="section-kicker">Checkpoints</p>
+        <div id="resultChecks"></div>
+        <div class="sheet-actions">
+          <button type="button" class="ghost-btn" id="btnBriefRewrite">Rewrite</button>
+          <div class="right">
+            <button type="button" class="ghost-btn" id="btnBriefDismiss">Keep as notes</button>
+            <button type="button" class="gold-btn" id="btnBriefStitch">Stitch into the loom</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="coach" id="coach">
     <h4>Arm the popups</h4>
     <p>Allow notifications so Circadia can wake you even if this tab is in the background — and it still works with no connection.</p>
@@ -221,6 +333,7 @@
 
   <script src="./js/db.js"></script>
   <script src="./js/reminders.js"></script>
+  <script src="./js/planner.js"></script>
   <script src="./js/app.js"></script>
 </body>
 </html>
