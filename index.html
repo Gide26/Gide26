@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0c0b10" />
+  <meta name="description" content="Circadia — weave your day on a circular loom. Offline reminder popups, entirely on this device." />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>Circadia — schedule loom</title>
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="icon" type="image/png" href="./icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="./icons/icon-192.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./css/app.css" />
+</head>
+<body>
+  <div class="ambient" id="ambient"></div>
+  <div class="vignette"></div>
+
+  <div class="app">
+    <header class="top">
+      <div class="brand">
+        <h1 class="wordmark">Circadia</h1>
+        <span class="tagline">Weave the day</span>
+      </div>
+      <div class="top-actions">
+        <div class="status-chip" id="statusChip" title="Reminder engine">
+          <span class="dot"></span>
+          <span class="label" id="statusLabel">Arming…</span>
+        </div>
+        <button class="icon-btn" id="btnSettings" title="Settings" aria-label="Settings">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9c.3.6.9 1 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/>
+          </svg>
+        </button>
+        <button class="gold-btn" id="btnNew">+ Thread</button>
+      </div>
+    </header>
+
+    <div class="ribbon-wrap">
+      <div class="ribbon" id="ribbon" role="tablist" aria-label="Days"></div>
+    </div>
+
+    <main class="stage">
+      <aside class="panel rail">
+        <p class="rail-kicker">Month</p>
+        <div class="cal-head">
+          <h2 id="calMonth"></h2>
+          <div class="cal-nav">
+            <button id="calPrev" aria-label="Previous month">‹</button>
+            <button id="calNext" aria-label="Next month">›</button>
+          </div>
+        </div>
+        <div class="cal-grid" id="calGrid"></div>
+
+        <div class="cats">
+          <p class="rail-kicker">Threads</p>
+          <div id="catList"></div>
+        </div>
+
+        <p class="hint">
+          <strong>Drag the ring</strong> to spin a new thread across an hour.
+          Reminders live on this device — they still pop when you have no signal.
+        </p>
+      </aside>
+
+      <section class="panel loom">
+        <div class="dial-wrap" id="dialWrap">
+          <svg id="dial" viewBox="0 0 400 400" aria-label="24-hour loom">
+            <defs>
+              <filter id="soft">
+                <feGaussianBlur stdDeviation="1.2" />
+              </filter>
+              <radialGradient id="face" cx="50%" cy="45%" r="60%">
+                <stop offset="0%" stop-color="#1a1824" />
+                <stop offset="100%" stop-color="#0e0d14" />
+              </radialGradient>
+            </defs>
+            <circle cx="200" cy="200" r="188" fill="url(#face)" stroke="rgba(226,177,90,0.22)" stroke-width="1.2" />
+            <circle cx="200" cy="200" r="132" fill="none" stroke="rgba(226,177,90,0.08)" stroke-width="44" />
+            <g id="ticks"></g>
+            <g id="hours"></g>
+            <g id="arcs"></g>
+            <g id="nowGroup"></g>
+          </svg>
+          <div class="dial-core">
+            <div class="core-kicker" id="coreKicker">now</div>
+            <div class="core-time" id="coreTime">00:00</div>
+            <div class="core-next" id="coreNext">The loom is empty</div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="panel agenda">
+        <p class="agenda-kicker" id="agendaKicker">Today</p>
+        <p class="agenda-date" id="agendaDate">19</p>
+        <p class="agenda-sub" id="agendaSub">September 2026</p>
+        <div class="agenda-list" id="agendaList"></div>
+      </aside>
+    </main>
+  </div>
+
+  <!-- Composer -->
+  <div class="overlay" id="composer" role="dialog" aria-modal="true" aria-labelledby="composerTitle">
+    <form class="sheet" id="composerForm">
+      <h3 id="composerTitle">New thread</h3>
+      <div class="fields">
+        <label class="field">Title
+          <input name="title" required maxlength="80" placeholder="Deep work, gym, call…" autocomplete="off" />
+        </label>
+        <div class="row">
+          <label class="field">Date
+            <input name="date" type="date" required />
+          </label>
+          <label class="field check" style="padding-top: 22px;">
+            <input name="allDay" type="checkbox" /> All day
+          </label>
+        </div>
+        <div class="row" id="timeRow">
+          <label class="field">Starts
+            <input name="start" type="time" required />
+          </label>
+          <label class="field">Ends
+            <input name="end" type="time" required />
+          </label>
+        </div>
+        <label class="field">Color
+          <div class="chips" id="catChips"></div>
+        </label>
+        <div class="row">
+          <label class="field">Remind me
+            <select name="reminder">
+              <option value="none">No popup</option>
+              <option value="0">At start</option>
+              <option value="5" selected>5 minutes before</option>
+              <option value="15">15 minutes before</option>
+              <option value="30">30 minutes before</option>
+              <option value="60">1 hour before</option>
+            </select>
+          </label>
+          <label class="field">Repeat
+            <select name="repeat">
+              <option value="none">Once</option>
+              <option value="daily">Every day</option>
+              <option value="weekdays">Weekdays</option>
+              <option value="weekly">Weekly</option>
+            </select>
+          </label>
+        </div>
+        <label class="field">Notes
+          <textarea name="notes" maxlength="280" placeholder="A quiet line for yourself"></textarea>
+        </label>
+      </div>
+      <div class="sheet-actions">
+        <button type="button" class="danger hidden" id="btnDelete">Delete</button>
+        <div class="right">
+          <button type="button" class="ghost-btn" id="btnCancel">Close</button>
+          <button type="submit" class="gold-btn">Weave in</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <!-- Settings -->
+  <div class="overlay" id="settings" role="dialog" aria-modal="true">
+    <div class="sheet">
+      <h3>Atelier</h3>
+      <div class="toggle-row">
+        <span>Reminder chime</span>
+        <button class="toggle on" id="togSound" type="button" aria-pressed="true"><i></i></button>
+      </div>
+      <div class="toggle-row">
+        <span>12-hour clock</span>
+        <button class="toggle" id="togHour" type="button" aria-pressed="false"><i></i></button>
+      </div>
+      <div class="toggle-row">
+        <span>System popups</span>
+        <button class="ghost-btn" id="btnEnableNotes" type="button">Allow</button>
+      </div>
+      <p class="hint" style="margin-top:16px">
+        Circadia never needs the internet. Events live in this browser.
+        Keep the tab open — or install the app — and reminder popups still fire offline.
+      </p>
+      <div class="sheet-actions">
+        <button type="button" class="ghost-btn" id="btnTest">Test popup</button>
+        <div class="right">
+          <button type="button" class="ghost-btn" id="btnExport">Export</button>
+          <button type="button" class="gold-btn" id="btnCloseSettings">Done</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cinematic reminder -->
+  <div class="reminder-overlay" id="reminderOverlay" role="alertdialog" aria-live="assertive">
+    <div class="rings" aria-hidden="true"><span></span><span></span><span></span></div>
+    <div class="reminder-card">
+      <p class="reminder-kicker" id="remKicker">It's time</p>
+      <h2 id="remTitle">Title</h2>
+      <p class="reminder-meta" id="remMeta"></p>
+      <p class="reminder-notes" id="remNotes"></p>
+      <div class="reminder-actions">
+        <button class="ghost-btn" id="snooze5">Snooze 5</button>
+        <button class="ghost-btn" id="snooze15">Snooze 15</button>
+        <button class="gold-btn" id="remDismiss">I'm here</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="coach" id="coach">
+    <h4>Arm the popups</h4>
+    <p>Allow notifications so Circadia can wake you even if this tab is in the background — and it still works with no connection.</p>
+    <div class="coach-actions">
+      <button class="ghost-btn" id="coachLater">Later</button>
+      <button class="gold-btn" id="coachAllow">Allow popups</button>
+    </div>
+  </div>
+
+  <script src="./js/db.js"></script>
+  <script src="./js/reminders.js"></script>
+  <script src="./js/app.js"></script>
+</body>
+</html>
