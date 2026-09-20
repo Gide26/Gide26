@@ -1,0 +1,1781 @@
+{
+  "project": {
+    "title": "Umuriro w'Urwanda",
+    "translation": "The Fire of Rwanda",
+    "tagline": "Come to rest. Leave dancing.",
+    "version": "1.0",
+    "editor_target": "CapCut Desktop (Pro recommended for 4K + auto captions)",
+    "pillars": [
+      "recreation",
+      "kinyarwanda-dance",
+      "nature",
+      "people"
+    ],
+    "central_device": "match-cut spine (shape echoes across act boundaries)"
+  },
+  "delivery": {
+    "master": {
+      "aspect": "9:16",
+      "duration_s": 60.0,
+      "resolution": "2160x3840",
+      "fps": 60,
+      "codec": "H.264",
+      "loudness_lufs": -14,
+      "true_peak_db": -1
+    },
+    "variants": [
+      {
+        "name": "social",
+        "aspect": "9:16",
+        "duration_s": 30
+      },
+      {
+        "name": "hook",
+        "aspect": "9:16",
+        "duration_s": 15
+      },
+      {
+        "name": "horizontal",
+        "aspect": "16:9",
+        "duration_s": 60
+      },
+      {
+        "name": "extended",
+        "aspect": "16:9",
+        "duration_s": 90
+      },
+      {
+        "name": "tourism_board",
+        "aspect": "9:16",
+        "duration_s": 60
+      }
+    ]
+  },
+  "audio": {
+    "tracks": {
+      "A1": "music bed",
+      "A2": "location ambience",
+      "A3": "diegetic dance sound",
+      "A4": "design SFX",
+      "A5": "voice / ibyivugo"
+    },
+    "tempo_bpm_groove": 104,
+    "structure": [
+      {
+        "tc": "00:00.0",
+        "event": "free time",
+        "detail": "inanga + wind + single distant drum"
+      },
+      {
+        "tc": "00:05.0",
+        "event": "drop 1"
+      },
+      {
+        "tc": "00:24.0",
+        "event": "breakdown",
+        "detail": "music drops out completely"
+      },
+      {
+        "tc": "00:27.0",
+        "event": "drop 2",
+        "detail": "warrior section, fastest cutting"
+      },
+      {
+        "tc": "00:38.0",
+        "event": "exhale",
+        "detail": "sustained slow-motion, one shot"
+      },
+      {
+        "tc": "00:56.8",
+        "event": "final drum hit"
+      },
+      {
+        "tc": "01:00.0",
+        "event": "end"
+      }
+    ]
+  },
+  "acts": [
+    {
+      "act": "1",
+      "kinyarwanda_title": "Impumuro",
+      "english_title": "The First Breath",
+      "tc_start": 0.0,
+      "tc_end": 5.0,
+      "mood": "cold blue-grey hushed",
+      "cutting_rate": "1.2-1.8s",
+      "shot_count": 4,
+      "shots": [
+        {
+          "id": "1.01",
+          "tc_in": "00:00.0",
+          "duration_s": 1.8,
+          "description": "Mist filling a valley at first light, Virunga silhouettes behind",
+          "framing": "Extreme wide, 9:16",
+          "camera_motion": "Locked tripod",
+          "shoot_fps": "60",
+          "cut_type": "Fade from black",
+          "capcut_treatment": "Fade in 12f; Film Grain 15; temp -10, highlights -15, fade 8",
+          "audio": "Deep ingoma hit + wind ambience",
+          "on_screen_text": null,
+          "location": "Virunga / Musanze",
+          "notes": "Cold blue-grey. No beat yet.",
+          "stock": {
+            "tier": "A",
+            "keywords": "Rwanda mountains mist dawn aerial",
+            "alt_keywords": "Virunga volcanoes fog sunrise; Rwanda hills aerial morning",
+            "libraries": "Artgrid, Pond5, Shutterstock, Getty",
+            "fps_note": "24-30",
+            "license": "Commercial",
+            "fallback": null
+          }
+        },
+        {
+          "id": "1.02",
+          "tc_in": "00:01.8",
+          "duration_s": 1.4,
+          "description": "Slow push across terraced tea hill, rows vanishing into cloud",
+          "framing": "Wide, low angle in rows",
+          "camera_motion": "Drone/gimbal push-in",
+          "shoot_fps": "60",
+          "cut_type": "D",
+          "capcut_treatment": "Keyframe Scale 100>108; Soft Focus 10 on first 8f",
+          "audio": "Wind in leaves",
+          "on_screen_text": null,
+          "location": "Gisakura / Nyungwe",
+          "notes": "Golden-grade base begins here.",
+          "stock": {
+            "tier": "A",
+            "keywords": "Rwanda tea plantation aerial terraced",
+            "alt_keywords": "tea fields Nyungwe drone; green terraced hills Rwanda",
+            "libraries": "Artgrid, Pond5, Shutterstock",
+            "fps_note": "24-30",
+            "license": "Commercial",
+            "fallback": null
+          }
+        },
+        {
+          "id": "1.03",
+          "tc_in": "00:03.2",
+          "duration_s": 1.0,
+          "description": "Mirror-still water, single fisher's boat off-centre",
+          "framing": "Wide, upper third",
+          "camera_motion": "Static",
+          "shoot_fps": "60",
+          "cut_type": "D",
+          "capcut_treatment": "Shadows +10, contrast -8 (flatten water to glass)",
+          "audio": "Water lap",
+          "on_screen_text": null,
+          "location": "Lake Kivu",
+          "notes": "Colour rhyme with 5.07 and 6.08.",
+          "stock": {
+            "tier": "A",
+            "keywords": "Lake Kivu sunrise boat",
+            "alt_keywords": "Rwanda lake fisherman canoe dawn; calm water boat silhouette Africa",
+            "libraries": "Artgrid, Pond5, Getty",
+            "fps_note": "24-30",
+            "license": "Commercial",
+            "fallback": null
+          }
+        },
+        {
+          "id": "1.04",
+          "tc_in": "00:04.2",
+          "duration_s": 0.8,
+          "description": "TITLE rises over the lake",
+          "framing": "Title card",
+          "camera_motion": "-",
+          "shoot_fps": "-",
+          "cut_type": "H on riser",
+          "capcut_treatment": "Text In: Fade+Blur 8f; Light Leak 20 behind type; sub-boom SFX",
+          "audio": "Sub-boom",
+          "on_screen_text": "UMURIRO W'URWANDA / Igihugu cy'imisozi igihumbi",
+          "location": "-",
+          "notes": "Lock text frame to the riser peak.",
+          "stock": {
+            "tier": "A",
+            "keywords": "Lake Kivu sunrise boat (same as 1.03, wider/longer)",
+            "alt_keywords": "Rwanda lake golden dawn aerial",
+            "libraries": "-",
+            "fps_note": "-",
+            "license": "Commercial",
+            "fallback": "Use a longer cut of the 1.03 clip and keyframe a slow push under the title."
+          }
+        }
+      ]
+    },
+    {
+      "act": "2",
+      "kinyarwanda_title": "Kwitegura",
+      "english_title": "The Preparation",
+      "tc_start": 5.0,
+      "tc_end": 14.0,
+      "mood": "warm amber kinetic",
+      "cutting_rate": "0.7-1.2s",
+      "shot_count": 11,
+      "shots": [
+        {
+          "id": "2.01",
+          "tc_in": "00:05.0",
+          "duration_s": 0.9,
+          "description": "Hands tightening the beaded igikubwe band on a dancer's forehead",
+          "framing": "ECU, shallow DoF",
+          "camera_motion": "Handheld",
+          "shoot_fps": "60",
+          "cut_type": "H (DROP 1)",
+          "capcut_treatment": "Freeze first 3 frames on the hit, then release",
+          "audio": "Fabric + breath",
+          "on_screen_text": null,
+          "location": "Cultural village / Kigali",
+          "notes": "Micro-stop sells the drop.",
+          "stock": {
+            "tier": "C",
+            "keywords": "Intore dancer costume beads close up",
+            "alt_keywords": "Rwandan traditional dancer headdress detail; African dancer makeup hands",
+            "libraries": "Pond5, Shutterstock, Getty (often editorial)",
+            "fps_note": "24-30",
+            "license": "EDITORIAL likely - verify",
+            "fallback": "Substitute: macro of beaded jewellery / hands tying fabric (plentiful), and sell the 'dancer' read via the next shot."
+          }
+        },
+        {
+          "id": "2.02",
+          "tc_in": "00:05.9",
+          "duration_s": 0.7,
+          "description": "Sisal umugara mane combed out, fibres catching backlight",
+          "framing": "CU, backlit",
+          "camera_motion": "Slow lateral",
+          "shoot_fps": "60",
+          "cut_type": "B",
+          "capcut_treatment": "Highlights +12, Glow 15",
+          "audio": "Sisal rasp",
+          "on_screen_text": null,
+          "location": "Cultural village",
+          "notes": "Backlight is essential.",
+          "stock": {
+            "tier": "C",
+            "keywords": "sisal headdress Rwandan dancer backlit",
+            "alt_keywords": "Intore umugara mane; African dancer hair fibres wind",
+            "libraries": "Pond5, Shutterstock",
+            "fps_note": "24-30",
+            "license": "EDITORIAL likely",
+            "fallback": "Substitute: backlit grass/pampas fibres in wind (plentiful) - same texture, same golden rim."
+          }
+        },
+        {
+          "id": "2.03",
+          "tc_in": "00:06.6",
+          "duration_s": 0.8,
+          "description": "Beadwork - ibitako shoulder ornaments, fingers threading beads",
+          "framing": "Macro",
+          "camera_motion": "Static, hands move",
+          "shoot_fps": "60",
+          "cut_type": "B",
+          "capcut_treatment": "Speed 0.7x if hands rush",
+          "audio": "Beads clicking",
+          "on_screen_text": null,
+          "location": "Craft workshop",
+          "notes": "Hands, not faces.",
+          "stock": {
+            "tier": "C",
+            "keywords": "African beadwork hands macro",
+            "alt_keywords": "beads jewellery making hands close up Rwanda; artisan beading",
+            "libraries": "Shutterstock, Pond5, Adobe Stock",
+            "fps_note": "24-30",
+            "license": "Commercial",
+            "fallback": "Substitute: any hands-threading-beads macro; keep it non-specific."
+          }
+        },
+        {
+          "id": "2.04",
+          "tc_in": "00:07.4",
+          "duration_s": 0.7,
+          "description": "Elder's weathered face, laughing at something off-frame",
+          "framing": "MCU, eye-level",
+          "camera_motion": "Handheld",
+          "shoot_fps": "60",
+          "cut_type": "B",
+          "capcut_treatment": "HSL Orange luminance +12; keep the laugh",
+          "audio": "Laughter (A2 -12dB)",
+          "on_screen_text": null,
+          "location": "Community",
+          "notes": "Do not correct the expression out.",
+          "stock": {
+            "tier": "A",
+            "keywords": "elderly Rwandan man portrait smiling",
+            "alt_keywords": "African elder face laughing portrait; Rwanda villager smiling close up",
+            "libraries": "Getty, Shutterstock, Artgrid, Pond5",
+            "fps_note": "24-30",
+            "license": "Commercial (check model release)",
+            "fallback": null
+          }
+        },
+        {
+          "id": "2.05",
+          "tc_in": "00:08.1",
+          "duration_s": 0.8,
+          "description": "Drummer's palm strikes the ingoma skin, dust jumps off the head",
+          "framing": "ECU",
+          "camera_motion": "Locked",
+          "shoot_fps": "240",
+          "cut_type": "B",
+          "capcut_treatment": "Speed Curve Bullet: 0.3x for 6f then snap to 1x",
+          "audio": "DRUM HIT at full level (A3)",
+          "on_screen_text": null,
+          "location": "Drum ensemble",
+          "notes": "Signature ramp #1.",
+          "stock": {
+            "tier": "B",
+            "keywords": "African drum hands close up slow motion",
+            "alt_keywords": "ingoma drumming hands; djembe strike dust slow motion",
+            "libraries": "Artgrid, Pond5, Shutterstock, Filmsupply",
+            "fps_note": "50-60 or native slo-mo",
+            "license": "Commercial",
+            "fallback": null
+          }
+        },
+        {
+          "id": "2.06",
+          "tc_in": "00:08.9",
+          "duration_s": 0.7,
+          "description": "Anklet of bells (amayugi) being tied",
+          "framing": "CU, ground level",
+          "camera_motion": "Static",
+          "shoot_fps": "60",
+          "cut_type": "B",
+          "capcut_treatment": "Bell SFX -10dB in the gap between beats",
+          "audio": "Bells",
+          "on_screen_text": null,
+          "location": "Backstage",
+          "notes": "Shape echo -> 3.02 spinning wheel.",
+          "stock": {
+            "tier": "D",
+            "keywords": "ankle bells dancer feet close up",
+            "alt_keywords": "amayugi bells; African dancer feet bells jingle",
+            "libraries": "Pond5, Getty (editorial)",
+            "fps_note": "24-30",
+            "license": "EDITORIAL likely",
+            "fallback": "BUILD IT: buy a wide stomp shot, crop in tight (Scale keyframe 100->220) on the feet, add library bell SFX in A3."
+          }
+        },
+        {
+          "id": "2.07",
+          "tc_in": "00:09.6",
+          "duration_s": 0.9,
+          "description": "Woman adjusts her umushanana sash; fabric slides",
+          "framing": "MS, backlit",
+          "camera_motion": "Slow dolly",
+          "shoot_fps": "120",
+          "cut_type": "B",
+          "capcut_treatment": "Speed 0.6x - fabric moves like water",
+          "audio": "Fabric slide",
+          "on_screen_text": null,
+          "location": "Backstage",
+          "notes": "Visual seed for Act 4A.",
+          "stock": {
+            "tier": "C",
+            "keywords": "African woman traditional dress fabric flowing",
+            "alt_keywords": "umushanana; East African woman wrapped dress slow motion",
+            "libraries": "Pond5, Getty, Shutterstock",
+            "fps_note": "50-60",
+            "license": "EDITORIAL likely",
+            "fallback": "Substitute: any flowing-fabric slow motion in warm light (very plentiful); the audience reads 'ceremony', not the specific garment."
+          }
+        },
+        {
+          "id": "2.08",
+          "tc_in": "00:10.5",
+          "duration_s": 0.8,
+          "description": "Spears and shields stacked, morning light raking across",
+          "framing": "Wide detail",
+          "camera_motion": "Static",
+          "shoot_fps": "60",
+          "cut_type": "B",
+          "capcut_treatment": "Contrast +10, shadows -8",
+          "audio": "Wood + metal",
+          "on_screen_text": null,
+          "location": "Backstage",
+          "notes": "Graphic hardness.",
+          "stock": {
+            "tier": "C",
+            "keywords": "African spears shields stacked",
+            "alt_keywords": "traditional weapons leaning wall; Zulu/African shields and spears",
+            "libraries": "Shutterstock, Pond5, Getty",
+            "fps_note": "24-30",
+            "license": "Commercial or editorial",
+            "fallback": "Substitute: graphic still - buy a single spear/shield object shot and build the rest with mask + grain."
+          }
+        },
+        {
+          "id": "2.09",
+          "tc_in": "00:11.3",
+          "duration_s": 0.9,
+          "description": "A child peeks through a gap at the dancers",
+          "framing": "CU, child's eye height",
+          "camera_motion": "Handheld",
+          "shoot_fps": "60",
+          "cut_type": "B",
+          "capcut_treatment": "Hold one beat longer than feels right",
+          "audio": "Crowd murmur",
+          "on_screen_text": null,
+          "location": "Audience",
+          "notes": "The child is the audience surrogate.",
+          "stock": {
+            "tier": "A",
+            "keywords": "child peeking doorway curious Africa",
+            "alt_keywords": "Rwandan children looking; African child face curious",
+            "libraries": "Getty, Shutterstock, Pond5",
+            "fps_note": "24-30",
+            "license": "Commercial (model release)",
+            "fallback": null
+          }
+        },
+        {
+          "id": "2.10",
+          "tc_in": "00:12.2",
+          "duration_s": 0.9,
+          "description": "Dancers walking into frame in a line, backs to camera",
+          "framing": "Wide, symmetrical",
+          "camera_motion": "Gimbal follow",
+          "shoot_fps": "60",
+          "cut_type": "B",
+          "capcut_treatment": "Keyframe Position to nudge with them (fake parallax)",
+          "audio": "Footsteps on earth",
+          "on_screen_text": null,
+          "location": "Performance ground",
+          "notes": "Symmetry matters.",
+          "stock": {
+            "tier": "B",
+            "keywords": "African dancers walking line formation",
+            "alt_keywords": "traditional dance troupe walking; performers entering stage Africa",
+            "libraries": "Pond5, Getty, Shutterstock",
+            "fps_note": "24-30",
+            "license": "EDITORIAL likely",
+            "fallback": null
+          }
+        },
+        {
+          "id": "2.11",
+          "tc_in": "00:13.1",
+          "duration_s": 0.9,
+          "description": "Reverse angle: the line stops and turns as one to face us",
+          "framing": "Wide",
+          "camera_motion": "Locked",
+          "shoot_fps": "60",
+          "cut_type": "B -> X",
+          "capcut_treatment": "Cut on the exact frame the heads finish turning",
+          "audio": "Unison footfall",
+          "on_screen_text": null,
+          "location": "Performance ground",
+          "notes": "Match cut to 3.01 via circle shape.",
+          "stock": {
+            "tier": "B",
+            "keywords": "African dancers turn to camera group",
+            "alt_keywords": "traditional dance troupe facing camera; Rwandan performance wide",
+            "libraries": "Pond5, Getty",
+            "fps_note": "24-30",
+            "license": "EDITORIAL likely",
+            "fallback": null
+          }
+        }
+      ]
+    },
+    {
+      "act": "3",
+      "kinyarwanda_title": "Kwidagadura",
+      "english_title": "Recreation - Play in the Land",
+      "tc_start": 14.0,
+      "tc_end": 24.0,
+      "mood": "bright saturated alive",
+      "cutting_rate": "0.6-1.0s",
+      "shot_count": 13,
+      "shots": [
+        {
+          "id": "3.01",
+          "tc_in": "00:14.0",
+          "duration_s": 0.9,
+          "description": "Lake Kivu kayak/paddleboard at sunrise, paddle spray, rider grinning",
+          "framing": "Wide > CU",
+          "camera_motion": "Drone orbit",
+          "shoot_fps": "120",
+          "cut_type": "X from 2.11",
+          "capcut_treatment": "Speed Curve Hero: 1.4x in, 0.4x through splash, 1x out",
+          "audio": "Water spray + laughter",
+          "on_screen_text": null,
+          "location": "Lake Kivu",
+          "notes": "Money frame = droplets in air.",
+          "stock": {
+            "tier": "B",
+            "keywords": "kayak sunrise lake splash slow motion",
+            "alt_keywords": "paddleboard golden hour water spray; kayak Rwanda lake",
+            "libraries": "Artgrid, Filmsupply, Pond5, Shutterstock",
+            "fps_note": "50-60 or native slo-mo",
+            "license": "Commercial",
+            "fallback": "Plentiful as generic 'kayak sunrise'; Rwanda-specific is scarce. Generic reads fine here."
+          }
+        },
+        {
+          "id": "3.02",
+          "tc_in": "00:14.9",
+          "duration_s": 0.8,
+          "description": "Cycling the Congo-Nile trail - wheel spinning, red earth, green blur",
+          "framing": "Low CU on wheel",
+          "camera_motion": "Tracking",
+          "shoot_fps": "120",
+          "cut_type": "B",
+          "capcut_treatment": "Bling Shake 8 synced to wheel rotation",
+          "audio": "Tyre on gravel",
+          "on_screen_text": null,
+          "location": "Congo-Nile trail",
+          "notes": "Rotation rhyme with 2.06.",
+          "stock": {
+            "tier": "B",
+            "keywords": "mountain bike wheel spinning dirt",
+            "alt_keywords": "cyclist gravel wheel close up Africa; bike mud spinning",
+            "libraries": "Artgrid, Filmsupply, Pond5",
+            "fps_note": "50-60",
+            "license": "Commercial",
+            "fallback": null
+          }
+        },
+        {
+          "id": "3.03",
+          "tc_in": "00:15.7",
+          "duration_s": 0.7,
+          "description": "Rider POV over the handlebars, hills dropping away",
+          "framing": "POV wide",
+          "camera_motion": "Chest mount",
+          "shoot_fps": "60",
+          "cut_type": "B",
+          "capcut_treatment": "STABILIZE on (Recommended); Bling Zoom 6",
+          "audio": "Wind + freewheel",
+          "on_screen_text": null,
+          "location": "Congo-Nile trail",
+          "notes": "POV needs stabilisation.",
+          "stock": {
+            "tier": "B",
+            "keywords": "mountain biking POV handlebars",
+            "alt_keywords": "cyclist POV go pro hills; gravel bike first person",
+            "libraries": "Filmsupply, Artgrid, Pond5",
+            "fps_note": "24-60",
+            "license": "Commercial",
+            "fallback": "Stabilise in CapCut regardless - POV stock is often shaky."
+          }
+        },
+        {
+          "id": "3.04",
+          "tc_in": "00:16.4",
+          "duration_s": 0.8,
+          "description": "Hiking the Virunga - hand grabs a root, boots on wet rock, tilt up to volcano",
+          "framing": "ECU hands > tilt up",
+          "camera_motion": "Handheld",
+          "shoot_fps": "60",
+          "cut_type": "B",
+          "capcut_treatment": "Whoosh SFX on the tilt",
+          "audio": "Grit + breath",
+          "on_screen_text": null,
+          "location": "Virunga / Musanze",
+          "notes": "Two shots in one move.",
+          "stock": {
+            "tier": "A",
+            "keywords": "hiking hand grabs rock root",
+            "alt_keywords": "trekker boots wet rock volcano; hiking mountain hands climb",
+            "libraries": "Artgrid, Filmsupply, Pond5",
+            "fps_note": "24-60",
+            "license": "Commercial",
+            "fallback": null
+          }
+        },
+        {
+          "id": "3.05",
+          "tc_in": "00:17.2",
+          "duration_s": 0.9,
+          "description": "Nyungwe canopy walk - steps onto the swaying bridge, looks down, laughs nervously",
+          "framing": "Wide, from below",
+          "camera_motion": "Static",
+          "shoot_fps": "60",
+          "cut_type": "B",
+          "capcut_treatment": "Keep the nervous laugh in A2 at -14dB",
+          "audio": "Nervous laugh + creak",
+          "on_screen_text": null,
+          "location": "Nyungwe",
+          "notes": "Most human sound in Act 3.",
+          "stock": {
+            "tier": "C",
+            "keywords": "canopy walk bridge rainforest",
+            "alt_keywords": "Nyungwe canopy walkway; jungle suspension bridge tourist",
+            "libraries": "Pond5, Shutterstock, Getty",
+            "fps_note": "24-30",
+            "license": "Commercial",
+            "fallback": "Substitute: generic suspension bridge in forest + a separate 'looking down and laughing' portrait shot cut together."
+          }
+        },
+        {
+          "id": "3.06",
+          "tc_in": "00:18.1",
+          "duration_s": 0.7,
+          "description": "Zipline / tree swing through rainforest",
+          "framing": "Wide",
+          "camera_motion": "-",
+          "shoot_fps": "120",
+          "cut_type": "B",
+          "capcut_treatment": "Speed 0.8x; Bling Shake 10 on launch frame",
+          "audio": "Zip cable whoosh",
+          "on_screen_text": null,
+          "location": "Nyungwe",
+          "notes": "Launch frame = effect frame.",
+          "stock": {
+            "tier": "B",
+            "keywords": "zipline rainforest",
+            "alt_keywords": "jungle zipline aerial; forest canopy flying rope swing",
+            "libraries": "Artgrid, Pond5, Shutterstock",
+            "fps_note": "24-60",
+            "license": "Commercial",
+            "fallback": null
+          }
+        },
+        {
+          "id": "3.07",
+          "tc_in": "00:18.8",
+          "duration_s": 0.8,
+          "description": "Swimming - someone breaks the lake surface, backlit spray",
+          "framing": "CU",
+          "camera_motion": "Surface/under",
+          "shoot_fps": "240",
+          "cut_type": "B",
+          "capcut_treatment": "Speed Curve Bullet: 0.3x at surface break",
+          "audio": "Water break",
+          "on_screen_text": null,
+          "location": "Lake Kivu",
+          "notes": "Signature ramp #2.",
+          "stock": {
+            "tier": "A",
+            "keywords": "swimming surface break slow motion backlit",
+            "alt_keywords": "water splash person surfacing golden; lake swimming slo-mo",
+            "libraries": "Artgrid, Filmsupply, Pond5",
+            "fps_note": "100-240 native slo-mo",
+            "license": "Commercial",
+            "fallback": "Buy NATIVE slow motion for this one - it is the shot most damaged by faking it."
+          }
+        },
+        {
+          "id": "3.08",
+          "tc_in": "00:19.6",
+          "duration_s": 0.9,
+          "description": "Coffee/tea pickers at work, laughing between rows, baskets on heads",
+          "framing": "MS in the rows",
+          "camera_motion": "Gimbal lateral",
+          "shoot_fps": "60",
+          "cut_type": "B",
+          "capcut_treatment": "Keep voices; warm grade",
+          "audio": "Voices + leaves",
+          "on_screen_text": null,
+          "location": "Gisakura / Mata",
+          "notes": "Labour as recreation - do not silence it.",
+          "stock": {
+            "tier": "B",
+            "keywords": "tea pickers working laughing",
+            "alt_keywords": "coffee harvest workers Africa; women picking tea plantation",
+            "libraries": "Pond5, Shutterstock, Getty",
+            "fps_note": "24-30",
+            "license": "Commercial or editorial",
+            "fallback": null
+          }
+        },
+        {
+          "id": "3.09",
+          "tc_in": "00:20.5",
+          "duration_s": 0.8,
+          "description": "Drumming workshop - visitors and locals both hitting drums, happily",
+          "framing": "Wide, participatory",
+          "camera_motion": "Handheld",
+          "shoot_fps": "60",
+          "cut_type": "B",
+          "capcut_treatment": "A3 drum audio swells here",
+          "audio": "Mixed drums",
+          "on_screen_text": null,
+          "location": "Cultural centre",
+          "notes": "PIVOT SHOT: recreation > dance.",
+          "stock": {
+            "tier": "B",
+            "keywords": "drumming workshop group people",
+            "alt_keywords": "African drum circle participants; drumming class tourists",
+            "libraries": "Pond5, Shutterstock, Getty",
+            "fps_note": "24-30",
+            "license": "Commercial or editorial",
+            "fallback": null
+          }
+        },
+        {
+          "id": "3.10",
+          "tc_in": "00:21.3",
+          "duration_s": 0.8,
+          "description": "Imigongo art being painted - geometric ochre patterns, hand draws a spiral",
+          "framing": "Macro",
+          "camera_motion": "Static",
+          "shoot_fps": "60",
+          "cut_type": "B",
+          "capcut_treatment": "-",
+          "audio": "Brush on panel",
+          "on_screen_text": null,
+          "location": "Kibungo / craft co-op",
+          "notes": "Spiral echoes into 4.01 wrist turn.",
+          "stock": {
+            "tier": "D",
+            "keywords": "imigongo art painting Rwanda",
+            "alt_keywords": "African geometric pattern painting hands; ochre pattern art",
+            "libraries": "Pond5, Getty (editorial)",
+            "fps_note": "24-30",
+            "license": "EDITORIAL likely",
+            "fallback": "BUILD IT: photograph a printed imigongo pattern yourself, animate a hand-drawn reveal with Mask -> Film, or replace with a spinning potter's wheel (plentiful) so the spiral match still works."
+          }
+        },
+        {
+          "id": "3.11",
+          "tc_in": "00:22.1",
+          "duration_s": 0.9,
+          "description": "Akagera - herd, giraffe neck, tall grass bending in wind",
+          "framing": "Wide, telephoto compress",
+          "camera_motion": "Static",
+          "shoot_fps": "60",
+          "cut_type": "B",
+          "capcut_treatment": "Temp +8, Glow 12",
+          "audio": "Savanna ambience",
+          "on_screen_text": null,
+          "location": "Akagera NP",
+          "notes": "Compression flattens the heat.",
+          "stock": {
+            "tier": "A",
+            "keywords": "Akagera savanna giraffe tall grass",
+            "alt_keywords": "African savanna giraffe sunset telephoto; elephants grassland Rwanda",
+            "libraries": "Artgrid, Getty, Pond5",
+            "fps_note": "24-60",
+            "license": "Commercial",
+            "fallback": null
+          }
+        },
+        {
+          "id": "3.12",
+          "tc_in": "00:23.0",
+          "duration_s": 1.0,
+          "description": "A silverback in the bamboo, calmly chewing, looks up into the lens",
+          "framing": "CU, 200mm",
+          "camera_motion": "Locked",
+          "shoot_fps": "60",
+          "cut_type": "B -> break",
+          "capcut_treatment": "HELD FRAME - let the look land",
+          "audio": "Forest silence + one breath",
+          "on_screen_text": null,
+          "location": "Volcanoes NP",
+          "notes": "Cut to blackout/music-out on the gaze.",
+          "stock": {
+            "tier": "A",
+            "keywords": "silverback gorilla close up eating",
+            "alt_keywords": "mountain gorilla Rwanda portrait; gorilla looks at camera forest",
+            "libraries": "Getty, Artgrid, Pond5, Shutterstock",
+            "fps_note": "24-60",
+            "license": "Commercial",
+            "fallback": "Plentiful but EXPENSIVE. Worth the splurge - it is the film's most arresting image."
+          }
+        },
+        {
+          "id": "3.13",
+          "tc_in": "00:24.0",
+          "duration_s": 3.0,
+          "description": "BREAKDOWN - music drops out completely",
+          "framing": "-",
+          "camera_motion": "-",
+          "shoot_fps": "-",
+          "cut_type": "-",
+          "capcut_treatment": "Split A1 at 24.0 and 27.0; middle piece -14dB with 0.4s fades; fill with A2 wind + one slow heartbeat drum + low riser",
+          "audio": "Wind, single heartbeat drum, riser",
+          "on_screen_text": null,
+          "location": "-",
+          "notes": "3 seconds of near-silence. Do not fill it.",
+          "stock": {
+            "tier": "A",
+            "keywords": "-",
+            "alt_keywords": "-",
+            "libraries": "-",
+            "fps_note": "-",
+            "license": "-",
+            "fallback": "No picture needed: this is the music-out breakdown. Reuse a slowed tail of 3.12 or hold the last gorilla frame."
+          }
+        }
+      ]
+    },
+    {
+      "act": "4A",
+      "kinyarwanda_title": "Umushagiriro",
+      "english_title": "The Cow Dance - Grace",
+      "tc_start": 24.0,
+      "tc_end": 27.5,
+      "mood": "liquid silent reverent",
+      "cutting_rate": "1.0-1.4s",
+      "shot_count": 3,
+      "shots": [
+        {
+          "id": "4.01",
+          "tc_in": "00:24.0",
+          "duration_s": 1.4,
+          "description": "Woman in umushanana begins umushagiriro - arms rising like inyambo horns",
+          "framing": "Full body, 9:16, centred",
+          "camera_motion": "Locked",
+          "shoot_fps": "120",
+          "cut_type": "D from 3.12",
+          "capcut_treatment": "Speed 0.4x + Smooth slow-mo OPTICAL FLOW. If fabric smears, back off to 0.6x",
+          "audio": "Drums only",
+          "on_screen_text": null,
+          "location": "Performance ground",
+          "notes": "Must be butter.",
+          "stock": {
+            "tier": "C",
+            "keywords": "Rwandan woman traditional dance graceful",
+            "alt_keywords": "umushagiriro cow dance; East African women dance slow elegant",
+            "libraries": "Pond5, Getty (editorial), Shutterstock",
+            "fps_note": "24-30",
+            "license": "EDITORIAL likely",
+            "fallback": "Substitute: 'African woman dancing flowing dress slow motion' (plentiful, commercial) - arms raised. The horn-gesture specificity is lost; the grace is not."
+          }
+        },
+        {
+          "id": "4.02",
+          "tc_in": "00:25.4",
+          "duration_s": 1.1,
+          "description": "Her hands - wrist turning, fingers extending",
+          "framing": "ECU",
+          "camera_motion": "Slow dolly",
+          "shoot_fps": "120",
+          "cut_type": "-",
+          "capcut_treatment": "0.4x Optical Flow; HSL Orange: skin luminance +10, sat +4",
+          "audio": "Drums only",
+          "on_screen_text": null,
+          "location": "Performance ground",
+          "notes": "Do not over-smooth skin.",
+          "stock": {
+            "tier": "D",
+            "keywords": "dancer hands wrist turning close up",
+            "alt_keywords": "graceful hands dance slow motion; African dancer fingers",
+            "libraries": "Filmsupply, Artgrid, Pond5",
+            "fps_note": "50-60",
+            "license": "Commercial",
+            "fallback": "BUILD IT: crop in from 4.01 with a Scale keyframe to 200% on the hands. Only works if 4.01 is 4K."
+          }
+        },
+        {
+          "id": "4.03",
+          "tc_in": "00:26.5",
+          "duration_s": 1.0,
+          "description": "Fabric of the umushanana sliding, sash trailing",
+          "framing": "CU",
+          "camera_motion": "Static",
+          "shoot_fps": "240",
+          "cut_type": "-",
+          "capcut_treatment": "Speed 0.3x; Soft Focus 8",
+          "audio": "Fabric",
+          "on_screen_text": null,
+          "location": "Performance ground",
+          "notes": "The breath before the storm.",
+          "stock": {
+            "tier": "C",
+            "keywords": "flowing fabric slow motion backlit",
+            "alt_keywords": "dress fabric wind slow motion golden; silk cloth dance",
+            "libraries": "Filmsupply, Artgrid, Shutterstock",
+            "fps_note": "50-240",
+            "license": "Commercial",
+            "fallback": "Very plentiful as generic fabric - loses the umushanana specificity but keeps the beauty."
+          }
+        }
+      ]
+    },
+    {
+      "act": "4B",
+      "kinyarwanda_title": "Intore / Umuhamirizo",
+      "english_title": "The Warrior Dance - Fire",
+      "tc_start": 27.5,
+      "tc_end": 38.0,
+      "mood": "fire sweat earth dust",
+      "cutting_rate": "0.4-0.5s",
+      "shot_count": 16,
+      "shots": [
+        {
+          "id": "4.04",
+          "tc_in": "00:27.5",
+          "duration_s": 0.5,
+          "description": "THE LEAP - full Intore line jumps simultaneously, manes airborne, spears up",
+          "framing": "Wide, low angle",
+          "camera_motion": "Locked",
+          "shoot_fps": "240",
+          "cut_type": "H (DROP 2)",
+          "capcut_treatment": "Speed Customized: 1x > 0.5x at apex > 1x on landing. Apex sits ON the downbeat. Sub-boom + real stomp at -3dB",
+          "audio": "Sub-boom + stomp + crowd",
+          "on_screen_text": "INTORE - UMUHAMIRIZO",
+          "location": "Performance ground",
+          "notes": "Signature shot. Ramp OFF the beat, not into it.",
+          "stock": {
+            "tier": "B",
+            "keywords": "Intore dance jump warriors Rwanda",
+            "alt_keywords": "Rwandan traditional dance jumping; African warrior dance leaps spears",
+            "libraries": "Pond5, Getty (editorial), Shutterstock, Artgrid",
+            "fps_note": "24-30 (rarely 50+)",
+            "license": "EDITORIAL likely",
+            "fallback": "THE critical buy. Search every library; check Rwandan contributors on Pond5 directly. If no group leap exists: use a single-dancer leap and build the 'line' with three jump cuts (see 4.16)."
+          }
+        },
+        {
+          "id": "4.05",
+          "tc_in": "00:28.0",
+          "duration_s": 0.4,
+          "description": "Landing - feet hit earth, dust explodes upward",
+          "framing": "Ground-level CU",
+          "camera_motion": "Locked",
+          "shoot_fps": "240",
+          "cut_type": "B",
+          "capcut_treatment": "Speed Customized: 1x > 0.2x for 5f > 1.2x. Bling Shake 12 for 4 frames only",
+          "audio": "LOUD IMPACT - loudest point in the whole mix",
+          "on_screen_text": null,
+          "location": "Performance ground",
+          "notes": "THE signature shot of the film.",
+          "stock": {
+            "tier": "C",
+            "keywords": "dust explosion feet stomp ground slow motion",
+            "alt_keywords": "feet landing dust; African dance stomp earth slow motion",
+            "libraries": "Artgrid, Filmsupply, Pond5",
+            "fps_note": "100-240 native slo-mo",
+            "license": "Commercial",
+            "fallback": "Substitute: generic 'feet hitting dusty ground' slo-mo (plentiful in Western/African desert stock) + the real stomp audio from A3. The audience will not question the geography."
+          }
+        },
+        {
+          "id": "4.06",
+          "tc_in": "00:28.4",
+          "duration_s": 0.4,
+          "description": "Dancer's face mid-cry, sweat, mane across the eyes",
+          "framing": "ECU",
+          "camera_motion": "Handheld",
+          "shoot_fps": "120",
+          "cut_type": "B",
+          "capcut_treatment": "Freeze 2 frames on beat then release; contrast +12, clarity +15",
+          "audio": "War cry",
+          "on_screen_text": null,
+          "location": "Performance ground",
+          "notes": "",
+          "stock": {
+            "tier": "B",
+            "keywords": "African dancer face intense close up",
+            "alt_keywords": "warrior face shouting sweat; dancer portrait intense",
+            "libraries": "Filmsupply, Getty, Pond5",
+            "fps_note": "24-60",
+            "license": "Commercial or editorial",
+            "fallback": null
+          }
+        },
+        {
+          "id": "4.07",
+          "tc_in": "00:28.8",
+          "duration_s": 0.4,
+          "description": "Spear thrust forward into the lens",
+          "framing": "CU, foreground",
+          "camera_motion": "-",
+          "shoot_fps": "60",
+          "cut_type": "B",
+          "capcut_treatment": "Bling Zoom 15 on thrust frame; hard whoosh",
+          "audio": "Whoosh + spear cut",
+          "on_screen_text": null,
+          "location": "Performance ground",
+          "notes": "",
+          "stock": {
+            "tier": "C",
+            "keywords": "spear thrust toward camera",
+            "alt_keywords": "African warrior spear; spear thrust motion blur",
+            "libraries": "Shutterstock, Pond5, Getty",
+            "fps_note": "24-30",
+            "license": "Commercial or editorial",
+            "fallback": "Substitute: a stick/staff thrust toward lens (plentiful as martial-arts or tribal stock) reads identically at 4 frames."
+          }
+        },
+        {
+          "id": "4.08",
+          "tc_in": "00:29.2",
+          "duration_s": 0.5,
+          "description": "Shields clashing in unison across the line",
+          "framing": "Wide",
+          "camera_motion": "Locked",
+          "shoot_fps": "60",
+          "cut_type": "B",
+          "capcut_treatment": "A3 shield-clack full level; duck A1 by 5dB for 8 frames",
+          "audio": "Shield clack",
+          "on_screen_text": null,
+          "location": "Performance ground",
+          "notes": "",
+          "stock": {
+            "tier": "C",
+            "keywords": "shields clashing warriors",
+            "alt_keywords": "African tribal shields; warriors shields banging together",
+            "libraries": "Pond5, Getty, Shutterstock",
+            "fps_note": "24-30",
+            "license": "EDITORIAL likely",
+            "fallback": "Substitute: two hands clapping hard in unison (plentiful) + shield-clack SFX. Cut to it fast enough and it reads."
+          }
+        },
+        {
+          "id": "4.09",
+          "tc_in": "00:29.7",
+          "duration_s": 0.5,
+          "description": "Ankle bells in a blur of stomp",
+          "framing": "ECU",
+          "camera_motion": "Static",
+          "shoot_fps": "240",
+          "cut_type": "B",
+          "capcut_treatment": "Speed 0.35x; bell audio isolated, pitched slightly up",
+          "audio": "amayugi bells",
+          "on_screen_text": null,
+          "location": "Performance ground",
+          "notes": "",
+          "stock": {
+            "tier": "D",
+            "keywords": "ankle bells blur stomp feet",
+            "alt_keywords": "amayugi; dancer feet bells fast",
+            "libraries": "Pond5, Getty",
+            "fps_note": "24-30",
+            "license": "EDITORIAL likely",
+            "fallback": "BUILD IT: same as 2.06 - crop a wide stomp shot, add bell SFX. Or cut to a dust-cloud close-up instead."
+          }
+        },
+        {
+          "id": "4.10",
+          "tc_in": "00:30.2",
+          "duration_s": 0.5,
+          "description": "Formation change - line collapses and reforms",
+          "framing": "Top-down wide",
+          "camera_motion": "Drone",
+          "shoot_fps": "60",
+          "cut_type": "B",
+          "capcut_treatment": "Keyframe Rotation 0>8deg over the clip",
+          "audio": "Stomps",
+          "on_screen_text": null,
+          "location": "Performance ground",
+          "notes": "Top-down = graphic relief.",
+          "stock": {
+            "tier": "D",
+            "keywords": "top down dancers formation drone",
+            "alt_keywords": "aerial top down dance formation; drone circle dancers",
+            "libraries": "Artgrid, Pond5",
+            "fps_note": "24-30",
+            "license": "Commercial",
+            "fallback": "BUILD IT: take any wide performance shot and keyframe Rotation + Scale to fake a top-down drift. Or drop the shot and re-time the act."
+          }
+        },
+        {
+          "id": "4.11",
+          "tc_in": "00:30.7",
+          "duration_s": 0.4,
+          "description": "A woman dancing umuhamirizo - reclaiming the warrior dance, full commitment leap",
+          "framing": "MS",
+          "camera_motion": "Handheld pan",
+          "shoot_fps": "240",
+          "cut_type": "B",
+          "capcut_treatment": "0.5x curve. Hold her leap as long as the men's",
+          "audio": "War cry",
+          "on_screen_text": null,
+          "location": "Performance ground",
+          "notes": "Deliberate inclusion. Non-negotiable.",
+          "stock": {
+            "tier": "C",
+            "keywords": "woman warrior dance jump Africa",
+            "alt_keywords": "African woman dancing energetic leap; female traditional dancer jumping",
+            "libraries": "Pond5, Getty, Shutterstock",
+            "fps_note": "24-30",
+            "license": "EDITORIAL likely",
+            "fallback": "Substitute: any woman leaping in traditional dress. Keep this shot - the inclusion is a deliberate creative decision, not a nice-to-have."
+          }
+        },
+        {
+          "id": "4.12",
+          "tc_in": "00:31.1",
+          "duration_s": 0.4,
+          "description": "Drummers - full umutagara ensemble, sticks blurring",
+          "framing": "Wide detail",
+          "camera_motion": "Handheld",
+          "shoot_fps": "120",
+          "cut_type": "B",
+          "capcut_treatment": "Speed 1.1x (over real time reads as frenzy)",
+          "audio": "Full ensemble",
+          "on_screen_text": null,
+          "location": "Drum line",
+          "notes": "",
+          "stock": {
+            "tier": "A",
+            "keywords": "African drummers ensemble playing",
+            "alt_keywords": "ingoma drummers group; drum line performance Africa",
+            "libraries": "Artgrid, Pond5, Shutterstock, Getty",
+            "fps_note": "24-60",
+            "license": "Commercial or editorial",
+            "fallback": null
+          }
+        },
+        {
+          "id": "4.13",
+          "tc_in": "00:31.5",
+          "duration_s": 0.5,
+          "description": "A child mimics the leap in the foreground, delighted; dancers soft behind",
+          "framing": "Two-plane MS",
+          "camera_motion": "Static",
+          "shoot_fps": "60",
+          "cut_type": "B",
+          "capcut_treatment": "Blur 20 on the background plane (depth-of-field effect)",
+          "audio": "Child giggle",
+          "on_screen_text": null,
+          "location": "Audience edge",
+          "notes": "Two-plane depth = production value.",
+          "stock": {
+            "tier": "A",
+            "keywords": "children dancing playing Africa joyful",
+            "alt_keywords": "Rwandan kids dancing; African children jumping laughing",
+            "libraries": "Getty, Shutterstock, Pond5",
+            "fps_note": "24-60",
+            "license": "Commercial (model release)",
+            "fallback": "Plentiful. Use the depth-of-field effect to separate the planes."
+          }
+        },
+        {
+          "id": "4.14",
+          "tc_in": "00:32.0",
+          "duration_s": 0.5,
+          "description": "Ibyivugo - poet steps forward reciting self-praise verse, arm outstretched",
+          "framing": "MCU",
+          "camera_motion": "Slow push",
+          "shoot_fps": "60",
+          "cut_type": "B",
+          "capcut_treatment": "Keyframe Scale 100>106. If he speaks, duck A1 to -10dB for the line",
+          "audio": "Ibyivugo voice (A5)",
+          "on_screen_text": null,
+          "location": "Performance ground",
+          "notes": "Optional spoken line #1.",
+          "stock": {
+            "tier": "D",
+            "keywords": "African elder speaking reciting gesture",
+            "alt_keywords": "poet reciting; man speaking arm raised traditional",
+            "libraries": "Getty, Pond5",
+            "fps_note": "24-30",
+            "license": "EDITORIAL likely",
+            "fallback": "BUILD IT: buy a 'man speaking/gesturing' MCU and put a real ibyivugo recording on A5. The voice carries the verse; the face does not need to be a poet."
+          }
+        },
+        {
+          "id": "4.15",
+          "tc_in": "00:32.5",
+          "duration_s": 0.4,
+          "description": "Horn (amakondera) player, cheeks full - the traditional arrival cue",
+          "framing": "CU",
+          "camera_motion": "Static",
+          "shoot_fps": "60",
+          "cut_type": "B",
+          "capcut_treatment": "Real horn hit in A3",
+          "audio": "Horn",
+          "on_screen_text": null,
+          "location": "Performance ground",
+          "notes": "Horns announce the Intore's arrival.",
+          "stock": {
+            "tier": "C",
+            "keywords": "African horn trumpet player",
+            "alt_keywords": "amakondera; traditional horn instrument Africa",
+            "libraries": "Pond5, Getty, Shutterstock",
+            "fps_note": "24-30",
+            "license": "EDITORIAL likely",
+            "fallback": "Substitute: a drum or flute close-up + a real horn hit in A3. Or buy any 'brass/horn player' - at 4 frames the specificity is unreadable."
+          }
+        },
+        {
+          "id": "4.16",
+          "tc_in": "00:32.9",
+          "duration_s": 0.5,
+          "description": "Three leaps, jump-cut in sequence, same framing, different dancers",
+          "framing": "Wide, locked",
+          "camera_motion": "Locked",
+          "shoot_fps": "240",
+          "cut_type": "B x3",
+          "capcut_treatment": "Three 5-frame cuts inside one beat cluster - reads as a drum roll",
+          "audio": "Three stomps",
+          "on_screen_text": null,
+          "location": "Performance ground",
+          "notes": "Identical framing is what makes it work.",
+          "stock": {
+            "tier": "B",
+            "keywords": "three dancers jumping sequence",
+            "alt_keywords": "Intore dance leap; African dancers jumping wide",
+            "libraries": "Pond5, Getty, Shutterstock",
+            "fps_note": "24-30",
+            "license": "EDITORIAL likely",
+            "fallback": "BUILD IT from 4.04: three separate jump cuts of the same clip at different in-points, re-cropped left/centre/right. Reads as a drum roll."
+          }
+        },
+        {
+          "id": "4.17",
+          "tc_in": "00:33.4",
+          "duration_s": 0.5,
+          "description": "The mane filling the frame, whipping sideways in slow motion",
+          "framing": "ECU",
+          "camera_motion": "-",
+          "shoot_fps": "240",
+          "cut_type": "B",
+          "capcut_treatment": "Speed 0.3x; Glow 20, highlights +15",
+          "audio": "Sisal whoosh",
+          "on_screen_text": null,
+          "location": "Performance ground",
+          "notes": "Most beautiful texture in the film. Shape echo -> 5.05.",
+          "stock": {
+            "tier": "C",
+            "keywords": "sisal mane hair whipping slow motion",
+            "alt_keywords": "dancer headdress fibres flying; long hair whipping backlit slo-mo",
+            "libraries": "Filmsupply, Artgrid, Pond5",
+            "fps_note": "50-240",
+            "license": "Commercial",
+            "fallback": "Substitute: generic long hair/fibre whipping in backlight (very plentiful). Arguably more beautiful than the real thing at 0.3x."
+          }
+        },
+        {
+          "id": "4.18",
+          "tc_in": "00:33.9",
+          "duration_s": 0.6,
+          "description": "Whole line at the apex of a leap, silhouetted against a low sun",
+          "framing": "Wide, backlit",
+          "camera_motion": "Locked",
+          "shoot_fps": "120",
+          "cut_type": "B",
+          "capcut_treatment": "Exposure -15 (crush to silhouette), highlights +20 (keep the rim)",
+          "audio": "Unison stomp",
+          "on_screen_text": null,
+          "location": "Performance ground",
+          "notes": "",
+          "stock": {
+            "tier": "B",
+            "keywords": "dancers silhouette sunset jump",
+            "alt_keywords": "African dancers silhouetted leaping sunset; jump against sun",
+            "libraries": "Artgrid, Filmsupply, Getty",
+            "fps_note": "24-60",
+            "license": "Commercial",
+            "fallback": null
+          }
+        },
+        {
+          "id": "4.19",
+          "tc_in": "00:34.5",
+          "duration_s": 0.5,
+          "description": "Crowd clapping, hands in unison, faces lit",
+          "framing": "Wide",
+          "camera_motion": "Handheld",
+          "shoot_fps": "60",
+          "cut_type": "B",
+          "capcut_treatment": "Crowd clap at -4dB - carries into Act 5",
+          "audio": "CROWD CLAP",
+          "on_screen_text": null,
+          "location": "Audience",
+          "notes": "The handoff to the exhale.",
+          "stock": {
+            "tier": "A",
+            "keywords": "crowd clapping hands audience",
+            "alt_keywords": "people clapping joyful; African crowd cheering hands",
+            "libraries": "Getty, Shutterstock, Filmsupply",
+            "fps_note": "24-60",
+            "license": "Commercial",
+            "fallback": null
+          }
+        }
+      ]
+    },
+    {
+      "act": "5",
+      "kinyarwanda_title": "Abantu",
+      "english_title": "The People and the Land",
+      "tc_start": 38.0,
+      "tc_end": 48.0,
+      "mood": "reverent golden warm",
+      "cutting_rate": "1.0-2.0s",
+      "shot_count": 7,
+      "shots": [
+        {
+          "id": "5.01",
+          "tc_in": "00:38.0",
+          "duration_s": 3.0,
+          "description": "THE EXHALE - one held shot: dancer chest heaving, sweat, a slow smile breaking; or dust hanging in golden light as everything goes quiet",
+          "framing": "MCU",
+          "camera_motion": "Locked",
+          "shoot_fps": "240",
+          "cut_type": "from 4.19",
+          "capcut_treatment": "Speed 0.35x + Optical Flow. Halo Blur 12. ONE CONTINUOUS SHOT - do not cut it. Protect from effects creep.",
+          "audio": "Music sustains under, near-silence",
+          "on_screen_text": null,
+          "location": "Performance ground",
+          "notes": "Emotional peak of the film.",
+          "stock": {
+            "tier": "C",
+            "keywords": "dancer breathing sweat slow motion smile",
+            "alt_keywords": "exhausted dancer portrait; person catching breath smiling slo-mo",
+            "libraries": "Filmsupply, Artgrid, Getty",
+            "fps_note": "50-120",
+            "license": "Commercial",
+            "fallback": "THE exhale. Buy the best face you can afford here - three seconds of it is the emotional peak. Prefer native slow motion."
+          }
+        },
+        {
+          "id": "5.02",
+          "tc_in": "00:41.0",
+          "duration_s": 1.5,
+          "description": "Grandmother's hands weaving agaseke (peace basket), geometric coil",
+          "framing": "Macro, 9:16",
+          "camera_motion": "Slow dolly",
+          "shoot_fps": "60",
+          "cut_type": "D",
+          "capcut_treatment": "Keyframe Scale 100>104; temp +12, Glow 10",
+          "audio": "Fibre rasp",
+          "on_screen_text": null,
+          "location": "Craft co-op",
+          "notes": "Abantu n'igihugu card at 00:41.2",
+          "stock": {
+            "tier": "B",
+            "keywords": "agaseke basket weaving Rwanda hands",
+            "alt_keywords": "African basket weaving close up; artisan hands craft Rwanda",
+            "libraries": "Pond5, Shutterstock, Getty",
+            "fps_note": "24-30",
+            "license": "Commercial or editorial",
+            "fallback": null
+          }
+        },
+        {
+          "id": "5.03",
+          "tc_in": "00:42.5",
+          "duration_s": 1.2,
+          "description": "An elder's face, full frame, still - he looks into the lens and holds it",
+          "framing": "ECU portrait",
+          "camera_motion": "Locked",
+          "shoot_fps": "60",
+          "cut_type": "D",
+          "capcut_treatment": "Grain 12, soft vignette 8. NO other effect. Hold it.",
+          "audio": "Silence + distant drum",
+          "on_screen_text": null,
+          "location": "Community",
+          "notes": "Stillness after 38s of movement is the point.",
+          "stock": {
+            "tier": "A",
+            "keywords": "elderly African man portrait still face",
+            "alt_keywords": "old man close up dignified; Rwandan elder portrait",
+            "libraries": "Getty, Artgrid, Pond5",
+            "fps_note": "24-30",
+            "license": "Commercial (model release)",
+            "fallback": null
+          }
+        },
+        {
+          "id": "5.04",
+          "tc_in": "00:43.7",
+          "duration_s": 1.2,
+          "description": "Children running a dirt path between banana trees, laughing, toward camera",
+          "framing": "MS",
+          "camera_motion": "Gimbal backing up",
+          "shoot_fps": "120",
+          "cut_type": "B",
+          "capcut_treatment": "Speed 0.7x; laughter A2 -10dB",
+          "audio": "Children laughing",
+          "on_screen_text": null,
+          "location": "Rural path",
+          "notes": "",
+          "stock": {
+            "tier": "A",
+            "keywords": "children running path banana trees",
+            "alt_keywords": "African kids running dirt road laughing; children village path",
+            "libraries": "Getty, Shutterstock, Pond5",
+            "fps_note": "50-120",
+            "license": "Commercial (model release)",
+            "fallback": null
+          }
+        },
+        {
+          "id": "5.05",
+          "tc_in": "00:44.9",
+          "duration_s": 1.3,
+          "description": "Rolling hills at golden hour, terraced, mist returning - full circle to Act 1",
+          "framing": "Extreme wide",
+          "camera_motion": "Drone pull-back",
+          "shoot_fps": "60",
+          "cut_type": "X",
+          "capcut_treatment": "Effects Nature Sunset 15 OR manual: temp +14, highlights -10, shadows +8, Glow 18",
+          "audio": "Wind",
+          "on_screen_text": null,
+          "location": "Thousand hills",
+          "notes": "Shape echo from 4.17 mane.",
+          "stock": {
+            "tier": "A",
+            "keywords": "Rwanda rolling hills golden hour aerial",
+            "alt_keywords": "thousand hills sunset drone; terraced landscape golden aerial",
+            "libraries": "Artgrid, Pond5, Shutterstock",
+            "fps_note": "24-30",
+            "license": "Commercial",
+            "fallback": null
+          }
+        },
+        {
+          "id": "5.06",
+          "tc_in": "00:46.2",
+          "duration_s": 1.0,
+          "description": "A face in the crowd watching the dancers - tears or laughter, ambiguous, alive",
+          "framing": "CU",
+          "camera_motion": "Handheld",
+          "shoot_fps": "60",
+          "cut_type": "D",
+          "capcut_treatment": "HSL Orange luminance +10. NO effect. Faces don't need help.",
+          "audio": "Crowd murmur",
+          "on_screen_text": null,
+          "location": "Audience",
+          "notes": "",
+          "stock": {
+            "tier": "A",
+            "keywords": "face in crowd watching emotional",
+            "alt_keywords": "woman watching performance tears joy; audience face close up",
+            "libraries": "Getty, Filmsupply, Pond5",
+            "fps_note": "24-60",
+            "license": "Commercial (model release)",
+            "fallback": null
+          }
+        },
+        {
+          "id": "5.07",
+          "tc_in": "00:47.2",
+          "duration_s": 0.8,
+          "description": "Water again - Lake Kivu, now gold instead of grey, sun on the surface",
+          "framing": "Wide",
+          "camera_motion": "Static",
+          "shoot_fps": "60",
+          "cut_type": "D",
+          "capcut_treatment": "Direct colour rhyme with 1.03: same framing, opposite temperature",
+          "audio": "Water lap",
+          "on_screen_text": null,
+          "location": "Lake Kivu",
+          "notes": "",
+          "stock": {
+            "tier": "A",
+            "keywords": "Lake Kivu sunset gold water",
+            "alt_keywords": "African lake golden hour surface; Rwanda lake dusk",
+            "libraries": "Artgrid, Pond5, Getty",
+            "fps_note": "24-30",
+            "license": "Commercial",
+            "fallback": "Buy the same contributor/series as 1.03 if possible so the colour rhyme is a real rhyme."
+          }
+        }
+      ]
+    },
+    {
+      "act": "6",
+      "kinyarwanda_title": "Umunsi Mushya",
+      "english_title": "Together / The New Day",
+      "tc_start": 48.0,
+      "tc_end": 60.0,
+      "mood": "sunset to dusk communal",
+      "cutting_rate": "1.0-1.6s",
+      "shot_count": 9,
+      "shots": [
+        {
+          "id": "6.01",
+          "tc_in": "00:48.0",
+          "duration_s": 1.2,
+          "description": "Everyone dancing - a visitor, clumsy and joyful, pulled into the line by a dancer",
+          "framing": "Wide, 9:16",
+          "camera_motion": "Gimbal orbit",
+          "shoot_fps": "60",
+          "cut_type": "B",
+          "capcut_treatment": "Speed 0.8x; crowd + drum audio full",
+          "audio": "Full crowd + drums",
+          "on_screen_text": null,
+          "location": "Community ground",
+          "notes": "THESIS SHOT: recreation as belonging.",
+          "stock": {
+            "tier": "C",
+            "keywords": "group dancing together joyful Africa",
+            "alt_keywords": "community dance circle; people dancing together celebration Africa",
+            "libraries": "Getty, Pond5, Shutterstock",
+            "fps_note": "24-60",
+            "license": "Commercial or editorial",
+            "fallback": "Substitute: any joyful mixed-group dancing wide. The 'visitor pulled into the line' specificity will almost certainly have to be dropped or staged locally."
+          }
+        },
+        {
+          "id": "6.02",
+          "tc_in": "00:49.2",
+          "duration_s": 1.0,
+          "description": "Hands clapping across the circle cut with feet stomping earth",
+          "framing": "CU x2",
+          "camera_motion": "Static",
+          "shoot_fps": "120",
+          "cut_type": "B x2",
+          "capcut_treatment": "Two 4-frame cuts. Pure rhythm.",
+          "audio": "Claps + stomps",
+          "on_screen_text": null,
+          "location": "Community ground",
+          "notes": "",
+          "stock": {
+            "tier": "A",
+            "keywords": "hands clapping feet stomping close up",
+            "alt_keywords": "clapping hands rhythm; dancing feet dust close up",
+            "libraries": "Filmsupply, Artgrid, Shutterstock",
+            "fps_note": "50-120",
+            "license": "Commercial",
+            "fallback": null
+          }
+        },
+        {
+          "id": "6.03",
+          "tc_in": "00:50.2",
+          "duration_s": 1.2,
+          "description": "Full troupe + crowd, one frame, dancing together at golden hour",
+          "framing": "Wide",
+          "camera_motion": "Drone rising",
+          "shoot_fps": "60",
+          "cut_type": "B",
+          "capcut_treatment": "Keyframe Scale 100>90 AND Position Y +120px together (drone-lift feel)",
+          "audio": "Ensemble",
+          "on_screen_text": null,
+          "location": "Community ground",
+          "notes": "",
+          "stock": {
+            "tier": "B",
+            "keywords": "dancers crowd golden hour wide aerial",
+            "alt_keywords": "African celebration crowd drone sunset; group dance aerial",
+            "libraries": "Artgrid, Pond5, Getty",
+            "fps_note": "24-30",
+            "license": "Commercial or editorial",
+            "fallback": "Fake the drone lift with Scale 100->90 + Position keyframes on a locked wide."
+          }
+        },
+        {
+          "id": "6.04",
+          "tc_in": "00:51.4",
+          "duration_s": 1.0,
+          "description": "A dancer's leap against the setting sun, silhouette",
+          "framing": "Wide, backlit",
+          "camera_motion": "Locked",
+          "shoot_fps": "120",
+          "cut_type": "B",
+          "capcut_treatment": "Exposure -18, rim highlights +22",
+          "audio": "Stomp",
+          "on_screen_text": null,
+          "location": "Community ground",
+          "notes": "Thumbnail candidate.",
+          "stock": {
+            "tier": "B",
+            "keywords": "dancer leap silhouette sunset",
+            "alt_keywords": "jumping figure against setting sun; silhouette dance sunset",
+            "libraries": "Artgrid, Filmsupply, Getty",
+            "fps_note": "24-60",
+            "license": "Commercial",
+            "fallback": "Thumbnail candidate - buy this one well."
+          }
+        },
+        {
+          "id": "6.05",
+          "tc_in": "00:52.4",
+          "duration_s": 1.4,
+          "description": "Lake Kivu at dusk, longhorn inyambo cattle silhouetted along the shore",
+          "framing": "Wide",
+          "camera_motion": "Slow dolly",
+          "shoot_fps": "60",
+          "cut_type": "D",
+          "capcut_treatment": "Sunset Rays 18 low intensity; temp +16",
+          "audio": "Cattle + water",
+          "on_screen_text": null,
+          "location": "Lake Kivu shore",
+          "notes": "",
+          "stock": {
+            "tier": "C",
+            "keywords": "Ankole cattle long horns sunset silhouette",
+            "alt_keywords": "inyambo royal cattle Rwanda; African longhorn cattle dusk",
+            "libraries": "Pond5, Getty, Shutterstock",
+            "fps_note": "24-30",
+            "license": "Commercial or editorial",
+            "fallback": "Substitute: 'African cattle herd sunset' (plentiful). Ankole/inyambo specific is scarce but does exist on Pond5 and Getty."
+          }
+        },
+        {
+          "id": "6.06",
+          "tc_in": "00:53.8",
+          "duration_s": 1.4,
+          "description": "Night - a fire, sparks rising, faces lit orange, drumming continuing off-frame",
+          "framing": "MS, fire-backlit",
+          "camera_motion": "Handheld",
+          "shoot_fps": "60",
+          "cut_type": "D",
+          "capcut_treatment": "Particles/Sparkle 12 for embers; firelight in A3",
+          "audio": "Fire crackle + distant drums",
+          "on_screen_text": null,
+          "location": "Night camp",
+          "notes": "",
+          "stock": {
+            "tier": "A",
+            "keywords": "campfire night sparks faces",
+            "alt_keywords": "fire night embers people; bonfire faces lit orange",
+            "libraries": "Artgrid, Filmsupply, Pond5",
+            "fps_note": "24-60",
+            "license": "Commercial",
+            "fallback": null
+          }
+        },
+        {
+          "id": "6.07",
+          "tc_in": "00:55.2",
+          "duration_s": 1.6,
+          "description": "THE LAST FACE - a dancer catching breath, looks straight into the lens and smiles. Hold.",
+          "framing": "ECU",
+          "camera_motion": "Locked",
+          "shoot_fps": "120",
+          "cut_type": "D",
+          "capcut_treatment": "Speed 0.8x. HOLD for the final drum hit at 00:56.8",
+          "audio": "Breath, then final drum hit",
+          "on_screen_text": null,
+          "location": "Night camp",
+          "notes": "Music decays to ambience only.",
+          "stock": {
+            "tier": "B",
+            "keywords": "person close up smile into camera warm",
+            "alt_keywords": "dancer smiles at camera; portrait warm light direct address",
+            "libraries": "Filmsupply, Getty, Artgrid",
+            "fps_note": "24-60",
+            "license": "Commercial (model release)",
+            "fallback": "The last face. Buy direct eye contact - many stock portraits have the subject looking away."
+          }
+        },
+        {
+          "id": "6.08",
+          "tc_in": "00:56.8",
+          "duration_s": 2.0,
+          "description": "Wide of the hills at dusk, mist returning - the same valley as 1.01. Full circle.",
+          "framing": "Extreme wide",
+          "camera_motion": "Locked",
+          "shoot_fps": "60",
+          "cut_type": "D",
+          "capcut_treatment": "Same grade as 1.01 but warmer. Ends in the same place, changed.",
+          "audio": "Ambience only",
+          "on_screen_text": null,
+          "location": "Virunga valley",
+          "notes": "",
+          "stock": {
+            "tier": "A",
+            "keywords": "hills dusk mist valley wide",
+            "alt_keywords": "mountains fog evening; Rwanda valley dusk aerial",
+            "libraries": "Artgrid, Pond5, Shutterstock",
+            "fps_note": "24-30",
+            "license": "Commercial",
+            "fallback": "Match the composition of 1.01 as closely as the library allows - ideally the SAME clip, regraded warmer."
+          }
+        },
+        {
+          "id": "6.09",
+          "tc_in": "00:58.8",
+          "duration_s": 1.2,
+          "description": "CLOSING CARD",
+          "framing": "Title card",
+          "camera_motion": "-",
+          "shoot_fps": "-",
+          "cut_type": "Fade",
+          "capcut_treatment": "Text In: Fade+Blur; Out: Fade. Fade to black over last 12 frames.",
+          "audio": "Ambience tail",
+          "on_screen_text": "UMURIRO W'URWANDA / Come to rest. Leave dancing. / Rwanda - Land of a Thousand Hills",
+          "location": "-",
+          "notes": "3 stacked text blocks, staggered 6 frames apart.",
+          "stock": {
+            "tier": "A",
+            "keywords": "-",
+            "alt_keywords": "-",
+            "libraries": "-",
+            "fps_note": "-",
+            "license": "-",
+            "fallback": "No picture needed: closing card over the tail of 6.08, or over black."
+          }
+        }
+      ]
+    }
+  ],
+  "text_copy": [
+    {
+      "tc": "00:04.4",
+      "kin": "Umuriro w'Urwanda",
+      "eng": "The Fire of Rwanda",
+      "role": "title"
+    },
+    {
+      "tc": "00:04.4",
+      "kin": "Igihugu cy'imisozi igihumbi",
+      "eng": "Land of a thousand hills",
+      "role": "opening sub"
+    },
+    {
+      "tc": "00:05.2",
+      "kin": "Kwitegura",
+      "eng": "The Preparation",
+      "role": "act card"
+    },
+    {
+      "tc": "00:14.2",
+      "kin": "Kwidagadura",
+      "eng": "Play / Recreation",
+      "role": "act card"
+    },
+    {
+      "tc": "00:24.2",
+      "kin": "Umushagiriro",
+      "eng": "The Dance of Grace",
+      "role": "act card"
+    },
+    {
+      "tc": "00:27.6",
+      "kin": "Intore - Umuhamirizo",
+      "eng": "The Chosen Ones / Warrior Dance",
+      "role": "act card"
+    },
+    {
+      "tc": "00:41.2",
+      "kin": "Abantu n'igihugu",
+      "eng": "The People and the Land",
+      "role": "act card"
+    },
+    {
+      "tc": "00:58.8",
+      "kin": "Umuriro w'Urwanda",
+      "eng": "The Fire of Rwanda",
+      "role": "closing"
+    },
+    {
+      "tc": "00:59.2",
+      "kin": null,
+      "eng": "Come to rest. Leave dancing.",
+      "role": "tagline"
+    }
+  ],
+  "notes": "All Kinyarwanda text and any spoken lines must be verified by a native speaker before delivery. Music and all footage must be licensed for the intended distribution.",
+  "sourcing": {
+    "mode": "stock / licensed library footage",
+    "tiers": {
+      "A": "plentiful - buy immediately",
+      "B": "findable - allow search time",
+      "C": "scarce - may need a substitution",
+      "D": "unavailable - build, crop or stitch it"
+    },
+    "tier_counts": {
+      "A": 23,
+      "C": 17,
+      "B": 17,
+      "D": 6
+    },
+    "critical_buys": [
+      "4.04 Intore group leap",
+      "3.12 silverback",
+      "5.01 the exhale face",
+      "3.07 water break (native slo-mo)",
+      "6.04 silhouette leap"
+    ],
+    "hard_constraints": [
+      "Most Rwanda cultural-performance stock is EDITORIAL ONLY - it cannot be used in commercial or tourism-board advertising. Filter by licence before you fall in love with a clip.",
+      "Stock is overwhelmingly 24/25/30 fps. Any shot written at 0.35x slow motion will artefact badly from 30 fps even with Optical Flow. Buy native slow motion (100-240 fps) for 3.07, 4.05 and 5.01, or soften the ramp to no lower than 0.5x everywhere else.",
+      "Match cuts need matched SHAPE and matched SCREEN SIZE. Buy clips where the subject occupies a similar fraction of frame, or the scale-match keyframes will not hide the cut.",
+      "Never mix a 4K clip and a 1080p clip in the same act without upscaling the smaller one - the grain and sharpness difference is obvious on a phone."
+    ]
+  }
+}
