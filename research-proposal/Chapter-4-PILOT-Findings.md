@@ -12,7 +12,7 @@
 
 This chapter presents the pilot-study findings by objective. The pilot combined four methods (§3.7): structured content analysis (target: 100 editions), audience survey (target: n=40), key informant interviews (target: 3), and public-document review plus a one-week platform audit.
 
-### Table 4.1: Pilot coverage achieved [YOUR DATA — PENDING]
+### Table 4.1: Pilot coverage achieved (updated with fieldwork to date)
 
 | Component | Target | Achieved | Coverage notes |
 |---|---|---|---|
@@ -20,11 +20,14 @@ This chapter presents the pilot-study findings by objective. The pilot combined 
 | Editions coded (1996–2005) | 25 | **3** | 2002-01-17 + 2003-10-24 + 2005-01-01 (Rung 2); failures logged: 2000-03-08 empty, 2003-12-28 weekend redirect |
 | Editions coded (2006–2015) | 25 | **6** | 2007, 2008, 2010×2, 2011, 2015 (Rung 2); 2012–2014 homepages are uncapturable shells (4 attempts logged) |
 | Editions coded (2016–2026) | 25 | **5** | 2016, 2017, 2018, 2019 (Rung 2) + 2026-09-20 live (Rung 3); post-2020 = live-site protocol (2021 JS-shell failure) |
-| Survey (Kampala) | 25 | __ | Dates: __; refusals: __ |
-| Survey (up-country: __ district) | 15 | __ | … |
-| KIIs | 3 | __ | Roles/dates/durations: __ |
-| Public documents extracted | ≥15 | __ | List in Appendix Table 2 |
-| Coding reliability (Cohen's κ) | ≥0.70 | __ | Per-variable κ table in §4.1.1 |
+| Survey (Kampala) | 25 | **17** | Administered; dates/refusals to be logged from field diary |
+| Survey (up-country: Rukungiri district) | 15 | **10** | Administered |
+| **Survey total** | **40** | **27 (67.5%)** | Shortfall of 13 — see §4.1.2 note below |
+| KIIs | 3 | **2** | Third informant pending; roles/dates/durations to be logged |
+| Public documents extracted | ≥15 | **40** | Far above target — list in Appendix Table 2 |
+| Coding reliability (Cohen's κ) | ≥0.70 | __ | Double-code a 20% subsample before finalising (procedure §4.1.1) |
+
+**§4.1.2 Coverage disclosure (honesty note for the panel).** Fieldwork to date achieves 27 of the targeted 40 surveys (17 Kampala; 10 Rukungiri) and 2 of 3 KIIs. For a *pilot* study this is defensible — the pilot's purpose is to test instruments and protocols, not to deliver population estimates — but the shortfall must be disclosed in §3.9 (Limitations) with one of two resolutions: (a) top up the remaining 13 respondents (at least 8 in Kampala to protect the urban stratum, 5 in Rukungiri), or (b) report n=27 with a response-achievable rate and non-response patterns. Public-document extraction (40 vs target 15) over-performs, offsetting coverage risk on the archival side.
 
 ### [ILLUSTRATIVE EXAMPLE — REPLACE] Table 4.1b: How to report reliability
 | Variable | Double-coded (n) | κ | Verdict |
