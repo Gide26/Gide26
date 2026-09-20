@@ -8,6 +8,8 @@ This study set out to assess the impacts of The New Vision newspaper across 40 y
 
 ## 5.2 Summary of Key Findings (Preliminary, One Subsection per Objective)
 
+> **Data provenance in this chapter:** the content-analysis figures are REAL (n=132 archive items, URL-traceable). The survey and KII figures cited in §5.2.1–§5.2.4 as "(SIM)" are ⛔ FORMULATED demonstration values (Appendix D, `make_simulated_data.py`, seed 40) inserted only to show how the full analysis will read once the 27 real questionnaires and 3 interviews are coded. Every (SIM) tag must disappear as real data replaces it.
+
 ### 5.2.1 Political impacts — Research Question 1 (from §4.3)
 
 - Politics and elections account for **34/132 coded items (26%)**, stable across eras: 28% in the restricted Movement era (1996–2005), 23% mid-period, 28% in 2016–2026 (Table 4.3a/b) — political content is a constant, not a phase (§4.3.4).
@@ -17,6 +19,7 @@ This study set out to assess the impacts of The New Vision newspaper across 40 y
 - In the Movement-era sample the lead story itself was state control of opposition assembly — *"Govt Will Block Next Party Rally"* (2002) — framed as a police statement, illustrating ownership-era framing (Entman, 1993) at the front page.
 - **Print–online divergence**: the archived 20 Jan 2016 homepage carried 1 Museveni item of 9, versus ACME's (2016a) print finding of the New Vision front page leading with Museveni 15 of 31 days that month — the web agenda was more diversified than the print agenda in the same election window (§4.3.4, Interpretation 6).
 - The paper hosted contested political speech **on its own platforms before social media**: discussion boards carried 2,146 posts on "To Be or Not to Be Gay" (2003), 3,510 on "Third Term?" and 3,085 on "Federo" (2005) (§4.6, Table 4.8).
+- ⛔ (SIM) Simulated survey demonstration concurs: 75% of simulated respondents perceive election coverage tilting to government, while trust in NV print (6.0/10) far exceeds trust in WhatsApp forwards (3.0/10) — the "incumbency tilt with retained credibility" profile the real D1/D4 items will test (§4.3.5, Tables 4.10/4.12).
 
 ### 5.2.2 Economic/industry impacts — Research Question 2 (from §4.4)
 
@@ -39,6 +42,7 @@ This study set out to assess the impacts of The New Vision newspaper across 40 y
 - **Two-way audience engagement predates social media in Uganda by roughly seven years** — the 2003–2005 forums were, in effect, the country's earliest large-scale news comment spaces on a state-owned paper's own platform (§4.6).
 - The demand environment remains the binding constraint: 28% internet penetration, 72% rural population, median age 16.9 (DataReportal, 2025), inside Uganda's worst recorded press-freedom band (143rd, "very serious"; RSF, 2025) (§4.3.3, §4.6.2).
 - The open question is **revenue**: the investment leg of the digital pathway is documented; whether the paywall/verticals strategy pays, for a young mostly-offline audience, is what the audit and willingness-to-pay items must resolve (§4.6.3).
+- ⛔ (SIM) Simulated willingness-to-pay demonstration: only 20% would pay anything monthly; data cost is the top barrier (45%) — the "reach without revenue" risk quantified for demonstration (§4.6.3, Table 4.15).
 
 ### 5.2.5 Comparative placement (from §4.7)
 
