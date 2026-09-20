@@ -28,6 +28,7 @@
 | `References-EndNote.ris` | **EndNote import file (RIS) for all cited sources** | File → Import in EndNote/Zotero/Mendeley |
 | `Front-Matter-FINAL.md` | **Title/declaration/approval/abstract/ToC/work plan/budget** | Final furniture |
 | `Theory-of-Change.md` | **Explicit ToC: vision, results chain, 4 pathways, assumptions, falsification rules** | Draft — insert §1.8 diagram |
+| `SIMULATED-Field-Data-PRESENTATION-DEMO.md` | **⛔ Formulated survey/KII demo data (seeded script; disclose always; never submit)** | Presentation/testing only |
 | `Hypothetical-Projections-DO-NOT-SUBMIT.md` | **⛔ Invented planning numbers + match checklist (pre-registration; delete before binding)** | Planning only |
 | `Appendices-Research-Instruments.md` | Full-study instruments (reference) | Reference |
 | `References.md` | Consolidated references (Ch.2 + pilot desk sources added) | Draft |
