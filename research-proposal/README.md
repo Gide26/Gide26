@@ -21,7 +21,12 @@
 | `Chapter-4-Findings-Framework.md` | Full-study Chapter 4 shell (roadmap) | Framework |
 | `Chapter-5-Summary-Conclusions-Framework.md` | Shell for Chapter 5 | Framework |
 | `Pilot-Instruments-Print-Ready.md` | **4 print-ready instruments (coding sheet, questionnaire, KII guide, audit)** | Ready to pretest |
-| `Gathered-Editions-Log.md` | **Online-edition coverage log: 3 coded (2010, 2016, 2026) + 1 logged failure + runbook to 100** | 3/100 — real data |
+| `Gathered-Editions-Log.md` | **Online-edition coverage log: 6 coded (2007, 2010, 2016, 2019, 2026) + failures + runbook to 100** | 6/100 — real data |
+| `Dataset-NewVision-Editions-PILOT.csv` | **Structured coded dataset, one row per item (n=48), every row URL-traceable** | Main findings source — real |
+| `Chapter-2-Literature-Review-FINAL.md` | **Full-prose Chapter Two with APA 7th in-text citations** | Supervisor-ready |
+| `References-FINAL-APA7.md` | **APA 7th alphabetical reference list (endnote style)** | Use this, not References.md |
+| `References-EndNote.ris` | **EndNote import file (RIS) for all cited sources** | File → Import in EndNote/Zotero/Mendeley |
+| `Front-Matter-FINAL.md` | **Title/declaration/approval/abstract/ToC/work plan/budget** | Final furniture |
 | `Theory-of-Change.md` | **Explicit ToC: vision, results chain, 4 pathways, assumptions, falsification rules** | Draft — insert §1.8 diagram |
 | `Hypothetical-Projections-DO-NOT-SUBMIT.md` | **⛔ Invented planning numbers + match checklist (pre-registration; delete before binding)** | Planning only |
 | `Appendices-Research-Instruments.md` | Full-study instruments (reference) | Reference |

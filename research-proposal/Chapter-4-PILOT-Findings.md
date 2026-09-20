@@ -18,8 +18,8 @@ This chapter presents the pilot-study findings by objective. The pilot combined 
 |---|---|---|---|
 | Editions coded (1986–1995) | 25 | **0** | No online source exists pre-2000s — library fieldwork required (§3.6.1 Rung 1) |
 | Editions coded (1996–2005) | 25 | **0** | Same — library fieldwork required |
-| Editions coded (2006–2015) | 25 | **1** | NV-WB-2010-06-16 (Rung 2, Wayback) — see Gathered-Editions-Log.md |
-| Editions coded (2016–2026) | 25 | **2** | NV-WB-2016-01-20 (Rung 2) + NV-LIVE-2026-09-20 (Rung 3); 1 logged failure (2021 JS-shell — protocol fix in log) |
+| Editions coded (2006–2015) | 25 | **2** | NV-WB-2007-12-31 + NV-WB-2010-06-16 (Rung 2, Wayback); 1 logged failure (2013 light capture) |
+| Editions coded (2016–2026) | 25 | **3** | NV-WB-2016-01-20 + NV-WB-2019-12-31 (Rung 2) + NV-LIVE-2026-09-20 (Rung 3); 1 logged failure (2021 JS-shell) |
 | Survey (Kampala) | 25 | __ | Dates: __; refusals: __ |
 | Survey (up-country: __ district) | 15 | __ | … |
 | KIIs | 3 | __ | Roles/dates/durations: __ |
@@ -89,42 +89,43 @@ Two ACME election-monitoring datasets provide the strongest public evidence on N
 
 **Pilot interpretation:** the 2023→2025 slide (125th→143rd) sharpens the study's problem statement (§1.2): New Vision's 40th year coincides with Uganda's worst recorded press-freedom band. The final thesis must add the RSF 2026 figure at write-up (check `rsf.org/en/ranking`).
 
-### 4.3.4 Researcher's content results — first 3 editions coded (REAL, n=29 items)
+### 4.3.4 Researcher's content results — first 6 editions coded (REAL, n=48 items)
 
-*Full item lists and URLs: `Gathered-Editions-Log.md`. Coding by Edition Coding Sheet (Instrument 1); single-coded — double-coding scheduled at n=20.*
+*Full item lists and URLs: `Gathered-Editions-Log.md`; structured dataset: `Dataset-NewVision-Editions-PILOT.csv` (one row per item, fieldwork-continuable). Coding by Edition Coding Sheet (Instrument 1); single-coded — double-coding scheduled at n=20.*
 
-**Table 4.3 (REAL): Issue distribution across 3 gathered editions**
+**Table 4.3 (REAL): Issue distribution across 6 gathered editions (n=48 items)**
 
-| Issue | 2010-06-16 (n=8) | 2016-01-20 (n=9) | 2026-09-20 (n=12) | Total (n=29) |
-|---|---|---|---|---|
-| Politics (POL) | 2 (25%) | 0 (0%) | 3 (25%) | 5 (17%) |
-| Elections (ELE) | 0 (0%) | 3 (33%) | 0 (0%) | 3 (10%) |
-| Economy/Business (ECO) | 3 (38%) | 0 (0%) | 1 (8%) | 4 (14%) |
-| Health (HEA) | 2 (25%) | 1 (11%) | 0 (0%) | 3 (10%) |
-| Education (EDU) | 0 (0%) | 1 (11%) | 0 (0%) | 1 (3%) |
-| Security/Crime (SEC) | 0 (0%) | 1 (11%) | 2 (17%) | 3 (10%) |
-| Sport (SPO) | 1 (13%) | 2 (22%) | 0 (0%) | 3 (10%) |
-| Agriculture (AGR) | 0 (0%) | 0 (0%) | 1 (8%) | 1 (3%) |
-| Tourism (TOUR) | 0 (0%) | 0 (0%) | 1 (8%) | 1 (3%) |
-| Environment (ENV) | 0 (0%) | 1 (11%) | 0 (0%) | 1 (3%) |
-| Entertainment (ENT) | 0 (0%) | 0 (0%) | 1 (8%) | 1 (3%) |
-| International (INTL) | 0 (0%) | 0 (0%) | 3 (25%) | 3 (10%) |
-| **Development-flagged (any)** | **4 (50%)** | **5 (56%)** | **3 (25%)** | **12 (41%)** |
+| Issue | 2007 (n=11) | 2010 (n=8) | 2016 (n=9) | 2019 (n=8) | 2026 (n=12) | Total (n=48) |
+|---|---|---|---|---|---|---|
+| Politics (POL) | 3 (27%) | 2 (25%) | 0 (0%) | 2 (25%) | 3 (25%) | 10 (21%) |
+| Elections (ELE) | 0 | 0 | 3 (33%) | 0 | 0 | 3 (6%) |
+| Economy/Business (ECO) | 2 (18%) | 3 (38%) | 0 | 0 | 1 (8%) | 6 (13%) |
+| Health (HEA) | 0 | 2 (25%) | 1 (11%) | 0 | 0 | 3 (6%) |
+| Education (EDU) | 0 | 0 | 1 (11%) | 0 | 0 | 1 (2%) |
+| Security/Crime (SEC) | 1 (9%) | 0 | 1 (11%) | 0 | 2 (17%) | 4 (8%) |
+| Sport (SPO) | 2 (18%) | 1 (13%) | 2 (22%) | 1 (13%) | 0 | 6 (13%) |
+| Agriculture (AGR) | 0 | 0 | 0 | 0 | 1 (8%) | 1 (2%) |
+| Tourism (TOUR) | 0 | 0 | 0 | 0 | 1 (8%) | 1 (2%) |
+| Environment (ENV) | 1 (9%) | 0 | 1 (11%) | 0 | 0 | 2 (4%) |
+| Entertainment (ENT) | 0 | 0 | 0 | 1 (13%) | 1 (8%) | 2 (4%) |
+| International (INTL) | 1 (9%) | 0 | 0 | 0 | 3 (25%) | 4 (8%) |
+| General/Editorial (GEN) | 1 (9%) | 0 | 0 | 4 (50%) | 0 | 5 (10%) |
+| **Development-flagged** | **2 (18%)** | **4 (50%)** | **5 (56%)** | **0 (0%)** | **3 (25%)** | **14 (29%)** |
 
-**Table 4.4 (REAL): Stance of classifiable political items (n=7)**
+**Table 4.4 (REAL): Stance of classifiable political items (n=12 of 48)**
 
 | Stance | n | % | Example headlines (verbatim) |
 |---|---|---|---|
-| Favourable to government/incumbent | 4 | 57% | "Army warns opposition" (2010); "Exploit border trade, Museveni urges Bundibugyo" (2016); "Govt gives farmers 150 tractors" + "Museveni's 82nd birthday at Kololo" (2026) |
-| Neutral/balanced | 1 | 14% | "Uganda pushes for UN action on development funding" (2026) |
-| Unfavourable/critical of state actors | 2 | 29% | "Local govts fail to recover sh8b from councillors" + "Uganda lacks half of required health workers" (both 2010) |
+| Favourable to government/incumbent | 6 | 50% | "Army warns opposition" (2010); "Exploit border trade, Museveni urges Bundibugyo" (2016); "We have opened war on Corruption - Museveni" + "Museveni meets Kanda Bongoman" (2019); "Govt gives farmers 150 tractors" + "Museveni's 82nd birthday at Kololo" (2026) |
+| Neutral/balanced | 3 | 25% | "Museveni accepts dialogue on land" + "Drama at Soroti MP Alice Alaso wedding" (2007); "Uganda pushes for UN action on development funding" (2026) |
+| Unfavourable/critical of state actors | 3 | 25% | "Kahinda Otafiire voted worst minister" (2007); "Local govts fail to recover sh8b from councillors" + "Uganda lacks half of required health workers" (2010) |
 
-**Women as sources/subjects (REAL, n=29):** 1 confirmed (2010 "Fake doctor…" — mother + girl victim) + 1 probable (2026 beauty-event story) — directionally consistent with the UMWA/ACME industry baseline (§4.3.2); the full 100 will quantify it.
+**Women as sources/subjects (REAL, n=48):** 2 confirmed ("Fake doctor…" 2010 — mother + girl victims; "Drama at Soroti MP Alice Alaso wedding" 2007 — FDC secretary general) + 1 probable (2026 beauty-event story) — directionally consistent with the UMWA/ACME industry baseline of ~20% (§4.3.2); the full 100 will quantify it.
 
-**Preliminary interpretation (3-edition micro-sample — illustrative, NOT conclusive):**
-1. **Politics+elections = 8/29 (28%)** — New Vision leads with more than politics even one month before the 2016 polls (that homepage carried 2 sport, 1 health, 1 education, 1 environment item alongside 3 election items), nuancing the print-front-page bias finding: *online homepage agenda ≠ print front-page agenda* — flagged for the full study.
-2. **Development share 12/29 (41%)** — first-blush support for the Development Media Theory pathway (P3 in `Theory-of-Change.md`).
-3. **Stance is mixed, not monolithic:** 57% favourable coexists with 29% accountability-critical items — first-blush support for the ToC's "bounded, not captured" P1 claim. The full 100 must test whether criticism survives in election windows and on national (vs. local) government.
+**Preliminary interpretation (6-edition micro-sample — illustrative, NOT conclusive):**
+1. **Politics+elections = 13/48 (27%)** — even in an election window (20 Jan 2016, 29 days to polls) the online homepage led with sport, health, education and environment items; and in 2007 accountability content ("Otafiire voted worst minister" from a 3,077-reader survey) led the National section. This nuances the print-front-page bias finding: *online homepage agenda ≠ print front-page agenda* — flagged for the full study.
+2. **Development share varies sharply by edition type: 14/48 (29%) overall**, ranging from 56% (Jan 2016: health, education, environment) to 0% (31 Dec 2019 year-end review edition) — edition-day selection matters; the 100-edition sample must stratify by weekday/season to avoid cherry-picking.
+3. **Stance is mixed, not monolithic:** 50% favourable coexists with 25% accountability-critical items ("worst minister" 2007; "sh8b unrecovered" and "lacks half of health workers" 2010). First-blush support for the ToC's "bounded, not captured" P1 claim; the full 100 must test whether criticism survives in election windows and on national (vs. local) government.
 4. **Museveni-visibility check (Jan 2016):** this homepage shows 1 Museveni item of 9 — below ACME's print finding (front-page lead 15/31 days) — consistent with web/print agenda divergence, not contradiction.
 
 #### [YOUR DATA — PENDING] Tables to complete at n=100: 4.5 Actor presence by decade; 4.6 Stance by decade × election-window; 4.7 Dominant frames in election items (Entman-lite). Figures: clustered bar chart of issue shares; stance trend line. Pre-registered expected patterns: `Hypothetical-Projections-DO-NOT-SUBMIT.md` (planning only — never submit).
@@ -146,7 +147,7 @@ Two ACME election-monitoring datasets provide the strongest public evidence on N
 - **Market leadership (print):** Q4 2019 — *Bukedde* 33,289; *New Vision* 23,636; *Monitor* 16,169 (ABC via Wikipedia [VERIFY original]).
 - **Ownership/finance structure:** state-majority (53.3%) USE-listed (NVL) since 2004 [VERIFY via USE/CMA].
 - **Diversification:** print → broadcast → digital → commercial printing → expos (launch years to verify per platform).
-- **Advertising footprint evolution (REAL, from the 3 gathered editions):** 2010 homepage carried display banners for Kenya Airways, NAADS, Dahabshiil, auto importers, safari firms — a visibly diversified advertiser base (Obj. 2 commercial-evidence); by 2016 the site offered self-service **"Book Advert"** online booking + RSS/subscription products; by 2026 there is a dedicated **Advertising Rates page**, classifieds vertical, and expo businesses (Harvest Money, Bride & Groom). This documents the *commercialisation* leg of P2 even before revenue figures are obtained.
+- **Advertising footprint evolution (REAL, from the 6 gathered editions):** 2007 click-through banners (Abacus African Vacations, Budget Safaris, Uganda Online Law Library); 2010 display banners for Kenya Airways, NAADS, Dahabshiil, auto importers, safari firms; by 2016 self-service **"Book Advert"** online booking; by 2026 a dedicated **Advertising Rates page**, classifieds vertical, and expo businesses (Harvest Money, Bride & Groom). This documents the *commercialisation* leg of P2 across two decades even before revenue figures are obtained.
 
 ### 4.4.2 What the public record does NOT show (pilot gaps → full-study tasks)
 - Employment headcount/wage time-series; advertising-revenue/market-share series; printing-division revenues; expo economics; digital-revenue share. The pilot reports these as **documented absences** (with search trail) rather than pretending to measure them.
@@ -178,18 +179,19 @@ Two ACME election-monitoring datasets provide the strongest public evidence on N
 
 **Pilot interpretation:** the environment data reframes Objective 4 starkly — with 28% internet penetration, 72% rural population, and a 16.9-year median age, New Vision's digital future depends on a young, mostly-rural, mobile-first audience that is still largely offline: a direct test of Wasserman's (2011) digital-inequality warning (§2.7.2) and of whether any "networked journalism" model (Beckett, 2008) can pay (AMI, 2016).
 
-**Table 4.8 (REAL): New Vision's digital evolution from the 3 gathered editions (platform archaeology)**
+**Table 4.8 (REAL): New Vision's digital evolution from the 6 gathered editions (platform archaeology)**
 
-| Feature | 2010 snapshot | 2016 snapshot | 2026 live site |
-|---|---|---|---|
-| Social links | Facebook page + @newvisionwire Twitter | (site chrome — social assumed) | Full social distribution (FB/X/YouTube/TikTok per audit) |
-| E-paper / apps | — | E-Paper **mobile + desktop apps** | E-Paper + **Premium paywall + login** |
-| Multimedia | — | Video, photo galleries, **audio podcasts** | Podcasts + TV-on-air embed |
-| Election product | — | Dedicated **Elections portal** (elections.co.ug) | **Elections Portal** in main nav |
-| Verticals | Jobs.co.ug; sister titles (Bukedde/Orumuri/Rupiny/Etop) | Oil & Gas desk; Pakasa; Supplements/Tenders | Jobs, Classified, Harvest Money, Bride & Groom Expo |
-| Languages | English + sister-title sites | English (+ sisters) | **3-language toggle: Runyankole / English / Luganda** |
+| Feature | 2007 | 2010 | 2016 | 2019 | 2026 live |
+|---|---|---|---|---|---|
+| Social/community | **Weblogs (blogs.php)** | Facebook page + @newvisionwire Twitter | (site chrome) | Disqus comments on stories | Full social distribution |
+| E-paper / apps | — | — | E-Paper **mobile + desktop apps** | Epaper link (epaper.visiongroup.co.ug) | E-Paper + **Premium paywall + login** |
+| Multimedia | — | — | Video, galleries, **podcasts** | NV TV + Podcasts sections | Podcasts + TV-on-air embed |
+| Election product | — | — | **Elections portal** (elections.co.ug) | — | **Elections Portal** in nav |
+| Verticals/services | Jobs.co.ug ("NEW"); sister titles | Jobs.co.ug; sister titles | Oil & Gas desk; Pakasa; Supplements/Tenders | Best Farmers, Toto, Pakasa, University/Schools Guides, Tenders/Notices | Jobs, Classified, Harvest Money, Bride & Groom Expo |
+| Languages | English + sisters | English + sisters | English (+ sisters) | English (+ sisters) | **3-language toggle: Runyankole/English/Luganda** |
+| Advertising | Click-through banners (Abacus, Budget Safaris, Law Library) | Banners (Kenya Airways, NAADS, Dahabshiil) | Self-service "Book Advert" | — | Advertising Rates page + expos |
 
-*Reading:* a genuine 16-year digitalisation arc (social → apps → paywall/verticals) is directly observable — P4's *investment* leg is confirmed; the *revenue* leg (does it pay?) remains the open question for the audit + survey willingness-to-pay items.
+*Reading:* a directly observed 19-year digitalisation arc (blogs 2007 → social 2010 → apps 2016 → podcasts/paywall/multilingual 2026) — P4's *investment* leg is documented from the archive itself; the *revenue* leg (does it pay?) remains the open question for the audit + survey willingness-to-pay items.
 
 ### [YOUR DATA — PENDING] §4.6.2–4.6.4: one-week platform-audit snapshot (followers, frequency, engagement, Luganda-vs-English mix, New Vision vs. Monitor); survey digital module (devices, willingness-to-pay, "more/less important" verdict); KII digital verdict; sustainability verdict (transformed / transforming / stuck).
 
@@ -199,7 +201,7 @@ Two ACME election-monitoring datasets provide the strongest public evidence on N
 
 ## 4.8 Preliminary Synthesis, Limitations, and Desk Tasks
 
-**What the pilot already establishes (desk + 3 coded editions, preliminary):** (1) New Vision's 40-year institutional exceptionalism is publicly verifiable; (2) two election cycles of independent monitoring support the pro-incumbent electoral-coverage expectation; (3) industry-wide gender-source deficits set the baseline the 100-edition sample must beat or match; (4) press-freedom context deteriorated into "very serious" in 2025; (5) the digital environment is young, rural, and still mostly offline — the hard constraint on digital sustainability; **(6) the researcher's own 3-edition micro-sample (n=29, REAL) already shows the ToC-expected mixed pattern — 28% politics/elections, 41% development-flagged, stance 57% favourable / 29% critical — plus a directly observed 2010→2016→2026 digitalisation arc and advertiser footprint evolution.** The full 100/40/3 will test whether these micro-patterns hold.
+**What the pilot already establishes (desk + 3 coded editions, preliminary):** (1) New Vision's 40-year institutional exceptionalism is publicly verifiable; (2) two election cycles of independent monitoring support the pro-incumbent electoral-coverage expectation; (3) industry-wide gender-source deficits set the baseline the 100-edition sample must beat or match; (4) press-freedom context deteriorated into "very serious" in 2025; (5) the digital environment is young, rural, and still mostly offline — the hard constraint on digital sustainability; **(6) the researcher's own 6-edition micro-sample (n=48, REAL, archived front pages 2007–2026) already shows the ToC-expected mixed pattern — 27% politics/elections, 29% development-flagged (range 0–56% by edition type), stance 50% favourable / 25% neutral / 25% critical — plus a directly observed 2007→2026 digitalisation arc and a two-decade advertiser footprint.** The full 100/40/3 will test whether these micro-patterns hold.
 
 **Priority desk tasks before defence:** [ ] verify first-issue date from library holdings; [ ] verify 53.3%/NVL via USE/CMA filings; [ ] retrieve original ABC Q4 2019 report; [ ] add RSF 2026 + DataReportal 2026 figures; [ ] verify June-2026 editorship report.
 

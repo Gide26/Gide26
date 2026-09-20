@@ -29,3 +29,22 @@
 2. **Decades 1–2 (need 50):** library bound volumes (no online source exists pre-2000s) — UCU/KIU/Makerere Africana; photograph front page + editorials; same coding sheet.
 3. **Election windows:** prioritise Jan/Feb 1996, 2001, 2006, 2011 + Jan 2016 (1 done) + Jan 2021 (use live/secondary — ACME 2021 tables already in §4.3.1).
 4. **Rung 4 fallback:** AllAfrica.com New Vision reprints for thematic gap-filling (code as *reprint*, separate table).
+
+---
+
+## UPDATE — Session 2 (20 Sep 2026): 3 more editions → 6 editions, n=48 items
+
+### Entry 4 — NV-WB-2007-12-31 ✅ CODED (11 items)
+- URL: https://web.archive.org/web/20071231175336/http://www.newvision.co.ug/ (year-redirect "2007" → this capture)
+- Verbatim headlines: "Mwai Kibaki declared winner, sworn in" (INTL lead, Kenya crisis, Odinga protest photo) | "Kahinda Otafiire voted worst minister" (POL, UNF — reader survey, 3,077 responses, Kampala market sales) | "Museveni accepts dialogue on land" (POL, NEU — Kabaka Mutebi, land law) | "Drama at Soroti MP Alice Alaso wedding" (POL, NEU — FDC secretary general; WOMAN SUBJECT) | "Police foil robbery of sh1.7b in Gulu" (SEC) | "New strategy for energy crisis" (ECO, DEV) | "Govt told to give incentives to SMEs" (ECO, DEV — UMA's Kalibbala) | "SC Villa bounce back with narrow win" (SPO) | "Olympics: Beijing pollution levels down" (SPO) | "2007 round-up: Global warming taken seriously" (ENV, DEV — Gwynne Dyer column) | "2008: The year of peace for Uganda" (GEN, editorial).
+- Digital/ad evidence: WEBLOGS (blogs.php) — blogging feature in 2007; JOBS.co.ug "NEW"; Saturday Vision/VISION TEENS sister link; click-through banner ads (Abacus African Vacations, Budget Safaris, Uganda Online Law Library subscription); section taxonomy National/Business/Sports/Today's Column/Editorial.
+
+### Entry 5 — NV-WB-2019-12-31 ✅ CODED (8 items; partial — chunk 1 of 11)
+- URL: https://web.archive.org/web/20191231181549/https://www.newvision.co.ug/ (year-redirect "2019")
+- Verbatim headlines: "2019 Chess Review: Wanyama's All Africa Games bronze highlights season" (SPO) | "Accidents in 2019" (GEN) | "Scandals that set many tongues wagging in 2019" (GEN) | "Deaths in 2019" (GEN) | "Today in Pictures – Tuesday, December 31" (GEN) | "We have opened war on Corruption - Museveni" (POL, FAV — lead, "We shall defeat corruption…" quote) | "Why Chaka Chaka was deported" (ENT) | "Museveni meets Kanda Bongoman" (POL, FAV — "praised President Museveni for the tremendous developments").
+- Digital evidence: full section taxonomy (Features: Toto, Best Farmers, Twins, Pakasa, Independence, Pearl of Africa; Multimedia: Newvision TV + Podcasts; Photos: Ugandan History subdomain; Opportunities: Jobs/Tenders/Notices; Special Edition: University Guide, Schools Guide, Supplements; Epaper → epaper.visiongroup.co.ug; live Chat).
+
+### Entry 6 — NV-WB-2013-01-01 ❌ FAILED (logged; do not re-fetch)
+- Year-redirect "2012" landed on capture 20130101021514; single chunk, toolbar + one GIF, zero headlines (light/pop-up capture). Same class of failure as the 2021 JS-shell. Method note: for 2006–2015, prefer explicit dated timestamps known to have full captures; always request chunkIndex 1 first.
+
+### Running totals (6 editions): n=48 items. POL 10, ELE 3, ECO 6, HEA 3, EDU 1, SEC 4, SPO 6, AGR 1, TOUR 1, ENV 2, ENT 2, INTL 4, GEN/EDI 5. Politics+elections 13/48 (27%). Development-flagged 14/48 (29%). Stance (n=12 classifiable): FAV 6 (50%) / UNF 3 (25%) / NEU 3 (25%). Women confirmed 2 + 1 probable /48.
