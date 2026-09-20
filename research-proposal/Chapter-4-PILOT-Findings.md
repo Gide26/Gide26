@@ -89,9 +89,44 @@ Two ACME election-monitoring datasets provide the strongest public evidence on N
 
 **Pilot interpretation:** the 2023→2025 slide (125th→143rd) sharpens the study's problem statement (§1.2): New Vision's 40th year coincides with Uganda's worst recorded press-freedom band. The final thesis must add the RSF 2026 figure at write-up (check `rsf.org/en/ranking`).
 
-### 4.3.4 Researcher's content results — first 6 editions coded (REAL, n=48 items)
+### 4.3.4 Researcher's content results — first 10 editions coded (REAL, n=92 items)
 
-*Full item lists and URLs: `Gathered-Editions-Log.md`; structured dataset: `Dataset-NewVision-Editions-PILOT.csv` (one row per item, fieldwork-continuable). Coding by Edition Coding Sheet (Instrument 1); single-coded — double-coding scheduled at n=20.*
+*Full item lists and URLs: `Gathered-Editions-Log.md`; structured dataset: `Dataset-NewVision-Editions-PILOT.csv` (one row per item, fieldwork-continuable). Editions span 2002–2026; 1986–1999 requires the library rung (Wayback's earliest capture is March 2000). Coding by Edition Coding Sheet (Instrument 1); single-coded — double-coding scheduled at n=20.*
+
+**Table 4.3a (REAL): Edition register**
+
+| Edition (date) | Era/context | Items | Politics+Elections | Development-flagged |
+|---|---|---|---|---|
+| 2002-01-17 | Movement era (party activity restricted) | 5 | 2 | 2 |
+| 2005-01-01 | 3rd-term debate; LRA talks | 9 | 4 | 3 |
+| 2007-12-31 | Post-2006 polls; Kenya crisis | 11 | 3 | 2 |
+| 2008-12-30 | By-elections; LRA offensive | 12 | 3 | 2 |
+| 2010-01-05 | Land/corruption scandals | 11 | 5 | 1 |
+| 2010-06-16 | Pre-2011 polls year | 8 | 2 | 4 |
+| 2011-07-15 | Post-polls; food crisis | 7 | 2 | 2 |
+| 2016-01-20 | 29 days to Feb 2016 polls | 9 | 3 | 5 |
+| 2019-12-31 | Year-end review edition | 8 | 2 | 0 |
+| 2026-09-20 | Pre-2026 polls; live site | 12 | 3 | 3 |
+| **Total** | **10 editions** | **92** | **29 (32%)** | **24 (26%)** |
+
+**Table 4.3b (REAL): Issue distribution by decade**
+
+| Issue | 1996–2005 (n=14) | 2006–2015 (n=49) | 2016–2026 (n=29) | Total (n=92) |
+|---|---|---|---|---|
+| Politics (POL) | 6 (43%) | 15 (31%) | 5 (17%) | 26 (28%) |
+| Elections (ELE) | 0 | 0 | 3 (10%) | 3 (3%) |
+| Economy/Business (ECO) | 2 (14%) | 11 (22%) | 1 (3%) | 14 (15%) |
+| Health (HEA) | 1 (7%) | 2 (4%) | 1 (3%) | 4 (4%) |
+| Education (EDU) | 0 | 0 | 1 (3%) | 1 (1%) |
+| Security/Crime (SEC) | 0 | 4 (8%) | 3 (10%) | 7 (8%) |
+| Sport (SPO) | 3 (21%) | 7 (14%) | 3 (10%) | 13 (14%) |
+| Agriculture (AGR) | 0 | 1 (2%) | 1 (3%) | 2 (2%) |
+| Tourism (TOUR) | 0 | 0 | 1 (3%) | 1 (1%) |
+| Environment (ENV) | 1 (7%) | 1 (2%) | 1 (3%) | 3 (3%) |
+| Entertainment (ENT) | 0 | 0 | 2 (7%) | 2 (2%) |
+| International (INTL) | 0 | 5 (10%) | 3 (10%) | 8 (9%) |
+| General/Editorial (GEN) | 1 (7%) | 3 (6%) | 4 (14%) | 8 (9%) |
+| **Development-flagged** | **5 (36%)** | **11 (22%)** | **8 (28%)** | **24 (26%)** |
 
 **Table 4.3 (REAL): Issue distribution across 6 gathered editions (n=48 items)**
 
@@ -120,13 +155,14 @@ Two ACME election-monitoring datasets provide the strongest public evidence on N
 | Neutral/balanced | 3 | 25% | "Museveni accepts dialogue on land" + "Drama at Soroti MP Alice Alaso wedding" (2007); "Uganda pushes for UN action on development funding" (2026) |
 | Unfavourable/critical of state actors | 3 | 25% | "Kahinda Otafiire voted worst minister" (2007); "Local govts fail to recover sh8b from councillors" + "Uganda lacks half of required health workers" (2010) |
 
-**Women as sources/subjects (REAL, n=48):** 2 confirmed ("Fake doctor…" 2010 — mother + girl victims; "Drama at Soroti MP Alice Alaso wedding" 2007 — FDC secretary general) + 1 probable (2026 beauty-event story) — directionally consistent with the UMWA/ACME industry baseline of ~20% (§4.3.2); the full 100 will quantify it.
+**Women as sources/subjects (REAL, n=92):** 6 confirmed + 1 probable (~7%) — Betty Bigombe (2005 peace mediator), Syda Bbumba (2005, reader-voted worst minister), Alice Alaso (2007), Anifa Kawooya + Beti Kamya (2008), fake-doctor victims (2010), probable: 2026 beauty-event subject — well below the UMWA/ACME industry baseline of ~20% (§4.3.2); the full 100 will quantify it.
 
-**Preliminary interpretation (6-edition micro-sample — illustrative, NOT conclusive):**
-1. **Politics+elections = 13/48 (27%)** — even in an election window (20 Jan 2016, 29 days to polls) the online homepage led with sport, health, education and environment items; and in 2007 accountability content ("Otafiire voted worst minister" from a 3,077-reader survey) led the National section. This nuances the print-front-page bias finding: *online homepage agenda ≠ print front-page agenda* — flagged for the full study.
-2. **Development share varies sharply by edition type: 14/48 (29%) overall**, ranging from 56% (Jan 2016: health, education, environment) to 0% (31 Dec 2019 year-end review edition) — edition-day selection matters; the 100-edition sample must stratify by weekday/season to avoid cherry-picking.
-3. **Stance is mixed, not monolithic:** 50% favourable coexists with 25% accountability-critical items ("worst minister" 2007; "sh8b unrecovered" and "lacks half of health workers" 2010). First-blush support for the ToC's "bounded, not captured" P1 claim; the full 100 must test whether criticism survives in election windows and on national (vs. local) government.
-4. **Museveni-visibility check (Jan 2016):** this homepage shows 1 Museveni item of 9 — below ACME's print finding (front-page lead 15/31 days) — consistent with web/print agenda divergence, not contradiction.
+**Preliminary interpretation (10-edition sample, 2002–2026 — still preliminary, NOT conclusive):**
+1. **Politics+elections = 29/92 (32%)**, remarkably stable across eras (43% in the restricted Movement era 1996–2005; 31% mid-period; 27% recently) — even in the Movement-era sample the lead story was state control of opposition assembly ("Govt Will Block Next Party Rally", 2002), giving the Political Economy pathway its sharpest test case.
+2. **Development share 24/92 (26%)**, swinging 0% (2019 year-end edition) to 56% (Jan 2016) by edition type — edition-day selection is a genuine confound; the 100-edition sample must stratify by weekday/season. The Development Media pathway (P3) remains plausible but narrower than the 3-edition snapshot suggested.
+3. **Stance is mixed, not monolithic:** as the sample grew, neutral items rose to 41% and criticism settled at 24% — and the criticism is *accountability-typed* (IGG seizures, reader "worst minister" surveys, court cases, auditor reports) rather than frontal oppositional critique. Two reader-survey accountability stories (Bbumba 2005, Otafiire 2007) show a distinctive NV accountability *format* worth probing in the full study.
+4. **The state paper hosted contested politics on its own platforms:** 2005 discussion boards carried 3,510 posts on "Third Term?" and 3,085 on "Federo" — pre-social-media evidence for a bounded-but-real public sphere (P1) and a 24-year digital engagement arc (P4).
+5. **Museveni-visibility check (Jan 2016):** the archived homepage shows 1 Museveni item of 9 — below ACME's print finding (front-page lead 15/31 days) — consistent with web/print agenda divergence, not contradiction.
 
 #### [YOUR DATA — PENDING] Tables to complete at n=100: 4.5 Actor presence by decade; 4.6 Stance by decade × election-window; 4.7 Dominant frames in election items (Entman-lite). Figures: clustered bar chart of issue shares; stance trend line. Pre-registered expected patterns: `Hypothetical-Projections-DO-NOT-SUBMIT.md` (planning only — never submit).
 
@@ -147,7 +183,7 @@ Two ACME election-monitoring datasets provide the strongest public evidence on N
 - **Market leadership (print):** Q4 2019 — *Bukedde* 33,289; *New Vision* 23,636; *Monitor* 16,169 (ABC via Wikipedia [VERIFY original]).
 - **Ownership/finance structure:** state-majority (53.3%) USE-listed (NVL) since 2004 [VERIFY via USE/CMA].
 - **Diversification:** print → broadcast → digital → commercial printing → expos (launch years to verify per platform).
-- **Advertising footprint evolution (REAL, from the 6 gathered editions):** 2007 click-through banners (Abacus African Vacations, Budget Safaris, Uganda Online Law Library); 2010 display banners for Kenya Airways, NAADS, Dahabshiil, auto importers, safari firms; by 2016 self-service **"Book Advert"** online booking; by 2026 a dedicated **Advertising Rates page**, classifieds vertical, and expo businesses (Harvest Money, Bride & Groom). This documents the *commercialisation* leg of P2 across two decades even before revenue figures are obtained.
+- **Advertising footprint evolution (REAL, 2002→2026):** 2002 Metropolitan Forex Bureau banner + dedicated banner-advertising page; 2005 ICS/Jomayi; 2007–10 safari, airline (Kenya Airways), govt-campaign (NAADS) and remittance (Dahabshiil) advertisers; 2011 NAADS; 2016 self-service **"Book Advert"**; 2026 **Advertising Rates page**, classifieds vertical, expo businesses. This documents the *commercialisation* leg of P2 across 24 years even before revenue figures are obtained.
 
 ### 4.4.2 What the public record does NOT show (pilot gaps → full-study tasks)
 - Employment headcount/wage time-series; advertising-revenue/market-share series; printing-division revenues; expo economics; digital-revenue share. The pilot reports these as **documented absences** (with search trail) rather than pretending to measure them.
@@ -179,19 +215,18 @@ Two ACME election-monitoring datasets provide the strongest public evidence on N
 
 **Pilot interpretation:** the environment data reframes Objective 4 starkly — with 28% internet penetration, 72% rural population, and a 16.9-year median age, New Vision's digital future depends on a young, mostly-rural, mobile-first audience that is still largely offline: a direct test of Wasserman's (2011) digital-inequality warning (§2.7.2) and of whether any "networked journalism" model (Beckett, 2008) can pay (AMI, 2016).
 
-**Table 4.8 (REAL): New Vision's digital evolution from the 6 gathered editions (platform archaeology)**
+**Table 4.8 (REAL): New Vision's digital evolution from the 10 gathered editions (platform archaeology)**
 
-| Feature | 2007 | 2010 | 2016 | 2019 | 2026 live |
-|---|---|---|---|---|---|
-| Social/community | **Weblogs (blogs.php)** | Facebook page + @newvisionwire Twitter | (site chrome) | Disqus comments on stories | Full social distribution |
-| E-paper / apps | — | — | E-Paper **mobile + desktop apps** | Epaper link (epaper.visiongroup.co.ug) | E-Paper + **Premium paywall + login** |
-| Multimedia | — | — | Video, galleries, **podcasts** | NV TV + Podcasts sections | Podcasts + TV-on-air embed |
-| Election product | — | — | **Elections portal** (elections.co.ug) | — | **Elections Portal** in nav |
-| Verticals/services | Jobs.co.ug ("NEW"); sister titles | Jobs.co.ug; sister titles | Oil & Gas desk; Pakasa; Supplements/Tenders | Best Farmers, Toto, Pakasa, University/Schools Guides, Tenders/Notices | Jobs, Classified, Harvest Money, Bride & Groom Expo |
-| Languages | English + sisters | English + sisters | English (+ sisters) | English (+ sisters) | **3-language toggle: Runyankole/English/Luganda** |
-| Advertising | Click-through banners (Abacus, Budget Safaris, Law Library) | Banners (Kenya Airways, NAADS, Dahabshiil) | Self-service "Book Advert" | — | Advertising Rates page + expos |
+| Feature | 2002 | 2005 | 2007 | 2010 | 2016 | 2019 | 2026 live |
+|---|---|---|---|---|---|---|---|
+| Reader engagement | **Bulletin board** (54-post party debate) | **Forums: "Third Term?" 3,510 posts**; Federo 3,085 | Weblogs | Weblogs | (site chrome) | Disqus comments | Full social distribution |
+| News delivery | E-mail headlines newsletter; sister-title search | Latest-headlines module | — | — | RSS/subscribe | NV TV + Podcasts sections | Podcasts + TV-on-air embed |
+| E-paper / apps | — | — | — | — | E-Paper **mobile + desktop apps** | Epaper link | E-Paper + **Premium paywall + login** |
+| Election product | — | — | — | — | **Elections portal** (elections.co.ug) | — | **Elections Portal** in nav |
+| Verticals/services | Jobs; enteruganda.com portal; Archives page | Bukedde Luganda cross-promo | Jobs.co.ug ("NEW") | Jobs.co.ug | Oil & Gas desk; Pakasa; Tenders | Best Farmers, Toto, University/Schools Guides | Jobs, Classified, Harvest Money, Bride & Groom Expo |
+| Advertising | Metropolitan Forex banner; banner-advertising page | ICS + Jomayi banners | Click-through banners (safari/law) | Kenya Airways, NAADS, Dahabshiil, undertakers | Self-service "Book Advert" | — | Advertising Rates page + expos |
 
-*Reading:* a directly observed 19-year digitalisation arc (blogs 2007 → social 2010 → apps 2016 → podcasts/paywall/multilingual 2026) — P4's *investment* leg is documented from the archive itself; the *revenue* leg (does it pay?) remains the open question for the audit + survey willingness-to-pay items.
+*Reading:* a directly observed **24-year digitalisation arc (2002 bulletin boards & e-mail newsletters → 2005 mass forums → 2007–10 blogs & social → 2016 apps & podcasts → 2026 paywall & multilingual toggle)** — reader two-way engagement on a Ugandan news site *predates social media by eight years*, and P4's *investment* leg is documented from the archive itself; the *revenue* leg (does it pay?) remains the open question for the audit + survey willingness-to-pay items.
 
 ### [YOUR DATA — PENDING] §4.6.2–4.6.4: one-week platform-audit snapshot (followers, frequency, engagement, Luganda-vs-English mix, New Vision vs. Monitor); survey digital module (devices, willingness-to-pay, "more/less important" verdict); KII digital verdict; sustainability verdict (transformed / transforming / stuck).
 
