@@ -12,7 +12,7 @@ PARTS = [
     ("Chapter-2-Literature-Review-FINAL.md", None),
     ("Chapter-3-Research-Methodology-PILOT.md", None),
     ("Chapter-4-PILOT-Findings.md", None),
-    ("Chapter-5-Summary-Conclusions-Framework.md", None),
+    ("Chapter-5-Summary-Conclusions-DRAFT.md", None),
     ("References-FINAL-APA7.md", "REFERENCES"),
     ("Pilot-Instruments-Print-Ready.md", "APPENDIX A: PILOT RESEARCH INSTRUMENTS"),
     ("Theory-of-Change.md", "APPENDIX B: THEORY OF CHANGE"),
