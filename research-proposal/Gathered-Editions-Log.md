@@ -85,3 +85,33 @@
 
 ### Running totals (10 editions): n=92 items
 POL 26, ELE 3, ECO 14, HEA 4, EDU 1, SEC 7, SPO 13, AGR 2, TOUR 1, ENV 3, ENT 2, INTL 8, GEN 8. **Politics+elections 29/92 (32%)**. **Development-flagged 24/92 (26%)** — range 0% (2019 year-end) to 56% (Jan 2016) by edition type. **Stance (n=29 classifiable): FAV 10 (34%) / NEU 12 (41%) / UNF 7 (24%)**. **Women confirmed 6 + 1 probable /92** (Bigombe 2005, Bbumba 2005, Alaso 2007, Kawooya 2008, Kamya 2008, fake-doctor victims 2010).
+
+---
+
+## UPDATE — Session 4 (20 Sep 2026): 4 more editions → 14 editions, n=132 items
+
+### Entry 18 — NV-WB-2003-10-24 ✅ CODED (11 items; midweek retry succeeded where the 28 Dec weekend redirect failed)
+- URL: https://web.archive.org/web/20031024113534/http://www.newvision.co.ug/
+- Verbatim headlines: "Court halts AGOA girls dismissal" (ECO lead — High Court stops Tri-Star dismissals; WOMEN SUBJECTS: the strikers) | "Arrow Group to protect civilians" (SEC — Museveni on Teso militia mandate) | "Bashir, Kibaki arrive for IGAD summit" (INTL — Sudan/Kenya/Ethiopia/Somalia heads; Museveni-Bashir Kiganda-dance photo) | "7 die in Gateway crash" (SEC — bus hits trailer in Kenya) | "265 AGOA girls sacked" (ECO, UNF — management defied court order; WOMEN SUBJECTS) | "Mahmoud inherits TechnoServe chillies" (AGR) | "Sorghum bonanza" (AGR, DEV — farmers earn sh120m from epuripur to Nile Breweries) | "Eagles fume" (SPO — Express FC) | "FUFA files defence in Top TV petition" (SPO) | "Democracy, real and fake" (POL, NEU — Movement-multipartysm dialogue column) | "Control population growth" (GEN, DEV editorial).
+- Digital evidence (GOLD): discussion boards — "To Be or Not to Be Gay" **2,146 posts** (a 2003 Ugandan state-paper forum hosting the era's most contested social question), "Third Term?" 406, "Museveni on Third Term" 41, "IGG vs Government Leaders", "Cardinal Speaks"; sidebar community announcements (EAMI media-technology dialogue, Anti-Corruption Week launch); Gulu Independent Hospital + ERA "Electricity for all Ugandans" banners.
+
+### Entry 19 — NV-WB-2015-06-14 ✅ CODED (15 items; PRE-REDESIGN CMS captured — cracks the 2012–2014 shell barrier)
+- URL: https://web.archive.org/web/20150614213424/http://www.newvision.co.ug/
+- Verbatim headlines: "Museveni asks farmers to embrace regional markets" (AGR, FAV, DEV lead-partial) | "Buganda wins second Inter-Region tournament" (SPO — lady golfers) | "Nigerian player collapses, dies in Malaysia" (SPO) | "Mbogo mixed Hajats spice up schools basketball" (SPO) | "Uganda Cranes beat Botswana 2-0 in 2017 AFCON qualifier" (SPO — Massa/Umony, Namboole) | "Elgon Cup: Uganda puts up an impressive show" (SPO — Rugby Cranes) | "Coca Cola Rated Next into final stretch" (ENT) | "Dogs snub people who are mean to their owners: study" (GEN) | "Brain power on show as Sanyu wins Miss Uganda Eastern" (ENT — Bridget Sanyu; WOMAN) | "Coca-Cola national audition kick off at Ndere centre" (ENT) | "Should you check his phone?" (GEN lifestyle) | "Study sees success in training women to prevent rape" (HEA, DEV; WOMEN) | "Chimpanzees in West Africa observed indulging in habitual drinking" (ENV) | "Ronaldo's mum stopped at airport with 55,000 euros in handbag" (SPO; WOMAN) | "Why Bunkonzo Joint Cooperative Society may save Africa's agriculture" (AGR, DEV opinion).
+- Digital evidence: the .html-permalink kreatio-CMS site with section feeds and "12 hours ago" timestamps — a distinct platform generation between the 2011 table-layout site and the Jan-2016 redesign; Coca-Cola talent-franchise integration (advertiser-funded programming).
+
+### Entry 20 — NV-WB-2017-12-31 ✅ CODED (6 items; post-redesign kreatio site)
+- URL: https://web.archive.org/web/20171231223447/https://www.newvision.co.ug/ (year-redirect "2017")
+- Verbatim headlines: "Hundreds gather at Kololo for end of year prayers" (GEN) | "End of year address: Museveni assures Ugandans on security" (POL, FAV lead) | "Christians assemble for New Year prayers" (GEN) | "Africa's longest-serving president says war being prepared against him" (POL, FAV) | "Sydney kicks off global New Year celebrations" (GEN/INTL) | "Ministers laud Gen Saleh for incorporating artistes in wealth creation campaign" (POL, FAV, DEV — Ssempijja).
+- Digital evidence: Disqus comments; NV TV; Pearl of Africa; Opportunities (Jobs/Tenders/Notices); University/Schools Guides; Epaper link.
+
+### Entry 21 — NV-WB-2018-12-31 ✅ CODED (8 items)
+- URL: https://web.archive.org/web/20190101042735/https://www.newvision.co.ug/ (year-redirect "2018")
+- Verbatim headlines: "As it happened: Museveni's New Year address" (POL, FAV — LIVE BLOG, "nine issues") | "Five family members killed in Kyazanga accident" (SEC — Dr. Livingstone Kimbugwe Byamungu + 4 children) | "Archbishop Lwanga: UJCC chairman's New Year message" (GEN) | "Vipers name Michael Ouma as interim head coach" (SPO) | "Veteran Ugandan musician Wassanyi Sserukenya dies" (ENT) | **"New Vision reader builds house for 130-year-old woman"** (GEN, DEV; WOMEN — MP Cecilia Ogwal read the NV story, visited, built the house: the paper's own impact loop, documented by itself) | "Tense DR Congo counts vote in presidential poll" (INTL) | "African football chief to be extradited to ICC" (SPO/INTL).
+- Digital evidence: live-blog format; Ugandan History subdomain (ugandahistory.newvision.co.ug).
+
+### Entries 22–25 — FAILED captures (final confirmation; STOP retrying 2012–2014)
+- 2012-10-14 (20121014182659): shell, 1 chunk. 2013-06-17 (20130617053148): shell. Together with Jan-1 2012/2013 and Jul-15 2014: **the 2012–2014 homepage era is systematically uncapturable** (olympics.gif lightbox shells). 2015+ works (different CMS). For the full study, source 2012–2014 items from the print archive or dated story URLs.
+
+### Running totals (14 editions): n=132 items
+POL 31, ELE 4, ECO 16, HEA 5, EDU 1, SEC 10, SPO 23, AGR 6, TOUR 1, ENV 4, ENT 6, INTL 10, GEN 16. **Politics+elections 35/132 (27%)** — decade splits: 28% (1996–2005), 23% (2006–2015), 28% (2016–2026). **Development-flagged 33/132 (25%)** — 36% / 22% / 23%. **Stance (n=35 classifiable): FAV 15 (43%) / NEU 14 (40%) / UNF 8 (23%)**. **Women confirmed 12 + 1 probable /132 (~9%)**. Coverage now spans 2002–2026 with every year-band 2002–2011, 2015–2019, 2026 represented.

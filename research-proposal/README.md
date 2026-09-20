@@ -21,8 +21,8 @@
 | `Chapter-4-Findings-Framework.md` | Full-study Chapter 4 shell (roadmap) | Framework |
 | `Chapter-5-Summary-Conclusions-Framework.md` | Shell for Chapter 5 | Framework |
 | `Pilot-Instruments-Print-Ready.md` | **4 print-ready instruments (coding sheet, questionnaire, KII guide, audit)** | Ready to pretest |
-| `Gathered-Editions-Log.md` | **Edition coverage log: 10 coded (2002–2026) + failures + runbook to 100** | 10/100 — real data |
-| `Dataset-NewVision-Editions-PILOT.csv` | **Structured coded dataset, one row per item (n=92), every row URL-traceable** | Main findings source — real |
+| `Gathered-Editions-Log.md` | **Edition coverage log: 14 coded (2002–2026) + failures + runbook to 100** | 14/100 — real data |
+| `Dataset-NewVision-Editions-PILOT.csv` | **Structured coded dataset, one row per item (n=132), every row URL-traceable** | Main findings source — real |
 | `Chapter-2-Literature-Review-FINAL.md` | **Full-prose Chapter Two with APA 7th in-text citations** | Supervisor-ready |
 | `References-FINAL-APA7.md` | **APA 7th alphabetical reference list (endnote style)** | Use this, not References.md |
 | `References-EndNote.ris` | **EndNote import file (RIS) for all cited sources** | File → Import in EndNote/Zotero/Mendeley |
