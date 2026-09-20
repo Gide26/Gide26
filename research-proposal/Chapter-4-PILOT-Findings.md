@@ -153,7 +153,43 @@ Two ACME election-monitoring datasets provide the strongest public evidence on N
 5. **Reader-impact loop documented by the paper itself:** "New Vision reader builds house for 130-year-old woman" (2018) — an MP (Cecilia Ogwal) acted on an NV report; a Uses & Gratifications / Development Media artifact for triangulating P3.
 6. **Museveni-visibility check (Jan 2016):** the archived homepage shows 1 Museveni item of 9 — below ACME's print finding (front-page lead 15/31 days) — consistent with web/print agenda divergence, not contradiction.
 
-#### [YOUR DATA — PENDING] Tables to complete at n=100: 4.5 Actor presence by decade; 4.6 Stance by decade × election-window; 4.7 Dominant frames in election items (Entman-lite). Figures: clustered bar chart of issue shares; stance trend line. Pre-registered expected patterns: `Hypothetical-Projections-DO-NOT-SUBMIT.md` (planning only — never submit).
+#### Tables 4.5–4.7 and Figures 4.1–4.2 (pilot versions inserted)
+
+**Figure 4.1 (REAL):** clustered bar chart of issue shares by decade — file `Figure-4.1-Issue-Shares-REAL.png`. Politics+elections is stable at 23–28% across all three decades; economy+agriculture falls from 24% to 5% (edition-mix effect: ceremony-heavy recent editions); general/editorial rises to 21% (year-end review editions). Insert the PNG here.
+
+**Figure 4.2 (REAL):** stance trend by decade — file `Figure-4.2-Stance-Trend-REAL.png`. The archive-visible trajectory is **non-linear**: neutral-dominated in 1996–2005 (67%), an accountability peak in 2006–2015 (UNF 33% — the IGG/AGOA/reader-survey era), then 91% favourable in 2016–2026 with **zero critical items coded**. ⚠ Caveats printed on the figure itself: 3 of 4 recent editions are ceremonial year-end editions, and the 2012–2014 archive gap removes mid-decade coverage — treat the recent spike as a hypothesis to test at n=100, not a capture verdict.
+
+**Table 4.5 (REAL denominators; ⛔ SIMULATED actor shares): Actor presence by decade (share of political items naming each actor; multiple actors possible)**
+
+| Decade | Political items (REAL n) | President/State House ⛔ | Government/ministers ⛔ | Opposition ⛔ | Citizens/vox-pop ⛔ |
+|---|---|---|---|---|---|
+| 1996–2005 | 7 | 43% | 57% | 14% | 14% |
+| 2006–2015 | 15 | 33% | 47% | 27% | 27% |
+| 2016–2026 | 12 | 50% | 42% | 25% | 25% |
+
+*Simulated pattern follows the pre-registered projection (opposition and citizen presence rising over time); the full study codes actors from the instrument's actor list — REAL overall anchor: women named in ~10% of all 132 items.*
+
+**Table 4.6 (REAL counts; percentages indicative given tiny n): Stance × election-window**
+
+| Window | Classifiable items (REAL n) | FAV | NEU | UNF |
+|---|---|---|---|---|
+| Election-window editions (20 Jan 2016 polls window; 15 Jul 2011 vote-recount day) | 2 | 1 (50%) | 1 (50%) | 0 |
+| Non-window editions | 34 | 14 (41%) | 12 (35%) | 8 (24%) |
+
+*The pilot's election-window cell is too small to interpret (2 classifiable items) — reported honestly to justify the full study's 25-edition-per-decade stratification, which will yield ~50+ window items. Pre-registered expectation: window FAV share ≫ non-window FAV share (`Hypothetical-Projections-DO-NOT-SUBMIT.md`, planning only — never submit).*
+
+**Table 4.7 (⛔ SIMULATED): Dominant frames in political/election items (Entman-lite; Instrument 1 §D codes)**
+
+| Dominant frame | Share of political items (simulated) | Example anchor (REAL headline) |
+|---|---|---|
+| Stability/order | 34% | "Govt Will Block Next Party Rally" (2002) |
+| Development-progress | 26% | "Govt gives farmers 150 tractors" (2026) |
+| Accountability/waste | 17% | "IGG to seize property of 3 leaders" (2010) |
+| National prestige/unity | 14% | "Museveni's 82nd birthday at Kololo" (2026) |
+| Liberation-legacy | 6% | "Africa's longest-serving president says war being prepared against him" (2017) |
+| Conflict | 3% | (rare in NV sample) |
+
+*Frame column simulated; the example column is REAL — at n=100 the frame codes come from Instrument 1 §D with Cohen's κ reported per frame.*
 
 ### 4.3.5 Survey agenda + trust items ⛔ SIMULATED DEMONSTRATION (real n=27 being coded)
 
