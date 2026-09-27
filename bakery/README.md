@@ -106,6 +106,7 @@ npm run seed-demo         # load 60 days of demo data (fails if data exists)
 npm run reset-password    # interactively reset a user's password
 npm run backup            # copy the database into data/backups/
 npm run wipe              # delete all data (asks for confirmation)
+npm test                  # end-to-end checks against a RUNNING server
 
 node server/cli.js stats       # table row counts
 node server/cli.js list-users  # every account and role
@@ -114,6 +115,17 @@ node server/cli.js create-owner
 
 Environment variables: `PORT` (default 3000), `HOST` (default 0.0.0.0),
 `BAKERY_DB`, `BAKERY_DATA_DIR`, `BAKERY_SEED` (`demo` or `empty`).
+
+### Tests
+
+`npm test` runs `test/smoke.sh` against a running server. It signs in as owner
+and as staff and asserts the guarantees the offline design depends on: a
+replayed sale returns the original record instead of selling twice; an edit
+carrying a stale `updated_at` is refused with `409` carrying both timestamps and
+is never applied; a delete replayed after the row is gone is satisfied rather
+than erroring; staff cannot edit products or read owner reports; and the PWA
+manifest and icon set are served as branded. It is deliberately a black-box
+script over HTTP, so it tests the contract a phone actually relies on.
 
 ---
 
