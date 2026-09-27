@@ -377,6 +377,36 @@ never caches `/api/`, so two devices can never disagree about what has been sold
 
 ---
 
+## Keeping it running
+
+The server is an ordinary program on your computer: while it runs, every device
+works; stop it and the app stops answering. **Nothing is ever lost** — the
+database is a file in `bakery/data/`, and the next start resumes exactly where
+you left off.
+
+- **Simplest:** leave the terminal window open and minimised.
+- **No window at all (Windows):** double-click `windows/start-hidden.vbs`. The
+  server runs in the background with nothing on screen. Double-click
+  `windows/stop-server.bat` to stop it; that script ends only the process
+  listening on port 3000.
+- **Start at boot (Windows):** press Win+R, type `shell:startup`, Enter, and drop
+  a shortcut to `windows/start-hidden.vbs` in the folder that opens. Delete the
+  last line of the `.vbs` first so no message box appears at login.
+- **Keep the computer awake:** if Windows sleeps, the server sleeps with it.
+  Settings → System → Power & battery → put the device to sleep → *Never* while
+  plugged in.
+
+When the server cannot be reached — outage, switched-off computer, closed
+terminal — an installed phone app still opens and still trades: sales, expenses
+and edits queue on the phone and send themselves once the server is back. A
+switched-off computer therefore costs you live sync and reports, not trading.
+
+For round-the-clock operation without your own computer, run the same folder on
+any always-on machine or a small VPS: same commands, same `data/` folder, and
+point your devices at its address.
+
+---
+
 ## Notes
 
 - Money is stored as integers in BIF and rounded to the configured number of
