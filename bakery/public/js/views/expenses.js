@@ -6,7 +6,8 @@ import { api } from '../api.js';
 import { state, isOwner, invalidate } from '../store.js';
 import { icon, $, on, toast, busy, sheet, emptyState, confirmDialog,
   bindRangePicker, defaultRange } from '../ui.js';
-import { money, moneyCompact, num, esc, dateTime, dateOnly, todayStr } from '../format.js';
+import { money, moneyCompact, num, esc, dateTime, dateOnly, todayStr, localStamp } from '../format.js';
+import { enqueue, makeRef, countOutbox } from '../offline.js';
 import { hbars } from '../charts.js';
 
 export async function render(host) {
@@ -150,16 +151,51 @@ export async function render(host) {
           if (!String(d.title).trim()) return toast('What was it for?', 'warn');
           if (!(Number(d.amount) > 0)) return toast('Enter an amount above zero', 'warn');
           const btn = $('[data-save]', el);
+          const payload = {
+            title: d.title, amount: Number(d.amount), category: d.category,
+            note: d.note || null, expense_at: d.date ? `${d.date} 12:00:00` : localStamp(),
+          };
+          const isOffline = typeof navigator !== 'undefined' && navigator.onLine === false;
+
+          // A new expense can be captured offline. Editing or deleting one cannot:
+          // that needs the stored record, and guessing at it would risk clobbering
+          // a change made on another device.
+          if (isOffline && !isNew) {
+            return toast('Editing an expense needs a connection — this one will keep until you reconnect', 'warn', 5000);
+          }
+          if (isOffline) {
+            busy(btn, true, 'Saving');
+            try {
+              await enqueue('expense', { ...payload, client_ref: makeRef('exp') }, {
+                label: `${d.title} · ${money(payload.amount)}`,
+              });
+              busy(btn, false);
+              toast(`${money(payload.amount)} saved on this device — it will send when you reconnect`, 'ok', 4200);
+              closeSheet();
+            } catch (err2) { busy(btn, false); toast(`Could not save on this device: ${err2.message || ''}`, 'bad', 6000); }
+            return;
+          }
+
           busy(btn, true, 'Saving');
           try {
-            await api.saveExpense(isNew ? null : e.id, {
-              title: d.title, amount: Number(d.amount), category: d.category,
-              note: d.note || null, expense_at: d.date ? `${d.date} 12:00:00` : undefined,
-            });
+            await api.saveExpense(isNew ? null : e.id, { ...payload, client_ref: isNew ? makeRef('exp') : undefined });
             toast(isNew ? `${money(d.amount)} recorded` : 'Expense updated', 'ok');
             closeSheet();
             await load();
-          } catch (err) { busy(btn, false); toast(err.message, 'bad'); }
+          } catch (err) {
+            busy(btn, false);
+            // Connection dropped mid-save. Queue it; the client_ref stops a retry
+            // from recording the same expense twice.
+            if (isNew && (err?.offline || err?.status === 0)) {
+              try {
+                await enqueue('expense', { ...payload, client_ref: makeRef('exp') }, { label: `${d.title} · ${money(payload.amount)}` });
+                toast(`Connection lost — ${money(payload.amount)} saved on this device instead`, 'warn', 5000);
+                closeSheet();
+                return;
+              } catch { /* fall through to the plain error */ }
+            }
+            toast(err.message, 'bad');
+          }
         });
         if (!isNew) {
           on(el, 'click', '[data-delete]', async () => {

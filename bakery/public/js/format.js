@@ -157,6 +157,37 @@ export function todayStr() {
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
 }
 
+/**
+ * A naive wall-clock stamp ('YYYY-MM-DD HH:MM:SS') for `when`, expressed in the
+ * BUSINESS timezone rather than the device's.
+ *
+ * This exists for offline capture. A sale queued on a phone during an outage is
+ * replayed hours later, and the handset may be set to any timezone at all. The
+ * server stores sale_at as business-local time, so converting here is what stops
+ * a Saturday evening sale from being reported on Sunday — or from landing on a
+ * day the bakery was shut.
+ */
+export function localStamp(when = new Date()) {
+  const d = when instanceof Date ? when : new Date(when);
+  if (Number.isNaN(d.getTime())) return null;
+  const pad = (n) => String(n).padStart(2, '0');
+  try {
+    const p = new Intl.DateTimeFormat('en-CA', {
+      timeZone: CFG.timezone, hour12: false,
+      year: 'numeric', month: '2-digit', day: '2-digit',
+      hour: '2-digit', minute: '2-digit', second: '2-digit',
+    }).formatToParts(d).reduce((a, x) => { a[x.type] = x.value; return a; }, {});
+    // Some engines render midnight as '24' with hour12:false.
+    const hour = p.hour === '24' ? '00' : p.hour;
+    return `${p.year}-${p.month}-${p.day} ${hour}:${p.minute}:${p.second}`;
+  } catch {
+    // Unknown timezone: fall back to the device clock. Losing the timezone is
+    // better than losing the sale.
+    return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())} `
+      + `${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
+  }
+}
+
 export function monthStartStr() {
   if (CFG.monthStart) return CFG.monthStart;
   const d = new Date();

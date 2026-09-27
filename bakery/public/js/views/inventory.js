@@ -7,7 +7,8 @@ import { api } from '../api.js';
 import { state, isOwner, loadData, invalidate } from '../store.js';
 import { icon, $, on, toast, busy, sheet, emptyState, confirmDialog,
   rangePickerHtml, bindRangePicker, defaultRange } from '../ui.js';
-import { money, moneyCompact, num, qty, esc, dateTime, kindLabel, shortDate } from '../format.js';
+import { money, moneyCompact, num, qty, esc, dateTime, kindLabel, shortDate, localStamp } from '../format.js';
+import { getCache, enqueue, makeRef } from '../offline.js';
 
 const TABS = [
   { id: 'stock', label: 'Stock levels', icon: 'box' },
@@ -67,18 +68,44 @@ export async function render(host, ctx) {
   /* ---------------- stock levels ---------------- */
 
   async function paintStock() {
-    const rows = await api.ingredients({ active: '0', q: filter.q });
+    let rows;
+    // When offline we fall back to the last cached snapshot, but we deliberately
+    // do NOT show its quantities: a number that looks current but is hours stale
+    // is worse than no number at all, because someone will reorder against it.
+    let offlineStock = false;
+    try {
+      rows = await api.ingredients({ active: '0', q: filter.q });
+    } catch {
+      const cached = await getCache('bootstrap');
+      const list = cached?.ingredients;
+      if (!Array.isArray(list) || !list.length) {
+        throw new Error('Stock levels need a connection, and this device has no saved ingredient list yet.');
+      }
+      offlineStock = true;
+      rows = list.map((r) => ({ ...r, active: 1, low: false, supplier: null }));
+      if (filter.q) {
+        const q = filter.q.toLowerCase();
+        rows = rows.filter((r) => String(r.name).toLowerCase().includes(q));
+      }
+    }
     const active = rows.filter((r) => r.active);
     const low = active.filter((r) => r.low);
     const value = active.reduce((a, r) => a + Number(r.value || 0), 0);
     const shown = filter.onlyLow ? low : active;
 
-    kpis.innerHTML = `
+    kpis.innerHTML = offlineStock ? `
+      ${kpi('Working offline', num(active.length), 'ingredients from the last sync', 'wifiOff')}
+      ${kpi('Quantities', '—', 'hidden until you reconnect', 'box')}
+      ${kpi('Can still record', 'Yes', 'waste and purchases are queued', 'check')}` : `
       ${kpi('Stock lines', num(active.length), `${low.length} below reorder level`, 'box')}
       ${owner ? kpi('Value on shelf', moneyCompact(value, true), 'at current supplier prices', 'wallet') : ''}
       ${kpi('Needs reordering', num(low.length), low.length ? low.slice(0, 2).map((l) => l.name).join(', ') : 'Everything is stocked up', 'alert')}`;
 
     body.innerHTML = `
+      ${offlineStock ? `<div class="pill-note" style="margin-bottom:12px">${icon('wifiOff', { size: 17 })}
+        <div><strong>Offline.</strong> Quantities and reorder warnings are hidden because the last
+        saved figures would be misleading. You can still open an ingredient and record a movement —
+        it is stored on this device and sent when you reconnect.</div></div>` : ''}
       <div class="card" style="margin-bottom:12px">
         <div class="card-body">
           <div class="search-wrap" style="margin-bottom:10px">
@@ -104,6 +131,19 @@ export async function render(host, ctx) {
       </div>`;
 
     function rowHtml(r) {
+      if (offlineStock) {
+        return `
+        <div class="list-item clickable" data-ing="${r.id}" role="button" tabindex="0">
+          <span class="thumb">${icon('box', { size: 18 })}</span>
+          <span class="list-main">
+            <span class="list-title">${esc(r.name)}</span>
+            <span class="list-sub">reorder at ${esc(qty(r.reorder_level))} ${esc(r.unit)} · quantity hidden offline</span>
+          </span>
+          <span class="list-side">
+            <span class="badge">—</span>
+          </span>
+        </div>`;
+      }
       const ratio = Number(r.reorder_level) > 0
         ? Math.min(1.6, Number(r.stock) / Number(r.reorder_level)) : 1;
       const cls = r.low ? (Number(r.stock) <= 0 ? 'bad' : 'warn') : 'ok';
@@ -397,6 +437,23 @@ export async function render(host, ctx) {
           if (kind === 'purchase') payload.unit_cost = Number(d.unit_cost) || 0;
 
           const btn = $('[data-save-move]', el);
+          const isOffline = typeof navigator !== 'undefined' && navigator.onLine === false;
+          const queued = { ...payload, ingredient_id: ing.id, client_ref: makeRef('stk') };
+
+          // Offline: store it on the device. The stock figure cannot be updated
+          // locally without risking a wrong number, so we say plainly that the
+          // level will change once it reaches the server.
+          if (isOffline) {
+            busy(btn, true, 'Saving');
+            try {
+              await enqueue('stock', queued, { label: `${kindLabel(kind)} · ${ing.name}` });
+              busy(btn, false);
+              toast(`${kindLabel(kind)} saved on this device — ${ing.name} will update when you reconnect`, 'ok', 4600);
+              closeSheet();
+            } catch (err2) { busy(btn, false); toast(`Could not save on this device: ${err2.message || ''}`, 'bad', 6000); }
+            return;
+          }
+
           busy(btn, true, 'Saving');
           try {
             const out = await api.stockMove(ing.id, payload);
@@ -405,7 +462,18 @@ export async function render(host, ctx) {
             toast(`Stock ${dir}: now ${qty(out.stock)} ${ing.unit}${out.cost_updated ? ' · cost per unit updated' : ''}`, 'ok', 3800);
             closeSheet();
             paint();
-          } catch (err) { busy(btn, false); toast(err.message, 'bad'); }
+          } catch (err) {
+            busy(btn, false);
+            if (err?.offline || err?.status === 0) {
+              try {
+                await enqueue('stock', queued, { label: `${kindLabel(kind)} · ${ing.name}` });
+                toast(`Connection lost — ${kindLabel(kind).toLowerCase()} saved on this device instead`, 'warn', 5000);
+                closeSheet();
+                return;
+              } catch { /* fall through */ }
+            }
+            toast(err.message, 'bad');
+          }
         });
       },
     });

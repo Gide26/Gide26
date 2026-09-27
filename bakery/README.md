@@ -15,7 +15,7 @@ nothing to install.
 | Currency | Burundian franc (BIF, `FBu`, 0 decimal places) |
 | Timezone | Africa/Bujumbura by default, configurable |
 | Front-end | Vanilla ES modules, installable PWA |
-| Code | ~7,000 lines across 34 files |
+| Code | ~9,700 lines across 33 source files |
 
 ---
 
@@ -138,6 +138,7 @@ public/
     app.js       boot, navigation, route rendering with a race guard
     router.js    hash router
     store.js     session state, cached data loading, settings
+    offline.js   IndexedDB outbox: queue writes offline, replay them idempotently
     api.js       fetch wrapper, endpoint methods
     format.js    money, dates, quantities, percentages, escaping
     ui.js        toasts, sheets, dialogs, icons, skeletons
@@ -190,16 +191,67 @@ Everything lives in `data/bakery.sqlite`. That directory is git-ignored.
 - `npm run wipe` deletes it and starts over.
 - Invoice numbering is self-healing: it takes the higher of the stored counter
   and the largest existing invoice number, so a restored backup never collides.
+- Offline writes carry a `client_ref` idempotency key, backed by a unique partial
+  index on `sales`, `expenses` and `stock_moves`. Replaying a queued item can
+  never double-count it.
 
 ---
+
+## Offline and online
+
+**Online** is the normal case: every device talks to the same server, so a sale
+rung up on the phone appears on the desktop immediately.
+
+**Offline** the till keeps working. This matters — a bakery cannot stop trading
+because the connection dropped.
+
+| While offline | |
+|---|---|
+| Open the app | Yes — the shell is cached, screens open instantly |
+| Take a sale | Yes — queued on the device |
+| Record an expense | Yes — queued on the device |
+| Record waste or a purchase | Yes — queued on the device |
+| Print a receipt | Yes — a provisional one, marked as not yet sent |
+| See stock quantities | **No** — deliberately hidden |
+| Read reports or history | No — that needs the server |
+
+Queued writes go to **IndexedDB**, not `localStorage`, because it is durable
+storage and survives clearing browsing data in an installed PWA. They survive
+closing the tab and rebooting the phone. The queue drains automatically when the
+connection returns, oldest first, and can be sent by hand from the Sales screen,
+which also lists everything still waiting.
+
+Two guarantees make this safe:
+
+**Nothing is duplicated.** Every queued write carries a client-generated
+`client_ref`, which the server treats as an idempotency key (a unique partial
+index on each table). This matters because the dangerous case is ambiguous: the
+request reached the server, the sale was recorded, and the reply was lost. The
+client cannot tell, so it retries — and the server returns the original record
+instead of selling twice. A sale replayed five times is stored once.
+
+**Nothing is dated wrongly.** An offline sale is timestamped in the *business*
+timezone at the moment it was taken, not when it syncs. A phone set to another
+timezone, or a queue that drains the next morning, still reports the sale on the
+day it actually happened.
+
+Stock quantities are hidden offline on purpose. A number that looks current but
+is hours stale is worse than no number, because someone will reorder against it.
+Movements are still recorded; the level updates when they reach the server.
+
+If the server rejects a queued item — a product was deleted mid-outage, say —
+that item is parked with the server's exact reason and shown on the Sales screen
+for someone to fix, rather than silently retried forever or blocking the rest of
+the queue.
 
 ## Installing as an app
 
 The site is a Progressive Web App. On Android Chrome, the menu offers **Install
 app**; on iOS Safari, **Share → Add to Home Screen**. It then launches
-full-screen with its own icon. The service worker caches only the app shell, so
-the screens open instantly, while every data request always goes to the network
-— you never see stale numbers.
+full-screen with its own icon. The service worker caches the app shell — every
+JS module, the stylesheet and the icon — so screens open instantly, while data
+requests always go to the network. It never caches `/api/`, so two devices can
+never disagree about what has been sold.
 
 ---
 
@@ -208,6 +260,8 @@ the screens open instantly, while every data request always goes to the network
 - Money is stored as integers in BIF and rounded to the configured number of
   decimal places (0 for BIF). Changing `currency_decimals` in settings affects
   display only.
+- Product and category breakdowns allocate each sale's discount pro-rata across
+  its lines, so they sum exactly to headline revenue rather than overstating it.
 - Timestamps are stored in UTC and rendered in the business timezone. "Today"
   comes from the server, so a phone set to the wrong date still reports the
   right day.

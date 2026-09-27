@@ -4,7 +4,7 @@
  */
 import {
   db, tx, money, now, tz, decimals, getSetting, getSettings, setSettings,
-  hashPassword, unitCostOf, nextInvoiceNo, tableCounts, isEmpty,
+  hashPassword, unitCostOf, nextInvoiceNo, tableCounts, isEmpty, findByClientRef,
 } from './db.js';
 import {
   str, strOrNull, num, int, idOrNull, bool, round, clip, require_, requireAmount,
@@ -22,6 +22,32 @@ import { seedDemo } from './seed.js';
  * ------------------------------------------------------------------ */
 
 const METHODS = ['cash', 'mobile', 'card', 'credit'];
+
+/**
+ * Shape a response for a record we have already stored, when a client replays
+ * a queued offline write. Only the fields that are actually persisted can be
+ * reported; transient values like cash `change` are not recoverable, so they
+ * come back null and the client keeps the copy it made at the time of sale.
+ */
+function replayedSale(row) {
+  return {
+    ok: true, replay: true, id: row.id, invoice_no: row.invoice_no,
+    subtotal: money(row.subtotal), discount: money(row.discount), total: money(row.total),
+    paid: money(row.paid), due: money(num(row.total) - num(row.paid)), status: row.status,
+    method: row.method, change: null, stock_moves: null, sale_at: row.sale_at, low_stock: [],
+  };
+}
+
+function replayedExpense(row) {
+  return { ok: true, replay: true, id: row.id, title: row.title,
+    amount: money(row.amount), category: row.category };
+}
+
+function replayedMove(row, ing) {
+  return { ok: true, replay: true, id: row.id, stock: money(num(ing?.stock)),
+    signed: num(row.qty), total_cost: money(row.total_cost), unit_cost: money(row.unit_cost),
+    cost_updated: false };
+}
 const MOVE_KINDS = ['purchase', 'usage', 'waste', 'adjustment'];
 const EXPENSE_CATEGORIES = ['Rent', 'Utilities', 'Salaries', 'Transport', 'Equipment',
   'Ingredients', 'Packaging', 'Marketing', 'Permits', 'Repairs', 'Other'];
@@ -61,8 +87,8 @@ function normaliseWhen(value, fallback) {
 const getIngredient = db.prepare('SELECT * FROM ingredients WHERE id = ?');
 const setStock = db.prepare('UPDATE ingredients SET stock = ? WHERE id = ?');
 const insMove = db.prepare(
-  `INSERT INTO stock_moves (ingredient_id, kind, qty, unit_cost, total_cost, note, ref, user_id, created_at)
-   VALUES (?,?,?,?,?,?,?,?,?)`);
+  `INSERT INTO stock_moves (ingredient_id, kind, qty, unit_cost, total_cost, note, ref, user_id, created_at, client_ref)
+   VALUES (?,?,?,?,?,?,?,?,?,?)`);
 
 /* ------------------------------------------------------------------ *
  * Routes
@@ -414,6 +440,11 @@ export function registerApiRoutes(r) {
     requireUser(ctx);
     const ing = mustExist('ingredients', ctx.params.id, 'Ingredient');
     const b = ctx.body ?? {};
+    const clientRef = strOrNull(clip(b.client_ref, 80));
+    if (clientRef) {
+      const dup = findByClientRef('stock_moves', clientRef);
+      if (dup) return replayedMove(dup, ing);
+    }
     const kind = str(b.kind);
     if (!MOVE_KINDS.includes(kind)) throw badRequest(`kind must be one of: ${MOVE_KINDS.join(', ')}`);
 
@@ -449,7 +480,7 @@ export function registerApiRoutes(r) {
       const stamp = now();
 
       insMove.run(ing.id, kind, signed, unitCost, totalCost, strOrNull(clip(b.note, 300)),
-        strOrNull(clip(b.ref, 60)), ctx.user.id, stamp);
+        strOrNull(clip(b.ref, 60)), ctx.user.id, stamp, clientRef);
 
       const newStock = round(num(ing.stock) + signed, 3);
       setStock.run(newStock, ing.id);
@@ -662,7 +693,7 @@ export function registerApiRoutes(r) {
         const back = round(-num(m.qty), 3);
         if (!back) continue;
         insMove.run(ing.id, 'adjustment', back, money(ing.cost_per_unit), money(Math.abs(back) * num(ing.cost_per_unit)),
-          `Reversal of voided ${s.invoice_no}`, s.invoice_no, ctx.user.id, stamp);
+          `Reversal of voided ${s.invoice_no}`, s.invoice_no, ctx.user.id, stamp, null);
         setStock.run(round(num(ing.stock) + back, 3), ing.id);
       }
     });
@@ -712,10 +743,15 @@ export function registerApiRoutes(r) {
     if (amount <= 0) throw badRequest('Amount must be above zero');
     const category = clip(str(b.category, 'Other'), 60);
     const when = normaliseWhen(b.expense_at, now());
+    const clientRef = strOrNull(clip(b.client_ref, 80));
+    if (clientRef) {
+      const dup = findByClientRef('expenses', clientRef);
+      if (dup) return replayedExpense(dup);
+    }
     const id = Number(db.prepare(
-      'INSERT INTO expenses (title, category, amount, note, user_id, expense_at, created_at) VALUES (?,?,?,?,?,?,?)')
-      .run(title, category, amount, strOrNull(clip(b.note, 400)), ctx.user.id, when, now()).lastInsertRowid);
-    return { id, title, amount, category };
+      'INSERT INTO expenses (title, category, amount, note, user_id, expense_at, created_at, client_ref) VALUES (?,?,?,?,?,?,?,?)')
+      .run(title, category, amount, strOrNull(clip(b.note, 400)), ctx.user.id, when, now(), clientRef).lastInsertRowid);
+    return { ok: true, replay: false, id, title, amount, category };
   });
 
   r.put('/api/expenses/:id', (ctx) => {
@@ -902,6 +938,16 @@ export function registerApiRoutes(r) {
 function createSale(ctx) {
   const user = requireUser(ctx);
   const b = ctx.body ?? {};
+
+  // A phone that queued this sale while offline may send it more than once if
+  // the connection drops mid-request. client_ref is its idempotency key: if the
+  // sale is already recorded we answer with the original instead of selling twice.
+  const clientRef = strOrNull(clip(b.client_ref, 80));
+  if (clientRef) {
+    const dup = findByClientRef('sales', clientRef);
+    if (dup) return replayedSale(dup);
+  }
+
   const rawItems = Array.isArray(b.items) ? b.items : [];
   if (!rawItems.length) throw badRequest('Add at least one item');
   if (rawItems.length > 200) throw badRequest('Too many lines on one sale');
@@ -963,10 +1009,10 @@ function createSale(ctx) {
   return tx(() => {
     const invoice = nextInvoiceNo();
     const saleId = Number(db.prepare(
-      `INSERT INTO sales (invoice_no, customer_id, user_id, subtotal, discount, total, paid, method, status, note, sale_at, created_at)
-       VALUES (?,?,?,?,?,?,?,?,?,?,?,?)`)
+      `INSERT INTO sales (invoice_no, customer_id, user_id, subtotal, discount, total, paid, method, status, note, sale_at, created_at, client_ref)
+       VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)`)
       .run(invoice, customerId, user.id, subtotal, discount, total, paid, method, status,
-        strOrNull(clip(b.note, 300)), saleAt, stamp).lastInsertRowid);
+        strOrNull(clip(b.note, 300)), saleAt, stamp, clientRef).lastInsertRowid);
 
     const insItem = db.prepare(
       `INSERT INTO sale_items (sale_id, product_id, name, qty, unit_price, line_total, unit_cost, line_cost)
@@ -986,7 +1032,7 @@ function createSale(ctx) {
           if (!ing) continue;
           const cost = money(used * num(ing.cost_per_unit));
           insMove.run(ing.id, 'usage', -used, money(ing.cost_per_unit), cost,
-            `Used in ${invoice}`, invoice, user.id, stamp);
+            `Used in ${invoice}`, invoice, user.id, stamp, null);
           setStock.run(round(num(ing.stock) - used, 3), ing.id);
           stockMoves++;
         }
@@ -994,7 +1040,7 @@ function createSale(ctx) {
     }
 
     return {
-      ok: true, id: saleId, invoice_no: invoice, subtotal, discount, total, paid,
+      ok: true, replay: false, id: saleId, invoice_no: invoice, subtotal, discount, total, paid,
       due: money(total - paid), status, method, change: money(Math.max(0, requestedPaid - total)),
       stock_moves: stockMoves, sale_at: saleAt,
       low_stock: getSetting('low_stock_alerts', '1') === '1' ? lowStockNames() : [],

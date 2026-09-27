@@ -5,6 +5,7 @@
  */
 import { api, setUnauthorizedHandler, ApiError } from './api.js';
 import { setFormatConfig } from './format.js';
+import { putCache, syncOutbox } from './offline.js';
 
 export const state = {
   ready: false,
@@ -108,15 +109,28 @@ export async function loadData({ maxAgeMs = 45_000, force = false } = {}) {
   state.canSeeCosts = !!data.canSeeCosts;
   if (data.settings) applySettings(data.settings, data.today);
   state.dataLoadedAt = Date.now();
+
+  // Snapshot the reference data so the till still has products, prices and
+  // customers to render if the connection drops later. Stock quantities are
+  // deliberately left out of this: a stale quantity on a till is worse than no
+  // quantity, so the offline UI hides them instead of lying.
+  putCache('bootstrap', data);
+
   emit('data');
   return data;
 }
 
 export const invalidate = () => { state.dataLoadedAt = 0; };
 
-/* Offline awareness — a phone in a low-signal area needs to know. */
+/* Offline awareness — a phone in a low-signal area needs to know, and anything
+ * queued while offline must be flushed the moment the connection returns. */
 if (typeof window !== 'undefined') {
-  const set = () => { state.online = navigator.onLine; emit('online'); };
+  const set = () => {
+    const wasOffline = !state.online;
+    state.online = navigator.onLine;
+    emit('online');
+    if (state.online && wasOffline) syncOutbox();
+  };
   window.addEventListener('online', set);
   window.addEventListener('offline', set);
 }

@@ -169,6 +169,48 @@ CREATE INDEX IF NOT EXISTS idx_recipe_product ON recipes (product_id);
 `);
 
 /* ------------------------------------------------------------------ *
+ * Migrations
+ *
+ * Additive and idempotent, so they are safe to run on every boot against
+ * both a fresh database and one created by an earlier version. Table and
+ * column names below are literals in this file, never caller input.
+ * ------------------------------------------------------------------ */
+
+function ensureColumn(table, column, decl) {
+  const cols = db.prepare('SELECT name FROM pragma_table_info(?)').all(table).map((r) => r.name);
+  if (cols.includes(column)) return false;
+  db.exec(`ALTER TABLE ${table} ADD COLUMN ${column} ${decl}`);
+  console.log(`[migrate] added ${table}.${column}`);
+  return true;
+}
+
+// Offline outbox support. A phone that loses connection keeps trading and
+// replays its queue later; `client_ref` is the caller-generated idempotency
+// key that makes a replayed POST return the original row instead of inserting
+// a second one. Unique per table, and NULL for everything created online.
+for (const table of ['sales', 'expenses', 'stock_moves']) ensureColumn(table, 'client_ref', 'TEXT');
+
+db.exec(`
+CREATE UNIQUE INDEX IF NOT EXISTS uq_sales_client_ref
+  ON sales (client_ref) WHERE client_ref IS NOT NULL;
+CREATE UNIQUE INDEX IF NOT EXISTS uq_expenses_client_ref
+  ON expenses (client_ref) WHERE client_ref IS NOT NULL;
+CREATE UNIQUE INDEX IF NOT EXISTS uq_stock_moves_client_ref
+  ON stock_moves (client_ref) WHERE client_ref IS NOT NULL;
+`);
+
+/**
+ * If a record with this client_ref already exists, return it so the caller can
+ * answer idempotently. Returns null when the ref is absent or unseen.
+ */
+export function findByClientRef(table, clientRef) {
+  if (!clientRef) return null;
+  const allowed = ['sales', 'expenses', 'stock_moves'];
+  if (!allowed.includes(table)) throw new Error(`findByClientRef: unknown table ${table}`);
+  return db.prepare(`SELECT * FROM ${table} WHERE client_ref = ?`).get(String(clientRef)) || null;
+}
+
+/* ------------------------------------------------------------------ *
  * Settings
  * ------------------------------------------------------------------ */
 

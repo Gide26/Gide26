@@ -6,6 +6,7 @@ import { state, restoreSession, signOut, subscribe, setSessionExpiredHandler, is
 import { icon, $, toast, on } from './ui.js';
 import { esc, initials } from './format.js';
 import { currentRoute, navigate, onRoute, start } from './router.js';
+import { initOffline, onOutboxChange, syncStatus, syncOutbox } from './offline.js';
 
 /* ------------------------------------------------------------------ *
  * Route table
@@ -47,6 +48,7 @@ let viewHost = null;
 let renderToken = 0;
 let cleanup = null;
 let offlineUnsub = null;
+let outboxUnsub = null;
 
 function shellHtml() {
   const business = esc(state.settings.business_name || 'Bakery Tracker');
@@ -127,14 +129,57 @@ function mountShell() {
     if (what === 'online') renderOffline();
     if (what === 'session') { renderBanner(); paintNav(); }
   });
+
+  // The queue changes underneath us (a sync finishes, an item is added from the
+  // till), so keep the banner honest without the views having to remember to.
+  if (outboxUnsub) outboxUnsub();
+  outboxUnsub = onOutboxChange(() => renderOffline());
+
+  on(document.body, 'click', '[data-sync-now]', async (_e, el) => {
+    el.disabled = true;
+    const out = await syncOutbox();
+    toast(out.synced
+      ? `Sent ${out.synced} queued ${out.synced === 1 ? 'item' : 'items'}`
+      : (out.offline ? 'Still no connection' : 'Nothing new to send'), out.synced ? 'ok' : 'warn');
+    el.disabled = false;
+  });
 }
 
+/**
+ * The connection banner. It has to be precise, because a cashier reading it
+ * during a power cut needs to know whether the sale they just took is safe.
+ * Three distinct states: offline with work queued, offline with none, and back
+ * online but still holding items that need attention.
+ */
 function renderOffline() {
   const host = $('#offline-bar');
   if (!host) return;
-  host.innerHTML = state.online ? '' : `
-    <div class="offline-bar">${icon('wifiOff', { size: 14 })} You are offline — saved data will not sync until
-    the connection returns.</div>`;
+  const st = syncStatus();
+
+  if (!state.online) {
+    const held = st.count
+      ? `${st.count} ${st.count === 1 ? 'item is' : 'items are'} saved on this device and will send automatically`
+      : 'anything you record is saved on this device and will send automatically';
+    host.innerHTML = `
+      <div class="offline-bar">${icon('wifiOff', { size: 14 })} You are offline — keep trading.
+      ${held} when the connection returns.</div>`;
+    return;
+  }
+
+  // Online, but the queue is not empty: either a sync is running or something
+  // was rejected and needs a human. Both are worth saying out loud.
+  if (st.count > 0) {
+    const detail = st.failed
+      ? `${st.failed} need${st.failed === 1 ? 's' : ''} your attention`
+      : st.syncing ? 'sending now' : 'waiting to send';
+    host.innerHTML = `
+      <div class="offline-bar warn">${icon('refresh', { size: 14 })} ${st.count} queued
+      ${st.count === 1 ? 'item' : 'items'} — ${detail}.
+      <button type="button" class="btn btn-ghost btn-sm" data-sync-now>Send now</button></div>`;
+    return;
+  }
+
+  host.innerHTML = '';
 }
 
 /** Persistent nudge while a seeded/temporary password is still in use. */
@@ -249,6 +294,11 @@ async function boot() {
     toast('You were signed out — please sign in again', 'warn');
     showLogin();
   });
+
+  // Open the offline store first and flush anything left from a previous
+  // session — a phone that was closed mid-outage still owes us those sales.
+  const offline = await initOffline();
+  if (!offline.available) console.warn('Offline capture unavailable:', offline.reason);
 
   // Warm the format config from whatever settings we already have.
   try {

@@ -7,9 +7,13 @@
  * because the cart sheet is appended to <body> and must stay interactive.
  */
 import { api } from '../api.js';
-import { state, isOwner, loadData, invalidate } from '../store.js';
+import { state, isOwner, loadData, invalidate, subscribe } from '../store.js';
 import { icon, $, on, toast, busy, sheet, emptyState, confirmDialog } from '../ui.js';
-import { money, num, esc, roundUpTo, methodLabel } from '../format.js';
+import { money, num, esc, roundUpTo, methodLabel, localStamp } from '../format.js';
+import { getCache, enqueue, countOutbox, makeRef, syncOutbox, syncStatus } from '../offline.js';
+
+/** Cheap read of how much is still waiting to send. */
+const syncStatusCount = () => { try { return syncStatus().count || 0; } catch { return 0; } };
 
 const METHODS = [
   { id: 'cash', label: 'Cash', icon: 'cash' },
@@ -22,14 +26,26 @@ const ROOT = () => document.body;
 
 export async function render(host) {
   let data;
+  // `offline` means the till is running from the last cached snapshot. Trading
+  // continues; writes are queued and replayed later.
+  let offline = typeof navigator !== 'undefined' && navigator.onLine === false;
   try {
     data = await loadData();
   } catch (err) {
-    host.innerHTML = `<div class="card"><div class="empty">${icon('wifiOff', { size: 40, stroke: 1.5 })}
-      <h4>Cannot reach the server</h4><p>${esc(err.message)}</p>
-      <button class="btn btn-primary btn-sm" data-reload>Reload</button></div></div>`;
-    const off = on(host, 'click', '[data-reload]', () => location.reload());
-    return off;
+    // No server. Fall back to the snapshot taken at the last successful load so
+    // the bakery can keep selling rather than staring at an error screen.
+    data = await getCache('bootstrap');
+    offline = true;
+    if (!data || !Array.isArray(data.products)) {
+      host.innerHTML = `<div class="card"><div class="empty">${icon('wifiOff', { size: 40, stroke: 1.5 })}
+        <h4>Cannot reach the server</h4>
+        <p>${esc(err.message)}</p>
+        <p class="small muted">There is no saved product list on this device yet, so the till
+        cannot open offline. Sign in once while connected to cache it.</p>
+        <button class="btn btn-primary btn-sm" data-reload>Reload</button></div></div>`;
+      const off = on(host, 'click', '[data-reload]', () => location.reload());
+      return off;
+    }
   }
 
   const products = (data.products || []).filter((p) => p.active !== 0);
@@ -58,6 +74,8 @@ export async function render(host) {
         <button class="btn btn-ghost btn-sm" data-refresh>${icon('refresh', { size: 15 })} Refresh</button>
       </div>
     </div>
+
+    <div id="pos-offline" style="margin-bottom:12px"></div>
 
     <div class="pos">
       <div style="min-width:0">
@@ -400,16 +418,30 @@ export async function render(host) {
       if (!go) return;
     }
 
+    // The payload is built once and always carries a client-generated
+    // reference. That is what makes queueing safe: if a request fails we cannot
+    // know whether the server recorded it, so we queue the same payload and let
+    // the server's idempotency check decide. A sale can never be counted twice.
+    const ref = makeRef('sale');
+    const payload = {
+      items: [...cart.values()].map((l) => ({ product_id: l.product.id, qty: l.qty, unit_price: l.price })),
+      customer_id: payment.customerId || null,
+      discount: t.discount,
+      paid: t.paid,
+      method: payment.method,
+      note: payment.note || null,
+      client_ref: ref,
+    };
+    // Snapshot the lines now: reset() clears the cart before any receipt is shown.
+    const lines = [...cart.values()].map((l) => ({ ...l }));
+
+    if (offline || (typeof navigator !== 'undefined' && navigator.onLine === false)) {
+      return saveOffline(btn, ref, payload, t, lines);
+    }
+
     busy(btn, true, 'Saving');
     try {
-      const out = await api.createSale({
-        items: [...cart.values()].map((l) => ({ product_id: l.product.id, qty: l.qty, unit_price: l.price })),
-        customer_id: payment.customerId || null,
-        discount: t.discount,
-        paid: t.paid,
-        method: payment.method,
-        note: payment.note || null,
-      });
+      const out = await api.createSale(payload);
       invalidate();
       const close = sheetClose;
       sheetClose = null;
@@ -421,15 +453,143 @@ export async function render(host) {
       showReceipt(out.id);
     } catch (err) {
       busy(btn, false);
+      // Connection failed mid-request. Queue it rather than making the cashier
+      // take the payment again — the client_ref guarantees no double count.
+      if (err?.offline || err?.status === 0 || (typeof navigator !== 'undefined' && navigator.onLine === false)) {
+        offline = true;
+        return saveOffline(btn, ref, payload, t, lines, err);
+      }
       toast(err.message || 'Could not save the sale', 'bad', 5000);
     }
   }
 
+  /**
+   * Store the sale on the device and hand the customer a provisional receipt.
+   * The real invoice number arrives when the queue syncs.
+   */
+  async function saveOffline(btn, ref, payload, t, lines, err) {
+    busy(btn, true, 'Saving');
+    try {
+      const position = (await countOutbox()) + 1;
+      const provisional = `OFFLINE-${position}`;
+      await enqueue('sale', { ...payload, sale_at: localStamp() }, {
+        provisional,
+        label: `${num(t.count)} ${t.count === 1 ? 'item' : 'items'} · ${money(t.total)}`,
+      });
+      const close = sheetClose;
+      sheetClose = null;
+      close?.();
+      reset();
+      busy(btn, false);
+      toast(`Saved on this device as ${provisional} — ${money(t.total)}`, 'ok', 4200);
+      showProvisionalReceipt({ provisional, t, lines, payload, when: localStamp() });
+      syncOutbox(); // try immediately in case the connection just came back
+    } catch (e) {
+      busy(btn, false);
+      toast(`Could not save on this device: ${e.message || 'storage unavailable'}. Write it down.`, 'bad', 8000);
+    }
+  }
+
+  /**
+   * A receipt built entirely from local data, so the customer still leaves with
+   * something. It is clearly marked provisional: the server has not seen it yet
+   * and will assign the real invoice number on sync.
+   */
+  function showProvisionalReceipt({ provisional, t, lines, payload, when }) {
+    const biz = state.settings || {};
+    const due = money(Math.max(0, Number(t.total) - Number(t.paid)));
+    const customer = customers.find((c) => c.id === payload.customer_id);
+    // `.pill-note` with no modifier is the gold/warning style.
+    const body = `
+      <div class="pill-note" style="margin-bottom:12px">${icon('wifiOff', { size: 17 })}
+        <div>Saved on this device only. It will be sent to the server automatically once the
+        connection returns, which is when the official invoice number is issued.</div></div>
+      <div class="receipt" id="receipt-print">
+        <div class="receipt-head">
+          <div class="biz">${esc(biz.business_name || "Gide's Bakery")}</div>
+          <div>${esc(biz.address || '')}</div>
+          <div>${esc(biz.phone || '')}</div>
+          <div class="rule"></div>
+          <div><strong>${esc(provisional)}</strong> <span class="muted">(provisional)</span></div>
+          <div>${esc(when || '')}</div>
+          ${customer ? `<div>Customer: ${esc(customer.name)}</div>` : ''}
+          <div>Served by: ${esc(state.user?.name || '')}</div>
+          <div class="rule"></div>
+        </div>
+        <table>
+          ${lines.map((l) => `
+            <tr>
+              <td>${esc(num(l.qty, 2))} × ${esc(l.product.name)}</td>
+              <td class="r">${esc(money(l.price))}</td>
+              <td class="r">${esc(money(l.qty * l.price))}</td>
+            </tr>`).join('')}
+        </table>
+        <div class="rule"></div>
+        <table>
+          <tr><td>Subtotal</td><td class="r">${esc(money(t.subtotal))}</td></tr>
+          ${t.discount ? `<tr><td>Discount</td><td class="r">−${esc(money(t.discount))}</td></tr>` : ''}
+          <tr class="grand"><td>TOTAL</td><td class="r">${esc(money(t.total))}</td></tr>
+          <tr><td>${esc(methodLabel(payload.method))} paid</td><td class="r">${esc(money(t.paid))}</td></tr>
+          ${Number(due) > 0 ? `<tr><td><strong>Balance owed</strong></td><td class="r"><strong>${esc(due)}</strong></td></tr>` : ''}
+          ${t.change > 0 ? `<tr><td>Change</td><td class="r">${esc(money(t.change))}</td></tr>` : ''}
+        </table>
+        ${payload.note ? `<div class="rule"></div><div>Note: ${esc(payload.note)}</div>` : ''}
+        <div class="receipt-foot">${esc(biz.receipt_note || 'Thank you!')}</div>
+      </div>`;
+
+    const closeSheet = sheet({
+      title: provisional,
+      subtitle: `${num(t.count)} ${t.count === 1 ? 'item' : 'items'} · queued on this device`,
+      wide: false,
+      body,
+      footer: `
+        <button class="btn" data-print>${icon('printer', { size: 16 })} Print</button>
+        <button class="btn btn-primary" data-done>Done</button>`,
+      onMount: (el, close) => {
+        on(el, 'click', '[data-print]', () => window.print());
+        on(el, 'click', '[data-done]', () => close());
+      },
+      onClose: () => { sheetClose = null; },
+    });
+    sheetClose = closeSheet;
+  }
+
   /* ---------------- mount ---------------- */
 
+  /** Where the offline notice lives, so it can be repainted without a re-render. */
+  const paintOfflineNotice = () => {
+    const host2 = $('#pos-offline', host);
+    if (!host2) return;
+    const pending = syncStatusCount();
+    host2.innerHTML = offline ? `
+      <div class="pill-note">${icon('wifiOff', { size: 17 })}
+        <div><strong>Working offline.</strong> Keep selling — every sale is stored on this
+        device and sent automatically when the connection returns.
+        ${pending ? `<br><span class="muted">${pending} item${pending === 1 ? '' : 's'} waiting to send.</span>` : ''}
+        <br><span class="muted">Stock levels are not shown offline, because a stale number
+        would be worse than none.</span></div></div>` : '';
+  };
+
+  paintOfflineNotice();
   paintChips();
   paintGrid();
   paintCart();
+
+  // Follow the connection: coming back online flips the till to live mode and
+  // flushes the queue; losing it switches to queueing without a page reload.
+  offs.push(subscribe((what) => {
+    if (what !== 'online') return;
+    const nowOnline = typeof navigator === 'undefined' || navigator.onLine !== false;
+    if (nowOnline === !offline) { paintOfflineNotice(); return; }
+    offline = !nowOnline;
+    paintOfflineNotice();
+    if (nowOnline) {
+      syncOutbox().then((out) => {
+        if (out.synced) toast(`Sent ${out.synced} queued ${out.synced === 1 ? 'sale' : 'sales'} to the server`, 'ok', 3600);
+        invalidate();
+      });
+    }
+  }));
 
   // Leave room for the fixed summary bar on phones.
   const main = host.closest('.main');
