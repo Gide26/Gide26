@@ -15,7 +15,7 @@ nothing to install.
 | Currency | Burundian franc (BIF, `FBu`, 0 decimal places) |
 | Timezone | Africa/Bujumbura by default, configurable |
 | Front-end | Vanilla ES modules, installable PWA |
-| Code | ~9,700 lines across 33 source files |
+| Code | ~10,200 lines across 32 source files |
 
 ---
 
@@ -144,7 +144,7 @@ public/
     ui.js        toasts, sheets, dialogs, icons, skeletons
     charts.js    hand-written SVG charts, no library
     views/       one module per screen, lazy-loaded on demand
-  manifest.webmanifest, sw.js, icon.svg   installable PWA
+  manifest.webmanifest, sw.js, icons/   installable PWA
 ```
 
 Server modules import each other in one direction only:
@@ -211,7 +211,11 @@ because the connection dropped.
 | Take a sale | Yes — queued on the device |
 | Record an expense | Yes — queued on the device |
 | Record waste or a purchase | Yes — queued on the device |
+| **Edit** an expense, product, customer or ingredient | Yes — queued on the device |
+| **Delete** one of those | Yes — queued on the device |
+| Correct a price at the counter | Yes — the till grid and product list come from cache |
 | Print a receipt | Yes — a provisional one, marked as not yet sent |
+| Add a brand-new product | **No** — needs a connection (see below) |
 | See stock quantities | **No** — deliberately hidden |
 | Read reports or history | No — that needs the server |
 
@@ -244,14 +248,120 @@ that item is parked with the server's exact reason and shown on the Sales screen
 for someone to fix, rather than silently retried forever or blocking the rest of
 the queue.
 
+### Editing offline, and what happens when two people edit the same thing
+
+An edit or delete is queued like a sale, and carries the `updated_at` stamp the
+device last saw as `base_updated_at`. On reconnect the server compares them:
+
+- **The stamp matches** — nobody touched the record in between, so the change is
+  applied and the stamp advances.
+- **The stamp is older** — someone else changed that record while this device was
+  offline. The server refuses with `409` and returns *both* timestamps. The item
+  is parked on the device as a **conflict**, showing what the server has and what
+  you had, with two buttons: **Keep mine** (sends your version, deliberately
+  dropping the check) and **Keep the server's** (discards your queued change).
+- **The record is gone** — a queued delete is treated as already satisfied; a
+  queued edit is parked with the reason, because dropping it would lose work
+  nobody knows about.
+
+Last-write-wins was rejected on purpose. Two cashiers correcting the same
+expense during an outage would otherwise silently destroy one of the
+corrections, and for money data an unresolved question beats a confident wrong
+answer. A conflict is parked for a human, and it steps aside rather than
+blocking the queue — one disputed expense must not stop the till sending sales.
+
+Replayed edits and deletes are safe: the server keeps a `sync_log` of every
+offline write it has applied, keyed by `client_ref`, so a retry is answered from
+the log instead of being applied a second time.
+
+`updated_at` carries milliseconds even though business timestamps do not. It is
+never read as a time — only compared for equality — and at whole-second
+precision two writes in the same second look identical, which would let a stale
+edit through as current.
+
+Creating a *new product* offline is refused rather than queued. A new product has
+no server-side identity yet, so two devices each inventing one would produce
+duplicates that no idempotency key can reconcile. Editing an existing one is
+safe, which covers the case that actually happens at a counter: the price was
+wrong.
+
+Screens that fall back to cached data say so on screen, because a cost figure
+from the last sync may be stale and should not be trusted as current.
+
 ## Installing as an app
 
-The site is a Progressive Web App. On Android Chrome, the menu offers **Install
-app**; on iOS Safari, **Share → Add to Home Screen**. It then launches
-full-screen with its own icon. The service worker caches the app shell — every
-JS module, the stylesheet and the icon — so screens open instantly, while data
-requests always go to the network. It never caches `/api/`, so two devices can
-never disagree about what has been sold.
+The site is a Progressive Web App: install it and it launches full-screen with
+its own icon, no browser chrome, and keeps working through an outage.
+
+### 1. Start the server (once, on the computer that holds the data)
+
+```bash
+cd bakery
+npm start
+```
+
+Leave this computer on. Every device — including this one — reads and writes the
+same database through it. Nothing is stored per-device except the offline queue.
+
+To find the address other devices need, print the computer's LAN IP:
+
+```bash
+ip addr show | grep 'inet ' | grep -v 127.0.0.1     # Linux
+ipconfig | findstr IPv4                              # Windows
+```
+
+Use the `192.168.x.x` (or `10.x.x.x`) address. Phones must be on the **same
+Wi-Fi network**.
+
+### 2. Install on the computer (Chrome or Edge)
+
+1. Open <http://localhost:3000> and sign in.
+2. Click the **install icon** — a small monitor with a down arrow — at the right
+   end of the address bar. If it is not there, open the menu (⋮) → **Install
+   Bakery Tracker…** / **Apps → Install this site as an app**.
+3. Confirm. It now appears in the start menu / Applications and opens in its own
+   window with no address bar.
+
+### 3. Install on an Android phone (Chrome)
+
+1. On the same Wi-Fi, open `http://<computer-ip>:3000` — for example
+   `http://192.168.1.20:3000`.
+2. Sign in.
+3. Tap the menu (⋮) → **Install app** (on some versions: **Add to Home
+   screen**).
+4. Confirm **Install**. The icon lands on the home screen and opens full-screen.
+
+### 4. Install on an iPhone or iPad (Safari)
+
+1. On the same Wi-Fi, open `http://<computer-ip>:3000` **in Safari** — Chrome on
+   iOS cannot install PWAs.
+2. Sign in.
+3. Tap the **Share** button (the square with an up arrow).
+4. Scroll and tap **Add to Home Screen**, then **Add**.
+
+### 5. After installing
+
+- Sign in once on each device. The session is remembered, so staff do not re-enter
+  a password every shift.
+- Open the app once while online so the shell caches. From then on it opens
+  instantly and keeps working offline.
+- The offline queue lives in **IndexedDB**, which survives closing the app and
+  rebooting the phone. Do not clear site data for the app or you will lose
+  anything not yet sent.
+- To update after a code change, bump `VERSION` in `public/sw.js`; installed apps
+  pick up the new shell on their next launch.
+
+### If the phone cannot reach the computer
+
+- Check both are on the same Wi-Fi — a phone on mobile data will not see a LAN
+  address.
+- Check the computer's firewall allows incoming connections on port 3000.
+- Confirm the server prints `Listening on http://0.0.0.0:3000`. If it says
+  `127.0.0.1`, other devices cannot reach it.
+
+The service worker caches the app shell — every JS module, the stylesheet and the
+icon — so screens open instantly, while data requests always go to the network. It
+never caches `/api/`, so two devices can never disagree about what has been sold.
 
 ---
 

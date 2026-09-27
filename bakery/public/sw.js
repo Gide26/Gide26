@@ -3,13 +3,14 @@
  * so two devices can never disagree about what has been sold.
  * Bump VERSION whenever the front-end changes to force a refresh. */
 
-const VERSION = 'bakery-v1.2.0';
+const VERSION = 'bakery-v1.3.0';
 
 const SHELL = [
   '/',
   '/index.html',
-  '/manifest.webmanifest',
-  '/icon.svg',
+  '/icons/icon-192.png',
+  '/icons/icon-512.png',
+  '/icons/icon-maskable-512.png',
   '/css/styles.css',
   '/js/app.js',
   '/js/api.js',
@@ -67,6 +68,25 @@ self.addEventListener('fetch', (event) => {
           return res;
         })
         .catch(() => caches.match('/index.html').then((hit) => hit || Response.error()))
+    );
+    return;
+  }
+
+  // The manifest is generated from settings rather than served from disk, so it
+  // must not come from cache: a business rename has to reach the home-screen
+  // icon on the next launch, not the one after. Network first, cache as the
+  // offline fallback.
+  if (url.pathname === '/manifest.webmanifest') {
+    event.respondWith(
+      fetch(req)
+        .then((res) => {
+          if (res && res.ok) {
+            const copy = res.clone();
+            caches.open(VERSION).then((c) => c.put(req, copy)).catch(() => {});
+          }
+          return res;
+        })
+        .catch(() => caches.match(req).then((hit) => hit || Response.error()))
     );
     return;
   }

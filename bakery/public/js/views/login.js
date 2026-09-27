@@ -24,7 +24,7 @@ export async function render(host, { onSignedIn }) {
     host.innerHTML = `
       <div class="auth-wrap">
         <div class="auth-card">
-          <div class="auth-logo">${icon('bread', { size: 31, stroke: 2 })}</div>
+          <div class="auth-logo"><img src="/icons/icon-192.png" alt="${name} logo"></div>
           ${mode === 'setup' ? setupBody(name) : signinBody(name, status)}
           ${!statusOk ? `
             <div class="pill-note bad" style="margin-top:14px">
@@ -133,7 +133,7 @@ export async function render(host, { onSignedIn }) {
         toast(`Demo loaded: ${out.seeded?.sales ?? 0} sales. Sign in with 079000000 / changeme`, 'ok', 6000);
         status.needsSetup = false;
         status.demo = true;
-        status.businessName = "Gide's Bakery";
+        status.businessName = "Mama G's Bakery House";
         mode = 'signin';
         paint();
       } catch (err) {

@@ -268,7 +268,7 @@ export function findByClientRef(table, clientRef) {
  * ------------------------------------------------------------------ */
 
 export const DEFAULT_SETTINGS = {
-  business_name: "Gide's Bakery",
+  business_name: "Mama G's Bakery House",
   tagline: 'Fresh bread, cakes & pastries',
   currency_code: 'BIF',
   currency_symbol: 'FBu',

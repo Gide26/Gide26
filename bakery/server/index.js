@@ -4,7 +4,7 @@
  * configuration and no separate build step.
  */
 import { createServer } from 'node:http';
-import { createReadStream, existsSync, statSync } from 'node:fs';
+import { createReadStream, existsSync, statSync, readFileSync } from 'node:fs';
 import { join, normalize, extname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createHash } from 'node:crypto';
@@ -122,6 +122,47 @@ function serveStatic(req, res, pathname) {
  * Request handling
  * ------------------------------------------------------------------ */
 
+const MANIFEST_PATH = join(PUBLIC_DIR, 'manifest.webmanifest');
+let manifestBase = null;
+
+/**
+ * The web manifest, with the business's own name in it.
+ *
+ * An installed PWA takes its home-screen label from here, so serving a static
+ * "Bakery Tracker" would put a name on the phone that has nothing to do with the
+ * bakery using it. Generating it from settings means renaming the business in
+ * Settings is what every device installs as from then on.
+ *
+ * `short_name` is the one that actually fits under an icon, so it is derived
+ * rather than fixed: the first word of the business name, capped.
+ */
+function buildManifest() {
+  if (manifestBase === null) {
+    try {
+      manifestBase = JSON.parse(readFileSync(MANIFEST_PATH, 'utf8'));
+    } catch {
+      manifestBase = { name: 'Bakery Tracker', short_name: 'Bakery', id: '/', start_url: '/',
+        scope: '/', display: 'standalone', background_color: '#FBF7F2', theme_color: '#241A13',
+        icons: [
+          { src: '/icons/icon-192.png', sizes: '192x192', type: 'image/png', purpose: 'any' },
+          { src: '/icons/icon-512.png', sizes: '512x512', type: 'image/png', purpose: 'any' },
+          { src: '/icons/icon-maskable-512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
+        ] };
+    }
+  }
+  const name = String(getSetting('business_name', '') || '').trim() || String(manifestBase.name || 'Bakery Tracker');
+  // The home-screen label has to be short, but a single word can be useless:
+  // "Mama G's Bakery House" truncated naively would read "Mama". Take as many
+  // leading words as fit, so it becomes "Mama G's" instead.
+  const words = name.split(/\s+/);
+  let short = words[0] || name;
+  for (const w of words.slice(1)) {
+    if (`${short} ${w}`.length > 14) break;
+    short = `${short} ${w}`;
+  }
+  return JSON.stringify({ ...manifestBase, name, short_name: short });
+}
+
 const server = createServer(async (req, res) => {
   const started = Date.now();
   let url;
@@ -140,6 +181,13 @@ const server = createServer(async (req, res) => {
       }
       return send(res, 404, { 'content-type': 'application/json; charset=utf-8' },
         JSON.stringify({ error: `No such endpoint: ${req.method} ${url.pathname}`, status: 404 }));
+    }
+
+    // Served before the static handler so the generated version wins over the
+    // file on disk. Never cached: a rename should show up on the next launch.
+    if (url.pathname === '/manifest.webmanifest') {
+      send(res, 200, { 'content-type': MIME['.webmanifest'], 'cache-control': 'no-cache' }, buildManifest());
+      return log(req, url, 200, started);
     }
 
     // Everything else is the front-end.

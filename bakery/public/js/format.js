@@ -8,7 +8,7 @@
 let CFG = {
   symbol: 'FBu', code: 'BIF', decimals: 0,
   timezone: 'Africa/Bujumbura',
-  businessName: "Gide's Bakery",
+  businessName: "Mama G's Bakery House",
   today: null, monthStart: null,
 };
 

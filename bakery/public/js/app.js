@@ -71,7 +71,7 @@ function shellHtml() {
   <div class="app">
     <aside class="sidebar">
       <div class="brandmark">
-        <span class="brandmark-logo">${icon('bread', { size: 22, stroke: 2 })}</span>
+        <span class="brandmark-logo"><img src="/icons/icon-192.png" alt=""></span>
         <span style="min-width:0">
           <span class="brandmark-name">${business}</span>
           <span class="brandmark-sub">${esc(state.settings.tagline || 'Bakery Tracker')}</span>

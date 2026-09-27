@@ -506,7 +506,7 @@ export async function render(host) {
         connection returns, which is when the official invoice number is issued.</div></div>
       <div class="receipt" id="receipt-print">
         <div class="receipt-head">
-          <div class="biz">${esc(biz.business_name || "Gide's Bakery")}</div>
+          <div class="biz">${esc(biz.business_name || "Mama G's Bakery House")}</div>
           <div>${esc(biz.address || '')}</div>
           <div>${esc(biz.phone || '')}</div>
           <div class="rule"></div>
