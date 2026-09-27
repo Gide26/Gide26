@@ -158,6 +158,23 @@ const EXPENSE_TEMPLATES = [
  * Seeding
  * ------------------------------------------------------------------ */
 
+/**
+ * Delete every business row, in dependency order.
+ *
+ * Shared by `wipe` and by a forced re-seed so the two can never drift apart.
+ * `sync_log` is cleared too: it records which offline writes have already been
+ * applied, and leaving entries behind after a re-seed would make a reused
+ * client_ref look like a replay of a row that no longer exists.
+ */
+export function clearAll() {
+  for (const t of ['sale_items', 'sales', 'stock_moves', 'recipes', 'expenses', 'sessions',
+    'customers', 'ingredients', 'suppliers', 'products', 'categories', 'users', 'sync_log']) {
+    db.prepare(`DELETE FROM ${t}`).run();
+  }
+  db.prepare("DELETE FROM sqlite_sequence WHERE name <> 'settings'").run();
+  db.prepare('DELETE FROM settings').run();
+}
+
 export function seedDemo({ ownerPassword = 'changeme', staffPassword = 'staff123', days = 60, force = false } = {}) {
   const timezone = tz();
 
@@ -166,6 +183,12 @@ export function seedDemo({ ownerPassword = 'changeme', staffPassword = 'staff123
   }
 
   return tx(() => {
+    // A forced re-seed has to start from empty. It used to insert users on top
+    // of the existing ones and die on UNIQUE(users.phone), which made the
+    // documented "reload the demo data" step fail on any database that had
+    // already been seeded once.
+    if (force) clearAll();
+
     const stamp = localStamp(new Date(), timezone);
     const today = localDate(new Date(), timezone);
 
@@ -193,20 +216,20 @@ export function seedDemo({ ownerPassword = 'changeme', staffPassword = 'staff123
 
     /* --- ingredients --- */
     const insIng = db.prepare(
-      `INSERT INTO ingredients (name, unit, stock, reorder_level, cost_per_unit, supplier_id, active, created_at)
-       VALUES (?,?,?,?,?,?,1,?)`);
+      `INSERT INTO ingredients (name, unit, stock, reorder_level, cost_per_unit, supplier_id, active, created_at, updated_at)
+       VALUES (?,?,?,?,?,?,1,?,?)`);
     const ingId = {};
     for (const [name, unit, cost, target, reorder, si] of INGREDIENTS) {
-      ingId[name] = Number(insIng.run(name, unit, 0, reorder, cost, supIds[si], stamp).lastInsertRowid);
+      ingId[name] = Number(insIng.run(name, unit, 0, reorder, cost, supIds[si], stamp, stamp).lastInsertRowid);
     }
 
     /* --- products --- */
     const insProd = db.prepare(
-      'INSERT INTO products (name, category_id, price, cost, active, created_at) VALUES (?,?,?,NULL,1,?)');
+      'INSERT INTO products (name, category_id, price, cost, active, created_at, updated_at) VALUES (?,?,?,NULL,1,?,?)');
     const prodId = {};
     const priceOf = {};
     for (const [name, cat, price] of PRODUCTS) {
-      prodId[name] = Number(insProd.run(name, catId[cat], price, stamp).lastInsertRowid);
+      prodId[name] = Number(insProd.run(name, catId[cat], price, stamp, stamp).lastInsertRowid);
       priceOf[name] = price;
     }
 
@@ -222,9 +245,9 @@ export function seedDemo({ ownerPassword = 'changeme', staffPassword = 'staff123
 
     /* --- customers --- */
     const insCust = db.prepare(
-      'INSERT INTO customers (name, phone, address, notes, is_walk_in, created_at) VALUES (?,?,?,?,?,?)');
+      'INSERT INTO customers (name, phone, address, notes, is_walk_in, created_at, updated_at) VALUES (?,?,?,?,?,?,?)');
     const custIds = CUSTOMERS.map(([n, p, a, note], i) =>
-      Number(insCust.run(n, p, a, note, i === 0 ? 1 : 0, stamp).lastInsertRowid));
+      Number(insCust.run(n, p, a, note, i === 0 ? 1 : 0, stamp, stamp).lastInsertRowid));
     const walkInId = custIds[0];
 
     // Recipe map in memory: { product_id -> [{ing_id, qty, cost}] }
@@ -251,7 +274,7 @@ export function seedDemo({ ownerPassword = 'changeme', staffPassword = 'staff123
       `INSERT INTO stock_moves (ingredient_id, kind, qty, unit_cost, total_cost, note, ref, user_id, created_at)
        VALUES (?,?,?,?,?,?,?,?,?)`);
     const insExp = db.prepare(
-      'INSERT INTO expenses (title, category, amount, note, user_id, expense_at, created_at) VALUES (?,?,?,?,?,?,?)');
+      'INSERT INTO expenses (title, category, amount, note, user_id, expense_at, created_at, updated_at) VALUES (?,?,?,?,?,?,?,?)');
 
     // Demand weights: staples dominate a bakery counter, cakes are occasional.
     const weights = {
@@ -335,7 +358,7 @@ export function seedDemo({ ownerPassword = 'changeme', staffPassword = 'staff123
         const due = cadence === 'monthly' ? dayOfMonth === 1 : chance(0.07);
         if (!due) continue;
         const at = `${date} ${String(intBetween(9, 17)).padStart(2, '0')}:15:00`;
-        insExp.run(title, cat, money(amountFn()), null, ownerId, at, at);
+        insExp.run(title, cat, money(amountFn()), null, ownerId, at, at, at);
       }
     }
 
@@ -393,8 +416,8 @@ export function seedOwner({ name = 'Owner', phone = '079000000', password = 'cha
     const insCat = db.prepare('INSERT OR IGNORE INTO categories (name, sort) VALUES (?,?)');
     CATEGORIES.forEach((c, i) => insCat.run(c, i));
     db.prepare(
-      `INSERT INTO customers (name, notes, is_walk_in, created_at)
-       VALUES ('Walk-in customer', 'Default counter customer', 1, ?)`).run(stamp);
+      `INSERT INTO customers (name, notes, is_walk_in, created_at, updated_at)
+       VALUES ('Walk-in customer', 'Default counter customer', 1, ?, ?)`).run(stamp, stamp);
     return { ownerId: id };
   });
 }

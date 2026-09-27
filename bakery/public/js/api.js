@@ -60,7 +60,10 @@ export const api = {
   get: (path, params, opts) => request('GET', path + qs(params), undefined, opts),
   post: (path, body, opts) => request('POST', path, body ?? {}, opts),
   put: (path, body, opts) => request('PUT', path, body ?? {}, opts),
-  del: (path, opts) => request('DELETE', path, undefined, opts),
+  // A DELETE may carry a body: guarded offline deletes send the client_ref and
+  // the updated_at they last saw, so a replay is idempotent and a concurrent
+  // edit is detected instead of silently overwritten.
+  del: (path, body, opts) => request('DELETE', path, body === undefined ? undefined : body, opts),
 
   /* --- auth --- */
   login: (phone, password) => request('POST', '/api/login', { phone, password }, { allow401: true }),
@@ -78,7 +81,7 @@ export const api = {
   products: (params) => api.get('/api/products', params),
   product: (id) => api.get(`/api/products/${id}`),
   saveProduct: (id, payload) => (id ? api.put(`/api/products/${id}`, payload) : api.post('/api/products', payload)),
-  deleteProduct: (id) => api.del(`/api/products/${id}`),
+  deleteProduct: (id, payload) => api.del(`/api/products/${id}`, payload),
   saveRecipe: (id, lines) => api.put(`/api/products/${id}/recipe`, { lines }),
 
   categories: () => api.get('/api/categories'),
@@ -87,7 +90,7 @@ export const api = {
 
   ingredients: (params) => api.get('/api/ingredients', params),
   saveIngredient: (id, payload) => (id ? api.put(`/api/ingredients/${id}`, payload) : api.post('/api/ingredients', payload)),
-  deleteIngredient: (id) => api.del(`/api/ingredients/${id}`),
+  deleteIngredient: (id, payload) => api.del(`/api/ingredients/${id}`, payload),
   stockMove: (id, payload) => api.post(`/api/ingredients/${id}/stock`, payload),
   stockMoves: (params) => api.get('/api/stock-moves', params),
 
@@ -97,7 +100,7 @@ export const api = {
 
   customers: (params) => api.get('/api/customers', params),
   saveCustomer: (id, payload) => (id ? api.put(`/api/customers/${id}`, payload) : api.post('/api/customers', payload)),
-  deleteCustomer: (id) => api.del(`/api/customers/${id}`),
+  deleteCustomer: (id, payload) => api.del(`/api/customers/${id}`, payload),
 
   sales: (params) => api.get('/api/sales', params),
   sale: (id) => api.get(`/api/sales/${id}`),
@@ -107,7 +110,7 @@ export const api = {
 
   expenses: (params) => api.get('/api/expenses', params),
   saveExpense: (id, payload) => (id ? api.put(`/api/expenses/${id}`, payload) : api.post('/api/expenses', payload)),
-  deleteExpense: (id) => api.del(`/api/expenses/${id}`),
+  deleteExpense: (id, payload) => api.del(`/api/expenses/${id}`, payload),
 
   users: () => api.get('/api/users'),
   saveUser: (id, payload) => (id ? api.put(`/api/users/${id}`, payload) : api.post('/api/users', payload)),

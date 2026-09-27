@@ -7,11 +7,15 @@ import { api } from '../api.js';
 import { state, isOwner, loadData, invalidate } from '../store.js';
 import { icon, $, on, toast, busy, sheet, emptyState, confirmDialog } from '../ui.js';
 import { money, num, qty, esc } from '../format.js';
+import { getCache, enqueue, makeRef } from '../offline.js';
+import { pendingPanel } from '../pending.js';
 
 export async function render(host) {
   const owner = isOwner();
   let products = [];
   let categories = [];
+  // True when the list came from the offline snapshot rather than the server.
+  let offlineList = false;
   let ingredients = [];
   const filter = { q: '', category: 'all' };
 
@@ -26,6 +30,9 @@ export async function render(host) {
         <button class="btn btn-primary" data-add>${icon('plus', { size: 17 })} Add product</button>` : ''}
       </div>
     </div>
+
+    <div id="p-offline-note" style="margin-bottom:12px"></div>
+    <div id="p-queued" style="margin-bottom:12px"></div>
 
     <div class="card" style="margin-bottom:12px">
       <div class="card-body">
@@ -45,10 +52,23 @@ export async function render(host) {
   const list = $('#p-list', host);
 
   async function load() {
-    const [prods, data] = await Promise.all([api.products({ active: '0' }), loadData()]);
-    products = prods;
-    categories = data.categories || [];
-    ingredients = owner ? (data.ingredients || []) : [];
+    try {
+      const [prods, data] = await Promise.all([api.products({ active: '0' }), loadData()]);
+      products = prods;
+      categories = data.categories || [];
+      ingredients = owner ? (data.ingredients || []) : [];
+      offlineList = false;
+    } catch (err) {
+      // Offline: fall back to the bootstrap snapshot so prices can still be
+      // corrected at the counter. Costs in the snapshot are only as fresh as the
+      // last sync, which is why the screen says so.
+      const cached = await getCache('bootstrap');
+      if (!cached?.products) throw err;
+      products = cached.products;
+      categories = cached.categories || [];
+      ingredients = owner ? (cached.ingredients || []) : [];
+      offlineList = true;
+    }
     paint();
   }
 
@@ -61,6 +81,14 @@ export async function render(host) {
   }
 
   function paint() {
+    const noteHost = $('#p-offline-note', host);
+    if (noteHost) {
+      noteHost.innerHTML = offlineList ? `<div class="pill-note">${icon('wifiOff', { size: 17 })}
+        <div><strong>Offline.</strong> These products and prices are from your last sync, so a cost
+        figure may be out of date. You can still correct a price or remove a product — the change is
+        queued here and applied when you reconnect. Adding a brand-new product needs a connection.</div></div>` : '';
+    }
+
     const counts = new Map();
     for (const p of products) {
       const k = p.category || 'Other';
@@ -107,6 +135,7 @@ export async function render(host) {
   offs.push(on(host, 'input', '#p-search', (_e, el) => { filter.q = el.value; paint(); }));
   offs.push(on(host, 'click', '[data-cat]', (_e, el) => { filter.category = el.dataset.cat; paint(); }));
   offs.push(on(host, 'click', '[data-add]', () => editor(null)));
+  offs.push(pendingPanel($('#p-queued', host), { kinds: ['product'], title: 'Product changes queued on this device' }));
   offs.push(on(host, 'click', '[data-add-empty]', () => editor(null)));
   offs.push(on(host, 'click', '[data-manage-cats]', () => categoriesSheet()));
   offs.push(on(host, 'click', '[data-edit]', async (_e, el) => {
@@ -188,12 +217,53 @@ export async function render(host) {
               cost: data.cost === '' ? null : Number(data.cost),
               active: form.querySelector('[name=active]').checked ? 1 : 0,
             };
-            await api.saveProduct(isNew ? null : p.id, payload);
+            const offline = typeof navigator !== 'undefined' && navigator.onLine === false;
+
+            // Creating a product offline is refused rather than queued: a new
+            // product has no server-side identity yet, and two devices inventing
+            // one each would produce duplicates that no idempotency key can
+            // reconcile. Editing an existing one is safe, so that is allowed.
+            if (offline && isNew) {
+              busy(btn, false);
+              return toast('Adding a new product needs a connection. Editing existing ones works offline.', 'warn', 6000);
+            }
+            if (offline) {
+              await enqueue('product:update', { id: p.id, ...payload, base_updated_at: p.updated_at || null },
+                { label: `${payload.name} · ${money(payload.price)}` });
+              invalidate();
+              toast('Price change saved on this device — it will send when you reconnect', 'ok', 4600);
+              closeSheet();
+              await load();
+              return;
+            }
+
+            await api.saveProduct(isNew ? null : p.id, isNew ? payload
+              : { ...payload, client_ref: makeRef('prd'), base_updated_at: p.updated_at || null });
             invalidate();
             toast(isNew ? `${payload.name} added` : 'Product saved', 'ok');
             closeSheet();
             await load();
-          } catch (err) { busy(btn, false); toast(err.message, 'bad'); }
+          } catch (err) {
+            busy(btn, false);
+            if (err?.status === 409) {
+              toast('That product changed on the server — reload and try again', 'warn', 6000);
+              closeSheet(); await load();
+              return;
+            }
+            if (!isNew && (err?.offline || err?.status === 0)) {
+              try {
+                await enqueue('product:update', { id: p.id, name: data.name, category_id: data.category_id || null,
+                  price: Number(data.price) || 0, cost: data.cost === '' ? null : Number(data.cost),
+                  active: form.querySelector('[name=active]').checked ? 1 : 0,
+                  base_updated_at: p.updated_at || null, client_ref: makeRef('prd') },
+                  { label: `${data.name} · ${money(Number(data.price) || 0)}` });
+                toast('Connection lost — that change is queued on this device instead', 'warn', 5200);
+                closeSheet();
+                return;
+              } catch { /* fall through to the plain error */ }
+            }
+            toast(err.message, 'bad');
+          }
         });
 
         on(el, 'click', '[data-recipe]', () => { closeSheet(); recipeEditor(p.id, p.name); });
@@ -206,13 +276,31 @@ export async function render(host) {
               confirmLabel: 'Remove', danger: true,
             });
             if (!ok) return;
+            const offline = typeof navigator !== 'undefined' && navigator.onLine === false;
+            if (offline) {
+              try {
+                await enqueue('product:delete', { id: p.id, base_updated_at: p.updated_at || null },
+                  { label: p.name });
+                invalidate();
+                toast('Removal queued — it will apply when you reconnect', 'ok', 4600);
+                closeSheet(); await load();
+              } catch (err2) { toast(`Could not queue that: ${err2.message || ''}`, 'bad', 6000); }
+              return;
+            }
             try {
-              const out = await api.deleteProduct(p.id);
+              const out = await api.deleteProduct(p.id, { client_ref: makeRef('prd'), base_updated_at: p.updated_at || null });
               invalidate();
               toast(out.archived ? 'Archived — kept for sales history' : 'Product deleted', 'ok');
               closeSheet();
               await load();
-            } catch (err) { toast(err.message, 'bad'); }
+            } catch (err) {
+              if (err?.status === 409) {
+                toast('That product changed on the server — reload and try again', 'warn', 6000);
+                closeSheet(); await load();
+                return;
+              }
+              toast(err.message, 'bad');
+            }
           });
         }
       },

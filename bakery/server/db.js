@@ -199,6 +199,59 @@ CREATE UNIQUE INDEX IF NOT EXISTS uq_stock_moves_client_ref
   ON stock_moves (client_ref) WHERE client_ref IS NOT NULL;
 `);
 
+// Offline editing needs a way to notice that a record changed while a device
+// was disconnected. `updated_at` is that marker: the client sends the value it
+// last saw, and the server refuses to overwrite anything newer.
+const EDITABLE = ['products', 'ingredients', 'customers', 'expenses'];
+for (const table of EDITABLE) {
+  ensureColumn(table, 'updated_at', 'TEXT');
+  // Repaired on every start, not only when the column is first added: a reseed
+  // recreates rows without a stamp, and a missing stamp would switch the
+  // concurrency check off for that record entirely.
+  db.exec(`UPDATE ${table} SET updated_at = COALESCE(created_at, '') WHERE updated_at IS NULL OR updated_at = ''`);
+}
+
+// A durable log of every offline write the server has already applied. Inserts
+// are deduplicated by the client_ref columns above; updates and deletes have no
+// row left to compare against, so this log is what makes replaying them safe.
+db.exec(`
+CREATE TABLE IF NOT EXISTS sync_log (
+  client_ref TEXT PRIMARY KEY,
+  tbl        TEXT NOT NULL,
+  record_id  INTEGER,
+  op         TEXT NOT NULL,
+  result     TEXT,
+  applied_at TEXT NOT NULL
+);
+CREATE INDEX IF NOT EXISTS idx_sync_log_applied ON sync_log (applied_at);
+`);
+
+/** What we did the last time this client_ref arrived, or null. */
+export function syncLogGet(clientRef) {
+  if (!clientRef) return null;
+  return db.prepare('SELECT * FROM sync_log WHERE client_ref = ?').get(String(clientRef)) || null;
+}
+
+/** Record that an offline write was applied, so a replay answers identically. */
+export function syncLogPut(clientRef, tbl, recordId, op, result) {
+  if (!clientRef) return;
+  db.prepare(
+    `INSERT INTO sync_log (client_ref, tbl, record_id, op, result, applied_at)
+     VALUES (?,?,?,?,?,?)
+     ON CONFLICT(client_ref) DO NOTHING`)
+    .run(String(clientRef), String(tbl), recordId == null ? null : Number(recordId),
+      String(op), result == null ? null : String(result), now());
+}
+
+/** Prune the sync log so it cannot grow without bound. Keeps 90 days. */
+export function pruneSyncLog() {
+  const cutoff = new Date(Date.now() - 90 * 86400000).toISOString().slice(0, 19).replace('T', ' ');
+  db.prepare('DELETE FROM sync_log WHERE applied_at < ?').run(cutoff);
+}
+
+/** Tables that support guarded offline editing. */
+export const EDITABLE_TABLES = EDITABLE;
+
 /**
  * If a record with this client_ref already exists, return it so the caller can
  * answer idempotently. Returns null when the ref is absent or unseen.
@@ -261,6 +314,22 @@ export const decimals = () => Math.max(0, Math.min(4, num(getSetting('currency_d
 /** Round a money value to the business's configured precision. */
 export const money = (v) => round(num(v), decimals());
 export const now = () => localStamp(new Date(), tz());
+
+/**
+ * Concurrency marker for offline editing.
+ *
+ * `now()` keeps whole-second precision because it stamps business events that
+ * people read on receipts and reports. `updated_at` is never read as a time —
+ * it is only compared for equality, to decide whether a queued edit is still
+ * safe to apply. At second precision two writes in the same second look
+ * identical, so a stale edit could slip through; the millisecond suffix closes
+ * that window. The format stays a strict prefix of `now()`'s, so any ordering
+ * or display of these values is unaffected.
+ */
+export const nowStamp = () => {
+  const d = new Date();
+  return `${localStamp(d, tz())}.${String(d.getMilliseconds()).padStart(3, '0')}`;
+};
 
 /* ------------------------------------------------------------------ *
  * Passwords (scrypt, per-user salt, constant-time compare)

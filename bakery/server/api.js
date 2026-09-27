@@ -3,8 +3,9 @@
  * expenses, customers, users and business settings.
  */
 import {
-  db, tx, money, now, tz, decimals, getSetting, getSettings, setSettings,
+  db, tx, money, now, nowStamp, tz, decimals, getSetting, getSettings, setSettings,
   hashPassword, unitCostOf, nextInvoiceNo, tableCounts, isEmpty, findByClientRef,
+  syncLogGet, syncLogPut, EDITABLE_TABLES,
 } from './db.js';
 import {
   str, strOrNull, num, int, idOrNull, bool, round, clip, require_, requireAmount,
@@ -41,6 +42,75 @@ function replayedSale(row) {
 function replayedExpense(row) {
   return { ok: true, replay: true, id: row.id, title: row.title,
     amount: money(row.amount), category: row.category };
+}
+
+/**
+ * Apply an edit or delete that may be a replay from an offline queue, and may
+ * collide with a change made on another device while this one was disconnected.
+ *
+ * Three outcomes:
+ *   - this client_ref was already applied -> return the stored result, so a
+ *     retry after a lost response cannot apply the change twice
+ *   - base_updated_at disagrees with the row -> 409, carrying the server's
+ *     timestamp so the UI can show what would have been overwritten
+ *   - otherwise -> apply, stamp updated_at, and log it
+ *
+ * Silently taking the last write would destroy someone's work; refusing and
+ * asking a human is the only defensible behaviour for money.
+ */
+function guardedWrite(ctx, table, id, op, apply) {
+  if (!EDITABLE_TABLES.includes(table)) throw new Error(`guardedWrite: ${table} is not editable`);
+  const b = ctx.body ?? {};
+  const clientRef = strOrNull(clip(b.client_ref, 80));
+  const numId = Number(id);
+
+  if (clientRef) {
+    const done = syncLogGet(clientRef);
+    if (done && done.tbl === table && Number(done.record_id) === numId) {
+      let result = {};
+      try { result = JSON.parse(done.result || '{}'); } catch { /* fall through to a plain ok */ }
+      return { ...result, replay: true };
+    }
+  }
+
+  const row = db.prepare(`SELECT updated_at FROM ${table} WHERE id = ?`).get(numId);
+
+  // The row is already gone. A queued delete is then satisfied; an edit cannot be
+  // applied to nothing, and dropping it silently would lose the change.
+  if (!row) {
+    if (op === 'delete') {
+      const out = { ok: true, deleted: true, alreadyGone: true };
+      if (clientRef) syncLogPut(clientRef, table, numId, op, JSON.stringify(out));
+      return out;
+    }
+    throw notFound(`That record no longer exists (id ${numId})`);
+  }
+
+  // A record can only be compared if it carries a stamp. One written before
+  // this column existed — or by a path that forgot it — would otherwise skip
+  // the check below and allow exactly the silent overwrite this guard exists to
+  // prevent. Repair it in place so the comparison is always meaningful.
+  if (!strOrNull(row.updated_at)) {
+    row.updated_at = nowStamp();
+    db.prepare(`UPDATE ${table} SET updated_at = ? WHERE id = ?`).run(row.updated_at, numId);
+  }
+
+  const base = strOrNull(b.base_updated_at);
+  if (base && row.updated_at !== base) {
+    throw new HttpError(409, 'This changed on the server while you were offline', {
+      conflict: true, table, id: numId,
+      server_updated_at: row.updated_at, client_base: base,
+    });
+  }
+
+  const applied = apply() || { ok: true };
+  if (!applied.deleted) {
+    const stamp = nowStamp();
+    db.prepare(`UPDATE ${table} SET updated_at = ? WHERE id = ?`).run(stamp, numId);
+    applied.updated_at = stamp;
+  }
+  if (clientRef) syncLogPut(clientRef, table, numId, op, JSON.stringify(applied));
+  return applied;
 }
 
 function replayedMove(row, ing) {
@@ -306,15 +376,19 @@ export function registerApiRoutes(r) {
     const name = clip(require_(b.name, 'Product name'), 120);
     const price = money(requireAmount(b.price, 'Price'));
     const id = Number(db.prepare(
-      `INSERT INTO products (name, category_id, price, cost, active, created_at) VALUES (?,?,?,?,?,?)`)
+      `INSERT INTO products (name, category_id, price, cost, active, created_at, updated_at) VALUES (?,?,?,?,?,?,?)`)
       .run(name, idOrNull(b.category_id), price,
         b.cost === undefined || b.cost === null || b.cost === '' ? null : money(requireAmount(b.cost, 'Cost')),
-        bool(b.active ?? 1), now()).lastInsertRowid);
+        bool(b.active ?? 1), now(), nowStamp()).lastInsertRowid);
     return { id, name, price };
   });
 
   r.put('/api/products/:id', (ctx) => {
     requireOwner(ctx);
+    return guardedWrite(ctx, 'products', ctx.params.id, 'update', () => updateProduct(ctx));
+  });
+
+  function updateProduct(ctx) {
     const p = mustExist('products', ctx.params.id, 'Product');
     const b = ctx.body ?? {};
     const name = b.name !== undefined ? clip(require_(b.name, 'Product name'), 120) : p.name;
@@ -325,19 +399,21 @@ export function registerApiRoutes(r) {
       .run(name, b.category_id !== undefined ? idOrNull(b.category_id) : p.category_id,
         price, cost, b.active !== undefined ? bool(b.active) : p.active, p.id);
     return { ok: true };
-  });
+  }
 
   /** Archive when the product has history, hard-delete when it does not. */
   r.delete('/api/products/:id', (ctx) => {
     requireOwner(ctx);
-    const p = mustExist('products', ctx.params.id, 'Product');
-    const sold = num(db.prepare('SELECT COUNT(*) n FROM sale_items WHERE product_id = ?').get(p.id).n);
-    if (sold > 0) {
-      db.prepare('UPDATE products SET active = 0 WHERE id = ?').run(p.id);
-      return { ok: true, archived: true, reason: `Kept for history because it appears on ${sold} sale line(s)` };
-    }
-    db.prepare('DELETE FROM products WHERE id = ?').run(p.id);
-    return { ok: true, deleted: true };
+    return guardedWrite(ctx, 'products', ctx.params.id, 'delete', () => {
+      const p = mustExist('products', ctx.params.id, 'Product');
+      const sold = num(db.prepare('SELECT COUNT(*) n FROM sale_items WHERE product_id = ?').get(p.id).n);
+      if (sold > 0) {
+        db.prepare('UPDATE products SET active = 0 WHERE id = ?').run(p.id);
+        return { ok: true, archived: true, reason: `Kept for history because it appears on ${sold} sale line(s)` };
+      }
+      db.prepare('DELETE FROM products WHERE id = ?').run(p.id);
+      return { ok: true, deleted: true };
+    });
   });
 
   /* ---------------- recipes ---------------- */
@@ -394,15 +470,19 @@ export function registerApiRoutes(r) {
     const b = ctx.body ?? {};
     const name = clip(require_(b.name, 'Ingredient name'), 120);
     const id = Number(db.prepare(
-      `INSERT INTO ingredients (name, unit, stock, reorder_level, cost_per_unit, supplier_id, active, created_at)
-       VALUES (?,?,?,?,?,?,?,?)`)
+      `INSERT INTO ingredients (name, unit, stock, reorder_level, cost_per_unit, supplier_id, active, created_at, updated_at)
+       VALUES (?,?,?,?,?,?,?,?,?)`)
       .run(name, clip(str(b.unit, 'kg'), 20), round(num(b.stock), 3), round(num(b.reorder_level), 3),
-        money(requireAmount(b.cost_per_unit, 'Cost per unit')), idOrNull(b.supplier_id), bool(b.active ?? 1), now()).lastInsertRowid);
+        money(requireAmount(b.cost_per_unit, 'Cost per unit')), idOrNull(b.supplier_id), bool(b.active ?? 1), now(), nowStamp()).lastInsertRowid);
     return { id, name };
   });
 
   r.put('/api/ingredients/:id', (ctx) => {
     requireOwner(ctx);
+    return guardedWrite(ctx, 'ingredients', ctx.params.id, 'update', () => updateIngredient(ctx));
+  });
+
+  function updateIngredient(ctx) {
     const ing = mustExist('ingredients', ctx.params.id, 'Ingredient');
     const b = ctx.body ?? {};
     db.prepare(
@@ -417,19 +497,21 @@ export function registerApiRoutes(r) {
         b.stock !== undefined ? round(num(b.stock), 3) : ing.stock,
         ing.id);
     return { ok: true };
-  });
+  }
 
   r.delete('/api/ingredients/:id', (ctx) => {
     requireOwner(ctx);
-    const ing = mustExist('ingredients', ctx.params.id, 'Ingredient');
-    const used = num(db.prepare('SELECT COUNT(*) n FROM stock_moves WHERE ingredient_id = ?').get(ing.id).n)
-      + num(db.prepare('SELECT COUNT(*) n FROM recipes WHERE ingredient_id = ?').get(ing.id).n);
-    if (used > 0) {
-      db.prepare('UPDATE ingredients SET active = 0 WHERE id = ?').run(ing.id);
-      return { ok: true, archived: true, reason: 'Kept because it appears in recipes or stock history' };
-    }
-    db.prepare('DELETE FROM ingredients WHERE id = ?').run(ing.id);
-    return { ok: true, deleted: true };
+    return guardedWrite(ctx, 'ingredients', ctx.params.id, 'delete', () => {
+      const ing = mustExist('ingredients', ctx.params.id, 'Ingredient');
+      const used = num(db.prepare('SELECT COUNT(*) n FROM stock_moves WHERE ingredient_id = ?').get(ing.id).n)
+        + num(db.prepare('SELECT COUNT(*) n FROM recipes WHERE ingredient_id = ?').get(ing.id).n);
+      if (used > 0) {
+        db.prepare('UPDATE ingredients SET active = 0 WHERE id = ?').run(ing.id);
+        return { ok: true, archived: true, reason: 'Kept because it appears in recipes or stock history' };
+      }
+      db.prepare('DELETE FROM ingredients WHERE id = ?').run(ing.id);
+      return { ok: true, deleted: true };
+    });
   });
 
   /**
@@ -570,13 +652,17 @@ export function registerApiRoutes(r) {
     const b = ctx.body ?? {};
     const name = clip(require_(b.name, 'Customer name'), 120);
     const id = Number(db.prepare(
-      'INSERT INTO customers (name, phone, address, notes, is_walk_in, created_at) VALUES (?,?,?,?,0,?)')
-      .run(name, strOrNull(clip(b.phone, 40)), strOrNull(clip(b.address, 200)), strOrNull(clip(b.notes, 400)), now()).lastInsertRowid);
+      'INSERT INTO customers (name, phone, address, notes, is_walk_in, created_at, updated_at) VALUES (?,?,?,?,0,?,?)')
+      .run(name, strOrNull(clip(b.phone, 40)), strOrNull(clip(b.address, 200)), strOrNull(clip(b.notes, 400)), now(), nowStamp()).lastInsertRowid);
     return { id, name };
   });
 
   r.put('/api/customers/:id', (ctx) => {
     requireUser(ctx);
+    return guardedWrite(ctx, 'customers', ctx.params.id, 'update', () => updateCustomer(ctx));
+  });
+
+  function updateCustomer(ctx) {
     const c = mustExist('customers', ctx.params.id, 'Customer');
     const b = ctx.body ?? {};
     db.prepare('UPDATE customers SET name=?, phone=?, address=?, notes=? WHERE id=?')
@@ -585,16 +671,18 @@ export function registerApiRoutes(r) {
         b.address !== undefined ? strOrNull(clip(b.address, 200)) : c.address,
         b.notes !== undefined ? strOrNull(clip(b.notes, 400)) : c.notes, c.id);
     return { ok: true };
-  });
+  }
 
   r.delete('/api/customers/:id', (ctx) => {
     requireOwner(ctx);
-    const c = mustExist('customers', ctx.params.id, 'Customer');
-    if (c.is_walk_in) throw badRequest('The walk-in customer cannot be deleted');
-    const used = num(db.prepare('SELECT COUNT(*) n FROM sales WHERE customer_id = ?').get(c.id).n);
-    if (used > 0) throw badRequest(`This customer has ${used} sale(s). Deleting them would break your records.`);
-    db.prepare('DELETE FROM customers WHERE id = ?').run(c.id);
-    return { ok: true };
+    return guardedWrite(ctx, 'customers', ctx.params.id, 'delete', () => {
+      const c = mustExist('customers', ctx.params.id, 'Customer');
+      if (c.is_walk_in) throw badRequest('The walk-in customer cannot be deleted');
+      const used = num(db.prepare('SELECT COUNT(*) n FROM sales WHERE customer_id = ?').get(c.id).n);
+      if (used > 0) throw badRequest(`This customer has ${used} sale(s). Deleting them would break your records.`);
+      db.prepare('DELETE FROM customers WHERE id = ?').run(c.id);
+      return { ok: true, deleted: true };
+    });
   });
 
   /* ---------------- sales / point of sale ---------------- */
@@ -749,15 +837,27 @@ export function registerApiRoutes(r) {
       if (dup) return replayedExpense(dup);
     }
     const id = Number(db.prepare(
-      'INSERT INTO expenses (title, category, amount, note, user_id, expense_at, created_at, client_ref) VALUES (?,?,?,?,?,?,?,?)')
-      .run(title, category, amount, strOrNull(clip(b.note, 400)), ctx.user.id, when, now(), clientRef).lastInsertRowid);
+      'INSERT INTO expenses (title, category, amount, note, user_id, expense_at, created_at, client_ref, updated_at) VALUES (?,?,?,?,?,?,?,?,?)')
+      .run(title, category, amount, strOrNull(clip(b.note, 400)), ctx.user.id, when, now(), clientRef, nowStamp()).lastInsertRowid);
     return { ok: true, replay: false, id, title, amount, category };
   });
 
   r.put('/api/expenses/:id', (ctx) => {
     requireUser(ctx);
+    assertExpenseOwnership(ctx, ctx.params.id);
+    return guardedWrite(ctx, 'expenses', ctx.params.id, 'update', () => updateExpense(ctx));
+  });
+
+  /** Checked before the replay lookup, not inside it. */
+  function assertExpenseOwnership(ctx, id) {
+    const e = db.prepare('SELECT user_id FROM expenses WHERE id = ?').get(Number(id));
+    if (e && ctx.user.role !== 'owner' && e.user_id !== ctx.user.id) {
+      throw forbidden('That expense belongs to someone else');
+    }
+  }
+
+  function updateExpense(ctx) {
     const e = mustExist('expenses', ctx.params.id, 'Expense');
-    if (ctx.user.role !== 'owner' && e.user_id !== ctx.user.id) throw forbidden('That expense belongs to someone else');
     const b = ctx.body ?? {};
     db.prepare('UPDATE expenses SET title=?, category=?, amount=?, note=?, expense_at=? WHERE id=?')
       .run(b.title !== undefined ? clip(require_(b.title, 'Title'), 160) : e.title,
@@ -766,14 +866,16 @@ export function registerApiRoutes(r) {
         b.note !== undefined ? strOrNull(clip(b.note, 400)) : e.note,
         b.expense_at !== undefined ? normaliseWhen(b.expense_at, e.expense_at) : e.expense_at, e.id);
     return { ok: true };
-  });
+  }
 
   r.delete('/api/expenses/:id', (ctx) => {
     requireUser(ctx);
-    const e = mustExist('expenses', ctx.params.id, 'Expense');
-    if (ctx.user.role !== 'owner' && e.user_id !== ctx.user.id) throw forbidden('That expense belongs to someone else');
-    db.prepare('DELETE FROM expenses WHERE id = ?').run(e.id);
-    return { ok: true };
+    assertExpenseOwnership(ctx, ctx.params.id);
+    return guardedWrite(ctx, 'expenses', ctx.params.id, 'delete', () => {
+      const e = mustExist('expenses', ctx.params.id, 'Expense');
+      db.prepare('DELETE FROM expenses WHERE id = ?').run(e.id);
+      return { ok: true, deleted: true };
+    });
   });
 
   /* ---------------- users (owner) ---------------- */

@@ -3,7 +3,7 @@
  * so two devices can never disagree about what has been sold.
  * Bump VERSION whenever the front-end changes to force a refresh. */
 
-const VERSION = 'bakery-v1.1.0';
+const VERSION = 'bakery-v1.2.0';
 
 const SHELL = [
   '/',
@@ -18,6 +18,7 @@ const SHELL = [
   '/js/charts.js',
   '/js/store.js',
   '/js/offline.js',
+  '/js/pending.js',
   '/js/router.js',
   '/js/views/login.js',
   '/js/views/dashboard.js',

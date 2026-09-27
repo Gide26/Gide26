@@ -7,7 +7,8 @@ import { state, isOwner, invalidate } from '../store.js';
 import { icon, $, on, toast, busy, sheet, emptyState, confirmDialog,
   bindRangePicker, defaultRange } from '../ui.js';
 import { money, moneyCompact, num, esc, dateTime, dateOnly, todayStr, localStamp } from '../format.js';
-import { enqueue, makeRef, countOutbox } from '../offline.js';
+import { enqueue, makeRef, putCache, getCache, cacheAge } from '../offline.js';
+import { pendingPanel } from '../pending.js';
 import { hbars } from '../charts.js';
 
 export async function render(host) {
@@ -15,6 +16,9 @@ export async function render(host) {
   const range = { ...defaultRange() };
   const filter = { category: '', q: '' };
   const cleanups = [];
+  // True when the list on screen came from the offline snapshot rather than the
+  // server. Edits are still allowed; they are queued with the stamp we last saw.
+  let offlineList = false;
 
   host.innerHTML = `
     <div class="page-head">
@@ -26,6 +30,8 @@ export async function render(host) {
         <button class="btn btn-primary" data-add>${icon('plus', { size: 17 })} Add expense</button>
       </div>
     </div>
+
+    <div id="e-queued" style="margin-bottom:12px"></div>
 
     <div class="card" style="margin-bottom:12px"><div class="card-body" id="e-range"></div></div>
 
@@ -54,6 +60,7 @@ export async function render(host) {
   cleanups.push(bindRangePicker($('#e-range', host), range, load));
   cleanups.push(on(host, 'click', '[data-add]', () => editor(null)));
   cleanups.push(on(host, 'change', '#e-cat', (_e, el) => { filter.category = el.value; paint(); }));
+  cleanups.push(pendingPanel($('#e-queued', host), { kinds: ['expense'], title: 'Expense changes queued on this device' }));
 
   let cache = { expenses: [], totals: { count: 0, total: 0 }, categories: [] };
 
@@ -61,12 +68,22 @@ export async function render(host) {
     list.innerHTML = '<div class="loading-page" style="padding:26px"><div class="spinner"></div></div>';
     try {
       cache = await api.expenses({ from: range.from, to: range.to });
+      offlineList = false;
+      // Snapshot so the records stay visible — and therefore editable — offline.
+      putCache('expenses', { ...cache, _range: { ...range }, _at: Date.now() });
       const sel = $('#e-cat', host);
       const current = filter.category;
       sel.innerHTML = '<option value="">All categories</option>'
         + (cache.categories || []).map((c) => `<option value="${esc(c)}"${c === current ? ' selected' : ''}>${esc(c)}</option>`).join('');
       paint();
     } catch (err) {
+      const saved = await getCache('expenses');
+      if (saved && Array.isArray(saved.expenses)) {
+        cache = saved;
+        offlineList = true;
+        paint();
+        return;
+      }
       list.innerHTML = emptyState({ icon: 'alert', title: 'Could not load expenses', message: err.message });
     }
   }
@@ -74,6 +91,24 @@ export async function render(host) {
   function paint() {
     const rows = cache.expenses.filter((e) => !filter.category || e.category === filter.category);
     const total = rows.reduce((a, e) => a + Number(e.amount), 0);
+
+    if (offlineList) {
+      const since = cache._at ? localStamp(new Date(cache._at)) : 'an earlier visit';
+      const note = $('#e-offline-note', host) || (() => {
+        const d = document.createElement('div');
+        d.id = 'e-offline-note';
+        d.style.marginBottom = '12px';
+        kpis.parentNode.insertBefore(d, kpis);
+        return d;
+      })();
+      note.innerHTML = `<div class="pill-note">${icon('wifiOff', { size: 17 })}
+        <div><strong>Offline.</strong> These are the expenses saved at your last sync (${esc(since)}),
+        not the live list. You can still add, edit and delete — each change is queued on this
+        device and applied when you reconnect. If someone else changed one of these in the
+        meantime, you will be asked which version to keep rather than having it overwritten.</div></div>`;
+    } else {
+      $('#e-offline-note', host)?.remove();
+    }
 
     kpis.innerHTML = `
       ${kpi('Total spent', moneyCompact(total, true), `${dateOnly(range.from)} – ${dateOnly(range.to)}`, 'wallet')}
@@ -157,11 +192,21 @@ export async function render(host) {
           };
           const isOffline = typeof navigator !== 'undefined' && navigator.onLine === false;
 
-          // A new expense can be captured offline. Editing or deleting one cannot:
-          // that needs the stored record, and guessing at it would risk clobbering
-          // a change made on another device.
           if (isOffline && !isNew) {
-            return toast('Editing an expense needs a connection — this one will keep until you reconnect', 'warn', 5000);
+            // Queue the edit against the stamp we last saw. If the record moved on
+            // while we were offline the server refuses it and the pending panel
+            // asks which version to keep — it never guesses.
+            busy(btn, true, 'Saving');
+            try {
+              await enqueue('expense:update', {
+                id: e.id, ...payload, base_updated_at: e.updated_at || null,
+              }, { label: `${d.title} · ${money(payload.amount)}` });
+              busy(btn, false);
+              toast('Edit saved on this device — it will send when you reconnect', 'ok', 4200);
+              closeSheet();
+              await load();
+            } catch (err2) { busy(btn, false); toast(`Could not save on this device: ${err2.message || ''}`, 'bad', 6000); }
+            return;
           }
           if (isOffline) {
             busy(btn, true, 'Saving');
@@ -178,7 +223,9 @@ export async function render(host) {
 
           busy(btn, true, 'Saving');
           try {
-            await api.saveExpense(isNew ? null : e.id, { ...payload, client_ref: isNew ? makeRef('exp') : undefined });
+            await api.saveExpense(isNew ? null : e.id, isNew
+              ? { ...payload, client_ref: makeRef('exp') }
+              : { ...payload, client_ref: makeRef('exp'), base_updated_at: e.updated_at || null });
             toast(isNew ? `${money(d.amount)} recorded` : 'Expense updated', 'ok');
             closeSheet();
             await load();
@@ -200,11 +247,28 @@ export async function render(host) {
         if (!isNew) {
           on(el, 'click', '[data-delete]', async () => {
             if (!await confirmDialog({ title: 'Delete this expense?', message: `${e.title} — ${money(e.amount)}`, confirmLabel: 'Delete', danger: true })) return;
+            const offline = typeof navigator !== 'undefined' && navigator.onLine === false;
+            if (offline) {
+              try {
+                await enqueue('expense:delete', { id: e.id, base_updated_at: e.updated_at || null },
+                  { label: `${e.title} · ${money(e.amount)}` });
+                toast('Deletion queued — it will apply when you reconnect', 'ok', 4200);
+                closeSheet(); await load();
+              } catch (err2) { toast(`Could not queue the deletion: ${err2.message || ''}`, 'bad', 6000); }
+              return;
+            }
             try {
-              await api.deleteExpense(e.id);
+              await api.deleteExpense(e.id, { client_ref: makeRef('exp'), base_updated_at: e.updated_at || null });
               toast('Expense deleted', 'ok');
               closeSheet(); await load();
-            } catch (err) { toast(err.message, 'bad'); }
+            } catch (err) {
+              if (err?.status === 409) {
+                toast('That expense changed on the server — reload the list and try again', 'warn', 6000);
+                closeSheet(); await load();
+                return;
+              }
+              toast(err.message, 'bad');
+            }
           });
         }
       },

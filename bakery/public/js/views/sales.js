@@ -7,7 +7,7 @@ import { state, isOwner } from '../store.js';
 import { icon, $, on, toast, busy, sheet, emptyState, confirmDialog,
   rangePickerHtml, bindRangePicker, defaultRange } from '../ui.js';
 import { money, num, qty, esc, dateTime, dateOnly, methodLabel, statusLabel, todayStr } from '../format.js';
-import { listOutbox, onOutboxChange, discard, retry, syncOutbox } from '../offline.js';
+import { pendingPanel } from '../pending.js';
 
 const PAGE = 40;
 
@@ -113,82 +113,11 @@ export async function render(host, ctx) {
     }
   }
 
-  /**
-   * Sales taken while offline are on this device but not yet on the server, so
-   * they are invisible to the list below. Showing them here is what lets a
-   * cashier confirm the day's takings were not lost, and fix anything rejected.
-   */
-  async function paintQueued() {
-    const host2 = $('#sales-queued', host);
-    if (!host2) return;
-    let items = [];
-    try { items = (await listOutbox()).filter((r) => r.kind === 'sale'); } catch { return; }
-    if (!items.length) { host2.innerHTML = ''; return; }
-
-    const failed = items.filter((i) => i.failed).length;
-    host2.innerHTML = `
-      <div class="card">
-        <div class="card-head">
-          <h3 class="grow">${icon('wifiOff', { size: 16 })} Queued on this device</h3>
-          <span class="badge ${failed ? 'bad' : 'warn'}">${items.length} waiting${failed ? ` · ${failed} need attention` : ''}</span>
-        </div>
-        <div class="card-body tight">
-          <div class="list">
-            ${items.map((i) => `
-              <div class="list-item">
-                <span class="thumb ${i.failed ? 'red' : 'gold'}">${icon(i.failed ? 'alert' : 'clock', { size: 17 })}</span>
-                <span class="list-main">
-                  <span class="list-title">${esc(i.provisional || 'Offline sale')}</span>
-                  <span class="list-sub">${esc(i.label || '')} · captured ${esc(dateTime(i.capturedAt))}
-                    ${i.lastError ? ` · <span style="color:var(--bad)">${esc(i.lastError)}</span>` : ''}</span>
-                </span>
-                <span class="list-side" style="gap:6px">
-                  <span class="list-amount">${esc(money(i.payload?.paid ?? 0))}</span>
-                  ${i.failed ? `<button class="btn btn-ghost btn-sm" data-retry-q="${esc(i.ref)}">Retry</button>` : ''}
-                  <button class="btn btn-ghost btn-icon btn-sm" data-drop-q="${esc(i.ref)}"
-                    title="Delete this queued sale" aria-label="Delete queued sale">${icon('trash', { size: 15 })}</button>
-                </span>
-              </div>`).join('')}
-          </div>
-          <div style="padding:10px 14px;border-top:1px solid var(--line)">
-            <button class="btn btn-primary btn-sm" data-send-q>${icon('refresh', { size: 15 })} Send now</button>
-            <span class="small muted" style="margin-left:8px">These are stored safely on this device.
-            They send automatically when the connection returns.</span>
-          </div>
-        </div>
-      </div>`;
-  }
-
-  cleanups.push(on(host, 'click', '[data-send-q]', async (_e, el) => {
-    busy(el, true, 'Sending');
-    const out = await syncOutbox();
-    busy(el, false);
-    toast(out.synced ? `Sent ${out.synced} queued ${out.synced === 1 ? 'sale' : 'sales'}`
-      : (out.offline ? 'Still no connection — they are safe on this device' : 'Nothing could be sent yet'),
-      out.synced ? 'ok' : 'warn', 4200);
-    await paintQueued();
-  }));
-
-  cleanups.push(on(host, 'click', '[data-retry-q]', async (_e, el) => {
-    await retry(el.dataset.retryQ);
-    await paintQueued();
-  }));
-
-  cleanups.push(on(host, 'click', '[data-drop-q]', async (_e, el) => {
-    const ok = await confirmDialog({
-      title: 'Delete this queued sale?',
-      message: 'It has not reached the server yet, so deleting it here removes it completely. Only do this if the sale was a mistake.',
-      confirmLabel: 'Delete it', danger: true,
-    });
-    if (!ok) return;
-    await discard(el.dataset.dropQ);
-    toast('Queued sale deleted', 'ok');
-    await paintQueued();
-  }));
-
-  // Keep the panel truthful as the queue changes underneath us.
-  cleanups.push(onOutboxChange(() => { paintQueued(); }));
-  paintQueued();
+  // Sales taken offline are on this device but not yet on the server, so they
+  // are invisible to the list below. The shared panel shows them, and offers the
+  // conflict choices when the server has moved on without us.
+  const queuedHost = $('#sales-queued', host);
+  cleanups.push(pendingPanel(queuedHost, { kinds: ['sale'], title: 'Sales queued on this device' }));
 
   function paint() {
     const due = rows.reduce((a, s) => a + (Number(s.due) > 0 && s.status !== 'void' ? Number(s.due) : 0), 0);

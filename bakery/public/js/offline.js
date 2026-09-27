@@ -205,19 +205,65 @@ export async function cacheAge(key) {
  * Sync
  * ------------------------------------------------------------------ */
 
-const syncState = { syncing: false, failed: 0, lastSyncAt: null, lastError: null };
+const syncState = { syncing: false, failed: 0, conflicts: 0, lastSyncAt: null, lastError: null };
 
-/** Where each kind of queued write is replayed to. */
-function endpointFor(record) {
-  switch (record.kind) {
-    case 'sale': return { method: 'POST', path: '/api/sales' };
-    case 'expense': return { method: 'POST', path: '/api/expenses' };
-    case 'stock': {
-      const id = record.payload.ingredient_id;
-      return { method: 'POST', path: `/api/ingredients/${id}/stock` };
-    }
-    default: return null;
+/**
+ * Settle a queued change the server refused because the record moved on.
+ *   'mine'   — overwrite the server's version with this device's
+ *   'theirs' — drop the queued change and accept what is on the server
+ * Neither is automatic: choosing for the user is how work gets destroyed.
+ */
+export async function resolveConflict(ref, choice) {
+  if (choice === 'theirs') return discard(ref);
+  if (choice === 'mine') {
+    await updateRef(ref, { failed: false, conflict: false, lastError: null, force: true });
+    cacheCount = await countOutbox();
+    emit();
+    return syncOutbox();
   }
+  throw new Error(`Unknown conflict resolution: ${choice}`);
+}
+
+/**
+ * Where each kind of queued write is replayed to.
+ *
+ * Kinds are either a bare noun ('sale') for a create, or 'noun:verb' for an edit
+ * or delete. Updates and deletes carry the record id in the payload, plus the
+ * `base_updated_at` the device last saw — that is what lets the server notice a
+ * change made elsewhere while this phone was disconnected.
+ */
+const ROUTES = {
+  'sale':               (p) => ['POST', '/api/sales'],
+  'expense':            (p) => ['POST', '/api/expenses'],
+  'stock':              (p) => ['POST', `/api/ingredients/${p.ingredient_id}/stock`],
+  'expense:update':     (p) => ['PUT', `/api/expenses/${p.id}`],
+  'expense:delete':     (p) => ['DELETE', `/api/expenses/${p.id}`],
+  'product:update':     (p) => ['PUT', `/api/products/${p.id}`],
+  'product:delete':     (p) => ['DELETE', `/api/products/${p.id}`],
+  'customer:update':    (p) => ['PUT', `/api/customers/${p.id}`],
+  'customer:delete':    (p) => ['DELETE', `/api/customers/${p.id}`],
+  'ingredient:update':  (p) => ['PUT', `/api/ingredients/${p.id}`],
+  'ingredient:delete':  (p) => ['DELETE', `/api/ingredients/${p.id}`],
+};
+
+function endpointFor(record) {
+  const build = ROUTES[record.kind];
+  if (!build) return null;
+  const [method, path] = build(record.payload || {});
+  if (path.endsWith('/undefined') || path.endsWith('/null')) return null;
+  return { method, path };
+}
+
+/** Human-readable label for a queued change, used in the pending list. */
+export function describeKind(kind) {
+  const [noun, verb] = String(kind).split(':');
+  const nouns = { sale: 'sale', expense: 'expense', stock: 'stock movement',
+    product: 'product', customer: 'customer', ingredient: 'ingredient' };
+  const what = nouns[noun] || noun;
+  if (!verb || verb === 'create') return `New ${what}`;
+  if (verb === 'update') return `Edit to ${what}`;
+  if (verb === 'delete') return `Deleted ${what}`;
+  return `${verb} ${what}`;
 }
 
 export function syncStatus() {
@@ -252,12 +298,18 @@ export async function syncOutbox() {
       const target = endpointFor(next);
       if (!target) { await updateRef(next.ref, { failed: true, lastError: 'Unknown record type' }); continue; }
 
+      // `force` means the user has seen the conflict and chosen their own
+      // version, so the concurrency check is deliberately dropped.
+      const payload = next.force
+        ? (() => { const { base_updated_at, ...rest } = next.payload; return rest; })()
+        : next.payload;
+
       let res;
       try {
         res = await fetch(target.path, {
           method: target.method,
           headers: { 'content-type': 'application/json' },
-          body: JSON.stringify(next.payload),
+          body: JSON.stringify(payload),
           credentials: 'same-origin',
           cache: 'no-store',
         });
@@ -276,6 +328,21 @@ export async function syncOutbox() {
       const text = await res.text();
       let data = null;
       try { data = text ? JSON.parse(text) : null; } catch { data = { error: text.slice(0, 200) }; }
+
+      if (res.status === 409) {
+        // Someone changed this record while we were offline. Never guess: park it
+        // with both timestamps so a human can choose, and carry on with the rest.
+        await updateRef(next.ref, {
+          attempts: (next.attempts || 0) + 1,
+          failed: true,
+          conflict: true,
+          lastError: data?.error || 'Changed on the server while you were offline',
+          serverUpdatedAt: data?.details?.server_updated_at || null,
+          clientBase: data?.details?.client_base || null,
+        });
+        syncState.conflicts = (syncState.conflicts || 0) + 1;
+        continue;
+      }
 
       if (!res.ok) {
         // A 5xx may succeed later, so retry it; a 4xx will never succeed as-is
@@ -299,8 +366,10 @@ export async function syncOutbox() {
       syncState.lastError = null;
     }
   } finally {
-    cacheCount = await countOutbox().catch(() => cacheCount);
-    syncState.failed = (await listOutbox().catch(() => [])).filter((r) => r.failed).length;
+    const left = await listOutbox().catch(() => []);
+    cacheCount = left.length;
+    syncState.failed = left.filter((r) => r.failed).length;
+    syncState.conflicts = left.filter((r) => r.conflict).length;
     syncState.syncing = false;
     emit();
   }

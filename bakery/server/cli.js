@@ -14,7 +14,7 @@ import { copyFileSync, existsSync, mkdirSync, rmSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { db, DB_PATH, DATA_DIR, hashPassword, tableCounts, tx, now } from './db.js';
-import { seedDemo, seedOwner } from './seed.js';
+import { seedDemo, seedOwner, clearAll } from './seed.js';
 import { num, str } from './util.js';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -78,14 +78,7 @@ function wipe() {
   if (!args.includes('--yes')) {
     return console.error('Refusing to wipe: re-run with --yes to confirm you understand this is permanent.');
   }
-  tx(() => {
-    for (const t of ['sale_items', 'sales', 'stock_moves', 'recipes', 'expenses', 'sessions',
-      'customers', 'ingredients', 'suppliers', 'products', 'categories', 'users']) {
-      db.prepare(`DELETE FROM ${t}`).run();
-    }
-    db.prepare("DELETE FROM sqlite_sequence WHERE name <> 'settings'").run();
-    db.prepare('DELETE FROM settings').run();
-  });
+  tx(() => clearAll());
   console.log('All business data deleted. Restart the server to re-initialise.');
 }
 
