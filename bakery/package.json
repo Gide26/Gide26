@@ -14,6 +14,7 @@
     "reset-password": "node --disable-warning=ExperimentalWarning server/cli.js reset-password",
     "backup": "node --disable-warning=ExperimentalWarning server/cli.js backup",
     "wipe": "node --disable-warning=ExperimentalWarning server/cli.js wipe",
-    "test": "node test/on-arity.mjs && bash test/smoke.sh"
+    "test": "node test/on-arity.mjs && bash test/smoke.sh",
+    "clear-history": "node --disable-warning=ExperimentalWarning server/cli.js clear-history"
   }
 }

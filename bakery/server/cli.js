@@ -31,6 +31,7 @@ Bakery Tracker — maintenance commands
   backup [file]                          Copy the database to a .bak file
   stats                                  Print record counts and totals
   wipe --yes                             Delete ALL data (irreversible)
+  clear-history --yes                    Delete sales/expenses/stock only, keep the catalogue
 `);
 };
 
@@ -82,6 +83,36 @@ function wipe() {
   console.log('All business data deleted. Restart the server to re-initialise.');
 }
 
+/**
+ * Erase the example TRADING history — sales, expenses, stock movements — while
+ * keeping the catalogue (products, ingredients, recipes), customers, users and
+ * settings.
+ *
+ * Going live usually means "my reports must start at zero", not "my product
+ * list must start at zero": renaming nineteen seeded products to the real menu
+ * is far quicker than re-typing them. This is the command for that middle path.
+ */
+function clearHistory() {
+  if (!args.includes('--yes')) {
+    return console.error('Refusing to clear history: re-run with --yes to confirm.\n'
+      + 'This deletes sales, expenses and stock movements. Products, customers and users stay.');
+  }
+  const before = tableCounts();
+  tx(() => {
+    for (const t of ['sale_items', 'sales', 'stock_moves', 'expenses', 'sync_log', 'sessions']) {
+      db.prepare(`DELETE FROM ${t}`).run();
+    }
+    db.prepare("DELETE FROM sqlite_sequence WHERE name IN ('sales','sale_items','stock_moves','expenses')").run();
+    // Let invoice numbering restart at 1 with the new, real first sale.
+    db.prepare("DELETE FROM settings WHERE key = 'next_invoice'").run();
+  });
+  const after = tableCounts();
+  console.log('Trading history cleared. Reports now start from zero.');
+  console.log(`  sales: ${before.sales ?? 0} -> ${after.sales ?? 0}, expenses -> 0, stock movements -> 0`);
+  console.log('  Kept: products, ingredients, recipes, categories, customers, users, settings.');
+  console.log('  Everyone is signed out; sign in again to continue.');
+}
+
 function resetPassword() {
   const [phone, password] = args;
   if (!phone || !password) return usage();
@@ -124,6 +155,7 @@ switch (str(command)) {
   case 'backup': backup(args[0]); break;
   case 'stats': stats(); break;
   case 'wipe': wipe(); break;
+  case 'clear-history': clearHistory(); break;
   case undefined:
   case 'help':
   default: usage();
