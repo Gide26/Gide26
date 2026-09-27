@@ -1,0 +1,24 @@
+# Secrets — never commit these
+.env
+.env.*
+*.key
+secrets.json
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+
+# Generated output from the course code
+generative-ai-course/code/docs/
+generative-ai-course/code/expenses.json
+generative-ai-course/code/conversation.md
+generative-ai-course/code/.history.json
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+*.swp
