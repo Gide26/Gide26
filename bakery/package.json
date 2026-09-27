@@ -1,0 +1,20 @@
+{
+  "name": "bakery-tracker",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sales, inventory, expenses, recipes and profit tracking for a bakery. Works on computer and phone.",
+  "type": "module",
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "scripts": {
+    "start": "node --disable-warning=ExperimentalWarning server/index.js",
+    "dev": "node --disable-warning=ExperimentalWarning --watch server/index.js",
+    "seed-demo": "node --disable-warning=ExperimentalWarning server/cli.js seed-demo",
+    "reset-password": "node --disable-warning=ExperimentalWarning server/cli.js reset-password",
+    "backup": "node --disable-warning=ExperimentalWarning server/cli.js backup",
+    "wipe": "node --disable-warning=ExperimentalWarning server/cli.js wipe",
+    "test": "node test/on-arity.mjs && bash test/smoke.sh",
+    "clear-history": "node --disable-warning=ExperimentalWarning server/cli.js clear-history"
+  }
+}

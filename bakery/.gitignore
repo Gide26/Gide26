@@ -1,0 +1,8 @@
+# Local database and backups — never commit real business data
+data/
+*.sqlite
+*.sqlite-journal
+*.sqlite-wal
+*.sqlite-shm
+*.bak
+node_modules/
