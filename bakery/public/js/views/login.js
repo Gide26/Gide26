@@ -18,6 +18,10 @@ export async function render(host, { onSignedIn }) {
   }
 
   let mode = status.needsSetup ? 'setup' : 'signin';
+  // Set when a login succeeded but the very next authenticated request came
+  // back as signed-out: the browser accepted the session cookie and then
+  // refused to keep it, which only happens in embedded frames.
+  let cookieBlocked = false;
 
   const paint = () => {
     const name = esc(status.businessName || 'Bakery Tracker');
@@ -77,6 +81,21 @@ export async function render(host, { onSignedIn }) {
         ${icon('lock', { size: 17 })} Sign in
       </button>
     </form>
+    ${cookieBlocked ? `
+      <div class="pill-note warn" style="margin-top:16px">
+        ${icon('alert', { size: 17 })}
+        <div>
+          <strong>Your password was correct — but your browser forgot you immediately.</strong>
+          <div class="tiny" style="margin-top:4px">
+            The cookie that keeps you signed in is being thrown away. That happens when the app
+            is opened inside another window: a preview pane, or the browser built into WhatsApp,
+            Facebook or Messenger. Open it as a normal browser tab and sign in again there.
+          </div>
+          <button type="button" class="btn btn-sm btn-primary" style="margin-top:9px" data-newtab>
+            ${icon('arrowUpRight', { size: 15 })} Open in a full browser tab
+          </button>
+        </div>
+      </div>` : ''}
     ${st.demo ? `
       <div class="pill-note info" style="margin-top:16px">
         ${icon('info', { size: 17 })}
@@ -95,6 +114,8 @@ export async function render(host, { onSignedIn }) {
       </div>`}`;
 
   const bind = () => {
+    on(host, 'click', '[data-newtab]', () => { window.open(location.href, '_blank'); });
+
     const form = $('#auth-form', host);
     if (!form) return;
 
@@ -114,6 +135,18 @@ export async function render(host, { onSignedIn }) {
           toast('Welcome! Your bakery is ready.', 'ok');
         } else {
           const user = await signIn(data.phone, data.password);
+          // Credentials were accepted. Confirm the session actually survived:
+          // in an embedded frame the cookie can be discarded before the next
+          // request, and without this check the user is dumped back on the
+          // sign-in screen with no explanation at all.
+          const check = await api.me();
+          if (!check?.user) {
+            busy(btn, false);
+            cookieBlocked = true;
+            paint();
+            return;
+          }
+          cookieBlocked = false;
           toast(`Signed in as ${user.name}`, 'ok', 2200);
         }
         onSignedIn();

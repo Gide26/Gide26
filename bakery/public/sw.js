@@ -3,7 +3,7 @@
  * so two devices can never disagree about what has been sold.
  * Bump VERSION whenever the front-end changes to force a refresh. */
 
-const VERSION = 'bakery-v1.3.0';
+const VERSION = 'bakery-v1.3.1';
 
 const SHELL = [
   '/',
