@@ -4,6 +4,8 @@ A free, picture-illustrated tutorial on taking better **photos and videos with a
 
 Open `index.html` in any browser, or publish it with GitHub Pages (see below).
 
+**Printable edition:** [`shoot-like-a-pro-with-your-phone.pdf`](shoot-like-a-pro-with-your-phone.pdf) (A4, ~36 pages) — the same content laid out for printing and sharing on WhatsApp/email.
+
 ## What's inside
 
 | # | Chapter | Covers |
@@ -25,8 +27,21 @@ docs/
 ├── index.html      # the whole tutorial (single page, inline SVG diagrams)
 ├── css/style.css   # styles, responsive layout, print stylesheet
 ├── js/main.js      # progress bar, table of contents, lightbox, grid toggle, before/after slider
-└── images/         # photo illustrations (optimised JPEGs)
+├── images/         # photo illustrations (optimised JPEGs)
+├── shoot-like-a-pro-with-your-phone.pdf   # print edition, generated from index.html
+└── tools/build_pdf.py                     # regenerates the PDF
 ```
+
+## Rebuilding the PDF
+
+The PDF is generated from `index.html`, so edit the web page and rebuild:
+
+```bash
+pip install reportlab beautifulsoup4 pillow resvg-py
+python3 docs/tools/build_pdf.py
+```
+
+Fonts (Lato, DM Serif Display — both SIL Open Font Licence) are fetched once into `docs/tools/.fonts/` using the GitHub CLI; DejaVu Sans is used if they are unavailable. Example photos that are still placeholders are left out of the PDF automatically (pass `--keep-placeholders` to include them).
 
 No build step and no dependencies — plain HTML, CSS and JavaScript.
 
