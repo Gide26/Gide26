@@ -289,7 +289,55 @@ async function showApp() {
  * Boot
  * ------------------------------------------------------------------ */
 
+/**
+ * Report uncaught browser errors to the server, which prints them in its
+ * terminal. A page that "does nothing" on click is nearly always throwing
+ * somewhere invisible, and the terminal is the one place the owner watches.
+ */
+function reportClientError(message, extra = {}) {
+  try {
+    fetch('/api/client-log', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ message, ...extra, ua: navigator.userAgent, href: location.href }),
+      keepalive: true,
+    }).catch(() => { /* the report must never become another error */ });
+  } catch { /* ignore */ }
+}
+
+/**
+ * Escape hatch for a poisoned cache: /?fresh=1 unregisters every service
+ * worker and deletes every cache, then reloads once.
+ *
+ * The shell is cache-first by design, which is exactly what makes a half-written
+ * or outdated cached module hard to shake — the symptom is a page whose buttons
+ * stop doing anything at all. This gives the owner a single address that always
+ * gets back to a known-good state, without touching their data.
+ */
+async function dropCachesAndReload() {
+  try {
+    if ('serviceWorker' in navigator) {
+      const regs = await navigator.serviceWorker.getRegistrations();
+      await Promise.all(regs.map((r) => r.unregister()));
+    }
+    if ('caches' in window) {
+      for (const key of await caches.keys()) await caches.delete(key);
+    }
+  } catch { /* best effort */ }
+  location.replace(location.pathname + location.hash);
+}
+
 async function boot() {
+  if (location.search.includes('fresh=1')) {
+    await dropCachesAndReload();
+    return;
+  }
+
+  window.addEventListener('error', (e) => reportClientError(e.message || 'unknown error',
+    { src: e.filename, line: e.lineno }));
+  window.addEventListener('unhandledrejection', (e) =>
+    reportClientError(`unhandled rejection: ${e.reason?.message || e.reason || 'unknown'}`));
+
   setSessionExpiredHandler(() => {
     toast('You were signed out — please sign in again', 'warn');
     showLogin();

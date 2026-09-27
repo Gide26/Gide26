@@ -1022,6 +1022,27 @@ export function registerApiRoutes(r) {
     return { today: shape(window_(today, today)), month: shape(window_(monthStart, today)), series };
   });
 
+  /**
+   * Public: the browser reports its own JavaScript errors here.
+   *
+   * A sign-in that silently does nothing is almost always a client-side
+   * exception, and the only place its owner looks is the server terminal.
+   * Printing the browser's error there turns "nothing happens" into a message
+   * we can actually read. Deliberately tiny and rate-limited.
+   */
+  const clientLogBudget = new Map();
+  r.post('/api/client-log', (ctx) => {
+    const ip = String(ctx.req?.socket?.remoteAddress || '?');
+    const n = (clientLogBudget.get(ip) || 0) + 1;
+    clientLogBudget.set(ip, n);
+    if (n > 30) return { ok: true, suppressed: true };
+    const b = ctx.body ?? {};
+    console.log(`[browser-error] ${clip(str(b.message), 300)}`
+      + (b.src ? ` (${clip(str(b.src), 120)}:${int(b.line)})` : '')
+      + (b.ua ? ` | ${clip(str(b.ua), 120)}` : ''));
+    return { ok: true };
+  });
+
   /** Public: tells the login screen whether first-run setup is needed. */
   r.get('/api/status', () => ({
     needsSetup: isEmpty(),

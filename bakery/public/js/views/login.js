@@ -81,6 +81,7 @@ export async function render(host, { onSignedIn }) {
         ${icon('lock', { size: 17 })} Sign in
       </button>
     </form>
+    <div id="auth-error"></div>
     ${cookieBlocked ? `
       <div class="pill-note warn" style="margin-top:16px">
         ${icon('alert', { size: 17 })}
@@ -124,8 +125,15 @@ export async function render(host, { onSignedIn }) {
       const btn = $('[data-submit]', form);
       const data = Object.fromEntries(new FormData(form).entries());
 
-      if (!String(data.phone || '').trim()) return toast('Enter your phone number', 'warn');
-      if (!String(data.password || '')) return toast('Enter your password', 'warn');
+      // Validation messages go on the card itself, not only in a toast: a toast
+      // that is missed reads as "the button does nothing".
+      const complain = (msg) => {
+        const slot = $('#auth-error', host);
+        if (slot) slot.innerHTML = `<div class="pill-note bad" style="margin-top:12px">${icon('alert', { size: 16 })}<div>${esc(msg)}</div></div>`;
+        toast(msg, 'warn');
+      };
+      if (!String(data.phone || '').trim()) { busy(btn, false); return complain('Enter your phone number'); }
+      if (!String(data.password || '')) { busy(btn, false); return complain('Enter your password'); }
 
       busy(btn, true);
       try {
@@ -152,7 +160,10 @@ export async function render(host, { onSignedIn }) {
         onSignedIn();
       } catch (err) {
         busy(btn, false);
-        toast(err?.message || 'Could not sign in', 'bad', 5000);
+        const msg = err?.message || 'Could not sign in';
+        const slot = $('#auth-error', host);
+        if (slot) slot.innerHTML = `<div class="pill-note bad" style="margin-top:12px">${icon('alert', { size: 16 })}<div>${esc(msg)}</div></div>`;
+        toast(msg, 'bad', 5000);
       }
     });
 
