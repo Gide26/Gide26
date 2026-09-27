@@ -83,14 +83,39 @@ export const $ = (sel, root = document) => root.querySelector(sel);
 export const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
 /**
- * Event delegation: bind once on a container, match on a selector.
+ * Event binding, in two shapes:
+ *
+ *   on(root, event, selector, handler)  delegated — fires when a descendant
+ *                                       matching `selector` is the target
+ *   on(root, event, handler)            direct — fires on the element itself
+ *
+ * The direct shape matters: `submit`, `change` and `input` are usually wanted
+ * on one specific element, and passing a handler where a selector belongs used
+ * to be silent — the mistake only surfaced later as a confusing SyntaxError
+ * from `closest()` inside the listener, by which time the form simply never
+ * responded. A wrong argument type now fails loudly at bind time instead.
+ *
  * Returns an unbind function.
  */
 export function on(root, event, selector, handler, opts) {
+  if (typeof selector === 'function') {
+    const direct = selector;
+    const options = handler; // the 4th slot is opts in the direct shape
+    const listener = (e) => direct(e, root);
+    root.addEventListener(event, listener, options);
+    return () => root.removeEventListener(event, listener, options);
+  }
+  if (typeof selector !== 'string') {
+    throw new Error(`on(${root?.tagName || 'element'}, '${event}'): the third argument must be a selector string or a handler function`);
+  }
+  const fn = handler;
+  if (typeof fn !== 'function') {
+    throw new Error(`on(${root?.tagName || 'element'}, '${event}', '${selector}'): no handler function was passed`);
+  }
   const listener = (e) => {
-    const el = e.target.closest(selector);
+    const el = e.target.closest?.(selector);
     if (!el || !root.contains(el)) return;
-    handler(e, el);
+    fn(e, el);
   };
   root.addEventListener(event, listener, opts);
   return () => root.removeEventListener(event, listener, opts);
