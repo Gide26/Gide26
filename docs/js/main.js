@@ -117,9 +117,11 @@
   document.querySelectorAll(".grid-demo").forEach(function (demo) {
     var btn = demo.querySelector(".toggle");
     if (!btn) return;
+    var fr = (document.documentElement.lang || "").indexOf("fr") === 0;
+    var labels = fr ? ["Afficher la grille", "Masquer la grille"] : ["Show grid", "Hide grid"];
     btn.addEventListener("click", function () {
       var off = demo.classList.toggle("off");
-      btn.textContent = off ? "Show grid" : "Hide grid";
+      btn.textContent = off ? labels[0] : labels[1];
       btn.setAttribute("aria-pressed", off ? "false" : "true");
     });
   });

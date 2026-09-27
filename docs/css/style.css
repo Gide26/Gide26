@@ -70,7 +70,9 @@ kbd {
   padding: .7rem 1.2rem; background: rgba(250, 247, 242, .88); backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
 }
-.brand { display: flex; align-items: center; gap: .6rem; font-weight: 600; text-decoration: none; color: var(--ink); }
+.brand { display: flex; align-items: center; gap: .6rem; font-weight: 600; text-decoration: none; color: var(--ink); min-width: 0; }
+.brand span:last-child { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.topbar-actions { flex-shrink: 0; }
 .brand-mark { width: 30px; height: 30px; border-radius: 9px; background: var(--dark); display: grid; place-items: center; color: var(--accent); }
 .topbar-actions { display: flex; gap: .5rem; align-items: center; }
 .btn {

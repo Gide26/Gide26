@@ -37,17 +37,50 @@ from reportlab.platypus import (
 )
 from reportlab.platypus.tableofcontents import TableOfContents
 
-# --------------------------------------------------------------------------- paths
+# --------------------------------------------------------------------------- paths / CLI
+import argparse
+
 DOCS = Path(__file__).resolve().parents[1]
-HTML = DOCS / "index.html"
+_ap = argparse.ArgumentParser(description="Build the print edition (PDF) from the tutorial HTML.")
+_ap.add_argument("--html", default=str(DOCS / "index.html"), help="source page (default: docs/index.html)")
+_ap.add_argument("--out", default=None, help="output PDF (default: next to the source page)")
+_ap.add_argument("--keep-placeholders", action="store_true", help="include placeholder example photos")
+ARGS = _ap.parse_args()
+
+HTML = Path(ARGS.html).resolve()
 CSS = DOCS / "css" / "style.css"
 IMG_DIR = DOCS / "images"
 TOOLS = DOCS / "tools"
 FONT_DIR = TOOLS / ".fonts"
 BUILD = TOOLS / ".build"
-OUT = DOCS / "shoot-like-a-pro-with-your-phone.pdf"
-SITE_URL = "https://gide26.github.io/Gide26/"
-KEEP_PLACEHOLDERS = "--keep-placeholders" in sys.argv
+
+# language-specific strings (everything else comes from the page itself)
+_L10N = {
+    "en": dict(
+        pdf="shoot-like-a-pro-with-your-phone.pdf",
+        url="https://gide26.github.io/Gide26/",
+        running="Shoot Like a Pro With Your Phone",
+        contents="Contents",
+        kicker="FREE PICTURE-ILLUSTRATED TUTORIAL",
+        web="Web version with interactive examples: ",
+        credit="By Gide26 · Kampala, Uganda · Free to read, print, share and remix.",
+    ),
+    "fr": dict(
+        pdf="photographier-comme-un-pro-avec-votre-telephone.pdf",
+        url="https://gide26.github.io/Gide26/fr/",
+        running="Photographiez comme un pro avec votre téléphone",
+        contents="Sommaire",
+        kicker="TUTORIEL GRATUIT ET ILLUSTRÉ",
+        web="Version web avec exemples interactifs : ",
+        credit="Par Gide26 · Kampala, Ouganda · Libre à lire, imprimer, partager et remixer.",
+    ),
+}
+_lang_m = re.search(r'<html[^>]*\blang="([a-z]{2})', HTML.read_text(encoding="utf-8"))
+LANG = _lang_m.group(1) if _lang_m and _lang_m.group(1) in _L10N else "en"
+T = _L10N[LANG]
+OUT = Path(ARGS.out).resolve() if ARGS.out else HTML.parent / T["pdf"]
+SITE_URL = T["url"]
+KEEP_PLACEHOLDERS = ARGS.keep_placeholders
 PLACEHOLDER_MAX_BYTES = 25_000   # generated placeholder cards are ~12-17 KB; real photos are >100 KB
 
 BUILD.mkdir(parents=True, exist_ok=True)
@@ -271,7 +304,7 @@ def is_placeholder(path: Path) -> bool:
 
 
 def img_path(src: str) -> Path:
-    return (DOCS / src).resolve()
+    return (HTML.parent / src).resolve()
 
 
 def image_size(path: Path):
@@ -745,7 +778,7 @@ class GuideDoc(BaseDocTemplate):
         canv.saveState()
         canv.setFont("Body", 8.2)
         canv.setFillColor(MUTED)
-        canv.drawString(MARGIN, PAGE_H - 12 * mm, "Shoot Like a Pro With Your Phone")
+        canv.drawString(MARGIN, PAGE_H - 12 * mm, T["running"])
         if self.current_chapter:
             canv.drawRightString(PAGE_W - MARGIN, PAGE_H - 12 * mm, self.current_chapter)
         canv.setStrokeColor(LINE); canv.setLineWidth(0.6)
@@ -791,7 +824,7 @@ class Cover(Flowable):
         # text block
         x = MARGIN; y = PAGE_H - img_h - 22 * mm
         c.setFillColor(ACCENT_DEEP); c.setFont("Body-Bold", 9)
-        c.drawString(x, y + 10 * mm, "FREE PICTURE-ILLUSTRATED TUTORIAL")
+        c.drawString(x, y + 10 * mm, T["kicker"])
         title_style = S["cover-title"]
         para = Paragraph(with_fallback(self.title, CMAP_DISPLAY, "Body-Bold"), title_style)
         tw, th = para.wrap(CONTENT_W, 200); para.drawOn(c, x, y - th)
@@ -810,15 +843,16 @@ class Cover(Flowable):
             cx += tw + 6
         # footer meta
         c.setFillColor(MUTED); c.setFont("Body", 9.5)
-        c.drawString(x, 22 * mm, "Web version with interactive examples: " + SITE_URL)
-        c.drawString(x, 17 * mm, "By Gide26 · Kampala, Uganda · Free to read, print, share and remix.")
+        c.drawString(x, 22 * mm, T["web"] + SITE_URL)
+        c.drawString(x, 17 * mm, T["credit"])
 
 
 # --------------------------------------------------------------------------- build story
 def build_story(soup: BeautifulSoup) -> list:
     story = []
     hero = soup.find("section", class_="hero")
-    title = "Shoot like a pro with just your phone"
+    title = strip_emoji(hero.find("h1").get_text(" ", strip=True))
+    title = re.sub(r"\s+", " ", title)
     subtitle = text_of(hero.find("p", class_="lede"))
     chips = [strip_emoji(ch.get_text(strip=True)) for ch in hero.find_all("span", class_="chip")]
     story.append(Cover(IMG_DIR / "hero.jpg", title, subtitle, chips))
@@ -829,7 +863,7 @@ def build_story(soup: BeautifulSoup) -> list:
     toc = TableOfContents()
     toc.levelStyles = [S["toc0"], S["toc1"]]
     toc.dotsMinLevel = 0
-    story += [P("Contents", "h1"), Spacer(1, 6), toc, PageBreak()]
+    story += [P(T["contents"], "h1"), Spacer(1, 6), toc, PageBreak()]
 
     for section in soup.select("main section.chapter"):
         story += conv_section(section)

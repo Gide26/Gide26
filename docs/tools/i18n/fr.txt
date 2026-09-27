@@ -1,0 +1,2104 @@
+@0001 24c689
+Photographiez comme un pro avec votre téléphone — un guide illustré de la photo et de la vidéo au smartphone
+
+@0002 384a26
+Un tutoriel gratuit et illustré pour faire de meilleures photos et vidéos avec votre téléphone : tenue stable, mise au point et exposition, lumière, composition, angles de prise de vue, portraits, mouvements de caméra cinématiques, son et retouche.
+
+@0003 4ce3db
+Photographiez comme un pro avec votre téléphone
+
+@0004 57d52b
+Guide illustré de la photo et de la vidéo au smartphone : lumière, composition, angles de prise de vue et techniques vidéo.
+
+@0005 4ce3db
+Photographiez comme un pro
+
+@0006 57b327
+<a class="btn btn-ghost btn-sm hide-sm" href="#cheatsheet">Aide-mémoire</a>
+    <a class="btn btn-ghost btn-sm" href="shoot-like-a-pro-with-your-phone.pdf" download title="Télécharger l’édition imprimable (PDF)">⬇ PDF</a>
+    <a class="btn btn-ghost btn-sm lang-switch" href="fr/" lang="fr" hreflang="fr" title="Lire ce guide en français">FR · Français</a>
+    <button class="btn btn-primary btn-sm toc-toggle" type="button" aria-expanded="false" aria-controls="sidebar">☰ Sommaire</button>
+
+@0007 b23e66
+Un jeune homme cadre avec son téléphone une photo des collines de Kampala à l’heure dorée
+
+@0008 2a780b
+Tutoriel gratuit et illustré
+
+@0009 d4825b
+Photographiez comme un pro <em>avec votre simple téléphone</em>
+
+@0010 a84b9e
+Un guide pas à pas pour faire de meilleures photos et vidéos avec le téléphone que vous avez déjà en poche — de la bonne façon de le tenir et de trouver une belle lumière jusqu’à la composition, aux angles de prise de vue créatifs et aux mouvements de caméra fluides.
+
+@0011 7267c3
+<span class="chip">Débutant → Intermédiaire</span>
+      <span class="chip">Photo &amp; vidéo</span>
+      <span class="chip">Android &amp; iPhone</span>
+      <span class="chip">9 chapitres · ~45 min</span>
+
+@0012 e01964
+<a class="btn btn-primary" href="#basics">Commencer par les bases ↓</a>
+      <a class="btn btn-light" href="#angles">Aller aux angles de prise de vue</a>
+      <a class="btn btn-light" href="#video">Aller à la vidéo</a>
+      <a class="btn btn-light" href="shoot-like-a-pro-with-your-phone.pdf" download>⬇ Télécharger le PDF (édition imprimable)</a>
+
+@0013 f5cbdf
+Sommaire
+
+@0014 72d5c1
+<a href="#how"><span class="num">—</span> Comment utiliser ce guide</a>
+
+@0015 27a10b
+<a href="#basics"><span class="num">01</span> Connaître son appareil</a>
+
+@0016 84c395
+<a href="#light"><span class="num">02</span> La lumière avant tout</a>
+
+@0017 93fdf5
+<a href="#composition"><span class="num">03</span> Composition</a>
+
+@0018 48f6ee
+<a href="#angles"><span class="num">04</span> Angles de prise de vue</a>
+
+@0019 168bb2
+<a href="#people"><span class="num">05</span> Photographier les gens</a>
+
+@0020 14b4a1
+<a href="#video"><span class="num">06</span> Techniques vidéo</a>
+
+@0021 af1a48
+<a href="#editing"><span class="num">07</span> Bases de la retouche</a>
+
+@0022 2fe9f1
+<a href="#cheatsheet"><span class="num">08</span> Aide-mémoire</a>
+
+@0023 ef4713
+<a href="#practice"><span class="num">09</span> Plan d’entraînement sur 7 jours</a>
+
+@0024 dcc29c
+Touchez une photo pour l’agrandir. Repérez les encadrés sombres <strong>À vous de jouer</strong> — c’est en les faisant que les techniques restent.
+
+@0025 084e5d
+Comment utiliser ce guide
+
+@0026 805f1d
+L’appareil photo d’un téléphone est petit, mais ce qui fait une bonne image est exactement la même chose que sur un gros appareil : <strong>la lumière, la composition, l’angle et le moment</strong>. Tout ce qui suit fonctionne sur n’importe quel Android récent (Samsung, Tecno, Infinix, Xiaomi…) ou iPhone. Quand les menus diffèrent, les deux sont indiqués.
+
+@0027 88078e
+📷 Conseils photo
+
+@0028 2c79c4
+Signalés par une étiquette orange. La plupart améliorent aussi vos vidéos.
+
+@0029 570dbe
+🎬 Conseils vidéo
+
+@0030 e64720
+Signalés par une étiquette bleu-vert. Le chapitre 06 est entièrement consacré à la vidéo.
+
+@0031 cc7cc7
+🧪 À vous de jouer
+
+@0032 e4012e
+De courts exercices. Dix minutes de pratique apprennent plus qu’une heure de lecture.
+
+@0033 f6ec20
+Une idée à garder en tête
+
+@0034 e79c37
+Les meilleures photos viennent du fait de <strong>bouger vos pieds et votre téléphone</strong> — pas d’acheter un meilleur téléphone. Chaque chapitre ci-dessous parle en réalité de <em>l’endroit où vous vous placez, de ce que vous visez et du moment où vous déclenchez</em>.
+
+@0035 bc0fde
+Connaître son appareil
+
+@0036 f310f4
+Cinq petites habitudes qui rendent instantanément chaque photo et chaque vidéo plus nette, plus propre et mieux exposée.
+
+@0037 c534f6
+1.1 Nettoyez l’objectif <span class="tag tag-both">photo + vidéo</span>
+
+@0038 9f22de
+Votre téléphone vit dans les poches et les mains, donc l’objectif est presque toujours couvert d’un fin film de gras. Ce film diffuse la lumière et donne des photos voilées, peu contrastées, avec des traînées lumineuses autour des lampes. <strong>Essuyez l’objectif sur un t-shirt en coton doux avant de photographier.</strong> C’est la meilleure amélioration gratuite qui existe.
+
+@0039 970b44
+1.2 Tenez-le bien stable <span class="tag tag-both">photo + vidéo</span>
+
+@0040 a4a6e4
+Deux mains tenant un téléphone à l’horizontale, pouces sur les bords, cadrant une rue de marché animée
+
+@0041 aa6173
+<strong>La prise à deux mains.</strong> Les deux mains sur les petits côtés, les pouces posés près du bord de l’écran, les index qui stabilisent les coins supérieurs. Les coudes serrés contre les côtes transforment votre corps en trépied.
+
+@0042 a5c1f8
+<strong>Deux mains, coudes rentrés.</strong> Plaquez vos coudes contre votre corps. Tenez le téléphone près de vous, pas à bout de bras.
+
+@0043 1daacf
+<strong>Utilisez le bouton de volume comme déclencheur.</strong> Appuyer sur le bouton à l’écran avec le pouce fait bouger le téléphone ; le bouton latéral se presse plus doucement.
+
+@0044 f9f918
+<strong>Expirez, puis déclenchez.</strong> Prenez la photo à la fin d’une lente expiration, quand votre corps est le plus immobile.
+
+@0045 706e6d
+<strong>Appuyez-vous sur quelque chose.</strong> Un mur, une table, un arbre ou le toit d’une voiture supprime l’essentiel du tremblement. De nuit, c’est encore plus important.
+
+@0046 235998
+<strong>Utilisez le retardateur sur trépied.</strong> Téléphone posé sur un trépied ou calé sur un sac, un retardateur de 3 secondes garantit que votre doigt ne le touche pas au moment de la photo.
+
+@0047 afd96a
+1.3 Touchez pour la netteté, glissez pour la lumière <span class="tag tag-both">photo + vidéo</span>
+
+@0048 51c16c
+L’appareil devine ce que vous voulez net et la luminosité que doit avoir l’image. Il se trompe souvent. Reprenez le contrôle avec un seul doigt :
+
+@0049 352c05
+Écran d’appareil photo de téléphone montrant le carré de mise au point, le curseur d’exposition et l’indicateur de verrouillage
+
+@0050 9fd085
+VERROU AE/AF
+
+@0051 4c36dd
+Touchez pour faire le point
+
+@0052 df1030
+Touchez l’élément le plus important du cadre.
+
+@0053 04488e
+Glissez pour éclaircir ou assombrir
+
+@0054 b2c2ad
+Glissez vers le haut ou le bas à côté du soleil.
+
+@0055 a13223
+Maintenez pour verrouiller
+
+@0056 1b48eb
+Netteté et luminosité restent fixes pendant que
+
+@0057 2e08c0
+vous recadrez ou filmez.
+
+@0058 79f04e
+Le carré jaune est le <strong>point de mise au point</strong>. Le petit soleil à côté est la commande d’<strong>exposition</strong>. Sur Android les icônes diffèrent un peu, mais les gestes sont les mêmes : toucher, glisser, maintenir.
+
+@0059 4213b9
+Exposez pour les zones claires
+
+@0060 b3e1fb
+Dans le doute, faites la photo <em>un peu plus sombre</em> que ce qui semble juste. Les ombres peuvent être éclaircies plus tard, mais un ciel devenu tout blanc est perdu pour toujours.
+
+@0061 5f9ea5
+1.4 Activez la grille <span class="tag tag-both">photo + vidéo</span>
+
+@0062 b1b56e
+La grille divise l’écran en tiers ; c’est le moyen le plus rapide de garder l’horizon droit et de bien placer vos sujets (le chapitre 03 explique pourquoi).
+
+@0063 7fc4ab
+<strong>iPhone :</strong> Réglages → Appareil photo → Composition → <kbd>Grille</kbd> (activez aussi <kbd>Niveau</kbd>).
+
+@0064 e84114
+<strong>Android :</strong> ouvrez l’Appareil photo → touchez la roue ⚙️ des réglages → <kbd>Lignes de grille</kbd> / <kbd>Lignes de composition</kbd> → choisissez 3×3.
+
+@0065 450f85
+1.5 Zoomez avec vos pieds <span class="tag tag-both">photo + vidéo</span>
+
+@0066 bf9f30
+Sur la plupart des téléphones, pincer pour zoomer est un <strong>zoom numérique</strong> — il ne fait que recadrer l’image et l’étirer, d’où ces photos zoomées toutes brouillées. À la place :
+
+@0067 af2f8c
+<strong>Rapprochez-vous.</strong> Se rapprocher physiquement donne toujours plus de netteté que zoomer.
+
+@0068 cd6213
+<strong>Utilisez les boutons d’objectif</strong> (0,5×, 1×, 2×, 3×, 5×). Ce sont de vrais objectifs ou des recadrages de haute qualité. Évitez les valeurs intermédiaires comme 1,7×.
+
+@0069 cd0271
+<strong>L’ultra grand-angle (0,5×)</strong> sert aux pièces exiguës, aux grands paysages et aux contre-plongées spectaculaires. Il déforme les visages — gardez les gens loin des bords.
+
+@0070 093aa1
+<strong>Le téléobjectif (2×–5×)</strong> est le plus flatteur pour les portraits et isole des détails dans les scènes chargées.
+
+@0071 a084d4
+1.6 Vertical ou horizontal ? <span class="tag tag-both">photo + vidéo</span>
+
+@0072 96ab3d
+Cadrage vertical 9:16 contre cadrage horizontal 16:9 et usages de chacun
+
+@0073 f8fe29
+Vertical (portrait)
+
+@0074 cd9f1b
+TikTok · Reels · Shorts · statut WhatsApp
+
+@0075 25ba4b
+Regardé sur un téléphone tenu droit
+
+@0076 cf5023
+Horizontal (paysage)
+
+@0077 f0d80d
+YouTube · TV · ordinateur · projecteur · cinéma
+
+@0078 e9318e
+Montre plus de la scène ; plus « cinéma »
+
+@0079 557836
+Décidez <strong>avant</strong> de filmer, selon l’endroit où la vidéo sera regardée. Recadrer plus tard une vidéo horizontale en vertical jette les deux tiers de l’image. En cas de doute, filmez à l’horizontale en 4K pour garder de la marge de recadrage.
+
+@0080 6d041a
+1.7 À quoi servent les modes <span class="tag tag-both">photo + vidéo</span>
+
+@0081 a7b93d
+Mode
+
+@0082 d4c4e7
+À utiliser pour
+
+@0083 d19cec
+Conseil
+
+@0084 1cd78d
+<strong>Photo</strong>
+
+@0085 1112d8
+Les prises de vue de tous les jours. Le HDR fond automatiquement les zones claires et sombres.
+
+@0086 633f02
+Laissez le HDR sur Auto. Activez la photo Live/Mouvement pour rattraper les yeux fermés.
+
+@0087 cc15c4
+<strong>Portrait</strong>
+
+@0088 c33519
+Personnes, animaux et objets avec un arrière-plan flou.
+
+@0089 cf65dd
+Placez-vous à 1–2,5 m, bonne lumière, fond uni. Vérifiez le contour des cheveux.
+
+@0090 a6282e
+<strong>Nuit</strong>
+
+@0091 3589fa
+Faible lumière : rues, intérieurs, bougies, lumières de la ville.
+
+@0092 539adb
+Restez immobile 2–5 secondes ou appuyez-vous. N’utilisez jamais le flash pour un paysage.
+
+@0093 d79e9f
+<strong>Pano</strong>
+
+@0094 cdfd80
+Vues très larges : lacs, collines, stades, longues pièces.
+
+@0095 a3cae1
+Tournez lentement, gardez la flèche sur la ligne, évitez les gens qui bougent.
+
+@0096 ce3546
+<strong>Pro / Manuel</strong>
+
+@0097 76669c
+Réglez vous-même l’ISO, la vitesse d’obturation, la balance des blancs et la mise au point.
+
+@0098 349c9e
+Pose longue (1–4 s) sur trépied pour les traînées lumineuses et l’eau soyeuse.
+
+@0099 581be5
+<strong>Vidéo</strong>
+
+@0100 00dafb
+Vidéo normale en 1080p ou 4K, à 30 ou 60 i/s.
+
+@0101 c6ce0a
+Réglages au chapitre 06. Verrouillez l’exposition avant d’enregistrer.
+
+@0102 b2d41f
+<strong>Ralenti</strong>
+
+@0103 72df47
+Éclaboussures, sauts, danse, sport à 120–240 i/s.
+
+@0104 ddbdbe
+Demande beaucoup de lumière — filmez dehors en journée.
+
+@0105 c7230b
+<strong>Accéléré</strong>
+
+@0106 49d9a4
+Nuages, circulation, couchers de soleil, foules, un chantier qui avance.
+
+@0107 07f770
+Trépied ou téléphone calé. Dix vraies minutes deviennent ~20 secondes.
+
+@0108 1f6eb3
+🧪 À vous de jouer — échauffement de 10 minutes
+
+@0109 88ef55
+Essuyez l’objectif. Activez la grille. Choisissez un objet sur une table.
+
+@0110 a510f8
+Prenez une photo avec la prise à deux mains et le bouton de volume.
+
+@0111 27b2a5
+Touchez l’objet, puis baissez l’exposition jusqu’à ce que l’arrière-plan s’assombrisse. Reprenez une photo.
+
+@0112 b60ac2
+Maintenant rapprochez-vous au lieu de zoomer et prenez-en une troisième. Comparez les trois en plein écran.
+
+@0113 024acb
+La lumière avant tout
+
+@0114 ea1a17
+Photographie signifie littéralement « écrire avec la lumière ». Apprenez à voir d’où vient la lumière et vos images changent du jour au lendemain.
+
+@0115 e99244
+2.1 La meilleure lumière de la journée : l’heure dorée <span class="tag tag-photo">photo</span>
+
+@0116 db0e69
+Portrait d’une jeune femme souriante éclairée par la lumière chaude et rasante de l’heure dorée, avec un liseré lumineux dans les cheveux
+
+@0117 c5ca81
+<strong>L’heure dorée.</strong> L’heure qui suit le lever du soleil et celle qui précède son coucher. Le soleil est bas, la lumière est donc douce et chaude, les ombres longues et légères, et les cheveux s’entourent d’un halo. Presque tout est beau dans cette lumière.
+
+@0118 92da90
+Arc du soleil au fil de la journée montrant l’heure dorée, la lumière dure de midi et l’heure bleue
+
+@0119 c49f6b
+Lumière dure du zénith · environ 11 h – 15 h
+
+@0120 71119f
+orbites sombres, yeux plissés, ciels blancs — cherchez l’ombre
+
+@0121 b4fd01
+Milieu de matinée &amp; d’après-midi : correct, un peu dur
+
+@0122 1e3dc7
+Heure dorée
+
+@0123 1e3dc7
+Heure dorée
+
+@0124 fadf71
+Lever du soleil
+
+@0125 61d188
+Kampala ≈ 07 h 00 toute l’année
+
+@0126 181bcd
+Coucher du soleil
+
+@0127 71111d
+Kampala ≈ 19 h 00 toute l’année
+
+@0128 59d7c9
+● Heure bleue : 20–30 min avant le lever / après le coucher
+
+@0129 839096
+lumière bleue douce, les lumières de la ville brillent — idéal pour les skylines
+
+@0130 f30a69
+Comme Kampala se trouve sur l’équateur, les heures de lever et de coucher du soleil bougent à peine dans l’année : l’heure dorée tombe donc toujours entre <strong>07 h 00 et 08 h 00</strong> et entre <strong>18 h 00 et 19 h 00</strong>. Prévoyez vos portraits et paysages dans ces créneaux.
+
+@0131 ae285a
+2.2 La direction de la lumière <span class="tag tag-both">photo + vidéo</span>
+
+@0132 673464
+Avant d’appuyer sur le bouton, demandez-vous : <em>d’où vient la lumière ?</em> Puis déplacez-vous, ou déplacez votre sujet, jusqu’à ce qu’elle tombe comme vous le voulez.
+
+@0133 e7d484
+Vue de dessus de la lumière de face, de côté et de dos par rapport au sujet et à l’appareil
+
+@0134 4fd970
+Lumière de face
+
+@0135 fe28c2
+uniforme, plate, sûre — bonne pour les couleurs
+
+@0136 251e38
+appareil
+
+@0137 cc1c14
+soleil derrière vous
+@0138 32f294
+Lumière de côté
+
+@0139 63a24a
+texture, relief, ambiance
+
+@0140 251e38
+appareil
+
+@0141 51abb6
+soleil à 90° du sujet
+
+@0142 e51373
+Contre-jour
+
+@0143 cda5d8
+halo lumineux ou silhouette
+
+@0144 251e38
+appareil
+
+@0145 ccb44f
+soleil derrière le sujet
+
+@0146 e0d33d
+Vu de dessus. La tache grise est l’ombre. <strong>La lumière de face</strong> est facile mais plate. <strong>La lumière de côté</strong> sculpte les visages et révèle les textures. <strong>Le contre-jour</strong> donne soit un contour lumineux (touchez le visage), soit une silhouette (touchez le ciel).
+
+@0147 32f294
+Lumière de côté
+
+@0148 fc2314
+Portrait d’un homme âgé près d’une fenêtre, un côté du visage éclairé, l’autre dans une ombre douce
+
+@0149 e51373
+Contre-jour
+
+@0150 556683
+Silhouette d’un cycliste devant un coucher de soleil orange sur la rive du lac Victoria
+
+@0151 42c7b0
+<strong>À gauche :</strong> la lumière d’une fenêtre venant d’un côté donne du relief, de la texture et de la dignité — tournez le sujet jusqu’à ce qu’une joue soit claire et l’autre douce. <strong>À droite :</strong> pour une silhouette, placez le soleil juste derrière le sujet, touchez le ciel lumineux, puis baissez l’exposition jusqu’à ce que la personne soit toute noire.
+
+@0152 ef02c2
+2.3 Soleil dur ou ombre ouverte <span class="tag tag-both">photo + vidéo</span>
+
+@0153 33fc27
+À éviter
+
+@0154 9ca99e
+Homme en plein soleil de midi, yeux plissés, avec des ombres dures et sombres sous les yeux et le nez
+
+@0155 303cfd
+Mieux
+
+@0156 5521de
+Le même homme à l’ombre ouverte sous un toit, le visage éclairé d’une lumière douce et uniforme, l’expression détendue
+
+@0157 9f52c0
+Même personne, même mur, dix pas d’écart. Le soleil de midi tombe à la verticale : les orbites deviennent noires, la peau brille et tout le monde plisse les yeux. <strong>L’ombre ouverte</strong> — le bord d’une véranda, un arbre, une porte — transforme tout le ciel en une gigantesque source de lumière douce. Placez votre sujet juste à la limite de l’ombre, tourné vers la lumière.
+
+@0158 f5ce70
+2.4 En intérieur : utilisez la fenêtre <span class="tag tag-both">photo + vidéo</span>
+
+@0159 b822bd
+<strong>Éteignez les plafonniers</strong> et rapprochez-vous d’une fenêtre. Le mélange de lumière du jour et d’ampoules donne des teintes de peau bizarres, jaunes et bleues.
+
+@0160 2c31ce
+<strong>Tournez le sujet vers la fenêtre à environ 45°</strong> pour une lumière de côté douce. Face à la fenêtre, on obtient une lumière « beauté » douce et uniforme.
+
+@0161 6d46f3
+<strong>Ne mettez jamais la fenêtre derrière le sujet</strong> — sauf si vous voulez une silhouette.
+
+@0162 c0cf9a
+Un drap blanc, une feuille de papier ou un mur en face de la fenêtre renvoie la lumière vers le côté dans l’ombre.
+
+@0163 75f37f
+2.5 La nuit <span class="tag tag-both">photo + vidéo</span>
+
+@0164 ff6177
+<strong>Utilisez le mode Nuit</strong> et restez parfaitement immobile — appuyez-vous sur un mur ou posez le téléphone sur quelque chose. Le téléphone empile plusieurs expositions pendant 2 à 5 secondes.
+
+@0165 6fc4b4
+<strong>Trouvez une source de lumière</strong> — une enseigne, un lampadaire, un écran — et placez votre sujet <em>face</em> à elle.
+
+@0166 5fbd11
+<strong>Évitez le flash pour les paysages.</strong> Il ne porte qu’à deux mètres et aplatit tout. Sur une personne juste devant vous, il peut donner un rendu franc et « mode » — essayez-le volontairement, pas par accident.
+
+@0167 75e85f
+<strong>L’heure bleue</strong> (juste après le coucher du soleil) est le meilleur moment pour les vues de ville : le ciel a encore de la couleur et les lumières sont déjà allumées.
+
+@0168 154eb8
+🧪 À vous de jouer — un visage, trois directions
+
+@0169 ff3a8f
+Demandez à un ami de se placer près d’une fenêtre ou dehors dans la lumière de fin d’après-midi.
+
+@0170 50a80c
+Prenez une photo avec la lumière derrière <em>vous</em> (lumière de face), une avec la lumière sur le côté, une avec la lumière derrière <em>lui</em>.
+
+@0171 57de76
+Pour la dernière, faites deux versions : touchez son visage, puis touchez le fond lumineux. L’une rayonne, l’autre est une silhouette.
+
+@0172 ca5e00
+Composition
+
+@0173 6dcae0
+Composer, c’est simplement décider de ce qui va où dans le cadre. Ces sept schémas couvrent la plupart des grandes photos que vous avez vues dans votre vie.
+
+@0174 247ce9
+3.1 La règle des tiers <span class="tag tag-both">photo + vidéo</span>
+
+@0175 2e803a
+Imaginez le cadre découpé en une grille 3×3 (c’est ce que montre le réglage de la grille). Placez votre sujet sur l’une des lignes, et le point le plus important — en général les yeux — près de l’une des quatre intersections. Mettez l’horizon sur la ligne du haut ou du bas, jamais au milieu.
+
+@0176 bc5b88
+Photo avec le sujet sur la ligne du tiers droit et l’horizon sur la ligne du tiers supérieur
+
+@0177 9d7355
+Masquer la grille
+
+@0178 565492
+<strong>Affichez ou masquez la grille</strong> pour voir comment le sujet se pose sur une ligne de tiers et l’horizon sur la ligne du haut. Les points orange sont les « points forts ».
+
+@0179 666d0c
+Grille de la règle des tiers avec l’horizon sur la ligne du bas et le sujet sur la ligne de droite
+
+@0180 bfa41f
+Horizon sur une ligne de tiers
+
+@0181 0b0c42
+ligne du bas = plus de ciel, ligne du haut = plus de sol
+
+@0182 0c0860
+Yeux près d’un point fort
+
+@0183 2da774
+le sujet regarde vers le
+
+@0184 6378fe
+côté vide du cadre
+
+@0185 c97404
+Laissez de l’espace devant le regard d’une personne ou dans la direction d’un objet en mouvement (« l’espace de regard »). L’image paraît équilibrée au lieu d’être à l’étroit.
+
+@0186 31a77f
+3.2 Les lignes directrices <span class="tag tag-both">photo + vidéo</span>
+
+@0187 f00114
+Une route de terre rouge bordée de bananiers qui converge vers une femme marchant au loin au lever du soleil
+
+@0188 d8493e
+<strong>Les lignes directrices.</strong> Routes, chemins, clôtures, rampes, rivières, ombres et rangées de n’importe quoi entraînent l’œil du bord du cadre vers votre sujet. Placez-vous au milieu de la ligne et photographiez dans son axe, en position basse si vous voulez plus de force.
+
+@0189 4ae40d
+3.3 Le cadre dans le cadre <span class="tag tag-both">photo + vidéo</span>
+
+@0190 0a2c11
+Une femme en robe colorée dans une cour ensoleillée, vue à travers une porte en bois sombre en arche
+
+@0191 baba71
+<strong>Un cadre dans le cadre.</strong> Portes, fenêtres, arches, branches, trouées dans une foule — tout ce qui entoure votre sujet ajoute de la profondeur et dit au spectateur exactement où regarder. Exposez pour le sujet lumineux et laissez le cadre s’assombrir.
+
+@0192 4d830f
+3.4 Symétrie et motifs <span class="tag tag-both">photo + vidéo</span>
+
+@0193 a229b9
+Un bâtiment moderne parfaitement symétrique qui se reflète dans un bassin immobile
+
+@0194 427977
+<strong>La symétrie</strong> est le seul cas où vous devez ignorer la règle des tiers : mettez la ligne centrale exactement au milieu et tenez le téléphone parfaitement droit (utilisez la grille). Reflets, couloirs, bâtiments et rangées d’étals de marché en regorgent. Un motif devient plus intéressant quand <em>une</em> chose le rompt.
+
+@0195 3f2366
+3.5 L’espace négatif <span class="tag tag-photo">photo</span>
+
+@0196 38b486
+Une petite pirogue de pêche seule dans un coin d’un vaste lac calme et brumeux
+
+@0197 d36da0
+<strong>L’espace négatif</strong> est la zone vide autour de votre sujet. Un petit sujet dans un grand espace calme évoque le silence, la solitude ou la liberté. Le ciel, l’eau, les murs et le brouillard font d’excellents espaces vides. Placez le sujet sur un point fort et laissez le vide parler.
+
+@0198 ad56da
+3.6 Remplir le cadre <span class="tag tag-photo">photo</span>
+
+@0199 fd0527
+Gros plan de piments et de tomates colorés remplissant tout le cadre, sans aucun arrière-plan visible
+
+@0200 9ccec5
+<strong>L’inverse de l’espace négatif.</strong> Approchez-vous tellement que le sujet touche les quatre bords et qu’il ne reste plus aucun arrière-plan gênant. Visages, nourriture, textures, tissus et mains s’y prêtent à merveille. C’est là que l’objectif 2× brille.
+
+@0201 72b119
+3.7 Les plans : premier plan, plan moyen, arrière-plan <span class="tag tag-both">photo + vidéo</span>
+
+@0202 286347
+Une scène avec des feuilles au premier plan, un sujet au plan moyen et des collines à l’arrière-plan
+
+@0203 64dd60
+Arrière-plan
+
+@0204 2975d6
+le contexte : collines, ciel, ville
+
+@0205 37d86a
+Plan moyen
+
+@0206 add69a
+votre sujet, net
+
+@0207 f7745e
+Premier plan
+
+@0208 5bf55f
+quelque chose tout près de
+
+@0209 7f649b
+l’objectif, souvent flou
+
+@0210 97ed5a
+Une photo plate n’a qu’un plan. Une photo avec quelque chose près de l’objectif, un sujet au milieu et un arrière-plan derrière paraît en trois dimensions. Essayez de tenir des feuilles, une rampe ou l’épaule d’un ami à quelques centimètres de l’objectif.
+
+@0211 3a0907
+Des fleurs sauvages floues au premier plan, une personne dans un champ vert au milieu et des collines brumeuses derrière
+
+@0212 f4617a
+<strong>Trois plans dans une image.</strong> Des fleurs floues près de l’objectif, la personne nette au milieu, des collines qui s’estompent derrière. Touchez le sujet pour que le premier plan reste flou.
+
+@0213 b8511a
+3.8 Nettoyez l’arrière-plan <span class="tag tag-both">photo + vidéo</span>
+
+@0214 0d94f0
+<strong>Vérifiez les bords</strong> du cadre avant de déclencher. Une demi-personne, une poubelle, un pied qui traîne — un pas de côté et ils disparaissent.
+
+@0215 d04e34
+<strong>Attention aux choses qui « poussent » sur les têtes</strong> : poteaux, arbres, lampadaires. Un pas à gauche ou à droite règle le problème.
+
+@0216 90c5bb
+<strong>Simplifiez.</strong> Un mur uni, le ciel, l’eau ou du feuillage derrière le sujet le font ressortir. Les arrière-plans chargés se disputent l’attention.
+
+@0217 e4dc29
+<strong>Baissez-vous.</strong> À genoux, vous mettez plus de ciel derrière une personne et cachez le désordre au sol.
+
+@0218 d9ad50
+Les règles sont des points de départ
+
+@0219 bb3f80
+Centrez un sujet pour la symétrie ou pour un portrait affirmé. Mettez l’horizon au milieu pour un reflet parfait. Enfreignez les règles <em>volontairement</em> — c’est la différence entre une erreur et un style.
+
+@0220 1b8b0e
+🧪 À vous de jouer — une rue, sept photos
+
+@0221 1f051a
+Parcourez une rue près de chez vous et revenez avec une photo pour chaque schéma : tiers, lignes directrices, cadre dans le cadre, symétrie, espace négatif, cadre rempli, plans. Pas plus de trois essais par schéma — l’exercice, ce sont les décisions.
+
+@0222 44f39d
+Angles de prise de vue
+
+@0223 1ab40a
+L’angle, c’est l’endroit où vous placez l’appareil par rapport à votre sujet. Changez d’angle et vous changez ce que le spectateur <em>ressent</em> devant ce qu’il regarde.
+
+@0224 547a0d
+La plupart des gens prennent toutes leurs photos du même endroit : debout, téléphone à hauteur de poitrine. C’est la vue que tout le monde a déjà. Dès que vous vous accroupissez, grimpez ou vous allongez, vos images cessent de ressembler à celles de tout le monde.
+
+@0225 8d0b51
+Vue de profil d’un sujet avec l’appareil placé en vue aérienne, en plongée, à hauteur des yeux, en contre-plongée et au ras du sol
+
+@0226 2e7db6
+Vue aérienne
+
+@0227 f5fa0f
+à la verticale : flat lays, plats, motifs
+
+@0228 cdb399
+Plongée
+
+@0229 e9db25
+vue de haut → le sujet paraît petit,
+
+@0230 e8a92b
+doux, mignon ou vulnérable
+
+@0231 e0e9ff
+Hauteur des yeux
+
+@0232 f0f624
+neutre, sincère, connexion —
+
+@0233 07a200
+les yeux du sujet, pas les vôtres
+
+@0234 095cf6
+Contre-plongée
+
+@0235 6d203f
+vue de bas → grand, puissant,
+
+@0236 ae70dc
+héroïque, spectaculaire
+
+@0237 be5496
+Ras du sol
+
+@0238 d8180b
+téléphone au sol, pointé vers le haut :
+
+@0239 f5c424
+sujets imposants, lignes convergentes
+
+@0240 a0d406
+Les cinq hauteurs de base. Même sujet, cinq histoires différentes. Les icônes d’appareil montrent où va votre téléphone ; les pointillés montrent où il vise.
+
+@0241 7353dd
+La boîte à outils des angles
+
+@0242 1eb462
+Chaque carte montre la position de l’appareil, l’effet de l’angle sur le spectateur, à quoi il sert et comment le réaliser avec un téléphone.
+
+@0243 305c55
+Femme dans un marché photographiée à hauteur des yeux
+
+@0244 e0e9ff
+Hauteur des yeux
+
+@0245 720b5d
+Effet
+
+@0246 24437e
+Neutre et sincère. Le spectateur rencontre le sujet d’égal à égal.
+
+@0247 5065b9
+Pour
+
+@0248 721b67
+Portraits de tous les jours, documentaire, produits. Enfants et animaux — descendez à <em>leur</em> hauteur d’yeux et la photo se transforme.
+
+@0249 0c81ab
+Comment
+
+@0250 0e3563
+Agenouillez-vous ou asseyez-vous jusqu’à ce que l’objectif soit au niveau des yeux du sujet. Faites le point sur l’œil le plus proche.
+
+@0251 57ce02
+La même femme photographiée en contre-plongée, paraissant grande sur fond de ciel
+
+@0252 095cf6
+Contre-plongée
+
+@0253 720b5d
+Effet
+
+@0254 875f09
+Puissance, hauteur, drame. Les sujets dominent et l’arrière-plan devient un ciel dégagé.
+
+@0255 5065b9
+Pour
+
+@0256 74d498
+Bâtiments, athlètes, danseurs, conducteurs de boda, enfants en héros, tout ce que vous voulez faire paraître grand.
+
+@0257 0c81ab
+Comment
+
+@0258 1d31dc
+Accroupissez-vous ou placez le téléphone près du sol. <strong>Retournez le téléphone</strong> pour que l’objectif soit tout en bas — vous gagnez plusieurs centimètres. Essayez l’objectif 0,5× pour encore plus d’effet.
+
+@0259 69346e
+La même femme photographiée d’en haut, levant les yeux vers l’appareil
+
+@0260 cdb399
+Plongée
+
+@0261 720b5d
+Effet
+
+@0262 26e953
+Le sujet paraît plus petit, plus doux, plus vulnérable ou mignon. Montre l’organisation d’une scène.
+
+@0263 5065b9
+Pour
+
+@0264 fb9299
+Bébés et animaux, selfies flatteurs (légèrement au-dessus des yeux), assiettes, groupes vus d’un balcon.
+
+@0265 0c81ab
+Comment
+
+@0266 ec3261
+Montez sur une marche, tenez le téléphone au-dessus de votre tête, ou photographiez depuis un escalier ou un balcon. Demandez au sujet de lever les yeux.
+
+@0267 51a64e
+Vue du dessus d’une table de petit-déjeuner avec du café, un rolex, des fruits et un carnet
+
+@0268 88eedd
+Vue aérienne (à la verticale)
+
+@0269 720b5d
+Effet
+
+@0270 fd8033
+Graphique, ordonné, comme une carte. Transforme les objets en formes et en motifs.
+
+@0271 5065b9
+Pour
+
+@0272 9d062a
+Nourriture, flat lays, bureaux, mains au travail, marchés et foules vus d’en haut, piscines, sols à motifs.
+
+@0273 0c81ab
+Comment
+
+@0274 6f4a3b
+Tenez le téléphone à plat, parallèle à la surface. Les iPhone affichent un <strong>niveau en croix</strong> — alignez les deux croix. Montez sur une chaise pour une grande table. Attention à votre propre ombre.
+
+@0275 1a5fa7
+Vue droit vers le haut de grands arbres qui convergent vers le ciel
+
+@0276 be5496
+Ras du sol
+
+@0277 720b5d
+Effet
+
+@0278 aeb28b
+Vertige et échelle. Les lignes convergent vers un point de fuite dans le ciel.
+
+@0279 5065b9
+Pour
+
+@0280 1fe058
+Arbres, immeubles, cages d’escalier, un cercle d’amis qui regardent vers l’objectif.
+@0281 0c81ab
+Comment
+
+@0282 d4a4d3
+Allongez-vous sur le dos ou posez le téléphone au sol et utilisez le retardateur. L’ultra grand-angle (0,5×) exagère les lignes convergentes.
+
+@0283 186bd6
+Un skateur dans une rue photographié avec un horizon volontairement penché
+
+@0284 fdf46f
+Cadrage penché (Dutch tilt)
+
+@0285 142aea
+inclinez le téléphone de 15–30°
+
+@0286 720b5d
+Effet
+
+@0287 e9f6da
+Tension, énergie, malaise — quelque chose ne tourne pas rond.
+
+@0288 5065b9
+Pour
+
+@0289 b29081
+Action, sport, clips musicaux, scènes de rue, portraits espiègles. À utiliser avec parcimonie : une photo penchée sur dix.
+
+@0290 0c81ab
+Comment
+
+@0291 b0fdf1
+Tournez le téléphone pour que l’horizon soit en diagonale. Assumez-le — 5° d’inclinaison ressemble à une erreur, 20° à un choix.
+
+@0292 c6e57d
+Vue par-dessus l’épaule floue d’une femme vers un homme qui parle de l’autre côté d’une table de café
+
+@0293 0ff412
+Par-dessus l’épaule
+
+@0294 0d1c81
+derrière une personne, tourné vers l’autre
+
+@0295 720b5d
+Effet
+
+@0296 3ec8b4
+Place le spectateur au cœur d’une conversation. Ajoute de la profondeur et du contexte.
+
+@0297 5065b9
+Pour
+
+@0298 616055
+Deux personnes qui discutent, quelqu’un qui montre quelque chose, interviews, dialogues en vidéo.
+
+@0299 0c81ab
+Comment
+
+@0300 162877
+Placez-vous juste derrière et à côté de la personne A ; gardez le bord de son épaule ou de sa tête, flou, dans un coin du cadre ; faites le point sur la personne B. Le mode Portrait aide à flouter l’épaule.
+
+@0301 107b8a
+Vue à la première personne de mains sur le guidon d’une moto roulant sur une route animée
+
+@0302 02f095
+Vue subjective (POV)
+
+@0303 acb165
+l’appareil, ce sont vos yeux
+
+@0304 720b5d
+Effet
+
+@0305 045452
+Immersif — le spectateur <em>devient</em> le sujet.
+
+@0306 5065b9
+Pour
+
+@0307 02bcd9
+Cuisine, artisanat, trajets, visites à pied, déballages, vidéos « une journée dans ma vie ».
+
+@0308 0c81ab
+Comment
+
+@0309 78bf25
+Tenez le téléphone à hauteur de vos yeux ou de votre poitrine, pointé là où vous regardez. Montrez vos mains. En vidéo, un support de poitrine ou de tête bon marché le garde stable.
+
+@0310 e81dd0
+Très gros plan d’une abeille sur une fleur violette couverte de gouttes d’eau
+
+@0311 e71450
+Macro &amp; détails
+
+@0312 4aa5c5
+à 2–10 cm
+
+@0313 720b5d
+Effet
+
+@0314 6adc76
+Intimité et surprise : des textures et de petits mondes qu’on ne remarque jamais.
+
+@0315 5065b9
+Pour
+
+@0316 524620
+Fleurs, insectes, tissus, nourriture, yeux, bijoux, gouttes de pluie, mains au travail. En vidéo, les plans de détail (« inserts ») lient une histoire.
+
+@0317 0c81ab
+Comment
+
+@0318 1c341b
+Beaucoup de téléphones passent en macro automatiquement quand vous approchez à quelques centimètres (une icône de fleur apparaît). Sinon, reculez à ~20 cm et utilisez le 2×. Touchez pour faire le point, retenez votre souffle et prenez plusieurs photos — la zone de netteté est très fine.
+
+@0319 e31821
+Une flaque dans une rue reflétant un bâtiment coloré et une personne avec un parapluie
+
+@0320 cdbc17
+Reflets
+
+@0321 2b683d
+objectif au ras de l’eau
+
+@0322 720b5d
+Effet
+
+@0323 361a81
+Symétrie, dédoublement, un second monde comme dans un rêve.
+
+@0324 5065b9
+Pour
+
+@0325 7f8030
+Flaques après la pluie, lacs, vitres, miroirs, sols brillants, lunettes de soleil, même l’écran d’un autre téléphone.
+
+@0326 0c81ab
+Comment
+
+@0327 d5c952
+Retournez le téléphone et placez l’objectif <strong>presque au contact</strong> de l’eau ou de la surface. Plus vous descendez, plus le reflet est grand. Touchez le reflet pour faire le point dessus.
+
+@0328 cf394d
+Portrait d’un homme photographié à travers des feuilles vertes douces et floues
+
+@0329 d2dd10
+Photographier à travers quelque chose
+
+@0330 62b5ac
+objet à quelques cm de l’objectif
+
+@0331 720b5d
+Effet
+
+@0332 8eabec
+Profondeur, mystère, l’impression d’épier. Un premier plan instantané.
+
+@0333 5065b9
+Pour
+
+@0334 7b8e4c
+Portraits à travers des feuilles, des grillages, une vitre, des rideaux, une foule, un verre d’eau, un trou dans un mur.
+
+@0335 0c81ab
+Comment
+
+@0336 99996a
+Tenez l’objet à 2–5 cm de l’objectif pour qu’il se fonde en une couleur douce. Touchez le sujet derrière. Du plastique coloré ou une feuille déchirée donnent des bords vaporeux.
+
+@0337 e9327a
+Angle → ressenti : aide-mémoire
+
+@0338 a145ef
+Position de l’appareil
+
+@0339 c60b3f
+Le spectateur ressent
+
+@0340 6d7ae8
+Idéal pour
+
+@0341 dbc9dc
+<strong>Hauteur des yeux</strong>
+
+@0342 5360d1
+Égalité, sincérité, lien
+
+@0343 8d4a76
+Portraits, documentaire, enfants &amp; animaux (à leur hauteur)
+
+@0344 17a92a
+<strong>Contre-plongée</strong>
+
+@0345 934ca2
+Le sujet est puissant, grand, héroïque
+
+@0346 289b04
+Architecture, sport, danseurs, portraits dramatiques
+
+@0347 2ec11e
+<strong>Plongée</strong>
+
+@0348 954812
+Le sujet est petit, doux, vulnérable
+
+@0349 0a462f
+Bébés, nourriture, selfies flatteurs, montrer une disposition
+
+@0350 15f0c3
+<strong>Vue aérienne</strong>
+
+@0351 ad1d77
+Ordre, graphisme, abstraction
+
+@0352 e156b6
+Flat lays, tables, marchés vus d’en haut, motifs
+
+@0353 6fcd03
+<strong>Ras du sol</strong>
+
+@0354 eb72ae
+Émerveillement, vertige, échelle
+
+@0355 e5b2ec
+Arbres, tours, cages d’escalier, cercles de personnes
+
+@0356 a7e52c
+<strong>Cadrage penché</strong>
+
+@0357 a688ef
+Énergie, tension, chaos
+
+@0358 4b4c16
+Action, musique, rue, portraits espiègles
+
+@0359 c93445
+<strong>Par-dessus l’épaule</strong>
+
+@0360 f8d67f
+Fait partie d’une conversation
+
+@0361 a21da1
+Dialogues, démonstrations, interviews
+
+@0362 4e5be2
+<strong>Vue subjective</strong>
+
+@0363 3d1600
+« J’y suis »
+
+@0364 0d2cf6
+Cuisine, artisanat, trajets, visites, vlogs
+
+@0365 93070a
+<strong>Macro / détail</strong>
+
+@0366 d39de6
+Curiosité, intimité
+
+@0367 3597f1
+Textures, nature, nourriture, inserts pour la vidéo
+
+@0368 f08bf8
+<strong>Reflet</strong>
+
+@0369 adf0b1
+Calme, rêveur, astucieux
+
+@0370 cd31a3
+Flaques, lacs, vitres, miroirs
+
+@0371 dd7f47
+<strong>À travers un objet</strong>
+
+@0372 c5b566
+Impression d’épier, profondeur
+
+@0373 93f870
+Portraits à travers des feuilles, des grillages, une vitre
+
+@0374 dccd3a
+L’habitude de « travailler la scène »
+
+@0375 2c2598
+N’en prenez jamais une seule. Quand quelque chose attire votre œil, prenez la photo évidente, puis <strong>cinq autres depuis cinq hauteurs et distances différentes</strong>. La meilleure n’est presque jamais la première.
+
+@0376 b6a09b
+🧪 À vous de jouer — un sujet, six angles
+
+@0377 3d3962
+Choisissez un sujet patient : un ami, une chaise, un boda-boda, un manguier.
+
+@0378 a5e779
+Photographiez-le à hauteur des yeux, en contre-plongée, en plongée, en vue aérienne (si possible), en cadrage penché et à travers quelque chose.
+
+@0379 737a35
+Alignez les six photos dans votre galerie. Remarquez comme la même chose paraît héroïque, mignonne, chaotique ou calme selon le seul endroit où vous étiez.
+
+@0380 95d316
+Photographier les gens
+
+@0381 d5d7e6
+Les visages sont le sujet le plus photographié au monde — et le moins indulgent. Quelques habitudes mettent tout le monde en valeur.
+
+@0382 acafd6
+5.1 Distance et objectif <span class="tag tag-photo">photo</span>
+
+@0383 275bd9
+Vue de dessus montrant l’appareil à un à deux mètres et demi du sujet et le sujet loin de l’arrière-plan
+
+@0384 e43e7b
+mur / arrière-plan
+
+@0385 335ce1
+sujet
+
+@0386 8af56d
+vous
+
+@0387 10c28a
+1,5 – 2,5 m · utilisez l’objectif 2× ou 3×
+
+@0388 6709b6
+le plus loin possible → arrière-plan plus doux, plus flou
+
+@0389 4bed72
+<strong>Reculez et zoomez.</strong> Un grand-angle utilisé près d’un visage grossit le nez et rapetisse les oreilles. À 2 mètres avec l’objectif 2× ou 3×, les proportions sont naturelles et flatteuses — et plus l’arrière-plan est loin derrière le sujet, plus il se fond.
+
+@0390 2c009d
+5.2 Le mode Portrait <span class="tag tag-photo">photo</span>
+
+@0391 96bf4d
+Photo en mode Portrait d’un jeune homme avec un arrière-plan doucement flouté
+
+@0392 b1dc1c
+<strong>Le mode Portrait</strong> floute l’arrière-plan à partir de données de profondeur. Il marche le mieux à 1–2,5 m, dans une bonne lumière, avec un net écart entre le sujet et le fond. Vérifiez le contour des cheveux et des lunettes ; s’ils semblent découpés, prenez plutôt une photo normale.
+
+@0393 4e63bd
+<strong>Faites le point sur l’œil le plus proche.</strong> Si les yeux sont nets, la photo est nette.
+
+@0394 0e322b
+<strong>Appareil légèrement au-dessus des yeux</strong> pour la plupart des gens ; vu d’en bas, il accentue le menton et les narines (mais c’est parfait pour des portraits assurés et puissants).
+
+@0395 cf64e7
+<strong>Tournez le corps, pas le visage.</strong> Corps à 45° de l’appareil, visage vers l’objectif, poids sur le pied arrière. Instantanément plus mince et plus détendu.
+
+@0396 8ddbbe
+<strong>Menton en avant et légèrement baissé</strong> — l’astuce classique pour dessiner la mâchoire.
+
+@0397 e3084f
+<strong>Donnez un rôle aux mains :</strong> une bandoulière, une poche, une tasse, un col à ajuster. Des mains vides paraissent raides.
+
+@0398 70c7bb
+<strong>Obtenez de vraies expressions :</strong> racontez une blague, demandez à la personne de marcher vers vous, de se secouer, puis déclenchez juste après le rire. Utilisez le mode rafale (maintenez le déclencheur) pour les moments spontanés.
+
+@0399 bebe0a
+5.3 Les groupes <span class="tag tag-photo">photo</span>
+
+@0400 85bab4
+<strong>Rapprochez les gens plus que naturel</strong> — ils devraient presque se toucher. Les espaces ressemblent à des disputes.
+
+@0401 b9493d
+<strong>Variez les hauteurs :</strong> certains assis, d’autres debout, d’autres appuyés. Les triangles rendent mieux qu’une ligne droite.
+
+@0402 9a9004
+<strong>Tout le monde face à la lumière</strong> ; vous, la lumière derrière vous ou sur le côté, à l’ombre ouverte.
+
+@0403 a83e17
+<strong>Prenez-en cinq d’affilée</strong> — quelqu’un cligne toujours des yeux. Comptez « 1, 2, 3 » et déclenchez à 3 <em>et</em> à 4.
+
+@0404 1ed37e
+Utilisez l’<strong>objectif 1×</strong>, pas le 0,5× — l’ultra grand-angle étire les personnes sur les bords.
+
+@0405 7c6f8b
+5.4 De meilleurs selfies <span class="tag tag-photo">photo</span>
+
+@0406 8bee77
+<strong>Faites face à la lumière</strong> — une fenêtre ou le ciel devant vous ; jamais derrière.
+
+@0407 ee55cf
+<strong>Téléphone légèrement au-dessus des yeux et un peu de côté</strong>, bras tendu au maximum. Tournez le visage de quelques degrés vers la lumière.
+
+@0408 2d2a99
+<strong>Utilisez l’appareil arrière</strong> quand ça compte : il est bien meilleur que la caméra selfie. Calez le téléphone, réglez un retardateur de 3 à 10 secondes, ou utilisez le bouton de volume d’écouteurs filaires comme télécommande.
+
+@0409 b1a3bd
+Désactivez le lissage « beauté » ; il efface le grain de la peau et paraît faux en plein écran.
+
+@0410 fab5b4
+🧪 À vous de jouer — dix portraits, sans zoom
+
+@0411 16beca
+Trouvez de l’ombre ouverte entre 17 h et 18 h. Placez votre ami juste à la limite de l’ombre, tourné vers l’extérieur.
+
+@0412 bd4960
+Prenez dix portraits : cinq au 2× à 2 mètres, cinq au 1× à 1 mètre. Variez à chaque fois l’angle du corps, la position des mains et l’expression.
+
+@0413 fc1508
+Comparez les visages. Vous ne ferez plus jamais de portrait serré au 1×.
+
+@0414 b6a34e
+Techniques vidéo
+
+@0415 de296f
+La vidéo ajoute deux choses à tout ce qui précède : <strong>le mouvement</strong> et <strong>le son</strong>. Réussissez ces deux-là et vos images de téléphone auront l’air professionnelles.
+
+@0416 808416
+6.1 Les réglages avant d’appuyer sur Enregistrer <span class="tag tag-video">vidéo</span>
+
+@0417 fb449f
+Réglage
+
+@0418 c5df29
+À choisir quand…
+
+@0419 704400
+Remarques
+
+@0420 7fbed3
+<strong>1080p · 30 i/s</strong>
+
+@0421 cb61ea
+Partage sur WhatsApp, TikTok, Instagram. Le réglage de tous les jours.
+
+@0422 d3013f
+Petits fichiers (~60–130 Mo par minute). Rendu naturel.
+
+@0423 f867d1
+<strong>4K · 30 i/s</strong>
+
+@0424 1a498b
+Vous voulez la qualité maximale ou de la marge pour recadrer/zoomer au montage.
+
+@0425 7ee1ab
+Environ 200–400 Mo par minute. Le téléphone chauffe ; emportez une batterie externe.
+
+@0426 dec57e
+<strong>60 i/s</strong>
+
+@0427 5f245b
+Action rapide : sport, danse, enfants, voitures. Ou pour ralentir à 50 % ensuite.
+@0428 ff0f18
+Très fluide, rendu « télé ». Demande plus de lumière que 30 i/s.
+
+@0429 f5572c
+<strong>120 / 240 i/s (ralenti)</strong>
+
+@0430 433095
+Ralentis spectaculaires : éclaboussures, sauts, cheveux qui volent.
+
+@0431 304c93
+Demande une lumière du jour vive ; en intérieur, l’image devient granuleuse et scintille.
+
+@0432 8fd7de
+<strong>24 / 25 i/s</strong>
+
+@0433 0ff587
+Vous voulez un rendu cinéma, comme un film.
+
+@0434 9ab970
+En Ouganda (secteur à 50 Hz), utilisez <strong>25 i/s</strong> pour empêcher les lumières de scintiller. iPhone : Réglages → Appareil photo → Enregistrement vidéo → Afficher les formats PAL.
+
+@0435 00eba1
+<strong>Stabilisation ACTIVÉE</strong> (appelée Stable, Super stable, mode Action ou EIS). Coûte un peu de netteté, sauve le plan.
+
+@0436 bd8b5b
+<strong>Verrouillez la rotation de l’écran</strong> pour que le téléphone ne bascule pas en plein enregistrement.
+
+@0437 f68ca7
+<strong>Grille activée, objectif essuyé, mode Ne pas déranger activé</strong> — un appel met fin à l’enregistrement.
+
+@0438 ba8150
+<strong>Vérifiez le stockage et la batterie.</strong> La vidéo dévore les deux.
+
+@0439 65037c
+<strong>Des lumières qui scintillent ?</strong> Cherchez <em>Anti-scintillement / Anti-bandes</em> dans les réglages de l’appareil et choisissez <strong>50 Hz</strong>, ou filmez à 25/50 i/s.
+
+@0440 dc6c30
+6.2 Verrouillez la mise au point et l’exposition <span class="tag tag-video">vidéo</span>
+
+@0441 9d79b2
+En vidéo, l’appareil repense sans cesse la netteté et la luminosité, ce qui se voit sous forme de « pompage » et d’hésitations. Avant d’enregistrer : <strong>cadrez le plan, maintenez le doigt sur votre sujet jusqu’à ce que le verrou apparaisse, ajustez la luminosité avec le curseur, puis lancez l’enregistrement.</strong> Reverrouillez chaque fois que vous changez de position.
+
+@0442 3657d2
+6.3 Restez immobile, bougez en douceur <span class="tag tag-video">vidéo</span>
+
+@0443 bda663
+Vue de profil d’une personne qui marche genoux fléchis, coudes rentrés, le téléphone tenu à hauteur de poitrine
+
+@0444 6eb9cb
+sens de la marche →
+
+@0445 15388d
+Coudes rentrés, deux mains
+
+@0446 05eb2b
+téléphone près de la poitrine, pas à bout de bras
+
+@0447 6cb494
+Glissez, ne rebondissez pas
+
+@0448 4b511b
+gardez le téléphone à une hauteur fixe, comme un plateau de verres
+
+@0449 77c35d
+Genoux souples
+
+@0450 6bcdfe
+vos jambes deviennent les amortisseurs
+
+@0451 cfd4a0
+Talon-pointe, petits pas
+
+@0452 e88e1b
+lent = fluide ; fluide = rendu haut de gamme
+
+@0453 971e61
+La « marche du ninja ». Combinée à la stabilisation du téléphone, elle donne des plans en marchant étonnamment fluides, sans aucun matériel.
+
+@0454 dc4ee3
+À main levée
+
+@0455 6223e3
+Une personne qui filme en marchant lentement, genoux fléchis, le téléphone tenu à deux mains à hauteur de poitrine
+
+@0456 18ca70
+Stabilisateur
+
+@0457 88ff47
+Un téléphone monté sur un petit stabilisateur (gimbal) à main, filmant un vendeur de rue
+
+@0458 967363
+<strong>Quand acheter du matériel :</strong> un petit trépied (ou une pince à téléphone sur une bouteille) pour les interviews, les face caméra et les accélérés ; un stabilisateur seulement quand vous filmez beaucoup de plans en marchant. D’ici là : deux mains, coudes rentrés, marche du ninja.
+
+@0459 9f0f4c
+<strong>Tenez chaque plan immobile au moins 5 secondes</strong> avant et après tout mouvement. Il vous faut cette « poignée » pour couper au montage.
+
+@0460 f21efb
+<strong>Appuyez-vous</strong> sur les encadrements de porte, les murs et les tables pour les plans fixes. Asseyez-vous et posez les coudes sur les genoux.
+
+@0461 533eaa
+<strong>Une dragonne ou une poignée bon marché</strong> rend le téléphone plus facile à tenir stable qu’à doigts nus.
+
+@0462 4f5a84
+6.4 Les valeurs de plan <span class="tag tag-video">vidéo</span>
+
+@0463 7949f1
+Une silhouette debout avec des cadres emboîtés montrant le plan large, le plan moyen, le plan rapproché poitrine, le gros plan et le très gros plan
+
+@0464 cb5aef
+Très gros plan (TGP)
+
+@0465 bc413b
+yeux, lèvres, mains, un détail — tension et attention
+
+@0466 995a30
+Gros plan (GP)
+
+@0467 acb1ba
+le visage remplit le cadre — émotion
+
+@0468 3aeab9
+Plan rapproché poitrine (PRP)
+
+@0469 b86971
+à partir de la poitrine — interviews, face caméra
+
+@0470 eff0f0
+Plan moyen (PM)
+
+@0471 66ab8e
+à partir de la taille — conversation, gestes, cuisine
+
+@0472 46bf58
+Plan large (PL)
+
+@0473 5a5f6b
+le corps entier et le lieu — plante le décor
+
+@0474 2a793b
+Très grand plan large : la personne est minuscule dans un vaste paysage
+
+@0475 f3a92f
+Les valeurs de plan sont le vocabulaire de la vidéo. Cadrez aux « articulations » naturelles — taille, poitrine, épaules — et évitez de couper exactement aux genoux, aux coudes ou au cou.
+
+@0476 9ec4d8
+Large
+
+@0477 c5326d
+Plan large d’un homme sur un banc de parc, avec beaucoup d’environnement visible
+
+@0478 d40496
+Moyen
+
+@0479 67b64b
+Plan moyen du même homme à partir de la taille
+
+@0480 5f29a9
+Gros plan
+
+@0481 50145f
+Gros plan du visage du même homme
+
+@0482 a486d3
+Le même sujet en trois valeurs. Déplacez-vous entre chacune — ne pincez pas pour zoomer.
+
+@0483 5394dc
+6.5 La règle des 3 plans : filmez pour le montage <span class="tag tag-video">vidéo</span>
+
+@0484 c089bd
+Suite de quatre images : large, moyen, gros plan et détail, reliées par des flèches
+
+@0485 ecb77a
+1 · Large
+
+@0486 a0af63
+Où sommes-nous ?
+
+@0487 4cbb32
+2 · Moyen
+
+@0488 4c1a78
+Qui est là ? Que font-ils ?
+
+@0489 e0c980
+3 · Gros plan
+
+@0490 8ab469
+Que ressentent-ils ?
+
+@0491 27fb28
+4 · Détail
+
+@0492 39a599
+Qu’est-ce qui compte le plus ?
+
+@0493 d30e6d
+Pour tout ce qui se passe — une cuisine, un match, un marché, un anniversaire — filmez-le d’au moins trois façons : large, moyen, serré. Chacun 5 à 10 secondes, sans bouger. Au montage, vous pouvez maintenant couper de l’un à l’autre et la vidéo prend soudain du rythme.
+
+@0494 a3f3aa
+6.6 Les mouvements de caméra <span class="tag tag-video">vidéo</span>
+
+@0495 07ced7
+Chaque mouvement doit avoir une <strong>raison</strong> — suivre quelqu’un, révéler quelque chose ou nous rapprocher. Commencez immobile, bougez lentement et régulièrement, finissez immobile. Un mouvement par plan.
+
+@0496 0ecb07
+pieds ancrés, tournez les hanches
+
+@0497 8c9ce3
+Panoramique
+
+@0498 ce08d4
+Pivotez de gauche à droite ↔ depuis un point fixe. Suivez une personne, ou balayez une vue.
+
+@0499 a262dc
+Usage : suivre l’action, montrer un paysage
+
+@0500 ea55f6
+inclinez vers le haut pour révéler
+
+@0501 e7f617
+Panoramique vertical
+
+@0502 da3d59
+Pivotez de bas en haut ↕ depuis un point fixe. Révélez un grand bâtiment ou une personne des chaussures au visage.
+
+@0503 d20678
+Usage : révélations, échelle, présentations
+
+@0504 cc4500
+avancez / reculez
+
+@0505 1af432
+marche du ninja, en ligne droite
+
+@0506 79a59c
+Avancée / recul
+
+@0507 dc8109
+Marchez lentement vers le sujet (intensité, attention) ou en vous éloignant (relâchement, fin, révélation).
+
+@0508 f6e5e7
+Usage : insistance, conclusions, émotion
+
+@0509 01794e
+déplacez-vous latéralement avec le sujet
+
+@0510 a88b26
+Travelling latéral
+
+@0511 52f945
+Glissez sur le côté, au rythme d’un sujet qui marche, ou en longeant une scène.
+
+@0512 45b6a8
+Usage : marcher &amp; parler, allées de marché, parallaxe
+
+@0513 3bc05d
+gardez la même distance
+
+@0514 b6c22d
+Orbite
+
+@0515 00b539
+Tournez autour du sujet en le gardant centré et à distance constante.
+
+@0516 777c7c
+Usage : moments héroïques, produits, danseurs
+
+@0517 f2133b
+montez du bas vers le haut
+
+@0518 813e7a
+Élévation
+
+@0519 569551
+Levez le téléphone en douceur du bas vers le haut (ou abaissez-le), souvent en partant de derrière un objet.
+
+@0520 786803
+Usage : révélations, ouvertures, effet drone
+
+@0521 964713
+La révélation
+
+@0522 ac5e76
+Commencez avec l’objectif derrière un mur, une plante ou le dos d’une personne, puis déplacez-vous sur le côté ou vers le haut pour que la scène apparaisse. L’effet « waouh » le moins cher qui existe.
+
+@0523 1689c7
+Parallaxe
+
+@0524 ccb12d
+Faites un travelling latéral avec quelque chose près de l’objectif (un poteau, des feuilles, une rampe). Le premier plan défile plus vite que l’arrière-plan et le plan paraît en 3D.
+
+@0525 e8899f
+6.7 Les transitions à la prise de vue <span class="tag tag-video">vidéo</span>
+
+@0526 82bb0e
+Transition par panoramique filé : le plan A se termine par un panoramique rapide, le plan B commence par un panoramique rapide dans la même direction, coupe dans le flou
+
+@0527 5e91f7
+COUPER ICI
+
+@0528 403e39
+Plan A
+
+@0529 9789de
+restez immobile…
+
+@0530 00ecdd
+…filez à droite →
+
+@0531 e882b6
+panoramique rapide hors du plan
+
+@0532 4180bc
+→ filez à droite…
+
+@0533 52f3f9
+panoramique rapide vers le nouveau plan
+
+@0534 5b0065
+Plan B
+
+@0535 2da83e
+…stabilisez et tenez
+
+@0536 a6bcff
+<strong>Le panoramique filé.</strong> Même direction, même vitesse dans les deux plans, coupe dans le flou — les deux clips donnent l’impression d’un seul mouvement continu.
+
+@0537 2a5204
+Couvrir l’objectif
+
+@0538 3f894e
+Terminez le plan A en couvrant l’objectif avec la main ou un objet ; commencez le plan B en le découvrant. Coupez sur l’image noire.
+
+@0539 524a5b
+Volet par passage
+
+@0540 20999b
+Faites passer quelqu’un tout près de la caméra pour qu’il remplisse le cadre un instant. Coupez pendant que le cadre est bouché.
+
+@0541 833c4a
+Raccord de forme
+
+@0542 fdb047
+Terminez sur une forme ou une action (une assiette ronde, une porte qui se ferme) et commencez le plan suivant sur la même forme ou la même action ailleurs.
+
+@0543 ee833e
+Bascule ciel / sol
+
+@0544 e33dbf
+Basculez vers le ciel à la fin du plan A, redescendez depuis le ciel au début du plan B — un classique pour changer de lieu.
+
+@0545 2dd11c
+6.8 Le son, c’est la moitié de la vidéo <span class="tag tag-video">vidéo</span>
+
+@0546 8cdc21
+<strong>Placez le téléphone à moins d’un mètre</strong> de la personne qui parle. La distance est la première cause de mauvais son.
+
+@0547 7c2241
+<strong>Le vent gâche les enregistrements.</strong> Tournez le dos au vent, abritez-vous derrière un mur, ou glissez une petite bonnette en mousse (même une chaussette) sur le micro.
+
+@0548 59147f
+<strong>Ne couvrez pas le micro avec vos doigts</strong> — repérez où se trouvent les petits trous sur votre téléphone.
+
+@0549 d6e83b
+<strong>Un micro-cravate bon marché</strong> ou un micro sans fil est l’amélioration la plus rentable pour les vidéos parlées.
+
+@0550 261e2d
+<strong>Enregistrez 10 secondes de silence</strong> (le « son d’ambiance ») à chaque lieu — les monteurs s’en servent pour lisser les coupes.
+
+@0551 2f0409
+Choisissez les <strong>moments calmes</strong> : réfrigérateurs, ventilateurs, groupes électrogènes et circulation sont plus bruyants à l’enregistrement que dans la vraie vie.
+
+@0552 6c3460
+6.9 Ralenti, accéléré et hyperlapse <span class="tag tag-video">vidéo</span>
+
+@0553 99d56c
+Pose longue de nuit sur une route animée avec des traînées de lumière rouges et blanches
+
+@0554 9dd810
+<strong>Accéléré et pose longue.</strong> Calez le téléphone parfaitement immobile (trépied, mur, sac) et laissez le temps travailler : la circulation devient des rivières de lumière, les nuages filent, un marché se remplit et se vide.
+
+@0555 e23822
+Ralenti
+
+@0556 da72f6
+120 ou 240 i/s. Demande beaucoup de lumière. Idéal pour l’eau, les sauts, les cheveux, les tissus, le sport. Gardez un cadre assez large pour que l’action reste dans l’image.
+
+@0557 01f19c
+Accéléré
+
+@0558 aaefc0
+Téléphone verrouillé sur un trépied. 10 vraies minutes ≈ 20 secondes. Couchers de soleil, nuages, circulation, foules, cuisine, un chantier.
+
+@0559 11f93a
+Hyperlapse
+
+@0560 40828a
+Un accéléré en mouvement : marchez lentement vers un point fixe, en le gardant au même endroit de la grille à chaque pas. Utilisez le mode hyperlapse si votre téléphone en a un.
+
+@0561 b82297
+6.10 La lumière en vidéo <span class="tag tag-video">vidéo</span>
+
+@0562 b1cc49
+Tout le chapitre 02 s’applique, mais <strong>on ne rattrape pas l’exposition d’une vidéo</strong> aussi facilement que celle d’une photo — réglez-la bien à la prise de vue.
+
+@0563 cb3184
+<strong>Faites face à la fenêtre</strong> pour les vidéos face caméra ; ne vous asseyez jamais avec la fenêtre dans le dos.
+
+@0564 f1bd98
+<strong>Évitez les lumières mélangées</strong> (lumière du jour + ampoules jaunes) — la peau vire au vert/orange. Éteignez l’une des deux.
+
+@0565 8dc48d
+Un petit <strong>panneau LED ou une ring light</strong> coûte peu et rend les vidéos en intérieur homogènes. Renvoyez sa lumière sur un mur blanc pour l’adoucir.
+
+@0566 4b738e
+<strong>L’heure dorée</strong> est courte — répétez d’abord, filmez ensuite.
+
+@0567 7dea9d
+🧪 À vous de jouer — une histoire de 30 secondes en huit plans
+
+@0568 4f0c96
+Choisissez un événement simple : préparer le thé, un trajet en boda, un match de foot, l’ouverture d’une boutique.
+
+@0569 ee56dc
+Verrouillez l’exposition. Filmez : 1 plan large, 2 plans moyens, 2 gros plans, 2 détails, 1 plan de fin (un recul ou une bascule vers le ciel). 5 à 10 secondes chacun, sans bouger.
+
+@0570 716572
+Ajoutez un mouvement de caméra — une avancée ou une révélation — et une transition à la prise de vue.
+@0571 d8675f
+Enregistrez 10 secondes de son d’ambiance. Passez maintenant au montage (chapitre 07).
+
+@0572 d6f3a9
+Bases de la retouche
+
+@0573 53c4a0
+La retouche doit finir une bonne photo, pas sauver une mauvaise. De petits ajustements honnêtes battent les gros filtres à tous les coups.
+
+@0574 906ff9
+7.1 La retouche photo en cinq étapes <span class="tag tag-photo">photo</span>
+
+@0575 6a9320
+Comparaison avant et après retouche. Faites glisser la poignée pour comparer.
+
+@0576 cef205
+Version retouchée : une scène de rue vive et bien équilibrée
+
+@0577 6116a3
+Version non retouchée : la même scène, plate et terne
+
+@0578 74f396
+Avant
+
+@0579 79ba5e
+Après
+
+@0580 46c264
+Faites glisser pour comparer avant et après
+
+@0581 3fd617
+<strong>Faites glisser la poignée.</strong> À gauche, le rendu plat typique d’une photo brute ; à droite, la même photo après les cinq étapes ci-dessous. Remarquez qu’elle paraît <em>corrigée</em>, pas filtrée.
+
+@0582 9aa4c3
+<strong>Recadrez et redressez.</strong> Mettez l’horizon droit, supprimez les distractions sur les bords, réappliquez la règle des tiers.
+
+@0583 635893
+<strong>Exposition et contraste.</strong> Éclaircissez ou assombrissez l’ensemble, puis ajoutez un peu de contraste pour que les noirs soient noirs.
+
+@0584 936271
+<strong>Hautes lumières en baisse, ombres en hausse.</strong> Récupérez le ciel, ouvrez les zones sombres — en douceur. C’est ce qui donne à une photo de téléphone un air haut de gamme.
+
+@0585 054174
+<strong>Balance des blancs.</strong> Si la peau paraît orange ou bleue, ajustez la température jusqu’à ce qu’elle ressemble à la réalité.
+
+@0586 b10a28
+<strong>Une touche de vibrance et de netteté.</strong> La vibrance (pas la saturation) ravive les couleurs ternes sans abîmer la peau. Arrêtez-vous avant que ça ait l’air « retouché ».
+
+@0587 a7c500
+Les signes que vous êtes allé trop loin
+
+@0588 30d8ec
+Des halos lumineux autour des arbres et des bâtiments, des visages orange, des ciels gris devenus fluo, des contours croustillants trop accentués. Laissez passer une nuit et regardez à nouveau demain.
+
+@0589 b82b92
+7.2 Des applis qui valent le coup
+
+@0590 fc4a69
+Appli
+
+@0591 cc14b8
+Utile pour
+
+@0592 64ae43
+Prix
+
+@0593 cb5a4c
+<strong>L’éditeur intégré</strong> (Photos / Galerie)
+
+@0594 290d24
+Les cinq étapes ci-dessus. Sous-estimé — commencez ici.
+
+@0595 75f527
+Gratuit
+
+@0596 e04315
+<strong>Snapseed</strong>
+
+@0597 d2d0d9
+Retouches photo précises, éclaircissement sélectif, suppression des petites distractions.
+
+@0598 75f527
+Gratuit
+
+@0599 387ae9
+<strong>Lightroom Mobile</strong>
+
+@0600 306650
+Travail sérieux de la couleur, préréglages, retouche de photos RAW.
+
+@0601 5305bc
+Version gratuite
+
+@0602 429ec3
+<strong>CapCut / VN</strong>
+
+@0603 87da46
+Vidéo : découpe, musique, sous-titres, variations de vitesse, transitions.
+
+@0604 75f527
+Gratuit
+
+@0605 07a98c
+<strong>iMovie</strong> (iPhone) / <strong>Samsung Video Editor</strong>
+
+@0606 2895d6
+Montages vidéo simples et propres, sans filigrane.
+
+@0607 75f527
+Gratuit
+
+@0608 466e41
+7.3 Les bonnes habitudes de montage <span class="tag tag-video">vidéo</span>
+
+@0609 c7412d
+<strong>Coupez court.</strong> 3 à 7 secondes par clip pour les réseaux sociaux. Si un plan est ennuyeux, c’est qu’il est trop long.
+
+@0610 45eb1d
+<strong>Coupez sur le rythme</strong> de la musique et sur <em>l’action</em> (une main qui se tend, une porte qui s’ouvre).
+
+@0611 4bf26c
+<strong>Suivez la règle des 3 plans au montage :</strong> large → moyen → gros plan. Ne sautez pas entre deux valeurs proches du même sujet.
+
+@0612 4c7c9c
+<strong>Ajoutez des sous-titres</strong> — la plupart des gens regardent sans le son.
+
+@0613 0ff5a5
+<strong>Harmonisez les couleurs</strong> entre des clips filmés à des moments différents pour que la vidéo semble se passer au même endroit.
+
+@0614 24ee07
+<strong>Exportez à la résolution de tournage</strong> (1080p ou 4K) et dans l’orientation de la plateforme.
+
+@0615 d08a8e
+<strong>Gardez les originaux.</strong> N’écrasez jamais rien ; sauvegardez sur Google Photos, iCloud ou un ordinateur.
+
+@0616 99957d
+Aide-mémoire
+
+@0617 0830f2
+Tout sur un seul écran. <button class="btn btn-ghost btn-sm" type="button" data-print>🖨️ Imprimer cette page</button> <a class="btn btn-ghost btn-sm" href="shoot-like-a-pro-with-your-phone.pdf" download>⬇ Télécharger le guide complet en PDF</a>
+
+@0618 6c0b2b
+✅ Avant chaque photo
+
+@0619 3a842f
+Essuyez l’objectif
+
+@0620 571ded
+D’où vient la lumière ?
+
+@0621 629d5b
+Grille activée — horizon droit, sujet sur un tiers
+
+@0622 1c7ed9
+Touchez pour faire le point, baissez légèrement l’exposition
+
+@0623 cf4cb3
+Vérifiez les bords et l’arrière-plan
+
+@0624 296e7d
+Deux mains, coudes rentrés, expirez
+
+@0625 639871
+Prenez-en cinq autres sous d’autres angles
+
+@0626 4a6a7e
+📐 Angles → ressentis
+
+@0627 34ac5d
+<strong>Contre-plongée</strong> → puissant, grand, héroïque
+
+@0628 b56789
+<strong>Hauteur des yeux</strong> → sincère, égal
+
+@0629 7aebd1
+<strong>Plongée</strong> → petit, doux, mignon
+
+@0630 84e5bd
+<strong>Vue aérienne</strong> → graphique, ordonné
+
+@0631 2f04ad
+<strong>Ras du sol</strong> → émerveillement, échelle
+
+@0632 f463d7
+<strong>Cadrage penché</strong> → énergie, tension
+
+@0633 7921b0
+<strong>À travers / reflet</strong> → profondeur, rêve
+
+@0634 200060
+☀️ Lumière
+
+@0635 148c26
+Heure dorée : 07 h–08 h &amp; 18 h–19 h
+
+@0636 831391
+Midi : cherchez l’ombre ouverte, face à l’extérieur
+
+@0637 0bb06b
+Intérieur : éteignez les ampoules, face à la fenêtre
+
+@0638 059cd7
+Lumière de côté = texture · Contre-jour = halo / silhouette
+
+@0639 58091f
+Nuit : mode Nuit + appui sur quelque chose ; pas de flash
+
+@0640 ca567c
+🧩 Composition
+
+@0641 c91a87
+Tiers &amp; points forts ; espace devant le regard
+
+@0642 2b88de
+Lignes directrices vers le sujet
+
+@0643 453abd
+Cadre dans le cadre
+
+@0644 ca7752
+Symétrie : pile au centre, parfaitement droit
+
+@0645 4b14b7
+Espace négatif ou cadre rempli
+
+@0646 a7d2ee
+Premier plan + plan moyen + arrière-plan
+
+@0647 edceb7
+🎬 Réglages vidéo express
+
+@0648 99a9a0
+Réseaux sociaux : 1080p 30 i/s · Qualité : 4K 30 i/s
+
+@0649 31b629
+Action / ralenti léger : 60 i/s · Ralenti : 120–240 i/s
+
+@0650 13a6aa
+Rendu cinéma : 24/25 i/s (25 i/s en Ouganda)
+
+@0651 67a36a
+Stabilisation ACTIVÉE · rotation verrouillée · Ne pas déranger
+
+@0652 b6fef9
+Maintenez pour verrouiller netteté + exposition
+
+@0653 674361
+Tenez chaque plan immobile 5 s avant/après un mouvement
+
+@0654 89f3b0
+🎥 Filmer pour le montage
+
+@0655 461919
+Large → moyen → gros plan → détail
+
+@0656 0178a6
+Un mouvement par plan : panoramique, bascule, avancée, travelling, orbite, élévation
+
+@0657 bcbcdb
+Commencez immobile, bougez lentement, finissez immobile
+
+@0658 a30705
+Micro à moins d’1 m ; à l’abri du vent ; enregistrez le son d’ambiance
+
+@0659 981064
+Fin : recul, bascule vers le ciel ou panoramique filé
+
+@0660 35e4be
+🙂 Les gens
+
+@0661 5f9bc8
+2× ou 3× à 2 m — jamais 0,5× de près
+
+@0662 b2f079
+Faites le point sur l’œil le plus proche
+
+@0663 055ecf
+Corps à 45°, menton en avant &amp; baissé, mains occupées
+
+@0664 a79f2f
+Ombre ouverte, face à la lumière
+
+@0665 ac4496
+Groupes : plus serrés que naturel, 5 photos d’affilée
+
+@0666 11a249
+🎚️ Retoucher en cinq gestes
+
+@0667 37217d
+Recadrer &amp; redresser
+
+@0668 f20119
+Exposition &amp; contraste
+
+@0669 e09fcc
+Hautes lumières en baisse, ombres en hausse
+
+@0670 90e0e3
+Balance des blancs pour une peau naturelle
+
+@0671 90048b
+Une touche de vibrance &amp; de netteté — puis stop
+
+@0672 e7b52c
+Plan d’entraînement sur 7 jours
+
+@0673 fb0499
+Quinze à trente minutes par jour. Dimanche, vous aurez un court film et une galerie dont vous serez fier.
+
+@0674 1d3921
+Jour 1
+
+@0675 460586
+Prise en main &amp; mise au point
+
+@0676 fa912a
+20 photos d’un seul objet. Prise à deux mains, déclencheur au volume, mise au point au doigt, curseur d’exposition à chaque photo.
+
+@0677 49e7de
+Jour 2
+
+@0678 a36ef8
+Lumière
+
+@0679 239565
+Un ami ou un objet à 7 h 30, 13 h et 18 h 30. Lumière de face, de côté et de dos à chaque fois. Comparez.
+
+@0680 a44d50
+Jour 3
+
+@0681 ca5e00
+Composition
+
+@0682 6c1ef3
+Une rue, sept schémas : tiers, lignes, cadre dans le cadre, symétrie, espace négatif, cadre rempli, plans.
+
+@0683 139e38
+Jour 4
+
+@0684 ff8084
+Angles
+
+@0685 a4c3f6
+Un sujet, six angles. Puis choisissez votre angle préféré et photographiez dix sujets différents avec.
+
+@0686 3c32bf
+Jour 5
+
+@0687 b37554
+Les gens
+
+@0688 895fb9
+Dix portraits à l’ombre ouverte au 2×. Corps à 45°, menton baissé, mains occupées, point sur l’œil.
+
+@0689 1e3435
+Jour 6
+
+@0690 bc17c1
+Vidéo
+
+@0691 060d03
+Huit plans d’un seul événement : large, moyens, gros plans, détails, une fin. Deux mouvements de caméra, une transition.
+
+@0692 05aadd
+Jour 7
+
+@0693 45bb2a
+Retoucher &amp; partager
+
+@0694 978176
+La retouche en cinq étapes sur vos cinq meilleures photos. Montez la vidéo de 30 secondes avec musique et sous-titres. Publiez-la.
+
+@0695 9fadaa
+Après cette semaine
+
+@0696 d220b6
+Choisissez <em>une</em> chose qui vous obsédera pendant un mois — les portraits, la nourriture, la rue, votre quartier à l’heure dorée. La profondeur bat la variété. Puis revenez à ce guide et relisez-le ; il vous dira d’autres choses.
+
+@0697 44cf4f
+Conçu pour le téléphone par <strong>Gide26</strong> · Kampala, Ouganda. Libre à lire, à partager et à remixer.
+
+@0698 bdd7c7
+Les photos et les schémas ont été créés pour ce guide. · <a href="shoot-like-a-pro-with-your-phone.pdf" download>Télécharger l’édition PDF</a> · <a href="../" hreflang="en" lang="en">English version</a>
+
+@0699 f53419
+Image agrandie
+
+@0700 bbfa77
+Fermer

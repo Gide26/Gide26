@@ -5,7 +5,7 @@
 - 📫 How to reach me ... whatsapp +256758721668
 - 😄 Pronouns: ... he
 - ⚡ Fun fact: ... am 6 Ft
-- 📸 My tutorial: [Shoot Like a Pro With Your Phone](docs/) — a picture-illustrated guide to phone photography & video
+- 📸 My tutorial: [Shoot Like a Pro With Your Phone](docs/) — a picture-illustrated guide to phone photography & video ([PDF](docs/shoot-like-a-pro-with-your-phone.pdf) · [🇫🇷 version française](docs/fr/))
 
 <!---
 Gide26/Gide26 is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.

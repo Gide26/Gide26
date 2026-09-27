@@ -6,6 +6,8 @@ Open `index.html` in any browser, or publish it with GitHub Pages (see below).
 
 **Printable edition:** [`shoot-like-a-pro-with-your-phone.pdf`](shoot-like-a-pro-with-your-phone.pdf) (A4, ~36 pages) — the same content laid out for printing and sharing on WhatsApp/email.
 
+**🇫🇷 En français :** [`fr/index.html`](fr/) (site) et [`fr/photographier-comme-un-pro-avec-votre-telephone.pdf`](fr/photographier-comme-un-pro-avec-votre-telephone.pdf) (PDF imprimable). Both pages link to each other through the **FR / EN** button in the top bar.
+
 ## What's inside
 
 | # | Chapter | Covers |
@@ -29,8 +31,28 @@ docs/
 ├── js/main.js      # progress bar, table of contents, lightbox, grid toggle, before/after slider
 ├── images/         # photo illustrations (optimised JPEGs)
 ├── shoot-like-a-pro-with-your-phone.pdf   # print edition, generated from index.html
-└── tools/build_pdf.py                     # regenerates the PDF
+├── fr/index.html                          # French edition, generated from index.html + tools/i18n/fr.txt
+├── fr/photographier-comme-un-pro-avec-votre-telephone.pdf
+├── tools/build_pdf.py                     # regenerates a PDF from a page
+├── tools/i18n.py                          # extracts / applies translations
+└── tools/i18n/                            # en.txt (reference segments) and fr.txt (French strings)
 ```
+
+## Translations
+
+`index.html` is the single source of truth. The French page is generated from it, so a change to the
+English text only needs a matching change in `tools/i18n/fr.txt`:
+
+```bash
+python3 docs/tools/i18n.py extract           # refresh docs/tools/i18n/en.txt (numbered English segments)
+# edit docs/tools/i18n/fr.txt  (same @numbers, French text; HTML tags inside a segment are kept)
+python3 docs/tools/i18n.py apply --lang fr   # -> docs/fr/index.html (reports untranslated / changed segments)
+python3 docs/tools/build_pdf.py --html docs/fr/index.html   # -> the French PDF
+```
+
+Diagrams, layout, scripts and images are shared between languages; only the text differs.
+Adding another language means adding an entry to `LANG` in `tools/i18n.py`, a `<lang>.txt`
+file, and a strings block in `tools/build_pdf.py`.
 
 ## Rebuilding the PDF
 

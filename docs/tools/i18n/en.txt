@@ -1,0 +1,2108 @@
+@0001 [title] 24c689
+Shoot Like a Pro With Your Phone — a picture-illustrated guide to phone photography &amp; video
+
+@0002 [meta@content] 384a26
+A free, picture-illustrated tutorial on taking better photos and videos with your phone: holding it steady, focus and exposure, light, composition, camera angles, portraits, cinematic video moves, audio and editing.
+
+@0003 [meta@content] 4ce3db
+Shoot Like a Pro With Your Phone
+
+@0004 [meta@content] 57d52b
+Picture-illustrated guide to phone photography and videography: light, composition, camera angles and video techniques.
+
+@0005 [span] 4ce3db
+Shoot Like a Pro With Your Phone
+
+@0006 [div] 57b327
+<a class="btn btn-ghost btn-sm hide-sm" href="#cheatsheet">Cheat sheet</a>
+    <a class="btn btn-ghost btn-sm" href="shoot-like-a-pro-with-your-phone.pdf" download title="Download the print edition (PDF)">⬇ PDF</a>
+    <a class="btn btn-ghost btn-sm lang-switch" href="fr/" lang="fr" hreflang="fr" title="Lire ce guide en français">FR · Français</a>
+    <button class="btn btn-primary btn-sm toc-toggle" type="button" aria-expanded="false" aria-controls="sidebar">☰ Contents</button>
+
+@0007 [img@alt] b23e66
+A young man composing a golden-hour photo of Kampala's hills on his phone
+
+@0008 [div] 2a780b
+Free picture-illustrated tutorial
+
+@0009 [h1] d4825b
+Shoot like a pro with <em>just your phone</em>
+
+@0010 [p] a84b9e
+A step-by-step guide to taking better photos and videos with the phone already in your pocket — from holding it correctly and finding good light, to composition, creative camera angles and smooth cinematic video moves.
+
+@0011 [div] 7267c3
+<span class="chip">Beginner → Intermediate</span>
+      <span class="chip">Photos &amp; Video</span>
+      <span class="chip">Android &amp; iPhone</span>
+      <span class="chip">9 chapters · ~45 min</span>
+
+@0012 [div] e01964
+<a class="btn btn-primary" href="#basics">Start with the basics ↓</a>
+      <a class="btn btn-light" href="#angles">Jump to camera angles</a>
+      <a class="btn btn-light" href="#video">Jump to video</a>
+      <a class="btn btn-light" href="shoot-like-a-pro-with-your-phone.pdf" download>⬇ Download the PDF (print edition)</a>
+
+@0013 [h5] f5cbdf
+Contents
+
+@0014 [li] 72d5c1
+<a href="#how"><span class="num">—</span> How to use this guide</a>
+
+@0015 [li] 27a10b
+<a href="#basics"><span class="num">01</span> Know your camera</a>
+
+@0016 [li] 84c395
+<a href="#light"><span class="num">02</span> Light is everything</a>
+
+@0017 [li] 93fdf5
+<a href="#composition"><span class="num">03</span> Composition</a>
+
+@0018 [li] 48f6ee
+<a href="#angles"><span class="num">04</span> Camera angles</a>
+
+@0019 [li] 168bb2
+<a href="#people"><span class="num">05</span> Photographing people</a>
+
+@0020 [li] 14b4a1
+<a href="#video"><span class="num">06</span> Video techniques</a>
+
+@0021 [li] af1a48
+<a href="#editing"><span class="num">07</span> Editing basics</a>
+
+@0022 [li] 2fe9f1
+<a href="#cheatsheet"><span class="num">08</span> Cheat sheet</a>
+
+@0023 [li] ef4713
+<a href="#practice"><span class="num">09</span> 7-day practice plan</a>
+
+@0024 [div] dcc29c
+Tap any photo to enlarge it. Look for the dark <strong>Try it</strong> boxes — doing them is how the techniques stick.
+
+@0025 [h2] 084e5d
+How to use this guide
+
+@0026 [p] 805f1d
+A phone camera is small, but the ideas that make a picture good are exactly the same as on a big camera: <strong>light, composition, angle and timing</strong>. Everything in here works on any modern Android (Samsung, Tecno, Infinix, Xiaomi…) or iPhone. Where the menus differ, both are shown.
+
+@0027 [h5] 88078e
+📷 Photo tips
+
+@0028 [p] 2c79c4
+Marked with an orange tag. Most also improve your video.
+
+@0029 [h5] 570dbe
+🎬 Video tips
+
+@0030 [p] e64720
+Marked with a teal tag. Chapter 06 is all video.
+
+@0031 [h5] cc7cc7
+🧪 Try it
+
+@0032 [p] e4012e
+Short exercises. Ten minutes of shooting teaches more than an hour of reading.
+
+@0033 [strong] f6ec20
+One idea to keep in mind
+
+@0034 [p] e79c37
+Better photos come from <strong>moving your feet and your phone</strong> — not from buying a better phone. Every chapter below is really about <em>where you stand, where you point, and when you press</em>.
+
+@0035 [h2] bc0fde
+Know your camera
+
+@0036 [p] f310f4
+Five small habits that instantly make every photo and video sharper, cleaner and better exposed.
+
+@0037 [h3] c534f6
+1.1 Clean the lens <span class="tag tag-both">photo + video</span>
+
+@0038 [p] 9f22de
+Your phone lives in pockets and hands, so the lens is almost always covered in a thin film of oil. That film scatters light and gives you hazy, low-contrast photos with glowing streaks around lights. <strong>Wipe the lens on a soft cotton shirt before you shoot.</strong> It is the single biggest free upgrade available.
+
+@0039 [h3] 970b44
+1.2 Hold it steady <span class="tag tag-both">photo + video</span>
+
+@0040 [img@alt] a4a6e4
+Two hands holding a phone horizontally, thumbs on the edges, framing a busy market street
+
+@0041 [figcaption] aa6173
+<strong>The two-hand grip.</strong> Both hands on the short edges, thumbs resting near the screen edge, index fingers steadying the top corners. Elbows pulled in against your ribs turn your body into a tripod.
+
+@0042 [li] a5c1f8
+<strong>Two hands, elbows in.</strong> Pull your elbows against your body. Hold the phone close, not at arm's length.
+
+@0043 [li] 1daacf
+<strong>Use the volume button as the shutter.</strong> Pressing the on-screen button with a thumb shakes the phone; the side button is easier to squeeze gently.
+
+@0044 [li] f9f918
+<strong>Breathe out, then shoot.</strong> Take the picture at the end of a slow exhale, when your body is stillest.
+
+@0045 [li] 706e6d
+<strong>Lean on something.</strong> A wall, table, tree or car roof removes most shake. For night shots this matters even more.
+
+@0046 [li] 235998
+<strong>Use the timer for tripod shots.</strong> With the phone on a tripod or propped on a bag, a 3-second timer means your finger is not touching it when the photo is taken.
+
+@0047 [h3] afd96a
+1.3 Tap to focus, slide to expose <span class="tag tag-both">photo + video</span>
+
+@0048 [p] 51c16c
+The camera guesses what you want sharp and how bright the picture should be. It is often wrong. Take control with one finger:
+
+@0049 [title] 352c05
+Phone camera screen showing the focus square, exposure slider and lock indicator
+
+@0050 [text] 9fd085
+AE/AF LOCK
+
+@0051 [text] 4c36dd
+Tap to focus
+
+@0052 [text] df1030
+Tap the most important thing in the frame.
+
+@0053 [text] 04488e
+Slide to brighten or darken
+
+@0054 [text] b2c2ad
+Drag up or down beside the sun icon.
+
+@0055 [text] a13223
+Press &amp; hold to lock
+
+@0056 [text] 1b48eb
+Focus and brightness stay fixed while you
+
+@0057 [text] 2e08c0
+recompose or record video.
+
+@0058 [figcaption] 79f04e
+The yellow square is the <strong>focus point</strong>. The small sun beside it is the <strong>exposure</strong> control. On Android the icons differ slightly, but the gestures are the same: tap, slide, press-and-hold.
+
+@0059 [strong] 4213b9
+Expose for the bright parts
+
+@0060 [p] b3e1fb
+If in doubt, make the photo <em>slightly darker</em> than looks right. Shadows can be brightened later, but a sky that has turned pure white is gone forever.
+
+@0061 [h3] 5f9ea5
+1.4 Turn on the grid <span class="tag tag-both">photo + video</span>
+
+@0062 [p] b1b56e
+The grid divides the screen into thirds and is the fastest way to keep horizons level and place subjects well (chapter 03 explains why).
+
+@0063 [li] 7fc4ab
+<strong>iPhone:</strong> Settings → Camera → Composition → <kbd>Grid</kbd> (also turn on <kbd>Level</kbd>).
+
+@0064 [li] e84114
+<strong>Android:</strong> open the Camera → tap the ⚙️ settings gear → <kbd>Grid lines</kbd> / <kbd>Composition lines</kbd> → choose 3×3.
+
+@0065 [h3] 450f85
+1.5 Zoom with your feet <span class="tag tag-both">photo + video</span>
+
+@0066 [p] bf9f30
+Pinching to zoom on most phones is <strong>digital zoom</strong> — it just crops the picture and stretches it, which is why zoomed photos look muddy. Instead:
+
+@0067 [li] af2f8c
+<strong>Walk closer.</strong> Getting physically nearer is always sharper than zooming.
+
+@0068 [li] cd6213
+<strong>Use the lens buttons</strong> (0.5×, 1×, 2×, 3×, 5×). Those are real lenses or high-quality crops. Avoid values in between, like 1.7×.
+
+@0069 [li] cd0271
+<strong>Ultra-wide (0.5×)</strong> is for tight rooms, big landscapes and dramatic low angles. It stretches faces — keep people away from the edges.
+
+@0070 [li] 093aa1
+<strong>Telephoto (2×–5×)</strong> is the most flattering for portraits and picks details out of busy scenes.
+
+@0071 [h3] a084d4
+1.6 Vertical or horizontal? <span class="tag tag-both">photo + video</span>
+
+@0072 [title] 96ab3d
+Vertical 9:16 versus horizontal 16:9 framing and where each is used
+
+@0073 [text] f8fe29
+Vertical (portrait)
+
+@0074 [text] cd9f1b
+TikTok · Reels · Shorts · WhatsApp status
+
+@0075 [text] 25ba4b
+Watched on a phone, held upright
+
+@0076 [text] cf5023
+Horizontal (landscape)
+
+@0077 [text] f0d80d
+YouTube · TV · laptop · projector · cinema
+
+@0078 [text] e9318e
+Shows more of the scene; more "filmic"
+
+@0079 [figcaption] 557836
+Decide <strong>before</strong> you shoot, based on where it will be watched. Cropping a horizontal video to vertical later throws away two-thirds of the picture. If unsure, shoot video horizontally in 4K so you have room to crop.
+
+@0080 [h3] 6d041a
+1.7 What the modes are for <span class="tag tag-both">photo + video</span>
+
+@0081 [th] a7b93d
+Mode
+
+@0082 [th] d4c4e7
+Use it for
+
+@0083 [th] d19cec
+Tip
+
+@0084 [td] 1cd78d
+<strong>Photo</strong>
+
+@0085 [td] 1112d8
+Everyday shooting. HDR blends bright and dark areas automatically.
+
+@0086 [td] 633f02
+Leave HDR on Auto. Turn on Live/Motion photo to rescue blinks.
+
+@0087 [td] cc15c4
+<strong>Portrait</strong>
+
+@0088 [td] c33519
+People, pets and objects with a blurred background.
+
+@0089 [td] cf65dd
+Stand 1–2.5 m away, good light, plain background. Check hair edges.
+
+@0090 [td] a6282e
+<strong>Night</strong>
+
+@0091 [td] 3589fa
+Low light: streets, indoors, candles, city lights.
+
+@0092 [td] 539adb
+Hold still for 2–5 seconds or lean on something. Never use flash for scenery.
+
+@0093 [td] d79e9f
+<strong>Pano</strong>
+
+@0094 [td] cdfd80
+Very wide views: lakes, hills, stadiums, long rooms.
+
+@0095 [td] a3cae1
+Move slowly, keep the arrow on the line, avoid moving people.
+
+@0096 [td] ce3546
+<strong>Pro / Manual</strong>
+
+@0097 [td] 76669c
+Control ISO, shutter speed, white balance and focus yourself.
+
+@0098 [td] 349c9e
+Long shutter (1–4 s) on a tripod for light trails and silky water.
+
+@0099 [td] 581be5
+<strong>Video</strong>
+
+@0100 [td] 00dafb
+Normal video at 1080p or 4K, 30 or 60 fps.
+
+@0101 [td] c6ce0a
+Settings in chapter 06. Lock exposure before recording.
+
+@0102 [td] b2d41f
+<strong>Slo-mo</strong>
+
+@0103 [td] 72df47
+Splashes, jumps, dancing, sport at 120–240 fps.
+
+@0104 [td] ddbdbe
+Needs a lot of light — shoot outdoors in the daytime.
+
+@0105 [td] c7230b
+<strong>Time-lapse</strong>
+
+@0106 [td] 49d9a4
+Clouds, traffic, sunsets, crowds, building something.
+
+@0107 [td] 07f770
+Tripod or prop the phone. Ten real minutes become ~20 seconds.
+
+@0108 [h4] 1f6eb3
+🧪 Try it — 10-minute warm-up
+
+@0109 [li] 88ef55
+Wipe the lens. Turn on the grid. Pick one object on a table.
+
+@0110 [li] a510f8
+Take a photo using the two-hand grip and the volume button.
+
+@0111 [li] 27b2a5
+Tap on the object, then slide the exposure down until the background darkens. Take another.
+
+@0112 [li] b60ac2
+Now walk closer instead of zooming and take a third. Compare the three at full size.
+
+@0113 [h2] 024acb
+Light is everything
+
+@0114 [p] ea1a17
+Photography literally means "drawing with light". Learn to see where light is coming from and your pictures change overnight.
+
+@0115 [h3] e99244
+2.1 The best light of the day: golden hour <span class="tag tag-photo">photo</span>
+
+@0116 [img@alt] db0e69
+Portrait of a smiling young woman lit by warm, low golden-hour sunlight with a glowing rim of light on her hair
+
+@0117 [figcaption] c5ca81
+<strong>Golden hour.</strong> The hour after sunrise and before sunset. The sun is low, so light is soft and warm, shadows are long and gentle, and hair gets a glowing rim. Almost anything looks good in it.
+
+@0118 [title] 92da90
+Arc of the sun through the day showing golden hour, harsh midday light and blue hour
+
+@0119 [text] c49f6b
+Harsh overhead light · about 11:00 – 15:00
+
+@0120 [text] 71119f
+dark eye sockets, squinting, white skies — find shade
+
+@0121 [text] b4fd01
+Mid-morning &amp; mid-afternoon: fine, a little hard
+
+@0122 [text] 1e3dc7
+Golden hour
+
+@0123 [text] 1e3dc7
+Golden hour
+
+@0124 [text] fadf71
+Sunrise
+
+@0125 [text] 61d188
+Kampala ≈ 07:00 all year
+
+@0126 [text] 181bcd
+Sunset
+
+@0127 [text] 71111d
+Kampala ≈ 19:00 all year
+
+@0128 [text] 59d7c9
+● Blue hour: 20–30 min before sunrise / after sunset
+
+@0129 [text] 839096
+soft blue light, city lights glow — great for skylines
+
+@0130 [figcaption] f30a69
+Because Kampala sits on the equator, sunrise and sunset barely move through the year, so golden hour is reliably <strong>07:00–08:00</strong> and <strong>18:00–19:00</strong>. Plan portraits and landscapes for those windows.
+
+@0131 [h3] ae285a
+2.2 Direction of light <span class="tag tag-both">photo + video</span>
+
+@0132 [p] 673464
+Before you press the button, ask: <em>where is the light coming from?</em> Then move yourself or your subject until it falls the way you want.
+
+@0133 [title] e7d484
+Top-down view of front light, side light and back light relative to the subject and the camera
+
+@0134 [text] 4fd970
+Front light
+
+@0135 [text] fe28c2
+even, flat, safe — good for colour
+
+@0136 [text] 251e38
+camera
+
+@0137 [text] cc1c14
+sun behind you
+
+@0138 [text] 32f294
+Side light
+
+@0139 [text] 63a24a
+texture, depth, mood
+
+@0140 [text] 251e38
+camera
+
+@0141 [text] 51abb6
+sun at 90° to the subject
+
+@0142 [text] e51373
+Back light
+
+@0143 [text] cda5d8
+glowing rim light or silhouette
+
+@0144 [text] 251e38
+camera
+
+@0145 [text] ccb44f
+sun behind the subject
+
+@0146 [figcaption] e0d33d
+Seen from above. The grey patch is the shadow. <strong>Front light</strong> is easy but flat. <strong>Side light</strong> sculpts faces and shows texture. <strong>Back light</strong> gives either a glowing outline (tap on the face) or a silhouette (tap on the sky).
+
+@0147 [span] 32f294
+Side light
+
+@0148 [img@alt] fc2314
+Portrait of an older man beside a window, one side of his face lit, the other in soft shadow
+
+@0149 [span] e51373
+Back light
+
+@0150 [img@alt] 556683
+Silhouette of a cyclist against an orange sunset on the shore of Lake Victoria
+
+@0151 [figcaption] 42c7b0
+<strong>Left:</strong> window light from one side gives shape, texture and dignity — turn the subject until one cheek is bright and the other soft. <strong>Right:</strong> for a silhouette put the sun directly behind the subject, tap on the bright sky, then slide the exposure down until the person is pure black.
+
+@0152 [h3] ef02c2
+2.3 Harsh sun vs open shade <span class="tag tag-both">photo + video</span>
+
+@0153 [span] 33fc27
+Avoid
+
+@0154 [img@alt] 9ca99e
+Man in direct midday sun, squinting, with hard dark shadows under his eyes and nose
+
+@0155 [span] 303cfd
+Better
+
+@0156 [img@alt] 5521de
+The same man in open shade under a roof, with soft even light on his face and a relaxed expression
+
+@0157 [figcaption] 9f52c0
+Same person, same wall, ten steps apart. Midday sun comes from straight above: eye sockets go black, skin shines and everyone squints. <strong>Open shade</strong> — the edge of a veranda, a tree, a doorway — turns the whole sky into one giant soft light. Stand your subject just inside the shade, facing out toward the light.
+
+@0158 [h3] f5ce70
+2.4 Indoors: use the window <span class="tag tag-both">photo + video</span>
+
+@0159 [li] b822bd
+<strong>Switch off the ceiling lights</strong> and get close to a window. Mixed daylight and bulbs give strange yellow-blue skin tones.
+
+@0160 [li] 2c31ce
+<strong>Face the subject toward the window at about 45°</strong> for gentle side light. Face them straight into it for soft, even beauty light.
+
+@0161 [li] 6d46f3
+<strong>Never put the window behind them</strong> — unless you want a silhouette.
+
+@0162 [li] c0cf9a
+A white bedsheet, paper or wall opposite the window bounces light back into the shadow side.
+
+@0163 [h3] 75f37f
+2.5 At night <span class="tag tag-both">photo + video</span>
+
+@0164 [li] ff6177
+<strong>Use Night mode</strong> and stay perfectly still — lean on a wall or rest the phone on something. The phone stacks several exposures over 2–5 seconds.
+
+@0165 [li] 6fc4b4
+<strong>Find a light source</strong> — a shop sign, a street lamp, a screen — and put your subject <em>facing</em> it.
+
+@0166 [li] 5fbd11
+<strong>Avoid the flash for scenery.</strong> It only reaches two metres and flattens everything. For a person right in front of you it can look bold and "fashion" — try it deliberately, not by accident.
+
+@0167 [li] 75e85f
+<strong>Blue hour</strong> (just after sunset) is the best time for city skylines: sky still has colour, lights are already on.
+
+@0168 [h4] 154eb8
+🧪 Try it — one face, three directions
+
+@0169 [li] ff3a8f
+Ask a friend to stand near a window or outside in late afternoon light.
+
+@0170 [li] 50a80c
+Take one photo with the light behind <em>you</em> (front light), one with the light to the side, one with the light behind <em>them</em>.
+
+@0171 [li] 57de76
+For the last one take two versions: tap on their face, then tap on the bright background. One glows, one is a silhouette.
+
+@0172 [h2] ca5e00
+Composition
+
+@0173 [p] 6dcae0
+Composition is simply deciding what goes where in the frame. These seven patterns cover most great photos you have ever seen.
+
+@0174 [h3] 247ce9
+3.1 The rule of thirds <span class="tag tag-both">photo + video</span>
+
+@0175 [p] 2e803a
+Imagine the frame cut into a 3×3 grid (that is what the grid setting shows). Put your subject on one of the lines, and the most important point — usually the eyes — near one of the four intersections. Put horizons on the top or bottom line, never through the middle.
+
+@0176 [img@alt] bc5b88
+Photo with the subject on the right third line and the horizon on the top third line
+
+@0177 [button] 9d7355
+Hide grid
+
+@0178 [figcaption] 565492
+<strong>Toggle the grid</strong> to see how the subject sits on a third line and the horizon on the upper line. The orange dots are the "power points".
+
+@0179 [title] 666d0c
+Rule of thirds grid with the horizon on the lower line and the subject on the right line
+
+@0180 [text] bfa41f
+Horizon on a third line
+
+@0181 [text] 0b0c42
+bottom line = more sky, top line = more land
+
+@0182 [text] 0c0860
+Eyes near a power point
+
+@0183 [text] 2da774
+subject looks into the
+
+@0184 [text] 6378fe
+empty side of the frame
+
+@0185 [figcaption] c97404
+Leave space in front of a person's gaze or a moving object's direction ("lead room"). The picture feels balanced instead of cramped.
+
+@0186 [h3] 31a77f
+3.2 Leading lines <span class="tag tag-both">photo + video</span>
+
+@0187 [img@alt] f00114
+A red dirt road lined with banana plants converging toward a woman walking into the distance at sunrise
+
+@0188 [figcaption] d8493e
+<strong>Leading lines.</strong> Roads, paths, fences, railings, rivers, shadows and rows of anything pull the eye from the edge of the frame to your subject. Stand in the middle of the line and shoot along it, low if you want more drama.
+
+@0189 [h3] 4ae40d
+3.3 Framing <span class="tag tag-both">photo + video</span>
+
+@0190 [img@alt] 0a2c11
+A woman in a colourful dress in a sunny courtyard seen through a dark arched wooden doorway
+
+@0191 [figcaption] baba71
+<strong>A frame within the frame.</strong> Doorways, windows, arches, branches, gaps in a crowd — anything that surrounds your subject adds depth and tells the viewer exactly where to look. Expose for the bright subject and let the frame go dark.
+
+@0192 [h3] 4d830f
+3.4 Symmetry and patterns <span class="tag tag-both">photo + video</span>
+
+@0193 [img@alt] a229b9
+A perfectly symmetrical modern building mirrored in a still reflecting pool
+
+@0194 [figcaption] 427977
+<strong>Symmetry</strong> is the one time you should ignore the rule of thirds: put the centre line exactly in the middle and get the phone perfectly level (use the grid). Reflections, corridors, buildings and rows of market stalls are full of it. A pattern becomes more interesting when <em>one</em> thing breaks it.
+
+@0195 [h3] 3f2366
+3.5 Negative space <span class="tag tag-photo">photo</span>
+
+@0196 [img@alt] 38b486
+A single small fishing canoe in the corner of a vast, calm, misty lake
+
+@0197 [figcaption] d36da0
+<strong>Negative space</strong> is the empty area around your subject. A small subject in a big calm space feels quiet, lonely or free. Sky, water, walls and fog make excellent empty space. Put the subject on a power point and let the emptiness do the talking.
+
+@0198 [h3] ad56da
+3.6 Fill the frame <span class="tag tag-photo">photo</span>
+
+@0199 [img@alt] fd0527
+Close-up of colourful chillies and tomatoes filling the whole frame with no background visible
+
+@0200 [figcaption] 9ccec5
+<strong>The opposite of negative space.</strong> Get so close that the subject touches all four edges and no distracting background is left. Faces, food, textures, fabrics and hands work beautifully. This is where a 2× lens shines.
+
+@0201 [h3] 72b119
+3.7 Layers: foreground, middle, background <span class="tag tag-both">photo + video</span>
+
+@0202 [title] 286347
+A scene with foreground leaves, a subject in the middle ground and hills in the background
+
+@0203 [text] 64dd60
+Background
+
+@0204 [text] 2975d6
+context: hills, sky, city
+
+@0205 [text] 37d86a
+Middle ground
+
+@0206 [text] add69a
+your subject, sharp
+
+@0207 [text] f7745e
+Foreground
+
+@0208 [text] 5bf55f
+something close to the
+
+@0209 [text] 7f649b
+lens, usually blurred
+
+@0210 [figcaption] 97ed5a
+A flat photo has one layer. A photo with something close to the lens, a subject in the middle and a background behind feels three-dimensional. Try holding leaves, a railing or a friend's shoulder a few centimetres from the lens.
+
+@0211 [img@alt] 3a0907
+Blurred wildflowers in the foreground, a person in a green field in the middle and misty hills behind
+
+@0212 [figcaption] f4617a
+<strong>Three layers in one frame.</strong> Blurred flowers close to the lens, the person sharp in the middle, hills fading behind. Tap on the subject so the foreground stays soft.
+
+@0213 [h3] b8511a
+3.8 Clean up the background <span class="tag tag-both">photo + video</span>
+
+@0214 [li] 0d94f0
+<strong>Check the edges</strong> of the frame before you shoot. Half a person, a bin, a stray foot — move one step and they are gone.
+
+@0215 [li] d04e34
+<strong>Watch for things "growing" out of heads</strong>: poles, trees, lamp posts. One step left or right fixes it.
+
+@0216 [li] 90c5bb
+<strong>Simplify.</strong> A plain wall, sky, water or foliage behind the subject makes them pop. Busy backgrounds fight for attention.
+
+@0217 [li] e4dc29
+<strong>Get lower.</strong> Kneeling puts more sky behind a person and hides clutter on the ground.
+
+@0218 [strong] d9ad50
+Rules are starting points
+
+@0219 [p] bb3f80
+Centre a subject for symmetry or a bold portrait. Put a horizon in the middle for a perfect reflection. Break the rules <em>on purpose</em> — that is the difference between a mistake and a style.
+
+@0220 [h4] 1b8b0e
+🧪 Try it — one street, seven photos
+
+@0221 [p] 1f051a
+Walk one street near you and come back with one photo for each pattern: thirds, leading lines, framing, symmetry, negative space, fill the frame, layers. Do not take more than three attempts per pattern — decisions are the exercise.
+
+@0222 [h2] 44f39d
+Camera angles
+
+@0223 [p] 1ab40a
+The angle is where you put the camera in relation to your subject. Change the angle and you change how the viewer <em>feels</em> about what they are looking at.
+
+@0224 [p] 547a0d
+Most people take every photo from the same place: standing, phone at chest height. That is the view everyone already has. The moment you crouch, climb or lie down, your pictures stop looking like everyone else's.
+
+@0225 [title] 8d0b51
+Side view of a subject with the camera placed at bird's eye, high angle, eye level, low angle and worm's eye positions
+
+@0226 [text] 2e7db6
+Bird's eye
+
+@0227 [text] f5fa0f
+straight down: flat lays, food, patterns
+
+@0228 [text] cdb399
+High angle
+
+@0229 [text] e9db25
+looking down → subject feels small,
+
+@0230 [text] e8a92b
+soft, cute or vulnerable
+
+@0231 [text] e0e9ff
+Eye level
+
+@0232 [text] f0f624
+neutral, honest, connection —
+
+@0233 [text] 07a200
+the subject's eye level, not yours
+
+@0234 [text] 095cf6
+Low angle
+
+@0235 [text] 6d203f
+looking up → tall, powerful,
+
+@0236 [text] ae70dc
+heroic, dramatic
+
+@0237 [text] be5496
+Worm's eye
+
+@0238 [text] d8180b
+phone on the ground, pointing up:
+
+@0239 [text] f5c424
+towering subjects, converging lines
+
+@0240 [figcaption] a0d406
+The five basic heights. Same subject, five different stories. The camera icons show where your phone goes; the dashed lines show where it points.
+
+@0241 [h3] 7353dd
+The angle toolkit
+
+@0242 [p] 1eb462
+Each card shows the camera position, what the angle does to the viewer, what it is good for, and how to do it on a phone.
+
+@0243 [img@alt] 305c55
+Woman in a market photographed at eye level
+
+@0244 [h4] e0e9ff
+Eye level
+
+@0245 [dt] 720b5d
+Effect
+
+@0246 [dd] 24437e
+Neutral and honest. The viewer meets the subject as an equal.
+
+@0247 [dt] 5065b9
+Use for
+
+@0248 [dd] 721b67
+Everyday portraits, documentary, products. Children and pets — get down to <em>their</em> eye level and the photo transforms.
+
+@0249 [dt] 0c81ab
+How
+
+@0250 [dd] 0e3563
+Kneel or sit until the lens is level with the subject's eyes. Focus on the nearest eye.
+
+@0251 [img@alt] 57ce02
+Same woman photographed from a low angle looking up, appearing tall against the sky
+
+@0252 [h4] 095cf6
+Low angle
+
+@0253 [dt] 720b5d
+Effect
+
+@0254 [dd] 875f09
+Power, height, drama. Subjects tower and backgrounds turn to clean sky.
+
+@0255 [dt] 5065b9
+Use for
+
+@0256 [dd] 74d498
+Buildings, athletes, dancers, boda riders, kids as heroes, anything you want to look big.
+
+@0257 [dt] 0c81ab
+How
+
+@0258 [dd] 1d31dc
+Crouch or put the phone near the ground. <strong>Flip the phone upside down</strong> so the lens is at the very bottom — you get several centimetres lower. Try the 0.5× lens for extra drama.
+
+@0259 [img@alt] 69346e
+Same woman photographed from above, looking up at the camera
+
+@0260 [h4] cdb399
+High angle
+
+@0261 [dt] 720b5d
+Effect
+
+@0262 [dd] 26e953
+Subject looks smaller, softer, more vulnerable or cute. Shows the layout of a scene.
+
+@0263 [dt] 5065b9
+Use for
+
+@0264 [dd] fb9299
+Babies and pets, flattering selfies (slightly above the eyes), plates of food, groups seen from a balcony.
+
+@0265 [dt] 0c81ab
+How
+
+@0266 [dd] ec3261
+Stand on a step, hold the phone above your head, or shoot from stairs and balconies. Ask the subject to look up.
+
+@0267 [img@alt] 51a64e
+Top-down flat lay of a breakfast table with coffee, a rolex, fruit and a notebook
+
+@0268 [h4] 88eedd
+Bird's eye (top-down)
+
+@0269 [dt] 720b5d
+Effect
+
+@0270 [dd] fd8033
+Graphic, tidy, map-like. Turns objects into shapes and patterns.
+
+@0271 [dt] 5065b9
+Use for
+
+@0272 [dd] 9d062a
+Food, flat lays, desks, hands at work, markets and crowds from above, swimming pools, patterned floors.
+
+@0273 [dt] 0c81ab
+How
+
+@0274 [dd] 6f4a3b
+Hold the phone flat and parallel to the surface. iPhones show a <strong>crosshair level</strong> — line up the two crosses. Stand on a chair for a bigger table. Watch for your own shadow.
+
+@0275 [img@alt] 1a5fa7
+Looking straight up at tall trees converging toward the sky
+
+@0276 [h4] be5496
+Worm's eye
+
+@0277 [dt] 720b5d
+Effect
+
+@0278 [dd] aeb28b
+Vertigo and scale. Lines converge toward a vanishing point in the sky.
+
+@0279 [dt] 5065b9
+Use for
+
+@0280 [dd] 1fe058
+Trees, tall buildings, stairwells, a circle of friends looking down into the lens.
+
+@0281 [dt] 0c81ab
+How
+
+@0282 [dd] d4a4d3
+Lie on your back or place the phone on the ground and use the timer. Ultra-wide (0.5×) exaggerates the converging lines.
+
+@0283 [img@alt] 186bd6
+A skateboarder on a street photographed with a deliberately tilted horizon
+
+@0284 [h4] fdf46f
+Dutch tilt
+
+@0285 [text] 142aea
+tilt the phone 15–30°
+
+@0286 [dt] 720b5d
+Effect
+
+@0287 [dd] e9f6da
+Tension, energy, unease — something is not quite right.
+
+@0288 [dt] 5065b9
+Use for
+
+@0289 [dd] b29081
+Action, sport, music videos, street scenes, playful portraits. Use sparingly; one tilted shot in ten.
+
+@0290 [dt] 0c81ab
+How
+
+@0291 [dd] b0fdf1
+Rotate the phone so the horizon runs diagonally. Commit to it — a 5° tilt looks like a mistake, 20° looks intentional.
+
+@0292 [img@alt] c6e57d
+Over-the-shoulder view past a woman's blurred shoulder toward a man talking across a café table
+
+@0293 [h4] 0ff412
+Over the shoulder
+
+@0294 [text] 0d1c81
+behind one person, looking at the other
+
+@0295 [dt] 720b5d
+Effect
+
+@0296 [dd] 3ec8b4
+Puts the viewer inside a conversation. Adds depth and context.
+
+@0297 [dt] 5065b9
+Use for
+
+@0298 [dd] 616055
+Two people talking, someone showing something, interviews, video dialogue.
+
+@0299 [dt] 0c81ab
+How
+
+@0300 [dd] 162877
+Stand just behind and beside person A; keep the edge of their shoulder or head blurred in the corner of the frame; focus on person B. Portrait mode helps blur the shoulder.
+
+@0301 [img@alt] 107b8a
+First-person view of hands on motorcycle handlebars riding down a busy road
+
+@0302 [h4] 02f095
+Point of view (POV)
+
+@0303 [text] acb165
+the camera is your eyes
+
+@0304 [dt] 720b5d
+Effect
+
+@0305 [dd] 045452
+Immersive — the viewer <em>becomes</em> the subject.
+
+@0306 [dt] 5065b9
+Use for
+
+@0307 [dd] 02bcd9
+Cooking, crafts, riding, walking tours, unboxing, "a day in my life" videos.
+
+@0308 [dt] 0c81ab
+How
+
+@0309 [dd] 78bf25
+Hold the phone at your own eye or chest height, pointing where you look. Include your hands. For video, a cheap chest or head mount keeps it steady.
+
+@0310 [img@alt] e81dd0
+Extreme close-up of a bee on a purple flower with water droplets
+
+@0311 [h4] e71450
+Macro &amp; details
+
+@0312 [text] 4aa5c5
+2–10 cm away
+
+@0313 [dt] 720b5d
+Effect
+
+@0314 [dd] 6adc76
+Intimacy and surprise: textures and tiny worlds we never notice.
+
+@0315 [dt] 5065b9
+Use for
+
+@0316 [dd] 524620
+Flowers, insects, fabric, food, eyes, jewellery, rain drops, hands at work. In video, detail shots ("inserts") glue a story together.
+
+@0317 [dt] 0c81ab
+How
+
+@0318 [dd] 1c341b
+Many phones switch to macro automatically when you get within a few centimetres (a flower icon appears). If not, step back to ~20 cm and use 2×. Tap to focus, hold your breath, and take several — depth of field is paper-thin.
+
+@0319 [img@alt] e31821
+A puddle on a street reflecting a colourful building and a person with an umbrella
+
+@0320 [h4] cdbc17
+Reflections
+
+@0321 [text] 2b683d
+lens at water level
+
+@0322 [dt] 720b5d
+Effect
+
+@0323 [dd] 361a81
+Symmetry, doubling, a dream-like second world.
+
+@0324 [dt] 5065b9
+Use for
+
+@0325 [dd] 7f8030
+Puddles after rain, lakes, windows, mirrors, polished floors, sunglasses, even another phone's screen.
+
+@0326 [dt] 0c81ab
+How
+
+@0327 [dd] d5c952
+Flip the phone upside down and put the lens <strong>almost touching</strong> the water or surface. The lower you go, the bigger the reflection. Tap on the reflection to focus on it.
+
+@0328 [img@alt] cf394d
+Portrait of a man photographed through soft, out-of-focus green leaves
+
+@0329 [h4] d2dd10
+Shoot through something
+
+@0330 [text] 62b5ac
+object a few cm from the lens
+
+@0331 [dt] 720b5d
+Effect
+
+@0332 [dd] 8eabec
+Depth, mystery, a feeling of peeking in. Instant foreground layer.
+
+@0333 [dt] 5065b9
+Use for
+
+@0334 [dd] 7b8e4c
+Portraits through leaves, fences, glass, curtains, crowds, a glass of water, a hole in a wall.
+
+@0335 [dt] 0c81ab
+How
+
+@0336 [dd] 99996a
+Hold the object 2–5 cm from the lens so it blurs into soft colour. Tap on the subject behind it. Coloured plastic or a torn leaf produce dreamy edges.
+
+@0337 [h3] e9327a
+Angle → feeling: quick reference
+
+@0338 [th] a145ef
+Camera position
+
+@0339 [th] c60b3f
+The viewer feels
+
+@0340 [th] 6d7ae8
+Best for
+
+@0341 [td] dbc9dc
+<strong>Eye level</strong>
+
+@0342 [td] 5360d1
+Equal, honest, connected
+
+@0343 [td] 8d4a76
+Portraits, documentary, kids &amp; pets (at their level)
+
+@0344 [td] 17a92a
+<strong>Low angle</strong>
+
+@0345 [td] 934ca2
+Subject is powerful, tall, heroic
+
+@0346 [td] 289b04
+Architecture, sport, dancers, dramatic portraits
+
+@0347 [td] 2ec11e
+<strong>High angle</strong>
+
+@0348 [td] 954812
+Subject is small, gentle, vulnerable
+
+@0349 [td] 0a462f
+Babies, food, flattering selfies, showing a layout
+
+@0350 [td] 15f0c3
+<strong>Bird's eye</strong>
+
+@0351 [td] ad1d77
+Orderly, graphic, abstract
+
+@0352 [td] e156b6
+Flat lays, tables, markets from above, patterns
+
+@0353 [td] 6fcd03
+<strong>Worm's eye</strong>
+
+@0354 [td] eb72ae
+Awe, dizziness, scale
+
+@0355 [td] e5b2ec
+Trees, towers, stairwells, circles of people
+
+@0356 [td] a7e52c
+<strong>Dutch tilt</strong>
+
+@0357 [td] a688ef
+Energy, tension, chaos
+
+@0358 [td] 4b4c16
+Action, music, street, playful portraits
+
+@0359 [td] c93445
+<strong>Over the shoulder</strong>
+
+@0360 [td] f8d67f
+Part of a conversation
+
+@0361 [td] a21da1
+Dialogue, demonstrations, interviews
+
+@0362 [td] 4e5be2
+<strong>POV</strong>
+
+@0363 [td] 3d1600
+"I am there"
+
+@0364 [td] 0d2cf6
+Cooking, crafts, riding, tours, vlogs
+
+@0365 [td] 93070a
+<strong>Macro / detail</strong>
+
+@0366 [td] d39de6
+Curiosity, intimacy
+
+@0367 [td] 3597f1
+Textures, nature, food, inserts for video
+
+@0368 [td] f08bf8
+<strong>Reflection</strong>
+
+@0369 [td] adf0b1
+Calm, dreamy, clever
+
+@0370 [td] cd31a3
+Puddles, lakes, glass, mirrors
+
+@0371 [td] dd7f47
+<strong>Through objects</strong>
+
+@0372 [td] c5b566
+Peeking in, depth
+
+@0373 [td] 93f870
+Portraits through leaves, fences, glass
+
+@0374 [strong] dccd3a
+The "work the scene" habit
+
+@0375 [p] 2c2598
+Never take just one. When something catches your eye, take the obvious photo, then <strong>five more from five different heights and distances</strong>. The best one is almost never the first.
+
+@0376 [h4] b6a09b
+🧪 Try it — one subject, six angles
+
+@0377 [li] 3d3962
+Pick one patient subject: a friend, a chair, a boda-boda, a mango tree.
+
+@0378 [li] a5e779
+Photograph it at eye level, low angle, high angle, bird's eye (if possible), Dutch tilt and through something.
+
+@0379 [li] 737a35
+Line the six photos up in your gallery. Notice how the same thing feels heroic, cute, chaotic or calm depending only on where you stood.
+
+@0380 [h2] 95d316
+Photographing people
+
+@0381 [p] d5d7e6
+Faces are the most photographed subject in the world — and the least forgiving. A few habits make everyone look their best.
+
+@0382 [h3] acafd6
+5.1 Distance and lens <span class="tag tag-photo">photo</span>
+
+@0383 [title] 275bd9
+Top view showing the camera one to two and a half metres from the subject and the subject far from the background
+
+@0384 [text] e43e7b
+wall / background
+
+@0385 [text] 335ce1
+subject
+
+@0386 [text] 8af56d
+you
+
+@0387 [text] 10c28a
+1.5 – 2.5 m · use the 2× or 3× lens
+
+@0388 [text] 6709b6
+as far as possible → softer, blurrier background
+
+@0389 [figcaption] 4bed72
+<strong>Step back and zoom in.</strong> Wide lenses used close to a face enlarge the nose and shrink the ears. Standing 2 metres away with the 2× or 3× lens gives natural, flattering proportions — and the further the background is behind the subject, the more it melts away.
+
+@0390 [h3] 2c009d
+5.2 Portrait mode <span class="tag tag-photo">photo</span>
+
+@0391 [img@alt] 96bf4d
+Portrait-mode photo of a young man with a softly blurred background
+
+@0392 [figcaption] b1dc1c
+<strong>Portrait mode</strong> blurs the background using depth data. It works best 1–2.5 m away, in good light, with a clear gap between the subject and the background. Check the edges of hair and glasses; if they look chopped, take a normal photo instead.
+
+@0393 [li] 4e63bd
+<strong>Focus on the nearest eye.</strong> If the eyes are sharp, the photo is sharp.
+
+@0394 [li] 0e322b
+<strong>Camera slightly above eye level</strong> for most people; from below it emphasises chins and nostrils (but is great for confident, powerful portraits).
+
+@0395 [li] cf64e7
+<strong>Turn the body, not the face.</strong> Body at 45° to the camera, face toward the lens, weight on the back foot. Instantly slimmer and more relaxed.
+
+@0396 [li] 8ddbbe
+<strong>Chin forward and slightly down</strong> — the classic trick to define a jawline.
+
+@0397 [li] e3084f
+<strong>Give the hands a job:</strong> a bag strap, a pocket, a cup, fixing a collar. Empty hands look stiff.
+
+@0398 [li] 70c7bb
+<strong>Get real expressions:</strong> tell a joke, ask them to walk toward you, shake it out, then shoot the moment after the laugh. Use burst mode (hold the shutter) for candid moments.
+
+@0399 [h3] bebe0a
+5.3 Groups <span class="tag tag-photo">photo</span>
+
+@0400 [li] 85bab4
+<strong>Get closer than feels natural</strong> — people should be almost touching. Gaps look like arguments.
+
+@0401 [li] b9493d
+<strong>Stagger heights:</strong> some sitting, some standing, some leaning. Triangles look better than a straight line.
+
+@0402 [li] 9a9004
+<strong>Everyone faces the light</strong>; you stand with the light behind you or to the side, in open shade.
+
+@0403 [li] a83e17
+<strong>Take five in a row</strong> — someone always blinks. Count "1, 2, 3" and shoot on 3 <em>and</em> 4.
+
+@0404 [li] 1ed37e
+Use the <strong>1× lens</strong>, not 0.5× — ultra-wide stretches the people at the edges.
+
+@0405 [h3] 7c6f8b
+5.4 Better selfies <span class="tag tag-photo">photo</span>
+
+@0406 [li] 8bee77
+<strong>Face the light</strong> — a window or open sky in front of you; never behind you.
+
+@0407 [li] ee55cf
+<strong>Phone slightly above eye level and a little to one side</strong>, arm extended fully. Turn your face a few degrees toward the light.
+
+@0408 [li] 2d2a99
+<strong>Use the back camera</strong> when it matters: it is far better than the selfie camera. Prop the phone, set a 3–10 second timer, or use the volume button on wired earphones as a remote shutter.
+
+@0409 [li] b1a3bd
+Turn off "beauty" smoothing; it removes skin texture and looks fake at full size.
+
+@0410 [h4] fab5b4
+🧪 Try it — ten portraits, no zoom
+
+@0411 [li] 16beca
+Find open shade at 17:00–18:00. Put your friend just inside the shade, facing out.
+
+@0412 [li] bd4960
+Take ten portraits: five at 2× from 2 metres, five with 1× from 1 metre. Vary body angle, hand position and expression each time.
+
+@0413 [li] fc1508
+Compare the faces. You will never shoot a close portrait at 1× again.
+
+@0414 [h2] b6a34e
+Video techniques
+
+@0415 [p] de296f
+Video adds two things to everything above: <strong>movement</strong> and <strong>sound</strong>. Get those two right and phone footage looks professional.
+
+@0416 [h3] 808416
+6.1 Settings before you press record <span class="tag tag-video">video</span>
+
+@0417 [th] fb449f
+Setting
+
+@0418 [th] c5df29
+Choose this when…
+
+@0419 [th] 704400
+Notes
+
+@0420 [td] 7fbed3
+<strong>1080p · 30 fps</strong>
+
+@0421 [td] cb61ea
+Sharing on WhatsApp, TikTok, Instagram. Everyday default.
+
+@0422 [td] d3013f
+Small files (~60–130 MB per minute). Looks natural.
+
+@0423 [td] f867d1
+<strong>4K · 30 fps</strong>
+
+@0424 [td] 1a498b
+You want maximum quality or room to crop/zoom in editing.
+
+@0425 [td] 7ee1ab
+Roughly 200–400 MB per minute. Phone gets warm; carry a power bank.
+
+@0426 [td] dec57e
+<strong>60 fps</strong>
+
+@0427 [td] 5f245b
+Fast action: sport, dancing, kids, cars. Or to slow down to 50% later.
+
+@0428 [td] ff0f18
+Very smooth, "TV" look. Needs more light than 30 fps.
+
+@0429 [td] f5572c
+<strong>120 / 240 fps (Slo-mo)</strong>
+
+@0430 [td] 433095
+Dramatic slow motion: splashes, jumps, hair flicks.
+
+@0431 [td] 304c93
+Needs bright daylight; indoors it gets grainy and flickery.
+
+@0432 [td] 8fd7de
+<strong>24 / 25 fps</strong>
+
+@0433 [td] 0ff587
+You want a cinematic, film-like feel.
+
+@0434 [td] 9ab970
+In Uganda (50 Hz mains) use <strong>25 fps</strong> to stop lights flickering. iPhone: Settings → Camera → Record Video → Show PAL Formats.
+
+@0435 [li] 00eba1
+<strong>Stabilisation ON</strong> (called Steady, Super Steady, Action mode or EIS). Costs a little sharpness, saves the shot.
+
+@0436 [li] bd8b5b
+<strong>Lock screen rotation</strong> so the phone does not flip mid-recording.
+
+@0437 [li] f68ca7
+<strong>Grid on, lens wiped, Do Not Disturb on</strong> — a call ends the recording.
+
+@0438 [li] ba8150
+<strong>Check storage and battery.</strong> Video eats both.
+
+@0439 [li] 65037c
+<strong>Flickering lights?</strong> Look for <em>Anti-flicker / Anti-banding</em> in camera settings and set it to <strong>50 Hz</strong>, or record at 25/50 fps.
+
+@0440 [h3] dc6c30
+6.2 Lock focus and exposure <span class="tag tag-video">video</span>
+
+@0441 [p] 9d79b2
+In video, the camera constantly re-thinks focus and brightness, which shows up as "pulsing" and hunting. Before recording: <strong>frame the shot, press and hold on your subject until the lock appears, adjust brightness with the slider, then press record.</strong> Re-lock whenever you change position.
+
+@0442 [h3] 3657d2
+6.3 Hold still, move smoothly <span class="tag tag-video">video</span>
+
+@0443 [title] bda663
+Side view of a person walking with bent knees, elbows tucked and the phone held at chest height
+
+@0444 [text] 6eb9cb
+direction of travel →
+
+@0445 [text] 15388d
+Elbows in, two hands
+
+@0446 [text] 05eb2b
+phone close to your chest, not at arm's length
+
+@0447 [text] 6cb494
+Glide, don't bob
+
+@0448 [text] 4b511b
+keep the phone at one height, like a tray of drinks
+
+@0449 [text] 77c35d
+Knees soft
+
+@0450 [text] 6bcdfe
+your legs become the shock absorbers
+
+@0451 [text] cfd4a0
+Heel-to-toe, small steps
+
+@0452 [text] e88e1b
+slow is smooth; smooth looks expensive
+
+@0453 [figcaption] 971e61
+The "ninja walk". Combined with the phone's stabilisation this gives surprisingly smooth walking shots without any equipment.
+
+@0454 [span] dc4ee3
+Handheld
+
+@0455 [img@alt] 6223e3
+A person filming while walking slowly with bent knees, phone held with both hands at chest height
+
+@0456 [span] 18ca70
+Gimbal
+
+@0457 [img@alt] 88ff47
+A phone mounted on a small handheld gimbal, filming a street-food vendor
+
+@0458 [figcaption] 967363
+<strong>When to buy gear:</strong> a small tripod (or a phone clamp on a bottle) for interviews, talking-to-camera and time-lapses; a gimbal only once you are filming a lot of walking shots. Until then: two hands, elbows in, ninja walk.
+
+@0459 [li] 9f0f4c
+<strong>Hold every shot still for at least 5 seconds</strong> before and after any movement. You need that "handle" to cut with.
+
+@0460 [li] f21efb
+<strong>Lean</strong> on doorframes, walls and tables for static shots. Sit and rest your elbows on your knees.
+
+@0461 [li] 533eaa
+<strong>A strap or a cheap grip handle</strong> makes the phone easier to hold steady than bare fingers.
+
+@0462 [h3] 4f5a84
+6.4 Shot sizes <span class="tag tag-video">video</span>
+
+@0463 [title] 7949f1
+A standing figure with nested frames showing wide, medium, medium close-up, close-up and extreme close-up shot sizes
+
+@0464 [text] cb5aef
+Extreme close-up (ECU)
+
+@0465 [text] bc413b
+eyes, lips, hands, a detail — tension and focus
+
+@0466 [text] 995a30
+Close-up (CU)
+
+@0467 [text] acb1ba
+the face fills the frame — emotion
+
+@0468 [text] 3aeab9
+Medium close-up (MCU)
+
+@0469 [text] b86971
+chest up — interviews, talking to camera
+
+@0470 [text] eff0f0
+Medium shot (MS)
+
+@0471 [text] 66ab8e
+waist up — conversation, gestures, cooking
+
+@0472 [text] 46bf58
+Wide shot (WS)
+
+@0473 [text] 5a5f6b
+whole body and the place — sets the scene
+
+@0474 [text] 2a793b
+Extreme wide (EWS): the person is tiny in a big landscape
+
+@0475 [figcaption] f3a92f
+Shot sizes are the vocabulary of video. Frame at the natural "joints" — waist, chest, shoulders — and avoid cutting exactly at the knees, elbows or neck.
+
+@0476 [span] 9ec4d8
+Wide
+
+@0477 [img@alt] c5326d
+Wide shot of a man on a park bench with plenty of surroundings visible
+
+@0478 [span] d40496
+Medium
+
+@0479 [img@alt] 67b64b
+Medium shot of the same man from the waist up
+
+@0480 [span] 5f29a9
+Close-up
+
+@0481 [img@alt] 50145f
+Close-up of the same man's face
+
+@0482 [figcaption] a486d3
+The same subject in three sizes. Move your feet between them — do not pinch-zoom.
+
+@0483 [h3] 5394dc
+6.5 The 3-shot rule: shoot for the edit <span class="tag tag-video">video</span>
+
+@0484 [title] c089bd
+Sequence of four frames: wide, medium, close-up and detail, joined by arrows
+
+@0485 [text] ecb77a
+1 · Wide
+
+@0486 [text] a0af63
+Where are we?
+
+@0487 [text] 4cbb32
+2 · Medium
+
+@0488 [text] 4c1a78
+Who is here? What are they doing?
+
+@0489 [text] e0c980
+3 · Close-up
+
+@0490 [text] 8ab469
+How do they feel?
+
+@0491 [text] 27fb28
+4 · Detail
+
+@0492 [text] 39a599
+What matters most?
+
+@0493 [figcaption] d30e6d
+For anything that happens — cooking, a match, a market, a birthday — film it at least three ways: wide, medium, close. Each 5–10 seconds, held still. In the edit you can now cut between them and the video suddenly has rhythm.
+
+@0494 [h3] a3f3aa
+6.6 Camera movements <span class="tag tag-video">video</span>
+
+@0495 [p] 07ced7
+Every move should have a <strong>reason</strong> — to follow someone, reveal something, or bring us closer. Start still, move slowly and evenly, end still. One move per shot.
+
+@0496 [text] 0ecb07
+feet planted, rotate the hips
+
+@0497 [h5] 8c9ce3
+Pan
+
+@0498 [p] ce08d4
+Rotate left ↔ right from one spot. Follow a person, or sweep across a view.
+
+@0499 [span] a262dc
+Use: following action, showing a landscape
+
+@0500 [text] ea55f6
+tilt up to reveal
+
+@0501 [h5] e7f617
+Tilt
+
+@0502 [p] da3d59
+Rotate up ↕ down from one spot. Reveal a tall building or a person from shoes to face.
+
+@0503 [span] d20678
+Use: reveals, scale, introductions
+
+@0504 [text] cc4500
+walk in / walk out
+
+@0505 [text] 1af432
+ninja walk, straight line
+
+@0506 [h5] 79a59c
+Push in / Pull out
+
+@0507 [p] dc8109
+Walk slowly toward the subject (intensity, attention) or away (release, ending, reveal).
+
+@0508 [span] f6e5e7
+Use: emphasis, endings, emotion
+
+@0509 [text] 01794e
+move sideways with the subject
+
+@0510 [h5] a88b26
+Truck / tracking
+
+@0511 [p] 52f945
+Slide sideways, keeping pace with a walking subject or gliding past a scene.
+
+@0512 [span] 45b6a8
+Use: walking &amp; talking, market rows, parallax
+
+@0513 [text] 3bc05d
+keep the same distance
+
+@0514 [h5] b6c22d
+Orbit
+
+@0515 [p] 00b539
+Circle around the subject, keeping them centred and the distance constant.
+
+@0516 [span] 777c7c
+Use: hero moments, products, dancers
+
+@0517 [text] f2133b
+rise from low to high
+
+@0518 [h5] 813e7a
+Boom / rise
+
+@0519 [p] 569551
+Lift the phone smoothly from low to high (or lower it), often starting behind an object.
+
+@0520 [span] 786803
+Use: reveals, openings, drone-like feel
+
+@0521 [h5] 964713
+The reveal
+
+@0522 [p] ac5e76
+Start with the lens behind a wall, a plant or a person's back, then move sideways or up so the scene appears. The cheapest "wow" move there is.
+
+@0523 [h5] 1689c7
+Parallax
+
+@0524 [p] ccb12d
+Truck sideways with something close to the lens (a pole, leaves, a railing). The foreground slides faster than the background and the shot feels 3D.
+
+@0525 [h3] e8899f
+6.7 In-camera transitions <span class="tag tag-video">video</span>
+
+@0526 [title] 82bb0e
+Whip pan transition: shot A ends with a fast pan, shot B begins with a fast pan in the same direction, cut in the blur
+
+@0527 [text] 5e91f7
+CUT HERE
+
+@0528 [text] 403e39
+Shot A
+
+@0529 [text] 9789de
+hold still…
+
+@0530 [text] 00ecdd
+…whip right →
+
+@0531 [text] e882b6
+fast pan out of the shot
+
+@0532 [text] 4180bc
+→ whip right…
+
+@0533 [text] 52f3f9
+fast pan into the new shot
+
+@0534 [text] 5b0065
+Shot B
+
+@0535 [text] 2da83e
+…settle and hold
+
+@0536 [figcaption] a6bcff
+<strong>The whip pan.</strong> Same direction, same speed in both shots, cut in the blur — the two clips feel like one continuous move.
+
+@0537 [h5] 2a5204
+Cover the lens
+
+@0538 [p] 3f894e
+End shot A by covering the lens with your hand or an object; start shot B by uncovering it. Cut on the black frame.
+
+@0539 [h5] 524a5b
+Walk-past wipe
+
+@0540 [p] 20999b
+Have someone walk very close past the camera so they fill the frame for a moment. Cut while the frame is blocked.
+
+@0541 [h5] 833c4a
+Match cut
+
+@0542 [p] fdb047
+End on a shape or action (a round plate, a door closing) and start the next shot on the same shape or action somewhere else.
+
+@0543 [h5] ee833e
+Sky / ground tilt
+
+@0544 [p] e33dbf
+Tilt up to the sky at the end of shot A, tilt down from the sky at the start of shot B — a classic way to jump locations.
+
+@0545 [h3] 2dd11c
+6.8 Sound is half the video <span class="tag tag-video">video</span>
+
+@0546 [li] 8cdc21
+<strong>Get the phone within 1 metre</strong> of whoever is speaking. Distance is the number-one cause of bad audio.
+
+@0547 [li] 7c2241
+<strong>Wind ruins recordings.</strong> Turn your back to the wind, shelter behind a wall, or slip a small foam cover (even a sock) over the microphone.
+
+@0548 [li] 59147f
+<strong>Do not cover the mic with your fingers</strong> — check where the small holes are on your phone.
+
+@0549 [li] d6e83b
+<strong>A cheap clip-on (lavalier) microphone</strong> or a wireless mic is the best value upgrade you can make for talking videos.
+
+@0550 [li] 261e2d
+<strong>Record 10 seconds of silence</strong> ("room tone") at every location — editors use it to smooth cuts.
+
+@0551 [li] 2f0409
+Pick <strong>quiet moments</strong>: fridges, fans, generators and traffic are louder on the recording than in real life.
+
+@0552 [h3] 6c3460
+6.9 Slow motion, time-lapse and hyperlapse <span class="tag tag-video">video</span>
+
+@0553 [img@alt] 99d56c
+Night-time long exposure of a busy road with red and white light trails
+
+@0554 [figcaption] 9dd810
+<strong>Time-lapse and long exposure.</strong> Prop the phone perfectly still (tripod, wall, bag) and let time do the work: traffic becomes rivers of light, clouds race, a market fills and empties.
+
+@0555 [h5] e23822
+Slow motion
+
+@0556 [p] da72f6
+120 or 240 fps. Needs lots of light. Best for water, jumps, hair, fabric, sport. Keep the shot wide enough that the action stays in frame.
+
+@0557 [h5] 01f19c
+Time-lapse
+
+@0558 [p] aaefc0
+Phone locked on a tripod. 10 real minutes ≈ 20 seconds. Sunsets, clouds, traffic, crowds, cooking, building something.
+
+@0559 [h5] 11f93a
+Hyperlapse
+
+@0560 [p] 40828a
+A moving time-lapse: walk slowly toward one fixed point, keeping it in the same spot on the grid every step. Use the hyperlapse mode if your phone has one.
+
+@0561 [h3] b82297
+6.10 Lighting for video <span class="tag tag-video">video</span>
+
+@0562 [li] b1cc49
+Everything from chapter 02 applies, but you <strong>cannot fix video exposure later</strong> as easily as a photo — get it right in camera.
+
+@0563 [li] cb3184
+<strong>Face the window</strong> for talking-head videos; never sit with the window behind you.
+
+@0564 [li] f1bd98
+<strong>Avoid mixed light</strong> (daylight + yellow bulbs) — skin goes green/orange. Turn one of them off.
+
+@0565 [li] 8dc48d
+A small <strong>LED panel or ring light</strong> is cheap and makes indoor videos consistent. Bounce it off a white wall for softer light.
+
+@0566 [li] 4b738e
+<strong>Golden hour</strong> is short — rehearse first, then shoot.
+
+@0567 [h4] 7dea9d
+🧪 Try it — a 30-second story in eight shots
+
+@0568 [li] 4f0c96
+Pick a simple event: making tea, a boda ride, a game of football, opening a shop.
+
+@0569 [li] ee56dc
+Lock exposure. Film: 1 wide, 2 mediums, 2 close-ups, 2 details, 1 ending shot (a pull-out or a tilt to the sky). 5–10 seconds each, held still.
+
+@0570 [li] 716572
+Add one camera move — a push-in or a reveal — and one in-camera transition.
+
+@0571 [li] d8675f
+Record 10 seconds of room tone. Now edit (chapter 07).
+
+@0572 [h2] d6f3a9
+Editing basics
+
+@0573 [p] 53c4a0
+Editing should finish a good photo, not rescue a bad one. Small, honest adjustments beat heavy filters every time.
+
+@0574 [h3] 906ff9
+7.1 The five-step photo edit <span class="tag tag-photo">photo</span>
+
+@0575 [div@aria-label] 6a9320
+Before and after editing comparison. Drag the handle to compare.
+
+@0576 [img@alt] cef205
+Edited version: a vibrant, well-balanced street scene
+
+@0577 [img@alt] 6116a3
+Unedited version: the same scene looking flat and dull
+
+@0578 [span] 74f396
+Before
+
+@0579 [span] 79ba5e
+After
+
+@0580 [input@aria-label] 46c264
+Drag to compare before and after
+
+@0581 [figcaption] 3fd617
+<strong>Drag the handle.</strong> Left is a typical flat, straight-from-the-camera look; right is the same photo after the five steps below. Notice it looks <em>corrected</em>, not filtered.
+
+@0582 [li] 9aa4c3
+<strong>Crop and straighten.</strong> Level the horizon, cut distractions from the edges, re-apply the rule of thirds.
+
+@0583 [li] 635893
+<strong>Exposure and contrast.</strong> Brighten or darken overall, then add a little contrast so blacks are black.
+
+@0584 [li] 936271
+<strong>Highlights down, shadows up.</strong> Recover the sky, open the dark areas — gently. This is what makes a phone photo look expensive.
+
+@0585 [li] 054174
+<strong>White balance.</strong> If skin looks orange or blue, nudge the temperature until it looks like real life.
+
+@0586 [li] b10a28
+<strong>A touch of vibrance and sharpness.</strong> Vibrance (not saturation) boosts dull colours without ruining skin. Stop before it looks "edited".
+
+@0587 [strong] a7c500
+Signs you have gone too far
+
+@0588 [p] 30d8ec
+Glowing halos around trees and buildings, orange faces, grey skies turned neon, crunchy over-sharpened edges. Sleep on it and look again tomorrow.
+
+@0589 [h3] b82b92
+7.2 Apps worth learning
+
+@0590 [th] fc4a69
+App
+
+@0591 [th] cc14b8
+Good for
+
+@0592 [th] 64ae43
+Cost
+
+@0593 [td] cb5a4c
+<strong>Built-in editor</strong> (Photos / Gallery)
+
+@0594 [td] 290d24
+All five steps above. Underrated — start here.
+
+@0595 [td] 75f527
+Free
+
+@0596 [td] e04315
+<strong>Snapseed</strong>
+
+@0597 [td] d2d0d9
+Precise photo edits, selective brightening, healing small distractions.
+
+@0598 [td] 75f527
+Free
+
+@0599 [td] 387ae9
+<strong>Lightroom Mobile</strong>
+
+@0600 [td] 306650
+Serious colour work, presets, editing RAW photos.
+
+@0601 [td] 5305bc
+Free tier
+
+@0602 [td] 429ec3
+<strong>CapCut / VN</strong>
+
+@0603 [td] 87da46
+Video: trimming, music, captions, speed ramps, transitions.
+
+@0604 [td] 75f527
+Free
+
+@0605 [td] 07a98c
+<strong>iMovie</strong> (iPhone) / <strong>Samsung Video Editor</strong>
+
+@0606 [td] 2895d6
+Simple, clean video cuts without watermarks.
+
+@0607 [td] 75f527
+Free
+
+@0608 [h3] 466e41
+7.3 Video editing habits <span class="tag tag-video">video</span>
+
+@0609 [li] c7412d
+<strong>Cut tight.</strong> 3–7 seconds per clip for social videos. If a shot is boring, it is too long.
+
+@0610 [li] 45eb1d
+<strong>Cut on the beat</strong> of the music and on <em>action</em> (as a hand reaches, a door opens).
+
+@0611 [li] 4bf26c
+<strong>Follow the 3-shot rule in the edit:</strong> wide → medium → close-up. Do not jump between two similar sizes of the same subject.
+
+@0612 [li] 4c7c9c
+<strong>Add captions</strong> — most people watch with the sound off.
+
+@0613 [li] 0ff5a5
+<strong>Match colour</strong> between clips shot at different times so the video feels like one place.
+
+@0614 [li] 24ee07
+<strong>Export at the resolution you shot</strong> (1080p or 4K) and in the orientation of the platform.
+
+@0615 [li] d08a8e
+<strong>Keep the originals.</strong> Never overwrite; back up to Google Photos, iCloud or a laptop.
+
+@0616 [h2] 99957d
+Cheat sheet
+
+@0617 [p] 0830f2
+Everything on one screen. <button class="btn btn-ghost btn-sm" type="button" data-print>🖨️ Print this page</button> <a class="btn btn-ghost btn-sm" href="shoot-like-a-pro-with-your-phone.pdf" download>⬇ Download the full guide as PDF</a>
+
+@0618 [h4] 6c0b2b
+✅ Before every shot
+
+@0619 [li] 3a842f
+Wipe the lens
+
+@0620 [li] 571ded
+Where is the light coming from?
+
+@0621 [li] 629d5b
+Grid on — horizon level, subject on a third
+
+@0622 [li] 1c7ed9
+Tap to focus, slide exposure slightly down
+
+@0623 [li] cf4cb3
+Check the edges and the background
+
+@0624 [li] 296e7d
+Two hands, elbows in, breathe out
+
+@0625 [li] 639871
+Take five more from other angles
+
+@0626 [h4] 4a6a7e
+📐 Angles → feelings
+
+@0627 [li] 34ac5d
+<strong>Low</strong> → powerful, tall, heroic
+
+@0628 [li] b56789
+<strong>Eye level</strong> → honest, equal
+
+@0629 [li] 7aebd1
+<strong>High</strong> → small, gentle, cute
+
+@0630 [li] 84e5bd
+<strong>Bird's eye</strong> → graphic, orderly
+
+@0631 [li] 2f04ad
+<strong>Worm's eye</strong> → awe, scale
+
+@0632 [li] f463d7
+<strong>Dutch tilt</strong> → energy, tension
+
+@0633 [li] 7921b0
+<strong>Through / reflection</strong> → depth, dreamy
+
+@0634 [h4] 200060
+☀️ Light
+
+@0635 [li] 148c26
+Golden hour: 07:00–08:00 &amp; 18:00–19:00
+
+@0636 [li] 831391
+Midday: find open shade, face outwards
+
+@0637 [li] 0bb06b
+Indoors: switch off bulbs, face the window
+
+@0638 [li] 059cd7
+Side light = texture · Back light = glow / silhouette
+
+@0639 [li] 58091f
+Night: Night mode + lean on something; no flash
+
+@0640 [h4] ca567c
+🧩 Composition
+
+@0641 [li] c91a87
+Thirds &amp; power points; lead room for gaze
+
+@0642 [li] 2b88de
+Leading lines toward the subject
+
+@0643 [li] 453abd
+Frame within a frame
+
+@0644 [li] ca7752
+Symmetry: dead centre, perfectly level
+
+@0645 [li] 4b14b7
+Negative space vs fill the frame
+
+@0646 [li] a7d2ee
+Foreground + middle + background
+
+@0647 [h4] edceb7
+🎬 Video quick settings
+
+@0648 [li] 99a9a0
+Social: 1080p 30 fps · Quality: 4K 30 fps
+
+@0649 [li] 31b629
+Action / slow-down: 60 fps · Slo-mo: 120–240 fps
+
+@0650 [li] 13a6aa
+Film look: 24/25 fps (25 fps in Uganda)
+
+@0651 [li] 67a36a
+Stabilisation ON · lock rotation · DND on
+
+@0652 [li] b6fef9
+Press &amp; hold to lock focus + exposure
+
+@0653 [li] 674361
+Hold every shot still 5 s before/after moving
+
+@0654 [h4] 89f3b0
+🎥 Shooting for the edit
+
+@0655 [li] 461919
+Wide → medium → close-up → detail
+
+@0656 [li] 0178a6
+One move per shot: pan, tilt, push, truck, orbit, rise
+
+@0657 [li] bcbcdb
+Start still, move slow, end still
+
+@0658 [li] a30705
+Mic within 1 m; hide from wind; record room tone
+
+@0659 [li] 981064
+Ending: pull-out, tilt to sky, or whip pan
+
+@0660 [h4] 35e4be
+🙂 People
+
+@0661 [li] 5f9bc8
+2× or 3× from 2 m — never 0.5× close up
+
+@0662 [li] b2f079
+Focus on the nearest eye
+
+@0663 [li] 055ecf
+Body 45°, chin forward &amp; down, hands busy
+
+@0664 [li] a79f2f
+Open shade, facing the light
+
+@0665 [li] ac4496
+Groups: closer than feels natural, shoot 5×
+
+@0666 [h4] 11a249
+🎚️ Edit in five moves
+
+@0667 [li] 37217d
+Crop &amp; straighten
+
+@0668 [li] f20119
+Exposure &amp; contrast
+
+@0669 [li] e09fcc
+Highlights down, shadows up
+
+@0670 [li] 90e0e3
+White balance for true skin
+
+@0671 [li] 90048b
+A touch of vibrance &amp; sharpness — then stop
+
+@0672 [h2] e7b52c
+7-day practice plan
+
+@0673 [p] fb0499
+Fifteen to thirty minutes a day. By Sunday you will have a short film and a gallery you are proud of.
+
+@0674 [div] 1d3921
+Day 1
+
+@0675 [h5] 460586
+Grip &amp; focus
+
+@0676 [p] fa912a
+20 photos of one object. Two-hand grip, volume shutter, tap-to-focus, exposure slider on every shot.
+
+@0677 [div] 49e7de
+Day 2
+
+@0678 [h5] a36ef8
+Light
+
+@0679 [p] 239565
+One friend or object at 07:30, 13:00 and 18:30. Front, side and back light each time. Compare.
+
+@0680 [div] a44d50
+Day 3
+
+@0681 [h5] ca5e00
+Composition
+
+@0682 [p] 6c1ef3
+One street, seven patterns: thirds, lines, framing, symmetry, negative space, fill the frame, layers.
+
+@0683 [div] 139e38
+Day 4
+
+@0684 [h5] ff8084
+Angles
+
+@0685 [p] a4c3f6
+One subject, six angles. Then pick your favourite angle and shoot ten different subjects with it.
+
+@0686 [div] 3c32bf
+Day 5
+
+@0687 [h5] b37554
+People
+
+@0688 [p] 895fb9
+Ten portraits in open shade at 2×. Body 45°, chin down, hands busy, focus on the eye.
+
+@0689 [div] 1e3435
+Day 6
+
+@0690 [h5] bc17c1
+Video
+
+@0691 [p] 060d03
+Eight shots of one event: wide, mediums, close-ups, details, an ending. Two camera moves, one transition.
+
+@0692 [div] 05aadd
+Day 7
+
+@0693 [h5] 45bb2a
+Edit &amp; share
+
+@0694 [p] 978176
+Five-step edit on your best five photos. Cut the 30-second video with music and captions. Post it.
+
+@0695 [strong] 9fadaa
+After the week
+
+@0696 [p] d220b6
+Pick <em>one</em> thing to get obsessed with for a month — portraits, food, street, your neighbourhood at golden hour. Depth beats variety. Then come back to this guide and read it again; it will say different things to you.
+
+@0697 [div] 44cf4f
+Made with a phone in mind by <strong>Gide26</strong> · Kampala, Uganda. Free to read, share and remix.
+
+@0698 [div] bdd7c7
+Photos and diagrams were created for this guide. · <a href="shoot-like-a-pro-with-your-phone.pdf" download>Download the PDF edition</a> · <a href="fr/" hreflang="fr" lang="fr">Version française</a>
+
+@0699 [div@aria-label] f53419
+Enlarged image
+
+@0700 [button@aria-label] bbfa77
+Close
