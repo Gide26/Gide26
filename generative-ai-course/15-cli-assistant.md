@@ -1,6 +1,6 @@
 # 15 · Build a CLI Assistant
 
-> **Time:** 45 minutes
+> **Time:** 45 minutes  
 > **You'll build:** a working terminal chatbot with memory, streaming, and cost tracking
 
 Everything so far comes together here. At the end you'll have a real tool you can use daily.

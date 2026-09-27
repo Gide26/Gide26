@@ -1,6 +1,6 @@
 # 08 · Generating Images
 
-> **Time:** 30 minutes
+> **Time:** 30 minutes  
 > **You'll learn:** a reliable prompt formula for images, plus how to edit what you make
 
 Image generation is the most immediately fun part of AI — and the part where most people give up too early, because their first few attempts look wrong.

@@ -1,6 +1,6 @@
 # 09 · Video, Voice & Music
 
-> **Time:** 25 minutes
+> **Time:** 25 minutes  
 > **You'll learn:** what's realistically possible with generated video, speech, and music today
 
 Video is the flashiest and least mature part of generative AI. Voice and music are the opposite: mature, cheap, and immediately practical.

@@ -1,6 +1,6 @@
 # 10 · Analysing Data with AI
 
-> **Time:** 35 minutes
+> **Time:** 35 minutes  
 > **You'll learn:** how to use AI as a data-analysis partner — and the one rule that stops it inventing your numbers
 
 This module is where AI becomes genuinely valuable for real work. It's also where a specific, dangerous mistake shows up — so read the warning below carefully.

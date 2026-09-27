@@ -1,6 +1,6 @@
 # 06 · Choosing Your Tools
 
-> **Time:** 25 minutes
+> **Time:** 25 minutes  
 > **You'll learn:** which assistant to reach for, and how to decide for yourself as things change
 
 There is no single "best" AI. There are tools with different strengths, and the people who get the most out of AI use **several**.

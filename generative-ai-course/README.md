@@ -2,6 +2,8 @@
 
 **A free, beginner-friendly course. No coding experience required to start — and you'll be building real AI apps by the end.**
 
+> **Prefer one document?** [Download the complete course as a PDF](./generative-ai-course.pdf) — all 18 lessons, the reference sections, and the full appendix code listings, in a single 137-page file.
+
 ---
 
 ## Who this course is for

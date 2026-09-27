@@ -1,6 +1,6 @@
 # 13 · System Prompts & Roles
 
-> **Time:** 30 minutes
+> **Time:** 30 minutes  
 > **You'll learn:** make a model behave consistently every single call
 
 In chat, you re-explain context every conversation. In code, you set it **once** and it applies to every call.

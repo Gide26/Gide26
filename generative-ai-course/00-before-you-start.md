@@ -1,6 +1,6 @@
 # 00 · Before You Start
 
-> **Time:** 15 minutes
+> **Time:** 15 minutes  
 > **You'll need:** an email address and a phone or computer
 
 Let's get the boring-but-important stuff out of the way so nothing blocks you later.

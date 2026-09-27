@@ -1,6 +1,6 @@
 # 11 · Setup: Python & API Keys
 
-> **Time:** 30 minutes
+> **Time:** 30 minutes  
 > **You'll need:** a computer, internet, and about $1 of credit
 > **You'll learn:** install Python packages, create an API key safely, set a spending cap
 

@@ -1,6 +1,6 @@
 # 04 · Iteration: The Real Skill
 
-> **Time:** 25 minutes
+> **Time:** 25 minutes  
 > **You'll learn:** how to steer output to quality — the skill that actually matters
 
 Here's the thing almost nobody tells beginners: **nobody writes the perfect prompt first time.** Not experts, not prompt engineers, nobody.

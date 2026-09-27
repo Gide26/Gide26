@@ -1,6 +1,6 @@
 # 16 · Chat With Your Documents
 
-> **Time:** 50 minutes
+> **Time:** 50 minutes  
 > **You'll build:** an app that answers questions from your own files, with citations
 
 This is the most useful thing in the course. Also the most requested feature in real AI products.

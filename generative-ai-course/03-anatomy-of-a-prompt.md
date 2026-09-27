@@ -1,6 +1,6 @@
 # 03 · The Anatomy of a Great Prompt
 
-> **Time:** 30 minutes
+> **Time:** 30 minutes  
 > **You'll learn:** a reusable recipe for prompts, plus six patterns that handle most real work
 
 Module 2 showed you *that* specific prompts win. This module gives you a repeatable method for writing them.

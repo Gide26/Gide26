@@ -1,6 +1,6 @@
 # 17 · Four Capstone Projects
 
-> **Time:** 2–6 hours each
+> **Time:** 2–6 hours each  
 > **You'll do:** build something real
 
 Reading teaches you nothing on its own. These four projects are where the course becomes a skill.

@@ -15,6 +15,8 @@ coding experience needed to start, and you'll be building real AI apps by the en
 
 **→ [Start the course](./generative-ai-course/README.md)**
 
+**📄 Prefer a single file? [Download the PDF](./generative-ai-course/generative-ai-course.pdf)** — the whole course, 137 pages.
+
 ```
 Part 1  ──  Foundations          Understand it, prompt it, verify it
 Part 2  ──  Creative work        Text, images, video, audio, data

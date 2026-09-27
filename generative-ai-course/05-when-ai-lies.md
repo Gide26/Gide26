@@ -1,6 +1,6 @@
 # 05 · When AI Is Wrong
 
-> **Time:** 30 minutes
+> **Time:** 30 minutes  
 > **You'll learn:** how AI fails, and the verification habits that protect you
 
 **This is the most important module in this course.** Everything else makes you more effective. This one stops you from being confidently, publicly, expensively wrong.

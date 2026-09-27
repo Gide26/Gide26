@@ -1,6 +1,6 @@
 # 14 · Structured Output (JSON)
 
-> **Time:** 30 minutes
+> **Time:** 30 minutes  
 > **You'll learn:** get reliable, machine-readable data out of a model
 
 So far the model returns prose. But programs need **data**. This module is where your AI code becomes genuinely useful.

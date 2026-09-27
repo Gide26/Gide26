@@ -1,6 +1,6 @@
 # 12 · Your First API Call
 
-> **Time:** 30 minutes
+> **Time:** 30 minutes  
 > **You'll learn:** make a real API call, understand tokens and cost, choose models
 
 Let's actually call a model from code. By the end of this module you'll understand what every AI application is doing underneath.

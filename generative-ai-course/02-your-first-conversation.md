@@ -1,6 +1,6 @@
 # 02 · Your First Real Conversation
 
-> **Time:** 25 minutes
+> **Time:** 25 minutes  
 > **You'll learn:** the difference between a *question* and a *brief* — the habit that separates mediocre results from great ones
 
 Most people use AI like a search engine. Type a few words, hope, scan the answer, leave slightly disappointed.

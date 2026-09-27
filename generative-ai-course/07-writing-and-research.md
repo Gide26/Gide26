@@ -1,6 +1,6 @@
 # 07 · Writing, Research & Ideas
 
-> **Time:** 35 minutes
+> **Time:** 35 minutes  
 > **You'll learn:** practical workflows for the three things people actually use AI for — no code
 
 Part 2 starts here. Everything in this module works in a plain chat window.

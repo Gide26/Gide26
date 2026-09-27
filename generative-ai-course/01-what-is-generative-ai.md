@@ -1,6 +1,6 @@
 # 01 · What *Is* Generative AI?
 
-> **Time:** 20 minutes
+> **Time:** 20 minutes  
 > **You'll learn:** the one mechanism behind all of it — in plain language
 
 You cannot prompt well without a rough mental model of what's happening. This lesson gives you that model. No maths. No code. One idea, explained properly.
