@@ -9,6 +9,18 @@
 (function () {
   "use strict";
 
+  /* ---------- clean up any leftover service worker from an earlier app ---------- */
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.getRegistrations().then(function (regs) {
+      regs.forEach(function (r) { r.unregister(); });
+    }).catch(function () {});
+    if (window.caches) {
+      caches.keys().then(function (keys) {
+        keys.forEach(function (k) { caches.delete(k); });
+      }).catch(function () {});
+    }
+  }
+
   /* ---------- progress bar ---------- */
   var bar = document.querySelector(".progress");
   function updateProgress() {
