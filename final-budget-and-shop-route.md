@@ -57,6 +57,48 @@
 
 ---
 
+## 3B. WHAT IF YOU CUT THE TEES TO 15?
+
+Cutting tees from 30 to 15 frees **KSh 4,500**. You have three choices:
+
+| | **A — Original** (30 tees) | **B — 15 tees, keep cash** | **C — 15 tees + 6 cargo** |
+|---|---|---|---|
+| Polos | 10 | 10 | 10 |
+| Collar shirts | 6 | 6 | 6 |
+| Cargo pants | 4 | 4 | **10** |
+| Plain tees | 30 | 15 | 15 |
+| **Pieces** | **50** | **35** | **41** |
+| **Stock cost** | KSh 26,200 | KSh 21,700 | KSh 26,200 |
+| **Revenue** | 1,800,000 | 1,425,000 | **1,845,000** |
+| **Profit — duty charged** | 224,000 | **70,000** | **273,000** |
+| **Profit — no duty** | 698,000 | 458,600 | **742,700** |
+| Cash brought home | ~1,000 | 8,132 | ~963 |
+
+### Why Option B hurts so much
+
+The tees weren't just filler — **they were carrying most of your margin.** Not buying them doesn't save you money; it just means you carry cash home instead of goods that double in value.
+
+### Why Option C is actually the best
+
+**Cargo pants have the best markup of anything on your list:**
+
+| Item | Buy | Sell | Margin per piece | Markup |
+|---|---|---|---|---|
+| **Cargo pants** | KSh 750 (22,650 UGX) | 70,000 | **47,350 UGX** | **3.09×** |
+| Plain tees | KSh 300 (9,060 UGX) | 25,000 | 15,940 UGX | 2.76× |
+| Fashion polos | KSh 850 (25,670 UGX) | 50,000 | 24,330 UGX | 1.95× |
+| Collar shirts | KSh 950 (28,690 UGX) | 45,000 | 16,310 UGX | **1.57×** |
+
+So cutting 15 tees and putting the KSh 4,500 into **6 more cargo pants** raises your profit above the original plan.
+
+> **The catch:** cargo pants are bulky and heavy, and at UGX 70,000 they sell slower than tees. 10 pairs is a lot to carry and may sit on your shelf. Tees move fast; cargo makes more per piece.
+>
+> **Balanced call: do Option C but watch your luggage weight.** If you're already loaded, do Option B and accept the lower profit — don't pay excess baggage fees.
+
+**Recommendation: Option C**, or split the difference — 15 tees and 8 cargo pants (stock KSh 24,700, profit ≈ 250,000).
+
+---
+
 ## 4. SHOPS TO VISIT
 
 ### SATURDAY (today, until ~8pm) — Eastleigh, the main run
