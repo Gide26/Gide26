@@ -109,6 +109,70 @@ If you couldn't get to Industrial Area, or want more stock:
 
 ---
 
+## WILL YOU GET BRANDED ONES? — Read this before you buy
+
+### Short answer: No.
+
+**At KSh 350 a polo, you are getting a plain, unbranded polo.** You cannot buy a genuine U.S. Polo Assn. or Timberland shirt for KSh 350 (~$2.70). Genuine USPA polos sell used on eBay for $10–40. The maths is impossible.
+
+### What was actually in your screenshots
+
+Looking back at them carefully, you showed **two different things**:
+
+| Type | Examples from your pics | Branded? |
+|---|---|---|
+| **Unbranded fashion** | aa_apparel textured polos, CUBANS striped shirts, ZVA tees, GESLA jeans | ❌ No logo. Just "CASUAL SMART" text. **These are generic imports.** |
+| **Brand-look items** | U.S. Polo Assn. shirt, Timberland shirts, aape collar shirts | ⚠️ Style copies |
+
+**Most of what you screenshotted is unbranded.** Those textured polos and Cuban collars are Chinese/Turkish imports with no brand — they retail at UGX 45,000 on **style and quality**, not on a logo.
+
+### But here is the catch
+
+**KSh 350 godown polos are BASIC, not FASHION.**
+
+The polos in your pics are textured knit, fashion-cut, with collar tipping. A godown basic polo is a plain cotton polo. They are **not the same product**, and they won't fetch the same price.
+
+| | Godown basic polo | The polos in your pics |
+|---|---|---|
+| Cost | KSh 350 | KSh 900–1,500 |
+| Where | Industrial Area godown | Eastleigh / CBD importers |
+| Look | Plain cotton polo | Textured knit, tipped collar |
+| Kampala selling price | **UGX 25,000–30,000** | UGX 45,000 |
+
+### Your real choice, with 2 hours left
+
+**Option A — Godown basics (today only)**
+- 50 basic polos @ KSh 350 + 50 tees @ KSh 200 = KSh 27,500
+- Sell polos at UGX 30,000, tees at UGX 25,000
+- Revenue: 1,500,000 + 1,250,000 = **UGX 2,750,000**
+- **Profit ≈ 1,143,000 UGX** · ✅ Legal, safe, fast, high volume
+
+**Option B — Eastleigh fashion items (Sunday)**
+- ~20 fashion polos / Cuban shirts @ KSh 900–1,200 = ~KSh 20,000
+- Sell at UGX 45,000 each
+- Revenue: ~UGX 900,000 on the same money
+- **Profit much lower per shilling** · ⚠️ Closer to your pics, but thin margins
+
+**Option A makes more money.** Option B looks more like your inspiration photos but returns far less.
+
+### ⚠️ If you buy the branded-look ones — the legal line
+
+This is serious and it lands on **you**, not the factory that made them.
+
+- **Uganda Penal Code Act, Section 379** — selling goods with a counterfeit trademark is a **misdemeanour, up to 2 years imprisonment**. It applies even to possession for sale.
+- **Anti-Counterfeit Goods and Services Bill (2023/2024)** — proposes up to **10 years imprisonment** and a fine of **up to 5× the retail price of the genuine good**, plus licence cancellation and confiscation.
+- UNBS reports roughly **58% of products on the Ugandan market are counterfeit**, so enforcement is inconsistent — but that means periodic crackdowns, not safety.
+
+**Bottom line:** you may sell unbranded fashion freely. **Do not sell goods marked U.S. Polo Assn., Timberland, aape or similar unless they are genuine** — and at these prices they are not.
+
+### What I'd do
+
+**Go to the godown today and buy basics (Option A).** It's legal, it's cheapest, it's fastest, and it makes the most money. The fashion items in your pics can be your **next** trip — once you've sold these and know what your customers actually buy.
+
+If a customer asks for the branded look, that's information for trip two. Don't gamble your whole budget on it today.
+
+---
+
 ## Timeline for the rest of today
 
 | Time | Action |
