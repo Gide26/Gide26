@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Money Tracker — revenue goals, month by month</title>
+<meta name="description" content="Personal revenue tracker — multiple income streams, pace vs plan, and an honest plan-vs-goal reality check." />
+<meta name="theme-color" content="#0e1528" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<link rel="manifest" href="manifest.json" />
+<link rel="icon" href="icons/icon-192.png" />
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-title" content="Money Tracker" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="wrap">
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">G</div>
+      <div>
+        <h1 id="appTitle">Money Tracker</h1>
+        <p class="sub" id="rangeLabel">Oct 2026 → Mar 2027</p>
+      </div>
+    </div>
+    <div class="topActions">
+      <button class="btn primary" id="btnInstall" hidden>⬇ Install app</button>
+      <button class="btn ghost" id="btnSettings">⚙ Settings</button>
+      <button class="btn ghost" id="btnExport">↓ Export</button>
+      <button class="btn ghost" id="btnImport">↑ Import</button>
+      <button class="btn ghost" id="btnPrint">⎙ Print</button>
+      <input type="file" id="fileInput" accept="application/json" hidden />
+    </div>
+  </header>
+
+  <div class="banner" id="sampleBanner" hidden>
+    <span>These first entries are <strong>sample data with made-up amounts</strong> so you can see the charts working. Put your real rates in ⚙ Settings.</span>
+    <button class="btn ghost" id="btnClearSample">Clear sample data</button>
+  </div>
+
+  <!-- KPI -->
+  <section class="kpis">
+    <div class="card kpi">
+      <span class="label">Target</span>
+      <strong class="val" id="kpiTarget">—</strong>
+      <span class="hint" id="kpiTargetHint">6-month goal</span>
+    </div>
+    <div class="card kpi">
+      <span class="label">Logged so far</span>
+      <strong class="val good" id="kpiLogged">—</strong>
+      <span class="hint" id="kpiLoggedHint">0 entries</span>
+    </div>
+    <div class="card kpi">
+      <span class="label">Remaining</span>
+      <strong class="val warn" id="kpiRemaining">—</strong>
+      <span class="hint" id="kpiRemainingHint">—</span>
+    </div>
+    <div class="card kpi">
+      <span class="label">Progress</span>
+      <strong class="val accent" id="kpiPct">0%</strong>
+      <span class="hint" id="kpiPctHint">of total goal</span>
+    </div>
+  </section>
+
+  <section class="card progressCard">
+    <div class="progressTop">
+      <div class="paceBadge" id="paceBadge">—</div>
+      <div class="paceMeta">
+        <span id="paceText">—</span>
+      </div>
+    </div>
+    <div class="bar big">
+      <div class="fill" id="progressFill" style="width:0%"></div>
+      <div class="paceMark" id="paceMark" title="Where you should be today"></div>
+    </div>
+    <div class="paceRow">
+      <div><span class="muted">Needed / day — goal</span><strong class="warn" id="perDay">—</strong></div>
+      <div><span class="muted">Needed / week — goal</span><strong class="warn" id="perWeek">—</strong></div>
+      <div><span class="muted">Needed / day — plan</span><strong class="good" id="perDayPlan">—</strong></div>
+      <div><span class="muted">Run-rate projection</span><strong id="projection">—</strong></div>
+      <div><span class="muted">Days left</span><strong id="daysLeft">—</strong></div>
+    </div>
+  </section>
+
+  <!-- reality check -->
+  <section class="card gapCard">
+    <h2>Reality check — what the plan delivers vs the goal</h2>
+    <div class="gapGrid" id="gapGrid"></div>
+    <p class="gapLine" id="gapLine"></p>
+    <div class="gapBtns">
+      <button class="btn ghost" id="btnGoalToPlan">↓ Make the plan my goal</button>
+      <button class="btn ghost" id="btnGoalToTime">→ Keep the goal, stretch the months</button>
+      <button class="btn ghost" id="btnGoalToGrowth">↗ Keep both, find the growth</button>
+    </div>
+  </section>
+
+  <!-- Quick log -->
+  <section class="card">
+    <h2>Log money in</h2>
+    <form class="logForm" id="logForm" autocomplete="off">
+      <label>
+        <span>Date</span>
+        <input type="date" id="inDate" required />
+      </label>
+      <label>
+        <span>Stream</span>
+        <select id="inStream"></select>
+      </label>
+      <label>
+        <span>Amount (UGX)</span>
+        <input type="number" id="inAmount" min="0" step="1000" placeholder="e.g. 250000" required />
+      </label>
+      <label class="grow">
+        <span>Note</span>
+        <input type="text" id="inNote" placeholder="optional — 3 dresses, Upwork article…" />
+      </label>
+      <button class="btn primary" type="submit">+ Add</button>
+    </form>
+    <div class="quickChips" id="quickChips"></div>
+  </section>
+
+  <!-- Charts -->
+  <section class="grid2">
+    <div class="card">
+      <h2>Cumulative: actual vs plan</h2>
+      <div class="chart" id="cumChart"></div>
+      <div class="legend" id="cumLegend"></div>
+    </div>
+    <div class="card">
+      <h2>Month by month</h2>
+      <div class="chart" id="monthChart"></div>
+      <div class="legend" id="monthLegend"></div>
+    </div>
+  </section>
+
+  <!-- Streams -->
+  <section class="card">
+    <h2>Streams</h2>
+    <div class="streams" id="streams"></div>
+  </section>
+
+  <!-- Monthly table -->
+  <section class="card">
+    <h2>Monthly scorecard</h2>
+    <div class="tableWrap">
+      <table class="tbl" id="monthTable"></table>
+    </div>
+  </section>
+
+  <!-- Milestones -->
+  <section class="card">
+    <div class="sectionHead">
+      <h2>Key targets / milestones</h2>
+      <form class="milestoneForm" id="milestoneForm">
+        <input type="text" id="msTitle" placeholder="e.g. Restock 50 pieces, land 3 writing clients" />
+        <input type="date" id="msDue" />
+        <button class="btn ghost" type="submit">Add</button>
+      </form>
+    </div>
+    <ul class="milestones" id="milestones"></ul>
+  </section>
+
+  <!-- Entries -->
+  <section class="card">
+    <div class="sectionHead">
+      <h2>Entries</h2>
+      <select id="filterStream" class="smallSelect"></select>
+    </div>
+    <div class="tableWrap">
+      <table class="tbl" id="entryTable"></table>
+    </div>
+  </section>
+
+  <div class="banner installHint" id="iosHint" hidden>
+    <span><strong>iPhone?</strong> Tap Share <b>⤴</b> → <b>Add to Home Screen</b>. It then opens full-screen like an app, and works offline.</span>
+    <button class="btn ghost" id="btnHideIosHint">Got it</button>
+  </div>
+
+  <footer class="foot">
+    <span>Data is saved in this browser (localStorage). Use Export to back it up.</span>
+  </footer>
+</div>
+
+<!-- Settings drawer -->
+<div class="drawer" id="drawer" hidden>
+  <div class="drawerInner">
+    <div class="drawerHead">
+      <h2>Settings</h2>
+      <button class="btn ghost" id="btnCloseSettings">Close</button>
+    </div>
+
+    <h3>Goal</h3>
+    <div class="settingRow">
+      <label>Total target (UGX) <input type="number" id="setGoal" min="0" step="1000000" /></label>
+      <label>Start month <input type="month" id="setStart" /></label>
+      <label>Months <input type="number" id="setMonths" min="1" max="36" step="1" /></label>
+    </div>
+
+    <h3>Streams</h3>
+    <p class="tiny muted">Amount is what the stream does in month 1; growth compounds every month after that. Tick <b>Scales?</b> only for streams that can actually grow — the growth solver leaves the rest flat.</p>
+    <div class="setHead">
+      <span></span><span>Stream</span><span>Start of month 1 (UGX)</span><span>Growth %/mo</span><span>Scales?</span>
+    </div>
+    <div id="setStreams" class="settingStreams"></div>
+
+    <h3>Monthly targets</h3>
+    <p class="tiny muted">Blank = built from the stream rates above. Override for real seasonality (December clothes rush, slow January, etc.).</p>
+    <div id="setMonths" class="settingMonths"></div>
+    <button class="btn ghost" id="btnSpread">Reset to stream rates</button>
+
+    <h3>Danger zone</h3>
+    <button class="btn danger" id="btnReset">Reset all data</button>
+  </div>
+</div>
+
+<script src="config.js" onerror="window.TRACKER_CONFIG=window.TRACKER_CONFIG||null"></script>
+<script src="app.js"></script>
+</body>
+</html>

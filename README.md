@@ -1,3 +1,4 @@
+- 🎯 Target: UGX 60,000,000 by March 2027 — clothes sales, writing gigs + my job ([tracker](dashboard/))
 - 👋 Hi, I’m @Gide26
 - 👀 I’m interested in ... coding
 - 🌱 I’m currently learning ... data analysing 
