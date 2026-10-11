@@ -29,6 +29,8 @@
   --radius:14px;
 }
 *{box-sizing:border-box}
+/* author display rules (display:flex etc.) beat the UA [hidden] rule — restore it */
+[hidden]{display:none!important}
 html,body{margin:0;padding:0}
 body{
   background:
