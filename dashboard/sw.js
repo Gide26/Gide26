@@ -2,7 +2,7 @@
    Network first (so you always get the newest build when online),
    cache as fallback (so it still opens on a boda with no data). */
 
-const CACHE = '60m-tracker-v1';
+const CACHE = 'money-tracker-v2';
 const FILES = [
   './',
   './index.html',

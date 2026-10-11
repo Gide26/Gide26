@@ -13,9 +13,9 @@ SRC="$(cd "$(dirname "$0")" && pwd)"
 TMP="$(mktemp -d)"
 trap 'rm -rf "$TMP"' EXIT
 
-echo "→ copying $SRC (excluding config.js)"
-tar -cf - --exclude='./config.js' --exclude='./.DS_Store' . 2>/dev/null | tar -xf - -C "$TMP" 2>/dev/null || \
-  (cd "$SRC" && tar -cf - --exclude='config.js' --exclude='.DS_Store' .) | (cd "$TMP" && tar -xf -)
+echo "→ copying $SRC (config.js excluded)"
+mkdir -p "$TMP"
+tar -C "$SRC" -cf - --exclude='config.js' --exclude='dist' --exclude='.DS_Store' . | tar -C "$TMP" -xf -
 
 cd "$TMP"
 rm -f config.js
