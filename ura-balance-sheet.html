@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>URA Balance Sheet — Blank Template (Individual in Business, DT-2001)</title>
+<title>URA Income Tax Working Template — Balance Sheet and Income Statement (Individual in Business, DT-2001)</title>
 <style>
   :root{
     --ink:#16202c; --ink2:#47566a; --line:#d8dfe8; --line2:#eef2f7;
@@ -118,6 +118,18 @@
   .stat .v{font-size:17px;font-weight:700;margin-top:3px;font-variant-numeric:tabular-nums}
 
   /* ---------- Register ---------- */
+  table.exp{width:100%;border-collapse:collapse;font-size:13px;table-layout:fixed}
+  table.exp thead th{background:var(--line2);font-size:11px;text-transform:uppercase;letter-spacing:.3px;color:var(--accent);
+    padding:7px 6px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap}
+  table.exp tbody th{background:transparent;font-size:13px;font-weight:500;color:var(--ink);text-align:left;
+    padding:5px 6px;border-bottom:1px solid var(--line2);text-transform:none;letter-spacing:0}
+  table.exp td{padding:4px 4px;border-bottom:1px solid var(--line2);vertical-align:middle}
+  table.exp td.r{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+  table.exp input.num{width:100%;min-width:96px;background:#fffdf5}
+  table.exp select.per{font-family:inherit;font-size:12.5px;padding:4px 5px;border:1px solid var(--line);border-radius:4px;width:100%}
+  table.exp tfoot th{background:var(--line2);border-top:1.5px solid var(--ink);border-bottom:0;padding:8px 6px;font-size:13px}
+  table.exp tfoot th.r{text-align:right;font-weight:700;font-variant-numeric:tabular-nums}
+
   table.reg{width:100%;border-collapse:collapse;font-size:13px;table-layout:fixed}
   table.reg th{background:var(--line2);font-size:11px;text-transform:uppercase;letter-spacing:.3px;color:var(--accent);
     padding:7px 6px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap}
@@ -185,6 +197,13 @@
     table.bs tr.tot th,table.bs tr.tot td{background:#f4f4f4 !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
     table.bs tr.sec th{background:#e8e8e8 !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
     input.num{display:none !important}
+    table.exp select.per{appearance:none;-webkit-appearance:none;border:0;background:transparent;padding:0;
+      font-size:8.6pt;color:#3d4b5a;width:auto}
+    table.exp input.num{display:none !important}
+    table.exp .pv{display:inline !important}
+    table.exp tbody th{font-size:8.6pt;padding:3px 4px}
+    table.exp td{padding:2px 3px}
+    table.exp thead th{font-size:7pt;padding:4px 3px}
     .pv{display:inline !important;font-variant-numeric:tabular-nums}
     .print-only{display:block !important}
     #panel-register{page-break-before:always}
@@ -193,6 +212,7 @@
     .stat{border:1px solid #999}
     .grid{grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:6px 14px}
     .field input,.field select{font-size:8.6pt;padding:1px 3px}
+    .field select{appearance:none;-webkit-appearance:none;background:transparent}
     .field label{font-size:7pt}
     table.reg{font-size:8.4pt}
     table.reg input[type=text],table.reg select{font-size:8.4pt;padding:1px 3px}
@@ -209,9 +229,9 @@
     <div class="mh-top">
       <div class="mh-title">
         <span class="mh-badge">Uganda Revenue Authority</span>
-        <h1 style="margin-top:8px">Balance Sheet &mdash; Blank Working Template</h1>
-        <p>Statement of assets and liabilities for an <strong>individual carrying on business</strong> (sole trader / self-employed).
-           Line items follow the URA income tax return taxonomy (Section&nbsp;E). Enter your figures in the yellow boxes &mdash; subtotals and the balance check calculate themselves.</p>
+        <h1 style="margin-top:8px">Income Tax Working Template &mdash; Blank</h1>
+        <p>Statement of income and expenditure, and statement of assets and liabilities, for an <strong>individual carrying on business</strong> (sole trader / self-employed).
+           The balance sheet follows the URA income tax return taxonomy (Section&nbsp;E). Enter your figures in the yellow boxes &mdash; subtotals, tax, and the balance check calculate themselves.</p>
       </div>
       <div style="text-align:right;font-size:12.5px;opacity:.9;min-width:200px">
         <div><strong>Form reference</strong></div>
@@ -242,6 +262,7 @@
 
   <nav class="tabs no-print" role="tablist">
     <button class="tab" role="tab" aria-selected="true" data-tab="bs">Balance Sheet</button>
+    <button class="tab" role="tab" aria-selected="false" data-tab="income">Income Statement</button>
     <button class="tab" role="tab" aria-selected="false" data-tab="register">Assets Register</button>
     <button class="tab" role="tab" aria-selected="false" data-tab="guide">Checklist &amp; Guidance</button>
   </nav>
@@ -256,6 +277,7 @@
           <li>Fill in the <strong>taxpayer details</strong> below &mdash; these print on the sheet.</li>
           <li>Work down the <strong>Assets</strong> column, then the <strong>Liabilities &amp; Owner&rsquo;s Funds</strong> column. Leave anything you don&rsquo;t have as blank &mdash; blank is treated as zero.</li>
           <li>Check the <strong>balance check</strong> panel that appears under the sheet. Total assets must equal total liabilities plus owner&rsquo;s funds. A difference means something is missing or mis-stated &mdash; the panel lists the usual causes.</li>
+          <li>Use the <strong>Income Statement</strong> tab for your turnover and costs. Enter each expense as a <strong>rate</strong> and the period it covers &mdash; the sheet annualises it. The net profit after tax and the tax charge flow straight into the balance sheet above, so the two statements always agree.</li>
           <li>Use the <strong>Assets Register</strong> tab for the itemised fixed-asset list URA asks you to keep, then print or export.</li>
         </ol>
         <p style="margin-bottom:0"><strong>Important:</strong> this is a working paper, not the URA return form. The official <strong>DT-2001</strong> Excel template must still be downloaded from the URA portal, completed, validated and uploaded. Transfer your figures from here into that template. Nothing is sent anywhere &mdash; your figures stay in this browser.</p>
@@ -381,7 +403,7 @@
               <tr data-ref="E3dif" class="sub"><th scope="row" class="lbl">Total current liabilities</th><td class="val amt" data-c="cl_total"></td></tr>
 
               <tr class="sec"><th colspan="2">6. Provisions</th></tr>
-              <tr data-ref="E3diia"><th scope="row" class="lbl ind">Provision for income tax</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="pr_tax" aria-label="Provision for income tax"></td></tr>
+              <tr data-ref="E3diia"><th scope="row" class="lbl ind">Provision for income tax <span class="muted">(from the tax computation)</span></th><td class="val amt" data-c="pr_tax"></td></tr>
               <tr data-ref="E3diib"><th scope="row" class="lbl ind">Provision for bad and doubtful debts</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="pr_bad" aria-label="Provision for bad and doubtful debts"></td></tr>
               <tr data-ref="E3diic"><th scope="row" class="lbl ind">Other provisions</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="pr_other" aria-label="Other provisions"></td></tr>
               <tr data-ref="E3diie" class="sub"><th scope="row" class="lbl">Total provisions</th><td class="val amt" data-c="pr_total"></td></tr>
@@ -408,7 +430,7 @@
 
               <tr class="sec"><th colspan="2">9. Owner&rsquo;s funds</th></tr>
               <tr data-ref="E9a"><th scope="row" class="lbl ind">Owner&rsquo;s capital at start of year (b/f)</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="eq_open" aria-label="Opening capital"></td></tr>
-              <tr data-ref="E9b"><th scope="row" class="lbl ind">Add: net profit for the year (after tax)</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="eq_profit" aria-label="Net profit for the year"></td></tr>
+              <tr data-ref="E9b"><th scope="row" class="lbl ind">Add: net profit for the year (after tax) <span class="muted">(from the Income Statement)</span></th><td class="val amt" data-c="eq_profit"></td></tr>
               <tr data-ref="E9c"><th scope="row" class="lbl ind">Add: additional capital introduced</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="eq_capin" aria-label="Additional capital introduced"></td></tr>
               <tr data-ref="E9d"><th scope="row" class="lbl ind">Less: drawings during the year</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="eq_draw" aria-label="Drawings during the year"></td></tr>
               <tr class="no-print"><th scope="row" class="lbl ind"><label for="eq_ovr_on" style="cursor:pointer">Override &mdash; enter the closing capital directly</label></th>
@@ -451,6 +473,157 @@
       <div class="body">
         <textarea class="notes" data-f="m_notes" placeholder="Record anything you need to explain to a tax officer: assets pledged as security, assets brought in by valuation, amounts owed to URA, goods on hire purchase, bad debts written off, etc."></textarea>
         <div class="muted" style="margin-top:6px">This note prints on the same page as the balance sheet.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ PANEL: INCOME STATEMENT ============================ -->
+  <section class="panel" id="panel-income" role="tabpanel" hidden>
+    <div style="text-align:center;margin:0 0 12px" class="print-only">
+      <div style="font-weight:800;font-size:13pt">STATEMENT OF INCOME AND EXPENDITURE</div>
+      <div style="font-size:10pt" id="printSubIS">&nbsp;</div>
+    </div>
+    <div class="card">
+      <h3>Statement of income and expenditure</h3>
+      <div class="body">
+        <p class="muted" style="margin-top:0">Income Tax Act s.118(5) requires a statement of income and expenditure to accompany your return. On a <strong>provisional</strong> return these are your <strong>estimates</strong> for the year of income; on the final return they are your actual figures. Enter your turnover and costs below &mdash; the net profit and the tax charge flow straight through to the Balance Sheet tab.</p>
+        <div class="grid">
+          <div class="field"><label for="pl_days">Days in the year of income</label><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="days_year" data-default="365" aria-label="Days in the year of income" value="365"><span class="tip">1 Jul 2026 &ndash; 30 Jun 2027 is 365 days</span></div>
+          <div class="field"><label for="pl_months">Months in the year of income</label><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="months_year" data-default="12" aria-label="Months in the year of income" value="12"></div>
+          <div class="field"><label for="pl_bands">Individual tax bands</label>
+            <select id="pl_bands" data-f="pl_bands" data-default="new">
+              <option value="new" selected>New bands &mdash; from 1 July 2026</option>
+              <option value="old">Previous bands &mdash; to 30 June 2026</option>
+            </select>
+            <span class="tip">Set by the Income Tax (Amendment) Act 2026</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bs2">
+      <div class="card">
+        <h3>Turnover and cost of sales</h3>
+        <table class="bs">
+          <tbody>
+            <tr class="sec" data-row="plsec"><th colspan="2">A. Turnover</th></tr>
+            <tr data-row="pl"><th scope="row" class="lbl ind">Sales of goods</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="pl_sales" aria-label="Sales of goods"></td></tr>
+            <tr data-row="pl"><th scope="row" class="lbl ind">Services and professional receipts</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="pl_services" aria-label="Services and professional receipts"></td></tr>
+            <tr data-row="pl"><th scope="row" class="lbl ind">Other trading receipts</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="pl_trading_other" aria-label="Other trading receipts"></td></tr>
+            <tr class="tot" data-row="pl"><th scope="row" class="lbl">Total turnover</th><td class="val amt" data-c="pl_turnover"></td></tr>
+
+            <tr class="sec" data-row="plsec"><th colspan="2">B. Cost of sales</th></tr>
+            <tr data-row="pl"><th scope="row" class="lbl ind">Opening stock</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="pl_open_stock" aria-label="Opening stock"></td></tr>
+            <tr data-row="pl"><th scope="row" class="lbl ind">Purchases (local)</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="pl_purchases" aria-label="Local purchases"></td></tr>
+            <tr data-row="pl"><th scope="row" class="lbl ind">Imports</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="pl_imports" aria-label="Imports"></td></tr>
+            <tr data-row="pl"><th scope="row" class="lbl ind">Direct wages</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="pl_direct_wages" aria-label="Direct wages"></td></tr>
+            <tr data-row="pl"><th scope="row" class="lbl ind">Direct other costs</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="pl_direct_other" aria-label="Direct other costs"></td></tr>
+            <tr class="sub" data-row="pl"><th scope="row" class="lbl">Total cost available for sale</th><td class="val amt" data-c="pl_cos_avail"></td></tr>
+            <tr data-row="pl"><th scope="row" class="lbl ind">Less: closing stock</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="pl_close_stock" aria-label="Closing stock"></td></tr>
+            <tr class="tot" data-row="pl"><th scope="row" class="lbl">Cost of sales</th><td class="val amt" data-c="pl_cos"></td></tr>
+            <tr class="tot" data-row="pl"><th scope="row" class="lbl">Gross profit</th><td class="val amt" data-c="pl_gross"></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3>Other income</h3>
+        <table class="bs">
+          <tbody>
+            <tr data-row="pl"><th scope="row" class="lbl ind">Interest earned</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="pl_interest" aria-label="Interest earned"></td></tr>
+            <tr data-row="pl"><th scope="row" class="lbl ind">Rental income</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="pl_rental" aria-label="Rental income"></td></tr>
+            <tr data-row="pl"><th scope="row" class="lbl ind">Commission and other receipts</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="pl_other_receipts" aria-label="Commission and other receipts"></td></tr>
+            <tr class="tot" data-row="pl"><th scope="row" class="lbl">Total other income</th><td class="val amt" data-c="pl_other_inc"></td></tr>
+          </tbody>
+        </table>
+        <div class="hintline">Also put disposal of assets, exchange gains, gifts and similar receipts here.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Operating expenses</h3>
+      <div class="body">
+        <p class="muted" style="margin-top:0">Enter the <strong>rate</strong> you pay and how often &mdash; the annual figure is worked out for you. Check the per-month column against what you actually pay each month.</p>
+        <div style="overflow-x:auto">
+        <table class="exp">
+          <thead>
+            <tr><th style="min-width:230px">Expense</th><th style="text-align:right;width:140px">Rate</th>
+            <th style="width:130px">Period</th><th style="text-align:right;width:150px">Per year</th>
+            <th style="text-align:right;width:130px">Per month</th></tr>
+          </thead>
+          <tbody>
+      <tr data-row="pl"><th scope="row" class="lbl">Catering and staff meals (food)</th><td class="r"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="ex_food_rate" aria-label="Catering and staff meals (food) rate"></td><td><select class="per" data-f="ex_food_period" data-default="day" aria-label="Catering and staff meals (food) period"><option value="day" selected>per day</option><option value="month">per month</option><option value="year">per year</option></select></td><td class="r amt" data-c="ex_food"></td><td class="r amt" data-c="ex_food_m"></td></tr>
+      <tr data-row="pl"><th scope="row" class="lbl">Conveyance and transport</th><td class="r"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="ex_transport_rate" aria-label="Conveyance and transport rate"></td><td><select class="per" data-f="ex_transport_period" data-default="day" aria-label="Conveyance and transport period"><option value="day" selected>per day</option><option value="month">per month</option><option value="year">per year</option></select></td><td class="r amt" data-c="ex_transport"></td><td class="r amt" data-c="ex_transport_m"></td></tr>
+      <tr data-row="pl"><th scope="row" class="lbl">Rent and rates</th><td class="r"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="ex_rent_rate" aria-label="Rent and rates rate"></td><td><select class="per" data-f="ex_rent_period" data-default="month" aria-label="Rent and rates period"><option value="day">per day</option><option value="month" selected>per month</option><option value="year">per year</option></select></td><td class="r amt" data-c="ex_rent"></td><td class="r amt" data-c="ex_rent_m"></td></tr>
+      <tr data-row="pl"><th scope="row" class="lbl">Waste disposal and rubbish</th><td class="r"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="ex_rubbish_rate" aria-label="Waste disposal and rubbish rate"></td><td><select class="per" data-f="ex_rubbish_period" data-default="month" aria-label="Waste disposal and rubbish period"><option value="day">per day</option><option value="month" selected>per month</option><option value="year">per year</option></select></td><td class="r amt" data-c="ex_rubbish"></td><td class="r amt" data-c="ex_rubbish_m"></td></tr>
+      <tr data-row="pl"><th scope="row" class="lbl">Casual labour and cleaning</th><td class="r"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="ex_labour_rate" aria-label="Casual labour and cleaning rate"></td><td><select class="per" data-f="ex_labour_period" data-default="day" aria-label="Casual labour and cleaning period"><option value="day" selected>per day</option><option value="month">per month</option><option value="year">per year</option></select></td><td class="r amt" data-c="ex_labour"></td><td class="r amt" data-c="ex_labour_m"></td></tr>
+      <tr data-row="pl"><th scope="row" class="lbl">Repairs and maintenance</th><td class="r"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="ex_repairs_rate" aria-label="Repairs and maintenance rate"></td><td><select class="per" data-f="ex_repairs_period" data-default="month" aria-label="Repairs and maintenance period"><option value="day">per day</option><option value="month" selected>per month</option><option value="year">per year</option></select></td><td class="r amt" data-c="ex_repairs"></td><td class="r amt" data-c="ex_repairs_m"></td></tr>
+      <tr data-row="pl"><th scope="row" class="lbl">Advertising and marketing</th><td class="r"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="ex_marketing_rate" aria-label="Advertising and marketing rate"></td><td><select class="per" data-f="ex_marketing_period" data-default="month" aria-label="Advertising and marketing period"><option value="day">per day</option><option value="month" selected>per month</option><option value="year">per year</option></select></td><td class="r amt" data-c="ex_marketing"></td><td class="r amt" data-c="ex_marketing_m"></td></tr>
+      <tr data-row="pl"><th scope="row" class="lbl">Telephone and internet</th><td class="r"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="ex_telephone_rate" aria-label="Telephone and internet rate"></td><td><select class="per" data-f="ex_telephone_period" data-default="month" aria-label="Telephone and internet period"><option value="day">per day</option><option value="month" selected>per month</option><option value="year">per year</option></select></td><td class="r amt" data-c="ex_telephone"></td><td class="r amt" data-c="ex_telephone_m"></td></tr>
+      <tr data-row="pl"><th scope="row" class="lbl">Power and other utilities</th><td class="r"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="ex_power_rate" aria-label="Power and other utilities rate"></td><td><select class="per" data-f="ex_power_period" data-default="month" aria-label="Power and other utilities period"><option value="day">per day</option><option value="month" selected>per month</option><option value="year">per year</option></select></td><td class="r amt" data-c="ex_power"></td><td class="r amt" data-c="ex_power_m"></td></tr>
+      <tr data-row="pl"><th scope="row" class="lbl">Insurance</th><td class="r"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="ex_insurance_rate" aria-label="Insurance rate"></td><td><select class="per" data-f="ex_insurance_period" data-default="year" aria-label="Insurance period"><option value="day">per day</option><option value="month">per month</option><option value="year" selected>per year</option></select></td><td class="r amt" data-c="ex_insurance"></td><td class="r amt" data-c="ex_insurance_m"></td></tr>
+      <tr data-row="pl"><th scope="row" class="lbl">Bank charges</th><td class="r"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="ex_bank_rate" aria-label="Bank charges rate"></td><td><select class="per" data-f="ex_bank_period" data-default="month" aria-label="Bank charges period"><option value="day">per day</option><option value="month" selected>per month</option><option value="year">per year</option></select></td><td class="r amt" data-c="ex_bank"></td><td class="r amt" data-c="ex_bank_m"></td></tr>
+      <tr data-row="pl"><th scope="row" class="lbl">Legal and professional fees</th><td class="r"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="ex_legal_rate" aria-label="Legal and professional fees rate"></td><td><select class="per" data-f="ex_legal_period" data-default="year" aria-label="Legal and professional fees period"><option value="day">per day</option><option value="month">per month</option><option value="year" selected>per year</option></select></td><td class="r amt" data-c="ex_legal"></td><td class="r amt" data-c="ex_legal_m"></td></tr>
+      <tr data-row="pl"><th scope="row" class="lbl">Stationery and office supplies</th><td class="r"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="ex_stationery_rate" aria-label="Stationery and office supplies rate"></td><td><select class="per" data-f="ex_stationery_period" data-default="month" aria-label="Stationery and office supplies period"><option value="day">per day</option><option value="month" selected>per month</option><option value="year">per year</option></select></td><td class="r amt" data-c="ex_stationery"></td><td class="r amt" data-c="ex_stationery_m"></td></tr>
+      <tr data-row="pl"><th scope="row" class="lbl">Depreciation charged in the accounts</th><td class="r"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="ex_dep_rate" aria-label="Depreciation charged in the accounts rate"></td><td><select class="per" data-f="ex_dep_period" data-default="year" aria-label="Depreciation charged in the accounts period"><option value="day">per day</option><option value="month">per month</option><option value="year" selected>per year</option></select></td><td class="r amt" data-c="ex_dep"></td><td class="r amt" data-c="ex_dep_m"></td></tr>
+      <tr data-row="pl"><th scope="row" class="lbl">Other operating expenses</th><td class="r"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="ex_other_rate" aria-label="Other operating expenses rate"></td><td><select class="per" data-f="ex_other_period" data-default="month" aria-label="Other operating expenses period"><option value="day">per day</option><option value="month" selected>per month</option><option value="year">per year</option></select></td><td class="r amt" data-c="ex_other"></td><td class="r amt" data-c="ex_other_m"></td></tr>
+          </tbody>
+          <tfoot>
+            <tr><th colspan="3" style="text-align:right;font-size:13px">TOTAL OPERATING EXPENSES</th>
+                <th class="r" data-c="pl_opex" style="font-size:13.5px">&mdash;</th>
+                <th class="r" data-c="pl_opex_month" style="font-size:13.5px">&mdash;</th></tr>
+          </tfoot>
+        </table>
+        </div>
+        <div class="hintline">Repairs that merely maintain an asset are deductible. Repairs that improve or extend it are capital &mdash; put them in fixed assets on the Balance Sheet tab instead.</div>
+      </div>
+    </div>
+
+    <div class="bs2">
+      <div class="card">
+        <h3>Profit for the year</h3>
+        <table class="bs">
+          <tbody>
+            <tr class="sub" data-row="pl"><th scope="row" class="lbl">Total turnover</th><td class="val amt" data-c="pl_turnover"></td></tr>
+            <tr class="sub" data-row="pl"><th scope="row" class="lbl">Add: total other income</th><td class="val amt" data-c="pl_other_inc"></td></tr>
+            <tr class="sub" data-row="pl"><th scope="row" class="lbl">Total income</th><td class="val amt" data-c="pl_total_inc"></td></tr>
+            <tr class="sub" data-row="pl"><th scope="row" class="lbl">Less: cost of sales</th><td class="val amt" data-c="pl_cos"></td></tr>
+            <tr class="sub" data-row="pl"><th scope="row" class="lbl">Less: operating expenses</th><td class="val amt" data-c="pl_opex"></td></tr>
+            <tr class="grand" data-row="pl"><th scope="row">PROFIT BEFORE TAX</th><td class="amt" data-c="pl_pbt"></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3>Tax computation</h3>
+        <table class="bs">
+          <tbody>
+            <tr class="sub" data-row="pl"><th scope="row" class="lbl">Profit before tax</th><td class="val amt" data-c="pl_pbt"></td></tr>
+            <tr data-row="pl"><th scope="row" class="lbl ind">Add back: depreciation and other non-deductible items</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="pl_addbacks" aria-label="Add back depreciation and non-deductible items"></td></tr>
+            <tr data-row="pl"><th scope="row" class="lbl ind">Less: capital allowances claimed</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="pl_capallow" aria-label="Capital allowances claimed"></td></tr>
+            <tr class="tot" data-row="pl"><th scope="row" class="lbl">Chargeable income</th><td class="val amt" data-c="pl_chargeable"></td></tr>
+            <tr class="sub" data-row="pl"><th scope="row" class="lbl">Income tax on chargeable income</th><td class="val amt" data-c="pl_tax"></td></tr>
+            <tr class="tot" data-row="pl"><th scope="row" class="lbl">Net profit after tax</th><td class="val amt" data-c="pl_net_profit"></td></tr>
+          </tbody>
+        </table>
+        <div class="hintline">Net profit after tax and the tax charge flow automatically to the Balance Sheet tab &mdash; owner&rsquo;s funds and provision for income tax.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Provisional tax instalments</h3>
+      <div class="body">
+        <table class="bs">
+          <tbody>
+            <tr class="sub" data-row="pl"><th scope="row" class="lbl">Estimated tax payable for the year</th><td class="val amt" data-c="pl_tax"></td></tr>
+            <tr data-row="pl"><th scope="row" class="lbl ind">1st instalment &mdash; 25% &mdash; due 30 September 2026</th><td class="val amt" data-c="pl_inst1"></td></tr>
+            <tr data-row="pl"><th scope="row" class="lbl ind">2nd instalment &mdash; 25% &mdash; due 31 December 2026</th><td class="val amt" data-c="pl_inst2"></td></tr>
+            <tr data-row="pl"><th scope="row" class="lbl ind">3rd instalment &mdash; 25% &mdash; due 31 March 2027</th><td class="val amt" data-c="pl_inst3"></td></tr>
+            <tr data-row="pl"><th scope="row" class="lbl ind">4th instalment &mdash; 25% &mdash; due 30 June 2027</th><td class="val amt" data-c="pl_inst4"></td></tr>
+            <tr data-row="pl"><th scope="row" class="lbl ind">Less: provisional tax already paid</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="pl_tax_paid" aria-label="Provisional tax already paid"></td></tr>
+            <tr class="tot" data-row="pl"><th scope="row" class="lbl">Tax still to pay</th><td class="val amt" data-c="pl_tax_balance"></td></tr>
+          </tbody>
+        </table>
+        <div class="hintline">Individuals pay provisional tax in four equal instalments, each 25% of the estimated annual tax, due at the end of the 3rd, 6th, 9th and 12th month of the year of income. You may amend your estimate any time before the year of income ends.</div>
       </div>
     </div>
   </section>
@@ -506,15 +679,54 @@
     <div class="guide">
 
       <h3>What this form is for</h3>
-      <p>Uganda&rsquo;s Income Tax Act, section 118(5) requires that a return of income by a taxpayer carrying on business <em>shall be accompanied by a statement of income and expenditure and a statement of the assets and liabilities of the taxpayer</em>. For an individual trading as a sole proprietor that statement is filed on <strong>form DT-2001 (Income Tax Return for Individual with Business Income)</strong>. This template is a working paper for that statement: it uses the same line-item taxonomy as URA&rsquo;s own balance sheet (Section E of the income tax return), calculates the subtotals for you, and tells you straight away whether the statement balances.</p>
+      <p>Uganda&rsquo;s Income Tax Act, section 118(5) requires that a return of income by a taxpayer carrying on business <em>shall be accompanied by a statement of income and expenditure and a statement of the assets and liabilities of the taxpayer</em>. For an individual trading as a sole proprietor that statement is filed on <strong>form DT-2001 (Income Tax Return for Individual with Business Income)</strong>. This template is a working paper for both statements. The <strong>Balance Sheet</strong> tab uses the same line-item taxonomy as URA&rsquo;s own balance sheet (Section E of the income tax return), calculates the subtotals for you, and tells you straight away whether the statement balances. The <strong>Income Statement</strong> tab builds the statement of income and expenditure, works out the tax, and feeds the net profit and the tax provision straight into the balance sheet so the two always agree.</p>
 
       <div class="callout"><b>It is not the return.</b> You still have to download the official DT-2001 Excel template from the URA portal, type your figures in, validate and upload. Use this sheet to work out your numbers and as the supporting statement that accompanies the return.</div>
+
+      <h3>Using the Income Statement tab</h3>
+      <p>The Income Statement tab is a working paper for the statement of income and expenditure that the Income Tax Act, section 118(5) requires you to file alongside the return. It works like this:</p>
+      <ol>
+        <li><strong>Turnover.</strong> Enter your total sales for the year of income. If you sell goods, add what you bought and deduct closing stock to get the cost of sales and your gross profit. If you run a service business with no trading stock, leave the cost of sales lines empty.</li>
+        <li><strong>Other income.</strong> Interest, rent, and anything that is not trading income goes here, so it is not swept into turnover.</li>
+        <li><strong>Operating expenses.</strong> Enter the <em>rate</em> you pay and choose the period it covers &mdash; per day, per month or per year. The sheet multiplies it out for you (per day &times; 365, per month &times; 12, per year &times; 1) and shows the equivalent monthly cost next to it. Compare that monthly column with what you actually pay each month; if it does not match, the period is wrong. Ordinary repairs and maintenance are deductible. Repairs that improve or extend an asset are capital and belong in fixed assets instead.</li>
+        <li><strong>Profit.</strong> Profit before tax is turnover plus other income, less cost of sales, less operating expenses. Add back any depreciation you have charged (it is not deductible as an expense) and deduct capital allowances actually claimed, to arrive at chargeable income.</li>
+        <li><strong>Tax.</strong> The tax is worked out on the band table below. The <strong>net profit after tax</strong> flows automatically to the Balance Sheet tab, into owner&rsquo;s funds (line E9b) and into the <strong>provision for income tax</strong> (line E3diia) &mdash; so the two tabs can never disagree.</li>
+        <li><strong>Provisional tax instalments.</strong> Four instalments of 25% of the estimated annual tax are shown with their due dates, less anything you have already paid.</li>
+      </ol>
+      <div class="callout"><b>Estimates are fine for a provisional return.</b> A provisional return is based on your best estimate of the year of income. You may file an amended provisional return at any time before the year of income ends if your figures change, and the final return replaces the estimate.</div>
+
+      <h3>Provisional income tax &mdash; year of income 1 July 2026 to 30 June 2027</h3>
+      <table class="ref">
+        <tr><th>What</th><th>When</th></tr>
+        <tr><td>Provisional return (form <strong>DT&#8209;2003</strong>) for an individual</td><td>Within the first 3 months of the year of income &mdash; by <strong>30 September 2026</strong></td></tr>
+        <tr><td>1st instalment &mdash; 25% of the estimated tax</td><td><strong>30 September 2026</strong></td></tr>
+        <tr><td>2nd instalment &mdash; 25%</td><td><strong>31 December 2026</strong></td></tr>
+        <tr><td>3rd instalment &mdash; 25%</td><td><strong>31 March 2027</strong></td></tr>
+        <tr><td>4th instalment &mdash; 25%</td><td><strong>30 June 2027</strong></td></tr>
+        <tr><td>Amended provisional return, if your estimate changes</td><td>Any time before <strong>30 June 2027</strong></td></tr>
+        <tr><td>Final return (form <strong>DT&#8209;2001</strong>) with actual figures</td><td>Within 6 months of the year of income ending &mdash; by <strong>31 December 2027</strong></td></tr>
+      </table>
+      <div class="callout"><b>Late filing.</b> A provisional return filed after 30 September 2026 attracts the late filing penalty of UGX 200,000 or 2% of the tax liability, whichever is higher, and you remain liable to pay the instalments on their due dates even if the return is late.</div>
+
+      <h3>Individual income tax bands 2026/27</h3>
+      <p>The Income Tax (Amendment) Act 2026 took effect on <strong>1 July 2026</strong>, so it applies to the year of income 1 July 2026 &ndash; 30 June 2027. The sheet is set to the new bands; switch to the previous bands in the Income Statement tab if you are preparing an earlier year.</p>
+      <table class="ref">
+        <tr><th>Chargeable income (UGX)</th><th>New bands from 1 July 2026</th><th>Previous bands to 30 June 2026</th></tr>
+        <tr><td>Up to 4,020,000</td><td>Nil</td><td>&mdash;</td></tr>
+        <tr><td>Up to 2,820,000</td><td>&mdash;</td><td>Nil</td></tr>
+        <tr><td>2,820,000 &ndash; 4,020,000</td><td>&mdash;</td><td>10% of the excess over 2,820,000</td></tr>
+        <tr><td>4,020,000 &ndash; 4,920,000</td><td>20% of the excess over 4,020,000</td><td>120,000 + 20% of the excess over 4,020,000</td></tr>
+        <tr><td>4,920,000 &ndash; 5,820,000</td><td>180,000 + 25% of the excess over 4,920,000</td><td>&mdash;</td></tr>
+        <tr><td>5,820,000 &ndash; 120,000,000</td><td>405,000 + 30% of the excess over 5,820,000</td><td>300,000 + 30% of the excess over 4,920,000</td></tr>
+        <tr><td>Over 120,000,000</td><td>as above, plus 10% of the excess over 120,000,000</td><td>as above, plus 10% of the excess over 120,000,000</td></tr>
+      </table>
+      <div class="callout"><b>Band boundaries are not rounded.</b> A Ugandan year of income runs 1 July to 30 June, so your 1 July 2026 &ndash; 30 June 2027 figures fall entirely under the new bands. Verify the current position against the Income Tax Act as amended, or with your tax adviser, before you file.</div>
 
       <h3>Filing checklist</h3>
       <label class="ck"><input type="checkbox"><span>Download the <strong>DT-2001</strong> template from the URA portal: <a href="https://ura.go.ug/en/download/dt-2001-income-tax-return-form-for-individual-with-business-income/" target="_blank" rel="noopener">ura.go.ug &rarr; Return Forms</a> (or via e-Services &rarr; e-Returns &rarr; select the return period).</span></label>
       <label class="ck"><input type="checkbox"><span>Open it and <strong>enable macros / content</strong>. URA warns that you must not cut and paste values into the sheet &mdash; type them into the cells instead.</span></label>
       <label class="ck"><input type="checkbox"><span>Complete the taxpayer details, income statement, and this statement of assets and liabilities. Click <strong>VALIDATE</strong> on the last page and fix anything on the error sheet.</span></label>
-      <label class="ck"><input type="checkbox"><span>Generate the upload file, return to the portal, log in again, and upload under <strong>e-Services &rarr; Return &rarr; File a return &rarr; Tax final</strong>. Do not rename the file.</span></label>
+      <label class="ck"><input type="checkbox"><span>Generate the upload file, return to the portal, log in again, and upload under <strong>e-Services &rarr; Return &rarr; File a return &rarr; Tax final</strong> (or <strong>Tax provisional</strong> for a provisional return). Do not rename the file.</span></label>
       <label class="ck"><input type="checkbox"><span>Attach this balance sheet and the assets register to the return.</span></label>
       <label class="ck"><input type="checkbox"><span>If annual turnover is <strong>UGX 500,000,000 or more</strong>, attach audited financial statements prepared by a member of the Institute of Certified Public Accountants of Uganda (Tax Procedures Code Act, s.16(5)).</span></label>
       <label class="ck"><input type="checkbox"><span>Pay the tax due by the same filing deadline. Late filing attracts a penalty of <strong>UGX 200,000 or 2% of the tax liability, whichever is higher</strong>.</span></label>
@@ -523,9 +735,9 @@
       <h3>Key dates</h3>
       <table class="ref">
         <tr><th>Return</th><th>Form</th><th>Due date</th></tr>
-        <tr><td>Provisional income tax (individual)</td><td>DT-2003</td><td>Within 3 months of the start of the year of income &mdash; normally <strong>30 September</strong></td></tr>
-        <tr><td>Final income tax (individual with business income)</td><td>DT-2001</td><td>Within 6 months after the year of income ends &mdash; <strong>30 June</strong> for a calendar year, <strong>31 December</strong> for a 1 July&ndash;30 June year</td></tr>
-        <tr><td>Amended provisional return</td><td>DT-2003</td><td>By 30 June</td></tr>
+        <tr><td>Provisional income tax (individual)</td><td>DT&#8209;2003</td><td>Within 3 months of the start of the year of income &mdash; normally <strong>30 September</strong></td></tr>
+        <tr><td>Final income tax (individual with business income)</td><td>DT&#8209;2001</td><td>Within 6 months after the year of income ends &mdash; <strong>30 June</strong> for a calendar year, <strong>31 December</strong> for a 1 July&ndash;30 June year</td></tr>
+        <tr><td>Amended provisional return</td><td>DT&#8209;2003</td><td>By 30 June</td></tr>
       </table>
 
       <h3>Tax depreciation classes &mdash; ITA Schedule 7 Part I</h3>
@@ -600,7 +812,7 @@
   </section>
 
   <div class="foot">
-    Blank balance sheet template for URA individual income tax return (DT-2001) &mdash; prepared for use as a working paper and supporting statement of assets and liabilities. Not a URA form and not tax advice.
+    Blank working template for the URA individual income tax return (DT-2001 final, DT-2003 provisional) &mdash; a working paper for the statement of income and expenditure and the statement of assets and liabilities. Not a URA form and not tax advice.
   </div>
 </div>
 
@@ -649,10 +861,87 @@
   }
   function sum(v, keys){ var t = 0; for(var i=0;i<keys.length;i++) t += num(v[keys[i]]); return t; }
 
+  /* Annualise a rate that is given per day / per month / per year */
+  function rateToYear(v, key){
+    var period = v[key + "_period"] || "month";
+    var mult = 1;
+    if(period === "day") mult = num(v.days_year) || 365;
+    else if(period === "month") mult = num(v.months_year) || 12;
+    return num(v[key + "_rate"]) * mult;
+  }
+
+  /* Income tax on chargeable income for a resident individual.
+     basis "new" = Income Tax (Amendment) Act 2026, effective 1 July 2026.
+     basis "old" = the bands that applied up to 30 June 2026. */
+  function taxOnChargeable(ci, basis){
+    if(!isFinite(ci) || ci <= 0) return 0;
+    if(basis === "old"){
+      if(ci <= 2820000) return 0;
+      if(ci <= 4020000) return (ci - 2820000) * 0.10;
+      if(ci <= 4920000) return 120000 + (ci - 4020000) * 0.20;
+      /* 30% up to 120,000,000, then 10% on the excess above 120,000,000 */
+      if(ci <= 120000000) return 300000 + (ci - 4920000) * 0.30;
+      return 34824000 + (ci - 120000000) * 0.10;
+    }
+    if(ci <= 4020000) return 0;
+    if(ci <= 4920000) return (ci - 4020000) * 0.20;
+    if(ci <= 5820000) return 180000 + (ci - 4920000) * 0.25;
+    /* 30% up to 120,000,000, then 10% on the excess above 120,000,000 */
+    if(ci <= 120000000) return 405000 + (ci - 5820000) * 0.30;
+    return 34659000 + (ci - 120000000) * 0.10;
+  }
+
   /* ============================================================
      Calculations — ordered so dependencies resolve top to bottom
      ============================================================ */
   var CALCS = [
+    ["pl_turnover",   function(v){ return sum(v,["pl_sales","pl_services","pl_trading_other"]); }],
+    ["pl_cos_avail",  function(v){ return sum(v,["pl_open_stock","pl_purchases","pl_imports","pl_direct_wages","pl_direct_other"]); }],
+    ["pl_cos",        function(v,o){ return o.pl_cos_avail - num(v.pl_close_stock); }],
+    ["pl_gross",      function(v,o){ return o.pl_turnover - o.pl_cos; }],
+    ["pl_other_inc",  function(v){ return sum(v,["pl_interest","pl_rental","pl_other_receipts"]); }],
+    ["pl_total_inc",  function(v,o){ return o.pl_turnover + o.pl_other_inc; }],
+    ["ex_food",       function(v){ return rateToYear(v,"ex_food"); }],
+    ["ex_transport",       function(v){ return rateToYear(v,"ex_transport"); }],
+    ["ex_rent",       function(v){ return rateToYear(v,"ex_rent"); }],
+    ["ex_rubbish",       function(v){ return rateToYear(v,"ex_rubbish"); }],
+    ["ex_labour",       function(v){ return rateToYear(v,"ex_labour"); }],
+    ["ex_repairs",       function(v){ return rateToYear(v,"ex_repairs"); }],
+    ["ex_marketing",       function(v){ return rateToYear(v,"ex_marketing"); }],
+    ["ex_telephone",       function(v){ return rateToYear(v,"ex_telephone"); }],
+    ["ex_power",       function(v){ return rateToYear(v,"ex_power"); }],
+    ["ex_insurance",       function(v){ return rateToYear(v,"ex_insurance"); }],
+    ["ex_bank",       function(v){ return rateToYear(v,"ex_bank"); }],
+    ["ex_legal",       function(v){ return rateToYear(v,"ex_legal"); }],
+    ["ex_stationery",       function(v){ return rateToYear(v,"ex_stationery"); }],
+    ["ex_dep",       function(v){ return rateToYear(v,"ex_dep"); }],
+    ["ex_other",       function(v){ return rateToYear(v,"ex_other"); }],
+    ["ex_food_m",    function(v,o){ return o.ex_food / (num(v.months_year) || 12); }],
+    ["ex_transport_m",    function(v,o){ return o.ex_transport / (num(v.months_year) || 12); }],
+    ["ex_rent_m",    function(v,o){ return o.ex_rent / (num(v.months_year) || 12); }],
+    ["ex_rubbish_m",    function(v,o){ return o.ex_rubbish / (num(v.months_year) || 12); }],
+    ["ex_labour_m",    function(v,o){ return o.ex_labour / (num(v.months_year) || 12); }],
+    ["ex_repairs_m",    function(v,o){ return o.ex_repairs / (num(v.months_year) || 12); }],
+    ["ex_marketing_m",    function(v,o){ return o.ex_marketing / (num(v.months_year) || 12); }],
+    ["ex_telephone_m",    function(v,o){ return o.ex_telephone / (num(v.months_year) || 12); }],
+    ["ex_power_m",    function(v,o){ return o.ex_power / (num(v.months_year) || 12); }],
+    ["ex_insurance_m",    function(v,o){ return o.ex_insurance / (num(v.months_year) || 12); }],
+    ["ex_bank_m",    function(v,o){ return o.ex_bank / (num(v.months_year) || 12); }],
+    ["ex_legal_m",    function(v,o){ return o.ex_legal / (num(v.months_year) || 12); }],
+    ["ex_stationery_m",    function(v,o){ return o.ex_stationery / (num(v.months_year) || 12); }],
+    ["ex_dep_m",    function(v,o){ return o.ex_dep / (num(v.months_year) || 12); }],
+    ["ex_other_m",    function(v,o){ return o.ex_other / (num(v.months_year) || 12); }],
+    ["pl_opex",       function(v,o){ return o.ex_food + o.ex_transport + o.ex_rent + o.ex_rubbish + o.ex_labour + o.ex_repairs + o.ex_marketing + o.ex_telephone + o.ex_power + o.ex_insurance + o.ex_bank + o.ex_legal + o.ex_stationery + o.ex_dep + o.ex_other; }],
+    ["pl_opex_month", function(v,o){ return o.pl_opex / (num(v.months_year) || 12); }],
+    ["pl_pbt",        function(v,o){ return o.pl_total_inc - o.pl_cos - o.pl_opex; }],
+    ["pl_chargeable", function(v,o){ return o.pl_pbt + num(v.pl_addbacks) - num(v.pl_capallow); }],
+    ["pl_tax",        function(v,o){ return taxOnChargeable(o.pl_chargeable, v.pl_bands); }],
+    ["pl_net_profit", function(v,o){ return o.pl_pbt - o.pl_tax; }],
+    ["pl_inst1",      function(v,o){ return o.pl_tax * 0.25; }],
+    ["pl_inst2",      function(v,o){ return o.pl_tax * 0.25; }],
+    ["pl_inst3",      function(v,o){ return o.pl_tax * 0.25; }],
+    ["pl_inst4",      function(v,o){ return o.pl_tax * 0.25; }],
+    ["pl_tax_balance", function(v,o){ return o.pl_tax - num(v.pl_tax_paid); }],
     ["fa_cost",       function(v){ return sum(v,["fa_land","fa_plant","fa_vehicle","fa_furniture","fa_other","fa_intangible"]); }],
     ["fa_nbv",        function(v,o){ return o.fa_cost - num(v.fa_accum); }],
     ["inv_total",     function(v){ return sum(v,["inv_shares","inv_debenture","inv_fixeddep","inv_govt","inv_otherinv"]); }],
@@ -663,14 +952,16 @@
     ["la_total",      function(v){ return sum(v,["la_related","la_staff","la_deposits","la_loans","la_ura"]); }],
     ["ca_total",      function(v,o){ return o.ca_working + o.la_total; }],
     ["cl_total",      function(v){ return sum(v,["cl_creditors","cl_lease","cl_accrued","cl_other","cl_matured"]); }],
-    ["pr_total",      function(v){ return sum(v,["pr_tax","pr_bad","pr_other"]); }],
+    ["pr_tax",        function(v,o){ return o.pl_tax; }],
+    ["pr_total",      function(v,o){ return o.pr_tax + num(v.pr_bad) + num(v.pr_other); }],
     ["cl_all",        function(v,o){ return o.cl_total + o.pr_total; }],
     ["ln_sec_total",  function(v){ return sum(v,["ls_bank","ls_other","ls_debt","ls_related"]); }],
     ["ln_unsec_total",function(v){ return sum(v,["lu_bank","lu_other","lu_creditor","lu_related"]); }],
     ["ln_total",      function(v,o){ return o.ln_sec_total + o.ln_unsec_total; }],
     ["total_assets",  function(v,o){ return o.fa_nbv + o.inv_total + o.ca_total + num(v.dta); }],
     ["total_liab",    function(v,o){ return o.cl_all + o.ln_total + num(v.dtl); }],
-    ["eq_auto",       function(v){ return num(v.eq_open) + num(v.eq_profit) + num(v.eq_capin) - num(v.eq_draw); }],
+    ["eq_profit",     function(v,o){ return o.pl_net_profit; }],
+    ["eq_auto",       function(v,o){ return num(v.eq_open) + o.eq_profit + num(v.eq_capin) - num(v.eq_draw); }],
     ["eq_closing",    function(v,o){ return v.eq_ovr_on ? num(v.eq_override) : o.eq_auto; }],
     ["e9_total",      function(v,o){ return o.ln_total + num(v.dtl) + o.eq_closing; }],
     ["total_le",      function(v,o){ return o.cl_all + o.e9_total; }],
@@ -866,6 +1157,8 @@
     else if(v.m_acct) bits.push("As at " + esc(v.m_acct));
     bits.push("Amounts in " + (v.m_cur || "UGX"));
     el.innerHTML = bits.join(" &nbsp;|&nbsp; ");
+    var el2 = $("#printSubIS");
+    if(el2) el2.innerHTML = bits.join(" &nbsp;|&nbsp; ");
   }
 
   function updateBanner(o){
@@ -989,7 +1282,7 @@
 
     var rows = $$("#panel-bs tr[data-ref]");
     rows.forEach(function(tr){
-      var ref = tr.dataset.ref;
+      var ref = tr.dataset.ref || (tr.dataset.row === "plsec" ? "" : "P&L");
       var lbl = tr.querySelector("th.lbl, th");
       var lblText = "";
       if(lbl){
@@ -1006,6 +1299,32 @@
       else if(inp) amount = fmtPlain(num(inp.value));
       lines.push([ref, lblText, amount]);
     });
+    lines.push([]);
+    lines.push(["Ref", "STATEMENT OF INCOME AND EXPENDITURE", "Amount (" + (v.m_cur || "UGX") + ")"]);
+    var incRows = $$("#panel-income tr[data-row]");
+    incRows.forEach(function(tr){
+      var ref = tr.dataset.ref;
+      var lbl = tr.querySelector("th.lbl, th");
+      var lblText = "";
+      if(lbl){
+        var clone = lbl.cloneNode(true);
+        Array.prototype.slice.call(clone.querySelectorAll(".rf")).forEach(function(n){
+          if(n.parentNode) n.parentNode.removeChild(n);
+        });
+        lblText = (clone.textContent || "").replace(/\s+/g, " ").trim();
+      }
+      var calc = tr.querySelector("[data-c]");
+      var inp  = tr.querySelector("input.num");
+      var amount = "";
+      if(calc) amount = fmtPlain(o[calc.dataset.c]);
+      else if(inp) amount = fmtPlain(num(inp.value));
+      lines.push([ref, lblText, amount]);
+    });
+    lines.push(["", "TOTAL OPERATING EXPENSES", fmtPlain(o.pl_opex)]);
+    lines.push(["", "PROFIT BEFORE TAX", fmtPlain(o.pl_pbt)]);
+    lines.push(["", "CHARGEABLE INCOME", fmtPlain(o.pl_chargeable)]);
+    lines.push(["", "INCOME TAX", fmtPlain(o.pl_tax)]);
+    lines.push(["", "NET PROFIT AFTER TAX", fmtPlain(o.pl_net_profit)]);
     lines.push([]);
     lines.push(["", "TOTAL ASSETS", fmtPlain(o.total_assets)]);
     lines.push(["", "TOTAL LIABILITIES AND OWNER'S FUNDS", fmtPlain(o.total_le)]);
@@ -1061,7 +1380,7 @@
     $$(".tab").forEach(function(t){
       t.addEventListener("click", function(){
         $$(".tab").forEach(function(x){ x.setAttribute("aria-selected", x === t ? "true" : "false"); });
-        ["bs","register","guide"].forEach(function(name){
+        ["bs","income","register","guide"].forEach(function(name){
           var p = $("#panel-" + name);
           if(p) p.hidden = (name !== t.dataset.tab);
         });
@@ -1158,6 +1477,18 @@
         if(el.type === "checkbox") el.checked = false;
         else if(el.tagName === "SELECT") el.selectedIndex = 0;
         else el.value = "";
+      });
+      // put the working assumptions back (days, months, tax bands, expense periods)
+      $$("[data-default]").forEach(function(el){
+        if(el.type === "checkbox") return;
+        if(el.tagName === "SELECT"){
+          var opts = Array.prototype.slice.call(el.options);
+          for(var oi=0; oi<opts.length; oi++){
+            if(opts[oi].value === el.dataset.default){ el.selectedIndex = oi; break; }
+          }
+        } else {
+          el.value = el.dataset.default;
+        }
       });
       register = [];
       renderRegister();
