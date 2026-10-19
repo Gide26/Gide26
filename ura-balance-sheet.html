@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>URA Balance Sheet — Blank Template (Individual in Business, DT-2001)</title>
+<style>
+  :root{
+    --ink:#16202c; --ink2:#47566a; --line:#d8dfe8; --line2:#eef2f7;
+    --bg:#f4f6f9; --card:#ffffff;
+    --accent:#1f4e79; --accent2:#0f3557;
+    --amber:#c98a00; --amber-bg:#fdf6e3;
+    --ok:#1a7f4b; --ok-bg:#e8f6ee;
+    --bad:#b3261e; --bad-bg:#fdeceb;
+    --hint:#6b7a8d;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    background:var(--bg); color:var(--ink); font-size:14px; line-height:1.5;
+    -webkit-text-size-adjust:100%;
+  }
+  .wrap{max-width:1280px;margin:0 auto;padding:0 16px 64px}
+
+  /* ---------- Masthead ---------- */
+  .masthead{background:var(--accent);color:#fff;padding:18px 0 0;margin-bottom:0}
+  .masthead .wrap{padding-bottom:0}
+  .mh-top{display:flex;flex-wrap:wrap;gap:14px;align-items:flex-start;justify-content:space-between;padding-bottom:14px}
+  .mh-title h1{margin:0;font-size:21px;font-weight:650;letter-spacing:.2px}
+  .mh-title p{margin:3px 0 0;font-size:13px;opacity:.88;max-width:62ch}
+  .mh-badge{display:inline-block;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.32);
+    border-radius:999px;padding:3px 11px;font-size:11.5px;font-weight:600;letter-spacing:.3px;text-transform:uppercase}
+
+  /* ---------- Toolbar ---------- */
+  .toolbar{background:var(--accent2);border-top:1px solid rgba(255,255,255,.14);position:sticky;top:0;z-index:50;
+    box-shadow:0 2px 10px rgba(0,0,0,.12)}
+  .toolbar .wrap{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:9px 16px}
+  .btn{background:#fff;color:var(--accent2);border:0;border-radius:6px;padding:7px 13px;font-size:13px;font-weight:600;
+    cursor:pointer;font-family:inherit;transition:background .12s,transform .05s;white-space:nowrap}
+  .btn:hover{background:#e8eef5}
+  .btn:active{transform:translateY(1px)}
+  .btn.ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4)}
+  .btn.ghost:hover{background:rgba(255,255,255,.12)}
+  .btn.danger{background:#7a1d17;color:#fff}
+  .btn.danger:hover{background:#93241d}
+  .save-state{margin-left:auto;font-size:12px;color:rgba(255,255,255,.85);display:flex;align-items:center;gap:7px}
+  .dot{width:8px;height:8px;border-radius:50%;background:#7ee2a8;display:inline-block}
+  .dot.saving{background:#ffd479}
+
+  /* ---------- Tabs ---------- */
+  .tabs{display:flex;gap:2px;margin:20px 0 0;flex-wrap:wrap}
+  .tab{border:1px solid var(--line);border-bottom:0;background:#e9edf3;color:var(--ink2);padding:9px 18px;border-radius:8px 8px 0 0;
+    cursor:pointer;font-size:13.5px;font-weight:600;font-family:inherit;margin-right:4px}
+  .tab[aria-selected="true"]{background:var(--card);color:var(--accent);border-color:var(--line)}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:0 8px 8px 8px;padding:20px}
+  .panel[hidden]{display:none}
+
+  /* ---------- Cards ---------- */
+  .card{border:1px solid var(--line);border-radius:8px;background:var(--card);margin-bottom:18px;overflow:hidden}
+  .card > h3{margin:0;padding:10px 14px;background:var(--line2);border-bottom:1px solid var(--line);
+    font-size:13px;text-transform:uppercase;letter-spacing:.7px;color:var(--accent);font-weight:700}
+  .card .body{padding:14px}
+
+  /* ---------- Grid forms ---------- */
+  .grid{display:grid;gap:12px 18px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+  .field{display:flex;flex-direction:column;gap:4px}
+  .field label{font-size:11.5px;font-weight:650;color:var(--ink2);text-transform:uppercase;letter-spacing:.4px}
+  .field input,.field select,.field textarea{
+    font-family:inherit;font-size:14px;color:var(--ink);padding:7px 9px;border:1px solid var(--line);
+    border-radius:5px;background:#fff;width:100%}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:2px solid var(--accent);outline-offset:-1px;border-color:var(--accent)}
+  .field .tip{font-size:11.5px;color:var(--hint)}
+
+  /* ---------- Tables ---------- */
+  table.bs{width:100%;border-collapse:collapse;font-size:13.5px}
+  table.bs th,table.bs td{padding:4px 8px;vertical-align:middle}
+  table.bs th.lbl{text-align:left;font-weight:450;color:var(--ink);width:auto;padding-right:10px}
+  table.bs th.lbl.ind{padding-left:26px;color:var(--ink2)}
+  table.bs th.lbl.ind2{padding-left:42px;color:var(--ink2)}
+  table.bs th.lbl.ind3{padding-left:58px;color:var(--ink2)}
+  table.bs td.val{text-align:right;white-space:nowrap;width:1%;}
+  table.bs tr.sec th{background:var(--line2);font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.5px;color:var(--accent);
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:6px 8px}
+  table.bs tr.sub th{font-weight:650;border-top:1px solid var(--line2);padding-top:6px;padding-bottom:6px}
+  table.bs tr.tot th{font-weight:700;border-top:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink);padding:7px 8px;background:#fbfcfe}
+  table.bs tr.grand th{font-weight:800;font-size:14.5px;color:#fff;background:var(--accent);border:0;padding:9px 8px}
+  table.bs tr.grand td{font-weight:800;font-size:14.5px;color:#fff;background:var(--accent);border:0;padding:9px 8px}
+  table.bs tr.rule td,table.bs tr.rule th{border-bottom:1.5px solid var(--ink)}
+  table.bs tr.sub td{font-weight:650;border-top:1px solid var(--line2);padding-top:6px;padding-bottom:6px}
+  table.bs tr.tot td{font-weight:700;border-top:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink);padding:7px 8px;background:#fbfcfe}
+
+  .amt{font-variant-numeric:tabular-nums;font-feature-settings:"tnum"}
+  input.num{font-family:inherit;font-size:13.5px;text-align:right;width:140px;padding:4px 8px;border:1px solid transparent;
+    background:#fffdf5;border-bottom:1px solid var(--line);border-radius:4px;font-variant-numeric:tabular-nums}
+  input.num:hover{border-color:#c9d4e0;background:#fffef8}
+  input.num:focus{outline:2px solid var(--accent);outline-offset:-1px;background:#fff;border-color:var(--accent)}
+  input.num:disabled,input.num[readonly]{background:transparent;border-bottom-color:transparent;color:var(--ink)}
+  input.num.neg{color:var(--bad)}
+  .hintline{font-size:11.5px;color:var(--hint);padding:0 8px 6px}
+
+  .bs2{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start}
+  @media (max-width:900px){.bs2{grid-template-columns:1fr}}
+
+  /* ---------- Check banner ---------- */
+  .banner{border-radius:8px;padding:12px 15px;margin:16px 0 0;display:flex;gap:12px;align-items:flex-start;font-size:13.5px}
+  .banner.ok{background:var(--ok-bg);border:1px solid #b6e0c8;color:#145c37}
+  .banner.bad{background:var(--bad-bg);border:1px solid #f0bdb9;color:#8c1d17}
+  .banner.idle{background:var(--amber-bg);border:1px solid #e8d08a;color:#6b4d00}
+  .banner .ico{font-size:17px;line-height:1.2}
+  .banner b{display:block;margin-bottom:2px}
+  .banner ul{margin:6px 0 0;padding-left:20px}
+
+  /* ---------- Stat strip ---------- */
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:12px;margin-top:16px}
+  .stat{border:1px solid var(--line);border-radius:8px;padding:10px 12px;background:#fbfcfe}
+  .stat .k{font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--hint);font-weight:650}
+  .stat .v{font-size:17px;font-weight:700;margin-top:3px;font-variant-numeric:tabular-nums}
+
+  /* ---------- Register ---------- */
+  table.reg{width:100%;border-collapse:collapse;font-size:13px;table-layout:fixed}
+  table.reg th{background:var(--line2);font-size:11px;text-transform:uppercase;letter-spacing:.3px;color:var(--accent);
+    padding:7px 6px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap}
+  table.reg td{padding:4px 4px;border-bottom:1px solid var(--line2);vertical-align:middle}
+  table.reg input[type=text],table.reg select{font-family:inherit;font-size:13px;padding:5px 6px;border:1px solid var(--line);border-radius:4px;width:100%}
+  table.reg input.num{width:100%;min-width:88px;background:#fffdf5}
+  table.reg td.r{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+  .reg-desc{width:20%}.reg-cat{width:17%}.reg-cls{width:22%}.reg-num{width:13%}.reg-nbv{width:11%}.reg-del{width:30px}
+  .xbtn{border:1px solid var(--line);background:#fff;color:var(--bad);border-radius:4px;width:26px;height:26px;cursor:pointer;font-size:15px;line-height:1}
+  .xbtn:hover{background:var(--bad-bg)}
+  .recon{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:14px}
+  .rc{border:1px solid var(--line);border-radius:8px;padding:11px 13px;font-size:13px}
+  .rc.pass{background:var(--ok-bg);border-color:#b6e0c8}
+  .rc.fail{background:var(--bad-bg);border-color:#f0bdb9}
+  .rc .k{font-size:11px;text-transform:uppercase;letter-spacing:.4px;color:var(--ink2);font-weight:650}
+  .rc .v{font-weight:700;margin-top:2px}
+
+  /* ---------- Guidance ---------- */
+  .guide h3{font-size:15px;color:var(--accent);margin:22px 0 8px;padding-bottom:5px;border-bottom:2px solid var(--line2)}
+  .guide h3:first-child{margin-top:0}
+  .guide p,.guide li{font-size:13.5px;color:var(--ink2)}
+  .guide ul,.guide ol{margin:6px 0 12px;padding-left:22px}
+  .guide li{margin:4px 0}
+  .guide a{color:var(--accent);font-weight:600}
+  table.ref{width:100%;border-collapse:collapse;font-size:13px;margin:8px 0 14px}
+  table.ref th{background:var(--line2);text-align:left;padding:8px 10px;font-size:11.5px;text-transform:uppercase;
+    letter-spacing:.4px;color:var(--accent);border-bottom:1px solid var(--line)}
+  table.ref td{padding:7px 10px;border-bottom:1px solid var(--line2);color:var(--ink2)}
+  table.ref td:first-child{font-weight:650;color:var(--ink);white-space:nowrap}
+  .ck{display:flex;gap:9px;align-items:flex-start;margin:7px 0;font-size:13.5px;color:var(--ink2)}
+  .ck input{margin-top:3px;accent-color:var(--accent);width:15px;height:15px;flex:none}
+  .callout{border-left:4px solid var(--amber);background:var(--amber-bg);padding:11px 14px;border-radius:0 6px 6px 0;margin:12px 0;font-size:13.5px;color:#5c4300}
+  .callout b{color:#4a3500}
+
+  details.qs{border:1px solid var(--line);border-radius:8px;margin-bottom:18px;background:#fbfcfe}
+  details.qs summary{cursor:pointer;padding:11px 15px;font-weight:650;font-size:13.5px;color:var(--accent);list-style:none;display:flex;gap:9px;align-items:center}
+  details.qs summary::-webkit-details-marker{display:none}
+  details.qs summary::before{content:"\25B8";font-size:12px;transition:transform .15s;display:inline-block}
+  details.qs[open] summary::before{transform:rotate(90deg)}
+  details.qs .qs-body{padding:0 15px 15px;font-size:13.5px;color:var(--ink2)}
+  details.qs .qs-body ol{padding-left:20px;margin:6px 0}
+
+  textarea.notes{width:100%;min-height:110px;font-family:inherit;font-size:13.5px;padding:9px;border:1px solid var(--line);border-radius:6px;resize:vertical}
+  .chkrow{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink2);margin-top:8px}
+  .chkrow input{accent-color:var(--accent);width:15px;height:15px}
+  .muted{color:var(--hint);font-size:12px}
+  .foot{margin-top:26px;font-size:11.5px;color:var(--hint);border-top:1px solid var(--line);padding-top:12px}
+  tr.memo th{font-size:12px;font-style:italic;font-weight:450;color:var(--hint);padding-top:2px;padding-bottom:4px}
+  tr.memo td{font-size:12px;font-style:italic;color:var(--hint);padding-top:2px;padding-bottom:4px}
+  .rf{display:none;font-size:10.5px;font-weight:700;color:var(--accent);background:var(--line2);border-radius:3px;
+    padding:1px 5px;margin-right:7px;letter-spacing:.3px;vertical-align:1px}
+  body.show-refs .rf{display:inline-block}
+
+  /* ---------- Print ---------- */
+  .pv{display:none}
+  @media print{
+    @page{size:A4 portrait;margin:11mm 12mm}
+    body{background:#fff;font-size:9.6pt;line-height:1.35}
+    .toolbar,.no-print,.tabs,.masthead{display:none !important}
+    .wrap{max-width:none;padding:0}
+    .panel{border:0;padding:0}
+    .card{break-inside:avoid;page-break-inside:avoid;border:1px solid #999}
+    .card > h3{background:#eee !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    table.bs tr.grand th,table.bs tr.grand td{background:#1f4e79 !important;color:#fff !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    table.bs tr.tot th,table.bs tr.tot td{background:#f4f4f4 !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    table.bs tr.sec th{background:#e8e8e8 !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    input.num{display:none !important}
+    .pv{display:inline !important;font-variant-numeric:tabular-nums}
+    .print-only{display:block !important}
+    #panel-register{page-break-before:always}
+    .banner{border:1px solid #999 !important;background:#fff !important;color:#000 !important}
+    .stats{grid-template-columns:repeat(4,1fr)}
+    .stat{border:1px solid #999}
+    .grid{grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:6px 14px}
+    .field input,.field select{font-size:8.6pt;padding:1px 3px}
+    .field label{font-size:7pt}
+    table.reg{font-size:8.4pt}
+    table.reg input[type=text],table.reg select{font-size:8.4pt;padding:1px 3px}
+    table.reg th{font-size:7pt;padding:4px 3px}
+    a{text-decoration:none;color:#000}
+  }
+  .print-only{display:none}
+</style>
+</head>
+<body>
+
+<header class="masthead no-print">
+  <div class="wrap">
+    <div class="mh-top">
+      <div class="mh-title">
+        <span class="mh-badge">Uganda Revenue Authority</span>
+        <h1 style="margin-top:8px">Balance Sheet &mdash; Blank Working Template</h1>
+        <p>Statement of assets and liabilities for an <strong>individual carrying on business</strong> (sole trader / self-employed).
+           Line items follow the URA income tax return taxonomy (Section&nbsp;E). Enter your figures in the yellow boxes &mdash; subtotals and the balance check calculate themselves.</p>
+      </div>
+      <div style="text-align:right;font-size:12.5px;opacity:.9;min-width:200px">
+        <div><strong>Form reference</strong></div>
+        <div style="font-size:15px;font-weight:700;letter-spacing:.4px">DT-2001</div>
+        <div style="margin-top:6px"><strong>Amounts in</strong></div>
+        <div id="mhCur" style="font-size:15px;font-weight:700;letter-spacing:.4px">UGX</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="toolbar no-print">
+  <div class="wrap">
+    <button class="btn" id="btnPrint" type="button">Print / Save as PDF</button>
+    <button class="btn" id="btnCsv" type="button">Export balance sheet CSV</button>
+    <button class="btn" id="btnJson" type="button">Back up as JSON</button>
+    <button class="btn" id="btnImport" type="button">Restore from JSON</button>
+    <button class="btn ghost" id="btnClear" type="button">Clear all</button>
+    <label class="btn ghost" style="display:inline-flex;align-items:center;gap:7px;cursor:pointer;margin:0">
+      <input type="checkbox" id="btnRefs" style="accent-color:#7ee2a8;width:15px;height:15px;margin:0"> URA line refs
+    </label>
+    <input type="file" id="fileJson" accept="application/json,.json" style="display:none">
+    <div class="save-state"><span class="dot" id="dot"></span><span id="saveMsg">Ready</span></div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <nav class="tabs no-print" role="tablist">
+    <button class="tab" role="tab" aria-selected="true" data-tab="bs">Balance Sheet</button>
+    <button class="tab" role="tab" aria-selected="false" data-tab="register">Assets Register</button>
+    <button class="tab" role="tab" aria-selected="false" data-tab="guide">Checklist &amp; Guidance</button>
+  </nav>
+
+  <!-- ============================ PANEL: BALANCE SHEET ============================ -->
+  <section class="panel" id="panel-bs" role="tabpanel">
+
+    <details class="qs no-print" open>
+      <summary>How to use this template</summary>
+      <div class="qs-body">
+        <ol>
+          <li>Fill in the <strong>taxpayer details</strong> below &mdash; these print on the sheet.</li>
+          <li>Work down the <strong>Assets</strong> column, then the <strong>Liabilities &amp; Owner&rsquo;s Funds</strong> column. Leave anything you don&rsquo;t have as blank &mdash; blank is treated as zero.</li>
+          <li>Check the <strong>balance check</strong> panel that appears under the sheet. Total assets must equal total liabilities plus owner&rsquo;s funds. A difference means something is missing or mis-stated &mdash; the panel lists the usual causes.</li>
+          <li>Use the <strong>Assets Register</strong> tab for the itemised fixed-asset list URA asks you to keep, then print or export.</li>
+        </ol>
+        <p style="margin-bottom:0"><strong>Important:</strong> this is a working paper, not the URA return form. The official <strong>DT-2001</strong> Excel template must still be downloaded from the URA portal, completed, validated and uploaded. Transfer your figures from here into that template. Nothing is sent anywhere &mdash; your figures stay in this browser.</p>
+      </div>
+    </details>
+
+    <!-- Taxpayer details -->
+    <div class="card">
+      <h3>Taxpayer &amp; period details</h3>
+      <div class="body">
+        <div class="grid">
+          <div class="field"><label for="m_biz">Business / trading name</label><input id="m_biz" data-f="m_biz" type="text" placeholder="e.g. Namukasa Agro Supplies"></div>
+          <div class="field"><label for="m_owner">Owner&rsquo;s full name</label><input id="m_owner" data-f="m_owner" type="text"></div>
+          <div class="field"><label for="m_tin">TIN</label><input id="m_tin" data-f="m_tin" type="text" placeholder="e.g. 0012345678"></div>
+          <div class="field"><label for="m_nature">Nature of business</label><input id="m_nature" data-f="m_nature" type="text" placeholder="e.g. Retail trade in building materials"></div>
+          <div class="field"><label for="m_from">Year of income &mdash; from</label><input id="m_from" data-f="m_from" type="date"></div>
+          <div class="field"><label for="m_to">Year of income &mdash; to</label><input id="m_to" data-f="m_to" type="date"></div>
+          <div class="field"><label for="m_acct">Accounting / year-end date</label><input id="m_acct" data-f="m_acct" type="date"></div>
+          <div class="field"><label for="m_cur">Reporting currency</label>
+            <select id="m_cur" data-f="m_cur">
+              <option value="UGX">UGX &mdash; Ugandan shillings</option>
+              <option value="USD">USD &mdash; US dollars</option>
+              <option value="GBP">GBP &mdash; pounds sterling</option>
+              <option value="EUR">EUR &mdash; euros</option>
+              <option value="KES">KES &mdash; Kenyan shillings</option>
+              <option value="RWF">RWF &mdash; Rwandan francs</option>
+            </select></div>
+          <div class="field"><label for="m_prep">Prepared by</label><input id="m_prep" data-f="m_prep" type="text"></div>
+          <div class="field"><label for="m_prepdate">Date prepared</label><input id="m_prepdate" data-f="m_prepdate" type="date"></div>
+        </div>
+        <div class="chkrow no-print">
+          <input type="checkbox" id="m_audit" data-f="m_audit">
+          <label for="m_audit" style="cursor:pointer">Turnover was UGX 500,000,000 or more &mdash; audited financial statements prepared by an ICPAU-registered accountant are required to accompany the return (Tax Procedures Code Act, s.16(5)).</label>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin:4px 0 14px" class="print-only">
+      <div style="font-weight:800;font-size:13pt">STATEMENT OF ASSETS AND LIABILITIES</div>
+      <div style="font-size:10pt" id="printSub">&nbsp;</div>
+    </div>
+
+    <!-- The sheet -->
+    <div class="bs2">
+
+      <!-- ======= ASSETS ======= -->
+      <div class="card">
+        <h3>Assets</h3>
+        <table class="bs">
+          <tbody>
+
+            <tr class="sec"><th colspan="2">1. Fixed assets (at cost)</th></tr>
+            <tr data-ref="E1a"><th scope="row" class="lbl ind">Land and buildings</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="fa_land" aria-label="Land and buildings"></td></tr>
+            <tr data-ref="E1b"><th scope="row" class="lbl ind">Plant and machinery</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="fa_plant" aria-label="Plant and machinery"></td></tr>
+            <tr data-ref="E1c"><th scope="row" class="lbl ind">Motor vehicles</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="fa_vehicle" aria-label="Motor vehicles"></td></tr>
+            <tr data-ref="E1d"><th scope="row" class="lbl ind">Furniture and fixtures</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="fa_furniture" aria-label="Furniture and fixtures"></td></tr>
+            <tr data-ref="E1e"><th scope="row" class="lbl ind">Other assets</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="fa_other" aria-label="Other assets"></td></tr>
+            <tr data-ref="E1f"><th scope="row" class="lbl ind">Intangible assets</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="fa_intangible" aria-label="Intangible assets"></td></tr>
+            <tr data-ref="E1g" class="sub"><th scope="row" class="lbl">Total cost of fixed assets</th><td class="val amt" data-c="fa_cost"></td></tr>
+            <tr data-ref="E1h"><th scope="row" class="lbl ind">Less: accumulated depreciation</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="fa_accum" aria-label="Less accumulated depreciation"></td></tr>
+            <tr data-ref="E1i" class="tot"><th scope="row" class="lbl">Net book value of fixed assets</th><td class="val amt" data-c="fa_nbv"></td></tr>
+
+            <tr class="sec"><th colspan="2">2. Investments</th></tr>
+            <tr data-ref="E2a"><th scope="row" class="lbl ind">Shares</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="inv_shares" aria-label="Investments in shares"></td></tr>
+            <tr data-ref="E2b"><th scope="row" class="lbl ind">Debentures</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="inv_debenture" aria-label="Investments in debentures"></td></tr>
+            <tr data-ref="E2c"><th scope="row" class="lbl ind">Fixed deposits</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="inv_fixeddep" aria-label="Investments in fixed deposits"></td></tr>
+            <tr data-ref="E2d"><th scope="row" class="lbl ind">Government securities</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="inv_govt" aria-label="Investments in government securities"></td></tr>
+            <tr data-ref="E2e"><th scope="row" class="lbl ind">Other investments</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="inv_otherinv" aria-label="Other investments"></td></tr>
+            <tr data-ref="E2f" class="tot"><th scope="row" class="lbl">Total investments</th><td class="val amt" data-c="inv_total"></td></tr>
+
+            <tr class="sec"><th colspan="2">3. Current assets</th></tr>
+            <tr class="sub"><th scope="row" class="lbl ind">Stock / inventory</th><td class="val"></td></tr>
+            <tr data-ref="E3aia"><th scope="row" class="lbl ind2">Stores and consumables, incl. packing materials</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="s_stores" aria-label="Stores and consumables"></td></tr>
+            <tr data-ref="E3aib"><th scope="row" class="lbl ind2">Raw materials</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="s_raw" aria-label="Raw materials"></td></tr>
+            <tr data-ref="E3aic"><th scope="row" class="lbl ind2">Work in progress</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="s_wip" aria-label="Work in progress"></td></tr>
+            <tr data-ref="E3aid"><th scope="row" class="lbl ind2">Finished goods / trade goods</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="s_finished" aria-label="Finished goods"></td></tr>
+            <tr data-ref="E3aie" class="sub"><th scope="row" class="lbl ind2">Total inventory</th><td class="val amt" data-c="ca_inv"></td></tr>
+
+            <tr class="sub"><th scope="row" class="lbl ind">Receivables</th><td class="val"></td></tr>
+            <tr data-ref="E3aiia"><th scope="row" class="lbl ind2">Trade receivables (debtors)</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="r_debtors" aria-label="Trade receivables"></td></tr>
+            <tr data-ref="E3aiib"><th scope="row" class="lbl ind2">Prepayments</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="r_prepay" aria-label="Prepayments"></td></tr>
+            <tr data-ref="E3aiic"><th scope="row" class="lbl ind2">Other receivables</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="r_other" aria-label="Other receivables"></td></tr>
+            <tr data-ref="E3aiid" class="sub"><th scope="row" class="lbl ind2">Total receivables</th><td class="val amt" data-c="ca_rec"></td></tr>
+
+            <tr class="sub"><th scope="row" class="lbl ind">Balances available</th><td class="val"></td></tr>
+            <tr data-ref="E3aiiia"><th scope="row" class="lbl ind2">Bank balance</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="b_bank" aria-label="Bank balance"></td></tr>
+            <tr data-ref="E3aiiib"><th scope="row" class="lbl ind2">Cash at hand</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="b_cash" aria-label="Cash at hand"></td></tr>
+            <tr data-ref="E3aiiic" class="sub"><th scope="row" class="lbl ind2">Total balance available</th><td class="val amt" data-c="ca_bal"></td></tr>
+
+            <tr data-ref="E3aiv"><th scope="row" class="lbl ind">Other current assets</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="ca_other" aria-label="Other current assets"></td></tr>
+            <tr data-ref="E3av" class="sub"><th scope="row" class="lbl ind">Sub-total of current assets (stock, receivables, balances and other)</th><td class="val amt" data-c="ca_working"></td></tr>
+
+            <tr class="sub"><th scope="row" class="lbl ind">Loans and advances</th><td class="val"></td></tr>
+            <tr data-ref="E3bi"><th scope="row" class="lbl ind2">Loans to related parties</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="la_related" aria-label="Loans to related parties"></td></tr>
+            <tr data-ref="E3bii"><th scope="row" class="lbl ind2">Advances to staff</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="la_staff" aria-label="Advances to staff"></td></tr>
+            <tr data-ref="E3biii"><th scope="row" class="lbl ind2">Deposits</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="la_deposits" aria-label="Deposits"></td></tr>
+            <tr data-ref="E3biv"><th scope="row" class="lbl ind2">Loans and advances</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="la_loans" aria-label="Loans and advances"></td></tr>
+            <tr data-ref="E3bv"><th scope="row" class="lbl ind2">Balance with URA</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="la_ura" aria-label="Balance with URA"></td></tr>
+            <tr data-ref="E3bvi" class="sub"><th scope="row" class="lbl ind2">Total loans and advances</th><td class="val amt" data-c="la_total"></td></tr>
+            <tr data-ref="E3c" class="tot"><th scope="row" class="lbl">Total current assets (including loans and advances)</th><td class="val amt" data-c="ca_total"></td></tr>
+
+            <tr class="sec"><th colspan="2">4. Deferred tax asset</th></tr>
+            <tr data-ref="E4"><th scope="row" class="lbl ind">Deferred tax asset</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="dta" aria-label="Deferred tax asset"></td></tr>
+
+            <tr data-ref="E5" class="grand"><th scope="row">TOTAL ASSETS</th><td class="amt" data-c="total_assets"></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- ======= LIABILITIES & EQUITY ======= -->
+      <div>
+        <div class="card">
+          <h3>Liabilities &amp; owner&rsquo;s funds</h3>
+          <table class="bs">
+            <tbody>
+
+              <tr class="sec"><th colspan="2">5. Current liabilities</th></tr>
+              <tr data-ref="E3dia"><th scope="row" class="lbl ind">Trade / sundry creditors</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="cl_creditors" aria-label="Trade and sundry creditors"></td></tr>
+              <tr data-ref="E3dib"><th scope="row" class="lbl ind">Liability for leased assets</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="cl_lease" aria-label="Liability for leased assets"></td></tr>
+              <tr data-ref="E3dic"><th scope="row" class="lbl ind">Accrued interest</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="cl_accrued" aria-label="Accrued interest"></td></tr>
+              <tr data-ref="E3did"><th scope="row" class="lbl ind">Other current liabilities</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="cl_other" aria-label="Other current liabilities"></td></tr>
+              <tr data-ref="E3die"><th scope="row" class="lbl ind">Unpaid matured debts</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="cl_matured" aria-label="Unpaid matured debts"></td></tr>
+              <tr data-ref="E3dif" class="sub"><th scope="row" class="lbl">Total current liabilities</th><td class="val amt" data-c="cl_total"></td></tr>
+
+              <tr class="sec"><th colspan="2">6. Provisions</th></tr>
+              <tr data-ref="E3diia"><th scope="row" class="lbl ind">Provision for income tax</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="pr_tax" aria-label="Provision for income tax"></td></tr>
+              <tr data-ref="E3diib"><th scope="row" class="lbl ind">Provision for bad and doubtful debts</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="pr_bad" aria-label="Provision for bad and doubtful debts"></td></tr>
+              <tr data-ref="E3diic"><th scope="row" class="lbl ind">Other provisions</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="pr_other" aria-label="Other provisions"></td></tr>
+              <tr data-ref="E3diie" class="sub"><th scope="row" class="lbl">Total provisions</th><td class="val amt" data-c="pr_total"></td></tr>
+              <tr data-ref="E3d" class="tot"><th scope="row" class="lbl">Total current liabilities and provisions</th><td class="val amt" data-c="cl_all"></td></tr>
+
+              <tr class="sec"><th colspan="2">7. Loan funds (long term)</th></tr>
+              <tr class="sub"><th scope="row" class="lbl ind">Secured</th><td class="val"></td></tr>
+              <tr data-ref="E7ai"><th scope="row" class="lbl ind2">Loan from financial institutions</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="ls_bank" aria-label="Secured loan from financial institutions"></td></tr>
+              <tr data-ref="E7aii"><th scope="row" class="lbl ind2">Other secured loan</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="ls_other" aria-label="Other secured loan"></td></tr>
+              <tr data-ref="E7aiii"><th scope="row" class="lbl ind2">Debt securities issued</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="ls_debt" aria-label="Debt securities issued"></td></tr>
+              <tr data-ref="E7aiv"><th scope="row" class="lbl ind2">Due to related parties</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="ls_related" aria-label="Secured loan due to related parties"></td></tr>
+              <tr data-ref="E7av" class="sub"><th scope="row" class="lbl ind2">Total secured liabilities</th><td class="val amt" data-c="ln_sec_total"></td></tr>
+
+              <tr class="sub"><th scope="row" class="lbl ind">Unsecured</th><td class="val"></td></tr>
+              <tr data-ref="E7bi"><th scope="row" class="lbl ind2">Loan from financial institutions</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="lu_bank" aria-label="Unsecured loan from financial institutions"></td></tr>
+              <tr data-ref="E7bii"><th scope="row" class="lbl ind2">Other unsecured loan</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="lu_other" aria-label="Other unsecured loan"></td></tr>
+              <tr data-ref="E7biii"><th scope="row" class="lbl ind2">Other loans</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="lu_creditor" aria-label="Other unsecured loans"></td></tr>
+              <tr data-ref="E7biv"><th scope="row" class="lbl ind2">Due to related parties</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="lu_related" aria-label="Unsecured loan due to related parties"></td></tr>
+              <tr data-ref="E7bv" class="sub"><th scope="row" class="lbl ind2">Total unsecured liabilities</th><td class="val amt" data-c="ln_unsec_total"></td></tr>
+              <tr data-ref="E7c" class="tot"><th scope="row" class="lbl">Total loan funds</th><td class="val amt" data-c="ln_total"></td></tr>
+
+              <tr class="sec"><th colspan="2">8. Deferred tax liability</th></tr>
+              <tr data-ref="E8"><th scope="row" class="lbl ind">Deferred tax liability</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="dtl" aria-label="Deferred tax liability"></td></tr>
+
+              <tr class="sec"><th colspan="2">9. Owner&rsquo;s funds</th></tr>
+              <tr data-ref="E9a"><th scope="row" class="lbl ind">Owner&rsquo;s capital at start of year (b/f)</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="eq_open" aria-label="Opening capital"></td></tr>
+              <tr data-ref="E9b"><th scope="row" class="lbl ind">Add: net profit for the year (after tax)</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="eq_profit" aria-label="Net profit for the year"></td></tr>
+              <tr data-ref="E9c"><th scope="row" class="lbl ind">Add: additional capital introduced</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="eq_capin" aria-label="Additional capital introduced"></td></tr>
+              <tr data-ref="E9d"><th scope="row" class="lbl ind">Less: drawings during the year</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="eq_draw" aria-label="Drawings during the year"></td></tr>
+              <tr class="no-print"><th scope="row" class="lbl ind"><label for="eq_ovr_on" style="cursor:pointer">Override &mdash; enter the closing capital directly</label></th>
+                  <td class="val"><input type="checkbox" id="eq_ovr_on" data-f="eq_ovr_on" style="accent-color:var(--accent);width:16px;height:16px"></td></tr>
+              <tr class="no-print" id="rowOverride" style="display:none"><th scope="row" class="lbl ind2">Closing capital entered manually</th>
+                  <td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="eq_override" aria-label="Closing capital entered manually"></td></tr>
+              <tr data-ref="E9e" class="memo"><th scope="row" class="lbl ind2">Memo: capital per the movement above</th><td class="val amt" data-c="eq_auto"></td></tr>
+              <tr data-ref="E9f" class="tot"><th scope="row" class="lbl">Owner&rsquo;s funds at year end</th><td class="val amt" data-c="eq_closing"></td></tr>
+
+              <tr data-ref="E9g" class="tot"><th scope="row" class="lbl">Total equity &amp; long-term liabilities</th><td class="val amt" data-c="e9_total"></td></tr>
+
+              <tr data-ref="E9h" class="grand"><th scope="row">TOTAL LIABILITIES &amp; OWNER&rsquo;S FUNDS</th><td class="amt" data-c="total_le"></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Balance check -->
+    <div class="banner idle" id="banner">
+      <span class="ico" id="bannerIco">&#9679;</span>
+      <div style="flex:1">
+        <b id="bannerTitle">Balance check</b>
+        <div id="bannerBody">Enter your figures to see whether the statement balances.</div>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats">
+      <div class="stat"><div class="k">Total assets</div><div class="v amt" data-c="total_assets">&nbsp;</div></div>
+      <div class="stat"><div class="k">Total liabilities</div><div class="v amt" data-c="total_liab">&nbsp;</div></div>
+      <div class="stat"><div class="k">Net current assets</div><div class="v amt" data-c="nca">&nbsp;</div></div>
+      <div class="stat"><div class="k">Current ratio</div><div class="v" data-c="current_ratio" data-cfmt="ratio">&mdash;</div></div>
+      <div class="stat"><div class="k">Gearing (debt / capital)</div><div class="v" data-c="gearing" data-cfmt="ratio">&mdash;</div></div>
+      <div class="stat"><div class="k">Balance difference</div><div class="v amt" data-c="check">&nbsp;</div></div>
+    </div>
+
+    <div class="card" style="margin-top:18px">
+      <h3>Notes, adjustments and reconciliations</h3>
+      <div class="body">
+        <textarea class="notes" data-f="m_notes" placeholder="Record anything you need to explain to a tax officer: assets pledged as security, assets brought in by valuation, amounts owed to URA, goods on hire purchase, bad debts written off, etc."></textarea>
+        <div class="muted" style="margin-top:6px">This note prints on the same page as the balance sheet.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ PANEL: REGISTER ============================ -->
+  <section class="panel" id="panel-register" role="tabpanel" hidden>
+    <div class="card">
+      <h3>Fixed asset register</h3>
+      <div class="body">
+        <p class="muted" style="margin-top:0">URA expects an assets register to support the fixed asset figures on the balance sheet. List each item here &mdash; the totals are reconciled against the balance sheet automatically.</p>
+        <div style="overflow-x:auto">
+        <table class="reg" id="regTable">
+          <thead>
+            <tr>
+              <th class="reg-desc">Description of asset</th>
+              <th class="reg-cat">URA balance sheet category</th>
+              <th class="reg-cls">Tax depreciation class (ITA Sch.7)</th>
+              <th class="reg-num" style="text-align:right" id="regHdrCost">Cost</th>
+              <th class="reg-num" style="text-align:right" id="regHdrAcc">Accum. depreciation</th>
+              <th class="reg-nbv" style="text-align:right">Net book value</th>
+              <th class="reg-del"></th>
+            </tr>
+          </thead>
+          <tbody id="regBody"></tbody>
+          <tfoot>
+            <tr>
+              <th colspan="3" style="text-align:right;font-size:13px">TOTALS</th>
+              <th class="r" id="regCost" style="font-size:13.5px">&mdash;</th>
+              <th class="r" id="regAcc" style="font-size:13.5px">&mdash;</th>
+              <th class="r" id="regNbv" style="font-size:13.5px">&mdash;</th>
+              <th></th>
+            </tr>
+          </tfoot>
+        </table>
+        </div>
+        <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
+          <button class="btn" type="button" id="btnAddRow" style="background:var(--accent);color:#fff">+ Add asset</button>
+          <button class="btn" type="button" id="btnRegCsv">Export register CSV</button>
+          <span class="muted" style="align-self:center" id="regCount"></span>
+        </div>
+
+        <div class="recon">
+          <div class="rc" id="rcCost"><div class="k">Register cost vs balance sheet</div><div class="v" id="rcCostV">&mdash;</div></div>
+          <div class="rc" id="rcAcc"><div class="k">Register accum. depreciation vs balance sheet</div><div class="v" id="rcAccV">&mdash;</div></div>
+          <div class="rc" id="rcNbv"><div class="k">Register net book value vs balance sheet</div><div class="v" id="rcNbvV">&mdash;</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ PANEL: GUIDE ============================ -->
+  <section class="panel" id="panel-guide" role="tabpanel" hidden>
+    <div class="guide">
+
+      <h3>What this form is for</h3>
+      <p>Uganda&rsquo;s Income Tax Act, section 118(5) requires that a return of income by a taxpayer carrying on business <em>shall be accompanied by a statement of income and expenditure and a statement of the assets and liabilities of the taxpayer</em>. For an individual trading as a sole proprietor that statement is filed on <strong>form DT-2001 (Income Tax Return for Individual with Business Income)</strong>. This template is a working paper for that statement: it uses the same line-item taxonomy as URA&rsquo;s own balance sheet (Section E of the income tax return), calculates the subtotals for you, and tells you straight away whether the statement balances.</p>
+
+      <div class="callout"><b>It is not the return.</b> You still have to download the official DT-2001 Excel template from the URA portal, type your figures in, validate and upload. Use this sheet to work out your numbers and as the supporting statement that accompanies the return.</div>
+
+      <h3>Filing checklist</h3>
+      <label class="ck"><input type="checkbox"><span>Download the <strong>DT-2001</strong> template from the URA portal: <a href="https://ura.go.ug/en/download/dt-2001-income-tax-return-form-for-individual-with-business-income/" target="_blank" rel="noopener">ura.go.ug &rarr; Return Forms</a> (or via e-Services &rarr; e-Returns &rarr; select the return period).</span></label>
+      <label class="ck"><input type="checkbox"><span>Open it and <strong>enable macros / content</strong>. URA warns that you must not cut and paste values into the sheet &mdash; type them into the cells instead.</span></label>
+      <label class="ck"><input type="checkbox"><span>Complete the taxpayer details, income statement, and this statement of assets and liabilities. Click <strong>VALIDATE</strong> on the last page and fix anything on the error sheet.</span></label>
+      <label class="ck"><input type="checkbox"><span>Generate the upload file, return to the portal, log in again, and upload under <strong>e-Services &rarr; Return &rarr; File a return &rarr; Tax final</strong>. Do not rename the file.</span></label>
+      <label class="ck"><input type="checkbox"><span>Attach this balance sheet and the assets register to the return.</span></label>
+      <label class="ck"><input type="checkbox"><span>If annual turnover is <strong>UGX 500,000,000 or more</strong>, attach audited financial statements prepared by a member of the Institute of Certified Public Accountants of Uganda (Tax Procedures Code Act, s.16(5)).</span></label>
+      <label class="ck"><input type="checkbox"><span>Pay the tax due by the same filing deadline. Late filing attracts a penalty of <strong>UGX 200,000 or 2% of the tax liability, whichever is higher</strong>.</span></label>
+      <label class="ck"><input type="checkbox"><span>Keep all supporting records for <strong>5 years</strong> after the end of the tax period (Tax Procedures Code Act).</span></label>
+
+      <h3>Key dates</h3>
+      <table class="ref">
+        <tr><th>Return</th><th>Form</th><th>Due date</th></tr>
+        <tr><td>Provisional income tax (individual)</td><td>DT-2003</td><td>Within 3 months of the start of the year of income &mdash; normally <strong>30 September</strong></td></tr>
+        <tr><td>Final income tax (individual with business income)</td><td>DT-2001</td><td>Within 6 months after the year of income ends &mdash; <strong>30 June</strong> for a calendar year, <strong>31 December</strong> for a 1 July&ndash;30 June year</td></tr>
+        <tr><td>Amended provisional return</td><td>DT-2003</td><td>By 30 June</td></tr>
+      </table>
+
+      <h3>Tax depreciation classes &mdash; ITA Schedule 7 Part I</h3>
+      <p>Use these rates to work out the accumulated depreciation figure on the balance sheet and to cross-check the capital allowance claimed in your income statement. The deduction is computed on the written-down value of each pool: <em>written-down value &times; rate</em> (ITA s.27).</p>
+      <table class="ref">
+        <tr><th>Class</th><th>Assets included</th><th>Rate</th></tr>
+        <tr><td>Class 1</td><td>Computers and data handling equipment</td><td>40%</td></tr>
+        <tr><td>Class 2</td><td>Plant and machinery used in farming, manufacturing and mining</td><td>30%</td></tr>
+        <tr><td>Class 3</td><td>Automobiles; buses, minibuses, goods vehicles; construction and earth moving equipment; specialised trucks, tractors, trailers; rail cars and locomotives; vessels, barges, tugs and similar water transport; aircraft; specialised public utility plant and equipment; office furniture, fixtures and equipment; any depreciable asset not in another class</td><td>20%</td></tr>
+        <tr><td>Industrial buildings</td><td>Industrial buildings, approved hotels, approved hospitals, approved commercial buildings &mdash; straight line on capital expenditure, apportioned for days of use (ITA s.28)</td><td>5%</td></tr>
+      </table>
+      <div class="callout"><b>Check before you rely on these.</b> Depreciable assets were reduced from four classes to three with effect from 1 July 2021, and the initial allowances previously available on new business assets and industrial buildings were removed from 1 July 2023. Confirm the current position against the Income Tax Act as amended, or with your tax adviser, before you finalise the figures.</div>
+
+      <h3>If the statement does not balance</h3>
+      <p>The check panel under the sheet shows the difference. In practice it is nearly always one of these:</p>
+      <ul>
+        <li><strong>Profit for the year is missing or wrong.</strong> Net profit must come from your income statement, after tax, and must agree with it exactly.</li>
+        <li><strong>Drawings are understated</strong> &mdash; money taken out for personal use is a drawing, not an expense, and reduces capital rather than profit.</li>
+        <li><strong>Capital introduced is missing</strong> &mdash; money or assets brought in during the year increases capital but is not income.</li>
+        <li><strong>A liability is missing</strong> &mdash; unpaid VAT, PAYE, NSSF, a tax provision, a loan instalment, or an amount owing to URA (the &ldquo;Balance with URA&rdquo; line).</li>
+        <li><strong>An asset is missing</strong> &mdash; stock counted but not valued, or a fixed asset bought on credit that is also unrecorded in creditors.</li>
+        <li><strong>Accumulated depreciation is out of step</strong> with the capital allowance claimed in the income statement.</li>
+        <li><strong>Goods on hire purchase</strong> are sometimes only half recognised &mdash; the asset and the outstanding hire purchase liability both need to appear.</li>
+      </ul>
+
+      <h3>Helpful ratios</h3>
+      <p>URA officers commonly look at these when reviewing a return:</p>
+      <ul>
+        <li><strong>Current ratio</strong> = total current assets &divide; total current liabilities and provisions. Below 1.0 means short-term obligations exceed short-term resources &mdash; expect a question.</li>
+        <li><strong>Gearing</strong> = loan funds plus deferred tax liability &divide; owner&rsquo;s funds. High gearing next to a thin profit is worth explaining.</li>
+        <li><strong>Net current assets</strong> should be positive for a going concern.</li>
+      </ul>
+
+      <h3>Record keeping</h3>
+      <p>Keep for five years after the end of the tax period: sales invoices and EFRIS e-invoices/e-receipts, purchase invoices, bank and mobile money statements, payroll records, the assets register, the stock records, and the filed return with any URA assessment.</p>
+
+      <h3>Cross-reference to URA form Section E</h3>
+      <p>The URA income tax return groups the balance sheet under Section E. This template follows the same line order, so you can transfer figures line for line into the official Excel template. Switch on <strong>URA line refs</strong> in the toolbar to see the reference next to every caption on the sheet.</p>
+      <table class="ref">
+        <tr><th>This template</th><th>URA Section E reference</th></tr>
+        <tr><td>1. Fixed assets (at cost)</td><td>E) 1) a&ndash;f</td></tr>
+        <tr><td>Total cost of fixed assets</td><td>E) 1) g</td></tr>
+        <tr><td>Less: accumulated depreciation</td><td>E) 1) h</td></tr>
+        <tr><td>Net book value of fixed assets</td><td>E) 1) i</td></tr>
+        <tr><td>2. Investments</td><td>E) 2) a&ndash;e</td></tr>
+        <tr><td>Total investments</td><td>E) 2) f</td></tr>
+        <tr><td>3. Current assets &mdash; stock, receivables, balances, other</td><td>E) 3) a) i)&ndash;iv)</td></tr>
+        <tr><td>Loans and advances</td><td>E) 3) b) i&ndash;vi)</td></tr>
+        <tr><td>Total current assets</td><td>E) 3) c</td></tr>
+        <tr><td>5. Current liabilities</td><td>E) 3) d) i) a&ndash;e</td></tr>
+        <tr><td>6. Provisions</td><td>E) 3) d) ii) a&ndash;d</td></tr>
+        <tr><td>Total current liabilities and provisions</td><td>E) 3) d)</td></tr>
+        <tr><td>4. Deferred tax asset</td><td>E) 4</td></tr>
+        <tr><td><strong>TOTAL ASSETS</strong></td><td>E) 5</td></tr>
+        <tr><td>7. Loan funds &mdash; secured and unsecured</td><td>E) 7) a) i&ndash;v, b) i&ndash;v</td></tr>
+        <tr><td>Total loan funds</td><td>E) 7) c</td></tr>
+        <tr><td>8. Deferred tax liability</td><td>E) 8</td></tr>
+        <tr><td>9. Owner&rsquo;s funds (stands in for shareholders&rsquo; funds in E) 6)</td><td>E) 6) &mdash; adapted for a sole trader</td></tr>
+        <tr><td>Total equity and long-term liabilities</td><td>E) 9</td></tr>
+      </table>
+      <p class="muted">In the URA form for a non-individual, E) 6) is shareholders&rsquo; funds (share capital, reserves, retained earnings). A sole trader has no share capital, so section 9 here uses owner&rsquo;s capital instead: opening capital + net profit + capital introduced &minus; drawings. Company-only lines (share capital, capital and statutory reserves) have no equivalent for an individual and should be left blank in the return.</p>
+
+      <h3>Sources</h3>
+      <ul>
+        <li>Income Tax Act, Cap. 340 &mdash; s.118(5) (statement of assets and liabilities), s.27 (depreciation), s.28 (industrial buildings), Schedule 7 Part I (depreciation classes).</li>
+        <li>Tax Procedures Code Act &mdash; s.16(5) (audited financial statements) and record-keeping requirements.</li>
+        <li>URA return forms: DT-2001 (individual with business income), DT-2002 (non-individual), DT-2003 (provisional, individual), DT-2004 (provisional, non-individual), DT-2005 (partnership).</li>
+        <li>Line-item structure follows Section E of the URA non-individual income tax return, as documented in UNU-WIDER, <em>The Uganda Revenue Authority firm panel</em> (Technical Note 2022/2).</li>
+      </ul>
+      <p class="muted">This template is a working aid only. It is not tax advice and it is not a URA form. Figures entered here are not filed with anybody &mdash; they are stored only in this browser.</p>
+    </div>
+  </section>
+
+  <div class="foot">
+    Blank balance sheet template for URA individual income tax return (DT-2001) &mdash; prepared for use as a working paper and supporting statement of assets and liabilities. Not a URA form and not tax advice.
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ============================================================
+     Number formatting
+     ============================================================ */
+  var CUR = { code:"UGX", label:"UGX" };
+  function fmt(n){
+    if(n === null || n === undefined || !isFinite(n)) return "—";
+    var neg = n < 0, a = Math.abs(Math.round(n));
+    var s = String(a).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return (neg ? "(" + s + ")" : s);
+  }
+  function fmtPlain(n){
+    if(n === null || n === undefined || !isFinite(n)) return "";
+    return String(Math.round(n * 100) / 100);
+  }
+  function fmtRatio(n){
+    if(n === null || n === undefined || !isFinite(n)) return "—";
+    return (Math.round(n * 100) / 100).toFixed(2);
+  }
+  function fmtMag(n){
+    if(n === null || n === undefined || !isFinite(n)) return "—";
+    return String(Math.abs(Math.round(n))).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+  function num(v){
+    if(v === null || v === undefined) return 0;
+    var n = parseFloat(String(v).replace(/,/g, ""));
+    return isFinite(n) ? n : 0;
+  }
+  /* format a typed figure with thousands separators, e.g. 25000000 -> 25,000,000 */
+  function fmtInputVal(raw){
+    if(raw === null || raw === undefined) return "";
+    var str = String(raw).trim();
+    if(str === "") return "";
+    if(!/^-?[\d,]*\.?\d*$/.test(str)) return str;      // leave anything odd untouched
+    var n = num(str);
+    if(!isFinite(n)) return str;
+    var neg = n < 0, a = Math.abs(n), parts = String(a).split(".");
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return (neg ? "-" : "") + parts[0] + (parts.length > 1 ? "." + parts[1] : "");
+  }
+  function sum(v, keys){ var t = 0; for(var i=0;i<keys.length;i++) t += num(v[keys[i]]); return t; }
+
+  /* ============================================================
+     Calculations — ordered so dependencies resolve top to bottom
+     ============================================================ */
+  var CALCS = [
+    ["fa_cost",       function(v){ return sum(v,["fa_land","fa_plant","fa_vehicle","fa_furniture","fa_other","fa_intangible"]); }],
+    ["fa_nbv",        function(v,o){ return o.fa_cost - num(v.fa_accum); }],
+    ["inv_total",     function(v){ return sum(v,["inv_shares","inv_debenture","inv_fixeddep","inv_govt","inv_otherinv"]); }],
+    ["ca_inv",        function(v){ return sum(v,["s_stores","s_raw","s_wip","s_finished"]); }],
+    ["ca_rec",        function(v){ return sum(v,["r_debtors","r_prepay","r_other"]); }],
+    ["ca_bal",        function(v){ return sum(v,["b_bank","b_cash"]); }],
+    ["ca_working",    function(v,o){ return o.ca_inv + o.ca_rec + o.ca_bal + num(v.ca_other); }],
+    ["la_total",      function(v){ return sum(v,["la_related","la_staff","la_deposits","la_loans","la_ura"]); }],
+    ["ca_total",      function(v,o){ return o.ca_working + o.la_total; }],
+    ["cl_total",      function(v){ return sum(v,["cl_creditors","cl_lease","cl_accrued","cl_other","cl_matured"]); }],
+    ["pr_total",      function(v){ return sum(v,["pr_tax","pr_bad","pr_other"]); }],
+    ["cl_all",        function(v,o){ return o.cl_total + o.pr_total; }],
+    ["ln_sec_total",  function(v){ return sum(v,["ls_bank","ls_other","ls_debt","ls_related"]); }],
+    ["ln_unsec_total",function(v){ return sum(v,["lu_bank","lu_other","lu_creditor","lu_related"]); }],
+    ["ln_total",      function(v,o){ return o.ln_sec_total + o.ln_unsec_total; }],
+    ["total_assets",  function(v,o){ return o.fa_nbv + o.inv_total + o.ca_total + num(v.dta); }],
+    ["total_liab",    function(v,o){ return o.cl_all + o.ln_total + num(v.dtl); }],
+    ["eq_auto",       function(v){ return num(v.eq_open) + num(v.eq_profit) + num(v.eq_capin) - num(v.eq_draw); }],
+    ["eq_closing",    function(v,o){ return v.eq_ovr_on ? num(v.eq_override) : o.eq_auto; }],
+    ["e9_total",      function(v,o){ return o.ln_total + num(v.dtl) + o.eq_closing; }],
+    ["total_le",      function(v,o){ return o.cl_all + o.e9_total; }],
+    ["check",         function(v,o){ return o.total_assets - o.total_le; }],
+    ["nca",           function(v,o){ return o.ca_total - o.cl_all; }],
+    ["current_ratio", function(v,o){ return o.cl_all !== 0 ? (o.ca_total / o.cl_all) : null; }],
+    ["gearing",       function(v,o){ return o.eq_closing !== 0 ? ((o.ln_total + num(v.dtl)) / o.eq_closing) : null; }]
+  ];
+
+  /* ============================================================
+     DOM references
+     ============================================================ */
+  var $  = function(s,r){ return (r||document).querySelector(s); };
+  var $$ = function(s,r){ return Array.prototype.slice.call((r||document).querySelectorAll(s)); };
+
+  var calcCells = $$("[data-c]");
+  var inputs   = $$("[data-f]");
+  var storeKey = "ura_bs_dt2001_v1";
+  var regKey   = [];
+  var saveTimer = null;
+
+  /* ============================================================
+     Register state
+     ============================================================ */
+  var CATS = [
+    ["fa_land",     "Land and buildings"],
+    ["fa_plant",    "Plant and machinery"],
+    ["fa_vehicle",  "Motor vehicles"],
+    ["fa_furniture","Furniture and fixtures"],
+    ["fa_other",    "Other assets"],
+    ["fa_intangible","Intangible assets"]
+  ];
+  var CLASSES = [
+    ["cls1",  "Class 1 — Computers & data handling (40%)"],
+    ["cls2",  "Class 2 — Plant & machinery, farming/manufacturing/mining (30%)"],
+    ["cls3",  "Class 3 — Motor vehicles, furniture, equipment, other (20%)"],
+    ["clsB",  "Industrial building — straight line (5%)"],
+    ["cls0",  "Not depreciable (land, stock, etc.)"]
+  ];
+  var register = [];
+
+  function esc(s){
+    return String(s === null || s === undefined ? "" : s)
+      .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")
+      .replace(/"/g,"&quot;").replace(/'/g,"&#39;");
+  }
+  function optList(opts, sel){
+    var h = "";
+    for(var i=0;i<opts.length;i++){
+      h += '<option value="'+esc(opts[i][0])+'"'+(opts[i][0]===sel?" selected":"")+'>'+esc(opts[i][1])+'</option>';
+    }
+    return h;
+  }
+
+  function renderRegister(){
+    var tb = $("#regBody");
+    if(!tb) return;
+    if(!register.length) register = [ {id:"r"+Date.now(), desc:"", cat:"fa_plant", cls:"cls3", cost:"", acc:""} ];
+    var h = "";
+    register.forEach(function(row, i){
+      h += '<tr data-idx="'+i+'">'
+        + '<td><input type="text" data-r="desc" value="'+esc(row.desc)+'" placeholder="e.g. Toyota Hiace, 2019"></td>'
+        + '<td><select data-r="cat">'+optList(CATS,row.cat)+'</select></td>'
+        + '<td><select data-r="cls">'+optList(CLASSES,row.cls)+'</select></td>'
+        + '<td class="r"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-r="cost" value="'+esc(row.cost)+'"></td>'
+        + '<td class="r"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-r="acc" value="'+esc(row.acc)+'"></td>'
+        + '<td class="r" data-nbv="'+(i)+'">—</td>'
+        + '<td><button class="xbtn" type="button" data-del="'+i+'" title="Remove row">&times;</button></td>'
+        + '</tr>';
+    });
+    tb.innerHTML = h;
+    updateRegisterTotals();
+  }
+
+  function updateRegisterTotals(){
+    var c = 0, a = 0;
+    register.forEach(function(r,i){
+      var rc = num(r.cost), ra = num(r.acc);
+      c += rc; a += ra;
+      var cell = $('[data-nbv="'+i+'"]');
+      if(cell) cell.textContent = fmt(rc - ra);
+    });
+    $("#regCost").textContent = fmt(c);
+    $("#regAcc").textContent  = fmt(a);
+    $("#regNbv").textContent  = fmt(c - a);
+    $("#regCount").textContent = register.length + (register.length === 1 ? " asset listed" : " assets listed");
+    reconcile(c, a, c - a);
+  }
+
+  function reconcile(rc, ra, rnbv){
+    var o = lastOut || {};
+    if(o.total_assets === undefined){           // nothing calculated yet
+      ["#rcCost","#rcAcc","#rcNbv"].forEach(function(sel){
+        var el = $(sel); if(!el) return;
+        el.className = "rc";
+        el.querySelector(".v").innerHTML = "&mdash;";
+      });
+      return;
+    }
+    setRc("#rcCost", rc, o.fa_cost);
+    setRc("#rcAcc",  ra, num(lastIn.fa_accum));
+    setRc("#rcNbv",  rnbv, o.fa_nbv);
+  }
+  function setRc(sel, regVal, bsVal){
+    var el = $(sel);
+    if(!el) return;
+    var v = el.querySelector(".v");
+    if(Math.abs(regVal) < 0.0001){
+      el.className = "rc";
+      v.innerHTML = "&mdash; <span style='font-weight:400'>(register empty)</span>";
+      return;
+    }
+    var diff = regVal - bsVal;
+    var ok = Math.abs(diff) < 0.5;
+    el.className = "rc " + (ok ? "pass" : "fail");
+    v.innerHTML = (ok ? "✓ Agrees" : "✗ Difference of " + fmtMag(diff)) +
+      ' <span style="font-weight:400;font-size:12px">(register ' + fmt(regVal) + " vs balance sheet " + fmt(bsVal) + ")</span>";
+  }
+
+  /* ============================================================
+     Core recalculation
+     ============================================================ */
+  var lastIn = {}, lastOut = {};
+
+  function readValues(){
+    var v = {};
+    $$("[data-f]").forEach(function(el){
+      var k = el.dataset.f;
+      if(el.type === "checkbox"){
+        v[k] = el.checked ? 1 : 0;
+        if(k === "eq_ovr_on"){
+          var row = document.getElementById("rowOverride");
+          if(row) row.style.display = el.checked ? "" : "none";
+        }
+      } else if(el.classList.contains("num")){
+        v[k] = num(el.value);
+      } else {
+        v[k] = el.value;
+      }
+    });
+    return v;
+  }
+
+  function recalc(){
+    var v = readValues();
+    lastIn = v;
+    var o = {};
+    for(var i=0;i<CALCS.length;i++){
+      var key = CALCS[i][0], fn = CALCS[i][1];
+      o[key] = fn(v,o);
+    }
+    lastOut = o;
+
+    calcCells.forEach(function(el){
+      var key = el.dataset.c, val = o[key];
+      var isRatio = el.dataset.cfmt === "ratio";
+      el.textContent = isRatio ? fmtRatio(val) : fmt(val);
+      el.classList.remove("neg");
+      if(!isRatio && typeof val === "number" && val < 0) el.classList.add("neg");
+    });
+
+    // mirror values into print spans
+    $$("input.num").forEach(function(inp){
+      var pv = inp.parentNode.querySelector(".pv");
+      if(!pv) return;
+      var n = num(inp.value);
+      pv.textContent = (inp.value === "" ? "" : fmt(n));
+    });
+
+    updateBanner(o);
+    updateCurrencyLabel(v.m_cur);
+    updatePrintSub(v);
+    updateRegisterTotals();
+  }
+
+  function updateCurrencyLabel(code){
+    CUR.code = code || "UGX";
+    var el = $("#mhCur");
+    if(el) el.textContent = CUR.code;
+    var c = $("#regHdrCost"), a = $("#regHdrAcc");
+    if(c) c.textContent = "Cost (" + CUR.code + ")";
+    if(a) a.textContent = "Accum. depreciation (" + CUR.code + ")";
+  }
+
+  function updatePrintSub(v){
+    var el = $("#printSub");
+    if(!el) return;
+    var bits = [];
+    if(v.m_biz) bits.push(esc(v.m_biz));
+    if(v.m_owner) bits.push(esc(v.m_owner));
+    if(v.m_tin) bits.push("TIN " + esc(v.m_tin));
+    if(v.m_from && v.m_to) bits.push("Year of income " + esc(v.m_from) + " to " + esc(v.m_to));
+    else if(v.m_acct) bits.push("As at " + esc(v.m_acct));
+    bits.push("Amounts in " + (v.m_cur || "UGX"));
+    el.innerHTML = bits.join(" &nbsp;|&nbsp; ");
+  }
+
+  function updateBanner(o){
+    var b = $("#banner"), ico = $("#bannerIco"), t = $("#bannerTitle"), body = $("#bannerBody");
+    var diff = o.check, anyInput = hasAnyInput();
+    if(!anyInput){
+      b.className = "banner idle";
+      ico.innerHTML = "&#9679;";
+      t.textContent = "Balance check";
+      body.textContent = "Enter your figures to see whether the statement balances.";
+      return;
+    }
+    if(Math.abs(diff) < 0.5){
+      b.className = "banner ok";
+      ico.innerHTML = "&#10003;";
+      t.textContent = "Balanced — total assets equal total liabilities and owner’s funds.";
+      body.innerHTML = "Total assets <b>" + fmt(o.total_assets) + "</b> = Total liabilities and owner’s funds <b>" + fmt(o.total_le) + "</b>.";
+      return;
+    }
+    b.className = "banner bad";
+    ico.innerHTML = "&#10007;";
+    if(diff > 0){
+      t.textContent = "Out of balance by " + fmtMag(diff) + " — assets are higher than liabilities and capital.";
+      body.innerHTML = "Common causes:"
+        + "<ul>"
+        + "<li>A liability is missing — unpaid VAT, PAYE, NSSF, a tax provision, a loan instalment, or an amount owing to URA.</li>"
+        + "<li>Net profit for the year is understated, or capital introduced during the year has not been added.</li>"
+        + "<li>An asset is overstated, or a drawing has not been deducted.</li>"
+        + "</ul>";
+    } else {
+      t.textContent = "Out of balance by " + fmtMag(diff) + " — liabilities and capital are higher than assets.";
+      body.innerHTML = "Common causes:"
+        + "<ul>"
+        + "<li>An asset is missing — stock not valued, or a fixed asset bought on credit that is not in creditors.</li>"
+        + "<li>Drawings are understated, or net profit for the year is overstated.</li>"
+        + "<li>Accumulated depreciation is out of step with the capital allowance claimed in the income statement.</li>"
+        + "</ul>";
+    }
+  }
+
+  function hasAnyInput(){
+    var any = false;
+    $$("input.num").forEach(function(el){ if(num(el.value) !== 0){ any = true; } });
+    return any;
+  }
+
+  /* ============================================================
+     Persistence
+     ============================================================ */
+  function collect(){
+    var state = { fields:{}, register:register, currency:(lastIn.m_cur || "UGX") };
+    $$("[data-f]").forEach(function(el){
+      var k = el.dataset.f;
+      state.fields[k] = (el.type === "checkbox") ? el.checked : el.value;
+    });
+    return state;
+  }
+
+  function apply(state){
+    if(!state || !state.fields) return false;
+    $$("[data-f]").forEach(function(el){
+      var k = el.dataset.f;
+      if(!(k in state.fields)) return;
+      if(el.type === "checkbox") el.checked = !!state.fields[k];
+      else el.value = state.fields[k];
+    });
+    if(Array.isArray(state.register) && state.register.length) register = state.register;
+    renderRegister();
+    recalc();
+    return true;
+  }
+
+  function save(){
+    try{
+      localStorage.setItem(storeKey, JSON.stringify(collect()));
+      setSaveState("Saved " + new Date().toLocaleTimeString([], {hour:"2-digit", minute:"2-digit"}));
+    }catch(e){
+      setSaveState("Could not save (storage blocked)");
+    }
+  }
+  function scheduleSave(){
+    setSaveState("Saving…", true);
+    if(saveTimer) clearTimeout(saveTimer);
+    saveTimer = setTimeout(save, 400);
+  }
+  function setSaveState(msg, saving){
+    var el = $("#saveMsg"), dot = $("#dot");
+    if(el) el.textContent = msg;
+    if(dot) dot.className = "dot" + (saving ? " saving" : "");
+  }
+  function load(){
+    try{
+      var raw = localStorage.getItem(storeKey);
+      if(!raw) return false;
+      return apply(JSON.parse(raw));
+    }catch(e){ return false; }
+  }
+
+  /* ============================================================
+     Export
+     ============================================================ */
+  function download(name, mime, content){
+    var blob = new Blob([content], {type:mime + ";charset=utf-8;"});
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url; a.download = name;
+    document.body.appendChild(a); a.click();
+    setTimeout(function(){ document.body.removeChild(a); URL.revokeObjectURL(url); }, 400);
+  }
+  function csvCell(s){ return '"' + String(s === null || s === undefined ? "" : s).replace(/"/g,'""') + '"'; }
+
+  function buildBalanceSheetCsv(){
+    var v = lastIn, o = lastOut;
+    var lines = [];
+    lines.push(["URA Statement of Assets and Liabilities (working paper) - form DT-2001"]);
+    lines.push(["Business", v.m_biz || "", "Owner", v.m_owner || "", "TIN", v.m_tin || ""]);
+    lines.push(["Year of income from", v.m_from || "", "to", v.m_to || "", "Accounting date", v.m_acct || ""]);
+    lines.push(["Currency", v.m_cur || "UGX", "Prepared by", v.m_prep || "", "Date prepared", v.m_prepdate || ""]);
+    lines.push([]);
+    lines.push(["Ref", "Line item", "Amount (" + (v.m_cur || "UGX") + ")"]);
+
+    var rows = $$("#panel-bs tr[data-ref]");
+    rows.forEach(function(tr){
+      var ref = tr.dataset.ref;
+      var lbl = tr.querySelector("th.lbl, th");
+      var lblText = "";
+      if(lbl){
+        var clone = lbl.cloneNode(true);
+        Array.prototype.slice.call(clone.querySelectorAll(".rf")).forEach(function(n){
+          if(n.parentNode) n.parentNode.removeChild(n);
+        });
+        lblText = (clone.textContent || "").replace(/\s+/g," ").trim();
+      }
+      var calc = tr.querySelector("[data-c]");
+      var inp  = tr.querySelector("input.num");
+      var amount = "";
+      if(calc) amount = fmtPlain(o[calc.dataset.c]);
+      else if(inp) amount = fmtPlain(num(inp.value));
+      lines.push([ref, lblText, amount]);
+    });
+    lines.push([]);
+    lines.push(["", "TOTAL ASSETS", fmtPlain(o.total_assets)]);
+    lines.push(["", "TOTAL LIABILITIES AND OWNER'S FUNDS", fmtPlain(o.total_le)]);
+    lines.push(["", "BALANCE DIFFERENCE (assets less liabilities and funds)", fmtPlain(o.check)]);
+    if(v.m_notes) lines.push(["", "Notes", String(v.m_notes).replace(/\r?\n/g, " | ")]);
+
+    return lines.map(function(r){ return r.map(csvCell).join(","); }).join("\r\n");
+  }
+
+  function buildRegisterCsv(){
+    var head = ["Description", "URA balance sheet category", "Tax depreciation class", "Cost", "Accumulated depreciation", "Net book value"];
+    var lines = [head.map(csvCell).join(",")];
+    register.forEach(function(r){
+      var cat = CATS.filter(function(c){ return c[0] === r.cat; })[0];
+      var cls = CLASSES.filter(function(c){ return c[0] === r.cls; })[0];
+      lines.push([r.desc||"", (cat?cat[1]:r.cat), (cls?cls[1]:r.cls),
+                  fmtPlain(num(r.cost)), fmtPlain(num(r.acc)), fmtPlain(num(r.cost)-num(r.acc))]
+                 .map(csvCell).join(","));
+    });
+    return lines.join("\r\n");
+  }
+
+  /* ============================================================
+     Wiring
+     ============================================================ */
+  function init(){
+    // print-mirror spans for number inputs
+    $$("input.num").forEach(function(inp){
+      var pv = document.createElement("span");
+      pv.className = "pv";
+      inp.parentNode.appendChild(pv);
+    });
+
+    // URA Section E line-reference chips
+    $$("tr[data-ref]").forEach(function(tr){
+      var cell = tr.querySelector("th.lbl, th");
+      if(!cell) return;
+      var chip = document.createElement("span");
+      chip.className = "rf";
+      chip.textContent = tr.dataset.ref;
+      cell.insertBefore(chip, cell.firstChild);
+    });
+
+    // URA line reference toggle
+    var refsToggle = $("#btnRefs");
+    if(refsToggle){
+      refsToggle.addEventListener("change", function(){
+        document.body.classList.toggle("show-refs", refsToggle.checked);
+      });
+    }
+
+    // tabs
+    $$(".tab").forEach(function(t){
+      t.addEventListener("click", function(){
+        $$(".tab").forEach(function(x){ x.setAttribute("aria-selected", x === t ? "true" : "false"); });
+        ["bs","register","guide"].forEach(function(name){
+          var p = $("#panel-" + name);
+          if(p) p.hidden = (name !== t.dataset.tab);
+        });
+        window.scrollTo(0, 0);
+      });
+    });
+
+    // field input events
+    $$("[data-f]").forEach(function(el){
+      el.addEventListener("input", function(){ recalc(); scheduleSave(); });
+      el.addEventListener("change", function(){ recalc(); scheduleSave(); });
+    });
+
+    // thousands separators: strip them while typing, add them when the field is left
+    document.addEventListener("focusin", function(e){
+      var el = e.target;
+      if(el && el.classList && el.classList.contains("num")){
+        el.value = el.value.replace(/,/g, "");
+      }
+    });
+    document.addEventListener("focusout", function(e){
+      var el = e.target;
+      if(el && el.classList && el.classList.contains("num")){
+        el.value = fmtInputVal(el.value);
+        recalc();
+        scheduleSave();
+      }
+    });
+
+    // register events (delegated)
+    $("#regBody").addEventListener("input", function(e){
+      var tr = e.target.closest("tr");
+      if(!tr) return;
+      var i = parseInt(tr.dataset.idx, 10);
+      var f = e.target.dataset.r;
+      if(!f || isNaN(i)) return;
+      register[i][f] = e.target.value;
+      recalc();
+      scheduleSave();
+    });
+    $("#regBody").addEventListener("change", function(e){
+      var tr = e.target.closest("tr");
+      if(!tr) return;
+      var i = parseInt(tr.dataset.idx, 10);
+      var f = e.target.dataset.r;
+      if(!f || isNaN(i)) return;
+      register[i][f] = e.target.value;
+      recalc();
+      scheduleSave();
+    });
+    $("#regBody").addEventListener("click", function(e){
+      var b = e.target.closest("[data-del]");
+      if(!b) return;
+      var i = parseInt(b.dataset.del, 10);
+      if(!isNaN(i)){ register.splice(i,1); renderRegister(); scheduleSave(); }
+    });
+    $("#btnAddRow").addEventListener("click", function(){
+      register.push({id:"r"+Date.now(), desc:"", cat:"fa_plant", cls:"cls3", cost:"", acc:""});
+      renderRegister(); scheduleSave();
+    });
+    $("#btnRegCsv").addEventListener("click", function(){
+      download("ura-assets-register.csv", "text/csv", buildRegisterCsv());
+    });
+
+    // toolbar
+    $("#btnPrint").addEventListener("click", function(){ window.print(); });
+    $("#btnCsv").addEventListener("click", function(){
+      download("ura-balance-sheet.csv", "text/csv", buildBalanceSheetCsv());
+    });
+    $("#btnJson").addEventListener("click", function(){
+      download("ura-balance-sheet-backup.json", "application/json", JSON.stringify(collect(), null, 2));
+    });
+    $("#btnImport").addEventListener("click", function(){ $("#fileJson").click(); });
+    $("#fileJson").addEventListener("change", function(e){
+      var file = e.target.files && e.target.files[0];
+      if(!file) return;
+      var reader = new FileReader();
+      reader.onload = function(){
+        try{
+          var ok = apply(JSON.parse(reader.result));
+          save();
+          setSaveState(ok ? "Restored from file" : "Could not restore file");
+        }catch(err){
+          setSaveState("That file could not be read");
+        }
+      };
+      reader.readAsText(file);
+      e.target.value = "";
+    });
+    $("#btnClear").addEventListener("click", function(){
+      if(!confirm("Clear every figure on this form? This cannot be undone unless you have a JSON backup.")) return;
+      try{ localStorage.removeItem(storeKey); }catch(e){}
+      $$("[data-f]").forEach(function(el){
+        if(el.type === "checkbox") el.checked = false;
+        else if(el.tagName === "SELECT") el.selectedIndex = 0;
+        else el.value = "";
+      });
+      register = [];
+      renderRegister();
+      recalc();
+      setSaveState("Cleared");
+    });
+
+    // initial paint
+    renderRegister();
+    if(!load()){
+      recalc();
+      setSaveState("Ready");
+    } else {
+      recalc();
+      setSaveState("Restored your last session");
+    }
+
+    // make sure nothing is lost if the tab is closed straight after typing
+    window.addEventListener("beforeunload", function(){ try{ save(); }catch(e){} });
+    document.addEventListener("visibilitychange", function(){
+      if(document.visibilityState === "hidden"){ try{ save(); }catch(e){} }
+    });
+  }
+
+  if(document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  else init();
+})();
+</script>
+</body>
+</html>
