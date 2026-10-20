@@ -118,6 +118,52 @@
   .stat .v{font-size:17px;font-weight:700;margin-top:3px;font-variant-numeric:tabular-nums}
 
   /* ---------- Register ---------- */
+  /* ---- Sales & Expenses monthly sheet ---- */
+  .sx-tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px}
+  .sx-tools .btn.ghost{color:var(--accent2);border:1px solid #c9d4e0}
+  .sx-tools .btn.ghost:hover{background:#eef2f7}
+  .sx-tools .muted{font-size:12px}
+  table.sx{width:100%;min-width:1400px;border-collapse:separate;border-spacing:0;font-size:12.5px;table-layout:fixed}
+  table.sx thead th{background:var(--line2);color:var(--accent);font-size:10.5px;text-transform:uppercase;
+    letter-spacing:.3px;padding:6px 4px;text-align:center;border-bottom:1px solid var(--line);white-space:nowrap;z-index:5}
+  table.sx thead th.sx-lbl{text-align:left;padding-left:8px}
+  table.sx thead th.sx-usekey{margin-left:6px;border:1px solid var(--line);border-radius:3px;padding:1px 4px;
+    font-size:9.5px;background:#fff;color:var(--ink2);letter-spacing:0}
+  table.sx thead th.sx-ann{text-align:right;padding-right:8px}
+  table.sx th.sx-lbl{position:sticky;left:0;z-index:2;background:#fff;text-align:left;font-weight:450;color:var(--ink);
+    padding:3px 8px 3px 0;border-bottom:1px solid var(--line2);border-right:1px solid var(--line2)}
+  table.sx thead th.sx-lbl{z-index:6;background:var(--line2);font-weight:700}
+  table.sx thead th.sx-ann{position:sticky;right:0;z-index:6}
+  table.sx td.sx-m{padding:2px 2px;border-bottom:1px solid var(--line2);text-align:right;
+    font-variant-numeric:tabular-nums;white-space:nowrap}
+  table.sx td.sx-m input.num{width:100%;min-width:0;padding:3px 4px;font-size:12px;background:#fffdf5}
+  table.sx td.sx-ann{position:sticky;right:0;z-index:1;background:#fff;padding:2px 4px;
+    border-bottom:1px solid var(--line2);border-left:1px solid var(--line2);
+    box-shadow:-3px 0 4px -3px rgba(0,0,0,.22);
+    text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+  table.sx td.sx-ann input.num{width:100%;min-width:0;padding:3px 5px;font-size:12.5px;font-weight:650;
+    background:#eef4fb;border:1px solid #c9d8ea}
+  table.sx td.sx-ann.ov input.num{background:#fff3cd;border-color:#d9a300}
+  table.sx th.sx-lbl .sx-txt{display:inline-block;max-width:196px;vertical-align:middle}
+  table.sx input.sx-use{float:right;margin:3px 0 0 6px;width:13px;height:13px;accent-color:var(--accent);cursor:pointer}
+  table.sx tr.sec th{background:#e8eef6}
+  table.sx tr.sx-sec th{background:#e8eef6;font-size:11px;letter-spacing:.4px;text-transform:uppercase;color:var(--accent);
+    padding:5px 8px;text-align:left;border-bottom:1px solid var(--line)}
+  table.sx tr.sx-tot th,table.sx tr.sx-tot td{font-weight:700;background:#f4f6f9;border-top:1.5px solid var(--ink);
+    border-bottom:1px solid var(--ink)}
+  table.sx tr.sx-net th,table.sx tr.sx-net td{font-weight:700;background:#eef4fb;border-top:1.5px solid var(--ink);
+    border-bottom:1px solid var(--ink)}
+  table.sx tr.sx-cum th,table.sx tr.sx-cum td{font-weight:600;background:#fbfcfe;color:var(--ink2)}
+  table.sx tr.sx-tot td.sx-ann{background:#f4f6f9}
+  table.sx tr.sx-net td.sx-ann{background:#eef4fb}
+  table.sx tr.sx-cum td.sx-ann{background:#fbfcfe}
+  table.sx tr.unused th.sx-lbl,table.sx tr.unused td{opacity:.5}
+  table.sx tr.unused th.sx-lbl .sx-txt{text-decoration:line-through}
+  table.exp tr.fromsheet th.lbl::after,table.bs tr.fromsheet th.lbl::after{
+    content:"from Sales & Expenses";display:inline-block;margin-left:8px;font-size:9.5px;font-weight:600;
+    color:var(--accent);background:var(--line2);border-radius:3px;padding:1px 5px;letter-spacing:.2px;vertical-align:middle}
+  table.exp tr.fromsheet input.num,table.bs tr.fromsheet input.num{background:#eef4fb;border-color:#c9d8ea}
+  table.bs td.val.fromsheet input.num{background:#eef4fb;border-color:#c9d8ea}
   table.exp{width:100%;border-collapse:collapse;font-size:13px;table-layout:fixed}
   table.exp thead th{background:var(--line2);font-size:11px;text-transform:uppercase;letter-spacing:.3px;color:var(--accent);
     padding:7px 6px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap}
@@ -187,6 +233,16 @@
   .pv{display:none}
   @media print{
     @page{size:A4 portrait;margin:11mm 12mm}
+    @page sxpage{size:A4 landscape;margin:8mm}
+    #panel-sales{page:sxpage}
+    table.sx{font-size:7.4pt;min-width:0}
+    table.sx thead th{font-size:6.4pt;padding:3px 2px}
+    table.sx th.sx-lbl{font-size:7.4pt;padding:2px 6px 2px 0}
+    table.sx th.sx-lbl .sx-txt{max-width:none}
+    table.sx td.sx-m input.num,table.sx td.sx-ann input.num{font-size:7.4pt;padding:1px 2px}
+    table.sx input.sx-use{width:9px;height:9px;margin-top:1px}
+    table.sx td.sx-m{padding:1px 1px}
+    table.sx td.sx-ann{padding:1px 3px}
     body{background:#fff;font-size:9.6pt;line-height:1.35}
     .toolbar,.no-print,.tabs,.masthead{display:none !important}
     .wrap{max-width:none;padding:0}
@@ -263,6 +319,7 @@
   <nav class="tabs no-print" role="tablist">
     <button class="tab" role="tab" aria-selected="true" data-tab="bs">Balance Sheet</button>
     <button class="tab" role="tab" aria-selected="false" data-tab="income">Income Statement</button>
+    <button class="tab" role="tab" aria-selected="false" data-tab="sales">Sales &amp; Expenses</button>
     <button class="tab" role="tab" aria-selected="false" data-tab="register">Assets Register</button>
     <button class="tab" role="tab" aria-selected="false" data-tab="guide">Checklist &amp; Guidance</button>
   </nav>
@@ -277,7 +334,7 @@
           <li>Fill in the <strong>taxpayer details</strong> below &mdash; these print on the sheet.</li>
           <li>Work down the <strong>Assets</strong> column, then the <strong>Liabilities &amp; Owner&rsquo;s Funds</strong> column. Leave anything you don&rsquo;t have as blank &mdash; blank is treated as zero.</li>
           <li>Check the <strong>balance check</strong> panel that appears under the sheet. Total assets must equal total liabilities plus owner&rsquo;s funds. A difference means something is missing or mis-stated &mdash; the panel lists the usual causes.</li>
-          <li>Use the <strong>Income Statement</strong> tab for your turnover and costs. Enter each expense as a <strong>rate</strong> and the period it covers &mdash; the sheet annualises it. The net profit after tax and the tax charge flow straight into the balance sheet above, so the two statements always agree.</li>
+          <li>Use the <strong>Sales &amp; Expenses</strong> tab to record your sales and costs month by month. The annual totals flow straight into the <strong>Income Statement</strong> tab, or you can enter each expense there as a <strong>rate</strong> and the period it covers. The net profit after tax and the tax charge then flow into the balance sheet above, so the three tabs always agree.</li>
           <li>Use the <strong>Assets Register</strong> tab for the itemised fixed-asset list URA asks you to keep, then print or export.</li>
         </ol>
         <p style="margin-bottom:0"><strong>Important:</strong> this is a working paper, not the URA return form. The official <strong>DT-2001</strong> Excel template must still be downloaded from the URA portal, completed, validated and uploaded. Transfer your figures from here into that template. Nothing is sent anywhere &mdash; your figures stay in this browser.</p>
@@ -506,9 +563,9 @@
         <table class="bs">
           <tbody>
             <tr class="sec" data-row="plsec"><th colspan="2">A. Turnover</th></tr>
-            <tr data-row="pl"><th scope="row" class="lbl ind">Sales of goods</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="pl_sales" aria-label="Sales of goods"></td></tr>
-            <tr data-row="pl"><th scope="row" class="lbl ind">Services and professional receipts</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="pl_services" aria-label="Services and professional receipts"></td></tr>
-            <tr data-row="pl"><th scope="row" class="lbl ind">Other trading receipts</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="pl_trading_other" aria-label="Other trading receipts"></td></tr>
+            <tr data-row="pl"><th scope="row" class="lbl ind">Sales of goods</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="pl_sales" aria-label="Sales of goods"><input type="hidden" data-f="pl_sales_m"></td></tr>
+            <tr data-row="pl"><th scope="row" class="lbl ind">Services and professional receipts</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="pl_services" aria-label="Services and professional receipts"><input type="hidden" data-f="pl_services_m"></td></tr>
+            <tr data-row="pl"><th scope="row" class="lbl ind">Other trading receipts</th><td class="val"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="pl_trading_other" aria-label="Other trading receipts"><input type="hidden" data-f="pl_trading_other_m"></td></tr>
             <tr class="tot" data-row="pl"><th scope="row" class="lbl">Total turnover</th><td class="val amt" data-c="pl_turnover"></td></tr>
 
             <tr class="sec" data-row="plsec"><th colspan="2">B. Cost of sales</th></tr>
@@ -628,6 +685,70 @@
     </div>
   </section>
 
+  <!-- ============================ PANEL: SALES & EXPENSES ============================ -->
+  <section class="panel" id="panel-sales" role="tabpanel" hidden>
+    <div class="card">
+      <h3>Sales and expenses &mdash; monthly record</h3>
+      <div class="body">
+        <p class="muted" style="margin-top:0">Enter what you actually took in and what you actually paid, month by month, for the year of income. The annual column is worked out for you, and the lines feed the <strong>Income Statement</strong> tab automatically &mdash; so your turnover, your costs and your tax all come from one record.</p>
+        <p class="muted">Leave a month blank if there was nothing to enter. If a cost really is the same every month, type it into the first month and press <strong>Fill every month from the first month</strong>.</p>
+        <div class="sx-tools">
+          <button class="btn" type="button" id="btnSxFill">Fill every month from the first month</button>
+          <button class="btn" type="button" id="btnSxReset">Recalculate annual column</button>
+          <button class="btn ghost" type="button" id="btnSxClear">Clear this sheet</button>
+          <span class="muted" id="sxStatus"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Sales and expenses for the year of income</h3>
+      <div class="body">
+        <div style="overflow-x:auto">
+        <table class="sx">
+          <colgroup>
+            <col style="width:246px"><col span="12" style="width:86px"><col style="width:132px">
+          </colgroup>
+          <thead>
+            <tr>
+              <th class="sx-lbl">Line item <span class="sx-usekey">use</span></th>
+              <th class="sx-m" id="sx_h_1">Jul</th><th class="sx-m" id="sx_h_2">Aug</th><th class="sx-m" id="sx_h_3">Sep</th><th class="sx-m" id="sx_h_4">Oct</th><th class="sx-m" id="sx_h_5">Nov</th><th class="sx-m" id="sx_h_6">Dec</th><th class="sx-m" id="sx_h_7">Jan</th><th class="sx-m" id="sx_h_8">Feb</th><th class="sx-m" id="sx_h_9">Mar</th><th class="sx-m" id="sx_h_10">Apr</th><th class="sx-m" id="sx_h_11">May</th><th class="sx-m" id="sx_h_12">Jun</th>
+              <th class="sx-ann">Annual</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="sx-sec"><th colspan="14">SALES</th></tr>
+        <tr data-sx="pl_sales"><th scope="row" class="sx-lbl"><span class="sx-txt">Sales of goods</span><input type="checkbox" class="sx-use" data-f="sx_pl_sales_use" data-default="checked" checked title="Use this line in the Income Statement" aria-label="Use Sales of goods in the Income Statement"></th><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_pl_sales_m1" aria-label="Sales of goods — Jul"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_pl_sales_m2" aria-label="Sales of goods — Aug"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_pl_sales_m3" aria-label="Sales of goods — Sep"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_pl_sales_m4" aria-label="Sales of goods — Oct"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_pl_sales_m5" aria-label="Sales of goods — Nov"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_pl_sales_m6" aria-label="Sales of goods — Dec"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_pl_sales_m7" aria-label="Sales of goods — Jan"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_pl_sales_m8" aria-label="Sales of goods — Feb"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_pl_sales_m9" aria-label="Sales of goods — Mar"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_pl_sales_m10" aria-label="Sales of goods — Apr"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_pl_sales_m11" aria-label="Sales of goods — May"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_pl_sales_m12" aria-label="Sales of goods — Jun"></td><td class="sx-ann"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_pl_sales_y" aria-label="Sales of goods — annual total" title="Type here to override the annual total by hand"><input type="checkbox" class="sx-ov" data-f="sx_pl_sales_ov" style="display:none" title="This annual figure has been overridden by hand"></td></tr>
+        <tr data-sx="pl_services"><th scope="row" class="sx-lbl"><span class="sx-txt">Services and professional receipts</span><input type="checkbox" class="sx-use" data-f="sx_pl_services_use" data-default="checked" checked title="Use this line in the Income Statement" aria-label="Use Services and professional receipts in the Income Statement"></th><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_pl_services_m1" aria-label="Services and professional receipts — Jul"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_pl_services_m2" aria-label="Services and professional receipts — Aug"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_pl_services_m3" aria-label="Services and professional receipts — Sep"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_pl_services_m4" aria-label="Services and professional receipts — Oct"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_pl_services_m5" aria-label="Services and professional receipts — Nov"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_pl_services_m6" aria-label="Services and professional receipts — Dec"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_pl_services_m7" aria-label="Services and professional receipts — Jan"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_pl_services_m8" aria-label="Services and professional receipts — Feb"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_pl_services_m9" aria-label="Services and professional receipts — Mar"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_pl_services_m10" aria-label="Services and professional receipts — Apr"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_pl_services_m11" aria-label="Services and professional receipts — May"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_pl_services_m12" aria-label="Services and professional receipts — Jun"></td><td class="sx-ann"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_pl_services_y" aria-label="Services and professional receipts — annual total" title="Type here to override the annual total by hand"><input type="checkbox" class="sx-ov" data-f="sx_pl_services_ov" style="display:none" title="This annual figure has been overridden by hand"></td></tr>
+        <tr data-sx="pl_trading_other"><th scope="row" class="sx-lbl"><span class="sx-txt">Other trading receipts</span><input type="checkbox" class="sx-use" data-f="sx_pl_trading_other_use" data-default="checked" checked title="Use this line in the Income Statement" aria-label="Use Other trading receipts in the Income Statement"></th><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_pl_trading_other_m1" aria-label="Other trading receipts — Jul"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_pl_trading_other_m2" aria-label="Other trading receipts — Aug"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_pl_trading_other_m3" aria-label="Other trading receipts — Sep"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_pl_trading_other_m4" aria-label="Other trading receipts — Oct"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_pl_trading_other_m5" aria-label="Other trading receipts — Nov"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_pl_trading_other_m6" aria-label="Other trading receipts — Dec"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_pl_trading_other_m7" aria-label="Other trading receipts — Jan"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_pl_trading_other_m8" aria-label="Other trading receipts — Feb"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_pl_trading_other_m9" aria-label="Other trading receipts — Mar"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_pl_trading_other_m10" aria-label="Other trading receipts — Apr"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_pl_trading_other_m11" aria-label="Other trading receipts — May"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_pl_trading_other_m12" aria-label="Other trading receipts — Jun"></td><td class="sx-ann"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_pl_trading_other_y" aria-label="Other trading receipts — annual total" title="Type here to override the annual total by hand"><input type="checkbox" class="sx-ov" data-f="sx_pl_trading_other_ov" style="display:none" title="This annual figure has been overridden by hand"></td></tr>
+            <tr class="sx-sec"><th colspan="14">EXPENSES</th></tr>
+        <tr data-sx="ex_food"><th scope="row" class="sx-lbl"><span class="sx-txt">Catering and staff meals (food)</span><input type="checkbox" class="sx-use" data-f="sx_ex_food_use" data-default="checked" checked title="Use this line in the Income Statement" aria-label="Use Catering and staff meals (food) in the Income Statement"></th><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_food_m1" aria-label="Catering and staff meals (food) — Jul"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_food_m2" aria-label="Catering and staff meals (food) — Aug"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_food_m3" aria-label="Catering and staff meals (food) — Sep"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_food_m4" aria-label="Catering and staff meals (food) — Oct"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_food_m5" aria-label="Catering and staff meals (food) — Nov"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_food_m6" aria-label="Catering and staff meals (food) — Dec"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_food_m7" aria-label="Catering and staff meals (food) — Jan"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_food_m8" aria-label="Catering and staff meals (food) — Feb"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_food_m9" aria-label="Catering and staff meals (food) — Mar"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_food_m10" aria-label="Catering and staff meals (food) — Apr"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_food_m11" aria-label="Catering and staff meals (food) — May"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_food_m12" aria-label="Catering and staff meals (food) — Jun"></td><td class="sx-ann"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_food_y" aria-label="Catering and staff meals (food) — annual total" title="Type here to override the annual total by hand"><input type="checkbox" class="sx-ov" data-f="sx_ex_food_ov" style="display:none" title="This annual figure has been overridden by hand"></td></tr>
+        <tr data-sx="ex_transport"><th scope="row" class="sx-lbl"><span class="sx-txt">Conveyance and transport</span><input type="checkbox" class="sx-use" data-f="sx_ex_transport_use" data-default="checked" checked title="Use this line in the Income Statement" aria-label="Use Conveyance and transport in the Income Statement"></th><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_transport_m1" aria-label="Conveyance and transport — Jul"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_transport_m2" aria-label="Conveyance and transport — Aug"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_transport_m3" aria-label="Conveyance and transport — Sep"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_transport_m4" aria-label="Conveyance and transport — Oct"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_transport_m5" aria-label="Conveyance and transport — Nov"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_transport_m6" aria-label="Conveyance and transport — Dec"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_transport_m7" aria-label="Conveyance and transport — Jan"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_transport_m8" aria-label="Conveyance and transport — Feb"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_transport_m9" aria-label="Conveyance and transport — Mar"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_transport_m10" aria-label="Conveyance and transport — Apr"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_transport_m11" aria-label="Conveyance and transport — May"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_transport_m12" aria-label="Conveyance and transport — Jun"></td><td class="sx-ann"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_transport_y" aria-label="Conveyance and transport — annual total" title="Type here to override the annual total by hand"><input type="checkbox" class="sx-ov" data-f="sx_ex_transport_ov" style="display:none" title="This annual figure has been overridden by hand"></td></tr>
+        <tr data-sx="ex_rent"><th scope="row" class="sx-lbl"><span class="sx-txt">Rent and rates</span><input type="checkbox" class="sx-use" data-f="sx_ex_rent_use" data-default="checked" checked title="Use this line in the Income Statement" aria-label="Use Rent and rates in the Income Statement"></th><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_rent_m1" aria-label="Rent and rates — Jul"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_rent_m2" aria-label="Rent and rates — Aug"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_rent_m3" aria-label="Rent and rates — Sep"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_rent_m4" aria-label="Rent and rates — Oct"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_rent_m5" aria-label="Rent and rates — Nov"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_rent_m6" aria-label="Rent and rates — Dec"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_rent_m7" aria-label="Rent and rates — Jan"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_rent_m8" aria-label="Rent and rates — Feb"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_rent_m9" aria-label="Rent and rates — Mar"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_rent_m10" aria-label="Rent and rates — Apr"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_rent_m11" aria-label="Rent and rates — May"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_rent_m12" aria-label="Rent and rates — Jun"></td><td class="sx-ann"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_rent_y" aria-label="Rent and rates — annual total" title="Type here to override the annual total by hand"><input type="checkbox" class="sx-ov" data-f="sx_ex_rent_ov" style="display:none" title="This annual figure has been overridden by hand"></td></tr>
+        <tr data-sx="ex_rubbish"><th scope="row" class="sx-lbl"><span class="sx-txt">Waste disposal and rubbish</span><input type="checkbox" class="sx-use" data-f="sx_ex_rubbish_use" data-default="checked" checked title="Use this line in the Income Statement" aria-label="Use Waste disposal and rubbish in the Income Statement"></th><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_rubbish_m1" aria-label="Waste disposal and rubbish — Jul"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_rubbish_m2" aria-label="Waste disposal and rubbish — Aug"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_rubbish_m3" aria-label="Waste disposal and rubbish — Sep"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_rubbish_m4" aria-label="Waste disposal and rubbish — Oct"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_rubbish_m5" aria-label="Waste disposal and rubbish — Nov"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_rubbish_m6" aria-label="Waste disposal and rubbish — Dec"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_rubbish_m7" aria-label="Waste disposal and rubbish — Jan"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_rubbish_m8" aria-label="Waste disposal and rubbish — Feb"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_rubbish_m9" aria-label="Waste disposal and rubbish — Mar"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_rubbish_m10" aria-label="Waste disposal and rubbish — Apr"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_rubbish_m11" aria-label="Waste disposal and rubbish — May"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_rubbish_m12" aria-label="Waste disposal and rubbish — Jun"></td><td class="sx-ann"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_rubbish_y" aria-label="Waste disposal and rubbish — annual total" title="Type here to override the annual total by hand"><input type="checkbox" class="sx-ov" data-f="sx_ex_rubbish_ov" style="display:none" title="This annual figure has been overridden by hand"></td></tr>
+        <tr data-sx="ex_labour"><th scope="row" class="sx-lbl"><span class="sx-txt">Casual labour and cleaning</span><input type="checkbox" class="sx-use" data-f="sx_ex_labour_use" data-default="checked" checked title="Use this line in the Income Statement" aria-label="Use Casual labour and cleaning in the Income Statement"></th><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_labour_m1" aria-label="Casual labour and cleaning — Jul"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_labour_m2" aria-label="Casual labour and cleaning — Aug"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_labour_m3" aria-label="Casual labour and cleaning — Sep"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_labour_m4" aria-label="Casual labour and cleaning — Oct"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_labour_m5" aria-label="Casual labour and cleaning — Nov"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_labour_m6" aria-label="Casual labour and cleaning — Dec"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_labour_m7" aria-label="Casual labour and cleaning — Jan"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_labour_m8" aria-label="Casual labour and cleaning — Feb"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_labour_m9" aria-label="Casual labour and cleaning — Mar"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_labour_m10" aria-label="Casual labour and cleaning — Apr"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_labour_m11" aria-label="Casual labour and cleaning — May"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_labour_m12" aria-label="Casual labour and cleaning — Jun"></td><td class="sx-ann"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_labour_y" aria-label="Casual labour and cleaning — annual total" title="Type here to override the annual total by hand"><input type="checkbox" class="sx-ov" data-f="sx_ex_labour_ov" style="display:none" title="This annual figure has been overridden by hand"></td></tr>
+        <tr data-sx="ex_repairs"><th scope="row" class="sx-lbl"><span class="sx-txt">Repairs and maintenance</span><input type="checkbox" class="sx-use" data-f="sx_ex_repairs_use" data-default="checked" checked title="Use this line in the Income Statement" aria-label="Use Repairs and maintenance in the Income Statement"></th><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_repairs_m1" aria-label="Repairs and maintenance — Jul"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_repairs_m2" aria-label="Repairs and maintenance — Aug"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_repairs_m3" aria-label="Repairs and maintenance — Sep"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_repairs_m4" aria-label="Repairs and maintenance — Oct"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_repairs_m5" aria-label="Repairs and maintenance — Nov"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_repairs_m6" aria-label="Repairs and maintenance — Dec"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_repairs_m7" aria-label="Repairs and maintenance — Jan"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_repairs_m8" aria-label="Repairs and maintenance — Feb"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_repairs_m9" aria-label="Repairs and maintenance — Mar"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_repairs_m10" aria-label="Repairs and maintenance — Apr"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_repairs_m11" aria-label="Repairs and maintenance — May"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_repairs_m12" aria-label="Repairs and maintenance — Jun"></td><td class="sx-ann"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_repairs_y" aria-label="Repairs and maintenance — annual total" title="Type here to override the annual total by hand"><input type="checkbox" class="sx-ov" data-f="sx_ex_repairs_ov" style="display:none" title="This annual figure has been overridden by hand"></td></tr>
+        <tr data-sx="ex_marketing"><th scope="row" class="sx-lbl"><span class="sx-txt">Advertising and marketing</span><input type="checkbox" class="sx-use" data-f="sx_ex_marketing_use" data-default="checked" checked title="Use this line in the Income Statement" aria-label="Use Advertising and marketing in the Income Statement"></th><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_marketing_m1" aria-label="Advertising and marketing — Jul"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_marketing_m2" aria-label="Advertising and marketing — Aug"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_marketing_m3" aria-label="Advertising and marketing — Sep"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_marketing_m4" aria-label="Advertising and marketing — Oct"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_marketing_m5" aria-label="Advertising and marketing — Nov"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_marketing_m6" aria-label="Advertising and marketing — Dec"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_marketing_m7" aria-label="Advertising and marketing — Jan"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_marketing_m8" aria-label="Advertising and marketing — Feb"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_marketing_m9" aria-label="Advertising and marketing — Mar"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_marketing_m10" aria-label="Advertising and marketing — Apr"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_marketing_m11" aria-label="Advertising and marketing — May"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_marketing_m12" aria-label="Advertising and marketing — Jun"></td><td class="sx-ann"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_marketing_y" aria-label="Advertising and marketing — annual total" title="Type here to override the annual total by hand"><input type="checkbox" class="sx-ov" data-f="sx_ex_marketing_ov" style="display:none" title="This annual figure has been overridden by hand"></td></tr>
+        <tr data-sx="ex_telephone"><th scope="row" class="sx-lbl"><span class="sx-txt">Telephone and internet</span><input type="checkbox" class="sx-use" data-f="sx_ex_telephone_use" data-default="checked" checked title="Use this line in the Income Statement" aria-label="Use Telephone and internet in the Income Statement"></th><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_telephone_m1" aria-label="Telephone and internet — Jul"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_telephone_m2" aria-label="Telephone and internet — Aug"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_telephone_m3" aria-label="Telephone and internet — Sep"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_telephone_m4" aria-label="Telephone and internet — Oct"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_telephone_m5" aria-label="Telephone and internet — Nov"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_telephone_m6" aria-label="Telephone and internet — Dec"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_telephone_m7" aria-label="Telephone and internet — Jan"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_telephone_m8" aria-label="Telephone and internet — Feb"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_telephone_m9" aria-label="Telephone and internet — Mar"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_telephone_m10" aria-label="Telephone and internet — Apr"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_telephone_m11" aria-label="Telephone and internet — May"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_telephone_m12" aria-label="Telephone and internet — Jun"></td><td class="sx-ann"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_telephone_y" aria-label="Telephone and internet — annual total" title="Type here to override the annual total by hand"><input type="checkbox" class="sx-ov" data-f="sx_ex_telephone_ov" style="display:none" title="This annual figure has been overridden by hand"></td></tr>
+        <tr data-sx="ex_power"><th scope="row" class="sx-lbl"><span class="sx-txt">Power and other utilities</span><input type="checkbox" class="sx-use" data-f="sx_ex_power_use" data-default="checked" checked title="Use this line in the Income Statement" aria-label="Use Power and other utilities in the Income Statement"></th><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_power_m1" aria-label="Power and other utilities — Jul"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_power_m2" aria-label="Power and other utilities — Aug"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_power_m3" aria-label="Power and other utilities — Sep"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_power_m4" aria-label="Power and other utilities — Oct"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_power_m5" aria-label="Power and other utilities — Nov"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_power_m6" aria-label="Power and other utilities — Dec"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_power_m7" aria-label="Power and other utilities — Jan"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_power_m8" aria-label="Power and other utilities — Feb"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_power_m9" aria-label="Power and other utilities — Mar"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_power_m10" aria-label="Power and other utilities — Apr"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_power_m11" aria-label="Power and other utilities — May"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_power_m12" aria-label="Power and other utilities — Jun"></td><td class="sx-ann"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_power_y" aria-label="Power and other utilities — annual total" title="Type here to override the annual total by hand"><input type="checkbox" class="sx-ov" data-f="sx_ex_power_ov" style="display:none" title="This annual figure has been overridden by hand"></td></tr>
+        <tr data-sx="ex_insurance"><th scope="row" class="sx-lbl"><span class="sx-txt">Insurance</span><input type="checkbox" class="sx-use" data-f="sx_ex_insurance_use" data-default="checked" checked title="Use this line in the Income Statement" aria-label="Use Insurance in the Income Statement"></th><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_insurance_m1" aria-label="Insurance — Jul"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_insurance_m2" aria-label="Insurance — Aug"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_insurance_m3" aria-label="Insurance — Sep"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_insurance_m4" aria-label="Insurance — Oct"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_insurance_m5" aria-label="Insurance — Nov"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_insurance_m6" aria-label="Insurance — Dec"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_insurance_m7" aria-label="Insurance — Jan"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_insurance_m8" aria-label="Insurance — Feb"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_insurance_m9" aria-label="Insurance — Mar"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_insurance_m10" aria-label="Insurance — Apr"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_insurance_m11" aria-label="Insurance — May"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_insurance_m12" aria-label="Insurance — Jun"></td><td class="sx-ann"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_insurance_y" aria-label="Insurance — annual total" title="Type here to override the annual total by hand"><input type="checkbox" class="sx-ov" data-f="sx_ex_insurance_ov" style="display:none" title="This annual figure has been overridden by hand"></td></tr>
+        <tr data-sx="ex_bank"><th scope="row" class="sx-lbl"><span class="sx-txt">Bank charges</span><input type="checkbox" class="sx-use" data-f="sx_ex_bank_use" data-default="checked" checked title="Use this line in the Income Statement" aria-label="Use Bank charges in the Income Statement"></th><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_bank_m1" aria-label="Bank charges — Jul"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_bank_m2" aria-label="Bank charges — Aug"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_bank_m3" aria-label="Bank charges — Sep"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_bank_m4" aria-label="Bank charges — Oct"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_bank_m5" aria-label="Bank charges — Nov"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_bank_m6" aria-label="Bank charges — Dec"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_bank_m7" aria-label="Bank charges — Jan"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_bank_m8" aria-label="Bank charges — Feb"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_bank_m9" aria-label="Bank charges — Mar"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_bank_m10" aria-label="Bank charges — Apr"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_bank_m11" aria-label="Bank charges — May"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_bank_m12" aria-label="Bank charges — Jun"></td><td class="sx-ann"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_bank_y" aria-label="Bank charges — annual total" title="Type here to override the annual total by hand"><input type="checkbox" class="sx-ov" data-f="sx_ex_bank_ov" style="display:none" title="This annual figure has been overridden by hand"></td></tr>
+        <tr data-sx="ex_legal"><th scope="row" class="sx-lbl"><span class="sx-txt">Legal and professional fees</span><input type="checkbox" class="sx-use" data-f="sx_ex_legal_use" data-default="checked" checked title="Use this line in the Income Statement" aria-label="Use Legal and professional fees in the Income Statement"></th><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_legal_m1" aria-label="Legal and professional fees — Jul"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_legal_m2" aria-label="Legal and professional fees — Aug"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_legal_m3" aria-label="Legal and professional fees — Sep"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_legal_m4" aria-label="Legal and professional fees — Oct"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_legal_m5" aria-label="Legal and professional fees — Nov"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_legal_m6" aria-label="Legal and professional fees — Dec"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_legal_m7" aria-label="Legal and professional fees — Jan"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_legal_m8" aria-label="Legal and professional fees — Feb"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_legal_m9" aria-label="Legal and professional fees — Mar"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_legal_m10" aria-label="Legal and professional fees — Apr"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_legal_m11" aria-label="Legal and professional fees — May"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_legal_m12" aria-label="Legal and professional fees — Jun"></td><td class="sx-ann"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_legal_y" aria-label="Legal and professional fees — annual total" title="Type here to override the annual total by hand"><input type="checkbox" class="sx-ov" data-f="sx_ex_legal_ov" style="display:none" title="This annual figure has been overridden by hand"></td></tr>
+        <tr data-sx="ex_stationery"><th scope="row" class="sx-lbl"><span class="sx-txt">Stationery and office supplies</span><input type="checkbox" class="sx-use" data-f="sx_ex_stationery_use" data-default="checked" checked title="Use this line in the Income Statement" aria-label="Use Stationery and office supplies in the Income Statement"></th><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_stationery_m1" aria-label="Stationery and office supplies — Jul"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_stationery_m2" aria-label="Stationery and office supplies — Aug"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_stationery_m3" aria-label="Stationery and office supplies — Sep"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_stationery_m4" aria-label="Stationery and office supplies — Oct"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_stationery_m5" aria-label="Stationery and office supplies — Nov"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_stationery_m6" aria-label="Stationery and office supplies — Dec"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_stationery_m7" aria-label="Stationery and office supplies — Jan"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_stationery_m8" aria-label="Stationery and office supplies — Feb"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_stationery_m9" aria-label="Stationery and office supplies — Mar"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_stationery_m10" aria-label="Stationery and office supplies — Apr"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_stationery_m11" aria-label="Stationery and office supplies — May"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_stationery_m12" aria-label="Stationery and office supplies — Jun"></td><td class="sx-ann"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_stationery_y" aria-label="Stationery and office supplies — annual total" title="Type here to override the annual total by hand"><input type="checkbox" class="sx-ov" data-f="sx_ex_stationery_ov" style="display:none" title="This annual figure has been overridden by hand"></td></tr>
+        <tr data-sx="ex_dep"><th scope="row" class="sx-lbl"><span class="sx-txt">Depreciation charged in the accounts</span><input type="checkbox" class="sx-use" data-f="sx_ex_dep_use" data-default="checked" checked title="Use this line in the Income Statement" aria-label="Use Depreciation charged in the accounts in the Income Statement"></th><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_dep_m1" aria-label="Depreciation charged in the accounts — Jul"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_dep_m2" aria-label="Depreciation charged in the accounts — Aug"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_dep_m3" aria-label="Depreciation charged in the accounts — Sep"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_dep_m4" aria-label="Depreciation charged in the accounts — Oct"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_dep_m5" aria-label="Depreciation charged in the accounts — Nov"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_dep_m6" aria-label="Depreciation charged in the accounts — Dec"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_dep_m7" aria-label="Depreciation charged in the accounts — Jan"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_dep_m8" aria-label="Depreciation charged in the accounts — Feb"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_dep_m9" aria-label="Depreciation charged in the accounts — Mar"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_dep_m10" aria-label="Depreciation charged in the accounts — Apr"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_dep_m11" aria-label="Depreciation charged in the accounts — May"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_dep_m12" aria-label="Depreciation charged in the accounts — Jun"></td><td class="sx-ann"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_dep_y" aria-label="Depreciation charged in the accounts — annual total" title="Type here to override the annual total by hand"><input type="checkbox" class="sx-ov" data-f="sx_ex_dep_ov" style="display:none" title="This annual figure has been overridden by hand"></td></tr>
+        <tr data-sx="ex_other"><th scope="row" class="sx-lbl"><span class="sx-txt">Other operating expenses</span><input type="checkbox" class="sx-use" data-f="sx_ex_other_use" data-default="checked" checked title="Use this line in the Income Statement" aria-label="Use Other operating expenses in the Income Statement"></th><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_other_m1" aria-label="Other operating expenses — Jul"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_other_m2" aria-label="Other operating expenses — Aug"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_other_m3" aria-label="Other operating expenses — Sep"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_other_m4" aria-label="Other operating expenses — Oct"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_other_m5" aria-label="Other operating expenses — Nov"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_other_m6" aria-label="Other operating expenses — Dec"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_other_m7" aria-label="Other operating expenses — Jan"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_other_m8" aria-label="Other operating expenses — Feb"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_other_m9" aria-label="Other operating expenses — Mar"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_other_m10" aria-label="Other operating expenses — Apr"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_other_m11" aria-label="Other operating expenses — May"></td><td class="sx-m"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_other_m12" aria-label="Other operating expenses — Jun"></td><td class="sx-ann"><input class="num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" data-f="sx_ex_other_y" aria-label="Other operating expenses — annual total" title="Type here to override the annual total by hand"><input type="checkbox" class="sx-ov" data-f="sx_ex_other_ov" style="display:none" title="This annual figure has been overridden by hand"></td></tr>
+        <tr class="sx-tot"><th scope="row" class="sx-lbl"><span class="sx-txt">TOTAL SALES</span></th><td class="sx-m" data-c="sx_sales_m1"></td><td class="sx-m" data-c="sx_sales_m2"></td><td class="sx-m" data-c="sx_sales_m3"></td><td class="sx-m" data-c="sx_sales_m4"></td><td class="sx-m" data-c="sx_sales_m5"></td><td class="sx-m" data-c="sx_sales_m6"></td><td class="sx-m" data-c="sx_sales_m7"></td><td class="sx-m" data-c="sx_sales_m8"></td><td class="sx-m" data-c="sx_sales_m9"></td><td class="sx-m" data-c="sx_sales_m10"></td><td class="sx-m" data-c="sx_sales_m11"></td><td class="sx-m" data-c="sx_sales_m12"></td><td class="sx-ann" data-c="sx_sales_tot"></td></tr>
+        <tr class="sx-tot"><th scope="row" class="sx-lbl"><span class="sx-txt">TOTAL EXPENSES</span></th><td class="sx-m" data-c="sx_exp_m1"></td><td class="sx-m" data-c="sx_exp_m2"></td><td class="sx-m" data-c="sx_exp_m3"></td><td class="sx-m" data-c="sx_exp_m4"></td><td class="sx-m" data-c="sx_exp_m5"></td><td class="sx-m" data-c="sx_exp_m6"></td><td class="sx-m" data-c="sx_exp_m7"></td><td class="sx-m" data-c="sx_exp_m8"></td><td class="sx-m" data-c="sx_exp_m9"></td><td class="sx-m" data-c="sx_exp_m10"></td><td class="sx-m" data-c="sx_exp_m11"></td><td class="sx-m" data-c="sx_exp_m12"></td><td class="sx-ann" data-c="sx_exp_tot"></td></tr>
+        <tr class="sx-net"><th scope="row" class="sx-lbl"><span class="sx-txt">NET FOR THE MONTH</span></th><td class="sx-m" data-c="sx_net_m1"></td><td class="sx-m" data-c="sx_net_m2"></td><td class="sx-m" data-c="sx_net_m3"></td><td class="sx-m" data-c="sx_net_m4"></td><td class="sx-m" data-c="sx_net_m5"></td><td class="sx-m" data-c="sx_net_m6"></td><td class="sx-m" data-c="sx_net_m7"></td><td class="sx-m" data-c="sx_net_m8"></td><td class="sx-m" data-c="sx_net_m9"></td><td class="sx-m" data-c="sx_net_m10"></td><td class="sx-m" data-c="sx_net_m11"></td><td class="sx-m" data-c="sx_net_m12"></td><td class="sx-ann" data-c="sx_net_year"></td></tr>
+        <tr class="sx-cum"><th scope="row" class="sx-lbl"><span class="sx-txt">NET FOR THE YEAR TO DATE</span></th><td class="sx-m" data-c="sx_cum_m1"></td><td class="sx-m" data-c="sx_cum_m2"></td><td class="sx-m" data-c="sx_cum_m3"></td><td class="sx-m" data-c="sx_cum_m4"></td><td class="sx-m" data-c="sx_cum_m5"></td><td class="sx-m" data-c="sx_cum_m6"></td><td class="sx-m" data-c="sx_cum_m7"></td><td class="sx-m" data-c="sx_cum_m8"></td><td class="sx-m" data-c="sx_cum_m9"></td><td class="sx-m" data-c="sx_cum_m10"></td><td class="sx-m" data-c="sx_cum_m11"></td><td class="sx-m" data-c="sx_cum_m12"></td><td class="sx-ann"></td></tr>
+          </tbody>
+        </table>
+        </div>
+        <div class="hintline">Tick the small box at the end of a line to use it in the Income Statement &mdash; untick a line to enter that one by rate on the Income Statement tab instead. Type straight into the <strong>Annual</strong> column to override a line by hand; press <strong>Recalculate annual column</strong> to put the monthly totals back.</div>
+      </div>
+    </div>
+  </section>
+
   <!-- ============================ PANEL: REGISTER ============================ -->
   <section class="panel" id="panel-register" role="tabpanel" hidden>
     <div class="card">
@@ -679,7 +800,7 @@
     <div class="guide">
 
       <h3>What this form is for</h3>
-      <p>Uganda&rsquo;s Income Tax Act, section 118(5) requires that a return of income by a taxpayer carrying on business <em>shall be accompanied by a statement of income and expenditure and a statement of the assets and liabilities of the taxpayer</em>. For an individual trading as a sole proprietor that statement is filed on <strong>form DT-2001 (Income Tax Return for Individual with Business Income)</strong>. This template is a working paper for both statements. The <strong>Balance Sheet</strong> tab uses the same line-item taxonomy as URA&rsquo;s own balance sheet (Section E of the income tax return), calculates the subtotals for you, and tells you straight away whether the statement balances. The <strong>Income Statement</strong> tab builds the statement of income and expenditure, works out the tax, and feeds the net profit and the tax provision straight into the balance sheet so the two always agree.</p>
+      <p>Uganda&rsquo;s Income Tax Act, section 118(5) requires that a return of income by a taxpayer carrying on business <em>shall be accompanied by a statement of income and expenditure and a statement of the assets and liabilities of the taxpayer</em>. For an individual trading as a sole proprietor that statement is filed on <strong>form DT-2001 (Income Tax Return for Individual with Business Income)</strong>. This template is a working paper for both statements. The <strong>Balance Sheet</strong> tab uses the same line-item taxonomy as URA&rsquo;s own balance sheet (Section E of the income tax return), calculates the subtotals for you, and tells you straight away whether the statement balances. The <strong>Sales &amp; Expenses</strong> tab records your sales and costs month by month, and the <strong>Income Statement</strong> tab builds the statement of income and expenditure, works out the tax, and feeds the net profit and the tax provision straight into the balance sheet so the three always agree.</p>
 
       <div class="callout"><b>It is not the return.</b> You still have to download the official DT-2001 Excel template from the URA portal, type your figures in, validate and upload. Use this sheet to work out your numbers and as the supporting statement that accompanies the return.</div>
 
@@ -694,6 +815,18 @@
         <li><strong>Provisional tax instalments.</strong> Four instalments of 25% of the estimated annual tax are shown with their due dates, less anything you have already paid.</li>
       </ol>
       <div class="callout"><b>Estimates are fine for a provisional return.</b> A provisional return is based on your best estimate of the year of income. You may file an amended provisional return at any time before the year of income ends if your figures change, and the final return replaces the estimate.</div>
+
+      <h3>Using the Sales &amp; Expenses sheet</h3>
+      <p>The <strong>Sales &amp; Expenses</strong> tab is a monthly record of what you took in and what you paid, for the twelve months of the year of income. It is the quickest way to build the income statement, because it does the arithmetic for you and it handles the months that are not the same as each other.</p>
+      <ol>
+        <li><strong>Type what actually happened each month.</strong> Sales in the first three rows, costs in the fifteen rows under EXPENSES. Leave a month blank if there was nothing to enter.</li>
+        <li><strong>The annual column is worked out for you</strong> as the sum of the twelve months. It is shown in the shaded box on the right and is pinned there while you scroll.</li>
+        <li><strong>The totals feed the Income Statement.</strong> Every line that has something in it drives the matching line on the Income Statement tab, so your turnover, your costs, your profit and your tax all come from one record. On the Income Statement those lines are marked <span class="rf" style="display:inline-block">from Sales &amp; Expenses</span> and their rate boxes are locked.</li>
+        <li><strong>Use a line by rate instead?</strong> Untick the small box at the end of that line and the Income Statement goes back to the rate-and-period boxes for it. Tick it again to hand the line back to the sheet.</li>
+        <li><strong>Override any line by hand.</strong> Click into the <strong>Annual</strong> column on the sheet and type the figure. That cell turns yellow and stops following the months. Press <strong>Recalculate annual column</strong> to put the monthly totals back.</li>
+        <li><strong>Same figure every month?</strong> Type it into the first month and press <strong>Fill every month from the first month</strong> to copy it across.</li>
+      </ol>
+      <div class="callout"><b>Why monthly?</b> A rate like &ldquo;40,000 a day&rdquo; assumes every day of the year was the same. If you had a quiet January and a busy December, the monthly sheet is the honest record &mdash; and it is the one that matches your bank statements, which is what a tax officer will ask for.</div>
 
       <h3>Provisional income tax &mdash; year of income 1 July 2026 to 30 June 2027</h3>
       <table class="ref">
@@ -861,6 +994,100 @@
   }
   function sum(v, keys){ var t = 0; for(var i=0;i<keys.length;i++) t += num(v[keys[i]]); return t; }
 
+  /* ============================
+     Sales & Expenses monthly sheet
+     ============================ */
+  var SX_SALES = ["pl_sales", "pl_services", "pl_trading_other"];
+  var SX_EXP = ["ex_food", "ex_transport", "ex_rent", "ex_rubbish", "ex_labour",
+                "ex_repairs", "ex_marketing", "ex_telephone", "ex_power", "ex_insurance",
+                "ex_bank", "ex_legal", "ex_stationery", "ex_dep", "ex_other"];
+  var SX_ALL = SX_SALES.concat(SX_EXP);
+  var SX_MONTH_NAMES = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+  /* Index of every [data-f] control, so a recalc never has to re-query the DOM. */
+  var FIELDS = {};
+  function indexFields(){
+    FIELDS = {};
+    var all = $$("[data-f]");
+    for(var i=0;i<all.length;i++) FIELDS[all[i].dataset.f] = all[i];
+  }
+  function sxField(name){ return FIELDS[name] || null; }
+
+  /* 12 month labels, taken from the year of income start date */
+  function sxMonthLabels(v){
+    var out = [], y = null, mi = 6;
+    if(v && v.m_from && /^\d{4}-\d{2}/.test(v.m_from)){
+      y = parseInt(v.m_from.slice(0,4), 10);
+      mi = parseInt(v.m_from.slice(5,7), 10) - 1;
+    }
+    for(var i=0;i<12;i++){
+      var idx = mi + i, yy = y;
+      if(yy !== null) yy = y + Math.floor(idx / 12);
+      out.push({m: SX_MONTH_NAMES[idx % 12], y: yy});
+    }
+    return out;
+  }
+
+  /* Monthly sums -> the annual figure on each line, and which lines drive the income statement.
+     Runs before readValues() so the income statement picks up the right numbers. */
+  function syncSheet(){
+    var drives = {};
+    for(var i=0;i<SX_ALL.length;i++){
+      var K = SX_ALL[i], sum = 0;
+      for(var m=1;m<=12;m++){
+        var f = sxField("sx_" + K + "_m" + m);
+        if(f) sum += num(f.value);
+      }
+      var ovF = sxField("sx_" + K + "_ov");
+      var useF = sxField("sx_" + K + "_use");
+      var ov = !!(ovF && ovF.checked);
+      var use = !!(useF && useF.checked);
+      drives[K] = use && (sum !== 0 || ov);
+
+      /* the annual cell shows the monthly total, unless it has been overridden by hand */
+      var yF = sxField("sx_" + K + "_y");
+      if(yF && !ov && document.activeElement !== yF){
+        yF.value = sum ? fmt(sum) : "";
+      }
+      if(yF) yF.parentNode.classList.toggle("ov", ov);
+
+      /* dim the sheet row when the line is switched off for the income statement */
+      var row = yF ? yF.closest("tr") : null;
+      if(row) row.classList.toggle("unused", !use);
+    }
+
+    /* sales lines: the income statement box shows the sheet figure, or the typed figure */
+    for(var j=0;j<SX_SALES.length;j++){
+      var S = SX_SALES[j];
+      var inp = sxField(S), man = sxField(S + "_m");
+      if(!inp) continue;
+      if(drives[S]){
+        var sum2 = 0;
+        for(var m2=1;m2<=12;m2++){ var f2 = sxField("sx_" + S + "_m" + m2); if(f2) sum2 += num(f2.value); }
+        inp.value = fmt(sum2);
+        inp.disabled = true;
+        inp.parentNode.classList.add("fromsheet");
+      } else {
+        inp.value = man ? man.value : "";
+        inp.disabled = false;
+        inp.parentNode.classList.remove("fromsheet");
+      }
+      var r2 = inp.closest("tr");
+      if(r2) r2.classList.toggle("fromsheet", !!drives[S]);
+    }
+
+    /* expense lines: the rate boxes are switched off while the sheet drives the line */
+    for(var e=0;e<SX_EXP.length;e++){
+      var E = SX_EXP[e];
+      var rate = sxField(E + "_rate"), per = sxField(E + "_period");
+      if(rate) rate.disabled = !!drives[E];
+      if(per)  per.disabled  = !!drives[E];
+      var tr = rate ? rate.closest("tr") : null;
+      if(tr) tr.classList.toggle("fromsheet", !!drives[E]);
+    }
+    return drives;
+  }
+
   /* Annualise a rate that is given per day / per month / per year */
   function rateToYear(v, key){
     var period = v[key + "_period"] || "month";
@@ -901,21 +1128,21 @@
     ["pl_gross",      function(v,o){ return o.pl_turnover - o.pl_cos; }],
     ["pl_other_inc",  function(v){ return sum(v,["pl_interest","pl_rental","pl_other_receipts"]); }],
     ["pl_total_inc",  function(v,o){ return o.pl_turnover + o.pl_other_inc; }],
-    ["ex_food",       function(v){ return rateToYear(v,"ex_food"); }],
-    ["ex_transport",       function(v){ return rateToYear(v,"ex_transport"); }],
-    ["ex_rent",       function(v){ return rateToYear(v,"ex_rent"); }],
-    ["ex_rubbish",       function(v){ return rateToYear(v,"ex_rubbish"); }],
-    ["ex_labour",       function(v){ return rateToYear(v,"ex_labour"); }],
-    ["ex_repairs",       function(v){ return rateToYear(v,"ex_repairs"); }],
-    ["ex_marketing",       function(v){ return rateToYear(v,"ex_marketing"); }],
-    ["ex_telephone",       function(v){ return rateToYear(v,"ex_telephone"); }],
-    ["ex_power",       function(v){ return rateToYear(v,"ex_power"); }],
-    ["ex_insurance",       function(v){ return rateToYear(v,"ex_insurance"); }],
-    ["ex_bank",       function(v){ return rateToYear(v,"ex_bank"); }],
-    ["ex_legal",       function(v){ return rateToYear(v,"ex_legal"); }],
-    ["ex_stationery",       function(v){ return rateToYear(v,"ex_stationery"); }],
-    ["ex_dep",       function(v){ return rateToYear(v,"ex_dep"); }],
-    ["ex_other",       function(v){ return rateToYear(v,"ex_other"); }],
+    ["ex_food", function(v,o){ return o["sx_ex_food_has"] ? o["sx_ex_food_ann"] : rateToYear(v,"ex_food"); }],
+    ["ex_transport", function(v,o){ return o["sx_ex_transport_has"] ? o["sx_ex_transport_ann"] : rateToYear(v,"ex_transport"); }],
+    ["ex_rent", function(v,o){ return o["sx_ex_rent_has"] ? o["sx_ex_rent_ann"] : rateToYear(v,"ex_rent"); }],
+    ["ex_rubbish", function(v,o){ return o["sx_ex_rubbish_has"] ? o["sx_ex_rubbish_ann"] : rateToYear(v,"ex_rubbish"); }],
+    ["ex_labour", function(v,o){ return o["sx_ex_labour_has"] ? o["sx_ex_labour_ann"] : rateToYear(v,"ex_labour"); }],
+    ["ex_repairs", function(v,o){ return o["sx_ex_repairs_has"] ? o["sx_ex_repairs_ann"] : rateToYear(v,"ex_repairs"); }],
+    ["ex_marketing", function(v,o){ return o["sx_ex_marketing_has"] ? o["sx_ex_marketing_ann"] : rateToYear(v,"ex_marketing"); }],
+    ["ex_telephone", function(v,o){ return o["sx_ex_telephone_has"] ? o["sx_ex_telephone_ann"] : rateToYear(v,"ex_telephone"); }],
+    ["ex_power", function(v,o){ return o["sx_ex_power_has"] ? o["sx_ex_power_ann"] : rateToYear(v,"ex_power"); }],
+    ["ex_insurance", function(v,o){ return o["sx_ex_insurance_has"] ? o["sx_ex_insurance_ann"] : rateToYear(v,"ex_insurance"); }],
+    ["ex_bank", function(v,o){ return o["sx_ex_bank_has"] ? o["sx_ex_bank_ann"] : rateToYear(v,"ex_bank"); }],
+    ["ex_legal", function(v,o){ return o["sx_ex_legal_has"] ? o["sx_ex_legal_ann"] : rateToYear(v,"ex_legal"); }],
+    ["ex_stationery", function(v,o){ return o["sx_ex_stationery_has"] ? o["sx_ex_stationery_ann"] : rateToYear(v,"ex_stationery"); }],
+    ["ex_dep", function(v,o){ return o["sx_ex_dep_has"] ? o["sx_ex_dep_ann"] : rateToYear(v,"ex_dep"); }],
+    ["ex_other", function(v,o){ return o["sx_ex_other_has"] ? o["sx_ex_other_ann"] : rateToYear(v,"ex_other"); }],
     ["ex_food_m",    function(v,o){ return o.ex_food / (num(v.months_year) || 12); }],
     ["ex_transport_m",    function(v,o){ return o.ex_transport / (num(v.months_year) || 12); }],
     ["ex_rent_m",    function(v,o){ return o.ex_rent / (num(v.months_year) || 12); }],
@@ -1088,8 +1315,10 @@
 
   function readValues(){
     var v = {};
-    $$("[data-f]").forEach(function(el){
-      var k = el.dataset.f;
+    var keys = Object.keys(FIELDS);
+    for(var i=0;i<keys.length;i++){
+      var el = FIELDS[keys[i]];
+      var k = keys[i];
       if(el.type === "checkbox"){
         v[k] = el.checked ? 1 : 0;
         if(k === "eq_ovr_on"){
@@ -1101,11 +1330,43 @@
       } else {
         v[k] = el.value;
       }
-    });
+    }
     return v;
   }
 
+  /* Sales & Expenses sheet calcs — resolved first so the income statement can use them */
+  var SX_CALCS = [];
+  SX_ALL.forEach(function(K){
+    var months = [];
+    for(var i=1;i<=12;i++) months.push("sx_" + K + "_m" + i);
+    SX_CALCS.push(["sx_" + K + "_sum", function(v){ return sum(v, months); }]);
+    SX_CALCS.push(["sx_" + K + "_ann", function(v,o){
+      return v["sx_" + K + "_ov"] ? num(v["sx_" + K + "_y"]) : o["sx_" + K + "_sum"];
+    }]);
+    SX_CALCS.push(["sx_" + K + "_has", function(v,o){
+      return (v["sx_" + K + "_use"] && (o["sx_" + K + "_sum"] !== 0 || v["sx_" + K + "_ov"])) ? 1 : 0;
+    }]);
+  });
+  for(var sxm=1;sxm<=12;sxm++){
+    (function(m){
+      var sM = [], eM = [];
+      SX_SALES.forEach(function(K){ sM.push("sx_" + K + "_m" + m); });
+      SX_EXP.forEach(function(K){ eM.push("sx_" + K + "_m" + m); });
+      SX_CALCS.push(["sx_sales_m" + m, function(v){ return sum(v, sM); }]);
+      SX_CALCS.push(["sx_exp_m" + m, function(v){ return sum(v, eM); }]);
+      SX_CALCS.push(["sx_net_m" + m, function(v,o){ return o["sx_sales_m" + m] - o["sx_exp_m" + m]; }]);
+      SX_CALCS.push(["sx_cum_m" + m, function(v,o){
+        var t = 0; for(var i=1;i<=m;i++) t += o["sx_net_m" + i]; return t;
+      }]);
+    })(sxm);
+  }
+  SX_CALCS.push(["sx_sales_tot", function(v,o){ var t=0; SX_SALES.forEach(function(K){ t += o["sx_"+K+"_ann"]; }); return t; }]);
+  SX_CALCS.push(["sx_exp_tot",   function(v,o){ var t=0; SX_EXP.forEach(function(K){ t += o["sx_"+K+"_ann"]; }); return t; }]);
+  SX_CALCS.push(["sx_net_year",  function(v,o){ return o.sx_sales_tot - o.sx_exp_tot; }]);
+  CALCS = SX_CALCS.concat(CALCS);
+
   function recalc(){
+    syncSheet();
     var v = readValues();
     lastIn = v;
     var o = {};
@@ -1125,12 +1386,13 @@
 
     // mirror values into print spans
     $$("input.num").forEach(function(inp){
-      var pv = inp.parentNode.querySelector(".pv");
+      var pv = inp._pv;
       if(!pv) return;
       var n = num(inp.value);
       pv.textContent = (inp.value === "" ? "" : fmt(n));
     });
 
+    updateMonthHeaders(v);
     updateBanner(o);
     updateCurrencyLabel(v.m_cur);
     updatePrintSub(v);
@@ -1144,6 +1406,15 @@
     var c = $("#regHdrCost"), a = $("#regHdrAcc");
     if(c) c.textContent = "Cost (" + CUR.code + ")";
     if(a) a.textContent = "Accum. depreciation (" + CUR.code + ")";
+  }
+
+  function updateMonthHeaders(v){
+    var labels = sxMonthLabels(v);
+    for(var i=0;i<12;i++){
+      var th = document.getElementById("sx_h_" + (i+1));
+      if(!th) continue;
+      th.textContent = labels[i].m + (labels[i].y !== null ? " " + labels[i].y : "");
+    }
   }
 
   function updatePrintSub(v){
@@ -1201,7 +1472,10 @@
 
   function hasAnyInput(){
     var any = false;
-    $$("input.num").forEach(function(el){ if(num(el.value) !== 0){ any = true; } });
+    var nums = $$("input.num");
+    for(var i=0;i<nums.length;i++){
+      if(num(nums[i].value) !== 0){ any = true; break; }
+    }
     return any;
   }
 
@@ -1210,10 +1484,11 @@
      ============================================================ */
   function collect(){
     var state = { fields:{}, register:register, currency:(lastIn.m_cur || "UGX") };
-    $$("[data-f]").forEach(function(el){
-      var k = el.dataset.f;
-      state.fields[k] = (el.type === "checkbox") ? el.checked : el.value;
-    });
+    var keys = Object.keys(FIELDS);
+    for(var i=0;i<keys.length;i++){
+      var el = FIELDS[keys[i]];
+      state.fields[keys[i]] = (el.type === "checkbox") ? el.checked : el.value;
+    }
     return state;
   }
 
@@ -1320,6 +1595,23 @@
       else if(inp) amount = fmtPlain(num(inp.value));
       lines.push([ref, lblText, amount]);
     });
+    lines.push([]);
+    lines.push(["Ref", "SALES AND EXPENSES - MONTHLY RECORD", "Amount (" + (v.m_cur || "UGX") + ")"]);
+    var labels = sxMonthLabels(v);
+    lines.push(["", "Line item"].concat(labels.map(function(l){ return l.m + (l.y !== null ? " " + l.y : ""); })).concat(["Annual"]));
+    SX_ALL.forEach(function(K){
+      var rowEl = document.querySelector('#panel-sales tr[data-sx="' + K + '"]');
+      var lbl = rowEl ? rowEl.querySelector(".sx-txt") : null;
+      var name = lbl ? (lbl.textContent || "").trim() : K;
+      var vals = [];
+      for(var m=1;m<=12;m++) vals.push(fmtPlain(o["sx_" + K + "_m" + m] !== undefined ? num(sxField("sx_"+K+"_m"+m).value) : 0));
+      vals.push(fmtPlain(o["sx_" + K + "_ann"]));
+      lines.push(["", name].concat(vals));
+    });
+    lines.push(["", "TOTAL SALES", "", "", "", "", "", "", "", "", "", "", "", fmtPlain(o.sx_sales_tot)]);
+    lines.push(["", "TOTAL EXPENSES", "", "", "", "", "", "", "", "", "", "", "", fmtPlain(o.sx_exp_tot)]);
+    lines.push(["", "NET FOR THE YEAR", "", "", "", "", "", "", "", "", "", "", "", fmtPlain(o.sx_net_year)]);
+    lines.push([]);
     lines.push(["", "TOTAL OPERATING EXPENSES", fmtPlain(o.pl_opex)]);
     lines.push(["", "PROFIT BEFORE TAX", fmtPlain(o.pl_pbt)]);
     lines.push(["", "CHARGEABLE INCOME", fmtPlain(o.pl_chargeable)]);
@@ -1351,11 +1643,14 @@
      Wiring
      ============================================================ */
   function init(){
+    indexFields();
+
     // print-mirror spans for number inputs
     $$("input.num").forEach(function(inp){
       var pv = document.createElement("span");
       pv.className = "pv";
       inp.parentNode.appendChild(pv);
+      inp._pv = pv;
     });
 
     // URA Section E line-reference chips
@@ -1380,7 +1675,7 @@
     $$(".tab").forEach(function(t){
       t.addEventListener("click", function(){
         $$(".tab").forEach(function(x){ x.setAttribute("aria-selected", x === t ? "true" : "false"); });
-        ["bs","income","register","guide"].forEach(function(name){
+        ["bs","income","sales","register","guide"].forEach(function(name){
           var p = $("#panel-" + name);
           if(p) p.hidden = (name !== t.dataset.tab);
         });
@@ -1390,8 +1685,26 @@
 
     // field input events
     $$("[data-f]").forEach(function(el){
-      el.addEventListener("input", function(){ recalc(); scheduleSave(); });
-      el.addEventListener("change", function(){ recalc(); scheduleSave(); });
+      el.addEventListener("input", function(){
+        /* typing straight into an annual cell overrides the monthly total for that line */
+        if(/^sx_\w+_y$/.test(el.dataset.f)){
+          var ovF = sxField(el.dataset.f.replace(/_y$/, "_ov"));
+          if(ovF) ovF.checked = true;
+        }
+        /* keep a copy of the hand-typed turnover so it survives a switch to the sheet */
+        if(SX_SALES.indexOf(el.dataset.f) >= 0){
+          var man = sxField(el.dataset.f + "_m");
+          if(man) man.value = el.value;
+        }
+        recalc(); scheduleSave();
+      });
+      el.addEventListener("change", function(){
+        if(SX_SALES.indexOf(el.dataset.f) >= 0){
+          var man = sxField(el.dataset.f + "_m");
+          if(man) man.value = el.value;
+        }
+        recalc(); scheduleSave();
+      });
     });
 
     // thousands separators: strip them while typing, add them when the field is left
@@ -1445,6 +1758,42 @@
       download("ura-assets-register.csv", "text/csv", buildRegisterCsv());
     });
 
+    // Sales & Expenses sheet buttons
+    $("#btnSxFill").addEventListener("click", function(){
+      var changed = 0;
+      SX_ALL.forEach(function(K){
+        var first = sxField("sx_" + K + "_m1");
+        if(!first) return;
+        var val = first.value;
+        if(val === "" || num(val) === 0) return;
+        for(var m=2;m<=12;m++){
+          var f = sxField("sx_" + K + "_m" + m);
+          if(f && f.value === ""){ f.value = val; changed++; }
+        }
+      });
+      recalc(); scheduleSave();
+      setSaveState(changed ? "Filled the months" : "Nothing to fill");
+    });
+    $("#btnSxReset").addEventListener("click", function(){
+      SX_ALL.forEach(function(K){
+        var ovF = sxField("sx_" + K + "_ov");
+        if(ovF) ovF.checked = false;
+      });
+      recalc(); scheduleSave();
+      setSaveState("Annual column recalculated");
+    });
+    $("#btnSxClear").addEventListener("click", function(){
+      SX_ALL.forEach(function(K){
+        for(var m=1;m<=12;m++){
+          var f = sxField("sx_" + K + "_m" + m); if(f) f.value = "";
+        }
+        var yF = sxField("sx_" + K + "_y"); if(yF) yF.value = "";
+        var ovF = sxField("sx_" + K + "_ov"); if(ovF) ovF.checked = false;
+      });
+      recalc(); scheduleSave();
+      setSaveState("Sheet cleared");
+    });
+
     // toolbar
     $("#btnPrint").addEventListener("click", function(){ window.print(); });
     $("#btnCsv").addEventListener("click", function(){
@@ -1480,7 +1829,7 @@
       });
       // put the working assumptions back (days, months, tax bands, expense periods)
       $$("[data-default]").forEach(function(el){
-        if(el.type === "checkbox") return;
+        if(el.type === "checkbox"){ if(el.dataset.default === "checked") el.checked = true; return; }
         if(el.tagName === "SELECT"){
           var opts = Array.prototype.slice.call(el.options);
           for(var oi=0; oi<opts.length; oi++){

@@ -4,6 +4,9 @@ A single-file, offline HTML template for preparing the **statement of income and
 the **statement of assets and liabilities** that must accompany a Ugandan income tax return for a
 business run by an individual (sole trader).
 
+It has five tabs: **Balance Sheet** · **Income Statement** · **Sales & Expenses** (a monthly
+record) · **Assets Register** · **Checklist & Guidance**.
+
 **File:** [`ura-balance-sheet.html`](ura-balance-sheet.html) — open it in any browser. No install,
 no internet connection, no data leaves your machine.
 
@@ -31,7 +34,9 @@ goes with it.
 
 | Feature | Detail |
 |---|---|
-| **Four tabs** | Balance Sheet · Income Statement · Assets Register · Checklist & Guidance. |
+| **Five tabs** | Balance Sheet · Income Statement · Sales & Expenses · Assets Register · Checklist & Guidance. |
+| **Monthly sales & expenses sheet** | Twelve month columns for every sales and cost line. The annual column is calculated, the totals feed the Income Statement automatically, and the sheet prints as a clean A4 landscape record. |
+| **Per-line control** | A line can be driven by the monthly sheet, or by a rate and period on the Income Statement tab, or by a hand-typed annual figure. You choose, line by line. |
 | **Auto-totals** | Every subtotal, the net current assets figure, total assets, total liabilities and owner's funds are calculated as you type. |
 | **Balance check** | A red/green panel tells you immediately whether assets equal liabilities plus capital — and if not, lists the usual causes. |
 | **Live ratios** | Current ratio, gearing and net current assets, for the questions a tax officer is likely to ask. |
@@ -42,7 +47,7 @@ goes with it.
 | **Assets register** | A separate tab with an itemised fixed asset list and a tax depreciation class per item, reconciled automatically against the balance sheet. |
 | **Autosave** | Your figures are saved in your browser as you type, and restored when you come back. |
 | **Export** | Both statements as one CSV, the register as CSV, and a full JSON backup you can restore later. |
-| **Print / PDF** | A clean A4 layout via the browser's print dialog, with the taxpayer details and a proper statement heading on every statement. |
+| **Print / PDF** | A clean A4 layout via the browser's print dialog, with the taxpayer details and a proper statement heading on every statement. The monthly sheet prints on its own A4 landscape page. |
 
 Your figures are stored only in this browser's local storage. Nothing is uploaded anywhere.
 
@@ -51,15 +56,38 @@ Your figures are stored only in this browser's local storage. Nothing is uploade
 ## How to use it
 
 1. **Taxpayer details** — business name, owner, TIN, year of income, currency, who prepared it.
-2. **Income Statement tab** — turnover, cost of sales, other income, operating expenses, tax.
-3. **Balance Sheet tab** — assets column, then liabilities & owner's funds column.
-4. **Owner's capital** — the template works it out for you:
+2. **Sales & Expenses tab** — record your sales and costs month by month. The annual totals feed
+   the Income Statement tab automatically.
+3. **Income Statement tab** — turnover, cost of sales, other income, operating expenses, tax. Use
+   this tab directly if you prefer to enter each expense as a rate and a period instead.
+4. **Balance Sheet tab** — assets column, then liabilities & owner's funds column.
+5. **Owner's capital** — the template works it out for you:
    `opening capital + net profit for the year (after tax, from the Income Statement) + capital
    introduced − drawings`. If you already know the closing capital, tick *Override* and type it in.
-5. **Check the balance panel.** If it is red, work down the list of common causes.
-6. **Assets Register tab** — list each fixed asset, and use the reconciliation panels to confirm the
+6. **Check the balance panel.** If it is red, work down the list of common causes.
+7. **Assets Register tab** — list each fixed asset, and use the reconciliation panels to confirm the
    register agrees with the balance sheet.
-7. **Print or export**, then transfer the figures into DT-2001 or DT-2003.
+8. **Print or export**, then transfer the figures into DT-2001 or DT-2003.
+
+### The Sales & Expenses sheet — month by month
+
+This is the quickest way to build the income statement, and the one that matches your bank
+statements.
+
+| What you do | Where |
+|---|---|
+| Type what you actually sold and what you actually paid | **Sales & Expenses** tab, month by month |
+| The annual figure for each line | Worked out for you in the pinned **Annual** column |
+| The same cost every month | Type it into the first month, then press **Fill every month from the first month** |
+| A line you want to enter as a rate instead | Untick the small box at the end of that line |
+| A line you want to type in full | Click into the **Annual** column and type — it turns yellow and stops following the months |
+
+Everything is per line, so you can mix the two methods freely. A line that has figures in it and
+is still ticked drives the matching line on the Income Statement tab; the Income Statement shows it
+ticked *from Sales & Expenses* and its rate boxes are locked, so the two can never disagree.
+
+The sheet prints on its own **A4 landscape** page with the twelve months, the annual column, and
+the running totals.
 
 ### Entering your expenses: rate and period
 
