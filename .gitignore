@@ -4,3 +4,6 @@ build/
 fonts/node_modules/
 __pycache__/
 *.pyc
+
+# scratch downloads (image candidates, not deliverables)
+image-search/
