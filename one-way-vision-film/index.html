@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>One-way vision film — Medical Center glass door graphics</title>
+<meta name="description" content="Premium one-way vision window graphics system for a medical centre: reception, consultation, laboratory, pharmacy and imaging.">
+<style>
+:root{--navy:#0A2642;--navy-deep:#06182A;--teal:#0C8C8C;--teal-lt:#4FB3AE;--green:#2E7A5F;
+--mist:#DCE6EC;--grey:#8FA3B4;--paper:#F4F7F8;--line:#DCE6EC}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:var(--navy);font-family:Inter,"Helvetica Neue",Arial,sans-serif;
+font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1240px;margin:0 auto;padding:0 32px}
+h1,h2,h3,h4{font-family:Manrope,"Helvetica Neue",Arial,sans-serif;letter-spacing:-.015em;margin:0}
+a{color:inherit}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.82em}
+.hero{background:var(--navy);color:#fff;padding:120px 0 96px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:auto -80px -120px auto;width:620px;height:620px;
+background-image:radial-gradient(circle,#fff 1.4px,transparent 1.5px);background-size:22px 22px;
+opacity:.05;transform:rotate(-8deg);pointer-events:none}
+.eyebrow{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--teal-lt);
+font-weight:600;margin-bottom:36px}
+.hero h1{font-size:clamp(44px,7vw,92px);line-height:.98;font-weight:800;letter-spacing:-.03em}
+.rule{width:86px;height:4px;background:var(--teal);margin:36px 0 30px;border-radius:2px}
+.lede{max-width:660px;font-size:19px;line-height:1.7;color:#D7E3EA;margin:0}
+.flags{display:flex;gap:10px;flex-wrap:wrap;margin-top:44px}
+.flag{font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:9px 15px;border-radius:999px;
+border:1px solid rgba(255,255,255,.22);color:#EAF1F5;font-weight:600}
+.flag.warn{border-color:var(--teal);color:var(--teal-lt)}
+section{padding:96px 0}
+section.alt{background:var(--paper)}
+.sechead{max-width:760px;margin-bottom:56px}
+.num{font-family:Manrope,sans-serif;font-weight:700;font-size:13px;letter-spacing:.2em;color:var(--teal)}
+.sechead h2{font-size:clamp(30px,3.6vw,44px);font-weight:800;margin:12px 0 14px;letter-spacing:-.02em}
+.sechead p{margin:0;color:#40546A;font-size:16.5px}
+.mocks{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.mocks figure{margin:0}
+.mocks img{width:100%;display:block;border-radius:4px;box-shadow:0 18px 50px rgba(6,24,42,.18)}
+figcaption{margin-top:16px;font-size:13.5px;color:#54697E}
+figcaption strong{display:block;color:var(--navy);font-family:Manrope;font-size:15px;margin-bottom:4px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:34px 24px}
+.card .shot{position:relative;display:block;border-radius:3px;overflow:hidden;
+box-shadow:0 10px 30px rgba(6,24,42,.13);transition:transform .35s ease,box-shadow .35s ease}
+.card .shot:hover{transform:translateY(-5px);box-shadow:0 18px 44px rgba(6,24,42,.2)}
+.card img{width:100%;display:block}
+.open{position:absolute;left:0;right:0;bottom:0;background:rgba(6,24,42,.9);color:#fff;font-size:11px;
+letter-spacing:.16em;text-transform:uppercase;text-align:center;padding:10px 6px;opacity:0;
+transition:opacity .3s ease;font-weight:600}
+.shot:hover .open{opacity:1}
+.meta{padding-top:14px}
+.row{display:flex;align-items:baseline;gap:10px}
+.pid{font-family:Manrope;font-weight:700;font-size:12px;letter-spacing:.1em;color:var(--teal)}
+.dept{font-family:Manrope;font-weight:700;font-size:14px;letter-spacing:.04em}
+.spec{font-size:12.5px;color:#54697E;margin-top:3px}
+.credit{font-size:11.5px;color:var(--grey);margin-top:2px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:64px}
+h3{font-size:14px;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);font-weight:700;
+margin-bottom:22px}
+h3.mt{margin-top:64px}
+.palette{list-style:none;padding:0;margin:0;display:grid;gap:14px}
+.palette li{display:grid;grid-template-columns:46px 1fr auto;gap:14px;align-items:center;
+padding-bottom:13px;border-bottom:1px solid var(--line)}
+.chip{width:46px;height:34px;border-radius:3px;display:block;border:1px solid rgba(10,38,66,.12)}
+.palette strong{font-family:Manrope;font-size:14.5px}
+.palette code{color:var(--grey);font-size:12px;justify-self:end}
+.palette em{grid-column:2/4;font-style:normal;font-size:12.5px;color:#54697E;margin-top:-6px}
+.type>div{padding:18px 0;border-bottom:1px solid var(--line)}
+.tf{font-family:Manrope;font-weight:800;font-size:26px;letter-spacing:-.02em}
+.tf.light{font-weight:500;letter-spacing:.02em}
+.type p{margin:8px 0 0;font-size:14.5px;color:#40546A}
+.rules{list-style:none;padding:0;margin:0;font-size:14.5px;color:#40546A}
+.rules li{padding:11px 0 11px 20px;border-bottom:1px solid var(--line);position:relative}
+.rules li::before{content:"";position:absolute;left:0;top:19px;width:6px;height:6px;border-radius:50%;
+background:var(--teal)}
+.rules b{color:var(--navy);font-weight:600}
+.sim{display:grid;grid-template-columns:1.25fr .95fr;gap:48px;align-items:start}
+.simframe{position:relative;border-radius:4px;overflow:hidden;background:var(--navy);
+box-shadow:0 20px 50px rgba(6,24,42,.22)}
+.simframe img{width:100%;display:block}
+.dots{position:absolute;inset:0;pointer-events:none;
+background-image:radial-gradient(circle,var(--navy) 1.05px,transparent 1.15px);
+background-size:2.55px 2.55px;opacity:.92}
+.simctl label{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);
+font-weight:700}
+input[type=range]{width:100%;margin:18px 0 8px;accent-color:var(--teal)}
+.simval{display:flex;justify-content:space-between;font-family:ui-monospace,monospace;
+font-size:12.5px;color:#54697E;margin-bottom:26px}
+.rules.tight li{font-size:13.5px;padding:9px 0 9px 18px}
+.tbl{width:100%;border-collapse:collapse;font-size:13.5px}
+.tbl th{text-align:left;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#fff;
+background:var(--navy);padding:12px 14px;font-weight:600}
+.tbl td{padding:13px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl tr:nth-child(even) td{background:#fff}
+.tbl a{text-decoration:none;border-bottom:1px solid var(--line)}
+.tbl a:hover{border-color:var(--teal);color:var(--teal)}
+.mono{font-family:ui-monospace,monospace;font-size:12px;color:var(--grey)}
+.pill{font-size:11px;padding:4px 9px;border-radius:999px;white-space:nowrap;font-weight:600}
+.pill.ok{background:#E7F2EC;color:var(--green)}
+.notes{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:34px}
+.notes h4{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);
+margin-bottom:8px}
+.notes p{margin:0;font-size:14px;color:#40546A}
+.panelbox{background:#fff;padding:28px;border-radius:5px;border:1px solid var(--line)}
+.panelbox.warnbox{border-color:#E7C9A8;background:#FFFBF6}
+.panelbox h3{margin-bottom:14px}
+.steps{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(5,1fr);gap:20px}
+.steps li{border-top:2px solid var(--teal);padding-top:16px}
+.steps .n{font-family:Manrope;font-weight:800;font-size:26px;color:var(--teal);display:block;
+margin-bottom:6px}
+.steps strong{font-family:Manrope;font-size:14px;letter-spacing:.1em;text-transform:uppercase}
+.steps p{font-size:13px;color:#54697E;margin:6px 0 0}
+.docs{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.doc{display:block;padding:22px;border:1px solid var(--line);border-radius:5px;background:#fff;
+text-decoration:none;transition:border-color .25s ease,transform .25s ease}
+.doc:hover{border-color:var(--teal);transform:translateY(-3px)}
+.dname{font-family:Manrope;font-weight:700;font-size:15px;display:block;margin-bottom:5px}
+.ddesc{font-size:13px;color:#54697E;display:block}
+.dmeta{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);
+display:block;margin-top:12px;font-weight:600}
+footer{background:var(--navy-deep);color:var(--grey);font-size:12px;padding:34px 0}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+@media(max-width:1000px){
+.grid{grid-template-columns:repeat(2,1fr)}
+.mocks,.cols,.notes,.docs,.steps{grid-template-columns:1fr 1fr}
+.sim{grid-template-columns:1fr}
+section{padding:72px 0}
+}
+@media(max-width:640px){
+.wrap{padding:0 20px}
+.grid,.mocks,.cols,.notes,.docs,.steps{grid-template-columns:1fr}
+.hero{padding:80px 0 64px}
+}
+</style></head><body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Premium healthcare · glass door graphics · rev R1 · 2026-10-28</div>
+    <h1>One-way vision<br>film system</h1>
+    <div class="rule"></div>
+    <p class="lede">A coordinated set of perforated window graphics for the reception, consultation
+    rooms, laboratory, pharmacy and imaging suite of a private medical centre. Real photography,
+    quiet colour, and type that survives perforation.</p>
+    <div class="flags">
+      <span class="flag">8 panels</span>
+      <span class="flag">5 services</span>
+      <span class="flag warn">Provisional dimensions</span>
+    </div>
+  </div>
+</header>
+<section id="mockups"><div class="wrap"><div class="sechead"><span class="num">01</span><h2>In situ</h2><p>Elevations composed at true scale from the actual panel artwork. Hardware is drawn to position so clearances can be judged.</p></div><div class="mocks"><figure><img src="web/M-01-reception.jpg" alt="Reception entrance" loading="lazy">
+        <figcaption><strong>Reception entrance</strong><span>Single active leaf with fixed sidelight. Handle sits 150 mm in from the meeting edge.</span></figcaption></figure><figure><img src="web/M-02-consultation.jpg" alt="Consultation room" loading="lazy">
+        <figcaption><strong>Consultation room</strong><span>Single leaf. Headline baseline clears the handle zone and the door closer.</span></figcaption></figure><figure><img src="web/M-03-imaging.jpg" alt="Imaging suite" loading="lazy">
+        <figcaption><strong>Imaging suite</strong><span>Double leaf, 2 × 600 mm, with a 450 mm sidelight. No type crosses the meeting stile.</span></figcaption></figure></div></div></section><section id="panels" class="alt"><div class="wrap"><div class="sechead"><span class="num">02</span><h2>The panel suite</h2><p>Eight independent print panels. Fixed elements — photographic band, headline baseline, accent rule, lockup — sit at identical heights, so a corridor reads as one institution.</p></div><div class="grid"><article class="card">
+  <a class="shot" href="artwork/P-01.pdf" target="_blank" rel="noopener">
+    <img src="web/P-01.jpg" alt="RECEPTION panel P-01" loading="lazy">
+    <span class="open">Open artwork PDF</span>
+  </a>
+  <div class="meta">
+    <div class="row"><span class="pid">P-01</span><span class="dept">RECEPTION</span></div>
+    <div class="spec">100 × 210 cm · 1 : 2.10 · photo 40%</div>
+    <div class="credit">A-01 · Cedric Fauntleroy / Pexels</div>
+  </div>
+</article><article class="card">
+  <a class="shot" href="artwork/P-02.pdf" target="_blank" rel="noopener">
+    <img src="web/P-02.jpg" alt="RECEPTION panel P-02" loading="lazy">
+    <span class="open">Open artwork PDF</span>
+  </a>
+  <div class="meta">
+    <div class="row"><span class="pid">P-02</span><span class="dept">RECEPTION</span></div>
+    <div class="spec">45 × 210 cm · 1 : 4.67 · photo 0%</div>
+    <div class="credit">Graphic panel — no photograph</div>
+  </div>
+</article><article class="card">
+  <a class="shot" href="artwork/P-03.pdf" target="_blank" rel="noopener">
+    <img src="web/P-03.jpg" alt="CONSULTATION panel P-03" loading="lazy">
+    <span class="open">Open artwork PDF</span>
+  </a>
+  <div class="meta">
+    <div class="row"><span class="pid">P-03</span><span class="dept">CONSULTATION</span></div>
+    <div class="spec">90 × 210 cm · 1 : 2.33 · photo 40%</div>
+    <div class="credit">A-02 · cottonbro studio / Pexels</div>
+  </div>
+</article><article class="card">
+  <a class="shot" href="artwork/P-04.pdf" target="_blank" rel="noopener">
+    <img src="web/P-04.jpg" alt="CONSULTATION panel P-04" loading="lazy">
+    <span class="open">Open artwork PDF</span>
+  </a>
+  <div class="meta">
+    <div class="row"><span class="pid">P-04</span><span class="dept">CONSULTATION</span></div>
+    <div class="spec">90 × 210 cm · 1 : 2.33 · photo 40%</div>
+    <div class="credit">A-03 · Thirdman / Pexels</div>
+  </div>
+</article><article class="card">
+  <a class="shot" href="artwork/P-05.pdf" target="_blank" rel="noopener">
+    <img src="web/P-05.jpg" alt="LABORATORY panel P-05" loading="lazy">
+    <span class="open">Open artwork PDF</span>
+  </a>
+  <div class="meta">
+    <div class="row"><span class="pid">P-05</span><span class="dept">LABORATORY</span></div>
+    <div class="spec">90 × 210 cm · 1 : 2.33 · photo 40%</div>
+    <div class="credit">A-04 · Pavel Danilyuk / Pexels</div>
+  </div>
+</article><article class="card">
+  <a class="shot" href="artwork/P-06.pdf" target="_blank" rel="noopener">
+    <img src="web/P-06.jpg" alt="PHARMACY panel P-06" loading="lazy">
+    <span class="open">Open artwork PDF</span>
+  </a>
+  <div class="meta">
+    <div class="row"><span class="pid">P-06</span><span class="dept">PHARMACY</span></div>
+    <div class="spec">100 × 210 cm · 1 : 2.10 · photo 40%</div>
+    <div class="credit">A-05 · cottonbro studio / Pexels</div>
+  </div>
+</article><article class="card">
+  <a class="shot" href="artwork/P-07.pdf" target="_blank" rel="noopener">
+    <img src="web/P-07.jpg" alt="IMAGING panel P-07" loading="lazy">
+    <span class="open">Open artwork PDF</span>
+  </a>
+  <div class="meta">
+    <div class="row"><span class="pid">P-07</span><span class="dept">IMAGING</span></div>
+    <div class="spec">120 × 210 cm · 1 : 1.75 · photo 40%</div>
+    <div class="credit">A-06 · MART PRODUCTION / Pexels</div>
+  </div>
+</article><article class="card">
+  <a class="shot" href="artwork/P-08.pdf" target="_blank" rel="noopener">
+    <img src="web/P-08.jpg" alt="IMAGING panel P-08" loading="lazy">
+    <span class="open">Open artwork PDF</span>
+  </a>
+  <div class="meta">
+    <div class="row"><span class="pid">P-08</span><span class="dept">IMAGING</span></div>
+    <div class="spec">45 × 210 cm · 1 : 4.67 · photo 0%</div>
+    <div class="credit">Graphic panel — no photograph</div>
+  </div>
+</article></div></div></section>
+<section id="system"><div class="wrap"><div class="sechead"><span class="num">03</span>
+<h2>The system</h2><p>One palette, two typefaces, one grid. Everything else is photography.</p></div>
+<div class="cols">
+  <div>
+    <h3>Palette</h3>
+    <ul class="palette"><li><span class="chip" style="background:#0A2642"></span><strong>Navy</strong><code>#0A2642</code><em>Ground field — 60% of every panel</em></li><li><span class="chip" style="background:#06182A"></span><strong>Navy Deep</strong><code>#06182A</code><em>Lockup ground, shadows</em></li><li><span class="chip" style="background:#0C8C8C"></span><strong>Teal</strong><code>#0C8C8C</code><em>Accent rules and labels</em></li><li><span class="chip" style="background:#2E7A5F"></span><strong>Medical Green</strong><code>#2E7A5F</code><em>Secondary accent, used sparingly</em></li><li><span class="chip" style="background:#DCE6EC"></span><strong>Mist</strong><code>#DCE6EC</code><em>Body text on navy</em></li><li><span class="chip" style="background:#FFFFFF"></span><strong>White</strong><code>#FFFFFF</code><em>Headlines</em></li></ul>
+  </div>
+  <div>
+    <h3>Typography</h3>
+    <div class="type">
+      <div><span class="tf">Manrope</span><p>Department names, 600–800. Geometric with open
+      apertures — holds at 70–78 mm cap height and still reads through a 38% perforation.</p></div>
+      <div><span class="tf light">Inter</span><p>Labels, indices and technical text, 400–600 with
+      0.15–0.25 em tracking. Never below 4 mm cap height anywhere on a panel.</p></div>
+    </div>
+    <h3>Grid</h3>
+    <ul class="rules">
+      <li><b>1250–2100 mm</b> photographic band, full bleed to the head of the panel</li>
+      <li><b>660–640 mm</b> accent rule and department label</li>
+      <li><b>372 mm</b> headline baseline — identical on every panel</li>
+      <li><b>140 mm</b> kick zone: no live content below the lockup</li>
+      <li><b>25 mm</b> safe zone, <b>10 mm</b> bleed (printer to confirm)</li>
+    </ul>
+  </div>
+</div></div></section>
+
+<section id="film" class="alt"><div class="wrap"><div class="sechead"><span class="num">04</span>
+<h2>Designed for perforation</h2><p>Drag the slider to see the film's 1.6 mm holes at true scale over
+the headline. This is what the patient actually sees from a metre away.</p></div>
+<div class="sim">
+  <div class="simframe" id="simframe">
+    <img src="web/detail.jpg" alt="Headline detail">
+    <div class="dots" id="dots"></div>
+  </div>
+  <div class="simctl">
+    <label for="pitch">Hole size / pitch</label>
+    <input id="pitch" type="range" min="0" max="100" value="60">
+    <div class="simval"><span id="pv">1.6 mm / 2.3 mm</span><span id="ov">38% open area</span></div>
+    <ul class="rules tight">
+      <li>Headlines never sit over photography — solid navy gives maximum edge contrast.</li>
+      <li>No stroke thinner than 0.3 mm; hairline rules carry no information.</li>
+      <li>Photography covers 40–45% of a door; sidelights carry none at all, preserving daylight.</li>
+      <li>The darkest zone is the most transparent: navy is the "window" of the panel.</li>
+      <li>From inside, the panel reads as a dark field — do not rely on it for privacy after dark.</li>
+    </ul>
+  </div>
+</div></div></section>
+
+<section id="sources"><div class="wrap"><div class="sechead"><span class="num">05</span>
+<h2>Image sources &amp; licensing</h2><p>Every photograph is a real, professionally shot stock image —
+no AI-generated imagery, no synthetic people, no composited scenes. Terms checked on Pexels'
+licence page, 28 October 2026.</p></div>
+<table class="tbl"><thead><tr><th>Asset</th><th>Used on</th><th>Photograph</th><th>Creator</th>
+<th>Original size</th><th>Licence</th></tr></thead><tbody><tr>
+  <td class="mono">A-01</td>
+  <td>P-01</td>
+  <td><a href="https://www.pexels.com/photo/a-receptionist-smiling-at-a-person-4269206/" target="_blank" rel="noopener">A receptionist smiling at a person (reception desk, tablet)</a></td>
+  <td>Cedric Fauntleroy</td>
+  <td class="mono">5,474 × 8,211</td>
+  <td><span class="pill ok">Pexels Licence</span></td>
+</tr><tr>
+  <td class="mono">A-02</td>
+  <td>P-03</td>
+  <td><a href="https://www.pexels.com/photo/doctor-sitting-by-table-with-patient-7580254/" target="_blank" rel="noopener">Doctor sitting by table with patient</a></td>
+  <td>cottonbro studio</td>
+  <td class="mono">4,189 × 6,284</td>
+  <td><span class="pill ok">Pexels Licence</span></td>
+</tr><tr>
+  <td class="mono">A-03</td>
+  <td>P-04</td>
+  <td><a href="https://www.pexels.com/photo/5327864/" target="_blank" rel="noopener">Medical professional sitting on a chair holding a tablet while talking</a></td>
+  <td>Thirdman</td>
+  <td class="mono">4,231 × 6,346</td>
+  <td><span class="pill ok">Pexels Licence</span></td>
+</tr><tr>
+  <td class="mono">A-04</td>
+  <td>P-05</td>
+  <td><a href="https://www.pexels.com/photo/woman-doctor-next-to-a-trinocular-microscope-8442574/" target="_blank" rel="noopener">Woman lab technician examining samples with a trinocular microscope</a></td>
+  <td>Pavel Danilyuk</td>
+  <td class="mono">5,192 × 3,466</td>
+  <td><span class="pill ok">Pexels Licence</span></td>
+</tr><tr>
+  <td class="mono">A-05</td>
+  <td>P-06</td>
+  <td><a href="https://www.pexels.com/photo/women-looking-at-the-medicine-bottles-at-the-shelves-8657370/" target="_blank" rel="noopener">Pharmacists examining medicine bottles on a pharmacy shelf</a></td>
+  <td>cottonbro studio</td>
+  <td class="mono">6,403 × 4,269</td>
+  <td><span class="pill ok">Pexels Licence</span></td>
+</tr><tr>
+  <td class="mono">A-06</td>
+  <td>P-07</td>
+  <td><a href="https://www.pexels.com/photo/technology-hospital-medicine-indoors-7089017/" target="_blank" rel="noopener">MRI scanner in a hospital imaging room</a></td>
+  <td>MART PRODUCTION</td>
+  <td class="mono">6,000 × 4,000</td>
+  <td><span class="pill ok">Pexels Licence</span></td>
+</tr></tbody></table>
+<div class="notes">
+  <div><h4>Permitted</h4><p>Free commercial and non-commercial use including print marketing;
+  modification and creative editing; attribution not required, credited here as good practice.</p></div>
+  <div><h4>Restricted</h4><p>No selling unaltered copies; no implying that the people or brands
+  depicted endorse the centre; no use as part of a trade mark. These panels are wayfinding and must
+  never caption a depicted person as named staff.</p></div>
+</div></div></section>
+
+<section id="next" class="alt"><div class="wrap"><div class="sechead"><span class="num">06</span>
+<h2>Where this stands</h2><p>The design is complete and the production system is built. What is
+outstanding is measurement, identity and the printer's technical sheet.</p></div>
+<div class="cols">
+  <div class="panelbox">
+    <h3>Ready</h3>
+    <ul class="rules">
+      <li>Eight true-size artwork files with bleed, marks and per-panel slug</li>
+      <li>Panel schedule with hardware, crop logic and coverage</li>
+      <li>Image log with creator, licence and original pixel size</li>
+      <li>Resolution audit at final print size</li>
+      <li>Production spec, install schedule and printer RFQ</li>
+    </ul>
+  </div>
+  <div class="panelbox warnbox">
+    <h3>Needed before release</h3>
+    <ul class="rules">
+      <li>Every glass section measured in centimetres, with door photographs</li>
+      <li>Exact department names, room numbers and any second language</li>
+      <li>Client logo in vector form, plus approved contact details and claims</li>
+      <li>Film maker's hole geometry, ink limit, bleed and sheet width</li>
+      <li>Full-resolution stock downloads, relinked at 150 ppi</li>
+    </ul>
+  </div>
+</div>
+<h3 class="mt">Sequence</h3>
+<ol class="steps"><li><span class="n">01</span><strong>Receive</strong><p>Measured schedule, door photographs, logo, printer technical sheet.</p></li><li><span class="n">02</span><strong>Re-cut</strong><p>The parametric engine re-flows type and crop to the real dimensions.</p></li><li><span class="n">03</span><strong>Proof</strong><p>Colour-managed proof on the specified film, signed off.</p></li><li><span class="n">04</span><strong>Output</strong><p>Release PDFs: trimmed artwork, no overlays, printer's profile applied.</p></li><li><span class="n">05</span><strong>Install</strong><p>Application, 1 m inspection, acceptance and one offcut per panel.</p></li></ol>
+<h3 class="mt">Documents</h3>
+<div class="docs"><a class="doc" href="artwork/P-01.pdf" target="_blank" rel="noopener">
+  <span class="dname">Panel artwork</span><span class="ddesc">True-size PDF with bleed, marks and slug</span><span class="dmeta">all 8 panels in <code>artwork/</code></span>
+</a><a class="doc" href="docs/01-Panel-Schedule.pdf" target="_blank" rel="noopener">
+  <span class="dname">Panel schedule</span><span class="ddesc">Dimensions, hardware, crop logic</span><span class="dmeta">4 pages</span>
+</a><a class="doc" href="proofs/03-Technical-Proofs.pdf" target="_blank" rel="noopener">
+  <span class="dname">Technical proofs</span><span class="ddesc">One A3 sheet per panel with overlays</span><span class="dmeta">8 pages</span>
+</a><a class="doc" href="docs/02-Production-Specification.pdf" target="_blank" rel="noopener">
+  <span class="dname">Production specification</span><span class="ddesc">Material, ink, installation, RFQ</span><span class="dmeta">5 pages</span>
+</a><a class="doc" href="lookbook/GMC-One-Way-Vision-Lookbook.pdf" target="_blank" rel="noopener">
+  <span class="dname">Design lookbook</span><span class="ddesc">The presentation document</span><span class="dmeta">8 pages</span>
+</a></div>
+</div></section>
+<footer><div class="wrap"><span>GMC / OWV · Rev R1 · 2026-10-28 · provisional</span>
+<span>Identity and dimensions are placeholders pending client assets.</span></div></footer>
+
+<script>
+(function(){
+  const r = document.getElementById('pitch');
+  const dots = document.getElementById('dots');
+  const pv = document.getElementById('pv');
+  const ov = document.getElementById('ov');
+  if(!r) return;
+  function upd(){
+    const t = r.value/100;                 // 0 = no film, 1 = coarse film
+    const size = 2.2 + t*4.2;              // background tile in px
+    const r1 = 0.75 + t*1.5;               // dot radius
+    dots.style.backgroundSize = size+'px '+size+'px';
+    dots.style.backgroundImage =
+      'radial-gradient(circle, var(--navy) '+r1+'px, transparent '+(r1+0.1)+'px)';
+    const pitch = (2.3 + t*2.9);
+    const open = Math.round((1 - Math.PI*Math.pow((1.6+t*1.2)/2,2)/(pitch*pitch/ (4/Math.PI)))*100);
+    pv.textContent = (1.6+t*1.2).toFixed(1)+' mm / '+pitch.toFixed(1)+' mm';
+    ov.textContent = Math.max(8,Math.min(62,open))+'% open area';
+  }
+  r.addEventListener('input', upd); upd();
+})();
+</script>
+</body></html>
