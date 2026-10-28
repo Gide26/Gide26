@@ -89,11 +89,11 @@ def schedule():
     D.page_bg(c, "CP / OWV / 01", "Rev R2  ·  2026-10-28  ·  PROVISIONAL", 2,
               eyebrow="CAREPOINT MEDICAL CENTER  ·  ONE-WAY VISION FILM")
     y = D.h1(c, D.PH - 34 * MM, "Pane detail — crop logic and production notes", 8.0)
-    cw, ch = 88 * MM, 46 * MM
+    cw, ch = 88 * MM, 25 * MM
     for i, p in enumerate(PN.PANELS):
         col, row = i % 3, i // 3
         x = D.M + col * (cw + 8 * MM)
-        cy = D.PH - 46 * MM - ch - row * (ch + 7 * MM)
+        cy = D.PH - 40 * MM - ch - row * (ch + 20 * MM)
         c.setFillColor(B.PAPER)
         c.rect(x, cy, cw, ch, stroke=0, fill=1)
         c.setFillColor(B.TEAL)
@@ -105,9 +105,9 @@ def schedule():
                 "Inter-400", 0.4)
         asset = (P.PHOTOS[p["photo"]]["asset"] + "  " + P.PHOTOS[p["photo"]]["creator"]
                  if p["photo"] else "No photograph — type only")
-        yy = D.para(c, x + 4 * MM, cy + ch - 21 * MM, "ASSET  " + asset, cw - 8 * MM, 2.9,
+        yy = D.para(c, x + 4 * MM, cy + ch - 18 * MM, "ASSET  " + asset, cw - 8 * MM, 2.9,
                     B.TEAL, 1.55, "Inter-600")
-        D.para(c, x + 4 * MM, yy - 2 * MM, p["note"], cw - 8 * MM, 2.9, B.NAVY_MID, 1.55)
+        D.para(c, x + 4 * MM, yy - 1.5 * MM, p["note"], cw - 8 * MM, 2.9, B.NAVY_MID, 1.55)
     c.showPage()
 
     # ---- 3 · licence log ------------------------------------------------
@@ -130,10 +130,16 @@ def schedule():
             usage.setdefault(p["photo"], []).append(p["id"])
     rows = []
     for key, m in P.PHOTOS.items():
-        rows.append([m["asset"], ", ".join(usage.get(key, ["—"])), m["title"],
+        rows.append([m["asset"],
+                     ", ".join(usage.get(key, ["— held in reserve"])), m["title"],
                      f"{m['creator']} / Pexels", "Pexels Licence",
                      f"{m['px'][0]:,} × {m['px'][1]:,}", "2026-10-28"])
-    y = D.table(c, D.M, y, cols, rows, row_h=9.4 * MM, cap=2.7) - 7 * MM
+    y = D.table(c, D.M, y, cols, rows, row_h=9.4 * MM, cap=2.7) - 5 * MM
+    y = D.para(c, D.M, y,
+               "PH-04 is credited in transliteration: the display fonts used here carry no "
+               "Lithuanian diacritics. The studio's exact Pexels handle is "
+               "@funkcines-terapijos-centras.",
+               (D.PW - 2 * D.M) / MM, 2.8, B.GREY, 1.6) - 4 * MM
     B.label(c, D.M, y, "WHAT THE LICENCE ALLOWS", 4.0, B.TEAL, "Inter-600", 1.6)
     y -= 6 * MM
     lw = 128 * MM

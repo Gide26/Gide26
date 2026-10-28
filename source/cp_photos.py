@@ -42,7 +42,7 @@ PHOTOS = {
     },
     "physio": {
         "asset": "PH-04", "src": "src-physio.jpg", "id": 20860597,
-        "creator": "Funkcinės Terapijos Centras",
+        "creator": "Funkcines Terapijos Centras",
         "url": "https://www.pexels.com/photo/physiotherapist-massaging-leg-and-hip-20860597/",
         "px": (2667, 4000),
         "title": "Physiotherapist treating a patient's leg in a clinic",
