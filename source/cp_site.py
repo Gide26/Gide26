@@ -9,6 +9,12 @@ import pypdfium2 as pdfium
 from pypdf import PdfWriter, PdfReader
 
 import cp_brand as B
+
+
+def use_brand(mod):
+    """Swap the active identity module (CarePoint, BCM, …)."""
+    global B
+    B = mod
 import cp_panels as PN
 import cp_photos as P
 
@@ -56,7 +62,7 @@ def previews():
 
 
 def combined():
-    path = os.path.join(BASE, "CarePoint-One-Way-Vision-R2.pdf")
+    path = os.path.join(BASE, f"{B.CLIENT_TITLE.replace(chr(32), chr(45))}-One-Way-Vision-R2.pdf")
     w = PdfWriter()
     for p in PN.PANELS:
         r = PdfReader(os.path.join(ART, f"{p['id']}.pdf"))
@@ -68,6 +74,8 @@ def combined():
 
 
 def html():
+    slug = B.CLIENT_TITLE.replace(" ", "-")
+    CT = B.CLIENT_TITLE
     cards = []
     for p in PN.PANELS:
         ph = P.PHOTOS[p["photo"]] if p["photo"] else None
@@ -104,6 +112,20 @@ def html():
           <td>Free licence, checked 28 Oct 2026</td>
         </tr>""")
 
+    edited_n = sum(1 for m in P.PHOTOS.values() if m.get("edit"))
+    photo_note = (
+        f"Real, professionally shot stock photography as the base — no AI-generated scenes or "
+        f"people. {edited_n} of the originals then carry a colour retouch, made with an AI image "
+        f"editor so the people reflect the community the clinic serves; scenes, poses and clothing "
+        f"are untouched. The people are models, never staff or patients, and no panel captions "
+        f"them as such. Licence terms read on Pexels' licence page, 28 October 2026: commercial "
+        f"use including print, editing and cropping permitted, attribution not required."
+        if edited_n else
+        "Real, professionally shot stock photography. No AI-generated imagery, no synthetic "
+        "patients, no images lifted from competitors' boards. Licence terms read on Pexels' "
+        "licence page, 28 October 2026: free for commercial use including print, editing and "
+        "cropping permitted, attribution not required. The people shown are models, not staff or "
+        "patients — no panel names a person or presents them as staff.")
     page = f"""<!doctype html>
 <html lang="en">
 <head>
@@ -128,8 +150,8 @@ def html():
   and a services directory — printed on perforated film so the clinic stays visible from
   inside and the street reads the poster from outside.</p>
   <div class="cta">
-    <a class="btn" href="CarePoint-One-Way-Vision-R2.pdf">All eight panes (PDF, 8 pp)</a>
-    <a class="btn ghost" href="lookbook/CarePoint-One-Way-Vision-Lookbook.pdf">Lookbook</a>
+    <a class="btn" href="{slug}-One-Way-Vision-R2.pdf">All eight panes (PDF, 8 pp)</a>
+    <a class="btn ghost" href="lookbook/{slug}-One-Way-Vision-Lookbook.pdf">Lookbook</a>
     <a class="btn ghost" href="docs/CP-01-Panel-Schedule.pdf">Panel schedule</a>
     <a class="btn ghost" href="docs/CP-02-Production-Specification.pdf">Production spec</a>
   </div>
@@ -193,11 +215,7 @@ def html():
 
 <section class="licence">
   <h2>Photography &amp; licence</h2>
-  <p class="note">Real, professionally shot stock photography. No AI-generated imagery, no
-  synthetic patients, no images lifted from competitors' boards. Licence terms read on Pexels'
-  licence page, 28 October 2026: free for commercial use including print, editing and cropping
-  permitted, attribution not required. The people shown are models, not CarePoint staff or
-  patients — no panel names a person or presents them as staff.</p>
+  <p class="note">{photo_note}</p>
   <div class="tablewrap">
     <table>
       <thead><tr><th>Asset</th><th>Pane</th><th>Subject</th><th>Creator</th><th>Source</th>
@@ -219,6 +237,8 @@ def html():
 </body>
 </html>
 """
+    if CT != "CarePoint":
+        page = page.replace("CarePoint", CT)
     path = os.path.join(BASE, "index.html")
     open(path, "w").write(page)
     return path

@@ -6,11 +6,22 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import cp_docutil as D
 import cp_brand as B
+
+
+def use_brand(mod):
+    """Swap the active identity module (CarePoint, BCM, …)."""
+    global B
+    B = mod
 import cp_panels as PN
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE = os.path.join(ROOT, "carepoint")
 MM = D.MM
+
+PLACEMENT = {"CP-01": "Left inner leaf · upper", "CP-04": "Left inner leaf · lower",
+             "CP-02": "Right inner leaf · upper", "CP-05": "Right inner leaf · lower",
+             "CP-03": "Right outer leaf · upper", "CP-06": "Right outer leaf · lower",
+             "CP-07": "Left outer leaf · upper", "CP-08": "Left outer leaf · lower"}
 
 FILM_ROWS = [
     ["Substrate", "Perforated one-way vision vinyl, white-backed", "Industry standard",
@@ -72,11 +83,11 @@ CARE = [
 
 
 def build():
-    path = os.path.join(BASE, "docs", "CP-02-Production-Specification.pdf")
+    path = os.path.join(BASE, "docs", f"{B.DOC_CODE}-02-Production-Specification.pdf")
     c = D.new_doc(path, "CarePoint — one-way vision film production specification")
 
     # 1 · scope
-    D.page_bg(c, "CP / OWV / 02", "Rev R2  ·  2026-10-28  ·  PROVISIONAL", 1,
+    D.page_bg(c, f"{B.DOC_CODE} / OWV / 02", "Rev R2  ·  2026-10-28  ·  PROVISIONAL", 1,
               eyebrow="CAREPOINT MEDICAL CENTER  ·  ONE-WAY VISION FILM")
     y = D.h1(c, D.PH - 34 * MM, "Production specification", 8.2)
     y = D.para(c, D.M, y + 2 * MM,
@@ -114,7 +125,7 @@ def build():
 
     # 2 · artwork setup
     c.showPage()
-    D.page_bg(c, "CP / OWV / 02", "Rev R2  ·  2026-10-28  ·  PROVISIONAL", 2,
+    D.page_bg(c, f"{B.DOC_CODE} / OWV / 02", "Rev R2  ·  2026-10-28  ·  PROVISIONAL", 2,
               eyebrow="CAREPOINT MEDICAL CENTER  ·  ONE-WAY VISION FILM")
     y = D.h1(c, D.PH - 34 * MM, "Artwork setup", 8.2)
     y = D.para(c, D.M, y + 2 * MM,
@@ -141,7 +152,7 @@ def build():
 
     # 3 · installation
     c.showPage()
-    D.page_bg(c, "CP / OWV / 02", "Rev R2  ·  2026-10-28  ·  PROVISIONAL", 3,
+    D.page_bg(c, f"{B.DOC_CODE} / OWV / 02", "Rev R2  ·  2026-10-28  ·  PROVISIONAL", 3,
               eyebrow="CAREPOINT MEDICAL CENTER  ·  ONE-WAY VISION FILM")
     y = D.h1(c, D.PH - 34 * MM, "Installation", 8.2)
     y = D.bullets(c, D.M, y + 2 * MM, INSTALL_STEPS, 118 * MM, 3.1, B.NAVY_MID, gap=2.6)
@@ -196,17 +207,14 @@ def build():
 
     # 4 · panel register
     c.showPage()
-    D.page_bg(c, "CP / OWV / 02", "Rev R2  ·  2026-10-28  ·  PROVISIONAL", 4,
+    D.page_bg(c, f"{B.DOC_CODE} / OWV / 02", "Rev R2  ·  2026-10-28  ·  PROVISIONAL", 4,
               eyebrow="CAREPOINT MEDICAL CENTER  ·  ONE-WAY VISION FILM")
     y = D.h1(c, D.PH - 34 * MM, "Panel register", 8.2)
     D.para(c, D.M, y + 2 * MM,
            "What each file contains, and where it goes on the frontage. Rev R2 is provisional: the "
            "panel sizes still rest on the photographic survey.",
            (D.PW - 2 * D.M) / MM, 3.2, B.NAVY_MID)
-    placement = {"CP-01": "Left inner leaf · upper", "CP-04": "Left inner leaf · lower",
-                 "CP-02": "Right inner leaf · upper", "CP-05": "Right inner leaf · lower",
-                 "CP-03": "Right outer leaf · upper", "CP-06": "Right outer leaf · lower",
-                 "CP-07": "Left outer leaf · upper", "CP-08": "Left outer leaf · lower"}
+    placement = PLACEMENT
     rows = [[p["id"], p["service"], f"{p['w']} × {p['h']}",
              f"{p['w'] + 20} × {p['h'] + 20} bleed", placement[p["id"]],
              "no bleed colour — image runs to edge" if p["photo"] else "solid navy to edge"]

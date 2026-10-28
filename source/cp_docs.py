@@ -8,6 +8,12 @@ from PIL import Image
 
 import cp_docutil as D
 import cp_brand as B
+
+
+def use_brand(mod):
+    """Swap the active identity module (CarePoint, BCM, …)."""
+    global B
+    B = mod
 import cp_panels as PN
 import cp_photos as P
 
@@ -15,14 +21,24 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE = os.path.join(ROOT, "carepoint")
 MM = D.MM
 
-DOOR_LEAVES = [["CP-08 / CP-07", "Outer leaf, left — fixed", "900", "Two panes",
-                "Reception over Antenatal"],
-               ["CP-01 / CP-04", "Inner leaf, left — opening", "900", "Two panes",
-                "Dental over Physiotherapy"],
-               ["CP-02 / CP-05", "Inner leaf, right — opening", "900", "Two panes",
-                "Paediatrics over Services board"],
-               ["CP-06 / CP-03", "Outer leaf, right — fixed", "900", "Two panes",
-                "Pharmacy over Laboratory"]]
+PLACEMENT = {"CP-01": "Left inner leaf, upper", "CP-04": "Left inner leaf, lower",
+             "CP-02": "Right inner leaf, upper", "CP-05": "Right inner leaf, lower",
+             "CP-03": "Right outer leaf, upper", "CP-06": "Right outer leaf, lower",
+             "CP-07": "Left outer leaf, upper", "CP-08": "Left outer leaf, lower"}
+
+def _leaves():
+    """Leaf map built from the active panel list, so the ids always match."""
+    P = PN.PANELS
+    spec = [((7, 6), "Outer leaf, left — fixed"),
+            ((0, 3), "Inner leaf, left — opening"),
+            ((1, 4), "Inner leaf, right — opening"),
+            ((5, 2), "Outer leaf, right — fixed")]
+    rows = []
+    for (lo, up), movement in spec:
+        lower, upper = P[lo], P[up]
+        rows.append([f"{lower['id']} / {upper['id']}", movement, "900", "Two panes",
+                     f"{lower['service'].title()} over {upper['service'].title()}"])
+    return rows
 
 
 WORK = os.path.join(ROOT, "source", ".work")
@@ -43,11 +59,11 @@ def jpg(path, max_w=1400):
 
 
 def schedule():
-    path = os.path.join(BASE, "docs", "CP-01-Panel-Schedule.pdf")
+    path = os.path.join(BASE, "docs", f"{B.DOC_CODE}-01-Panel-Schedule.pdf")
     c = D.new_doc(path, "CarePoint — panel schedule and licence log")
 
     # ---- 1 · schedule ---------------------------------------------------
-    D.page_bg(c, "CP / OWV / 01", "Rev R2  ·  2026-10-28  ·  PROVISIONAL", 1,
+    D.page_bg(c, f"{B.DOC_CODE} / OWV / 01", "Rev R2  ·  2026-10-28  ·  PROVISIONAL", 1,
               eyebrow="CAREPOINT MEDICAL CENTER  ·  ONE-WAY VISION FILM")
     y = D.h1(c, D.PH - 34 * MM, "Panel schedule", 8.0)
     y = D.para(c, D.M, y + 2 * MM,
@@ -61,10 +77,7 @@ def schedule():
             ("Aspect", 18, "left"), ("Photograph", 22, "left"),
             ("Coverage", 20, "left"), ("Placement", 58, "left"), ("Status", 22, "left")]
     rows = []
-    placement = {"CP-01": "Left inner leaf, upper", "CP-04": "Left inner leaf, lower",
-                 "CP-02": "Right inner leaf, upper", "CP-05": "Right inner leaf, lower",
-                 "CP-03": "Right outer leaf, upper", "CP-06": "Right outer leaf, lower",
-                 "CP-07": "Left outer leaf, upper", "CP-08": "Left outer leaf, lower"}
+    placement = PLACEMENT
     for p in PN.PANELS:
         rows.append([p["id"], p["service"],
                      f"{p['w']} × {p['h']}", p["aspect"],
@@ -77,7 +90,7 @@ def schedule():
     y -= 6 * MM
     cols2 = [("Leaf pair", 30, "left"), ("Movement", 48, "left"), ("Leaf width", 22, "left"),
              ("Panes", 20, "left"), ("Upper / lower", 62, "left")]
-    y = D.table(c, D.M, y, cols2, DOOR_LEAVES, row_h=8.0 * MM, cap=2.9) - 5 * MM
+    y = D.table(c, D.M, y, cols2, _leaves(), row_h=8.0 * MM, cap=2.9) - 5 * MM
     D.para(c, D.M, y,
            "Frames are timber, 60 mm face; two glazed panes per leaf separated by a 60 mm rail. "
            "The site is a shopfront unit under a rendered soffit — the film must be applied to the "
@@ -86,7 +99,7 @@ def schedule():
     c.showPage()
 
     # ---- 2 · pane detail ----------------------------------------------
-    D.page_bg(c, "CP / OWV / 01", "Rev R2  ·  2026-10-28  ·  PROVISIONAL", 2,
+    D.page_bg(c, f"{B.DOC_CODE} / OWV / 01", "Rev R2  ·  2026-10-28  ·  PROVISIONAL", 2,
               eyebrow="CAREPOINT MEDICAL CENTER  ·  ONE-WAY VISION FILM")
     y = D.h1(c, D.PH - 34 * MM, "Pane detail — crop logic and production notes", 8.0)
     cw, ch = 88 * MM, 25 * MM
@@ -111,19 +124,24 @@ def schedule():
     c.showPage()
 
     # ---- 3 · licence log ------------------------------------------------
-    D.page_bg(c, "CP / OWV / 01", "Rev R2  ·  2026-10-28", 3,
+    D.page_bg(c, f"{B.DOC_CODE} / OWV / 01", "Rev R2  ·  2026-10-28", 3,
               eyebrow="CAREPOINT MEDICAL CENTER  ·  ONE-WAY VISION FILM")
     y = D.h1(c, D.PH - 34 * MM, "Image source and licence log", 8.0)
+    edited = any(m.get("edit") for m in P.PHOTOS.values())
     y = D.para(c, D.M, y + 2 * MM,
-               "Real, professionally shot stock photography throughout — no AI-generated imagery, no "
-               "synthetic patients. Licence terms checked on Pexels' licence page, 28 October 2026. "
+               ("Real, professionally shot stock photography as the base — no AI-generated scenes or "
+                "people. Six of the originals then carry a colour retouch, declared below. "
+                if edited else
+                "Real, professionally shot stock photography throughout — no AI-generated imagery, no "
+                "synthetic patients. ") +
+               "Licence terms checked on Pexels' licence page, 28 October 2026. "
                "The images are licensed material, not portraits of CarePoint staff or patients, and "
                "must never be captioned as such.",
                (D.PW - 2 * D.M) / MM, 3.3, B.NAVY_MID)
     y -= 2 * MM
     cols = [("Asset", 16, "left"), ("Used on", 22, "left"), ("Photograph", 90, "left"),
             ("Creator / provider", 50, "left"), ("Licence", 30, "left"),
-            ("Original px", 30, "left"), ("Checked", 24, "left")]
+            ("Pixels", 30, "left"), ("Checked", 24, "left")]
     usage = {}
     for p in PN.PANELS:
         if p["photo"]:
@@ -135,6 +153,17 @@ def schedule():
                      f"{m['creator']} / Pexels", "Pexels Licence",
                      f"{m['px'][0]:,} × {m['px'][1]:,}", "2026-10-28"])
     y = D.table(c, D.M, y, cols, rows, row_h=9.4 * MM, cap=2.7) - 5 * MM
+    if any(m.get("edit") for m in P.PHOTOS.values()):
+        y = D.para(c, D.M, y,
+                   "Alteration notice: " + str(sum(1 for m in P.PHOTOS.values() if m.get("edit")))
+                   + " of these photographs were retouched with an AI image editor — the skin tone "
+                   "of the people was changed so the panels represent the community the clinic "
+                   "serves. Scenes, poses and clothing are the original photographs; only the "
+                   "people's colouring is synthetic. They remain stock models, never staff or "
+                   "patients, and are not captioned as such. The Pexels licence permits "
+                   "modification; this notice exists so the alteration is never passed off as an "
+                   "untouched photograph.",
+                   (D.PW - 2 * D.M) / MM, 2.9, B.NAVY_MID, 1.6) - 4 * MM
     y = D.para(c, D.M, y,
                "PH-04 is credited in transliteration: the display fonts used here carry no "
                "Lithuanian diacritics. The studio's exact Pexels handle is "
@@ -157,7 +186,7 @@ def schedule():
     c.showPage()
 
     # ---- 4 · resolution + brand note ------------------------------------
-    D.page_bg(c, "CP / OWV / 01", "Rev R2  ·  2026-10-28", 4,
+    D.page_bg(c, f"{B.DOC_CODE} / OWV / 01", "Rev R2  ·  2026-10-28", 4,
               eyebrow="CAREPOINT MEDICAL CENTER  ·  ONE-WAY VISION FILM")
     y = D.h1(c, D.PH - 34 * MM, "Resolution audit at final print size", 8.0)
     y = D.para(c, D.M, y + 2 * MM,
@@ -202,7 +231,8 @@ def schedule():
 
 
 def lookbook():
-    path = os.path.join(BASE, "lookbook", "CarePoint-One-Way-Vision-Lookbook.pdf")
+    path = os.path.join(BASE, "lookbook",
+                        f"{B.CLIENT_TITLE.replace(chr(32), chr(45))}-One-Way-Vision-Lookbook.pdf")
     B.register_fonts()
     c = D.new_doc(path, "CarePoint — one-way vision film lookbook")
 
@@ -238,7 +268,7 @@ def lookbook():
     c.showPage()
 
     # sheet 2: the set
-    D.page_bg(c, "CP / OWV / LOOKBOOK", "Rev R2  ·  2026-10-28  ·  PROVISIONAL", 2,
+    D.page_bg(c, f"{B.DOC_CODE} / OWV / LOOKBOOK", "Rev R2  ·  2026-10-28  ·  PROVISIONAL", 2,
               eyebrow="CAREPOINT MEDICAL CENTER  ·  ONE-WAY VISION FILM")
     y = D.h1(c, D.PH - 34 * MM, "The eight panes", 7.6)
     D.para(c, D.M, y + 2 * MM,
@@ -268,7 +298,7 @@ def lookbook():
     c.showPage()
 
     # sheet 3: night + brand
-    D.page_bg(c, "CP / OWV / LOOKBOOK", "Rev R2  ·  2026-10-28  ·  PROVISIONAL", 3,
+    D.page_bg(c, f"{B.DOC_CODE} / OWV / LOOKBOOK", "Rev R2  ·  2026-10-28  ·  PROVISIONAL", 3,
               eyebrow="CAREPOINT MEDICAL CENTER  ·  ONE-WAY VISION FILM")
     y = D.h1(c, D.PH - 34 * MM, "After dark, and the brand it carries", 7.4)
     night = os.path.join(BASE, "lookbook", "mockups", "M-02-shopfront-night.png")

@@ -3,6 +3,12 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from reportlab.pdfgen import canvas
 from reportlab.lib.units import mm as MM
 import cp_brand as B
+
+
+def use_brand(mod):
+    """Swap the active identity module (CarePoint, BCM, …)."""
+    global B
+    B = mod
 import cp_panels as PN
 import cp_render as R
 

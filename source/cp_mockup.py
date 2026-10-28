@@ -15,6 +15,12 @@ from reportlab.pdfgen import canvas as rl_canvas
 from reportlab.lib.units import mm as MM
 
 import cp_brand as B
+
+
+def use_brand(mod):
+    """Swap the active identity module (CarePoint, BCM, …)."""
+    global B
+    B = mod
 import cp_panels as PN
 import cp_render as R
 
@@ -69,12 +75,13 @@ def sign_png(night=False):
     B.monogram(c, (left - 190) / 2, (SIGN_H - 190) / 2, 190, dark=B.CP_NAVY,
                accent=B.CP_CYAN)
     x = left + 70
-    B.caps(c, x, SIGN_H - 190, "CAREPOINT", 108, B.WHITE, "Manrope-800", 4.0,
+    B.caps(c, x, SIGN_H - 190, B.LINE1, 108, B.WHITE, "Manrope-800", 4.0,
            max_w=w_mm - x - 80)
-    B.caps(c, x, SIGN_H - 292, "MEDICAL CENTER", 72, B.CP_CYAN, "Manrope-600", 9.0,
+    B.caps(c, x, SIGN_H - 292, B.LINE2, 72, B.CP_CYAN, "Manrope-600", 9.0,
            max_w=w_mm - x - 80)
     B.label(c, x, SIGN_H - 366, B.SLOGAN, 40, B.CP_MIST, "Inter-400", 0.6)
-    B.label(c, x, SIGN_H - 470, "TEL: " + B.TEL_FULL, 38, B.WHITE, "Inter-600", 0.8)
+    if getattr(B, "TEL_FULL", ""):
+        B.label(c, x, SIGN_H - 470, "TEL: " + B.TEL_FULL, 38, B.WHITE, "Inter-600", 0.8)
     c.showPage()
     c.save()
     doc = pdfium.PdfDocument(path)
@@ -129,13 +136,11 @@ def build(night=False, name="M-01-front-day.png"):
                  ox + int(total_w * S) + int(MULLION * S), floor_y],
                 fill=(38, 40, 44) if not night else (12, 14, 18))
 
-    # leaves
-    frames = {"CP-08": 0, "CP-01": 1, "CP-02": 2, "CP-06": 3}
-    assignment = {"CP-08": ["CP-07", "CP-08"], "CP-01": ["CP-01", "CP-04"],
-                  "CP-02": ["CP-02", "CP-05"], "CP-06": ["CP-06", "CP-03"]}
-    order = ["CP-08", "CP-01", "CP-02", "CP-06"]
+    # leaves — index pairs into PN.PANELS so the id prefix can change per identity
+    LEAF_PANES = [(6, 7), (0, 3), (1, 4), (5, 2)]      # upper, lower per leaf
+    P = PN.PANELS
 
-    for i, key in enumerate(order):
+    for i, (up_i, lo_i) in enumerate(LEAF_PANES):
         lx = ox + int((MULLION + i * (LEAF_W + MULLION)) * S)
         ly = top_y
         lw, lh = int(LEAF_W * S), floor_y - top_y
@@ -147,14 +152,10 @@ def build(night=False, name="M-01-front-day.png"):
         pw = int((LEAF_W - 2 * FRAME) * S)
         lower_y = ly + lh - int(FRAME * S) - int(LOWER_H * S)
         upper_y = lower_y - int(FRAME * S) - int(UPPER_H * S)
-        for pane_id, (py, ph) in zip(assignment[key],
-                                     [(upper_y, int(UPPER_H * S)),
-                                      (lower_y, int(LOWER_H * S))]):
-            if pane_id is None:
-                d.rectangle([inner_x, py, inner_x + pw, py + ph],
-                            fill=(120, 132, 142) if not night else (10, 12, 16))
-                continue
-            panel = next(p for p in PN.PANELS if p["id"] == pane_id)
+        for pidx, (py, ph) in zip((up_i, lo_i),
+                                  [(upper_y, int(UPPER_H * S)),
+                                   (lower_y, int(LOWER_H * S))]):
+            panel = P[pidx]
             art = Image.open(panel_png(panel)).convert("RGB").resize((pw, ph), Image.LANCZOS)
             if night:
                 # interior lights on: the print reads as a lit translucent screen
@@ -173,9 +174,9 @@ def build(night=False, name="M-01-front-day.png"):
                                  yy + int(3.2 * S)], fill=(168, 126, 58))
                     yy += int(11 * S)
 
-        # handle on the opening leaves
-        if key in ("CP-01", "CP-02"):
-            hx = lx + lw - int(70 * S) if key == "CP-01" else lx + int(46 * S)
+        # handle on the two opening leaves (the inner pair)
+        if i in (1, 2):
+            hx = lx + lw - int(70 * S) if i == 1 else lx + int(46 * S)
             d.rounded_rectangle([hx, ly + int(760 * S), hx + int(26 * S),
                                  ly + int(1360 * S)], radius=int(13 * S),
                                 fill=(206, 210, 214))
