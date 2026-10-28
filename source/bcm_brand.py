@@ -101,6 +101,11 @@ def plate(c, x, y, h, dark=CP_NAVY, ground=WHITE, accent=CP_CYAN, slogan=True):
           + tr3 * (len(SLOGAN) - 1))
     tw = max(w1, w2, w3)
     w = pad * 2 + ms + gap + tw
+    avail = getattr(_cp, "_plate_avail", None)
+    if avail and w > avail:            # squeeze to the pane it sits on
+        k = avail / w
+        return plate(c, x, y, h * k, dark=dark, ground=ground, accent=accent,
+                     slogan=slogan)
 
     c.setFillColor(ground)
     c.rect(x, y, w, h, stroke=0, fill=1)
