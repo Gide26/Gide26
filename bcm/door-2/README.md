@@ -36,15 +36,17 @@ attribution required, modification allowed. The ones carrying an AI colour retou
 reflect the community BACTIMED serves are marked in the table below; the people in those frames are
 models, never staff or patients, and no pane captions them as such.
 
-| Asset | Pexels ID | Creator | Original | Edited |
-| --- | --- | --- | --- | --- |
-| PH-01 | 4269206 | Cedric Fauntleroy | 843 × 1264 px | yes — colour retouch |
-| PH-13 | 13060613 | Lucas Guimarães Bueno | 5472 × 3648 px | no |
-| PH-12 | 5721672 | cottonbro studio | 4132 × 6198 px | no |
-| PH-16 | 9768447 | Ron Lach | 843 × 1264 px | yes — colour retouch |
-| PH-14 | 6291179 | Anna Shvets | 3835 × 5752 px | no |
-| PH-17 | 8657358 | cottonbro studio | 1264 × 842 px | yes — colour retouch |
-| PH-18 | 5712679 | cottonbro studio | 1264 × 842 px | yes — colour retouch |
+| Asset | Pexels ID | Creator | Pexels original | Working file | Retouch |
+| --- | --- | --- | --- | --- | --- |
+| PH-01 | 4269206 | Cedric Fauntleroy | 5474 × 8211 px | 843 × 1264 px | yes — colour retouch |
+| PH-13 | 13060613 | Lucas Guimarães Bueno | 5472 × 3648 px | 500 × 333 px | no |
+| PH-12 | 5721672 | cottonbro studio | 4132 × 6198 px | 500 × 750 px | no |
+| PH-16 | 9768447 | Ron Lach | 2987 × 4480 px | 843 × 1264 px | yes — colour retouch |
+| PH-14 | 6291179 | Anna Shvets | 3835 × 5752 px | 500 × 750 px | no |
+| PH-17 | 8657358 | cottonbro studio | 6720 × 4480 px | 1264 × 842 px | yes — colour retouch |
+| PH-18 | 5712679 | cottonbro studio | 5929 × 3953 px | 1264 × 842 px | yes — colour retouch |
+
+At final size these working crops land between 25 and 80 ppi, so the PDFs are proofs for approval, not files to plot.
 
 Working files are desktop previews, not print files. Pull the full-size original from the Pexels
 link for each ID before plotting — the record of what was used, and where it came from, is the

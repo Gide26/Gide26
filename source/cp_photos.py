@@ -222,6 +222,22 @@ PHOTOS = {
         "title": "Ultrasound examination of a pregnant patient",
         "use": "Ultrasound",
     },
+    "scan_room": {
+        "asset": "PH-25", "src": "src-scan-room.jpg", "id": 7089041,
+        "creator": "MART PRODUCTION",
+        "url": "https://www.pexels.com/photo/woman-technology-computer-doctor-7089041/",
+        "px": (3949, 5923),
+        "title": "Clinician operating an ultrasound scanner in a clinic room",
+        "use": "Antenatal care",
+    },
+    "scan_obgyn": {
+        "asset": "PH-26", "src": "src-scan-obgyn.jpg", "id": 7089394,
+        "creator": "MART PRODUCTION",
+        "url": "https://www.pexels.com/photo/photo-of-an-ob-gyn-sitting-beside-ultrasound-machine-7089394/",
+        "px": (3982, 5973),
+        "title": "OB-GYN beside the ultrasound machine, scan on the monitor",
+        "use": "Ultrasound",
+    },
 }
 
 

@@ -12,7 +12,7 @@ Perforated one-way vision vinyl — you can see out through the print from insid
 | D1-P2 | Pharmacy | 900 × 400 | PH-06 Pharmacists examining medicine on dispensary shelving | left leaf · upper right |
 | D1-P3 | Malaria | 900 × 500 | PH-11 Macro photograph of a mosquito on skin, taken in Kaduna, Nigeria | left leaf · lower left |
 | D1-P4 | CBC | 900 × 400 | PH-10 Gloved hands handling a purple-top blood tube over a vacutainer rack | left leaf · lower right |
-| D1-P5 | Antenatal | 900 × 500 | PH-07 Ultrasound scanner and examination couch in a clinic scanning room | right leaf · upper left |
+| D1-P5 | Antenatal | 900 × 500 | PH-24 Ultrasound examination of a pregnant patient | right leaf · upper left |
 | D1-P6 | Laboratory | 900 × 400 | PH-05 Laboratory technician at a trinocular microscope | right leaf · upper right |
 | D1-P7 | Our Services | 900 × 500 | none — type only | right leaf · lower left |
 | D1-P8 | Outpatient | 900 × 400 | PH-08 Doctor consulting a patient across a desk | right leaf · lower right |
@@ -36,15 +36,17 @@ attribution required, modification allowed. The ones carrying an AI colour retou
 reflect the community BACTIMED serves are marked in the table below; the people in those frames are
 models, never staff or patients, and no pane captions them as such.
 
-| Asset | Pexels ID | Creator | Original | Edited |
-| --- | --- | --- | --- | --- |
-| PH-09 | 6074931 | Alena Shekhovtcova | 4160 × 6240 px | no |
-| PH-06 | 8657370 | cottonbro studio | 1264 × 842 px | yes — colour retouch |
-| PH-11 | 32946369 | Saeed Saeed | 2795 × 4466 px | no |
-| PH-10 | 8460340 | Los Muertos Crew | 6000 × 4000 px | no |
-| PH-07 | 7089304 | MART PRODUCTION | 6123 × 4082 px | no |
-| PH-05 | 8442574 | Pavel Danilyuk | 1264 × 844 px | yes — colour retouch |
-| PH-08 | 7580254 | cottonbro studio | 843 × 1264 px | yes — colour retouch |
+| Asset | Pexels ID | Creator | Pexels original | Working file | Retouch |
+| --- | --- | --- | --- | --- | --- |
+| PH-09 | 6074931 | Alena Shekhovtcova | 4160 × 6240 px | 500 × 750 px | no |
+| PH-06 | 8657370 | cottonbro studio | 6403 × 4269 px | 1264 × 842 px | yes — colour retouch |
+| PH-11 | 32946369 | Saeed Saeed | 2795 × 4466 px | 500 × 799 px | no |
+| PH-10 | 8460340 | Los Muertos Crew | 6000 × 4000 px | 1125 × 750 px | no |
+| PH-24 | 7088826 | MART PRODUCTION | 5625 × 3750 px | 1264 × 842 px | yes — colour retouch |
+| PH-05 | 8442574 | Pavel Danilyuk | 5192 × 3466 px | 1264 × 844 px | yes — colour retouch |
+| PH-08 | 7580254 | cottonbro studio | 4189 × 6284 px | 843 × 1264 px | yes — colour retouch |
+
+At final size these working crops land between 25 and 80 ppi, so the PDFs are proofs for approval, not files to plot.
 
 Working files are desktop previews, not print files. Pull the full-size original from the Pexels
 link for each ID before plotting — the record of what was used, and where it came from, is the

@@ -52,13 +52,14 @@ DOORS = [
             ("PHARMACY",    NARROW, "pharmacy",   ("Left leaf", "upper right", "900 × 400")),
             ("MALARIA",     WIDE,   "malaria",    ("Left leaf", "lower left", "900 × 500")),
             ("CBC",         NARROW, "cbc",        ("Left leaf", "lower right", "900 × 400")),
-            ("ANTENATAL",   WIDE,   "ultrasound", ("Right leaf", "upper left", "900 × 500")),
+            ("ANTENATAL",   WIDE,   "ultrasound_exam", ("Right leaf", "upper left", "900 × 500")),
             ("LABORATORY",  NARROW, "lab",        ("Right leaf", "upper right", "900 × 400")),
             ("OUR SERVICES", WIDE,  None,         ("Right leaf", "lower left", "900 × 500")),
             ("OUTPATIENT",  NARROW, "consult",    ("Right leaf", "lower right", "900 × 400")),
         ],
+        "zoom": {"ultrasound_exam": 1.70},
         "focus": {"hiv": (0.50, 0.42), "pharmacy": (0.62, 0.44), "malaria": (0.50, 0.55),
-                  "cbc": (0.50, 0.45), "ultrasound": (0.50, 0.40), "lab": (0.52, 0.36),
+                  "cbc": (0.50, 0.45), "ultrasound_exam": (0.20, 1.00), "lab": (0.52, 0.36),
                   "consult": (0.50, 0.30)},
         "web_head": "Eight panes,<br>two widths.",
         "web_blurb": "Four panes at 900 × 500 mm and four at 900 × 400 mm, measured on the door "
@@ -96,18 +97,20 @@ DOORS = [
         "role": "family and community care",
         "edits": {},
         "spec": [
-            ("ANTENATAL & POSTNATAL", WIDE,   "antenatal_consult", ("Left leaf", "upper left", "900 × 500")),
+            ("ANTENATAL & POSTNATAL", WIDE,   "scan_obgyn",        ("Left leaf", "upper left", "900 × 500")),
             ("LABORATORY",            NARROW, "lab_scientist",     ("Left leaf", "upper right", "900 × 400")),
             ("PAEDIATRICS",           WIDE,   "paeds",             ("Left leaf", "lower left", "900 × 500")),
             ("PHARMACY",              NARROW, "pharmacy_shelf",    ("Left leaf", "lower right", "900 × 400")),
             ("MINOR SURGERY",         WIDE,   "surgery_tools",     ("Right leaf", "upper left", "900 × 500")),
-            ("ULTRASOUND",            NARROW, "ultrasound_exam",   ("Right leaf", "upper right", "900 × 400")),
+            ("ULTRASOUND",            NARROW, "scan_room",         ("Right leaf", "upper right", "900 × 400")),
             ("OUR SERVICES",          WIDE,   None,                ("Right leaf", "lower left", "900 × 500")),
             ("CBC",                   NARROW, "cbc_rack_2",        ("Right leaf", "lower right", "900 × 400")),
         ],
-        "focus": {"antenatal_consult": (0.48, 0.50), "lab_scientist": (0.48, 0.42),
+        "zoom": {"scan_room": 1.55, "scan_obgyn": 1.05},
+        "focus": {"lab_scientist": (0.48, 0.42),
                   "paeds": (0.52, 0.42), "pharmacy_shelf": (0.52, 0.45),
-                  "surgery_tools": (0.50, 0.50), "ultrasound_exam": (0.60, 0.40),
+                  "surgery_tools": (0.50, 0.50), "scan_obgyn": (0.52, 0.55),
+                  "scan_room": (0.95, 0.85),
                   "cbc_rack_2": (0.46, 0.50)},
         "web_head": "The family door.<br>Nothing shows through.",
         "web_blurb": "The third doorway uses solid white vinyl instead of perforated film, so the "
@@ -137,7 +140,8 @@ EDITS = {"pharmacy": "ph-pharmacy.jpg", "lab": "ph-lab.jpg", "consult": "ph-cons
          "pharmacy_counter": "ph-pharmacy-counter.jpg", "hiv_selftest": "ph-hiv-selftest.jpg",
          "antenatal_consult": "ph-antenatal.jpg", "lab_scientist": "ph-lab-scientist.jpg",
          "pharmacy_shelf": "ph-pharmacy-shelf.jpg", "paeds": "ph-paeds.jpg",
-         "ultrasound_exam": "ph-ultrasound.jpg"}
+         "ultrasound_exam": "ph-ultrasound.jpg", "scan_room": "ph-scan-room.jpg",
+         "scan_obgyn": "ph-scan-obgyn.jpg"}
 
 
 # -------------------------------------------------------------------- panels
@@ -151,6 +155,7 @@ def configure(door):
     for key, fname in EDITS.items():
         path = os.path.join(ROOT, "assets", "photos", "edited", fname)
         w, h = Image.open(path).size
+        P.PHOTOS[key].setdefault("px_orig", P.PHOTOS[key]["px"])
         P.PHOTOS[key]["src"] = os.path.join("edited", fname)
         P.PHOTOS[key]["px"] = (w, h)
         P.PHOTOS[key]["edit"] = True
@@ -657,6 +662,11 @@ from the recorded links before plotting.</footer>
     return path
 
 
+def working_px(ph):
+    """Pixel size of the file actually placed on the pane, not the Pexels original."""
+    return Image.open(os.path.join(ROOT, "assets", "photos", ph["src"])).size
+
+
 def readme(door, panels_list):
     base = os.path.join(ROOT, "bcm", door["folder"])
     rows = ["| Pane | Service | Glass (H × W) | Photograph | Leaf · position |",
@@ -670,14 +680,26 @@ def readme(door, panels_list):
         rows.append(f"| {p['id']} | {pretty(p['service'])} | {p['h']} × {p['w']} | {label} "
                     f"| {pos[0].lower()} · {pos[1]} |")
 
-    credits = ["| Asset | Pexels ID | Creator | Original | Edited |", "| --- | --- | --- | --- | --- |"]
+    credits = ["| Asset | Pexels ID | Creator | Pexels original | Working file | Retouch |",
+               "| --- | --- | --- | --- | --- | --- |"]
     for p in panels_list:
         if not p["photo"]:
             continue
         ph = P.PHOTOS[p["photo"]]
+        orig = ph.get("px_orig", ph["px"])
+        file_px = working_px(ph)
         credits.append(f"| {ph['asset']} | {ph['id']} | {ph['creator']} | "
-                       f"{ph['px'][0]} × {ph['px'][1]} px | "
+                       f"{orig[0]} × {orig[1]} px | {file_px[0]} × {file_px[1]} px | "
                        f"{'yes — colour retouch' if ph.get('edit') else 'no'} |")
+
+    ppis = []
+    for p in panels_list:
+        if not p["photo"]:
+            continue
+        ph = P.PHOTOS[p["photo"]]
+        ppis.append(working_px(ph)[0] / (p["w"] / 25.4))
+    res_line = ("At final size these working crops land between %d and %d ppi, so the PDFs are "
+                "proofs for approval, not files to plot." % (min(ppis), max(ppis))) if ppis else ""
 
     film_line = ("Perforated one-way vision vinyl — you can see out through the print from inside."
                  if door["film"] == "one-way" else
@@ -719,6 +741,8 @@ reflect the community BACTIMED serves are marked in the table below; the people 
 models, never staff or patients, and no pane captions them as such.
 
 {chr(10).join(credits)}
+
+{res_line}
 
 Working files are desktop previews, not print files. Pull the full-size original from the Pexels
 link for each ID before plotting — the record of what was used, and where it came from, is the

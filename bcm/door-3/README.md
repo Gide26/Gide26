@@ -8,12 +8,12 @@ Opaque white blockout vinyl — nothing shows through, and the print carries ful
 
 | Pane | Service | Glass (H × W) | Photograph | Leaf · position |
 | --- | --- | --- | --- | --- |
-| D3-P1 | Antenatal & Postnatal | 900 × 500 | PH-19 Doctor consulting a pregnant patient | left leaf · upper left |
+| D3-P1 | Antenatal & Postnatal | 900 × 500 | PH-26 OB-GYN beside the ultrasound machine, scan on the monitor | left leaf · upper left |
 | D3-P2 | Laboratory | 900 × 400 | PH-21 Scientist examining samples at a microscope | left leaf · upper right |
 | D3-P3 | Paediatrics | 900 × 500 | PH-03 Paediatrician examining a child with a stethoscope | left leaf · lower left |
 | D3-P4 | Pharmacy | 900 × 400 | PH-20 Pharmacist arranging bottles in a dispensary cabinet | left leaf · lower right |
 | D3-P5 | Minor Surgery | 900 × 500 | PH-22 Surgical tools arranged on a sterile surface | right leaf · upper left |
-| D3-P6 | Ultrasound | 900 × 400 | PH-24 Ultrasound examination of a pregnant patient | right leaf · upper right |
+| D3-P6 | Ultrasound | 900 × 400 | PH-25 Clinician operating an ultrasound scanner in a clinic room | right leaf · upper right |
 | D3-P7 | Our Services | 900 × 500 | none — type only | right leaf · lower left |
 | D3-P8 | CBC | 900 × 400 | PH-23 Blood samples in a rack with a centrifuge | right leaf · lower right |
 
@@ -36,15 +36,17 @@ attribution required, modification allowed. The ones carrying an AI colour retou
 reflect the community BACTIMED serves are marked in the table below; the people in those frames are
 models, never staff or patients, and no pane captions them as such.
 
-| Asset | Pexels ID | Creator | Original | Edited |
-| --- | --- | --- | --- | --- |
-| PH-19 | 7089401 | MART PRODUCTION | 1264 × 842 px | yes — colour retouch |
-| PH-21 | 8851548 | Mikhail Nilov | 843 × 1264 px | yes — colour retouch |
-| PH-03 | 5998457 | Pavel Danilyuk | 844 × 1264 px | yes — colour retouch |
-| PH-20 | 8657295 | cottonbro studio | 1264 × 842 px | yes — colour retouch |
-| PH-22 | 7108125 | Pavel Danilyuk | 3654 × 5473 px | no |
-| PH-24 | 7088826 | MART PRODUCTION | 1264 × 842 px | yes — colour retouch |
-| PH-23 | 6627697 | Karola G | 6580 × 4387 px | no |
+| Asset | Pexels ID | Creator | Pexels original | Working file | Retouch |
+| --- | --- | --- | --- | --- | --- |
+| PH-26 | 7089394 | MART PRODUCTION | 3982 × 5973 px | 843 × 1264 px | yes — colour retouch |
+| PH-21 | 8851548 | Mikhail Nilov | 7952 × 5304 px | 843 × 1264 px | yes — colour retouch |
+| PH-03 | 5998457 | Pavel Danilyuk | 4016 × 6016 px | 844 × 1264 px | yes — colour retouch |
+| PH-20 | 8657295 | cottonbro studio | 6601 × 4401 px | 1264 × 842 px | yes — colour retouch |
+| PH-22 | 7108125 | Pavel Danilyuk | 3654 × 5473 px | 500 × 749 px | no |
+| PH-25 | 7089041 | MART PRODUCTION | 3949 × 5923 px | 843 × 1264 px | yes — colour retouch |
+| PH-23 | 6627697 | Karola G | 6580 × 4387 px | 500 × 333 px | no |
+
+At final size these working crops land between 25 and 80 ppi, so the PDFs are proofs for approval, not files to plot.
 
 Working files are desktop previews, not print files. Pull the full-size original from the Pexels
 link for each ID before plotting — the record of what was used, and where it came from, is the

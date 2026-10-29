@@ -1,107 +1,107 @@
-# BACTIMED Community Medical Centre — one-way vision film, Rev R2
+# BACTIMED Community Medical Centre — entrance door film set
 
-Photographic service panels for the glazed entrance doors of BCM Medical Centre.
-Eight panes across four 900 mm door leaves, printed on perforated one-way vision film:
-the street reads a poster, the clinic still sees out.
+Photographic service panels for the glazed entrance doors of BACTIMED Community Medical
+Centre. Three doorways, eight panes each, printed on perforated one-way vision film on
+doors 1 and 2 and on opaque white vinyl on door 3 — the street reads a poster, the clinic
+still sees out of doors 1 and 2.
 
-Built to the house style of the local door-sticker boards you supplied — white logo
-plate at the top-left, photograph full bleed, solid caption band at the foot with the
-service name set large.
+Built to the style of the door-sticker boards in the premises photographs: white logo plate
+at the top-left, photograph full bleed, solid navy caption band at the foot with the service
+name set large.
 
-**Provisional.** Pane sizes are scaled from the shopfront photograph, the B monogram is
-a recreation, and no telephone numbers have been supplied yet, so none appear.
+**Provisional.** The B monogram is a recreation, not the clinic's official logo. The doors
+are drawn to the measured glazing supplied by the client; the plate and caption positions
+should still be checked against the real leaves before the film is cut.
 
 ---
 
-## Three doorways — the measured set
+## The measured set
 
-The clinic's own boards — the fascia sign listing general outpatient, inpatient, HIV care,
-immunisation, pharmacy, laboratory, ultrasound, antenatal & postnatal, obs & gyn, paediatrics,
-family planning, ENT, eye services, orthopaedics and travel medical examination — set the service
-list. Dental is on the board and deliberately left out of the artwork at the client's instruction.
-The two help-line numbers printed on the foot of every pane come off the same boards.
-
-The R2 package above was scaled from a photograph. These three were built to the client's
-measured glazing: every door is eight panes, four at **900 × 500 mm** and four at **900 × 400 mm**,
-all 900 mm high. Doors 1 and 2 are perforated one-way vision; **door 3 is opaque white vinyl** and
-is not see-through.
+Every door is eight panes on four leaves: four panes at **900 × 500 mm** and four at
+**900 × 400 mm**, all 900 mm high. The geometry is identical on all three doors; only the
+subject matter and the film change.
 
 | Door | Folder | Role | Film | Panes |
 | --- | --- | --- | --- | --- |
-| 1 | [`door-1/`](door-1/) | Testing and treatment — HIV, pharmacy, malaria, CBC, antenatal, laboratory, consultation | One-way vision | 7 photographs + directory |
+| 1 | [`door-1/`](door-1/) | Testing and treatment — HIV care, pharmacy, malaria, CBC, antenatal, laboratory, outpatient | One-way vision | 7 photographs + directory |
 | 2 | [`door-2/`](door-2/) | The welcome door — WELCOME (open 24 hours), immunisation, general outpatient, laboratory, minor surgery, pharmacy, HIV care | One-way vision | 7 photographs + directory |
 | 3 | [`door-3/`](door-3/) | Family care — antenatal & postnatal, laboratory, paediatrics, pharmacy, minor surgery, ultrasound, CBC | Opaque, no see-through | 7 photographs + directory |
 
-Twenty-one different photographs across the three doors; no image is used twice, and every frame with people in it has been retouched so the faces and hands read as Black African, matching the community BACTIMED serves. Each door folder
-carries its own artwork, schedule, specification, elevations, web preview, README and package zip.
+Twenty-one different photographs across the three doors; **no photograph is used twice**, and
+every frame with people in it has been retouched so the faces and hands read as Black African,
+matching the community BACTIMED serves. Each door folder carries its own artwork, schedule,
+specification, elevations, web preview, README and package zip.
 
----
-
-## What's here
+## What each door folder holds
 
 | Path | What it is |
 | --- | --- |
+| `artwork/D{n}-P1…P8.pdf` | Individual print files — pane + 10 mm bleed + slug + crop marks |
+| `BCM-Door-{n}-Panels.pdf` | All eight panes in one document at print size |
+| `docs/` | Panel schedule (with door survey, pane notes, licence log) and production specification |
+| `lookbook/` | Frontage elevations and mockups, day and night |
+| `web/` | Preview JPEGs, contact sheet, self-hosted fonts |
 | `index.html` | Web preview — all eight panes, both elevations, licence table |
-| `BCM-Medical-Centre-One-Way-Vision-R2.pdf` | All eight panes in one 8-page PDF at print size |
-| `artwork/BM-01…BM-08.pdf` | Individual print files: pane + 10 mm bleed + 20 mm slug + crop marks |
-| `lookbook/BCM-Medical-Centre-…-Lookbook.pdf` | 3 pages — cover with the elevation, the set, after dark + identity |
-| `lookbook/mockups/` | Frontage elevations, day and night |
-| `docs/BCM-01-Panel-Schedule.pdf` | 4 pages — schedule, door survey, pane notes, licence log, resolution audit |
-| `docs/BCM-02-Production-Specification.pdf` | 4 pages — film, artwork setup, installation, panel register |
-| `web/` | Previews, mockup JPEGs, contact sheet, self-hosted fonts |
+| `README.md` | Door-specific record: panes, positions, photography, open questions |
+| `BCM-Door-{n}-package.zip` | Everything above in one download |
 
-## The eight panes
+## Services, from the clinic's own board
 
-| File | Service | Trim (mm) | Photograph | Position |
-| --- | --- | --- | --- | --- |
-| BM-01 | Dental | 810 × 1120 | PH-02 (Andrea Piacquadio / Pexels 3952130) | Left inner leaf, upper |
-| BM-02 | Paediatrics | 810 × 1120 | PH-03 (Pavel Danilyuk / Pexels 5998457) | Right inner leaf, upper |
-| BM-03 | Laboratory | 810 × 1120 | PH-05 (Pavel Danilyuk / Pexels 8442574) | Right outer leaf, upper |
-| BM-04 | Physiotherapy | 810 × 1180 | PH-04 (Funkcinės Terapijos Centras / Pexels 20860597) | Left inner leaf, lower |
-| BM-05 | Our Services | 810 × 1180 | none — type only | Right inner leaf, lower |
-| BM-06 | Pharmacy | 810 × 1120 | PH-06 (cottonbro studio / Pexels 8657370) | Right outer leaf, lower |
-| BM-07 | Antenatal | 810 × 1120 | PH-07 (MART PRODUCTION / Pexels 7089304) | Left outer leaf, upper |
-| BM-08 | Reception | 810 × 1120 | PH-01 (Cedric Fauntleroy / Pexels 4269206) | Left outer leaf, lower |
+General outpatient, inpatient care, HIV care, immunisation, pharmacy, laboratory, ultrasound,
+antenatal & postnatal, obs & gyn, paediatrics, minor surgery, family planning, ENT, eye
+services, orthopaedics, travel medical exam — plus the two help-line numbers printed on the
+foot of every pane, 0771 240 104 and 0754 132 715, taken from the premises boards. Nothing on
+the artwork is invented: no address, no hours beyond the client's own 24-hour statement, no
+accreditation, no clinical claim.
 
 ## Photography — read this before printing
 
-The base photographs are licensed Pexels stock (free commercial use, modification
-permitted, checked 28 October 2026). Six of them were then retouched with an AI image
-editor: the skin tone of the people was changed so the panels represent the community
-BCM serves. Scenes, poses, clothing and equipment are the original photographs.
+The base photographs are licensed Pexels stock (free commercial use, no attribution,
+modification permitted — terms checked 29 October 2026). The frames that carry people were
+retouched with an AI image editor: skin tone only, so the people read as Black African.
+Scenes, poses, clothing, equipment and lighting are the original photographs. Every retouch
+is recorded in the table in each door's README, and in the licence log in its schedule.
 
-Two consequences, both stated in the documents:
+Two consequences, stated in every door document:
 
-- The people are **models, not BCM staff or patients.** No panel names them or presents
-  them as staff. The retouch is declared in the schedule and on the web page.
-- The retouched files are **proof-resolution only** (1264 px on the long edge). They are
-  right for approval and for the mockups, not for a 3.5 m printed pane. For production,
-  either re-do the retouch on the full-resolution originals or shoot the real team.
+- The people are **models, not BACTIMED staff or patients.** No pane names them or presents
+  them as staff.
+- The working files are **proof-resolution only** (500–1264 px on the long edge). They are
+  right for approval and for the mockups, not for a printed 900 mm pane; each door README
+  states the ppi the crops actually resolve to. For production, the retouch is repeated on
+  the full-resolution original from the Pexels link recorded against each asset, or the
+  clinic's own team is photographed.
 
 ## Identity
 
-- Navy `#16233F`, cyan `#2BA9E0`, mist `#E8EEF4` — carried over from the board language
-- Slogan: *Your Health. Our Commitment.*
+- Navy `#16233F`, cyan `#2BA9E0`, mist `#E8EEF4`
+- Slogan on the plate: *Your Health. Our Commitment.*
 - B monogram: cyan arc around a bold B, drawn in vector (recreation, swap for the real logo)
-- No telephone numbers, opening hours, accreditations or medical claims appear anywhere —
-  none were supplied, and none have been invented
+- Plate: monogram + `BACTIMED` / `COMMUNITY MEDICAL CENTRE`, with the slogan only on panes
+  470 mm wide and over, where it still reads through the perforation
+- Caption band: service name at 13.5 % of the pane width, subtitle and help line beneath
 
 ## Rebuilding
 
 ```sh
 cd source
-python3 bcm_build.py     # artwork, mockups, schedule, spec, lookbook, combined PDF, web preview
+python3 bcm_doors.py          # all three doors — artwork, mockups, schedule, spec, web, zips
+python3 bcm_doors.py 1        # one door
 ```
 
-`bcm_brand.py` holds the BCM identity and the white logo plate; `cp_render.py`,
-`cp_docs.py`, `cp_spec.py`, `cp_site.py` and `cp_mockup.py` are shared with the CarePoint
-set and switch identity through `use_brand()`.
+`bcm_brand.py` holds the identity and the white logo plate; `bcm_doors.py` the per-door
+spec, crops and copy; `cp_photos.py` the licensed asset register; `cp_render.py`,
+`cp_docs.py`, `cp_spec.py`, `cp_site.py` and `cp_mockup.py` are shared and switch identity
+through `use_brand()`.
 
 ## Before release
 
-1. Measure the glazing on site and re-issue every pane at measured size.
-2. Send BCM's logo, tagline and telephone numbers; drop them into `bcm_brand.py`.
-3. Re-run the retouch on full-resolution originals, or reshoot with the real team.
-4. Replace the flagged printer values (1.6 mm hole / 2.3 mm pitch / ≈44 % open / 10 mm
-   bleed) with the printer's own standard.
-5. Proof on the actual film, not on paper.
+1. Confirm the fascia wording — the board reads *Community Health Centre*, the artwork uses
+   *Community Medical Centre*.
+2. Confirm the slogan — the board reads *Good Health is Your Responsibility*, the artwork
+   uses *Your Health. Our Commitment.*
+3. Send the official logo file to replace the recreation.
+4. Confirm the help-line numbers and whether the email address should appear.
+5. Re-run the retouch on the full-resolution originals, or photograph the real team.
+6. Replace the flagged printer values (hole pitch, open area, bleed) with the printer's own
+   standard, and proof on the actual film, not on paper.
