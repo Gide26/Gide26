@@ -9,7 +9,7 @@ Perforated one-way vision vinyl — you can see out through the print from insid
 | Pane | Service | Glass (H × W) | Photograph | Leaf · position |
 | --- | --- | --- | --- | --- |
 | D1-P1 | HIV Care | 900 × 500 | PH-09 Gloved hand holding two blood sample tubes for testing | left leaf · upper left |
-| D1-P2 | Pharmacy | 900 × 400 | PH-06 Pharmacists examining medicine on dispensary shelving | left leaf · upper right |
+| D1-P2 | Pharmacy | 900 × 400 | PH-28 Hands holding a strip of tablets | left leaf · upper right |
 | D1-P3 | Malaria | 900 × 500 | PH-11 Macro photograph of a mosquito on skin, taken in Kaduna, Nigeria | left leaf · lower left |
 | D1-P4 | CBC | 900 × 400 | PH-10 Gloved hands handling a purple-top blood tube over a vacutainer rack | left leaf · lower right |
 | D1-P5 | Antenatal | 900 × 500 | PH-24 Ultrasound examination of a pregnant patient | right leaf · upper left |
@@ -39,7 +39,7 @@ models, never staff or patients, and no pane captions them as such.
 | Asset | Pexels ID | Creator | Pexels original | Working file | Retouch |
 | --- | --- | --- | --- | --- | --- |
 | PH-09 | 6074931 | Alena Shekhovtcova | 4160 × 6240 px | 500 × 750 px | no |
-| PH-06 | 8657370 | cottonbro studio | 6403 × 4269 px | 1264 × 842 px | yes — colour retouch |
+| PH-28 | 3923159 | cottonbro studio | 4000 × 6000 px | 843 × 1264 px | yes — colour retouch |
 | PH-11 | 32946369 | Saeed Saeed | 2795 × 4466 px | 500 × 799 px | no |
 | PH-10 | 8460340 | Los Muertos Crew | 6000 × 4000 px | 1125 × 750 px | no |
 | PH-24 | 7088826 | MART PRODUCTION | 5625 × 3750 px | 1264 × 842 px | yes — colour retouch |

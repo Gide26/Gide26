@@ -23,14 +23,16 @@ subject matter and the film change.
 
 | Door | Folder | Role | Film | Panes |
 | --- | --- | --- | --- | --- |
-| 1 | [`door-1/`](door-1/) | Testing and treatment — HIV care, pharmacy, malaria, CBC, antenatal, laboratory, outpatient | One-way vision | 7 photographs + directory |
-| 2 | [`door-2/`](door-2/) | The welcome door — WELCOME (open 24 hours), immunisation, general outpatient, laboratory, minor surgery, pharmacy, HIV care | One-way vision | 7 photographs + directory |
-| 3 | [`door-3/`](door-3/) | Family care — antenatal & postnatal, laboratory, paediatrics, pharmacy, minor surgery, ultrasound, CBC | Opaque, no see-through | 7 photographs + directory |
+| 1 | [`door-1/`](door-1/) | Testing and treatment — HIV care, pharmacy (tablets in hand), malaria, CBC, antenatal, laboratory, outpatient | One-way vision | 7 photographs + directory |
+| 2 | [`door-2/`](door-2/) | The welcome door — WELCOME (open 24 hours), immunisation, general outpatient, obs & gyn, minor surgery, pharmacy (medicine handed over the counter), HIV care | One-way vision | 7 photographs + directory |
+| 3 | [`door-3/`](door-3/) | Family, eye, ENT and ward care — antenatal & postnatal, eye services, paediatrics, ENT, minor surgery, ultrasound, inpatient care | Opaque, no see-through | 7 photographs + directory |
 
-Twenty-one different photographs across the three doors; **no photograph is used twice**, and
-every frame with people in it has been retouched so the faces and hands read as Black African,
-matching the community BACTIMED serves. Each door folder carries its own artwork, schedule,
-specification, elevations, web preview, README and package zip.
+Twenty-one different photographs across the three doors — **no photograph is used twice**, and the
+services are spread rather than repeated: pharmacy appears on doors 1 and 2 (a strip of tablets in
+hand, and medicine handed across the counter), HIV care on doors 1 and 2, minor surgery on doors 2
+and 3; every other service is pictured once. Every frame with people in it has been retouched so the
+faces and hands read as Black African, matching the community BACTIMED serves. Each door folder
+carries its own artwork, schedule, specification, elevations, web preview, README and package zip.
 
 ## What each door folder holds
 

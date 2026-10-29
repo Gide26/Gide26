@@ -238,6 +238,46 @@ PHOTOS = {
         "title": "OB-GYN beside the ultrasound machine, scan on the monitor",
         "use": "Ultrasound",
     },
+    "pharm_handover": {
+        "asset": "PH-27", "src": "src-pharm-handover.jpg", "id": 8657359,
+        "creator": "cottonbro studio",
+        "url": "https://www.pexels.com/photo/a-man-giving-a-small-black-bottle-to-the-woman-8657359/",
+        "px": (6091, 4061),
+        "title": "Pharmacist handing dispensed medicine across the counter",
+        "use": "Pharmacy",
+    },
+    "tablets_hands": {
+        "asset": "PH-28", "src": "src-tablets-hands.jpg", "id": 3923159,
+        "creator": "cottonbro studio",
+        "url": "https://www.pexels.com/photo/person-holding-a-blister-pack-3923159/",
+        "px": (4000, 6000),
+        "title": "Hands holding a strip of tablets",
+        "use": "Pharmacy",
+    },
+    "eye_exam": {
+        "asset": "PH-29", "src": "src-eye-exam.jpg", "id": 6749698,
+        "creator": "Antoni Shkraba",
+        "url": "https://www.pexels.com/photo/a-patient-having-eye-examination-6749698/",
+        "px": (5917, 3945),
+        "title": "Eye examination on a vision testing instrument",
+        "use": "Eye services",
+    },
+    "ent_exam": {
+        "asset": "PH-30", "src": "src-ent-exam2.jpg", "id": 5206951,
+        "creator": "Karola G",
+        "url": "https://www.pexels.com/photo/a-patient-having-ear-examination-5206951/",
+        "px": (6720, 4480),
+        "title": "Otoscope examination of an ear",
+        "use": "ENT",
+    },
+    "ward": {
+        "asset": "PH-31", "src": "src-ward.jpg", "id": 39128512,
+        "creator": "Maxx Sas",
+        "url": "https://www.pexels.com/photo/empty-hospital-room-in-accra-ghana-39128512/",
+        "px": (2510, 4032),
+        "title": "Inpatient beds in a hospital room",
+        "use": "Inpatient care",
+    },
 }
 
 

@@ -49,7 +49,7 @@ DOORS = [
         "edits": {},
         "spec": [
             ("HIV CARE",    WIDE,   "hiv",        ("Left leaf", "upper left", "900 × 500")),
-            ("PHARMACY",    NARROW, "pharmacy",   ("Left leaf", "upper right", "900 × 400")),
+            ("PHARMACY",    NARROW, "tablets_hands", ("Left leaf", "upper right", "900 × 400")),
             ("MALARIA",     WIDE,   "malaria",    ("Left leaf", "lower left", "900 × 500")),
             ("CBC",         NARROW, "cbc",        ("Left leaf", "lower right", "900 × 400")),
             ("ANTENATAL",   WIDE,   "ultrasound_exam", ("Right leaf", "upper left", "900 × 500")),
@@ -58,7 +58,7 @@ DOORS = [
             ("OUTPATIENT",  NARROW, "consult",    ("Right leaf", "lower right", "900 × 400")),
         ],
         "zoom": {"ultrasound_exam": 1.70},
-        "focus": {"hiv": (0.50, 0.42), "pharmacy": (0.62, 0.44), "malaria": (0.50, 0.55),
+        "focus": {"hiv": (0.50, 0.42), "tablets_hands": (0.50, 0.48), "malaria": (0.50, 0.55),
                   "cbc": (0.50, 0.45), "ultrasound_exam": (0.20, 1.00), "lab": (0.52, 0.36),
                   "consult": (0.50, 0.30)},
         "web_head": "Eight panes,<br>two widths.",
@@ -69,53 +69,55 @@ DOORS = [
     {
         "n": 2, "folder": "door-2", "prefix": "D2", "film": "one-way",
         "film_name": "ONE-WAY VISION FILM",
-        "role": "general medicine and procedures",
+        "role": "general medicine and dispensing",
         "edits": {},
         "spec": [
             ("WELCOME",             WIDE,   "reception",        ("Left leaf", "upper left", "900 × 500")),
             ("IMMUNISATION",        NARROW, "immunisation",     ("Left leaf", "upper right", "900 × 400")),
             ("GENERAL OUTPATIENT",  WIDE,   "consult_bp",       ("Left leaf", "lower left", "900 × 500")),
-            ("LABORATORY",          NARROW, "lab_micro",        ("Left leaf", "lower right", "900 × 400")),
+            ("OBS & GYN",           NARROW, "antenatal_consult", ("Left leaf", "lower right", "900 × 400")),
             ("MINOR SURGERY",       WIDE,   "surgery",          ("Right leaf", "upper left", "900 × 500")),
-            ("PHARMACY",            NARROW, "pharmacy_counter", ("Right leaf", "upper right", "900 × 400")),
+            ("PHARMACY",            NARROW, "pharm_handover",   ("Right leaf", "upper right", "900 × 400")),
             ("OUR SERVICES",        WIDE,   None,               ("Right leaf", "lower left", "900 × 500")),
             ("HIV CARE",            NARROW, "hiv_selftest",     ("Right leaf", "lower right", "900 × 400")),
         ],
-        "zoom": {"reception": 1.12},
+        "zoom": {"reception": 1.12, "pharm_handover": 1.00},
         "focus": {"reception": (0.52, 0.26), "immunisation": (0.50, 0.50),
-                  "consult_bp": (0.52, 0.40), "lab_micro": (0.50, 0.42),
-                  "surgery": (0.48, 0.58), "pharmacy_counter": (0.55, 0.45),
+                  "consult_bp": (0.52, 0.40), "antenatal_consult": (0.80, 0.45),
+                  "surgery": (0.48, 0.58), "pharm_handover": (0.55, 0.45),
                   "hiv_selftest": (0.65, 0.55)},
         "web_head": "The welcome door.<br>Open 24 hours.",
         "web_blurb": "Door 2 opens with WELCOME and the 24-hour line, then general outpatient, "
-                     "immunisation, minor surgery, laboratory, pharmacy and HIV care. Same eight "
-                     "measured panes as door 1, seven new photographs, none repeated.",
+                     "immunisation, obs & gyn, minor surgery, pharmacy dispensing and HIV care. Same eight "
+                     "measured panes as door 1, seven new photographs, none repeated. Pharmacists hand the "
+                     "medicine across the counter; no laboratory pane.",
     },
     {
         "n": 3, "folder": "door-3", "prefix": "D3", "film": "opaque",
         "film_name": "OPAQUE WHITE VINYL  ·  NOT SEE-THROUGH",
-        "role": "family and community care",
+        "role": "family, eye, ENT and ward care",
         "edits": {},
         "spec": [
             ("ANTENATAL & POSTNATAL", WIDE,   "scan_obgyn",        ("Left leaf", "upper left", "900 × 500")),
-            ("LABORATORY",            NARROW, "lab_scientist",     ("Left leaf", "upper right", "900 × 400")),
+            ("EYE SERVICES",           NARROW, "eye_exam",         ("Left leaf", "upper right", "900 × 400")),
             ("PAEDIATRICS",           WIDE,   "paeds",             ("Left leaf", "lower left", "900 × 500")),
-            ("PHARMACY",              NARROW, "pharmacy_shelf",    ("Left leaf", "lower right", "900 × 400")),
+            ("ENT",                   NARROW, "ent_exam",         ("Left leaf", "lower right", "900 × 400")),
             ("MINOR SURGERY",         WIDE,   "surgery_tools",     ("Right leaf", "upper left", "900 × 500")),
             ("ULTRASOUND",            NARROW, "scan_room",         ("Right leaf", "upper right", "900 × 400")),
             ("OUR SERVICES",          WIDE,   None,                ("Right leaf", "lower left", "900 × 500")),
-            ("CBC",                   NARROW, "cbc_rack_2",        ("Right leaf", "lower right", "900 × 400")),
+            ("INPATIENT CARE",        NARROW, "ward",             ("Right leaf", "lower right", "900 × 400")),
         ],
-        "zoom": {"scan_room": 1.55, "scan_obgyn": 1.00},
-        "focus": {"lab_scientist": (0.48, 0.42),
-                  "paeds": (0.52, 0.42), "pharmacy_shelf": (0.52, 0.45),
+        "zoom": {"scan_room": 1.55, "scan_obgyn": 1.00, "eye_exam": 1.00, "ent_exam": 1.00},
+        "focus": {"eye_exam": (0.72, 0.45),
+                  "paeds": (0.52, 0.42), "ent_exam": (0.50, 0.50),
                   "surgery_tools": (0.50, 0.50), "scan_obgyn": (0.46, 0.50),
                   "scan_room": (0.95, 0.85),
-                  "cbc_rack_2": (0.46, 0.50)},
+                  "ward": (0.00, 0.55)},
         "web_head": "The family door.<br>Nothing shows through.",
         "web_blurb": "The third doorway uses solid white vinyl instead of perforated film, so the "
                      "glass behind it disappears and the print carries full detail. Antenatal & "
-                     "postnatal, paediatrics and ultrasound lead the family door.",
+                     "postnatal, paediatrics, eye services, ENT and the inpatient ward — services "
+                     "door 1 and door 2 do not repeat.",
     },
 ]
 
@@ -128,7 +130,9 @@ SUB = {
     "GENERAL OUTPATIENT": "WALK-IN CLINIC", "OUR SERVICES": "SERVICES OFFERED",
     "IMMUNISATION": "VACCINES FOR ALL AGES", "MINOR SURGERY": "DRESSINGS & PROCEDURES",
     "WELCOME": "OPEN 24 HOURS", "PAEDIATRICS": "CHILD HEALTH",
-    "ULTRASOUND": "SCANNING",
+    "ULTRASOUND": "SCANNING", "OBS & GYN": "WOMEN'S HEALTH",
+    "EYE SERVICES": "VISION & EYE CARE", "ENT": "EAR, NOSE & THROAT",
+    "INPATIENT CARE": "WARD & NURSING CARE",
 }
 
 DOOR3_SUB = {"IMMUNISATION": "CHILD HEALTH & VACCINES"}
@@ -141,7 +145,9 @@ EDITS = {"pharmacy": "ph-pharmacy.jpg", "lab": "ph-lab.jpg", "consult": "ph-cons
          "antenatal_consult": "ph-antenatal.jpg", "lab_scientist": "ph-lab-scientist.jpg",
          "pharmacy_shelf": "ph-pharmacy-shelf.jpg", "paeds": "ph-paeds.jpg",
          "ultrasound_exam": "ph-ultrasound.jpg", "scan_room": "ph-scan-room.jpg",
-         "scan_obgyn": "ph-scan-obgyn.jpg"}
+         "scan_obgyn": "ph-scan-obgyn.jpg", "pharm_handover": "ph-pharm-handover.jpg",
+         "tablets_hands": "ph-tablets-hands.jpg", "eye_exam": "ph-eye-exam.jpg",
+         "ent_exam": "ph-ent-exam2.jpg"}
 
 
 # -------------------------------------------------------------------- panels
