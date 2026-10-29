@@ -444,7 +444,8 @@ def spec(door):
         ["Slug", "20 mm at the foot, outside bleed"],
         ["Service name", "Cap height 13.5 % of pane width — 64 mm on the wide pane, 54 mm on "
                          "the narrow; long names break to two lines rather than shrink"],
-        ["Smallest live type", "6 mm cap on perforated panes, 4 mm cap on the opaque door"],
+        ["Smallest live type", ("6 mm cap — the perforation is the limit" if door["film"] == "one-way"
+                                else "4 mm cap — opaque vinyl, no mesh limit")],
         ["Resolution", "75 ppi floor, 100 ppi target in the placed crop"],
         ["Colour", "CMYK, coated profile; navy #16233F, cyan #2BA9E0"],
         ["Fonts", "Manrope + Inter, SIL OFL, embedded"],
@@ -667,7 +668,8 @@ def readme(door, panels_list):
                  "detail because there is no mesh over it.")
 
     provisional_extra = ("- Opaque film blocks the view through the glass, in and out; confirm "
-                         "that is wanted on this door." if door["film"] == "opaque" else
+                         "that is wanted on this door.\n- The night elevation assumes the door is "
+                         "lit from the street and the fascia: an opaque pane cannot be backlit." if door["film"] == "opaque" else
                          "- Doors 1 and 2 use the same perforated film; door 3 is opaque vinyl and "
                          "will not match it exactly.")
     text = f"""# BCM Medical Centre — door {door['n']}

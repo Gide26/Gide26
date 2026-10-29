@@ -43,7 +43,7 @@ models, never staff or patients, and no pane captions them as such.
 | PH-03 | 5998457 | Pavel Danilyuk | 4016 × 6016 px | no |
 | PH-21 | 8851548 | Mikhail Nilov | 7952 × 5304 px | no |
 | PH-22 | 7108125 | Pavel Danilyuk | 3654 × 5473 px | no |
-| PH-01 | 4269206 | Cedric Fauntleroy | 843 × 1264 px | yes — colour retouch |
+| PH-01 | 4269206 | Cedric Fauntleroy | 5474 × 8211 px | no |
 | PH-23 | 6627697 | Karola G | 6580 × 4387 px | no |
 
 Working files are desktop previews, not print files. Pull the full-size original from the Pexels
@@ -57,4 +57,5 @@ point of the table.
 - The B monogram is a recreation, not BCM's official logo.
 - No telephone numbers appear — none supplied.
 - Opaque film blocks the view through the glass, in and out; confirm that is wanted on this door.
+- The night elevation assumes the door is lit from the street and the fascia: an opaque pane cannot be backlit.
 Rebuild: `cd source && python3 bcm_doors.py 3`
