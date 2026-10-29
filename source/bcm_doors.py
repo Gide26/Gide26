@@ -35,9 +35,10 @@ WIDE, NARROW, PANE_H = 500, 400, 900
 
 # The clinic's own list, now with the three services it added: general
 # consultation, immunisation and minor surgery.
-SERVICES = ["HIV testing", "Malaria testing", "CBC (Full blood count)",
-            "Antenatal care", "Pharmacy", "Laboratory", "Immunisation",
-            "Minor surgery", "General consultation"]
+SERVICES = ["General outpatient", "Inpatient care", "HIV care", "Immunisation",
+            "Pharmacy", "Laboratory", "Ultrasound", "Antenatal & postnatal",
+            "Obs & Gyn", "Paediatrics", "Minor surgery", "Family planning",
+            "ENT", "Eye services", "Orthopaedics", "Travel medical exam"]
 
 # --------------------------------------------------------------------- doors
 DOORS = [
@@ -45,17 +46,16 @@ DOORS = [
         "n": 1, "folder": "door-1", "prefix": "D1", "film": "one-way",
         "film_name": "ONE-WAY VISION FILM",
         "role": "testing and treatment",
-        "edits": {"pharmacy": "ph-pharmacy.jpg", "reception": "ph-reception.jpg",
-                  "lab": "ph-lab.jpg", "consult": "ph-consult.jpg"},
+        "edits": {},
         "spec": [
-            ("HIV TESTING",  WIDE,   "hiv",        ("Left leaf", "upper left", "900 × 500")),
-            ("PHARMACY",     NARROW, "pharmacy",   ("Left leaf", "upper right", "900 × 400")),
-            ("MALARIA",      WIDE,   "malaria",    ("Left leaf", "lower left", "900 × 500")),
-            ("CBC",          NARROW, "cbc",        ("Left leaf", "lower right", "900 × 400")),
-            ("ANTENATAL",    WIDE,   "ultrasound", ("Right leaf", "upper left", "900 × 500")),
-            ("LABORATORY",   NARROW, "lab",        ("Right leaf", "upper right", "900 × 400")),
-            ("OUR SERVICES", WIDE,   None,         ("Right leaf", "lower left", "900 × 500")),
-            ("CONSULTATION", NARROW, "consult",    ("Right leaf", "lower right", "900 × 400")),
+            ("HIV CARE",    WIDE,   "hiv",        ("Left leaf", "upper left", "900 × 500")),
+            ("PHARMACY",    NARROW, "pharmacy",   ("Left leaf", "upper right", "900 × 400")),
+            ("MALARIA",     WIDE,   "malaria",    ("Left leaf", "lower left", "900 × 500")),
+            ("CBC",         NARROW, "cbc",        ("Left leaf", "lower right", "900 × 400")),
+            ("ANTENATAL",   WIDE,   "ultrasound", ("Right leaf", "upper left", "900 × 500")),
+            ("LABORATORY",  NARROW, "lab",        ("Right leaf", "upper right", "900 × 400")),
+            ("OUR SERVICES", WIDE,  None,         ("Right leaf", "lower left", "900 × 500")),
+            ("OUTPATIENT",  NARROW, "consult",    ("Right leaf", "lower right", "900 × 400")),
         ],
         "focus": {"hiv": (0.50, 0.42), "pharmacy": (0.62, 0.44), "malaria": (0.50, 0.55),
                   "cbc": (0.50, 0.45), "ultrasound": (0.50, 0.40), "lab": (0.52, 0.36),
@@ -71,23 +71,24 @@ DOORS = [
         "role": "general medicine and procedures",
         "edits": {},
         "spec": [
-            ("GENERAL CONSULTATION", WIDE,   "consult_bp",         ("Left leaf", "upper left", "900 × 500")),
-            ("IMMUNISATION",         NARROW, "immunisation",       ("Left leaf", "upper right", "900 × 400")),
-            ("MINOR SURGERY",        WIDE,   "surgery",            ("Left leaf", "lower left", "900 × 500")),
-            ("CBC",                  NARROW, "cbc_rack",           ("Left leaf", "lower right", "900 × 400")),
-            ("LABORATORY",           WIDE,   "lab_micro",          ("Right leaf", "upper left", "900 × 500")),
-            ("PHARMACY",             NARROW, "pharmacy_counter",   ("Right leaf", "upper right", "900 × 400")),
-            ("OUR SERVICES",         WIDE,   None,                 ("Right leaf", "lower left", "900 × 500")),
-            ("HIV TESTING",          NARROW, "hiv_selftest",       ("Right leaf", "lower right", "900 × 400")),
+            ("WELCOME",             WIDE,   "reception",        ("Left leaf", "upper left", "900 × 500")),
+            ("IMMUNISATION",        NARROW, "immunisation",     ("Left leaf", "upper right", "900 × 400")),
+            ("GENERAL OUTPATIENT",  WIDE,   "consult_bp",       ("Left leaf", "lower left", "900 × 500")),
+            ("LABORATORY",          NARROW, "lab_micro",        ("Left leaf", "lower right", "900 × 400")),
+            ("MINOR SURGERY",       WIDE,   "surgery",          ("Right leaf", "upper left", "900 × 500")),
+            ("PHARMACY",            NARROW, "pharmacy_counter", ("Right leaf", "upper right", "900 × 400")),
+            ("OUR SERVICES",        WIDE,   None,               ("Right leaf", "lower left", "900 × 500")),
+            ("HIV CARE",            NARROW, "hiv_selftest",     ("Right leaf", "lower right", "900 × 400")),
         ],
-        "focus": {"consult_bp": (0.52, 0.40), "immunisation": (0.50, 0.50),
-                  "surgery": (0.48, 0.58), "cbc_rack": (0.45, 0.55),
-                  "lab_micro": (0.50, 0.42), "pharmacy_counter": (0.55, 0.45),
+        "zoom": {"reception": 1.30},
+        "focus": {"reception": (0.50, 0.38), "immunisation": (0.50, 0.50),
+                  "consult_bp": (0.52, 0.40), "lab_micro": (0.50, 0.42),
+                  "surgery": (0.48, 0.58), "pharmacy_counter": (0.55, 0.45),
                   "hiv_selftest": (0.65, 0.55)},
-        "web_head": "The doctor's door.<br>Seven new photographs.",
-        "web_blurb": "The second doorway, same measured panes as the first: consultation, "
-                     "immunisation and minor surgery lead, with laboratory, pharmacy, CBC and HIV "
-                     "testing behind them. No photograph repeats from door 1.",
+        "web_head": "The welcome door.<br>Open 24 hours.",
+        "web_blurb": "Door 2 opens with WELCOME and the 24-hour line, then general outpatient, "
+                     "immunisation, minor surgery, laboratory, pharmacy and HIV care. Same eight "
+                     "measured panes as door 1, seven new photographs, none repeated.",
     },
     {
         "n": 3, "folder": "door-3", "prefix": "D3", "film": "opaque",
@@ -95,36 +96,48 @@ DOORS = [
         "role": "family and community care",
         "edits": {},
         "spec": [
-            ("ANTENATAL",    WIDE,   "antenatal_consult", ("Left leaf", "upper left", "900 × 500")),
-            ("PHARMACY",     NARROW, "pharmacy_shelf",    ("Left leaf", "upper right", "900 × 400")),
-            ("IMMUNISATION", WIDE,   "paeds",             ("Left leaf", "lower left", "900 × 500")),
-            ("LABORATORY",   NARROW, "lab_scientist",     ("Left leaf", "lower right", "900 × 400")),
-            ("MINOR SURGERY", WIDE,  "surgery_tools",     ("Right leaf", "upper left", "900 × 500")),
-            ("WELCOME",      NARROW, "reception",         ("Right leaf", "upper right", "900 × 400")),
-            ("OUR SERVICES", WIDE,   None,                ("Right leaf", "lower left", "900 × 500")),
-            ("CBC",          NARROW, "cbc_rack_2",        ("Right leaf", "lower right", "900 × 400")),
+            ("ANTENATAL & POSTNATAL", WIDE,   "antenatal_consult", ("Left leaf", "upper left", "900 × 500")),
+            ("LABORATORY",            NARROW, "lab_scientist",     ("Left leaf", "upper right", "900 × 400")),
+            ("PAEDIATRICS",           WIDE,   "paeds",             ("Left leaf", "lower left", "900 × 500")),
+            ("PHARMACY",              NARROW, "pharmacy_shelf",    ("Left leaf", "lower right", "900 × 400")),
+            ("MINOR SURGERY",         WIDE,   "surgery_tools",     ("Right leaf", "upper left", "900 × 500")),
+            ("ULTRASOUND",            NARROW, "ultrasound_exam",   ("Right leaf", "upper right", "900 × 400")),
+            ("OUR SERVICES",          WIDE,   None,                ("Right leaf", "lower left", "900 × 500")),
+            ("CBC",                   NARROW, "cbc_rack_2",        ("Right leaf", "lower right", "900 × 400")),
         ],
-        "focus": {"antenatal_consult": (0.48, 0.50), "pharmacy_shelf": (0.52, 0.45),
-                  "paeds": (0.52, 0.42), "lab_scientist": (0.48, 0.42),
-                  "surgery_tools": (0.50, 0.50), "reception": (0.52, 0.42),
+        "focus": {"antenatal_consult": (0.48, 0.50), "lab_scientist": (0.48, 0.42),
+                  "paeds": (0.52, 0.42), "pharmacy_shelf": (0.52, 0.45),
+                  "surgery_tools": (0.50, 0.50), "ultrasound_exam": (0.60, 0.40),
                   "cbc_rack_2": (0.46, 0.50)},
-        "web_head": "The opaque door.<br>Nothing shows through.",
+        "web_head": "The family door.<br>Nothing shows through.",
         "web_blurb": "The third doorway uses solid white vinyl instead of perforated film, so the "
-                     "glass behind it disappears and the print carries full detail. Antenatal, "
-                     "immunisation and minor surgery for the family door.",
+                     "glass behind it disappears and the print carries full detail. Antenatal & "
+                     "postnatal, paediatrics and ultrasound lead the family door.",
     },
 ]
 
 SUB = {
-    "HIV TESTING": "RAPID TEST & LAB", "PHARMACY": "DISPENSARY", "MALARIA": "TESTING",
+    "HIV TESTING": "RAPID TEST & LAB", "HIV CARE": "TESTING & TREATMENT",
+    "PHARMACY": "DISPENSARY", "MALARIA": "TESTING",
     "CBC": "FULL BLOOD COUNT", "ANTENATAL": "ANTENATAL CARE",
-    "LABORATORY": "TESTS & RESULTS", "CONSULTATION": "DOCTOR'S ROOM",
-    "OUR SERVICES": "DEPARTMENT DIRECTORY", "GENERAL CONSULTATION": "WALK-IN CLINIC",
+    "ANTENATAL & POSTNATAL": "MOTHER & BABY", "LABORATORY": "TESTS & RESULTS",
+    "CONSULTATION": "DOCTOR'S ROOM", "OUTPATIENT": "WALK-IN CLINIC",
+    "GENERAL OUTPATIENT": "WALK-IN CLINIC", "OUR SERVICES": "SERVICES OFFERED",
     "IMMUNISATION": "VACCINES FOR ALL AGES", "MINOR SURGERY": "DRESSINGS & PROCEDURES",
-    "WELCOME": "RECEPTION & RECORDS",
+    "WELCOME": "OPEN 24 HOURS", "PAEDIATRICS": "CHILD HEALTH",
+    "ULTRASOUND": "SCANNING",
 }
 
 DOOR3_SUB = {"IMMUNISATION": "CHILD HEALTH & VACCINES"}
+
+# every frame whose people were recoloured to Black African, so the doors show the
+# community BACTIMED serves. Recorded in each README and on the licence line.
+EDITS = {"pharmacy": "ph-pharmacy.jpg", "lab": "ph-lab.jpg", "consult": "ph-consult.jpg",
+         "reception": "ph-reception.jpg", "lab_micro": "ph-lab-micro.jpg",
+         "pharmacy_counter": "ph-pharmacy-counter.jpg", "hiv_selftest": "ph-hiv-selftest.jpg",
+         "antenatal_consult": "ph-antenatal.jpg", "lab_scientist": "ph-lab-scientist.jpg",
+         "pharmacy_shelf": "ph-pharmacy-shelf.jpg", "paeds": "ph-paeds.jpg",
+         "ultrasound_exam": "ph-ultrasound.jpg"}
 
 
 # -------------------------------------------------------------------- panels
@@ -135,7 +148,7 @@ def configure(door):
     base = os.path.join(ROOT, "bcm", door["folder"])
     ART.OUT = os.path.join(base, "artwork")
     P.CACHE_DIR = os.path.join(WORK, "bcm_d1_photos")
-    for key, fname in door["edits"].items():
+    for key, fname in EDITS.items():
         path = os.path.join(ROOT, "assets", "photos", "edited", fname)
         w, h = Image.open(path).size
         P.PHOTOS[key]["src"] = os.path.join("edited", fname)
@@ -154,7 +167,8 @@ def panels(door):
             "id": f"{door['prefix']}-P{i}", "service": service, "sub": subs[service],
             "w": w, "h": PANE_H, "photo": photo,
             "focus": door["focus"].get(photo, (0.5, 0.4)) if photo else (0.5, 0.4),
-            "zoom": 1.0, "title_cap": 64, "accent": "cyan", "film": door["film"],
+            "zoom": door.get("zoom", {}).get(photo, 1.0), "title_cap": 64,
+            "accent": "cyan", "film": door["film"],
             "orientation": "PORTRAIT — GLAZED DOOR PANE (MEASURED)",
             "aspect": f"1 : {PANE_H / w:.2f}",
             "note": "",
@@ -272,8 +286,8 @@ def schedule(door, panels_list):
     path = os.path.join(base, "docs", f"BCM-Door-{door['n']}-Schedule.pdf")
     os.makedirs(os.path.dirname(path), exist_ok=True)
     D.use_brand(B)
-    eyebrow = f"BCM MEDICAL CENTRE  ·  {door['film_name']}"
-    c = D.new_doc(path, f"BCM Medical Centre — door {door['n']} pane schedule")
+    eyebrow = f"BACTIMED  ·  COMMUNITY MEDICAL CENTRE  ·  {door['film_name']}"
+    c = D.new_doc(path, f"BACTIMED Community Medical Centre — door {door['n']} pane schedule")
     D.page_bg(c, f"BCM / {door['prefix']} / 01", "Rev B  ·  2026-10-29  ·  MEASURED", 1,
               eyebrow=eyebrow)
     y = D.h1(c, D.PH - 34 * MM, f"Door {door['n']} — pane schedule", 8.0)
@@ -347,9 +361,10 @@ def door_schedule_notes(door):
     n = door["n"]
     if n == 1:
         return [
-            "Services are the clinic's own: HIV testing, malaria testing, CBC, antenatal care, "
-            "pharmacy, laboratory and the doctor's room — with immunisation, minor surgery and "
-            "general consultation now listed in the directory.",
+            "The services are the clinic's own board, dental left out at their instruction: "
+            "general outpatient, inpatient care, HIV care, immunisation, pharmacy, laboratory, "
+            "ultrasound, antenatal & postnatal, obs & gyn, paediatrics, minor surgery, family "
+            "planning, ENT, eye services, orthopaedics and travel medical examination.",
             "Type is set to the pane, not to taste: the service name is capped at 13.5 % of the "
             "pane width, so a 400 mm pane carries a smaller name than a 500 mm one and reads the "
             "same from the pavement.",
@@ -362,19 +377,21 @@ def door_schedule_notes(door):
         return [
             "Same door, same eight panes, same measurements as door 1 — this is the second "
             "doorway, not a second design system.",
-            "It leads on general medicine: general consultation, immunisation and minor surgery "
-            "take the three uppermost panes, with CBC, laboratory, pharmacy and HIV testing "
-            "behind them.",
-            "Seven new photographs, none of them used on door 1 or door 3. Two long service names "
-            "break to two lines rather than shrinking — GENERAL CONSULTATION would otherwise set "
-            "at half the size of PHARMACY beside it.",
+            "It is the welcome door: the entrance pane sits in the top-left corner of leaf A, "
+            "where a patient walking up reads it first, and it carries the 24-hour line from the "
+            "clinic's own board.",
+            "Behind it, general outpatient, immunisation, minor surgery, laboratory, pharmacy and "
+            "HIV care — the walk-in services. Seven new photographs, none used on door 1 or door "
+            "3. Two long names (GENERAL OUTPATIENT, WELCOME's neighbours) break to two lines "
+            "rather than shrinking away.",
             "The directory repeats door 1's nine lines so the two doors can never disagree.",
         ]
     return [
         "Same door, same eight panes, same measurements — but opaque film, so nothing shows "
         "through the glass.",
-        "It leads on family care: antenatal, immunisation and minor surgery, with pharmacy, "
-        "laboratory and CBC around them, and a welcome pane on the right leaf.",
+        "It leads on family care: antenatal & postnatal, paediatrics and ultrasound, with "
+        "pharmacy, laboratory, minor surgery and CBC around them. WELCOME now sits on door 2, "
+        "where the client asked for it.",
         "Because the film is solid there is no perforation to read through, so fine detail and "
         "smaller type survive: this is the door where a photograph can be printed as a "
         "photograph.",
@@ -393,17 +410,17 @@ def door_layout_notes(door):
             "Right column: 900 × 400 — the narrower panes take equipment and hands: pharmacy "
             "shelving, the microscope, the blood draw, the doctor's room.",
             "Eight panes, seven photographs and one directory. No image repeats anywhere on the "
-            "door.",
+            "door, and no image is shared with doors 2 or 3.",
             "Bleed is 10 mm on every edge, so the printed piece is 920 × 520 and 920 × 420 mm.",
             "The directory pane needs its nine lines at 14 mm cap to stay legible on a 400 mm "
             "pane — which is why it sits in the wide column.",
         ]
     if n == 2:
         return [
-            "Left leaf reads outward-facing: consultation above immunisation, minor surgery "
-            "below, CBC at the foot.",
-            "Right leaf carries the laboratory and the dispensary, then the directory and HIV "
-            "testing at eye level on the approach.",
+            "Left leaf reads outward-facing: WELCOME above immunisation, general outpatient "
+            "below, laboratory at the foot.",
+            "Right leaf carries minor surgery and the dispensary, then the directory and HIV care "
+            "at eye level on the approach.",
             "Wide panes take the scenes with people; narrow panes take equipment, hands and "
             "bottles, which survive the perforation better than faces.",
             "Eight panes, seven photographs and one directory — none of them repeated from "
@@ -411,10 +428,10 @@ def door_layout_notes(door):
             "Bleed is 10 mm on every edge, so the printed piece is 920 × 520 and 920 × 420 mm.",
         ]
     return [
-        "Left leaf is the family leaf: antenatal and immunisation at full width, pharmacy and "
-        "laboratory in the narrow column.",
-        "Right leaf opens with minor surgery, then the welcome pane at eye level, the directory, "
-        "and CBC at the foot.",
+        "Left leaf is the family leaf: antenatal & postnatal and paediatrics at full width, "
+        "laboratory and pharmacy in the narrow column.",
+        "Right leaf opens with minor surgery, then the ultrasound pane at eye level, the "
+        "directory, and CBC at the foot.",
         "Opaque vinyl, so the photograph is not interrupted by a mesh. Print it as a photograph: "
         "the file, not the film, is now the limit on detail.",
         "Eight panes, seven photographs and one directory — none repeated from doors 1 or 2.",
@@ -426,8 +443,8 @@ def spec(door):
     base = os.path.join(ROOT, "bcm", door["folder"])
     path = os.path.join(base, "docs", f"BCM-Door-{door['n']}-Specification.pdf")
     D.use_brand(B)
-    eyebrow = f"BCM MEDICAL CENTRE  ·  {door['film_name']}"
-    c = D.new_doc(path, f"BCM Medical Centre — door {door['n']} production specification")
+    eyebrow = f"BACTIMED  ·  COMMUNITY MEDICAL CENTRE  ·  {door['film_name']}"
+    c = D.new_doc(path, f"BACTIMED Community Medical Centre — door {door['n']} production specification")
     D.page_bg(c, f"BCM / {door['prefix']} / 02", "Rev B  ·  2026-10-29", 1, eyebrow=eyebrow)
     y = D.h1(c, D.PH - 34 * MM, f"Production specification — door {door['n']}", 8.0)
     y = D.para(c, D.M, y + 2 * MM,
@@ -557,8 +574,8 @@ def install_notes(door):
 def open_items(door):
     items = [
         "Confirm the column order on the leaf: 500 mm on the left as drawn, or mirrored?",
-        "BCM's vector logo, for the plate on all eight panes.",
-        "Telephone numbers, if they are to appear — currently none do.",
+        "BACTIMED's own vector logo, to replace the recreated badge on all eight panes.",
+        "Confirm the two help-line numbers (0771 240 104 / 0754 132 715) read off the premises boards — they now print on the foot of every pane.",
         "The printer's own film standard, to replace the flagged values.",
         "Print-resolution originals: the working files are desktop previews. Pull the full-size "
         "files from the recorded Pexels links, or shoot the real team.",
@@ -607,7 +624,7 @@ def web(door, panels_list):
                "serves; they are models, not staff." if retouched else "")
     html = f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>BCM Medical Centre — door {door['n']}</title>
+<title>BACTIMED — door {door['n']}</title>
 <style>
 body{{margin:0;background:#f4f7f9;color:#16233f;font:16px/1.6 Inter,Helvetica,Arial,sans-serif}}
 header{{background:#16233f;color:#fff;padding:48px 6vw 40px}}
@@ -623,7 +640,7 @@ a{{color:#2ba9e0}}
 .nav a{{margin-right:18px}}
 </style></head><body>
 <header>
-  <div style="letter-spacing:.3em;font-size:11px;color:#2ba9e0">BCM MEDICAL CENTRE · DOOR {door['n']} · {door['film_name']}</div>
+  <div style="letter-spacing:.3em;font-size:11px;color:#2ba9e0">BACTIMED · COMMUNITY MEDICAL CENTRE · DOOR {door['n']} · {door['film_name']}</div>
   <h1>{door['web_head']}</h1>
   <p>{door['web_blurb']}</p>
   <p class="nav"><a href="BCM-Door-{door['n']}-Panels.pdf">All eight panes (PDF)</a>
@@ -672,7 +689,7 @@ def readme(door, panels_list):
                          "lit from the street and the fascia: an opaque pane cannot be backlit." if door["film"] == "opaque" else
                          "- Doors 1 and 2 use the same perforated film; door 3 is opaque vinyl and "
                          "will not match it exactly.")
-    text = f"""# BCM Medical Centre — door {door['n']}
+    text = f"""# BACTIMED Community Medical Centre — door {door['n']}
 
 Eight panes on the {ordinal(door['n'])} doorway, built from the client's own measurement rather
 than from a photograph: four panes at **900 × 500 mm** and four at **900 × 400 mm**, all 900 mm
@@ -698,7 +715,7 @@ of the other two.
 
 All photographs are Pexels Free licence, checked 29 October 2026: free commercial use, no
 attribution required, modification allowed. The ones carrying an AI colour retouch so the people
-reflect the community BCM serves are marked in the table below; the people in those frames are
+reflect the community BACTIMED serves are marked in the table below; the people in those frames are
 models, never staff or patients, and no pane captions them as such.
 
 {chr(10).join(credits)}
@@ -712,7 +729,8 @@ point of the table.
 - Column order is drawn as 500 mm left, 400 mm right on both leaves — confirm, or say if the
   second leaf is mirrored.
 - The B monogram is a recreation, not BCM's official logo.
-- No telephone numbers appear — none supplied.
+- The two help-line numbers (0771 240 104 / 0754 132 715) come off the clinic's own premises
+  boards and print on the foot of every pane; confirm they are still current.
 {provisional_extra}
 Rebuild: `cd source && python3 bcm_doors.py {door['n']}`
 """
@@ -754,6 +772,12 @@ def build(door):
 
 def main():
     want = [int(a) for a in sys.argv[1:] if a.isdigit()] or [1, 2, 3]
+    # the photo cache is keyed by asset + size + focus, not by file, so a new retouch
+    # would silently reuse the old crop
+    cache = os.path.join(WORK, "bcm_d1_photos")
+    if os.path.isdir(cache):
+        for f in os.listdir(cache):
+            os.remove(os.path.join(cache, f))
     for door in DOORS:
         if door["n"] in want:
             build(door)

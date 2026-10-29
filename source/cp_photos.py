@@ -214,6 +214,14 @@ PHOTOS = {
         "use": "CBC / full blood count",
         "note": "Specimen only — no patient, no face, no result.",
     },
+    "ultrasound_exam": {
+        "asset": "PH-24", "src": "src-ultrasound-exam.jpg", "id": 7088826,
+        "creator": "MART PRODUCTION",
+        "url": "https://www.pexels.com/photo/people-woman-sitting-technology-7088826/",
+        "px": (5625, 3750),
+        "title": "Ultrasound examination of a pregnant patient",
+        "use": "Ultrasound",
+    },
 }
 
 

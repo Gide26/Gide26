@@ -96,7 +96,8 @@ def _plate(c, w, h, panel):
     if plate:
         B._plate_avail = w - 2 * M
         try:
-            plate(c, x, y, ph, dark=B.CP_NAVY, ground=B.WHITE, accent=B.CP_CYAN)
+            plate(c, x, y, ph, dark=B.CP_NAVY, ground=B.WHITE, accent=B.CP_CYAN,
+                  slogan=w >= 470)
         finally:
             B._plate_avail = None
     B.label(c, w - M, h - (40 if h > 950 else 34), panel["id"],

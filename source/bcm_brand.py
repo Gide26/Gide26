@@ -13,11 +13,11 @@ CLIENT = "BCM"
 CLIENT_TITLE = "BCM Medical Centre"
 DOC_CODE = "BCM"
 CLIENT_FULL = "BCM MEDICAL CENTRE"
-LINE1 = "BCM"
-LINE2 = "MEDICAL CENTRE"
+LINE1 = "BACTIMED"
+LINE2 = "COMMUNITY MEDICAL CENTRE"
 SLOGAN = "Your Health. Our Commitment"
-TEL = ""                       # no telephone numbers supplied for this client
-TEL_FULL = ""
+TEL = "0771 240 104  ·  0754 132 715"   # read off the clinic's own boards
+TEL_FULL = "0771240104 / 0754132715"
 PLATE_STYLE = True             # reference-literal layout
 ACCENT = CP_CYAN
 

@@ -1,4 +1,4 @@
-# BCM Medical Centre — door 2
+# BACTIMED Community Medical Centre — door 2
 
 Eight panes on the second doorway, built from the client's own measurement rather
 than from a photograph: four panes at **900 × 500 mm** and four at **900 × 400 mm**, all 900 mm
@@ -8,14 +8,14 @@ Perforated one-way vision vinyl — you can see out through the print from insid
 
 | Pane | Service | Glass (H × W) | Photograph | Leaf · position |
 | --- | --- | --- | --- | --- |
-| D2-P1 | General Consultation | 900 × 500 | PH-12 Nurse taking a blood pressure reading with a digital monitor | left leaf · upper left |
+| D2-P1 | Welcome | 900 × 500 | PH-01 Receptionist assisting a patient at a modern reception desk | left leaf · upper left |
 | D2-P2 | Immunisation | 900 × 400 | PH-13 Opened vials and a syringe on a stainless tray | left leaf · upper right |
-| D2-P3 | Minor Surgery | 900 × 500 | PH-14 Surgical instruments laid out on a sterile table | left leaf · lower left |
-| D2-P4 | CBC | 900 × 400 | PH-15 Blood sample tubes in a rack beside a centrifuge | left leaf · lower right |
-| D2-P5 | Laboratory | 900 × 500 | PH-16 Scientist working at a microscope | right leaf · upper left |
+| D2-P3 | General Outpatient | 900 × 500 | PH-12 Nurse taking a blood pressure reading with a digital monitor | left leaf · lower left |
+| D2-P4 | Laboratory | 900 × 400 | PH-16 Scientist working at a microscope | left leaf · lower right |
+| D2-P5 | Minor Surgery | 900 × 500 | PH-14 Surgical instruments laid out on a sterile table | right leaf · upper left |
 | D2-P6 | Pharmacy | 900 × 400 | PH-17 Pharmacist handing medicine across a dispensary counter | right leaf · upper right |
 | D2-P7 | Our Services | 900 × 500 | none — type only | right leaf · lower left |
-| D2-P8 | HIV Testing | 900 × 400 | PH-18 Hands preparing a rapid test kit on a white table | right leaf · lower right |
+| D2-P8 | HIV Care | 900 × 400 | PH-18 Hands preparing a rapid test kit on a white table | right leaf · lower right |
 
 Seven different photographs and one type-only directory. No image on this door appears on either
 of the other two.
@@ -33,18 +33,18 @@ of the other two.
 
 All photographs are Pexels Free licence, checked 29 October 2026: free commercial use, no
 attribution required, modification allowed. The ones carrying an AI colour retouch so the people
-reflect the community BCM serves are marked in the table below; the people in those frames are
+reflect the community BACTIMED serves are marked in the table below; the people in those frames are
 models, never staff or patients, and no pane captions them as such.
 
 | Asset | Pexels ID | Creator | Original | Edited |
 | --- | --- | --- | --- | --- |
-| PH-12 | 5721672 | cottonbro studio | 4132 × 6198 px | no |
+| PH-01 | 4269206 | Cedric Fauntleroy | 843 × 1264 px | yes — colour retouch |
 | PH-13 | 13060613 | Lucas Guimarães Bueno | 5472 × 3648 px | no |
+| PH-12 | 5721672 | cottonbro studio | 4132 × 6198 px | no |
+| PH-16 | 9768447 | Ron Lach | 843 × 1264 px | yes — colour retouch |
 | PH-14 | 6291179 | Anna Shvets | 3835 × 5752 px | no |
-| PH-15 | 6627696 | Karola G | 4480 × 6720 px | no |
-| PH-16 | 9768447 | Ron Lach | 2987 × 4480 px | no |
-| PH-17 | 8657358 | cottonbro studio | 6720 × 4480 px | no |
-| PH-18 | 5712679 | cottonbro studio | 5929 × 3953 px | no |
+| PH-17 | 8657358 | cottonbro studio | 1264 × 842 px | yes — colour retouch |
+| PH-18 | 5712679 | cottonbro studio | 1264 × 842 px | yes — colour retouch |
 
 Working files are desktop previews, not print files. Pull the full-size original from the Pexels
 link for each ID before plotting — the record of what was used, and where it came from, is the
@@ -55,6 +55,7 @@ point of the table.
 - Column order is drawn as 500 mm left, 400 mm right on both leaves — confirm, or say if the
   second leaf is mirrored.
 - The B monogram is a recreation, not BCM's official logo.
-- No telephone numbers appear — none supplied.
+- The two help-line numbers (0771 240 104 / 0754 132 715) come off the clinic's own premises
+  boards and print on the foot of every pane; confirm they are still current.
 - Doors 1 and 2 use the same perforated film; door 3 is opaque vinyl and will not match it exactly.
 Rebuild: `cd source && python3 bcm_doors.py 2`
