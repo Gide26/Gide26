@@ -278,6 +278,14 @@ PHOTOS = {
         "title": "Inpatient beds in a hospital room",
         "use": "Inpatient care",
     },
+    "immunisation_baby": {
+        "asset": "PH-32", "src": "src-immunisation-baby.jpg", "id": 20471645,
+        "creator": "CP Khanal",
+        "url": "https://www.pexels.com/photo/arm-of-a-kid-getting-injected-20471645/",
+        "px": (4000, 3000),
+        "title": "A child receiving a vaccination shot, held by a parent",
+        "use": "Immunisation",
+    },
 }
 
 

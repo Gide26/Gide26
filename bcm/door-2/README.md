@@ -9,10 +9,10 @@ Perforated one-way vision vinyl — you can see out through the print from insid
 | Pane | Service | Glass (H × W) | Photograph | Leaf · position |
 | --- | --- | --- | --- | --- |
 | D2-P1 | Welcome | 900 × 500 | PH-01 Receptionist assisting a patient at a modern reception desk | left leaf · upper left |
-| D2-P2 | Immunisation | 900 × 400 | PH-13 Opened vials and a syringe on a stainless tray | left leaf · upper right |
+| D2-P2 | Minor Surgery | 900 × 400 | PH-14 Surgical instruments laid out on a sterile table | left leaf · upper right |
 | D2-P3 | Obs & Gyn | 900 × 500 | PH-19 Doctor consulting a pregnant patient | left leaf · lower left |
 | D2-P4 | General Outpatient | 900 × 400 | PH-12 Nurse taking a blood pressure reading with a digital monitor | left leaf · lower right |
-| D2-P5 | Minor Surgery | 900 × 500 | PH-14 Surgical instruments laid out on a sterile table | right leaf · upper left |
+| D2-P5 | Immunisation | 900 × 500 | PH-32 A child receiving a vaccination shot, held by a parent | right leaf · upper left |
 | D2-P6 | Pharmacy | 900 × 400 | PH-27 Pharmacist handing dispensed medicine across the counter | right leaf · upper right |
 | D2-P7 | Our Services | 900 × 500 | none — type only | right leaf · lower left |
 | D2-P8 | HIV Care | 900 × 400 | PH-18 Hands preparing a rapid test kit on a white table | right leaf · lower right |
@@ -39,14 +39,14 @@ models, never staff or patients, and no pane captions them as such.
 | Asset | Pexels ID | Creator | Pexels original | Working file | Retouch |
 | --- | --- | --- | --- | --- | --- |
 | PH-01 | 4269206 | Cedric Fauntleroy | 5474 × 8211 px | 843 × 1264 px | yes — colour retouch |
-| PH-13 | 13060613 | Lucas Guimarães Bueno | 5472 × 3648 px | 500 × 333 px | no |
+| PH-14 | 6291179 | Anna Shvets | 3835 × 5752 px | 500 × 750 px | no |
 | PH-19 | 7089401 | MART PRODUCTION | 6000 × 4000 px | 1264 × 842 px | yes — colour retouch |
 | PH-12 | 5721672 | cottonbro studio | 4132 × 6198 px | 500 × 750 px | no |
-| PH-14 | 6291179 | Anna Shvets | 3835 × 5752 px | 500 × 750 px | no |
+| PH-32 | 20471645 | CP Khanal | 4000 × 3000 px | 1195 × 896 px | yes — colour retouch |
 | PH-27 | 8657359 | cottonbro studio | 6091 × 4061 px | 1264 × 842 px | yes — colour retouch |
 | PH-18 | 5712679 | cottonbro studio | 5929 × 3953 px | 1264 × 842 px | yes — colour retouch |
 
-At final size these working crops land between 25 and 80 ppi, so the PDFs are proofs for approval, not files to plot.
+At final size these working crops land between 31 and 80 ppi, so the PDFs are proofs for approval, not files to plot.
 
 Working files are desktop previews, not print files. Pull the full-size original from the Pexels
 link for each ID before plotting — the record of what was used, and where it came from, is the

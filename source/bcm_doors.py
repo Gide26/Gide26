@@ -73,19 +73,20 @@ DOORS = [
         "edits": {},
         "spec": [
             ("WELCOME",             WIDE,   "reception",        ("Left leaf", "upper left", "900 × 500")),
-            ("IMMUNISATION",        NARROW, "immunisation",     ("Left leaf", "upper right", "900 × 400")),
+            ("MINOR SURGERY",       NARROW, "surgery",          ("Left leaf", "upper right", "900 × 400")),
             ("OBS & GYN",           WIDE,   "antenatal_consult", ("Left leaf", "lower left", "900 × 500")),
             ("GENERAL OUTPATIENT",  NARROW, "consult_bp",       ("Left leaf", "lower right", "900 × 400")),
-            ("MINOR SURGERY",       WIDE,   "surgery",          ("Right leaf", "upper left", "900 × 500")),
+            ("IMMUNISATION",        WIDE,   "immunisation_baby", ("Right leaf", "upper left", "900 × 500")),
             ("PHARMACY",            NARROW, "pharm_handover",   ("Right leaf", "upper right", "900 × 400")),
             ("OUR SERVICES",        WIDE,   None,               ("Right leaf", "lower left", "900 × 500")),
             ("HIV CARE",            NARROW, "hiv_selftest",     ("Right leaf", "lower right", "900 × 400")),
         ],
         "zoom": {"reception": 1.12, "pharm_handover": 1.00},
-        "fit": set(),
+        "fit": {"immunisation_baby"},
         "focus": {"reception": (0.52, 0.26), "immunisation": (0.50, 0.50),
                   "consult_bp": (0.52, 0.40), "antenatal_consult": (0.50, 0.45),
                   "surgery": (0.48, 0.58), "pharm_handover": (0.55, 0.45),
+                  "immunisation_baby": (0.50, 0.35),
                   "hiv_selftest": (0.65, 0.55)},
         "web_head": "The welcome door.<br>Open 24 hours.",
         "web_blurb": "Door 2 opens with WELCOME and the 24-hour line, then general outpatient, "
@@ -149,7 +150,8 @@ EDITS = {"pharmacy": "ph-pharmacy.jpg", "lab": "ph-lab.jpg", "consult": "ph-cons
          "ultrasound_exam": "ph-ultrasound.jpg", "scan_room": "ph-scan-room.jpg",
          "scan_obgyn": "ph-scan-obgyn.jpg", "pharm_handover": "ph-pharm-handover.jpg",
          "tablets_hands": "ph-tablets-hands.jpg", "eye_exam": "ph-eye-exam.jpg",
-         "ent_exam": "ph-ent-exam2.jpg"}
+         "ent_exam": "ph-ent-exam2.jpg",
+         "immunisation_baby": "ph-immunisation-baby.jpg"}
 
 
 # -------------------------------------------------------------------- panels
