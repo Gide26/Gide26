@@ -11,8 +11,8 @@ Opaque white blockout vinyl — nothing shows through, and the print carries ful
 | D3-P1 | Antenatal & Postnatal | 900 × 500 | PH-26 OB-GYN beside the ultrasound machine, scan on the monitor | left leaf · upper left |
 | D3-P2 | Eye Services | 900 × 400 | PH-29 Eye examination on a vision testing instrument | left leaf · upper right |
 | D3-P3 | Paediatrics | 900 × 500 | PH-03 Paediatrician examining a child with a stethoscope | left leaf · lower left |
-| D3-P4 | Ent | 900 × 400 | PH-30 Otoscope examination of an ear | left leaf · lower right |
-| D3-P5 | Minor Surgery | 900 × 500 | PH-22 Surgical tools arranged on a sterile surface | right leaf · upper left |
+| D3-P4 | Minor Surgery | 900 × 400 | PH-22 Surgical tools arranged on a sterile surface | left leaf · lower right |
+| D3-P5 | Ent | 900 × 500 | PH-30 Otoscope examination of an ear | right leaf · upper left |
 | D3-P6 | Ultrasound | 900 × 400 | PH-25 Clinician operating an ultrasound scanner in a clinic room | right leaf · upper right |
 | D3-P7 | Our Services | 900 × 500 | none — type only | right leaf · lower left |
 | D3-P8 | Inpatient Care | 900 × 400 | PH-31 Inpatient beds in a hospital room | right leaf · lower right |
@@ -41,12 +41,12 @@ models, never staff or patients, and no pane captions them as such.
 | PH-26 | 7089394 | MART PRODUCTION | 3982 × 5973 px | 843 × 1264 px | yes — colour retouch |
 | PH-29 | 6749698 | Antoni Shkraba | 5917 × 3945 px | 1264 × 842 px | yes — colour retouch |
 | PH-03 | 5998457 | Pavel Danilyuk | 4016 × 6016 px | 844 × 1264 px | yes — colour retouch |
-| PH-30 | 5206951 | Karola G | 6720 × 4480 px | 1264 × 842 px | yes — colour retouch |
 | PH-22 | 7108125 | Pavel Danilyuk | 3654 × 5473 px | 500 × 749 px | no |
+| PH-30 | 5206951 | Karola G | 6720 × 4480 px | 1264 × 842 px | yes — colour retouch |
 | PH-25 | 7089041 | MART PRODUCTION | 3949 × 5923 px | 843 × 1264 px | yes — colour retouch |
 | PH-31 | 39128512 | Maxx Sas | 2510 × 4032 px | 500 × 803 px | no |
 
-At final size these working crops land between 25 and 80 ppi, so the PDFs are proofs for approval, not files to plot.
+At final size these working crops land between 31 and 80 ppi, so the PDFs are proofs for approval, not files to plot.
 
 Working files are desktop previews, not print files. Pull the full-size original from the Pexels
 link for each ID before plotting — the record of what was used, and where it came from, is the

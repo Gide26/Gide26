@@ -42,7 +42,7 @@ def fade(c, x, y, w, h, top=False):
 def photo(c, panel, y0, y1, bleed=BLEED, dpi=110):
     w = panel["w"]
     path = P.prepare(panel["photo"], w, y1 - y0, panel["focus"], dpi=dpi,
-                     zoom=panel.get("zoom", 1.0))
+                     zoom=panel.get("zoom", 1.0), fit=panel.get("fit", False))
     c.drawImage(path, -bleed, y0, w + bleed * 2, y1 - y0,
                 preserveAspectRatio=False, mask=None)
 

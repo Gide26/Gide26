@@ -2,7 +2,7 @@
 import os
 
 import numpy as np
-from PIL import Image, ImageEnhance
+from PIL import Image, ImageEnhance, ImageFilter
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC_DIR = os.path.join(ROOT, "assets", "photos")
@@ -296,10 +296,17 @@ def grade(im, warmth=0.0):
     return Image.fromarray((arr * 255).astype(np.uint8))
 
 
-def prepare(key, w_mm, h_mm, focus=(0.5, 0.4), dpi=110, zoom=1.0):
-    """Cover-crop with a stored focus point. Never distorts."""
+def prepare(key, w_mm, h_mm, focus=(0.5, 0.4), dpi=110, zoom=1.0, fit=False):
+    """Cover-crop with a stored focus point. Never distorts.
+
+    With ``fit`` the whole frame is kept: it is scaled to the pane width and laid
+    over a blurred, darkened copy of itself, so the activity reads complete
+    instead of being cropped down to one person.
+    """
     os.makedirs(CACHE_DIR, exist_ok=True)
     tag = f"{key}_{int(w_mm)}x{int(h_mm)}_{focus[0]:.2f}{focus[1]:.2f}_{zoom:.2f}"
+    if fit:
+        tag += "_fit"
     out = os.path.join(CACHE_DIR, tag + ".jpg")
     if os.path.exists(out):
         return out
@@ -319,6 +326,22 @@ def prepare(key, w_mm, h_mm, focus=(0.5, 0.4), dpi=110, zoom=1.0):
 
     tw = max(500, int(w_mm / 25.4 * dpi))
     th = max(400, int(h_mm / 25.4 * dpi))
+    if fit:
+        back = crop.resize((tw, th), Image.LANCZOS)
+        back = back.filter(ImageFilter.GaussianBlur(max(6, th // 45)))
+        arr = np.asarray(back).astype(np.float32) / 255.0
+        arr = arr * 0.46 + np.array([0.086, 0.137, 0.247], dtype=np.float32) * 0.50
+        back = Image.fromarray((np.clip(arr, 0, 1) * 255).astype(np.uint8))
+        sw2, sh2 = im.size
+        scale = min(tw / sw2, th / sh2)
+        fw, fh = max(1, int(sw2 * scale)), max(1, int(sh2 * scale))
+        front = im.resize((fw, fh), Image.LANCZOS)
+        x = (tw - fw) // 2
+        # the whole frame sits on the caption band; the blurred field fills above it
+        y = max(0, int(th * 0.72 - fh))
+        back.paste(front, (x, y))
+        back.save(out, "JPEG", quality=85, optimize=True, progressive=True)
+        return out
     if crop.width > tw:
         crop = crop.resize((tw, th), Image.LANCZOS)
     crop.save(out, "JPEG", quality=85, optimize=True, progressive=True)
