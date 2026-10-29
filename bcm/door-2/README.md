@@ -8,14 +8,14 @@ Perforated one-way vision vinyl — you can see out through the print from insid
 
 | Pane | Service | Glass (H × W) | Photograph | Leaf · position |
 | --- | --- | --- | --- | --- |
-| D2-P1 | Welcome | 900 × 500 | PH-01 Receptionist assisting a patient at a modern reception desk | left leaf · upper left |
-| D2-P2 | Minor Surgery | 900 × 400 | PH-14 Surgical instruments laid out on a sterile table | left leaf · upper right |
-| D2-P3 | Obs & Gyn | 900 × 500 | PH-19 Doctor consulting a pregnant patient | left leaf · lower left |
-| D2-P4 | General Outpatient | 900 × 400 | PH-12 Nurse taking a blood pressure reading with a digital monitor | left leaf · lower right |
-| D2-P5 | Immunisation | 900 × 500 | PH-32 A child receiving a vaccination shot, held by a parent | right leaf · upper left |
-| D2-P6 | Pharmacy | 900 × 400 | PH-27 Pharmacist handing dispensed medicine across the counter | right leaf · upper right |
-| D2-P7 | Our Services | 900 × 500 | none — type only | right leaf · lower left |
-| D2-P8 | HIV Care | 900 × 400 | PH-18 Hands preparing a rapid test kit on a white table | right leaf · lower right |
+| D2-P1 | Welcome | 900 × 500 | PH-01 Receptionist assisting a patient at a modern reception desk | left leaf · upper outer |
+| D2-P2 | Minor Surgery | 900 × 400 | PH-14 Surgical instruments laid out on a sterile table | left leaf · upper middle |
+| D2-P3 | Obs & Gyn | 900 × 500 | PH-19 Doctor consulting a pregnant patient | left leaf · lower outer |
+| D2-P4 | General Outpatient | 900 × 400 | PH-12 Nurse taking a blood pressure reading with a digital monitor | left leaf · lower middle |
+| D2-P5 | Pharmacy | 900 × 400 | PH-27 Pharmacist handing dispensed medicine across the counter | right leaf · upper middle |
+| D2-P6 | Immunisation | 900 × 500 | PH-32 A child receiving a vaccination shot, held by a parent | right leaf · upper outer |
+| D2-P7 | HIV Care | 900 × 400 | PH-18 Hands preparing a rapid test kit on a white table | right leaf · lower middle |
+| D2-P8 | Our Services | 900 × 500 | none — type only | right leaf · lower outer |
 
 Seven different photographs and one type-only directory. No image on this door appears on either
 of the other two.
@@ -42,8 +42,8 @@ models, never staff or patients, and no pane captions them as such.
 | PH-14 | 6291179 | Anna Shvets | 3835 × 5752 px | 500 × 750 px | no |
 | PH-19 | 7089401 | MART PRODUCTION | 6000 × 4000 px | 1264 × 842 px | yes — colour retouch |
 | PH-12 | 5721672 | cottonbro studio | 4132 × 6198 px | 500 × 750 px | no |
-| PH-32 | 20471645 | CP Khanal | 4000 × 3000 px | 1195 × 896 px | yes — colour retouch |
 | PH-27 | 8657359 | cottonbro studio | 6091 × 4061 px | 1264 × 842 px | yes — colour retouch |
+| PH-32 | 20471645 | CP Khanal | 4000 × 3000 px | 1195 × 896 px | yes — colour retouch |
 | PH-18 | 5712679 | cottonbro studio | 5929 × 3953 px | 1264 × 842 px | yes — colour retouch |
 
 At final size these working crops land between 31 and 80 ppi, so the PDFs are proofs for approval, not files to plot.
@@ -54,8 +54,9 @@ point of the table.
 
 ## Provisional
 
-- Column order is drawn as 500 mm left, 400 mm right on both leaves — confirm, or say if the
-  second leaf is mirrored.
+- The 400 mm panes are drawn in the middle of the doorway, against the meeting stile, with the
+  500 mm panes at the two outer edges — as the client described the door. Confirm against the
+  real leaves before cutting.
 - The B monogram is a recreation, not BCM's official logo.
 - The two help-line numbers (0771 240 104 / 0754 132 715) come off the clinic's own premises
   boards and print on the foot of every pane; confirm they are still current.

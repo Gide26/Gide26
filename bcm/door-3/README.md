@@ -8,14 +8,14 @@ Opaque white blockout vinyl — nothing shows through, and the print carries ful
 
 | Pane | Service | Glass (H × W) | Photograph | Leaf · position |
 | --- | --- | --- | --- | --- |
-| D3-P1 | Antenatal & Postnatal | 900 × 500 | PH-26 OB-GYN beside the ultrasound machine, scan on the monitor | left leaf · upper left |
-| D3-P2 | Eye Services | 900 × 400 | PH-29 Eye examination on a vision testing instrument | left leaf · upper right |
-| D3-P3 | Paediatrics | 900 × 500 | PH-03 Paediatrician examining a child with a stethoscope | left leaf · lower left |
-| D3-P4 | Minor Surgery | 900 × 400 | PH-22 Surgical tools arranged on a sterile surface | left leaf · lower right |
-| D3-P5 | Ent | 900 × 500 | PH-30 Otoscope examination of an ear | right leaf · upper left |
-| D3-P6 | Ultrasound | 900 × 400 | PH-25 Clinician operating an ultrasound scanner in a clinic room | right leaf · upper right |
-| D3-P7 | Our Services | 900 × 500 | none — type only | right leaf · lower left |
-| D3-P8 | Inpatient Care | 900 × 400 | PH-31 Inpatient beds in a hospital room | right leaf · lower right |
+| D3-P1 | Antenatal & Postnatal | 900 × 500 | PH-26 OB-GYN beside the ultrasound machine, scan on the monitor | left leaf · upper outer |
+| D3-P2 | Eye Services | 900 × 400 | PH-29 Eye examination on a vision testing instrument | left leaf · upper middle |
+| D3-P3 | Paediatrics | 900 × 500 | PH-03 Paediatrician examining a child with a stethoscope | left leaf · lower outer |
+| D3-P4 | Minor Surgery | 900 × 400 | PH-22 Surgical tools arranged on a sterile surface | left leaf · lower middle |
+| D3-P5 | Ultrasound | 900 × 400 | PH-25 Clinician operating an ultrasound scanner in a clinic room | right leaf · upper middle |
+| D3-P6 | Ent | 900 × 500 | PH-30 Otoscope examination of an ear | right leaf · upper outer |
+| D3-P7 | Inpatient Care | 900 × 400 | PH-31 Inpatient beds in a hospital room | right leaf · lower middle |
+| D3-P8 | Our Services | 900 × 500 | none — type only | right leaf · lower outer |
 
 Seven different photographs and one type-only directory. No image on this door appears on either
 of the other two.
@@ -42,8 +42,8 @@ models, never staff or patients, and no pane captions them as such.
 | PH-29 | 6749698 | Antoni Shkraba | 5917 × 3945 px | 1264 × 842 px | yes — colour retouch |
 | PH-03 | 5998457 | Pavel Danilyuk | 4016 × 6016 px | 844 × 1264 px | yes — colour retouch |
 | PH-22 | 7108125 | Pavel Danilyuk | 3654 × 5473 px | 500 × 749 px | no |
-| PH-30 | 5206951 | Karola G | 6720 × 4480 px | 1264 × 842 px | yes — colour retouch |
 | PH-25 | 7089041 | MART PRODUCTION | 3949 × 5923 px | 843 × 1264 px | yes — colour retouch |
+| PH-30 | 5206951 | Karola G | 6720 × 4480 px | 1264 × 842 px | yes — colour retouch |
 | PH-31 | 39128512 | Maxx Sas | 2510 × 4032 px | 500 × 803 px | no |
 
 At final size these working crops land between 31 and 80 ppi, so the PDFs are proofs for approval, not files to plot.
@@ -54,8 +54,9 @@ point of the table.
 
 ## Provisional
 
-- Column order is drawn as 500 mm left, 400 mm right on both leaves — confirm, or say if the
-  second leaf is mirrored.
+- The 400 mm panes are drawn in the middle of the doorway, against the meeting stile, with the
+  500 mm panes at the two outer edges — as the client described the door. Confirm against the
+  real leaves before cutting.
 - The B monogram is a recreation, not BCM's official logo.
 - The two help-line numbers (0771 240 104 / 0754 132 715) come off the clinic's own premises
   boards and print on the foot of every pane; confirm they are still current.

@@ -33,6 +33,16 @@ WORK = os.path.join(ROOT, "source", ".work")
 
 WIDE, NARROW, PANE_H = 500, 400, 900
 
+
+def leaf_cols(leaf):
+    """Pane widths left-to-right on one leaf.
+
+    The 400 mm panes are the ones in the middle of the doorway, against the
+    meeting stile, so the left leaf runs wide→narrow and the right leaf runs
+    narrow→wide.
+    """
+    return (WIDE, NARROW) if leaf == 0 else (NARROW, WIDE)
+
 # The clinic's own list, now with the three services it added: general
 # consultation, immunisation and minor surgery.
 SERVICES = ["General outpatient", "Inpatient care", "HIV care", "Immunisation",
@@ -48,14 +58,14 @@ DOORS = [
         "role": "testing and treatment",
         "edits": {},
         "spec": [
-            ("HIV CARE",    WIDE,   "hiv",        ("Left leaf", "upper left", "900 × 500")),
-            ("PHARMACY",    NARROW, "tablets_hands", ("Left leaf", "upper right", "900 × 400")),
-            ("MALARIA",     WIDE,   "malaria",    ("Left leaf", "lower left", "900 × 500")),
-            ("CBC",         NARROW, "cbc",        ("Left leaf", "lower right", "900 × 400")),
-            ("ANTENATAL",   WIDE,   "ultrasound_exam", ("Right leaf", "upper left", "900 × 500")),
-            ("LABORATORY",  NARROW, "lab",        ("Right leaf", "upper right", "900 × 400")),
-            ("OUR SERVICES", WIDE,  None,         ("Right leaf", "lower left", "900 × 500")),
-            ("OUTPATIENT",  NARROW, "consult",    ("Right leaf", "lower right", "900 × 400")),
+            ("HIV CARE",    WIDE,   "hiv",        ("Left leaf", "upper outer", "900 × 500")),
+            ("PHARMACY",    NARROW, "tablets_hands", ("Left leaf", "upper middle", "900 × 400")),
+            ("MALARIA",     WIDE,   "malaria",    ("Left leaf", "lower outer", "900 × 500")),
+            ("CBC",         NARROW, "cbc",        ("Left leaf", "lower middle", "900 × 400")),
+            ("LABORATORY",  NARROW, "lab",        ("Right leaf", "upper middle", "900 × 400")),
+            ("ANTENATAL",   WIDE,   "ultrasound_exam", ("Right leaf", "upper outer", "900 × 500")),
+            ("OUTPATIENT",  NARROW, "consult",    ("Right leaf", "lower middle", "900 × 400")),
+            ("OUR SERVICES", WIDE,  None,         ("Right leaf", "lower outer", "900 × 500")),
         ],
         "zoom": {"ultrasound_exam": 1.70},
         "focus": {"hiv": (0.50, 0.42), "tablets_hands": (0.50, 0.48), "malaria": (0.50, 0.55),
@@ -72,14 +82,14 @@ DOORS = [
         "role": "general medicine and dispensing",
         "edits": {},
         "spec": [
-            ("WELCOME",             WIDE,   "reception",        ("Left leaf", "upper left", "900 × 500")),
-            ("MINOR SURGERY",       NARROW, "surgery",          ("Left leaf", "upper right", "900 × 400")),
-            ("OBS & GYN",           WIDE,   "antenatal_consult", ("Left leaf", "lower left", "900 × 500")),
-            ("GENERAL OUTPATIENT",  NARROW, "consult_bp",       ("Left leaf", "lower right", "900 × 400")),
-            ("IMMUNISATION",        WIDE,   "immunisation_baby", ("Right leaf", "upper left", "900 × 500")),
-            ("PHARMACY",            NARROW, "pharm_handover",   ("Right leaf", "upper right", "900 × 400")),
-            ("OUR SERVICES",        WIDE,   None,               ("Right leaf", "lower left", "900 × 500")),
-            ("HIV CARE",            NARROW, "hiv_selftest",     ("Right leaf", "lower right", "900 × 400")),
+            ("WELCOME",             WIDE,   "reception",        ("Left leaf", "upper outer", "900 × 500")),
+            ("MINOR SURGERY",       NARROW, "surgery",          ("Left leaf", "upper middle", "900 × 400")),
+            ("OBS & GYN",           WIDE,   "antenatal_consult", ("Left leaf", "lower outer", "900 × 500")),
+            ("GENERAL OUTPATIENT",  NARROW, "consult_bp",       ("Left leaf", "lower middle", "900 × 400")),
+            ("PHARMACY",            NARROW, "pharm_handover",   ("Right leaf", "upper middle", "900 × 400")),
+            ("IMMUNISATION",        WIDE,   "immunisation_baby", ("Right leaf", "upper outer", "900 × 500")),
+            ("HIV CARE",            NARROW, "hiv_selftest",     ("Right leaf", "lower middle", "900 × 400")),
+            ("OUR SERVICES",        WIDE,   None,               ("Right leaf", "lower outer", "900 × 500")),
         ],
         "zoom": {"reception": 1.12, "pharm_handover": 1.00},
         "fit": {"immunisation_baby"},
@@ -100,14 +110,14 @@ DOORS = [
         "role": "family, eye, ENT and ward care",
         "edits": {},
         "spec": [
-            ("ANTENATAL & POSTNATAL", WIDE,   "scan_obgyn",        ("Left leaf", "upper left", "900 × 500")),
-            ("EYE SERVICES",           NARROW, "eye_exam",         ("Left leaf", "upper right", "900 × 400")),
-            ("PAEDIATRICS",           WIDE,   "paeds",             ("Left leaf", "lower left", "900 × 500")),
-            ("MINOR SURGERY",         NARROW, "surgery_tools",     ("Left leaf", "lower right", "900 × 400")),
-            ("ENT",                   WIDE,   "ent_exam",         ("Right leaf", "upper left", "900 × 500")),
-            ("ULTRASOUND",            NARROW, "scan_room",         ("Right leaf", "upper right", "900 × 400")),
-            ("OUR SERVICES",          WIDE,   None,                ("Right leaf", "lower left", "900 × 500")),
-            ("INPATIENT CARE",        NARROW, "ward",             ("Right leaf", "lower right", "900 × 400")),
+            ("ANTENATAL & POSTNATAL", WIDE,   "scan_obgyn",        ("Left leaf", "upper outer", "900 × 500")),
+            ("EYE SERVICES",           NARROW, "eye_exam",         ("Left leaf", "upper middle", "900 × 400")),
+            ("PAEDIATRICS",           WIDE,   "paeds",             ("Left leaf", "lower outer", "900 × 500")),
+            ("MINOR SURGERY",         NARROW, "surgery_tools",     ("Left leaf", "lower middle", "900 × 400")),
+            ("ULTRASOUND",            NARROW, "scan_room",         ("Right leaf", "upper middle", "900 × 400")),
+            ("ENT",                   WIDE,   "ent_exam",         ("Right leaf", "upper outer", "900 × 500")),
+            ("INPATIENT CARE",        NARROW, "ward",             ("Right leaf", "lower middle", "900 × 400")),
+            ("OUR SERVICES",          WIDE,   None,                ("Right leaf", "lower outer", "900 × 500")),
         ],
         "zoom": {"scan_room": 1.00, "scan_obgyn": 1.00, "eye_exam": 1.00, "ent_exam": 1.00},
         "fit": {"scan_room"},
@@ -263,8 +273,9 @@ def mockup(door, panels_by_id, night=False):
         rows = [("upper", ly + int(80 * S)),
                 ("lower", ly + int(80 * S) + int((PANE_H + FRAME) * S))]
         for rname, ry in rows:
-            for col, pw_mm in enumerate((WIDE, NARROW)):
-                px = lx + int((FRAME + (0 if col == 0 else WIDE + FRAME)) * S)
+            widths = leaf_cols(leaf)
+            for col, pw_mm in enumerate(widths):
+                px = lx + int((FRAME + (0 if col == 0 else widths[0] + FRAME)) * S)
                 pid = f"{door['prefix']}-P{leaf * 4 + (1 if rname == 'upper' else 3) + col}"
                 panel = panels_by_id.get(pid)
                 pw, ph = int(pw_mm * S), int(PANE_H * S)
@@ -333,9 +344,10 @@ def schedule(door, panels_list):
               eyebrow=eyebrow)
     y = D.h1(c, D.PH - 34 * MM, "Layout as measured", 8.0)
     D.para(c, D.M, y + 2 * MM,
-           "Two leaves, two columns and two rows per leaf: the 500 mm column on the left of each "
-           "leaf, the 400 mm column on the right. If the site is the other way round, say so — "
-           "the artwork is width-agnostic, but the pane numbers would swap.",
+           "Two leaves, two columns and two rows per leaf. The 400 mm panes are the ones in the "
+           "middle of the doorway, against the meeting stile — so leaf A runs wide then narrow and "
+           "leaf B runs narrow then wide, and the 500 mm panes finish at the two outer edges. "
+           "Check that against the real leaves before the film is cut.",
            (D.PW - 2 * D.M) / MM, 3.2, B.NAVY_MID)
 
     svc_of = {p["id"]: p["service"] for p in panels_list}
@@ -350,8 +362,9 @@ def schedule(door, panels_list):
         c.setLineWidth(0.6)
         c.rect(lx, y0, leaf_w * scale, leaf_h * scale, stroke=1, fill=0)
         for r, rname in enumerate(("upper", "lower")):
-            for col, pw in enumerate((WIDE, NARROW)):
-                px = lx + (60 + (0 if col == 0 else WIDE + 60)) * scale
+            widths = leaf_cols(leaf)
+            for col, pw in enumerate(widths):
+                px = lx + (60 + (0 if col == 0 else widths[0] + 60)) * scale
                 py = y0 + (leaf_h - 60 - PANE_H - r * (PANE_H + 60)) * scale
                 c.setFillColor(B.CP_NAVY)
                 c.rect(px, py, pw * scale, PANE_H * scale, stroke=0, fill=1)
@@ -396,18 +409,17 @@ def door_schedule_notes(door):
             "It is the welcome door: the entrance pane sits in the top-left corner of leaf A, "
             "where a patient walking up reads it first, and it carries the 24-hour line from the "
             "clinic's own board.",
-            "Behind it, general outpatient, immunisation, minor surgery, laboratory, pharmacy and "
-            "HIV care — the walk-in services. Seven new photographs, none used on door 1 or door "
-            "3. Two long names (GENERAL OUTPATIENT, WELCOME's neighbours) break to two lines "
-            "rather than shrinking away.",
+            "Behind it, general outpatient, immunisation, minor surgery, obs & gyn, pharmacy and "
+            "HIV care — the walk-in services. There is no laboratory pane here: it belongs to "
+            "doors 1 and 3, and the services are spread rather than repeated.",
             "The directory repeats door 1's nine lines so the two doors can never disagree.",
         ]
     return [
         "Same door, same eight panes, same measurements — but opaque film, so nothing shows "
         "through the glass.",
-        "It leads on family care: antenatal & postnatal, paediatrics and ultrasound, with "
-        "pharmacy, laboratory, minor surgery and CBC around them. WELCOME now sits on door 2, "
-        "where the client asked for it.",
+        "It leads on family, eye, ENT and ward care: antenatal & postnatal, paediatrics, eye "
+        "services, ENT and the inpatient ward — services doors 1 and 2 do not show. WELCOME sits "
+        "on door 2, where the client asked for it.",
         "Because the film is solid there is no perforation to read through, so fine detail and "
         "smaller type survive: this is the door where a photograph can be printed as a "
         "photograph.",
@@ -421,10 +433,11 @@ def door_layout_notes(door):
     n = door["n"]
     if n == 1:
         return [
-            "Left column of each leaf: 900 × 500 — HIV testing, malaria and antenatal carry the "
-            "subject at full width.",
-            "Right column: 900 × 400 — the narrower panes take equipment and hands: pharmacy "
-            "shelving, the microscope, the blood draw, the doctor's room.",
+            "Outer column, at the two edges of the doorway: 900 × 500 — HIV care, malaria, "
+            "antenatal and the directory carry the subject at full width.",
+            "Middle column, against the meeting stile: 900 × 400 — the narrower panes take "
+            "equipment and hands: the tablets in hand, the blood count, the microscope, the "
+            "doctor's room.",
             "Eight panes, seven photographs and one directory. No image repeats anywhere on the "
             "door, and no image is shared with doors 2 or 3.",
             "Bleed is 10 mm on every edge, so the printed piece is 920 × 520 and 920 × 420 mm.",
@@ -433,10 +446,10 @@ def door_layout_notes(door):
         ]
     if n == 2:
         return [
-            "Left leaf reads outward-facing: WELCOME above immunisation, general outpatient "
-            "below, laboratory at the foot.",
-            "Right leaf carries minor surgery and the dispensary, then the directory and HIV care "
-            "at eye level on the approach.",
+            "Leaf A reads outward: WELCOME above OBS & GYN on the outer edge, minor surgery "
+            "above general outpatient against the centre stile.",
+            "Leaf B, from the street inwards: immunisation and the vaccination being given on the "
+            "outer edge, pharmacy dispensing and HIV care in the middle, the directory at the foot.",
             "Wide panes take the scenes with people; narrow panes take equipment, hands and "
             "bottles, which survive the perforation better than faces.",
             "Eight panes, seven photographs and one directory — none of them repeated from "
@@ -444,10 +457,10 @@ def door_layout_notes(door):
             "Bleed is 10 mm on every edge, so the printed piece is 920 × 520 and 920 × 420 mm.",
         ]
     return [
-        "Left leaf is the family leaf: antenatal & postnatal and paediatrics at full width, "
-        "laboratory and pharmacy in the narrow column.",
-        "Right leaf opens with minor surgery, then the ultrasound pane at eye level, the "
-        "directory, and CBC at the foot.",
+        "Leaf A is the family leaf: antenatal & postnatal and paediatrics on the outer edge at "
+        "full width, eye services and minor surgery against the centre stile.",
+        "Leaf B: the ultrasound room and the ENT examination at the top, the inpatient ward in "
+        "the middle, the directory bottom outer.",
         "Opaque vinyl, so the photograph is not interrupted by a mesh. Print it as a photograph: "
         "the file, not the film, is now the limit on detail.",
         "Eight panes, seven photographs and one directory — none repeated from doors 1 or 2.",
@@ -761,8 +774,9 @@ point of the table.
 
 ## Provisional
 
-- Column order is drawn as 500 mm left, 400 mm right on both leaves — confirm, or say if the
-  second leaf is mirrored.
+- The 400 mm panes are drawn in the middle of the doorway, against the meeting stile, with the
+  500 mm panes at the two outer edges — as the client described the door. Confirm against the
+  real leaves before cutting.
 - The B monogram is a recreation, not BCM's official logo.
 - The two help-line numbers (0771 240 104 / 0754 132 715) come off the clinic's own premises
   boards and print on the foot of every pane; confirm they are still current.

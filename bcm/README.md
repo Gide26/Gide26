@@ -18,8 +18,10 @@ should still be checked against the real leaves before the film is cut.
 ## The measured set
 
 Every door is eight panes on four leaves: four panes at **900 × 500 mm** and four at
-**900 × 400 mm**, all 900 mm high. The geometry is identical on all three doors; only the
-subject matter and the film change.
+**900 × 400 mm**, all 900 mm high. The narrow 400 mm panes are the ones **in the middle of the
+doorway, against the meeting stile**; the 500 mm panes sit at the two outer edges. So leaf A runs
+wide then narrow and leaf B runs narrow then wide. The geometry is identical on all three doors;
+only the subject matter and the film change.
 
 | Door | Folder | Role | Film | Panes |
 | --- | --- | --- | --- | --- |
