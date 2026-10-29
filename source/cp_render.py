@@ -59,6 +59,30 @@ def _scrim(c, x, y, w, h, top=True, alpha=0.92):
         c.restoreState()
 
 
+def _width(text, cap, weight="Manrope-800"):
+    from reportlab.pdfbase import pdfmetrics
+    size = B.font_for(cap, "Manrope")
+    return pdfmetrics.stringWidth(text, weight, size) + cap * 0.02 * max(len(text) - 1, 0)
+
+
+def _fits(text, cap, avail):
+    return _width(text, cap) <= avail
+
+
+def _split(text, cap, avail):
+    """Greedy two-line break at the space that balances the two lines."""
+    words = text.split(" ")
+    if len(words) == 1:
+        return [text]
+    best = None
+    for i in range(1, len(words)):
+        a, b = " ".join(words[:i]), " ".join(words[i:])
+        score = max(_width(a, cap), _width(b, cap))
+        if best is None or score < best[0]:
+            best = (score, [a, b])
+    return best[1]
+
+
 def _tel(c, x, y, color, cap=6.2, align="right"):
     if getattr(B, "TEL", ""):
         B.label(c, x, y, "TEL " + B.TEL, cap, color, "Inter-500", 0.9, align)
@@ -87,6 +111,7 @@ def draw(c, panel, bleed=BLEED):
 
     plate_style = getattr(B, "PLATE_STYLE", False)
     compact = h <= 950                       # measured door panes, not photo-scaled
+    opaque = panel.get("film") == "opaque"   # solid vinyl: no mesh over the artwork
     block = 400 if h >= PN.UPPER_H else 420     # navy caption block at the foot
     if plate_style:
         block = 372 if h >= PN.UPPER_H else 392
@@ -117,13 +142,30 @@ def draw(c, panel, bleed=BLEED):
             cap = 78 if n <= 8 else (66 if n <= 11 else 54)
         if compact:
             cap = min(round(w * 0.135), 64)
-        B.caps(c, M, (block - 68 if compact else block - (128 if not plate_style else 120)),
-               panel["service"], cap,
-               B.WHITE, "Manrope-800", tracking=cap * 0.02, max_w=w - 2 * M)
-        c.setFillColor(B.CP_CYAN)
+        # a long service name breaks to two lines rather than shrinking away:
+        # a 400 mm pane would otherwise set GENERAL CONSULTATION at half size.
+        lines = [panel["service"]]
         if compact:
-            c.rect(M, block - 105, min(w * 0.26, 120), 5, stroke=0, fill=1)
-            B.label(c, M, block - 148, panel["sub"], 8.0, B.CP_CYAN, "Inter-600", 2.2)
+            avail = w - 2 * M
+            fit = _fits(panel["service"], cap, avail)
+            if not fit and " " in panel["service"]:
+                lines = _split(panel["service"], cap, avail)
+                cap = min(cap, 46)
+                lines = _split(panel["service"], cap, avail)
+                while len(lines) > 2 and cap > 24:
+                    cap -= 4
+                    lines = _split(panel["service"], cap, avail)
+        lead = cap * 1.06
+        top_y = block - 68 if compact else block - (128 if not plate_style else 120)
+        for i, line in enumerate(lines):
+            B.caps(c, M, top_y - i * lead, line, cap,
+                   B.WHITE, "Manrope-800", tracking=cap * 0.02, max_w=w - 2 * M)
+        c.setFillColor(B.CP_CYAN)
+        drop = lead * (len(lines) - 1)
+        if compact:
+            c.rect(M, block - 105 - drop, min(w * 0.26, 120), 5, stroke=0, fill=1)
+            B.label(c, M, block - 148 - drop, panel["sub"], 8.0, B.CP_CYAN,
+                    "Inter-600", 2.2)
         else:
             c.rect(M, block - (168 if not plate_style else 158),
                    110 if not plate_style else 140, 6 if not plate_style else 7,
@@ -144,7 +186,8 @@ def draw(c, panel, bleed=BLEED):
 
     else:
         # ---- directory pane ----------------------------------------------
-        perforation(c, -bleed, -bleed, w + bleed * 2, h + bleed * 2, 12, 1.25, 0.04)
+        if not opaque:
+            perforation(c, -bleed, -bleed, w + bleed * 2, h + bleed * 2, 12, 1.25, 0.04)
         if plate_style:
             _plate(c, w, h, panel)
         else:

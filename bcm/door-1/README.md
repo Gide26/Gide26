@@ -1,23 +1,24 @@
 # BCM Medical Centre — door 1
 
-Eight panes on the first door, built from the client's own measurement rather than from a
-photograph: four panes at **900 × 500 mm** and four at **900 × 400 mm**, all 900 mm high.
+Eight panes on the first doorway, built from the client's own measurement rather
+than from a photograph: four panes at **900 × 500 mm** and four at **900 × 400 mm**, all 900 mm
+high. The geometry is identical on all three doors; only the subject matter and the film change.
 
-The services are the clinic's own: HIV testing, malaria testing, CBC, antenatal care,
-pharmacy, laboratory and the doctor's room. Dentistry and physiotherapy are gone.
+Perforated one-way vision vinyl — you can see out through the print from inside.
 
 | Pane | Service | Glass (H × W) | Photograph | Leaf · position |
 | --- | --- | --- | --- | --- |
-| D1-P1 | HIV Testing | 900 × 500 | PH-09 gloved hand, two sample tubes | left leaf · upper left |
-| D1-P2 | Pharmacy | 900 × 400 | PH-06 dispensary shelving | left leaf · upper right |
-| D1-P3 | Malaria | 900 × 500 | PH-11 mosquito on skin (Kaduna) | left leaf · lower left |
-| D1-P4 | CBC | 900 × 400 | PH-10 blood tube over a rack | left leaf · lower right |
-| D1-P5 | Antenatal | 900 × 500 | PH-07 ultrasound room | right leaf · upper left |
-| D1-P6 | Laboratory | 900 × 400 | PH-05 microscope bench | right leaf · upper right |
+| D1-P1 | HIV Testing | 900 × 500 | PH-09 Gloved hand holding two blood sample tubes for testing | left leaf · upper left |
+| D1-P2 | Pharmacy | 900 × 400 | PH-06 Pharmacists examining medicine on dispensary shelving | left leaf · upper right |
+| D1-P3 | Malaria | 900 × 500 | PH-11 Macro photograph of a mosquito on skin, taken in Kaduna, Nigeria | left leaf · lower left |
+| D1-P4 | CBC | 900 × 400 | PH-10 Gloved hands handling a purple-top blood tube over a vacutainer rack | left leaf · lower right |
+| D1-P5 | Antenatal | 900 × 500 | PH-07 Ultrasound scanner and examination couch in a clinic scanning room | right leaf · upper left |
+| D1-P6 | Laboratory | 900 × 400 | PH-05 Laboratory technician at a trinocular microscope | right leaf · upper right |
 | D1-P7 | Our Services | 900 × 500 | none — type only | right leaf · lower left |
-| D1-P8 | Consultation | 900 × 400 | PH-08 doctor's room | right leaf · lower right |
+| D1-P8 | Consultation | 900 × 400 | PH-08 Doctor consulting a patient across a desk | right leaf · lower right |
 
-Eight panes, eight different photographs — no image repeats on the door.
+Seven different photographs and one type-only directory. No image on this door appears on either
+of the other two.
 
 ## Files
 
@@ -28,22 +29,32 @@ Eight panes, eight different photographs — no image repeats on the door.
 - `lookbook/M-01-door-1-day.png`, `M-02-door-1-night.png` — elevations
 - `index.html` — web preview
 
-## Photography and the retouch
+## Photography
 
-All base photographs are Pexels Free licence (checked 29 October 2026). Four carry an AI
-colour retouch — pharmacy, laboratory, reception and consultation — so the people shown
-reflect the community BCM serves. HIV testing, malaria and CBC show specimens, hands and
-equipment only: no patient, no face, no result. The people in the retouched frames are
+All photographs are Pexels Free licence, checked 29 October 2026: free commercial use, no
+attribution required, modification allowed. The ones carrying an AI colour retouch so the people
+reflect the community BCM serves are marked in the table below; the people in those frames are
 models, never staff or patients, and no pane captions them as such.
 
-Retouched files are proof resolution (long edge ≈1264 px). Re-do them on the
-full-resolution originals before print.
+| Asset | Pexels ID | Creator | Original | Edited |
+| --- | --- | --- | --- | --- |
+| PH-09 | 6074931 | Alena Shekhovtcova | 4160 × 6240 px | no |
+| PH-06 | 8657370 | cottonbro studio | 1264 × 842 px | yes — colour retouch |
+| PH-11 | 32946369 | Saeed Saeed | 2795 × 4466 px | no |
+| PH-10 | 8460340 | Los Muertos Crew | 6000 × 4000 px | no |
+| PH-07 | 7089304 | MART PRODUCTION | 6123 × 4082 px | no |
+| PH-05 | 8442574 | Pavel Danilyuk | 1264 × 844 px | yes — colour retouch |
+| PH-08 | 7580254 | cottonbro studio | 843 × 1264 px | yes — colour retouch |
+
+Working files are desktop previews, not print files. Pull the full-size original from the Pexels
+link for each ID before plotting — the record of what was used, and where it came from, is the
+point of the table.
 
 ## Provisional
 
-- Column order is drawn as 500 mm left, 400 mm right on both leaves — confirm, or say if
-  the second leaf is mirrored.
-- The B monogram is a recreation.
+- Column order is drawn as 500 mm left, 400 mm right on both leaves — confirm, or say if the
+  second leaf is mirrored.
+- The B monogram is a recreation, not BCM's official logo.
 - No telephone numbers appear — none supplied.
-
-Rebuild: `cd source && python3 bcm_door1.py`
+- Doors 1 and 2 use the same perforated film; door 3 is opaque vinyl and will not match it exactly.
+Rebuild: `cd source && python3 bcm_doors.py 1`

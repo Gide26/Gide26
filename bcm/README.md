@@ -13,6 +13,24 @@ a recreation, and no telephone numbers have been supplied yet, so none appear.
 
 ---
 
+## Three doorways — the measured set
+
+The R2 package above was scaled from a photograph. These three were built to the client's
+measured glazing: every door is eight panes, four at **900 × 500 mm** and four at **900 × 400 mm**,
+all 900 mm high. Doors 1 and 2 are perforated one-way vision; **door 3 is opaque white vinyl** and
+is not see-through.
+
+| Door | Folder | Role | Film | Panes |
+| --- | --- | --- | --- | --- |
+| 1 | [`door-1/`](door-1/) | Testing and treatment — HIV, pharmacy, malaria, CBC, antenatal, laboratory, consultation | One-way vision | 7 photographs + directory |
+| 2 | [`door-2/`](door-2/) | General medicine — general consultation, immunisation, minor surgery, CBC, laboratory, pharmacy, HIV testing | One-way vision | 7 photographs + directory |
+| 3 | [`door-3/`](door-3/) | Family care — antenatal, pharmacy, immunisation, laboratory, minor surgery, welcome, CBC | Opaque, no see-through | 7 photographs + directory |
+
+Twenty-one different photographs across the three doors; no image is used twice. Each door folder
+carries its own artwork, schedule, specification, elevations, web preview, README and package zip.
+
+---
+
 ## What's here
 
 | Path | What it is |
