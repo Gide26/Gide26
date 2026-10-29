@@ -213,10 +213,10 @@ def draw(c, panel, bleed=BLEED):
 
         y = top - (110 if compact else 192)
         n = max(len(panel["list_items"]) - 1, 1)
-        step = min(74.0, (y - 190) / n)
+        step = min(84.0, (y - 190) / n)
         for item in panel["list_items"]:
-            B.asterisk(c, M + 7, y + 7, 6.6 if compact else 8.4, B.CP_CYAN, 4.0)
-            B.caps(c, M + 24 if compact else M + 30, y, item, 14.0 if compact else 19.0,
+            B.asterisk(c, M + 6, y + 7, 6.0 if compact else 7.4, B.CP_CYAN, 1.8)
+            B.caps(c, M + 24 if compact else M + 30, y, item, 15.0 if compact else 22.0,
                    B.WHITE, "Manrope-500", 0.2, max_w=w - 2 * M - (24 if compact else 30))
             y -= step
 
