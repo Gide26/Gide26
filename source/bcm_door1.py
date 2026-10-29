@@ -32,27 +32,31 @@ WIDE, NARROW, PANE_H = 500, 400, 900
 
 #   id        service          pane w   photo        headline position
 SPEC = [
-    ("D1-P1", "DENTAL",         WIDE,   "dental",    ("Left leaf", "upper left", "900 × 500")),
-    ("D1-P2", "LABORATORY",     NARROW, "lab",       ("Left leaf", "upper right", "900 × 400")),
-    ("D1-P3", "PHARMACY",       WIDE,   "pharmacy",  ("Left leaf", "lower left", "900 × 500")),
-    ("D1-P4", "PHYSIOTHERAPY",  NARROW, "physio",    ("Left leaf", "lower right", "900 × 400")),
-    ("D1-P5", "RECEPTION",      WIDE,   "reception", ("Right leaf", "upper left", "900 × 500")),
-    ("D1-P6", "PAEDIATRICS",    NARROW, "paeds",     ("Right leaf", "upper right", "900 × 400")),
-    ("D1-P7", "OUR SERVICES",   WIDE,   None,        ("Right leaf", "lower left", "900 × 500")),
-    ("D1-P8", "ANTENATAL",      NARROW, "ultrasound", ("Right leaf", "lower right", "900 × 400")),
+    ("D1-P1", "HIV TESTING",  WIDE,   "hiv",        ("Left leaf", "upper left", "900 × 500")),
+    ("D1-P2", "PHARMACY",     NARROW, "pharmacy",   ("Left leaf", "upper right", "900 × 400")),
+    ("D1-P3", "MALARIA",      WIDE,   "malaria",    ("Left leaf", "lower left", "900 × 500")),
+    ("D1-P4", "CBC",          NARROW, "cbc",        ("Left leaf", "lower right", "900 × 400")),
+    ("D1-P5", "ANTENATAL",    WIDE,   "ultrasound", ("Right leaf", "upper left", "900 × 500")),
+    ("D1-P6", "LABORATORY",   NARROW, "lab",        ("Right leaf", "upper right", "900 × 400")),
+    ("D1-P7", "OUR SERVICES", WIDE,   None,         ("Right leaf", "lower left", "900 × 500")),
+    ("D1-P8", "CONSULTATION", NARROW, "consult",    ("Right leaf", "lower right", "900 × 400")),
 ]
 
-SUB = {"DENTAL": "SERVICES", "LABORATORY": "SERVICES", "PAEDIATRICS": "CHILD HEALTH",
-       "PHYSIOTHERAPY": "REHABILITATION", "RECEPTION": "GENERAL MEDICINE",
-       "PHARMACY": "DISPENSARY", "OUR SERVICES": "DEPARTMENT DIRECTORY",
-       "ANTENATAL": "ULTRASOUND & CARE"}
+SUB = {"HIV TESTING": "RAPID TEST & LAB", "PHARMACY": "DISPENSARY", "MALARIA": "TESTING",
+       "CBC": "FULL BLOOD COUNT", "ANTENATAL": "ANTENATAL CARE",
+       "LABORATORY": "TESTS & RESULTS", "RECEPTION": "WELCOME",
+       "CONSULTATION": "DOCTOR'S ROOM", "OUR SERVICES": "DEPARTMENT DIRECTORY"}
 
-FOCUS = {"dental": (0.50, 0.40), "lab": (0.52, 0.36), "paeds": (0.46, 0.30),
-         "physio": (0.48, 0.34), "reception": (0.50, 0.46), "pharmacy": (0.62, 0.44),
-         "ultrasound": (0.50, 0.40)}
+FOCUS = {"hiv": (0.50, 0.42), "pharmacy": (0.62, 0.44), "malaria": (0.50, 0.55),
+         "cbc": (0.50, 0.45), "ultrasound": (0.50, 0.40), "reception": (0.50, 0.46),
+         "lab": (0.52, 0.36), "consult": (0.50, 0.30)}
 
-SERVICES = ["Paediatrics", "General medicine", "Minor surgery", "Immunisation", "Laboratory",
-            "Pharmacy", "Dentistry", "Antenatal services", "Physiotherapy"]
+# the client's own list, verbatim — no additions
+SERVICES = ["HIV testing", "Malaria testing", "CBC (Full blood count)", "Antenatal care",
+            "Pharmacy", "Laboratory", "Consultation"]
+
+EDITS = {"pharmacy": "ph-pharmacy.jpg", "reception": "ph-reception.jpg",
+         "lab": "ph-lab.jpg", "consult": "ph-consult.jpg"}
 
 EDITS = {"dental": "ph-dental.jpg", "paeds": "ph-paeds.jpg", "lab": "ph-lab.jpg",
          "physio": "ph-physio.jpg", "pharmacy": "ph-pharmacy.jpg",
@@ -218,9 +222,10 @@ def schedule(panels_list):
     B.label(c, D.M, y, "WHAT CHANGED FROM THE FIRST SET", 4.0, B.TEAL, "Inter-600", 1.6)
     y -= 6 * MM
     D.bullets(c, D.M, y, [
-        "The earlier panes were 810 × 1120 mm, scaled from a photograph. These are measured: "
-        "900 mm high, 500 or 400 mm wide. Every pane is now 0.6–0.8 of its former width, which "
-        "changes the type sizes, not the design language.",
+        "The earlier panes were 810 × 1120 mm, scaled from a photograph and carrying general "
+        "services. These are measured — 900 mm high, 500 or 400 mm wide — and carry the "
+        "services BCM actually offers: HIV testing, malaria testing, CBC, antenatal care, "
+        "pharmacy, laboratory and the doctor's room. No dentistry, no physiotherapy.",
         "Type is set to the pane, not to taste: the service name is capped at 13.5 % of the pane "
         "width, so a 400 mm pane carries a smaller name than a 500 mm one and reads the same "
         "from the pavement.",
@@ -268,9 +273,11 @@ def schedule(panels_list):
     tw = D.PW - tx - D.M
     B.label(c, tx, D.PH - 74 * MM, "WHY THE TWO WIDTHS MATTER", 4.0, B.TEAL, "Inter-600", 1.6)
     D.bullets(c, tx, D.PH - 82 * MM, [
-        "Left column of each leaf: 900 × 500 — the service photos that carry faces.",
-        "Right column: 900 × 400 — the narrower panes take the equipment and directory designs, "
-        "which survive a tighter crop.",
+        "Left column of each leaf: 900 × 500 — HIV testing, malaria and antenatal carry the "
+        "subject at full width.",
+        "Right column: 900 × 400 — the narrower panes take equipment and hands: pharmacy "
+        "shelving, the microscope, the blood draw, the doctor's room.",
+        "Eight panes, eight different photographs. No image repeats anywhere on the door.",
         "Bleed is 10 mm on every edge, so the printed piece is 920 × 520 and 920 × 420 mm.",
         "The directory pane needs its nine lines at 14 mm cap to stay legible on a 400 mm "
         "pane — which is why it sits in the wide column.",

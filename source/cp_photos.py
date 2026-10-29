@@ -74,6 +74,34 @@ PHOTOS = {
         "note": "Equipment only — no patient depicted, so the panel can never be read as a "
                 "specific person's scan.",
     },
+    "hiv": {
+        "asset": "PH-09", "src": "src-hiv-test.jpg", "id": 6074931,
+        "creator": "Alena Shekhovtcova",
+        "url": "https://www.pexels.com/photo/unrecognizable-laboratory-worker-showing-blood-test-tubes-6074931/",
+        "px": (4160, 6240),
+        "title": "Gloved hand holding two blood sample tubes for testing",
+        "use": "HIV testing",
+        "note": "Specimen only — no patient, no face, no result shown, so the pane can never be "
+                "read as anyone's status.",
+    },
+    "cbc": {
+        "asset": "PH-10", "src": "src-cbc.jpg", "id": 8460340,
+        "creator": "Los Muertos Crew",
+        "url": "https://www.pexels.com/photo/a-person-holding-vacutainer-8460340/",
+        "px": (6000, 4000),
+        "title": "Gloved hands handling a purple-top blood tube over a vacutainer rack",
+        "use": "CBC / full blood count",
+        "note": "Hands only — no face, which keeps a blood-draw image clinical rather than "
+                "personal.",
+    },
+    "malaria": {
+        "asset": "PH-11", "src": "src-malaria.jpg", "id": 32946369,
+        "creator": "Saeed Saeed",
+        "url": "https://www.pexels.com/photo/macro-shot-of-mosquito-on-human-skin-in-kaduna-32946369/",
+        "px": (2795, 4466),
+        "title": "Macro photograph of a mosquito on skin, taken in Kaduna, Nigeria",
+        "use": "Malaria testing",
+    },
     "consult": {
         "asset": "PH-08", "src": "src-consult-01.jpg", "id": 7580254,
         "creator": "cottonbro studio",
