@@ -247,7 +247,7 @@ def mockup(door, panels_by_id, night=False):
                     a = np.asarray(art).astype(np.float32) * 0.80 + 26
                     art = Image.fromarray(np.clip(a, 0, 255).astype(np.uint8))
                 img.paste(art, (px, ry))
-        hx = lx + lw - int(64 * S) if leaf == 0 else lx + int(40 * S)
+        hx = lx + lw - int(52 * S) if leaf == 0 else lx + int(20 * S)
         d.rounded_rectangle([hx, ly + int(760 * S), hx + int(24 * S), ly + int(1300 * S)],
                             radius=int(12 * S), fill=(206, 210, 214))
 
