@@ -2,9 +2,9 @@
 
 Name only. No service list, no photograph.
 
-**EDDWALIRO** — Luganda for hospital — is set bold in cyan directly above MEDICAL CENTRE,
-at the same cap height as the English name, so the panel reads in Luganda first and English
-second. MEDICAL CENTRE keeps the widest line and the white ink, so it stays the headline.
+**EDDWALIRO** — Luganda for hospital — heads the panel, above the badge: bold, cyan, at the
+same cap height as the English name, so the panel reads in Luganda first and English second.
+MEDICAL CENTRE keeps the widest line and the white ink, so it stays the headline.
 
 **Trim: 944.9 × 643.1 mm — the client's 3.10 ft × 2.11 ft, landscape.**
 Double-sided: both faces are in the one print PDF.
@@ -21,7 +21,7 @@ Double-sided: both faces are in the one print PDF.
 
 ## How the name is set
 
-The badge, then `BCM` small in cyan, then **EDDWALIRO**, then **MEDICAL CENTRE** at the
+Reading down: **EDDWALIRO**, the badge, `BCM` small in cyan, then **MEDICAL CENTRE** at the
 largest size the panel will take — it spans the full measure of the panel, which is what
 makes it pointable from across the road. The motto sits under the name and can be dropped.
 EDDWALIRO is 592 mm wide at 12 mm tracking; MEDICAL CENTRE is 853 mm. Getting the Luganda

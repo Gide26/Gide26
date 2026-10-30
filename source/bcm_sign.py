@@ -57,20 +57,25 @@ def face(c, w=W, h=H, variant="A", slogan=True, tel=False):
 
     if variant == "A":                       # centred, typographic
         ms, cap_b, cap_s = 112.0, 26.0, 22.0
-        gap_badge, gap_bm, gap_we, gap_em, gap_rule = 22.0, 14.0, 14.0, 30.0, 44.0
+        gap_e, gap_badge, gap_bm, gap_rule = 24.0, 20.0, 16.0, 44.0
         cap_m = min(fit_cap(NAME, "Manrope-800", "Manrope", w - 2 * M), 150.0)
         cap_e = cap_m * ED_RATIO
-        block = ms + gap_badge + cap_b + gap_bm + cap_e + gap_we + cap_m
+        block = cap_e + gap_e + ms + gap_badge + cap_b + gap_bm + cap_m
         top = h / 2 + block / 2
-        B.monogram(c, (w - ms) / 2, top - ms, ms, dark=B.WHITE, accent=B.CP_CYAN)
-        B.caps(c, w / 2, top - ms - gap_badge - cap_b, "BCM", cap_b, B.CP_CYAN,
+
+        # EDDWALIRO heads the panel, above the badge
+        B.caps(c, w / 2, top - cap_e, WORD, cap_e, B.CP_CYAN, "Manrope-800",
+               ED_TRACK, align="center", max_w=w - 2 * M)
+
+        badge_y = top - cap_e - gap_e - ms
+        B.monogram(c, (w - ms) / 2, badge_y, ms, dark=B.WHITE, accent=B.CP_CYAN)
+
+        B.caps(c, w / 2, badge_y - gap_badge - cap_b, "BCM", cap_b, B.CP_CYAN,
                "Inter-600", 26.0, align="center")
-        y_e = top - ms - gap_badge - cap_b - gap_bm - cap_e
-        B.caps(c, w / 2, y_e, WORD, cap_e, B.CP_CYAN, "Manrope-800", ED_TRACK,
-               align="center", max_w=w - 2 * M)
         y_m = top - block
         B.caps(c, w / 2, y_m, NAME, cap_m, B.WHITE, "Manrope-800", 1.6,
                align="center")
+
         ry = y_m - gap_rule
         c.setFillColor(B.CP_CYAN)
         c.rect(w / 2 - 130, ry, 260, 5.0, stroke=0, fill=1)
@@ -83,30 +88,35 @@ def face(c, w=W, h=H, variant="A", slogan=True, tel=False):
 
     else:                                    # B: badge-left lockup
         ms, cap_b, cap_s = 112.0, 26.0, 22.0
-        gap_bm, gap_we, gap_em = 14.0, 12.0, 26.0
-        gap_rule, gap_sl, gap_badge = 34.0, 30.0, 30.0
+        gap_e, gap_bm, gap_badge = 24.0, 16.0, 30.0
+        gap_rule, gap_sl = 34.0, 30.0
         meas = w - 2 * M - ms - gap_badge
         cap_m = min(fit_cap(NAME, "Manrope-800", "Manrope", meas), 132.0)
         cap_e = cap_m * ED_RATIO
         name_w = pdfmetrics.stringWidth(NAME, "Manrope-800", B.font_for(cap_m))
         word_w = (pdfmetrics.stringWidth(WORD, "Manrope-800", B.font_for(cap_e))
                   + ED_TRACK * (len(WORD) - 1))
-        block_w = ms + gap_badge + max(name_w, word_w)
-        block_h = cap_b + gap_bm + cap_e + gap_we + cap_m + (
+        block_w = max(ms + gap_badge + name_w, word_w)
+        lower_h = max(ms, cap_b + gap_bm + cap_m)
+        block_h = cap_e + gap_e + lower_h + (
             (gap_rule + 5.0 + gap_sl + cap_s) if slogan else 0)
         top = h / 2 + block_h / 2
         x0 = (w - block_w) / 2
 
-        mid = top - (cap_b + gap_bm + cap_e + gap_we + cap_m / 2)
-        B.monogram(c, x0, mid - ms / 2, ms, dark=B.WHITE, accent=B.CP_CYAN)
+        # EDDWALIRO heads the panel, above the badge
+        B.caps(c, x0, top - cap_e, WORD, cap_e, B.CP_CYAN, "Manrope-800",
+               ED_TRACK, max_w=block_w)
+
+        top_lower = top - cap_e - gap_e
+        B.monogram(c, x0, top_lower - (lower_h + ms) / 2, ms, dark=B.WHITE,
+                   accent=B.CP_CYAN)
 
         tx = x0 + ms + gap_badge
-        B.caps(c, tx, top - cap_b, "BCM", cap_b, B.CP_CYAN, "Inter-600", 18.0)
-        y_e = top - cap_b - gap_bm - cap_e
-        B.caps(c, tx, y_e, WORD, cap_e, B.CP_CYAN, "Manrope-800", ED_TRACK,
-               max_w=meas)
-        y_m = y_e - gap_we - cap_m
+        ty = top_lower - (lower_h - (cap_b + gap_bm + cap_m)) / 2
+        B.caps(c, tx, ty - cap_b, "BCM", cap_b, B.CP_CYAN, "Inter-600", 18.0)
+        y_m = ty - cap_b - gap_bm - cap_m
         B.caps(c, tx - 1.2, y_m, NAME, cap_m, B.WHITE, "Manrope-800", 1.2)
+        name_w = pdfmetrics.stringWidth(NAME, "Manrope-800", B.font_for(cap_m))
         if slogan:
             ry = y_m - gap_rule
             c.setFillColor(B.CP_CYAN)
@@ -287,8 +297,8 @@ def proof(path):
     y = D.para(c, D.M, y + 2 * MM,
                "One panel, the name only — no service list, no photograph. Trim "
                f"{W:.0f} × {H:.0f} mm, the client's 3.10 ft × 2.11 ft, double-sided. "
-               "EDDWALIRO sits above MEDICAL CENTRE: the road reads Luganda first, and "
-               "the English name keeps the widest line.",
+               "EDDWALIRO heads the panel above the badge: the road reads Luganda first, "
+               "and the English name keeps the widest line.",
                (D.PW - 2 * D.M) / MM * 0.56, 3.3, B.NAVY_MID)
 
     scale = 152.0 / W
@@ -325,10 +335,10 @@ def proof(path):
     D.page_bg(c, "OPTIONS", f"{REV}", 2, eyebrow=eyebrow)
     y = D.h1(c, D.PH - 34 * MM, "Two ways to set the name", 8.0)
     D.para(c, D.M, y + 2 * MM,
-           "A is the recommendation: the badge sits above a centred EDDWALIRO / MEDICAL "
-           "CENTRE, so the words are the widest thing on the sign and the eye lands on "
-           "MEDICAL CENTRE. B repeats the lockup used on the door panes, badge left, name "
-           "right, for continuity between the sign post and the stickers.",
+           "A is the recommendation: EDDWALIRO heads the panel, the badge sits under it, and "
+           "MEDICAL CENTRE takes the widest line, so the eye lands on the English name. "
+           "B keeps EDDWALIRO at the head but repeats the badge-left lockup used on the "
+           "door panes, for continuity between the sign post and the stickers.",
            (D.PW - 2 * D.M) / MM, 3.2, B.NAVY_MID)
 
     sw = 98.0
@@ -354,8 +364,9 @@ def proof(path):
     D.bullets(c, tx, yy - 7 * MM, [
         "The name is set at the largest size the panel will take — it spans the full "
         "measure, which is what makes it pointable from across the road.",
-        "EDDWALIRO sits directly above it at the same cap height, bold and in cyan: the "
-        "Luganda word is the first thing read, the English name is the widest line.",
+        "EDDWALIRO heads the panel above the badge, at the same cap height as the name, "
+        "bold and in cyan: the Luganda word is read first, the English name is the "
+        "widest line.",
         "BCM stays small and cyan above that: the initials, not the headline.",
         "The motto sits under the name and can be dropped if you want nothing but the "
         "name on the post.",
@@ -423,7 +434,8 @@ def proof(path):
         "signwriter is actually making before the file is plotted.",
         "The monogram is a recreation, not BCM's official logo — swap the vector in.",
         "Confirm the fascia wording: the clinic's own board reads Community Health Centre; "
-        "this sign uses BCM Medical Centre as instructed, with EDDWALIRO above it.",
+        "this sign uses BCM Medical Centre as instructed, with EDDWALIRO at the head "
+        "of the panel.",
         "Confirm the spelling of EDDWALIRO with the client before plot.",
         "The two help-line numbers, if they go on, come off the clinic's premises boards.",
     ], 168 * MM, 3.0, B.NAVY_MID)
@@ -482,8 +494,8 @@ def main():
   <div class="eyebrow">BCM · MEDICAL CENTRE · SIGN POST PANEL</div>
   <h1>Eddwaliro. Medical Centre.</h1>
   <p>3.10 ft × 2.11 ft — {W:.0f} × {H:.0f} mm, landscape, double-sided. Name only:
-     no service list, no photograph. EDDWALIRO, the Luganda word for hospital, is set
-     bold above the English name.</p>
+     no service list, no photograph. EDDWALIRO, the Luganda word for hospital, heads
+     the panel above the badge, bold and in cyan.</p>
 </header>
 <nav><a href="../index.html">All artwork</a>
      <a href="../door-1/index.html">Door 1</a>
