@@ -61,7 +61,10 @@ def face(c, w=W, h=H, variant="A", slogan=True, tel=False):
         cap_m = min(fit_cap(NAME, "Manrope-800", "Manrope", w - 2 * M), 150.0)
         cap_e = cap_m * ED_RATIO
         block = cap_e + gap_e + ms + gap_badge + cap_b + gap_bm + cap_m
-        top = h / 2 + block / 2
+        # the rule and motto hang below the name: carry them in the centring, or
+        # the panel reads top-heavy with the motto crowding the bottom edge
+        tail = (gap_rule + 5.0 + 22.0 + cap_s) if slogan else 0.0
+        top = h / 2 + (block + tail) / 2
 
         # EDDWALIRO heads the panel, above the badge
         B.caps(c, w / 2, top - cap_e, WORD, cap_e, B.CP_CYAN, "Manrope-800",
