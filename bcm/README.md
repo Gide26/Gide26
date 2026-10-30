@@ -99,6 +99,10 @@ Two consequences, stated in every door document:
 - Navy `#16233F`, cyan `#2BA9E0`, mist `#E8EEF4`
 - Motto on the plate: *We listen. We treat. We care.* — set under MEDICAL CENTRE at a
   size that never competes with the name, and held to the name's width
+- **EDDWALIRO** — the Luganda word for hospital — set bold in cyan above MEDICAL CENTRE
+  on the sign post panel only: same cap height as the English name, so the panel reads to
+  the road in Luganda first, while MEDICAL CENTRE keeps the widest line, in white. It is
+  not on the door panes: at 400 mm there is no room for a second language beside the name
 - B monogram: cyan arc around a bold B, drawn in vector (recreation, swap for the real logo)
 - Plate: monogram + `BCM` over `MEDICAL CENTRE`. The name carries the weight — MEDICAL CENTRE
   is set at 2.6 × the cap height of the initials, in the dark navy, spanning the full plate, so

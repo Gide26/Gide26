@@ -2,6 +2,10 @@
 
 Name only. No service list, no photograph.
 
+**EDDWALIRO** — Luganda for hospital — is set bold in cyan directly above MEDICAL CENTRE,
+at the same cap height as the English name, so the panel reads in Luganda first and English
+second. MEDICAL CENTRE keeps the widest line and the white ink, so it stays the headline.
+
 **Trim: 944.9 × 643.1 mm — the client's 3.10 ft × 2.11 ft, landscape.**
 Double-sided: both faces are in the one print PDF.
 
@@ -17,9 +21,12 @@ Double-sided: both faces are in the one print PDF.
 
 ## How the name is set
 
-The badge, then `BCM` small in cyan, then **MEDICAL CENTRE** at the largest size the panel
-will take — it spans the full measure of the panel, which is what makes it pointable from
-across the road. The slogan sits under the name and can be dropped.
+The badge, then `BCM` small in cyan, then **EDDWALIRO**, then **MEDICAL CENTRE** at the
+largest size the panel will take — it spans the full measure of the panel, which is what
+makes it pointable from across the road. The motto sits under the name and can be dropped.
+EDDWALIRO is 592 mm wide at 12 mm tracking; MEDICAL CENTRE is 853 mm. Getting the Luganda
+word bigger than the English one would mean shrinking the English name — say if you want
+that, it is one number in `source/bcm_sign.py` (`ED_RATIO`).
 
 ## Measurements
 
@@ -45,7 +52,8 @@ across the road. The slogan sits under the name and can be dropped.
    one-line swap in `source/bcm_brand.py`.
 3. Wording: the clinic's own board reads Community **Health** Centre; this sign reads
    **BCM Medical Centre** as instructed.
-4. The help-line numbers (0771 240 104 / 0754 132 715) are off the clinic's premises boards;
+4. Confirm the spelling EDDWALIRO before plot.
+5. The help-line numbers (0771 240 104 / 0754 132 715) are off the clinic's premises boards;
    they can be added at the foot on request.
 
 Rebuild: `cd source && python3 bcm_sign.py`
