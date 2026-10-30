@@ -1,6 +1,6 @@
 # BCM Medical Centre — entrance door film set
 
-Photographic service panels for the glazed entrance doors of BCM Medical Centre. Three doorways, eight panes each, printed on perforated one-way vision film on
+Two things: photographic service panels for the glazed entrance doors of BCM Medical Centre, and a name-only sign post panel. Three doorways, eight panes each, printed on perforated one-way vision film on
 doors 1 and 2 and on opaque white vinyl on door 3 — the street reads a poster, the clinic
 still sees out of doors 1 and 2.
 
@@ -34,6 +34,25 @@ hand, and medicine handed across the counter), HIV care on doors 1 and 2, minor 
 and 3; every other service is pictured once. Every frame with people in it has been retouched so the
 faces and hands read as Black African, matching the community BCM serves. Each door folder
 carries its own artwork, schedule, specification, elevations, web preview, README and package zip.
+
+## The sign post panel
+
+A separate deliverable, name only: **3.10 ft × 2.11 ft** as the client measured it, landscape,
+which is **944.9 × 643.1 mm**. No service list, no photograph — the badge, `BCM`, then
+`MEDICAL CENTRE` set at the largest size the panel will take, so the name points from across the
+road. Double-sided; both faces are in the one print PDF.
+
+| Path | What it is |
+| --- | --- |
+| `sign/artwork/BCM-Sign-Name-Only.pdf` | Print file, option A (centred) — 1 : 1 mm, 10 mm bleed, crop marks, two faces |
+| `sign/artwork/BCM-Sign-Name-Only-Option-B.pdf` | Print file, option B (badge-left lockup) |
+| `sign/BCM-Sign-Panel.pdf` | 4 pages — panel to scale with dimensions, the two options, on the post, specification |
+| `sign/lookbook/` | Day and night elevations, dimensioned panel |
+| `sign/index.html` | Web preview |
+
+Substrate (3 mm ACM, matte laminate), fixing (two 76 mm posts at 520 mm centres, panel centre
+1500 mm above finished ground) and finish are industry-typical proposals flagged for the
+signwriter; none of them is a quotation.
 
 ## What each door folder holds
 
@@ -93,7 +112,11 @@ Two consequences, stated in every door document:
 cd source
 python3 bcm_doors.py          # all three doors — artwork, mockups, schedule, spec, web, zips
 python3 bcm_doors.py 1        # one door
+python3 bcm_sign.py           # the sign post panel — artwork, proof, elevations, web
 ```
+
+Preview the whole set locally: `python3 -m http.server 8000 --directory bcm` and open
+`http://localhost:8000/`. The hub at `bcm/index.html` links every door and the sign.
 
 `bcm_brand.py` holds the identity and the white logo plate; `bcm_doors.py` the per-door
 spec, crops and copy; `cp_photos.py` the licensed asset register; `cp_render.py`,
