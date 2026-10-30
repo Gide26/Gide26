@@ -151,7 +151,7 @@ SUB = {
 DOOR3_SUB = {"IMMUNISATION": "CHILD HEALTH & VACCINES"}
 
 # every frame whose people were recoloured to Black African, so the doors show the
-# community BACTIMED serves. Recorded in each README and on the licence line.
+# community BCM serves. Recorded in each README and on the licence line.
 EDITS = {"pharmacy": "ph-pharmacy.jpg", "lab": "ph-lab.jpg", "consult": "ph-consult.jpg",
          "reception": "ph-reception.jpg", "lab_micro": "ph-lab-micro.jpg",
          "pharmacy_counter": "ph-pharmacy-counter.jpg", "hiv_selftest": "ph-hiv-selftest.jpg",
@@ -237,11 +237,12 @@ def mockup(door, panels_by_id, night=False):
     c.setFillColor(B.CP_MIST)
     c.rect(0, 0, 300, SIGN_H, stroke=0, fill=1)
     B.monogram(c, 55, (SIGN_H - 190) / 2, 190, dark=B.CP_NAVY, accent=B.CP_CYAN)
-    B.caps(c, 370, SIGN_H - 180, B.LINE1, 112, B.WHITE, "Manrope-800", 4.0,
+    # fascia: initials small, the name at full weight — MEDICAL CENTRE is the line
+    B.caps(c, 370, SIGN_H - 150, B.LINE1, 74, B.CP_CYAN, "Inter-600", 14.0,
            max_w=total_w - 400)
-    B.caps(c, 370, SIGN_H - 290, B.LINE2, 74, B.CP_CYAN, "Manrope-600", 9.0,
-           max_w=total_w - 400)
-    B.label(c, 372, SIGN_H - 372, B.SLOGAN, 42, B.CP_MIST, "Inter-400", 0.8)
+    B.caps(c, 366, SIGN_H - 300, B.LINE2, 148, B.WHITE, "Manrope-800", 3.0,
+           max_w=total_w - 380)
+    B.label(c, 372, SIGN_H - 400, B.SLOGAN, 40, B.CP_MIST, "Inter-400", 0.8)
     c.showPage()
     c.save()
 
@@ -313,8 +314,8 @@ def schedule(door, panels_list):
     path = os.path.join(base, "docs", f"BCM-Door-{door['n']}-Schedule.pdf")
     os.makedirs(os.path.dirname(path), exist_ok=True)
     D.use_brand(B)
-    eyebrow = f"BACTIMED  ·  COMMUNITY MEDICAL CENTRE  ·  {door['film_name']}"
-    c = D.new_doc(path, f"BACTIMED Community Medical Centre — door {door['n']} pane schedule")
+    eyebrow = f"BCM  ·  MEDICAL CENTRE  ·  {door['film_name']}"
+    c = D.new_doc(path, f"BCM Medical Centre — door {door['n']} pane schedule")
     D.page_bg(c, f"BCM / {door['prefix']} / 01", "Rev B  ·  2026-10-29  ·  MEASURED", 1,
               eyebrow=eyebrow)
     y = D.h1(c, D.PH - 34 * MM, f"Door {door['n']} — pane schedule", 8.0)
@@ -472,8 +473,8 @@ def spec(door):
     base = os.path.join(ROOT, "bcm", door["folder"])
     path = os.path.join(base, "docs", f"BCM-Door-{door['n']}-Specification.pdf")
     D.use_brand(B)
-    eyebrow = f"BACTIMED  ·  COMMUNITY MEDICAL CENTRE  ·  {door['film_name']}"
-    c = D.new_doc(path, f"BACTIMED Community Medical Centre — door {door['n']} production specification")
+    eyebrow = f"BCM  ·  MEDICAL CENTRE  ·  {door['film_name']}"
+    c = D.new_doc(path, f"BCM Medical Centre — door {door['n']} production specification")
     D.page_bg(c, f"BCM / {door['prefix']} / 02", "Rev B  ·  2026-10-29", 1, eyebrow=eyebrow)
     y = D.h1(c, D.PH - 34 * MM, f"Production specification — door {door['n']}", 8.0)
     y = D.para(c, D.M, y + 2 * MM,
@@ -603,7 +604,7 @@ def install_notes(door):
 def open_items(door):
     items = [
         "Confirm the column order on the leaf: 500 mm on the left as drawn, or mirrored?",
-        "BACTIMED's own vector logo, to replace the recreated badge on all eight panes.",
+        "BCM's own vector logo, to replace the recreated badge on all eight panes.",
         "Confirm the two help-line numbers (0771 240 104 / 0754 132 715) read off the premises boards — they now print on the foot of every pane.",
         "The printer's own film standard, to replace the flagged values.",
         "Print-resolution originals: the working files are desktop previews. Pull the full-size "
@@ -653,7 +654,7 @@ def web(door, panels_list):
                "serves; they are models, not staff." if retouched else "")
     html = f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>BACTIMED — door {door['n']}</title>
+<title>BCM Medical Centre — door {door['n']}</title>
 <style>
 body{{margin:0;background:#f4f7f9;color:#16233f;font:16px/1.6 Inter,Helvetica,Arial,sans-serif}}
 header{{background:#16233f;color:#fff;padding:48px 6vw 40px}}
@@ -669,7 +670,7 @@ a{{color:#2ba9e0}}
 .nav a{{margin-right:18px}}
 </style></head><body>
 <header>
-  <div style="letter-spacing:.3em;font-size:11px;color:#2ba9e0">BACTIMED · COMMUNITY MEDICAL CENTRE · DOOR {door['n']} · {door['film_name']}</div>
+  <div style="letter-spacing:.3em;font-size:11px;color:#2ba9e0">BCM · MEDICAL CENTRE · DOOR {door['n']} · {door['film_name']}</div>
   <h1>{door['web_head']}</h1>
   <p>{door['web_blurb']}</p>
   <p class="nav"><a href="BCM-Door-{door['n']}-Panels.pdf">All eight panes (PDF)</a>
@@ -735,7 +736,7 @@ def readme(door, panels_list):
                          "lit from the street and the fascia: an opaque pane cannot be backlit." if door["film"] == "opaque" else
                          "- Doors 1 and 2 use the same perforated film; door 3 is opaque vinyl and "
                          "will not match it exactly.")
-    text = f"""# BACTIMED Community Medical Centre — door {door['n']}
+    text = f"""# BCM Medical Centre — door {door['n']}
 
 Eight panes on the {ordinal(door['n'])} doorway, built from the client's own measurement rather
 than from a photograph: four panes at **900 × 500 mm** and four at **900 × 400 mm**, all 900 mm
@@ -761,7 +762,7 @@ of the other two.
 
 All photographs are Pexels Free licence, checked 29 October 2026: free commercial use, no
 attribution required, modification allowed. The ones carrying an AI colour retouch so the people
-reflect the community BACTIMED serves are marked in the table below; the people in those frames are
+reflect the community BCM serves are marked in the table below; the people in those frames are
 models, never staff or patients, and no pane captions them as such.
 
 {chr(10).join(credits)}

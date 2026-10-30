@@ -13,8 +13,8 @@ CLIENT = "BCM"
 CLIENT_TITLE = "BCM Medical Centre"
 DOC_CODE = "BCM"
 CLIENT_FULL = "BCM MEDICAL CENTRE"
-LINE1 = "BACTIMED"
-LINE2 = "COMMUNITY MEDICAL CENTRE"
+LINE1 = "BCM"                     # the initials, set small above the name
+LINE2 = "MEDICAL CENTRE"          # the line that has to be read from the road
 SLOGAN = "Your Health. Our Commitment"
 TEL = "0771 240 104  ·  0754 132 715"   # read off the clinic's own boards
 TEL_FULL = "0771240104 / 0754132715"
@@ -81,38 +81,49 @@ def monogram(c, x, y, size, dark=CP_NAVY, accent=CP_CYAN, knock=None):
 
 
 def plate(c, x, y, h, dark=CP_NAVY, ground=WHITE, accent=CP_CYAN, slogan=True):
-    """White logo plate: badge + BCM MEDICAL CENTRE + slogan, as on the boards.
+    """White logo plate: badge, BCM, then MEDICAL CENTRE at full weight.
 
-    Width is measured from the type so the plate always hugs its content.
-    Returns the width used.
+    The name does the work, not the initials: MEDICAL CENTRE is set at almost
+    twice the cap height of BCM and in the dark navy, so a passer-by reads the
+    words first and the badge second. Width is measured from the type so the
+    plate always hugs its content. Returns the width used.
     """
     from reportlab.pdfbase import pdfmetrics
 
     ms = h * 0.60
-    pad = h * 0.20
-    gap = h * 0.17
-    cap1, cap2, cap3 = h * 0.30, h * 0.115, h * 0.082
-    tr1, tr2, tr3 = 1.6, 2.6, 0.9
-    w1 = (pdfmetrics.stringWidth(LINE1, "Manrope-800", font_for(cap1))
-          + tr1 * (len(LINE1) - 1))
-    w2 = (pdfmetrics.stringWidth(LINE2, "Inter-600", font_for(cap2, "Inter"))
-          + tr2 * (len(LINE2) - 1))
-    w3 = (pdfmetrics.stringWidth(SLOGAN.upper(), "Inter-400", font_for(cap3, "Inter"))
-          + tr3 * (len(SLOGAN) - 1))
-    tw = max(w1, w2, w3)
+    pad = h * 0.18
+    gap = h * 0.15
+    cap_b, cap_m, cap_s = h * 0.185, h * 0.330, h * 0.070
+    tr_b, tr_m, tr_s = 2.4, 1.0, 0.9
+
+    w_b = (pdfmetrics.stringWidth(LINE1, "Inter-600", font_for(cap_b, "Inter"))
+           + tr_b * (len(LINE1) - 1))
+    w_m = (pdfmetrics.stringWidth(LINE2, "Manrope-800", font_for(cap_m))
+           + tr_m * (len(LINE2) - 1))
+    w_s = (pdfmetrics.stringWidth(SLOGAN.upper(), "Inter-400", font_for(cap_s, "Inter"))
+           + tr_s * (len(SLOGAN) - 1))
+    tw = max(w_m, w_b, w_s if slogan else 0)
     w = pad * 2 + ms + gap + tw
-    avail = getattr(_cp, "_plate_avail", None)
+    avail = globals().get("_plate_avail")
     if avail and w > avail:            # squeeze to the pane it sits on
         k = avail / w
         return plate(c, x, y, h * k, dark=dark, ground=ground, accent=accent,
                      slogan=slogan)
 
+    # vertical rhythm — initials, gap, the name, gap, the slogan
+    g1, g2 = h * 0.030, h * 0.030
+    block = cap_b + g1 + cap_m + ((g2 + cap_s) if slogan else 0)
+    top = y + h - max((h - block) / 2.0, h * 0.06)
+    y_b = top - cap_b
+    y_m = y_b - g1 - cap_m
+    y_s = y_m - g2 - cap_s
+
     c.setFillColor(ground)
     c.rect(x, y, w, h, stroke=0, fill=1)
     monogram(c, x + pad, y + (h - ms) / 2, ms, dark=dark, accent=accent, knock=ground)
     tx = x + pad + ms + gap
-    caps(c, tx, y + h * 0.50, LINE1, cap1, dark, "Manrope-800", tr1)
-    label(c, tx + 0.6, y + h * 0.28, LINE2, cap2, accent, "Inter-600", tr2)
+    caps(c, tx, y_b, LINE1, cap_b, accent, "Inter-600", tr_b)
+    caps(c, tx - cap_m * 0.012, y_m, LINE2, cap_m, dark, "Manrope-800", tr_m)
     if slogan:
-        label(c, tx + 0.6, y + h * 0.12, SLOGAN, cap3, CP_GREY, "Inter-400", tr3)
+        label(c, tx, y_s, SLOGAN, cap_s, CP_GREY, "Inter-400", tr_s)
     return w

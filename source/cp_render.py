@@ -92,16 +92,38 @@ def _plate(c, w, h, panel):
     """Reference-literal white logo plate, top-left, sitting over the photo."""
     plate = getattr(B, "plate", None)
     ph = min(w * 0.21, 108.0) if h > 950 else min(w * 0.22, 96.0)
-    x, y = M, h - (26.0 if h > 950 else 20.0) - ph
+    top = 26.0 if h > 950 else 20.0
+    x, y = M, h - top - ph
+    pw = None
     if plate:
         B._plate_avail = w - 2 * M
         try:
-            plate(c, x, y, ph, dark=B.CP_NAVY, ground=B.WHITE, accent=B.CP_CYAN,
-                  slogan=w >= 470)
+            # grow the plate until the name spans the pane: MEDICAL CENTRE is the
+            # thing people are asked to point at, so it gets the full measure
+            pw = plate(c, x, y, ph, dark=B.CP_NAVY, ground=B.WHITE, accent=B.CP_CYAN,
+                       slogan=w >= 470)
+            for _ in range(3):
+                if not pw:
+                    break
+                room = (w - 2 * M) / pw
+                want = min(ph * room, h * 0.17)
+                if want <= ph * 1.02:
+                    break
+                y = h - top - want
+                pw = plate(c, x, y, want, dark=B.CP_NAVY, ground=B.WHITE,
+                           accent=B.CP_CYAN, slogan=w >= 470)
+                ph = want
         finally:
             B._plate_avail = None
-    B.label(c, w - M, h - (40 if h > 950 else 34), panel["id"],
-            5.2 if h > 950 else 4.6, B.WHITE, "Inter-500", 1.4, "right")
+    # the pane id moves into the dark strip at the plate's foot when the plate is
+    # wide, and stays top-right when there is room beside it
+    if pw and pw > (w - 2 * M) * 0.62:
+        # wide plate: the pane number sits inside its foot, grey on white
+        B.label(c, x + pw - 6.0, y + (10.0 if h > 950 else 7.0), panel["id"],
+                5.0 if h > 950 else 4.4, B.CP_GREY, "Inter-500", 1.4, "right")
+    else:
+        B.label(c, w - M, h - (40 if h > 950 else 34), panel["id"],
+                5.2 if h > 950 else 4.6, B.WHITE, "Inter-500", 1.4, "right")
 
 
 def draw(c, panel, bleed=BLEED):

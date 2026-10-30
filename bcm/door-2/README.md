@@ -1,4 +1,4 @@
-# BACTIMED Community Medical Centre — door 2
+# BCM Medical Centre — door 2
 
 Eight panes on the second doorway, built from the client's own measurement rather
 than from a photograph: four panes at **900 × 500 mm** and four at **900 × 400 mm**, all 900 mm
@@ -33,7 +33,7 @@ of the other two.
 
 All photographs are Pexels Free licence, checked 29 October 2026: free commercial use, no
 attribution required, modification allowed. The ones carrying an AI colour retouch so the people
-reflect the community BACTIMED serves are marked in the table below; the people in those frames are
+reflect the community BCM serves are marked in the table below; the people in those frames are
 models, never staff or patients, and no pane captions them as such.
 
 | Asset | Pexels ID | Creator | Pexels original | Working file | Retouch |
