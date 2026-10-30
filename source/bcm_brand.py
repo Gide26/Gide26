@@ -15,7 +15,7 @@ DOC_CODE = "BCM"
 CLIENT_FULL = "BCM MEDICAL CENTRE"
 LINE1 = "BCM"                     # the initials, set small above the name
 LINE2 = "MEDICAL CENTRE"          # the line that has to be read from the road
-SLOGAN = "Your Health. Our Commitment"
+SLOGAN = "We listen. We treat. We care."
 TEL = "0771 240 104  ·  0754 132 715"   # read off the clinic's own boards
 TEL_FULL = "0771240104 / 0754132715"
 PLATE_STYLE = True             # reference-literal layout
@@ -93,15 +93,22 @@ def plate(c, x, y, h, dark=CP_NAVY, ground=WHITE, accent=CP_CYAN, slogan=True):
     ms = h * 0.60
     pad = h * 0.18
     gap = h * 0.15
-    cap_b, cap_m, cap_s = h * 0.185, h * 0.330, h * 0.070
+    cap_b, cap_m, cap_s = h * 0.185, h * 0.330, h * 0.064
     tr_b, tr_m, tr_s = 2.4, 1.0, 0.9
+
+    def _w_s(cap):
+        return (pdfmetrics.stringWidth(SLOGAN.upper(), "Inter-400",
+                                       font_for(cap, "Inter"))
+                + tr_s * (len(SLOGAN) - 1))
 
     w_b = (pdfmetrics.stringWidth(LINE1, "Inter-600", font_for(cap_b, "Inter"))
            + tr_b * (len(LINE1) - 1))
     w_m = (pdfmetrics.stringWidth(LINE2, "Manrope-800", font_for(cap_m))
            + tr_m * (len(LINE2) - 1))
-    w_s = (pdfmetrics.stringWidth(SLOGAN.upper(), "Inter-400", font_for(cap_s, "Inter"))
-           + tr_s * (len(SLOGAN) - 1))
+    # the motto is never the widest line: MEDICAL CENTRE stays the headline
+    if _w_s(cap_s) > w_m:
+        cap_s = max(cap_s * w_m / _w_s(cap_s) * 0.98, h * 0.032)
+    w_s = _w_s(cap_s)
     tw = max(w_m, w_b, w_s if slogan else 0)
     w = pad * 2 + ms + gap + tw
     avail = globals().get("_plate_avail")

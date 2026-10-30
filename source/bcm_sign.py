@@ -53,7 +53,7 @@ def face(c, w=W, h=H, variant="A", slogan=True, tel=False):
     c.rect(0, 0, w, h, stroke=0, fill=1)
 
     if variant == "A":                       # centred, typographic
-        ms, cap_b, cap_s = 132.0, 25.0, 19.0
+        ms, cap_b, cap_s = 132.0, 25.0, 22.0
         gap_badge, gap_mb, gap_rule = 26.0, 24.0, 40.0
         cap_m = min(fit_cap(NAME, "Manrope-800", "Manrope", w - 2 * M), 150.0)
         block = ms + gap_badge + cap_b + gap_mb + cap_m
@@ -75,7 +75,7 @@ def face(c, w=W, h=H, variant="A", slogan=True, tel=False):
                     "Inter-600", 2.2, align="center")
 
     else:                                    # B: badge-left lockup
-        ms, cap_b, cap_s = 118.0, 26.0, 18.0
+        ms, cap_b, cap_s = 118.0, 26.0, 22.0
         gap_bm, gap_rule, gap_sl, gap_badge = 20.0, 34.0, 30.0, 34.0
         cap_m = min(fit_cap(NAME, "Manrope-800", "Manrope",
                             w - 2 * M - ms - gap_badge), 132.0)

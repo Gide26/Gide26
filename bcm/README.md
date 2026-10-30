@@ -97,7 +97,8 @@ Two consequences, stated in every door document:
 ## Identity
 
 - Navy `#16233F`, cyan `#2BA9E0`, mist `#E8EEF4`
-- Slogan on the plate: *Your Health. Our Commitment.*
+- Motto on the plate: *We listen. We treat. We care.* — set under MEDICAL CENTRE at a
+  size that never competes with the name, and held to the name's width
 - B monogram: cyan arc around a bold B, drawn in vector (recreation, swap for the real logo)
 - Plate: monogram + `BCM` over `MEDICAL CENTRE`. The name carries the weight — MEDICAL CENTRE
   is set at 2.6 × the cap height of the initials, in the dark navy, spanning the full plate, so
@@ -128,7 +129,7 @@ through `use_brand()`.
 1. Confirm the fascia wording — the board reads *Community Health Centre*, the artwork now uses
    *BCM Medical Centre* as instructed, with MEDICAL CENTRE as the dominant line.
 2. Confirm the slogan — the board reads *Good Health is Your Responsibility*, the artwork
-   uses *Your Health. Our Commitment.*
+   reads *We listen. We treat. We care.*, the motto the client supplied.
 3. Send the official logo file to replace the recreation. If the real logo already contains the
    name, the plate can be simplified to badge + name at a single size.
 4. Confirm the help-line numbers and whether the email address should appear.

@@ -237,12 +237,21 @@ def mockup(door, panels_by_id, night=False):
     c.setFillColor(B.CP_MIST)
     c.rect(0, 0, 300, SIGN_H, stroke=0, fill=1)
     B.monogram(c, 55, (SIGN_H - 190) / 2, 190, dark=B.CP_NAVY, accent=B.CP_CYAN)
-    # fascia: initials small, the name at full weight — MEDICAL CENTRE is the line
-    B.caps(c, 370, SIGN_H - 150, B.LINE1, 74, B.CP_CYAN, "Inter-600", 14.0,
+    # fascia: initials small, the name at full weight — MEDICAL CENTRE is the line.
+    # The three text lines are stacked around the sign's centre line, not dropped
+    # from the top edge, so the block sits square against the badge.
+    cap_b, cap_m, cap_s = 62.0, 132.0, 40.0
+    gap_bm, gap_ms = 26.0, 34.0
+    block = cap_b + gap_bm + cap_m + gap_ms + cap_s
+    top = SIGN_H / 2 + block / 2
+    y_b = top - cap_b
+    y_m = y_b - gap_bm - cap_m
+    y_s = y_m - gap_ms - cap_s
+    B.caps(c, 370, y_b, B.LINE1, cap_b, B.CP_CYAN, "Inter-600", 14.0,
            max_w=total_w - 400)
-    B.caps(c, 366, SIGN_H - 300, B.LINE2, 148, B.WHITE, "Manrope-800", 3.0,
+    B.caps(c, 366, y_m, B.LINE2, cap_m, B.WHITE, "Manrope-800", 3.0,
            max_w=total_w - 380)
-    B.label(c, 372, SIGN_H - 400, B.SLOGAN, 40, B.CP_MIST, "Inter-400", 0.8)
+    B.label(c, 372, y_s, B.SLOGAN, cap_s, B.CP_MIST, "Inter-400", 1.6)
     c.showPage()
     c.save()
 
