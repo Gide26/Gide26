@@ -84,7 +84,9 @@
 
 ## Print files zip
 
-`BCM-Print-Files.zip` holds exactly this folder — the 30 single print files and the index, nothing else.
+`BCM-Print-Files.zip` holds exactly this folder — the 30 single print files, the index and `BCM-Print-Files-ALL.pdf`, nothing else.
+
+`BCM-Print-Files-ALL.pdf` is all 30 pieces in one document, one piece per page, in job order — for checking or for a printer who would rather have a single attachment. Every page keeps its own finished size, so it plots the same as the single files; the single files are still what to send.
 
 ## Notes
 

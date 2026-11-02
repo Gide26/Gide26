@@ -169,13 +169,40 @@ def manifest(path, pieces):
     return path
 
 
+def bundle(path, pieces):
+    """All 30 pieces in one PDF, in job order — to open and check, not to plot.
+
+    Each page keeps its own finished size and trim box, so printing this file
+    page-for-page gives the same 30 sheets as the single files. The single
+    files stay the deliverable; this is the one attachment a printer can flick
+    through without unzipping anything.
+    """
+    from pypdf import PdfWriter, PdfReader
+
+    w = PdfWriter()
+    for n, job, title, ref, folder, kind, size, name in pieces:
+        src = os.path.join(OUT, name)
+        if not os.path.exists(src):
+            continue
+        r = PdfReader(src)
+        for pg in r.pages:
+            w.add_page(pg)
+    w.add_metadata({"/Title": "BCM Medical Centre — all print files, one per page",
+                    "/Author": "BCM Medical Centre — one-way vision film project",
+                    "/Subject": "30 pieces, 1 : 1 in millimetres, plot at 100 %"})
+    with open(path, "wb") as fh:
+        w.write(fh)
+    return path
+
+
 def main():
     pieces = build()
     print("print files:", len(pieces))
 
     index_pdf(os.path.join(OUT, "PRINT-INDEX.pdf"), pieces)
     manifest(os.path.join(OUT, "print-manifest.csv"), pieces)
-    print("index + manifest")
+    bundle(os.path.join(OUT, "BCM-Print-Files-ALL.pdf"), pieces)
+    print("index + manifest + one combined file")
 
     # REPORT.md, so the folder explains itself when it is unzipped alone
     lines = ["# BCM Medical Centre — print files", "",
@@ -198,7 +225,11 @@ def main():
 
     lines += ["## Print files zip", "",
               "`BCM-Print-Files.zip` holds exactly this folder — the 30 single print "
-              "files and the index, nothing else.", ""]
+              "files, the index and `BCM-Print-Files-ALL.pdf`, nothing else.", "",
+              "`BCM-Print-Files-ALL.pdf` is all 30 pieces in one document, one piece per "
+              "page, in job order — for checking or for a printer who would rather have a "
+              "single attachment. Every page keeps its own finished size, so it plots the "
+              "same as the single files; the single files are still what to send.", ""]
     lines += ["## Notes", "",
               "The sign post is supplied as three files: face A and face B of the "
               "recommended option A lockup, and face A of the same panel in the option B "
