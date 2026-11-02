@@ -111,6 +111,26 @@ Two consequences, stated in every door document:
   perforation; the pane number sits in the plate's foot in grey
 - Caption band: service name at 13.5 % of the pane width, subtitle and help line beneath
 
+## Banners
+
+Three roadside banners on the fence, built in `source/bcm_banners.py`:
+
+| ID | Size | Layout |
+| --- | --- | --- |
+| B-1 | 3.8 m × 1.0 m | photograph left, the name and service list right |
+| B-2 | 3.4 m × 1.0 m | type left, two photographs stacked right |
+| B-3 | 2.4 m × 1.0 m | the name centred, one photograph |
+
+Each carries EDDWALIRO at the head, the badge and `BCM`, MEDICAL CENTRE as the widest line,
+the motto, a service list from the clinic's own board, the two premises numbers and
+*Open 24 hours*. Four Pexels frames, all colour-retouched, all recorded on the licence page
+of `bcm/banners/BCM-Banners.pdf`. No photograph and no service repeats across the three.
+
+```sh
+cd source
+python3 bcm_banners.py        # print files, 6-page proof, fence elevations, web page
+```
+
 ## Rebuilding
 
 ```sh
@@ -118,6 +138,7 @@ cd source
 python3 bcm_doors.py          # all three doors — artwork, mockups, schedule, spec, web, zips
 python3 bcm_doors.py 1        # one door
 python3 bcm_sign.py           # the sign post panel — artwork, proof, elevations, web
+python3 bcm_banners.py        # the three roadside banners
 ```
 
 Preview the whole set locally: `python3 -m http.server 8000 --directory bcm` and open
