@@ -18,6 +18,10 @@ LINE2 = "MEDICAL CENTRE"          # the line that has to be read from the road
 SLOGAN = "We listen. We treat. We care."
 TEL = "0771 240 104  ·  0754 132 715"   # read off the clinic's own boards
 TEL_FULL = "0771240104 / 0754132715"
+# Confirmed 2026-11-02: panes 1-18 (door 1, door 2, door 3 P1-P2) carry the
+# additional line 0788 323 815 in place of 0771 240 104. Panes 19-24, the sign
+# post and the banners keep TEL above.
+TEL_ALT = "0788 323 815  ·  0754 132 715"
 PLATE_STYLE = True             # reference-literal layout
 ACCENT = CP_CYAN
 

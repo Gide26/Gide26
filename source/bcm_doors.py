@@ -187,6 +187,8 @@ def panels(door):
     subs = dict(SUB)
     if door["n"] == 3:
         subs.update(DOOR3_SUB)
+    # global pane number: door 1 holds 1-8, door 2 holds 9-16, door 3 holds 17-24
+    offset = {1: 0, 2: 8, 3: 16}[door["n"]]
     for i, (service, w, photo, _pos) in enumerate(door["spec"], start=1):
         p = {
             "id": f"{door['prefix']}-P{i}", "service": service, "sub": subs[service],
@@ -199,6 +201,9 @@ def panels(door):
             "aspect": f"1 : {PANE_H / w:.2f}",
             "note": "",
             "list_items": SERVICES if service == "OUR SERVICES" else None,
+            # 0788 323 815 on panes 1-18 only (door 1, door 2, door 3 P1-P2);
+            # the rest of door 3 keeps the number off the clinic's own boards
+            "tel": B.TEL_ALT if offset + i <= 18 else None,
         }
         out.append(p)
     # no photograph may appear twice on a door
@@ -614,7 +619,9 @@ def open_items(door):
     items = [
         "Confirm the column order on the leaf: 500 mm on the left as drawn, or mirrored?",
         "BCM's own vector logo, to replace the recreated badge on all eight panes.",
-        "Confirm the two help-line numbers (0771 240 104 / 0754 132 715) read off the premises boards — they now print on the foot of every pane.",
+        "Telephone: panes 1-18 print 0788 323 815 and 0754 132 715; panes 19-24, the "
+        "sign post and the banners print 0771 240 104 and 0754 132 715. Confirm all "
+        "three lines are current before plotting.",
         "The printer's own film standard, to replace the flagged values.",
         "Print-resolution originals: the working files are desktop previews. Pull the full-size "
         "files from the recorded Pexels links, or shoot the real team.",
@@ -788,8 +795,11 @@ point of the table.
   500 mm panes at the two outer edges — as the client described the door. Confirm against the
   real leaves before cutting.
 - The B monogram is a recreation, not BCM's official logo.
-- The two help-line numbers (0771 240 104 / 0754 132 715) come off the clinic's own premises
-  boards and print on the foot of every pane; confirm they are still current.
+- Telephone numbers on the foot of each pane: panes 1-18 (door 1, door 2, door 3 P1-P2)
+  carry **0788 323 815** with 0754 132 715, changed at the client's instruction on
+  2026-11-02. Panes 19-24 (door 3 P3-P8) keep 0771 240 104 with 0754 132 715 from the
+  clinic's own boards, as do the sign post and the banners. Confirm all three lines are
+  current before plotting.
 {provisional_extra}
 Rebuild: `cd source && python3 bcm_doors.py {door['n']}`
 """

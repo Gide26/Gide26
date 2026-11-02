@@ -58,8 +58,11 @@ point of the table.
   500 mm panes at the two outer edges — as the client described the door. Confirm against the
   real leaves before cutting.
 - The B monogram is a recreation, not BCM's official logo.
-- The two help-line numbers (0771 240 104 / 0754 132 715) come off the clinic's own premises
-  boards and print on the foot of every pane; confirm they are still current.
+- Telephone numbers on the foot of each pane: panes 1-18 (door 1, door 2, door 3 P1-P2)
+  carry **0788 323 815** with 0754 132 715, changed at the client's instruction on
+  2026-11-02. Panes 19-24 (door 3 P3-P8) keep 0771 240 104 with 0754 132 715 from the
+  clinic's own boards, as do the sign post and the banners. Confirm all three lines are
+  current before plotting.
 - Opaque film blocks the view through the glass, in and out; confirm that is wanted on this door.
 - The night elevation assumes the door is lit from the street and the fascia: an opaque pane cannot be backlit.
 Rebuild: `cd source && python3 bcm_doors.py 3`

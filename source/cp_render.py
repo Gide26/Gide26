@@ -83,9 +83,11 @@ def _split(text, cap, avail):
     return best[1]
 
 
-def _tel(c, x, y, color, cap=6.2, align="right"):
-    if getattr(B, "TEL", ""):
-        B.label(c, x, y, "TEL " + B.TEL, cap, color, "Inter-500", 0.9, align)
+def _tel(c, x, y, color, cap=6.2, align="right", tel=None):
+    """The foot telephone line. A panel may carry its own (p["tel"])."""
+    t = tel if tel is not None else getattr(B, "TEL", "")
+    if t:
+        B.label(c, x, y, "TEL " + t, cap, color, "Inter-500", 0.9, align)
 
 
 def _plate(c, w, h, panel):
@@ -133,6 +135,7 @@ def draw(c, panel, bleed=BLEED):
     c.rect(-bleed, -bleed, w + bleed * 2, h + bleed * 2, stroke=0, fill=1)
 
     plate_style = getattr(B, "PLATE_STYLE", False)
+    tel = panel.get("tel")            # a pane may carry its own number
     compact = h <= 950                       # measured door panes, not photo-scaled
     opaque = panel.get("film") == "opaque"   # solid vinyl: no mesh over the artwork
     block = 400 if h >= PN.UPPER_H else 420     # navy caption block at the foot
@@ -199,12 +202,12 @@ def draw(c, panel, bleed=BLEED):
         # foot
         if compact:
             B.hairline(c, M, 52, w - M, 52, B.WHITE, 0.4, 0.2)
-            _tel(c, M, 30, B.CP_CYAN, 6.0, "left")
+            _tel(c, M, 30, B.CP_CYAN, 6.0, "left", tel=tel)
             B.label(c, w - M, 30, panel["id"], 4.4, B.CP_GREY, "Inter-500", 1.0, "right")
         else:
             B.hairline(c, M, 96, w - M, 96, B.WHITE, 0.4, 0.2)
             B.label(c, M, 62, B.SLOGAN, 6.2, B.CP_MIST, "Inter-400", 1.0)
-            _tel(c, w - M, 62, B.CP_CYAN)
+            _tel(c, w - M, 62, B.CP_CYAN, tel=tel)
             B.label(c, w - M, 34, panel["id"], 4.6, B.CP_GREY, "Inter-500", 1.0, "right")
 
     else:
@@ -244,7 +247,7 @@ def draw(c, panel, bleed=BLEED):
 
         B.hairline(c, M, 96, w - M, 96, B.WHITE, 0.4, 0.2)
         B.label(c, M, 62, B.SLOGAN, 6.2, B.CP_MIST, "Inter-400", 1.0)
-        _tel(c, w - M, 62, B.CP_CYAN)
+        _tel(c, w - M, 62, B.CP_CYAN, tel=tel)
         B.label(c, w - M, 34, panel["id"], 4.6, B.CP_GREY, "Inter-500", 1.0, "right")
 
     c.saveState()

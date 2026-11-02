@@ -71,9 +71,11 @@ signwriter; none of them is a quotation.
 
 General outpatient, inpatient care, HIV care, immunisation, pharmacy, laboratory, ultrasound,
 antenatal & postnatal, obs & gyn, paediatrics, minor surgery, family planning, ENT, eye
-services, orthopaedics, travel medical exam — plus the two help-line numbers printed on the
-foot of every pane, 0771 240 104 and 0754 132 715, taken from the premises boards. Nothing on
-the artwork is invented: no address, no hours beyond the client's own 24-hour statement, no
+services, orthopaedics, travel medical exam — plus the help-line numbers printed on the foot
+of each pane. Panes 1–18 (door 1, door 2 and door 3 P1–P2) carry **0788 323 815** and
+0754 132 715, changed at the client's instruction on 2026-11-02. Panes 19–24, the sign post
+and the banners carry 0771 240 104 and 0754 132 715 from the premises boards. Nothing on the
+artwork is invented: no address, no hours beyond the client's own 24-hour statement, no
 accreditation, no clinical claim.
 
 ## Photography — read this before printing
