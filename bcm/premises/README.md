@@ -9,6 +9,7 @@ The set in place, drawn to scale from the same print files that go to the printe
 | `lookbook/M-1N-door-N-black.png` | Each doorway close up, banner above it |
 | `lookbook/M-04-setout.png` | Set-out drawing, all dimensions in mm |
 | `BCM-Premises.pdf` | Six pages — the same, for the meeting |
+| `in-place.html` | One self-contained page, every image embedded — opens anywhere |
 
 ## What is drawn
 

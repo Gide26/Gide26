@@ -692,6 +692,9 @@ def write_index(day, night, doors):
     <tr><th>File</th><th>What it is</th></tr>
     <tr><td><a href="BCM-Premises.pdf">BCM-Premises.pdf</a></td>
         <td>Six pages — the front day and night, each doorway, the set-out drawing</td></tr>
+    <tr><td><a href="in-place.html">in-place.html</a></td>
+        <td>One self-contained page — the images travel inside the file, so it opens
+            anywhere, even where the folder is missing</td></tr>
     <tr><td><a href="BCM-Premises-Package.zip">BCM-Premises-Package.zip</a></td>
         <td>The elevations and the proof, as a zip</td></tr>
   </table>
@@ -701,6 +704,87 @@ def write_index(day, night, doors):
 </main></body></html>
 """
     open(os.path.join(OUT, "index.html"), "w").write(html)
+
+
+def write_standalone():
+    """A single self-contained page — every image inlined, so it opens anywhere.
+
+    A plain HTML file with <img src="lookbook/..."> needs the folder beside it.
+    Open that file from a viewer, a chat attachment or GitHub and the pictures
+    break. This page carries its own images as data URIs and cannot miss.
+    """
+    import base64, io
+
+    def data_uri(path, width):
+        im = Image.open(path).convert("RGB")
+        if im.width > width:
+            im = im.resize((width, round(im.height * width / im.width)), Image.LANCZOS)
+        buf = io.BytesIO()
+        im.save(buf, "JPEG", quality=84, optimize=True, progressive=True)
+        return "data:image/jpeg;base64," + base64.b64encode(buf.getvalue()).decode()
+
+    def fig(name, title, sub, width):
+        uri = data_uri(os.path.join(OUT, "lookbook", name), width)
+        return (f'<figure class="card"><img alt="{title}" src="{uri}">'
+                f'<figcaption><b>{title}</b><span>{sub}</span></figcaption></figure>')
+
+    front = (fig("M-01-premises-day.png", "The front — day",
+                 "three black doorways, three banners, the sign post at the kerb", 1600) +
+             fig("M-02-premises-night.png", "The front — night",
+                 "with the eaves downlights on", 1600))
+    doors = "".join(
+        fig(f"M-{10 + d['n']}-door-{d['n']}-black.png",
+            f"Door {d['n']} — black frame",
+            f"{BAN.BANNERS[d['n'] - 1]['id']} above · "
+            f"{BAN.BANNERS[d['n'] - 1]['w'] / 1000:.1f} m × 1.0 m", 900)
+        for d in DOORS.DOORS)
+    so = fig("M-04-setout.png", "Set out",
+             "door centres, banner height and widths, all in millimetres", 1500)
+
+    html = f"""<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BCM Medical Centre — on the premises (single file)</title>
+<style>
+ body{{margin:0;background:#f4f7f9;color:#16233f;
+   font:16px/1.6 Inter,Helvetica,Arial,sans-serif}}
+ header{{background:#16233f;color:#fff;padding:48px 6vw 40px}}
+ h1{{font-size:clamp(26px,4.4vw,46px);margin:.2em 0 .4em;line-height:1.05}}
+ header p{{max-width:66ch;color:#cfd9e6;margin:0}}
+ .eyebrow{{letter-spacing:.3em;font-size:11px;color:#2ba9e0}}
+ main{{padding:26px 4vw 64px;max-width:1500px;margin:0 auto}}
+ figure.card{{margin:0 0 22px;background:#fff;border-radius:6px;overflow:hidden;
+   box-shadow:0 2px 14px rgba(22,35,63,.08)}}
+ figure.card img{{width:100%;display:block;height:auto}}
+ figcaption{{padding:12px 16px;font-size:13px;color:#4b5b73}}
+ figcaption b{{color:#16233f}}
+ figcaption span{{display:block;font-size:12px;color:#8fa2b8}}
+ .two{{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}}
+ h2{{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#8fa2b8;
+   margin:34px 0 14px}}
+ .note{{color:#4b5b73;font-size:13px;max-width:84ch}}
+</style></head><body>
+<header>
+  <div class="eyebrow">BCM · MEDICAL CENTRE · ON THE PREMISES</div>
+  <h1>The set, in place</h1>
+  <p>Three black doorways in one-way vision film, a banner on the wall above each,
+     and the sign post at the kerb — drawn to scale from the print files themselves.
+     This page is self-contained: the images travel inside the file.</p>
+</header>
+<main>
+  <div class="two">{front}</div>
+  <h2>Each doorway</h2>
+  <div class="two">{doors}</div>
+  <h2>Set out</h2>
+  {so}
+  <p class="note">Door centres (4.2 m and 3.4 m) and the 2560 mm banner underside are
+     proposals drawn from the artwork's own dimensions — confirm them, and the wall
+     height above each door, against the building. The artwork itself is unchanged.</p>
+</main></body></html>
+"""
+    path = os.path.join(OUT, "in-place.html")
+    open(path, "w", encoding="utf-8").write(html)
+    return path
 
 
 # ------------------------------------------------------------------------ main
@@ -736,6 +820,8 @@ def main():
                                f"M-{10 + d['n']}-door-{d['n']}-black.png")
                   for d in DOORS.DOORS]
     so_path = os.path.join(OUT, "lookbook", "M-04-setout.png")
+    standalone = write_standalone()
+    print("single file:", os.path.basename(standalone))
     p = proof(os.path.join(OUT, "BCM-Premises.pdf"), dp, np_, door_paths, so_path)
     print("proof:", os.path.basename(p))
 
@@ -752,6 +838,7 @@ The set in place, drawn to scale from the same print files that go to the printe
 | `lookbook/M-1N-door-N-black.png` | Each doorway close up, banner above it |
 | `lookbook/M-04-setout.png` | Set-out drawing, all dimensions in mm |
 | `BCM-Premises.pdf` | Six pages — the same, for the meeting |
+| `in-place.html` | One self-contained page, every image embedded — opens anywhere |
 
 ## What is drawn
 
@@ -775,7 +862,7 @@ Rebuild: `cd source && python3 bcm_premises.py`
     if os.path.exists(z):
         os.remove(z)
     with zipfile.ZipFile(z, "w", zipfile.ZIP_DEFLATED, compresslevel=6) as zf:
-        for f in ("BCM-Premises.pdf", "index.html", "README.md"):
+        for f in ("BCM-Premises.pdf", "index.html", "in-place.html", "README.md"):
             zf.write(os.path.join(OUT, f), os.path.join("BCM-Premises", f))
         for f in sorted(os.listdir(os.path.join(OUT, "lookbook"))):
             zf.write(os.path.join(OUT, "lookbook", f),
