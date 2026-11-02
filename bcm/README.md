@@ -129,7 +129,8 @@ of `bcm/banners/BCM-Banners.pdf`. No photograph and no service repeats across th
 ```sh
 cd source
 python3 bcm_banners.py        # print files, 6-page proof, fence elevations, web page
-python3 bcm_master.py         # BCM-Complete-Set.zip + a 9-page master proof
+python3 bcm_print.py          # 30 single print files + PRINT-INDEX.pdf
+python3 bcm_master.py         # BCM-Complete-Set.zip + a 10-page master proof
 ```
 
 ## Rebuilding
@@ -140,6 +141,7 @@ python3 bcm_doors.py          # all three doors — artwork, mockups, schedule, 
 python3 bcm_doors.py 1        # one door
 python3 bcm_sign.py           # the sign post panel — artwork, proof, elevations, web
 python3 bcm_banners.py        # the three roadside banners
+python3 bcm_print.py          # one print PDF per piece, into bcm/print/
 python3 bcm_master.py         # the complete set: master proof, manifest, README, zip
 ```
 

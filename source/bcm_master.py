@@ -214,6 +214,9 @@ def contents(c):
         "MANIFEST.csv — every file in the set with its type and size, for checking the "
         "handover.",
         "index.html — the set as a web page; open it in a browser and everything links.",
+        "print/ — one print PDF per piece: 24 panes, 3 sign faces, 3 banners, numbered "
+        "01–30, with PRINT-INDEX.pdf and a manifest. This is the folder the printer "
+        "wants; the multi-page proofs are for approval only.",
         "complete/ — the master proof, manifest, README and index on their own, if you "
         "only want the paperwork.",
     ], 168 * MM, 3.0, B.NAVY_MID)
@@ -348,6 +351,53 @@ def banner_page(c):
     ], 168 * MM, 3.0, B.NAVY_MID)
 
 
+def file_grid(c, items, x, y, w, cols=3, row_h=8.0 * MM, cap=2.3):
+    """File names in a grid: the whole print list, grouped by supplier."""
+    colw = w / cols
+    for i, name in enumerate(items):
+        cx = x + (i % cols) * colw
+        cy = y - (i // cols) * row_h
+        B.caps(c, cx, cy, name, cap, B.NAVY_MID, "Inter-500", 0.1,
+               max_w=colw - 2 * MM)
+
+
+def print_page(c, pieces):
+    D.page_bg(c, "PRINT FILES", f"{REV}", 8,
+              eyebrow="BCM  ·  MEDICAL CENTRE  ·  ONE FILE PER PIECE")
+    y = D.h1(c, D.PH - 34 * MM, f"{len(pieces)} pieces, {len(pieces)} print files", 7.6)
+    D.para(c, D.M, y + 2 * MM,
+           "Every piece is supplied on its own in print/, numbered in the order a job "
+           "should be run: one file per pane, one per sign face, one per banner — all "
+           "1 : 1 in millimetres with bleed, crop marks and a slug strip.",
+           (D.PW - 2 * D.M) / MM * 0.9, 3.2, B.NAVY_MID)
+
+    groups = [("DOOR FILM — 24 PANES", "Door film", 4,
+               "One file per pane, pane plus 10 mm bleed, cut to the size in the name."),
+              ("SIGN POST — 3 FACES", "Sign post", 3,
+               "Option A face A, option A face B, and option B face A — one file per side "
+               "of the board."),
+              ("BANNERS — 3", "Banner", 3,
+               "One file per banner, 60 mm clear of the trim for the hem and the eyelets.")]
+
+    yy = 162 * MM
+    for title, kind, cols, note in groups:
+        sel = [p for p in pieces if p[5] == kind]
+        B.label(c, D.M, yy, title, 3.8, B.TEAL, "Inter-600", 1.6)
+        B.label(c, D.M, yy - 5.2 * MM, note, 2.8, B.NAVY_MID, "Inter-400", 0.45)
+        rows = (len(sel) + cols - 1) // cols
+        file_grid(c, [p[7] for p in sel], D.M, yy - 10.4 * MM, 168 * MM, cols,
+                  row_h=5.4 * MM, cap=2.15)
+        yy -= 10.4 * MM + rows * 5.4 * MM + 8 * MM
+
+    B.label(c, D.M, yy, "ALSO IN print/", 3.8, B.TEAL, "Inter-600", 1.6)
+    D.bullets(c, D.M, yy - 6.5 * MM, [
+        "PRINT-INDEX.pdf and print-manifest.csv — all 30 jobs with piece, type, "
+        "finished size and file name, as a document and as a job sheet.",
+        "REPORT.md — the folder explained, grouped by the three suppliers.",
+        "BCM-Print-Files.zip — the 30 files and the index on their own, 3 MB.",
+    ], 168 * MM, 3.0, B.NAVY_MID)
+
+
 def licence_page(c):
     D.page_bg(c, "PHOTOGRAPHS", f"{REV}", 8,
               eyebrow="BCM  ·  MEDICAL CENTRE  ·  LICENCE")
@@ -429,7 +479,15 @@ def handover_page(c):
            3.4, B.NAVY, "Inter-500", 0.5)
 
 
+def print_pieces():
+    """The single-piece print jobs — computed from the same source as bcm_print,
+    without touching the print folder."""
+    import bcm_print as PR
+    return PR.pieces_list()
+
+
 def master_pdf(path):
+    pieces = print_pieces()
     c = D.new_doc(path, "BCM Medical Centre — complete signage set",
                   subject="Doors, sign post and banners")
     cover(c)
@@ -442,6 +500,8 @@ def master_pdf(path):
     sign_page(c)
     c.showPage()
     banner_page(c)
+    c.showPage()
+    print_page(c, pieces)
     c.showPage()
     licence_page(c)
     c.showPage()
@@ -467,6 +527,7 @@ three roadside banners, with one master proof describing the lot.
 | `door-1/` `door-2/` `door-3/` | Eight panes each. Print files at 1 : 1 (900 × 500 and 900 × 400 mm), a panel proof, a schedule, a specification, day and night elevations, a licence record, a web preview |
 | `sign/` | Name-only sign post panel, 944.9 × 643.1 mm, two lockups, four-page proof, elevations, dimensioned drawing |
 | `banners/` | Three PVC banners — 3.8 m, 3.4 m, 2.4 m × 1.0 m — print files, six-page proof, fence elevations, licence page |
+| `print/` | **One print PDF per piece** — 24 panes, 3 sign faces, 3 banners, numbered 01–30, with `PRINT-INDEX.pdf`, a manifest and `BCM-Print-Files.zip` |
 | `complete/` | This README, the master proof, the manifest and the web index |
 
 At the top of the folder: `BCM-Complete-Set.pdf` (master proof, nine pages),
@@ -490,9 +551,13 @@ page still offers one if you want to hand a single door to a single supplier.
 
 | Supplier | Send | Files |
 | --- | --- | --- |
-| One-way vision printer | `door-1/` `door-2/` `door-3/` | 24 pane PDFs + 3 panel proofs |
-| Signwriter | `sign/` | Sign panel A (or B) + four-page proof |
-| Banner printer | `banners/` | 3 banner PDFs + six-page proof |
+| One-way vision printer | `print/` jobs 01–24 | one PDF per pane, pane + 10 mm bleed |
+| Signwriter | `print/` jobs 25–27 | one PDF per sign face (A face A, A face B, B face A) |
+| Banner printer | `print/` jobs 28–30 | one PDF per banner, 60 mm hem-safe |
+
+The same files also sit inside each group folder (`door-1/artwork/`, `sign/artwork/`,
+`banners/artwork/`) with the group's proof and paperwork; `print/` is just the print
+files on their own, numbered in running order.
 
 ## Before anything is plotted
 
