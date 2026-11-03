@@ -1,0 +1,362 @@
+[
+  {
+    "ticker": "NVDA",
+    "name": "NVIDIA",
+    "asset": "stock",
+    "providerSymbol": "NVDA"
+  },
+  {
+    "ticker": "MSFT",
+    "name": "Microsoft",
+    "asset": "stock",
+    "providerSymbol": "MSFT"
+  },
+  {
+    "ticker": "AAPL",
+    "name": "Apple",
+    "asset": "stock",
+    "providerSymbol": "AAPL"
+  },
+  {
+    "ticker": "AMZN",
+    "name": "Amazon",
+    "asset": "stock",
+    "providerSymbol": "AMZN"
+  },
+  {
+    "ticker": "GOOGL",
+    "name": "Alphabet",
+    "asset": "stock",
+    "providerSymbol": "GOOGL"
+  },
+  {
+    "ticker": "META",
+    "name": "Meta Platforms",
+    "asset": "stock",
+    "providerSymbol": "META"
+  },
+  {
+    "ticker": "TSLA",
+    "name": "Tesla",
+    "asset": "stock",
+    "providerSymbol": "TSLA"
+  },
+  {
+    "ticker": "AVGO",
+    "name": "Broadcom",
+    "asset": "stock",
+    "providerSymbol": "AVGO"
+  },
+  {
+    "ticker": "JPM",
+    "name": "JPMorgan Chase",
+    "asset": "stock",
+    "providerSymbol": "JPM"
+  },
+  {
+    "ticker": "LLY",
+    "name": "Eli Lilly",
+    "asset": "stock",
+    "providerSymbol": "LLY"
+  },
+  {
+    "ticker": "WMT",
+    "name": "Walmart",
+    "asset": "stock",
+    "providerSymbol": "WMT"
+  },
+  {
+    "ticker": "ORCL",
+    "name": "Oracle",
+    "asset": "stock",
+    "providerSymbol": "ORCL"
+  },
+  {
+    "ticker": "COST",
+    "name": "Costco",
+    "asset": "stock",
+    "providerSymbol": "COST"
+  },
+  {
+    "ticker": "NFLX",
+    "name": "Netflix",
+    "asset": "stock",
+    "providerSymbol": "NFLX"
+  },
+  {
+    "ticker": "AMD",
+    "name": "Advanced Micro Devices",
+    "asset": "stock",
+    "providerSymbol": "AMD"
+  },
+  {
+    "ticker": "CRM",
+    "name": "Salesforce",
+    "asset": "stock",
+    "providerSymbol": "CRM"
+  },
+  {
+    "ticker": "UBER",
+    "name": "Uber Technologies",
+    "asset": "stock",
+    "providerSymbol": "UBER"
+  },
+  {
+    "ticker": "ADBE",
+    "name": "Adobe",
+    "asset": "stock",
+    "providerSymbol": "ADBE"
+  },
+  {
+    "ticker": "CSCO",
+    "name": "Cisco Systems",
+    "asset": "stock",
+    "providerSymbol": "CSCO"
+  },
+  {
+    "ticker": "KO",
+    "name": "Coca-Cola",
+    "asset": "stock",
+    "providerSymbol": "KO"
+  },
+  {
+    "ticker": "V",
+    "name": "Visa",
+    "asset": "stock",
+    "providerSymbol": "V"
+  },
+  {
+    "ticker": "XOM",
+    "name": "Exxon Mobil",
+    "asset": "stock",
+    "providerSymbol": "XOM"
+  },
+  {
+    "ticker": "PLTR",
+    "name": "Palantir",
+    "asset": "stock",
+    "providerSymbol": "PLTR"
+  },
+  {
+    "ticker": "BA",
+    "name": "Boeing",
+    "asset": "stock",
+    "providerSymbol": "BA"
+  },
+  {
+    "ticker": "QQQ",
+    "name": "Invesco QQQ Trust",
+    "asset": "stock",
+    "providerSymbol": "QQQ"
+  },
+  {
+    "ticker": "SPY",
+    "name": "SPDR S&P 500 ETF",
+    "asset": "stock",
+    "providerSymbol": "SPY"
+  },
+  {
+    "ticker": "IWM",
+    "name": "iShares Russell 2000 ETF",
+    "asset": "stock",
+    "providerSymbol": "IWM"
+  },
+  {
+    "ticker": "GLD",
+    "name": "SPDR Gold Shares",
+    "asset": "stock",
+    "providerSymbol": "GLD"
+  },
+  {
+    "ticker": "BAC",
+    "name": "Bank of America",
+    "asset": "stock",
+    "providerSymbol": "BAC"
+  },
+  {
+    "ticker": "DIS",
+    "name": "Walt Disney",
+    "asset": "stock",
+    "providerSymbol": "DIS"
+  },
+  {
+    "ticker": "BTC",
+    "name": "Bitcoin",
+    "asset": "crypto",
+    "providerSymbol": "BTC/USD"
+  },
+  {
+    "ticker": "ETH",
+    "name": "Ethereum",
+    "asset": "crypto",
+    "providerSymbol": "ETH/USD"
+  },
+  {
+    "ticker": "BNB",
+    "name": "BNB",
+    "asset": "crypto",
+    "providerSymbol": "BNB/USD"
+  },
+  {
+    "ticker": "XRP",
+    "name": "XRP",
+    "asset": "crypto",
+    "providerSymbol": "XRP/USD"
+  },
+  {
+    "ticker": "SOL",
+    "name": "Solana",
+    "asset": "crypto",
+    "providerSymbol": "SOL/USD"
+  },
+  {
+    "ticker": "DOGE",
+    "name": "Dogecoin",
+    "asset": "crypto",
+    "providerSymbol": "DOGE/USD"
+  },
+  {
+    "ticker": "ADA",
+    "name": "Cardano",
+    "asset": "crypto",
+    "providerSymbol": "ADA/USD"
+  },
+  {
+    "ticker": "LINK",
+    "name": "Chainlink",
+    "asset": "crypto",
+    "providerSymbol": "LINK/USD"
+  },
+  {
+    "ticker": "AVAX",
+    "name": "Avalanche",
+    "asset": "crypto",
+    "providerSymbol": "AVAX/USD"
+  },
+  {
+    "ticker": "SUI",
+    "name": "Sui",
+    "asset": "crypto",
+    "providerSymbol": "SUI/USD"
+  },
+  {
+    "ticker": "LTC",
+    "name": "Litecoin",
+    "asset": "crypto",
+    "providerSymbol": "LTC/USD"
+  },
+  {
+    "ticker": "DOT",
+    "name": "Polkadot",
+    "asset": "crypto",
+    "providerSymbol": "DOT/USD"
+  },
+  {
+    "ticker": "EUR/USD",
+    "name": "Euro / US Dollar",
+    "asset": "forex",
+    "providerSymbol": "EUR/USD"
+  },
+  {
+    "ticker": "GBP/USD",
+    "name": "British Pound / US Dollar",
+    "asset": "forex",
+    "providerSymbol": "GBP/USD"
+  },
+  {
+    "ticker": "USD/JPY",
+    "name": "US Dollar / Japanese Yen",
+    "asset": "forex",
+    "providerSymbol": "USD/JPY"
+  },
+  {
+    "ticker": "USD/CHF",
+    "name": "US Dollar / Swiss Franc",
+    "asset": "forex",
+    "providerSymbol": "USD/CHF"
+  },
+  {
+    "ticker": "AUD/USD",
+    "name": "Australian Dollar / US Dollar",
+    "asset": "forex",
+    "providerSymbol": "AUD/USD"
+  },
+  {
+    "ticker": "XAU/USD",
+    "name": "Gold / US Dollar",
+    "asset": "commodity",
+    "providerSymbol": "XAU/USD"
+  },
+  {
+    "ticker": "XAG/USD",
+    "name": "Silver / US Dollar",
+    "asset": "commodity",
+    "providerSymbol": "XAG/USD"
+  },
+  {
+    "ticker": "WTI",
+    "name": "WTI Crude Oil",
+    "asset": "commodity",
+    "providerSymbol": "WTI"
+  },
+  {
+    "ticker": "BRENT",
+    "name": "Brent Crude Oil",
+    "asset": "commodity",
+    "providerSymbol": "BRENT"
+  },
+  {
+    "ticker": "SPX",
+    "name": "S&P 500 Index",
+    "asset": "index",
+    "providerSymbol": "SPX"
+  },
+  {
+    "ticker": "NDX",
+    "name": "Nasdaq 100 Index",
+    "asset": "index",
+    "providerSymbol": "NDX"
+  },
+  {
+    "ticker": "DJI",
+    "name": "Dow Jones Industrial Average",
+    "asset": "index",
+    "providerSymbol": "DJI"
+  },
+  {
+    "ticker": "DAX",
+    "name": "DAX Index",
+    "asset": "index",
+    "providerSymbol": "DAX"
+  },
+  {
+    "ticker": "N225",
+    "name": "Nikkei 225 Index",
+    "asset": "index",
+    "providerSymbol": "N225"
+  },
+  {
+    "ticker": "TSM",
+    "name": "Taiwan Semiconductor ADR",
+    "asset": "stock",
+    "providerSymbol": "TSM"
+  },
+  {
+    "ticker": "SAP",
+    "name": "SAP ADR",
+    "asset": "stock",
+    "providerSymbol": "SAP"
+  },
+  {
+    "ticker": "BABA",
+    "name": "Alibaba ADR",
+    "asset": "stock",
+    "providerSymbol": "BABA"
+  },
+  {
+    "ticker": "TM",
+    "name": "Toyota Motor ADR",
+    "asset": "stock",
+    "providerSymbol": "TM"
+  }
+]

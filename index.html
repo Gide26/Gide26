@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b1018" />
+  <title>Northstar — Market signals</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#" aria-label="Northstar home">
+        <span class="brand-mark"><svg viewBox="0 0 32 32" fill="none"><path d="M16 3.5 19.2 12.8 28.5 16l-9.3 3.2L16 28.5l-3.2-9.3L3.5 16l9.3-3.2L16 3.5Z" stroke="currentColor" stroke-width="1.7"/><circle cx="16" cy="16" r="2.4" fill="currentColor"/></svg></span>
+        <span class="brand-name">northstar<span>MARKET INTELLIGENCE</span></span>
+      </a>
+      <div class="side-label">WORKSPACE</div>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a class="nav-item active" href="#overview"><span class="nav-icon">◫</span> Overview</a>
+        <a class="nav-item" href="#scanner"><span class="nav-icon">⌕</span> Market scanner <span class="nav-count" id="nav-count">42</span></a>
+        <a class="nav-item" href="#watchlist"><span class="nav-icon">☆</span> Watchlist</a>
+      </nav>
+      <div class="side-label universe-label">UNIVERSE</div>
+      <button class="universe-row selected" data-universe="all"><span class="universe-dot all-dot"></span>All markets<span class="universe-total" id="count-all">42</span></button>
+      <button class="universe-row" data-universe="stock"><span class="universe-dot stock-dot"></span>Equities<span class="universe-total" id="count-stock">30</span></button>
+      <button class="universe-row" data-universe="crypto"><span class="universe-dot crypto-dot"></span>Crypto<span class="universe-total" id="count-crypto">12</span></button>
+      <button class="universe-row" data-universe="forex"><span class="universe-dot forex-dot"></span>Forex<span class="universe-total" id="count-forex">5</span></button>
+      <button class="universe-row" data-universe="commodity"><span class="universe-dot commodity-dot"></span>Commodities<span class="universe-total" id="count-commodity">4</span></button>
+      <button class="universe-row" data-universe="index"><span class="universe-dot index-dot"></span>Indices<span class="universe-total" id="count-index">5</span></button>
+      <div class="sidebar-bottom">
+        <div class="data-status"><span class="status-dot" id="sidebar-status-dot"></span><div><b id="sidebar-status-title">Demo workspace</b><span id="sidebar-status-detail">Live feed not configured</span></div></div>
+        <button class="sidebar-help" id="about-button"><span>ⓘ</span> How signals work</button>
+        <div class="profile"><div class="avatar">G</div><div><b>Guest analyst</b><span>Personal workspace</span></div><span class="profile-more">···</span></div>
+      </div>
+    </aside>
+
+    <main class="main-content" id="overview">
+      <header class="topbar">
+        <div class="breadcrumb"><span>Workspace</span><span class="crumb-slash">/</span><b>Market overview</b></div>
+        <div class="top-actions"><div class="demo-pill" id="feed-pill"><span></span> DEMO DATA</div><button class="icon-button" id="refresh-button" title="Recalculate signals" aria-label="Recalculate signals">↻</button><button class="avatar top-avatar" aria-label="Profile">G</button></div>
+      </header>
+
+      <section class="page-heading">
+        <div><div class="eyebrow"><span class="live-dot"></span> MARKET PULSE <span class="eyebrow-divider">/</span> <span id="current-date">MON, NOV 03</span></div><h1>Good morning, Gide <span class="wave">✳</span></h1><p class="heading-subtitle">A clearer read on the market, all in one place.</p></div>
+        <div class="heading-buttons"><button class="button button-live" id="live-button"><span>◉</span> Start live scan</button><button class="button button-quiet" id="download-button"><span>↓</span> Export scan</button><label class="button button-primary upload-button" for="csv-upload"><span>＋</span> Import market data<input id="csv-upload" type="file" accept=".csv,text/csv" hidden></label></div>
+      </section>
+      <div class="data-notice"><span class="notice-icon">i</span><span id="notice-copy"><b id="notice-title">Demo data.</b> <span id="notice-detail">Add a Twelve Data API key to the local server configuration to enable live scans. Until connected, prices and signal examples are illustrative. Market-data coverage and latency depend on your provider plan.</span></span><button id="dismiss-notice" aria-label="Dismiss notice">×</button></div>
+
+      <section class="metrics-grid" aria-label="Market summary">
+        <article class="metric-card"><div class="metric-top"><span>UNIVERSE SCANNED</span><span class="metric-symbol">◉</span></div><div class="metric-value" id="metric-universe">42 <small>assets</small></div><div class="metric-foot"><span class="metric-neutral">Equities, crypto, FX, commodities &amp; indices</span></div></article>
+        <article class="metric-card"><div class="metric-top"><span>BULLISH SETUPS</span><span class="metric-symbol green">↗</span></div><div class="metric-value" id="metric-bullish">—</div><div class="metric-foot"><span class="metric-context">Strong trend + momentum</span></div></article>
+        <article class="metric-card"><div class="metric-top"><span>MARKET BREADTH</span><span class="metric-symbol blue">◌</span></div><div class="metric-value" id="metric-breadth">—</div><div class="metric-foot"><span class="metric-context">Above 50-day trend</span></div></article>
+        <article class="metric-card"><div class="metric-top"><span>AVG. DAILY MOVE</span><span class="metric-symbol amber">⌁</span></div><div class="metric-value" id="metric-move">—</div><div class="metric-foot"><span class="metric-context">Absolute change · 24h / 1D</span></div></article>
+      </section>
+
+      <section class="overview-grid">
+        <article class="panel breadth-panel">
+          <div class="panel-heading"><div><div class="section-kicker">MARKET HEALTH</div><h2>Market breadth</h2><p class="panel-subtitle" id="chart-subtitle">Share above 50-day trend · illustrative sample history</p></div><div class="period-switch" id="period-switch" role="group" aria-label="Chart period"><button class="period-button active" data-period="1W">1W</button><button class="period-button" data-period="1M">1M</button><button class="period-button" data-period="3M">3M</button></div></div>
+          <div class="chart-wrap"><div class="chart-y-labels"><span>80%</span><span>60%</span><span>40%</span><span>20%</span></div><canvas id="breadth-chart" aria-label="Market breadth chart"></canvas><div class="chart-tooltip" id="chart-tooltip"></div></div>
+          <div class="chart-legend"><span><i class="legend-line"></i> Advancing breadth</span><span class="chart-latest"><i class="legend-dot"></i><b id="chart-current">—</b> current</span></div>
+        </article>
+        <article class="panel signal-panel">
+          <div class="panel-heading"><div><div class="section-kicker">WHAT'S MOVING</div><h2>Signal mix</h2></div><button class="text-link" id="see-signals">View scanner <span>↗</span></button></div>
+          <div class="signal-donut-area"><div class="donut" id="signal-donut"><div class="donut-center"><b id="donut-total">42</b><span>scanned</span></div></div><div class="donut-legend" id="signal-legend"></div></div>
+          <div class="signal-divider"></div><div class="top-opportunity"><div><div class="section-kicker">TOP MOMENTUM SCORE</div><div class="opportunity-name" id="top-name">—</div></div><div class="opportunity-score" id="top-score">—</div></div>
+        </article>
+      </section>
+
+      <section class="panel scanner-panel" id="scanner">
+        <div class="scanner-heading"><div><div class="section-kicker">DISCOVER OPPORTUNITIES</div><h2>Market scanner <span class="scan-count" id="scan-count">42 assets</span></h2><p class="panel-subtitle">Ranked by a transparent momentum and trend score.</p></div><div class="scanner-actions"><button class="button button-quiet small-button" id="watch-filter"><span>☆</span> Watchlist <span id="watch-count">0</span></button><button class="button button-quiet small-button" id="signal-filter"><span class="filter-icon">☷</span> Signals <span>⌄</span></button></div></div>
+        <div class="filters-row"><label class="search-box"><span>⌕</span><input id="search-input" type="search" placeholder="Search assets or tickers..." autocomplete="off"><kbd>⌘ K</kbd></label><div class="filter-chips" role="group" aria-label="Signal type"><button class="filter-chip active" data-filter="all">All signals</button><button class="filter-chip" data-filter="bullish"><span class="chip-dot bullish-dot"></span>Bullish</button><button class="filter-chip" data-filter="watch"><span class="chip-dot watch-dot"></span>Watch</button><button class="filter-chip" data-filter="bearish"><span class="chip-dot bearish-dot"></span>Bearish</button></div><button class="sort-select" id="sort-button">Sort: <b>Score</b> <span>⌄</span></button></div>
+        <div class="table-scroll"><table class="market-table"><thead><tr><th class="asset-col">ASSET</th><th>PRICE</th><th>CHANGE</th><th>VOLUME</th><th>RSI (14)</th><th>TREND</th><th>MOMENTUM SCORE <span class="info-dot" title="Composite educational indicator, not a prediction">i</span></th><th>SIGNAL</th><th></th></tr></thead><tbody id="asset-rows"></tbody></table></div>
+        <div class="table-footer"><span id="results-label">Showing 42 of 42 assets</span><div class="pagination"><button disabled aria-label="Previous page">‹</button><span>1–<b id="page-end">42</b></span><button disabled aria-label="Next page">›</button></div></div>
+      </section>
+      <footer class="page-footer"><span>Northstar <span class="footer-dot">·</span> Market analysis workspace</span><span>Signals are informational only and are not a recommendation to buy or sell.</span></footer>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <dialog id="detail-dialog" class="detail-dialog"><button class="dialog-close" aria-label="Close">×</button><div id="detail-content"></div></dialog>
+  <dialog id="info-dialog" class="detail-dialog info-dialog"><button class="dialog-close" aria-label="Close">×</button><div class="section-kicker">SIGNAL METHODOLOGY</div><h2>How the score works</h2><p>Northstar uses a simple, transparent rules-based score to summarize the sample metrics you provide. It is a screening aid, not a forecast.</p><div class="method-row"><b>Trend · 35%</b><span>Price above the 20- and 50-day moving averages.</span></div><div class="method-row"><b>Momentum · 30%</b><span>RSI range and MACD direction, with a penalty for overbought readings.</span></div><div class="method-row"><b>Participation · 20%</b><span>Volume compared with its recent average (when supplied).</span></div><div class="method-row"><b>Price action · 15%</b><span>Recent percentage change, capped to limit outlier influence.</span></div><div class="method-row"><b>Bring your own data</b><span>Import a CSV with columns ticker, name, asset, price, change, volume, rsi, macd, trend20, and trend50. Optional: volumeRatio. Use percent points for change (for example 2.4 for +2.4%), volume in millions, and true/false or 1/0 for MACD and trend fields. Import is processed in this browser.</span></div><p class="dialog-disclaimer">Bullish / Watch / Bearish are classifications of these indicators only. Always verify data, consider risk, and do your own research.</p></dialog>
+  <script src="app.js"></script>
+</body>
+</html>
