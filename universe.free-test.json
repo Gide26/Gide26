@@ -1,0 +1,14 @@
+[
+  {
+    "ticker": "AAPL",
+    "name": "Apple",
+    "asset": "stock",
+    "providerSymbol": "AAPL"
+  },
+  {
+    "ticker": "BTC",
+    "name": "Bitcoin",
+    "asset": "crypto",
+    "providerSymbol": "BTC/USD"
+  }
+]
