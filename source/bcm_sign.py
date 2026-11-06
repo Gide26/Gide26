@@ -98,21 +98,19 @@ def lockscale(w, h, m=_REF_M, fill=0.88):
 # ------------------------------------------------------------------ bright faces
 # The sign replaces the lit box the clinic already has on the road, and is built to
 # that sign's own arrangement (client photograph, 2026-11-06), brought in line with the
-# client's later corrections: BCM on a white band, MEDICAL CENTRE in navy on a light blue
-# band, EDDWALIRO knocked out of a
+# client's later corrections: BCM on a white band, MEDICAL CENTRE in white on navy,
+# EDDWALIRO knocked out of a
 # full-width red block, OPEN 24 HRS between two arrows, navy foot strip with the
 # numbers. The red block is what carries the colour, so the face still shouts in the
 # box without a dense field behind the tubes.
 LIT_RED = Color(0.929, 0.106, 0.141)      # #ED1B24 — bright red, the shouting colour
-# a light tint of the clinic's own cyan, for the band the name sits on
-LIGHT_BLUE = Color(0.788, 0.894, 0.965)   # #C9E4F6
 DEEP_RED = Color(0.741, 0.078, 0.098)     # #BD1419 — the same red, for small type
 
 LIT = {
     # the shipping face: the client's own sign arrangement — navy bands, red block,
     # EDDWALIRO knocked out in white, red OPEN 24 HRS row, navy foot strip
     "R": dict(ground=B.WHITE, band=B.CP_NAVY, band_txt=B.WHITE, band_txt_alt=B.CP_NAVY,
-              mc_band=LIGHT_BLUE, mc_txt=B.CP_NAVY,
+              mc_band=B.CP_NAVY, mc_txt=B.WHITE,
               block=LIT_RED, block_txt=B.WHITE, mark=B.CP_NAVY, open=LIT_RED,
               slogan=DEEP_RED, key=(B.CP_GREY, 0.45)),
     # spare: the same arrangement on the cyan field, if the client would rather the
@@ -133,13 +131,13 @@ VARIANT_NAME = {"R": "LIT — THE CLINIC'S SIGN", "L": "LIT — CYAN FIELD · SP
 
 # --- the installed sign, read off the client's own night photograph ----------
 # The clinic already has a lit box on the road: a thin brand band at the top with the
-# the initials BCM, a light blue band carrying MEDICAL CENTRE, the
+# the initials BCM, a navy band carrying MEDICAL CENTRE, the
 # branch name EDDWALIRO in white knocked out of a red block, an OPEN 24 HRS row with
 # arrows at both ends, and a navy foot strip with the telephone. The new 46 x 22 in
 # face keeps that arrangement — it is the sign people on this road already know — and
 # only brings it up to date: the client's current numbers, and the motto left off.
 SIGN_BRAND = "BCM"                    # the badge and the wordmark became the initials
-SIGN_COMMUNITY = "MEDICAL CENTRE"     # on the light blue band
+SIGN_COMMUNITY = "MEDICAL CENTRE"     # on the navy band
 SIGN_BRANCH = "BUSSABALA"
 SIGN_OPEN = ("Open", "24 Hrs")
 
@@ -174,7 +172,7 @@ def _arrow(c, x, y, length, thick, head_len, head_h, colour, direction=-1):
 def bright_face(c, w, h, pal, slogan=False, tel=True):
     """The lit face, built to the client's installed sign.
 
-    Top to bottom: white band with BCM, light blue band with MEDICAL CENTRE in navy,
+    Top to bottom: white band with BCM, navy band with MEDICAL CENTRE in white,
     red block with EDDWALIRO knocked out in white, the OPEN 24 HRS row with an arrow
     at each end, and the navy foot strip with the numbers.
 
@@ -205,7 +203,7 @@ def bright_face(c, w, h, pal, slogan=False, tel=True):
     B.caps(c, w / 2, y_brand + (h_brand - cap_w) / 2 - cap_w * 0.02, SIGN_BRAND, cap_w,
            pal["band_txt_alt"], "Manrope-800", cap_w * 0.16, align="center")
 
-    # ---- light blue band: MEDICAL CENTRE
+    # ---- navy band: MEDICAL CENTRE
     c.setFillColor(pal["mc_band"])
     c.rect(mxx, y_navy, IW, h_navy, stroke=0, fill=1)
     cap_c = min(h_navy * 0.80, fit_cap(SIGN_COMMUNITY, "Manrope-800", "Manrope",
@@ -648,7 +646,7 @@ def proof(path):
                "One panel: the name, and the two facts a passer-by needs — open all "
                "night, and the numbers to ring. No service list, no photograph. Trim "
                f"{W:.0f} × {H:.0f} mm, the client's {FT_TXT}, double-sided, for a lighting "
-               "board. BCM sits at the head, MEDICAL CENTRE on its light blue band, and "
+               "board. BCM sits at the head, MEDICAL CENTRE on its navy band, and "
                "EDDWALIRO across the full measure below — the name at the largest size the "
                "panel will take.",
                (D.PW - 2 * D.M) / MM * 0.56, 3.3, B.NAVY_MID)
@@ -694,7 +692,7 @@ def proof(path):
     D.para(c, D.M, y + 2 * MM,
            "The clinic's own lit box is on the road already, so the new face keeps that "
            "arrangement rather than inventing one: BCM on a white band, MEDICAL CENTRE in navy "
-           "on a light blue band, EDDWALIRO knocked out of a "
+           "on a navy band, EDDWALIRO knocked out of a "
            "full-width red block, OPEN 24 HRS between two arrows, and a navy foot strip with "
            "the numbers. Only what has to changes — the numbers are the client's current "
            "ones, and the motto is off. The navy sits in two thin bands with white either "
@@ -723,7 +721,7 @@ def proof(path):
     B.label(c, D.M, 90 * MM, "WHAT CHANGED", 4.0, B.TEAL, "Inter-600", 1.6)
     D.bullets(c, D.M, 83 * MM, [
         "The arrangement is the one already standing at the roadside: brand band, "
-        "MEDICAL CENTRE on its light blue band, the red EDDWALIRO block, OPEN 24 HRS, foot "
+        "MEDICAL CENTRE on its navy band, the red EDDWALIRO block, OPEN 24 HRS, foot "
         "strip. People "
         "on this road already read that sign, so the new face does not make them learn it "
         "again.",
@@ -920,7 +918,7 @@ def printer_pack():
             "PLOT AT 100% - NEVER SCALE.\n\n"
             "THIS FACE IS FOR AN INTERNALLY LIT BOX\n"
             "The face is the arrangement of the sign already standing on the road, brought\n"
-            "up to date: BCM on a white band, MEDICAL CENTRE in navy on a light blue band,\n"
+            "up to date: BCM on a white band, MEDICAL CENTRE in white on navy,\n"
             "EDDWALIRO knocked out of a full-width red block, OPEN 24 HRS between two arrows,\n"
             "and a navy foot strip with the numbers and BUSSABALA.\n"
             "The navy sits in thin bands with white either side, so the box lights evenly.\n"
@@ -941,7 +939,7 @@ def printer_pack():
             f"  BCM-Sign-Post-RED-FACE-B-{tag}mm.pdf          face B on its own\n"
             f"  BCM-Sign-Post-SPARE-CYAN-FIELD-{tag}mm.pdf    the earlier cyan face, spare\n\n"
             "THE SETTING\n"
-            "Top band, white: BCM, centred. Then the light blue band MEDICAL CENTRE in navy.\n"
+            "Top band, white: BCM, centred. Then the navy band, MEDICAL CENTRE in white.\n"
             "Then the red block, full width, with\n"
             "EDDWALIRO knocked out of it in white at the largest size the panel will take.\n"
             "Then the white row: an arrow at each end, Open and 24 Hrs between them in red.\n"
@@ -1027,7 +1025,7 @@ def main():
   <p>{FT_TXT} — {W:.0f} × {H:.0f} mm, landscape, double-sided, for a lighting board.
      No service list, no photograph: the name, plus OPEN 24 HOURS and the two premises
      numbers in a strip at the foot. Built to the arrangement of the sign already on the
-     road: BCM on a white band, MEDICAL CENTRE in navy on a light blue band, EDDWALIRO
+     road: BCM on a white band, MEDICAL CENTRE in white on navy, EDDWALIRO
      knocked out of a full-width red block, OPEN 24 HRS between two arrows, navy foot strip
      with the numbers and BUSSABALA. No motto.</p>
 </header>

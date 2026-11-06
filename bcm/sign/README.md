@@ -5,7 +5,7 @@ standing on the road, and asked for the new face to be made like it — so the a
 one people there already read:
 
 1. white band: `BCM` — where the badge and the Bactrimed wordmark used to be
-2. **light blue** band (`#C9E4F6`): `MEDICAL CENTRE` in navy, across the measure
+2. navy band (`#16233F`): `MEDICAL CENTRE` in white, across the measure
 3. red block, full width: `EDDWALIRO` knocked out in white
 4. white row: an arrow at each end, `Open` and `24 Hrs` in red between them
 5. navy foot strip: `TEL 0788 323 815 · 0754 132 715` at the left, `BUSSABALA` at the right
@@ -15,16 +15,15 @@ the name, the branch and the numbers are the client's, and the arrangement is th
 standing on the road.
 
 **Red still carries the flag.** The block behind the name and the OPEN 24 HRS row are `#ED1B24`;
-the rest is the clinic's navy `#16233F`, a light blue band (`#C9E4F6`, a tint of the clinic's
-cyan) and white. The coloured bands are thin and sit with white between them, so the box lights
-evenly rather than through one dense field.
+the rest is the clinic's navy `#16233F` and white. The two navy bands sit with white between
+them, so the box lights evenly rather than through one dense field.
 
 Type sizes on the shipped face (1168.4 × 558.8 mm):
 
 | Line | Cap height | How it is set |
 | --- | --- | --- |
 | EDDWALIRO | 124.4 mm | white, knocked out of the red block, full measure |
-| MEDICAL CENTRE | 84.0 mm | navy, on the light blue band, tracked |
+| MEDICAL CENTRE | 84.0 mm | white, on the navy band, tracked |
 | Open · 24 Hrs | 45.9 mm | red, between two solid red arrows |
 | BCM | 75.9 mm | navy, centred on the white band |
 | TEL 0788 323 815 · 0754 132 715 | 18.0 mm | white on the navy foot strip, left |

@@ -21,7 +21,7 @@ PLOT AT 100% - NEVER SCALE.
 
 THIS FACE IS FOR AN INTERNALLY LIT BOX
 The face is the arrangement of the sign already standing on the road, brought
-up to date: BCM on a white band, MEDICAL CENTRE in navy on a light blue band,
+up to date: BCM on a white band, MEDICAL CENTRE in white on navy,
 EDDWALIRO knocked out of a full-width red block, OPEN 24 HRS between two arrows,
 and a navy foot strip with the numbers and BUSSABALA.
 The navy sits in thin bands with white either side, so the box lights evenly.
@@ -44,7 +44,7 @@ FILES
   BCM-Sign-Post-SPARE-CYAN-FIELD-1168x559mm.pdf    the earlier cyan face, spare
 
 THE SETTING
-Top band, white: BCM, centred. Then the light blue band MEDICAL CENTRE in navy.
+Top band, white: BCM, centred. Then the navy band, MEDICAL CENTRE in white.
 Then the red block, full width, with
 EDDWALIRO knocked out of it in white at the largest size the panel will take.
 Then the white row: an arrow at each end, Open and 24 Hrs between them in red.

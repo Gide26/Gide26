@@ -287,7 +287,7 @@ def sign_page(c):
            f"Name only — no service list, no photograph, no motto. Trim {SIGN.W:.1f} × "
            f"{SIGN.H:.1f} mm, the client's {SIGN.FT_TXT}, double-sided, for a lighting "
            "board. The face is built to the sign already standing on the road: BCM on a white "
-           "band, MEDICAL CENTRE in navy on a light blue band, EDDWALIRO knocked out of a "
+           "band, MEDICAL CENTRE in white on navy, EDDWALIRO knocked out of a "
            "full-width red block, OPEN 24 HRS between two arrows, then a navy foot strip with "
            "0788 323 815 · 0754 132 715 and BUSSABALA. Red carries the colour; the bands are "
            "thin and sit with white between them, so the box still lights evenly.",
