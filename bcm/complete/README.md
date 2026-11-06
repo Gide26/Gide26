@@ -10,7 +10,7 @@ three roadside banners, with one master proof describing the lot.
 | Folder | What it holds |
 | --- | --- |
 | `door-1/` `door-2/` `door-3/` | Eight panes each. Print files at 1 : 1 (900 × 500 and 900 × 400 mm), a panel proof, a schedule, a specification, day and night elevations, a licence record, a web preview |
-| `sign/` | Name-only sign post panel, 5054.6 × 1244.6 mm (16 ft 7 in × 49 in), a signwriter's pack of its own, two settings, four-page proof, elevations, dimensioned drawing |
+| `sign/` | Name-only sign post panel, 1168.4 × 558.8 mm (46 × 22 in, 3 ft 10 in × 1 ft 10 in), a signwriter's pack of its own, two settings, four-page proof, elevations, dimensioned drawing |
 | `banners/` | Three PVC banners — 3.8 m, 3.4 m, 2.4 m × 1.0 m — print files, six-page proof, fence elevations, licence page |
 | `print/` | **One print PDF per piece** — 32 panes, 3 sign faces, 3 banners, numbered 01–38, with `PRINT-INDEX.pdf`, a manifest, `BCM-Print-Files-ALL.pdf` and `BCM-Print-Files.zip` |
 | `complete/` | This README, the master proof, the manifest and the web index |

@@ -168,8 +168,8 @@ def index_pdf(path, pieces):
 
     B.caps(c, D.M, 18 * MM,
            f"TOTAL {len(pieces)} FILES  ·  32 DOOR PANES OF FILM  ·  3 SIGN FACES  ·  "
-           "3 BANNERS. SIGN FACES: A IS THE PRINT FILE, B IS THE SAME PANEL'S SECOND "
-           "FACE — PRINT ONE PER SIDE OF THE BOARD.",
+           "3 BANNERS. SIGN FACES: 33 AND 34 ARE THE APPROVED SETTING, ONE PER SIDE OF "
+           "THE BOARD; 35 IS THE FASCIA ALTERNATIVE, A SPARE.",
            2.6, B.GREY, "Inter-500", 0.4)
     c.save()
     return path

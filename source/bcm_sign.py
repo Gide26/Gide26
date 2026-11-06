@@ -1,7 +1,7 @@
 """BCM Medical Centre — name-only sign post panel.
 
 Separate deliverable from the door film set: one panel, no services, no
-photographs. Built to the client's measurement — 16 ft 7 in × 49 in, landscape.
+photographs. Built to the client's measurement — 46 in × 22 in, landscape.
 
 Everything is drawn in millimetres on the trim rectangle; the artwork file adds
 10 mm bleed, crop marks and a slug strip the same way the door panes do.
@@ -31,16 +31,16 @@ IN = 25.4
 
 
 def ftin(inches):
-    """199 in -> '16 ft 7 in'."""
+    """46 in -> '3 ft 10 in'."""
     ft, inch = divmod(int(round(inches)), 12)
     return f"{ft} ft {inch} in" if inch else f"{ft} ft"
 
 
-# --- the client's measurement, 2026-11-02: 16 ft 7 in long, 49 in high -------
-W_IN, H_IN = 16 * 12 + 7, 49                         # 199 in long, 49 in high
-W, H = round(W_IN * IN, 1), round(H_IN * IN, 1)      # 5054.6 × 1244.6 mm
+# --- the client's measurement, 2026-11-06: 46 in long, 22 in high ----------
+W_IN, H_IN = 46, 22                                  # client, 2026-11-06
+W, H = round(W_IN * IN, 1), round(H_IN * IN, 1)      # 1168.4 × 558.8 mm
 W_FT, H_FT = W_IN / 12, H_IN / 12
-FT_TXT = f"{ftin(W_IN)} × {ftin(H_IN)}"              # 16 ft 7 in × 4 ft 1 in
+FT_TXT = f"{ftin(W_IN)} × {ftin(H_IN)}"              # 3 ft 10 in × 1 ft 10 in
 MM_TXT = f"{W:.1f} × {H:.1f} mm"
 BLEED, SLUG = 10.0, 22.0
 SAFE = 25.0
@@ -62,7 +62,7 @@ def fit_cap(text, weight, family, target_w):
     return cap * target_w / w
 
 
-# The lockup was approved at 944.9 × 643.1 mm. A 16 ft 7 in panel is far wider
+# The lockup was approved at 944.9 × 643.1 mm. A 46 in panel is wider
 # and slightly shallower, so the block is SCALED from that approved arrangement
 # rather than re-fitted: proportions stay identical, and the type never runs to
 # the edge or crowds the top and bottom.
@@ -308,13 +308,22 @@ def _panel_png(variant="A", px_w=1200, tel=False):
     return img
 
 
+def post_count():
+    """Posts under the panel: two up to about 1.8 m, then one per 1.5 m."""
+    return max(2, min(6, int(round(W / 1500.0)) + 1))
+
+
+POST_WORD = {2: "TWO", 3: "THREE", 4: "FOUR", 5: "FIVE", 6: "SIX"}
+POST_LC = {2: "Two", 3: "Three", 4: "Four", 5: "Five", 6: "Six"}
+
+
 def mockup(night=False, variant="A", tel=False):
     """Elevation: the panel on its posts, to scale, day and night variants."""
     S = 0.95
     panel = _panel_png(variant, tel=tel)
-    GROUND = 200.0                       # ground band drawn at the foot
+    GROUND = 170.0                       # ground band drawn at the foot
     PANEL_CENTRE = 1500.0                # panel centre above finished ground level
-    TOP_MARGIN = 260.0
+    TOP_MARGIN = 170.0
     above = PANEL_CENTRE + H / 2 + TOP_MARGIN
     width_mm = max(W + 900.0, 2000.0)
     w, h = int(width_mm * S), int((above + GROUND) * S)
@@ -335,8 +344,8 @@ def mockup(night=False, variant="A", tel=False):
     post_w = 90.0
     panel_top_mm = PANEL_CENTRE + H / 2
     top_y = floor - int(panel_top_mm * S)
-    # posts are spaced along the length: a 5 m panel on two posts would sag
-    n = max(2, min(6, int(round(W / 1500.0)) + 1))
+    # posts are spaced along the length, so a long panel cannot sag between two
+    n = post_count()
     span = W / 2 - 420.0
     posts = ([0.0] if n == 1 else
              [-span + 2 * span * i / (n - 1) for i in range(n)])
@@ -432,10 +441,13 @@ def proof(path):
                "and the English name keeps the widest line.",
                (D.PW - 2 * D.M) / MM * 0.56, 3.3, B.NAVY_MID)
 
-    # a 4:1 panel is set by the page width, so it runs the full measure
-    scale = (D.PW - 2 * D.M) / MM / W           # mm of panel per mm of trim
+    # fit the panel to the measure, whichever of width or height binds
+    measure = (D.PW - 2 * D.M) / MM
+    band, top = 88.0, 150.0
+    scale = min(measure / W, band / H)          # mm of panel per mm of trim
     pw, ph = W * scale, H * scale
-    px, py = D.M, 78 * MM
+    px = D.M + (measure - pw) / 2.0
+    py = (top - ph) * MM
     c.saveState()
     c.translate(px, py)
     c.scale(scale * MM, scale * MM)
@@ -449,7 +461,7 @@ def proof(path):
     B.label(c, px, py + ph * MM + 3.5 * MM,
             f"HIGH  {ftin(H_IN)}  /  {H:.1f} mm", 3.4, B.NAVY, "Inter-600", 1.0)
 
-    yy = 62 * MM
+    yy = 44 * MM
     B.label(c, D.M, yy, "MEASUREMENTS", 4.0, B.TEAL, "Inter-600", 1.6)
     col = (D.PW - 2 * D.M) / 2 - 8 * MM
     D.bullets(c, D.M, yy - 6 * MM, [
@@ -466,25 +478,23 @@ def proof(path):
     # ---- page 2 — options
     c.showPage()
     D.page_bg(c, "OPTIONS", f"{REV}", 2, eyebrow=eyebrow)
-    y = D.h1(c, D.PH - 34 * MM, "Three ways to set the name", 8.0)
-    D.para(c, D.M, y + 1.5 * MM,
-           "A is the recommendation and it is what the print files carry. B repeats the "
-           "badge-left lockup used on the door panes, for continuity. C is the fascia "
-           "setting: at this length the stacked lockup fills only a little over a third "
-           "of the panel, so C lets the name run the length at about four times the size.",
-           (D.PW - 2 * D.M) / MM * 0.72, 3.1, B.NAVY_MID)
+    y = D.h1(c, D.PH - 34 * MM, "Two ways to set the name", 8.0)
+    D.para(c, D.M, y + 2 * MM,
+           "A is the approved setting and it is what the print files carry: EDDWALIRO heads "
+           "the panel, the badge sits under it, MEDICAL CENTRE takes the widest line and the "
+           "motto closes the block. C is the fascia setting — the same elements turned on "
+           "their side, badge at the left, the name run beside it. It is a spare, supplied "
+           "in case the client wants the length used differently.",
+           (D.PW - 2 * D.M) / MM * 0.78, 3.2, B.NAVY_MID)
 
-    sw = 128.0
+    sw = 120.0
     sc = sw / W
     ph_mm = H * sc
-    top = 148.0
-    pitch = ph_mm + 12.0
     for i, (v, cap_txt) in enumerate((
             ("A", "OPTION A — centred stack  ·  in the print files"),
-            ("B", "OPTION B — badge-left, as on the door panes"),
-            ("C", "OPTION C — fascia: the name across the length"))):
-        px = D.M
-        py = (top - i * pitch - ph_mm) * MM
+            ("C", "OPTION C — fascia setting  ·  spare"))):
+        px = D.M + i * 128 * MM
+        py = 100 * MM
         c.saveState()
         c.translate(px, py)
         c.scale(sc * MM, sc * MM)
@@ -493,41 +503,47 @@ def proof(path):
         c.setStrokeColor(B.TEAL)
         c.setLineWidth(0.4)
         c.rect(px, py, sw * MM, ph_mm * MM, stroke=1, fill=0)
-        B.label(c, px, py - 5.5 * MM, cap_txt, 3.2, B.GREY, "Inter-600", 1.2)
+        B.label(c, px, py - 6 * MM, cap_txt, 3.2, B.GREY, "Inter-600", 1.2)
 
-    B.label(c, D.M + (sw + 12) * MM, 96 * MM,
-            "EDDWALIRO heads the panel, bold and in cyan:\nthe Luganda word is read first.",
-            3.1, B.NAVY_MID, "Inter-400", 0.2)
-    B.label(c, D.M + (sw + 12) * MM, 78 * MM,
-            "BCM stays small and cyan beside the badge:\nthe initials, not the headline.",
-            3.1, B.NAVY_MID, "Inter-400", 0.2)
-    B.label(c, D.M + (sw + 12) * MM, 58 * MM,
-            "The motto sits under the name and can be\ndropped for a name-only panel.",
-            3.1, B.NAVY_MID, "Inter-400", 0.2)
-    B.label(c, D.M + (sw + 12) * MM, 38 * MM,
-            "The telephone can be added at the foot,\non both faces, on request.",
-            3.1, B.NAVY_MID, "Inter-400", 0.2)
+    B.label(c, D.M, 86 * MM, "EITHER WAY", 4.0, B.TEAL, "Inter-600", 1.6)
+    D.bullets(c, D.M, 79 * MM, [
+        "EDDWALIRO heads the panel, bold and in cyan: the Luganda word is read first, "
+        "the English name is the widest line.",
+        "BCM stays small and cyan above or beside the badge: the initials, not the headline.",
+        "The motto sits under the name and can be dropped for a name-only panel.",
+        "The telephone can be added at the foot, on both faces, on request.",
+    ], 180 * MM, 3.0, B.NAVY_MID)
 
     # ---- page 3 — on the post
     c.showPage()
     D.page_bg(c, "ON THE POST", f"{REV}", 3, eyebrow=eyebrow)
     y = D.h1(c, D.PH - 34 * MM, "How it sits at the entrance", 8.0)
+    posts = post_count()
     D.para(c, D.M, y + 2 * MM,
-           f"A {W/1000:.1f} m fascia is a structure, not a sticker: panel centre 1500 mm "
-           "above finished ground level and four posts under it are a proposal — the post "
-           "centres and the frame must come from the signwriter who builds it.",
+           f"{W/1000:.2f} m of panel, {(W*H)/1e6:.2f} m² of face: panel centre 1500 mm "
+           f"above finished ground level and {posts} posts under it are a proposal — the "
+           "post centres and the frame must come from the signwriter who builds it.",
            (D.PW - 2 * D.M) / MM, 3.2, B.NAVY_MID)
     avail = (D.PW - 2 * D.M) / MM
-    box_w = (avail - 6) / 2
-    for i, night in enumerate((False, True)):
+    # the elevation carries a lot of sky; trim it so the sign fills the picture
+    CROP = 0.05
+    box_h, items = 72.0, []
+    for night in (False, True):
         png = os.path.join(WORK, f"sign_mock_{'night' if night else 'day'}.png")
         if not os.path.exists(png):
             continue
-        iw, ih = Image.open(png).size
-        box_h = box_w * ih / iw
-        x = (D.M + i * (box_w + 6) * MM)
-        py = 96 * MM
-        c.drawImage(png, x, py, box_w * MM, box_h * MM, mask=None)
+        im = Image.open(png)
+        im = im.crop((0, int(im.height * CROP), im.width, im.height))
+        cut = os.path.join(WORK, f"proof_mock_{'night' if night else 'day'}.png")
+        im.save(cut)
+        items.append((cut, night, box_h * im.width / im.height))
+    total = sum(i[2] for i in items) + 6 * max(len(items) - 1, 0)
+    x_at = D.M + (avail - total) / 2
+    for cut, night, box_w in items:
+        x = x_at * MM
+        x_at += box_w + 6
+        py = (150 - box_h) * MM
+        c.drawImage(cut, x, py, box_w * MM, box_h * MM, mask=None)
         c.setStrokeColor(B.GREY)
         c.setLineWidth(0.2)
         c.rect(x, py, box_w * MM, box_h * MM, stroke=1, fill=0)
@@ -535,15 +551,15 @@ def proof(path):
                 "DAY — MATTE FACE, STREET LIGHT" if not night else
                 "NIGHT — IF THE PANEL IS LIT", 3.0, B.GREY, "Inter-600", 1.2)
 
-    B.label(c, D.M, 84 * MM,
+    B.label(c, D.M, 62 * MM,
             "DRAWN TO SCALE  ·  PANEL CENTRE 1500 MM ABOVE FINISHED GROUND LEVEL  ·  "
-            "FOUR POSTS SHOWN AS A PROPOSAL", 2.8, B.GREY, "Inter-500", 1.0)
-    D.bullets(c, D.M, 76 * MM, [
-        f"The face is {(W*H)/1e6:.2f} m² of panel. At that size the sign is read from "
-        "well down the road, so the name is set to be legible from 100 m or more.",
-        "Two posts would leave a 5 m span unsupported between them; the drawing shows four. "
-        "A rail or cleat frame behind the panel is the alternative, and it keeps the face "
-        "free of fixings.",
+            f"{POST_WORD[post_count()]} POSTS SHOWN AS A PROPOSAL", 2.8, B.GREY,
+            "Inter-500", 1.0)
+    D.bullets(c, D.M, 54 * MM, [
+        f"The face is {(W*H)/1e6:.2f} m² of panel, {W:.0f} mm long. The name is set to "
+        "read from the road, so it stays legible well past the gate.",
+        f"{POST_LC[post_count()]} posts carry it at 520 mm centres; a rail or cleat frame "
+        "behind the panel is the alternative, and it keeps the face free of fixings.",
         "If the panel is to be read from one direction only, one face is enough — the "
         "artwork is the same on both.",
     ], 150 * MM, 3.0, B.NAVY_MID)
@@ -554,49 +570,65 @@ def proof(path):
     y = D.h1(c, D.PH - 34 * MM, "Production specification", 8.0)
     B.label(c, D.M, y - 2 * MM, "SUBSTRATE  —  CONFIRM WITH THE SIGNWRITER", 4.0,
             B.TEAL, "Inter-600", 1.6)
-    D.bullets(c, D.M, y - 10 * MM, [
-        f"The face is {(W*H)/1e6:.2f} m². At this size 3 mm ACM on its own is marginal "
-        "over a long span: propose 4 mm ACM, or 3 mm ACM on a rail frame. "
-        "Industry-typical values, not a quotation — the signwriter decides.",
+    area = W * H / 1e6
+    big = area > 3.0
+    if big:
+        sub = [f"The face is {area:.2f} m². At this size 3 mm ACM on its own is marginal "
+               "over a long span: propose 4 mm ACM, or 3 mm ACM on a rail frame. "
+               "Industry-typical values, not a quotation — the signwriter decides."]
+    else:
+        sub = [f"The face is {area:.2f} m². 3 mm aluminium composite (ACM), matte white, is "
+               "the industry-typical substrate. Not a quotation — the signwriter decides."]
+    sub += [
         "Direct-to-substrate UV print, or cast vinyl applied and laminated, on a matte "
         "white core. Edges cut back to trim and sealed.",
         "Double-sided: either two printed faces on one core, or two panels on a frame. "
         "The artwork is identical on both faces.",
         "Finish: matte anti-glare laminate. Gloss will mirror the sky and kill the "
         "contrast the navy depends on.",
-        f"Allow for roughly {W*H/1e6*4.0:.0f} kg of 4 mm sheet before the frame — it is "
-        "a two-person lift, not a one-person one.",
-    ], 172 * MM, 3.0, B.NAVY_MID)
+    ]
+    if big:
+        sub.append(f"Allow for roughly {area*4.0:.0f} kg of 4 mm sheet before the frame — "
+                   "it is a two-person lift.")
+    D.bullets(c, D.M, y - 10 * MM, sub, 172 * MM, 3.0, B.NAVY_MID)
 
     B.label(c, D.M, 138 * MM, "FIXING  —  CONFIRM WITH THE INSTALLER", 4.0, B.TEAL,
             "Inter-600", 1.6)
-    D.bullets(c, D.M, 130 * MM, [
-        "Proposal: four galvanised posts under the panel, set into concrete footings, "
-        "panel centre 1500 mm above finished ground level. A rail or cleat frame carrying "
-        "the panel on four posts is the cleaner build at this length.",
-        "Stainless fixings into a bracket or frame behind the panel, never through the "
-        "printed face. Do not drill the face.",
-        f"Wind loading: {(W*H)/1e6:.2f} m² is a real sail — the footing, the post gauge and "
-        "the bracket need the signwriter's own calculation for the site.",
-    ], 172 * MM, 3.0, B.NAVY_MID)
+    n = post_count()
+    fix = [f"Proposal: {POST_LC[n]} galvanised posts at 520 mm centres, set 600 mm into concrete "
+           "footings, panel centre 1500 mm above finished ground level."
+           + (" A rail or cleat frame carrying the panel is the cleaner build at this "
+              "length." if big else ""),
+           "Stainless fixings into a bracket or frame behind the panel, never through the "
+           "printed face. Do not drill the face.",
+           f"Wind loading: {area:.2f} m² "
+           + ("is a real sail — the footing, the post gauge and the bracket"
+              if big else "is a modest sail, but the footing and the bracket still")
+           + " need the signwriter's own calculation for the site."]
+    D.bullets(c, D.M, 130 * MM, fix, 172 * MM, 3.0, B.NAVY_MID)
 
-    B.label(c, D.M, 104 * MM, "BEFORE PLOT", 4.0, B.TEAL, "Inter-600", 1.6)
-    D.bullets(c, D.M, 96 * MM, [
+    B.label(c, D.M, 112 * MM, "BEFORE PLOT", 4.0, B.TEAL, "Inter-600", 1.6)
+    D.bullets(c, D.M, 104 * MM, [
         f"Measurement is the client's: {FT_TXT}. Check it against the panel the "
         "signwriter is actually making before the file is plotted.",
-        "The sheet is supplied at 1 : 1 in millimetres and is close to the largest page a "
-        "PDF can hold — do not add margins to the file and do not scale it on the plotter.",
+        ("The sheet is supplied at 1 : 1 in millimetres and is close to the largest page a "
+         "PDF can hold — do not add margins to the file and do not scale it on the plotter."
+         if W + 2 * BLEED > 4500 else
+         "The sheet is supplied at 1 : 1 in millimetres — plot it, do not scale it on the "
+         "plotter, and leave the crop marks outside the bleed."),
         "The monogram is a recreation, not BCM's official logo — swap the vector in.",
         "Confirm the fascia wording and the spelling of EDDWALIRO with the client before plot.",
     ], 172 * MM, 3.0, B.NAVY_MID)
 
-    B.label(c, D.M, 70 * MM, "THE FILE", 4.0, B.TEAL, "Inter-600", 1.6)
-    D.bullets(c, D.M, 62 * MM, [
+    B.label(c, D.M, 74 * MM, "THE FILE", 4.0, B.TEAL, "Inter-600", 1.6)
+    D.bullets(c, D.M, 66 * MM, [
         f"Trim {W:.1f} × {H:.1f} mm, bleed {BLEED:.0f} mm all round, so the page is "
         f"{W + 2 * BLEED:.1f} × {H + 2 * BLEED + SLUG:.1f} mm — 1 : 1, no scaling.",
         f"A {SLUG:.0f} mm slug runs along the foot with the file name, the trim and the "
-        f"colour note — trim it off. At {W + 2 * BLEED:.0f} mm the page is close to the "
-        "largest page a PDF can hold (5080 mm), so nothing may be added around it.",
+        f"colour note — trim it off."
+        + (f" At {W + 2 * BLEED:.0f} mm the page is close to the largest page a PDF can "
+           "hold (5080 mm), so nothing may be added around it."
+           if W + 2 * BLEED > 4500 else ""),
         f"Safe area {SAFE:.0f} mm inside trim. Crop marks at the four corners, outside the bleed.",
         "Colour: navy #16233F, cyan #2BA9E0, mist #E8EEF4, white. Supply as CMYK or let the "
         "printer convert — do not colour-manage the navy towards black.",
@@ -621,7 +653,7 @@ def printer_pack():
     for f in os.listdir(out):
         os.remove(os.path.join(out, f))
 
-    tag = f"{W:.0f}x{H:.0f}"                      # 5055x1245
+    tag = f"{W:.0f}x{H:.0f}"                      # 1168x559
     both = os.path.join(out, f"BCM-Sign-Post-BOTH-FACES-{tag}mm.pdf")
     face_a = os.path.join(out, f"BCM-Sign-Post-FACE-A-{tag}mm.pdf")
     face_b = os.path.join(out, f"BCM-Sign-Post-FACE-B-{tag}mm.pdf")
@@ -647,31 +679,33 @@ def printer_pack():
             "CROP MARKS:            yes, at all four corners\n"
             "COLOUR:                navy #16233F, cyan #2BA9E0, mist #E8EEF4, white\n"
             "PLOT AT 100% - NEVER SCALE. Do not colour-manage the navy towards black.\n\n"
-            "THIS SHEET IS DELIBERATELY AT FULL SIZE\n"
-            "A PDF page cannot exceed 5080 mm, and the sheet is 5074.6 mm wide. There is\n"
-            "no room for a margin around the artwork, and the file must not be scaled up\n"
-            "or down. If your plotter cannot take a 5.07 m sheet, ask for a seamed or\n"
-            "half-size version rather than scaling this one - the letterforms are set for\n"
-            "1:1 and a rescale changes the stroke weights.\n\n"
-            "FILES\n"
+            + (f"THIS SHEET IS DELIBERATELY AT FULL SIZE\n"
+               f"A PDF page cannot exceed 5080 mm, and the sheet is {W + 2 * BLEED:.1f} mm "
+               "wide. There is\nno room for a margin around the artwork, and the file must "
+               "not be scaled up\nor down. If your plotter cannot take it, ask for a seamed "
+               "or half-size\nversion rather than scaling this one.\n\n"
+               if W + 2 * BLEED > 4500 else
+               "THE SHEET IS 1:1 - PLOT IT, DO NOT RESCALE IT.\n"
+               "Crop marks sit outside the 10 mm bleed; trim to the marks.\n\n")
+            + "FILES\n"
             f"  BCM-Sign-Post-BOTH-FACES-{tag}mm.pdf         2 pages: face A, face B\n"
             f"  BCM-Sign-Post-FACE-A-{tag}mm.pdf             face A on its own\n"
             f"  BCM-Sign-Post-FACE-B-{tag}mm.pdf             face B on its own\n"
             f"  BCM-Sign-Post-OPTION-C-FASCIA-{tag}mm.pdf    fascia setting, one face, spare\n\n"
             "FACE A IS THE APPROVED SETTING (OPTION A)\n"
             "EDDWALIRO heads the panel, the badge sits under it, BCM above MEDICAL CENTRE,\n"
-            "the motto at the foot. This is the arrangement approved on the earlier sample,\n"
-            "kept at this length. It sits centred with wide navy margins either side -\n"
-            "that is what the proportions do at 16 ft 7 in.\n\n"
+            "the motto at the foot - the arrangement approved on the earlier sample.\n\n"
             "OPTION C is the alternative: the same elements turned on their side, badge at\n"
-            "the left, EDDWALIRO / MEDICAL CENTRE / motto run beside it. The name is about\n"
-            "four times the size and fills the length. Use it only if the client asks -\n"
-            "it is not the approved setting.\n\n"
+            "the left, EDDWALIRO / MEDICAL CENTRE / motto run beside it, so the name reads\n"
+            "larger. Use it only if the client asks - it is not the approved setting.\n\n"
             "STRUCTURE - CONFIRM WITH THE SIGNWRITER\n"
-            "The face is about 6.29 m2. 3 mm ACM over this span is marginal: ask for 4 mm\n"
-            "ACM or 3 mm ACM on a rail frame, four posts, or a cleat frame. Panel centre\n"
-            "1500 mm above finished ground is a proposal only. Nothing here is a quotation.\n"
-            "The monogram is a recreated mark, not the clinic's official logo.\n")
+            f"The face is about {(W*H)/1e6:.2f} m2. "
+            + ("3 mm ACM over this span is marginal: ask for 4 mm\nACM or 3 mm ACM on a rail "
+               "frame, and four posts.\n" if W * H / 1e6 > 3 else
+               "3 mm ACM is the industry-typical substrate, on two\nposts at 520 mm centres.\n")
+            + "Panel centre 1500 mm above finished ground is a proposal only. Nothing here\n"
+            "is a quotation. The monogram is a recreated mark, not the clinic's own logo.\n")
+
     zpath = os.path.join(OUT_DIR, f"BCM-Sign-Post-Print-{tag}mm.zip")
     if os.path.exists(zpath):
         os.remove(zpath)
@@ -745,7 +779,7 @@ def main():
 <main>
   <figure><img src="lookbook/M-01-sign-day.png" alt="Sign post panel, day elevation">
     <figcaption>On the post — day. Panel centre 1500 mm above finished ground level,
-      four posts carrying a {(W*H)/1e6:.1f} m² face, shown as a proposal.</figcaption></figure>
+      {POST_LC[post_count()]} posts carrying a {(W*H)/1e6:.2f} m² face, shown as a proposal.</figcaption></figure>
   <div class="two">
     <figure><img src="lookbook/M-03-sign-dimensions.png" alt="Dimensioned panel">
       <figcaption>Trim {W:.1f} × {H:.1f} mm.</figcaption></figure>
@@ -769,9 +803,8 @@ def main():
   </table>
   <p class="note">Monogram is a recreation, not BCM's official logo. Measurements are the
      client's: {ftin(W_IN)} × {ftin(H_IN)}. Substrate and fixings are industry-typical
-     proposals for a {(W*H)/1e6:.1f} m² face — confirm with the signwriter.
-     The sheet is 1 : 1 and {W + 2 * BLEED:.1f} mm wide, close to the largest page a PDF
-     will hold: plot it at 100 %, never rescaled.</p>
+     proposals for a {(W*H)/1e6:.2f} m² face — confirm with the signwriter.
+     The sheet is 1 : 1 at {W:.1f} mm long: plot it at 100 %, never rescaled.</p>
 </main></body></html>
 """
     open(os.path.join(OUT_DIR, "index.html"), "w").write(html)
