@@ -1,6 +1,6 @@
 # BCM Medical Centre — print files
 
-30 pieces, one print PDF each. All 1 : 1 in millimetres with bleed, crop marks and a slug strip. Plot at 100 %, never scale.
+38 pieces, one print PDF each. All 1 : 1 in millimetres with bleed, crop marks and a slug strip. Plot at 100 %, never scale.
 
 | # | Job | Piece | Type | Finished size | File |
 | --- | --- | --- | --- | --- | --- |
@@ -28,18 +28,26 @@
 | 22 | D3-P6 | ENT | Door film | 900 × 500 mm | `22-D3-P6-ENT-900x500.pdf` |
 | 23 | D3-P7 | INPATIENT CARE | Door film | 900 × 400 mm | `23-D3-P7-INPATIENT-CARE-900x400.pdf` |
 | 24 | D3-P8 | OUR SERVICES | Door film | 900 × 500 mm | `24-D3-P8-OUR-SERVICES-900x500.pdf` |
-| 25 | SIGN-A-FACE-A | Sign post panel | Sign post | 944.9 × 643.1 mm | `25-SIGN-A-FACE-A-944x643.pdf` |
-| 26 | SIGN-A-FACE-B | Sign post panel | Sign post | 944.9 × 643.1 mm | `26-SIGN-A-FACE-B-944x643.pdf` |
-| 27 | SIGN-B-FACE-A | Sign post panel | Sign post | 944.9 × 643.1 mm | `27-SIGN-B-FACE-A-944x643.pdf` |
-| 28 | B-1 | The road banner | Banner | 3800 × 1000 mm | `28-B1-ROAD-3800x1000.pdf` |
-| 29 | B-2 | The services banner | Banner | 3400 × 1000 mm | `29-B2-SERVICES-3400x1000.pdf` |
-| 30 | B-3 | The compact banner | Banner | 2400 × 1000 mm | `30-B3-COMPACT-2400x1000.pdf` |
+| 25 | D4-P1 | PHARMACY | Door film | 900 × 500 mm | `25-D4-P1-PHARMACY-900x500.pdf` |
+| 26 | D4-P2 | LABORATORY | Door film | 900 × 400 mm | `26-D4-P2-LABORATORY-900x400.pdf` |
+| 27 | D4-P3 | CBC | Door film | 900 × 500 mm | `27-D4-P3-CBC-900x500.pdf` |
+| 28 | D4-P4 | ULTRASOUND | Door film | 900 × 400 mm | `28-D4-P4-ULTRASOUND-900x400.pdf` |
+| 29 | D4-P5 | LABORATORY | Door film | 900 × 500 mm | `29-D4-P5-LABORATORY-900x500.pdf` |
+| 30 | D4-P6 | CBC | Door film | 900 × 400 mm | `30-D4-P6-CBC-900x400.pdf` |
+| 31 | D4-P7 | OPEN 24 HOURS | Door film | 900 × 400 mm | `31-D4-P7-OPEN-24-HOURS-900x400.pdf` |
+| 32 | D4-P8 | OUR SERVICES | Door film | 900 × 500 mm | `32-D4-P8-OUR-SERVICES-900x500.pdf` |
+| 33 | SIGN-A-FACE-A | Sign post panel | Sign post | 944.9 × 643.1 mm | `33-SIGN-A-FACE-A-944x643.pdf` |
+| 34 | SIGN-A-FACE-B | Sign post panel | Sign post | 944.9 × 643.1 mm | `34-SIGN-A-FACE-B-944x643.pdf` |
+| 35 | SIGN-B-FACE-A | Sign post panel | Sign post | 944.9 × 643.1 mm | `35-SIGN-B-FACE-A-944x643.pdf` |
+| 36 | B-1 | The road banner | Banner | 3800 × 1000 mm | `36-B1-ROAD-3800x1000.pdf` |
+| 37 | B-2 | The services banner | Banner | 3400 × 1000 mm | `37-B2-SERVICES-3400x1000.pdf` |
+| 38 | B-3 | The compact banner | Banner | 2400 × 1000 mm | `38-B3-COMPACT-2400x1000.pdf` |
 
 ## Suppliers
 
 ### One-way vision printer — print one file per pane, cut to the finished size in the name
 
-24 files:
+32 files:
 
 - `01-D1-P1-HIV-CARE-900x500.pdf`
 - `02-D1-P2-PHARMACY-900x400.pdf`
@@ -65,22 +73,30 @@
 - `22-D3-P6-ENT-900x500.pdf`
 - `23-D3-P7-INPATIENT-CARE-900x400.pdf`
 - `24-D3-P8-OUR-SERVICES-900x500.pdf`
+- `25-D4-P1-PHARMACY-900x500.pdf`
+- `26-D4-P2-LABORATORY-900x400.pdf`
+- `27-D4-P3-CBC-900x500.pdf`
+- `28-D4-P4-ULTRASOUND-900x400.pdf`
+- `29-D4-P5-LABORATORY-900x500.pdf`
+- `30-D4-P6-CBC-900x400.pdf`
+- `31-D4-P7-OPEN-24-HOURS-900x400.pdf`
+- `32-D4-P8-OUR-SERVICES-900x500.pdf`
 
 ### Signwriter — print one file per face of the board
 
 3 files:
 
-- `25-SIGN-A-FACE-A-944x643.pdf`
-- `26-SIGN-A-FACE-B-944x643.pdf`
-- `27-SIGN-B-FACE-A-944x643.pdf`
+- `33-SIGN-A-FACE-A-944x643.pdf`
+- `34-SIGN-A-FACE-B-944x643.pdf`
+- `35-SIGN-B-FACE-A-944x643.pdf`
 
 ### Banner printer — one file per banner
 
 3 files:
 
-- `28-B1-ROAD-3800x1000.pdf`
-- `29-B2-SERVICES-3400x1000.pdf`
-- `30-B3-COMPACT-2400x1000.pdf`
+- `36-B1-ROAD-3800x1000.pdf`
+- `37-B2-SERVICES-3400x1000.pdf`
+- `38-B3-COMPACT-2400x1000.pdf`
 
 ## Print files zip
 

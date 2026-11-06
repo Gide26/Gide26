@@ -2,7 +2,7 @@
 
 Eight panes on the first doorway, built from the client's own measurement rather
 than from a photograph: four panes at **900 × 500 mm** and four at **900 × 400 mm**, all 900 mm
-high. The geometry is identical on all three doors; only the subject matter and the film change.
+high. The geometry is identical on every door; only the subject matter and the film change.
 
 Perforated one-way vision vinyl — you can see out through the print from inside.
 

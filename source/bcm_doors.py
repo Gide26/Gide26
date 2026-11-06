@@ -1,4 +1,4 @@
-"""BCM Medical Centre — three doorways on one measured geometry.
+"""BCM Medical Centre — doorways on one measured geometry.
 
 Every door is the same double leaf measured on site: eight panes, four at
 900 × 500 mm and four at 900 × 400 mm, all 900 mm high. Only the subject
@@ -6,7 +6,7 @@ matter and the film change. Doors 1 and 2 are perforated one-way vision;
 door 3 is opaque white vinyl, so its artwork is not read through a mesh and
 must never be see-through.
 
-Run:  python3 bcm_doors.py            (all three doors)
+Run:  python3 bcm_doors.py            (every door)
       python3 bcm_doors.py 2 3        (only doors 2 and 3)
 """
 import os
@@ -132,6 +132,41 @@ DOORS = [
                      "postnatal, paediatrics, eye services, ENT and the inpatient ward — services "
                      "door 1 and door 2 do not repeat.",
     },
+    {
+        "n": 4, "folder": "door-4", "prefix": "D4", "film": "one-way",
+        "film_name": "ONE-WAY VISION FILM",
+        "role": "dispensary, laboratory and scanning",
+        "tel_alt": True,
+        "edits": {},
+        # The same measured doorway as doors 1-3: 2220 overall, 1980 head, two
+        # 1080 leaves, eight 900 mm high panes — 500 mm at the outer edges and
+        # 400 mm against the meeting stiles. Seven new photographs, none of
+        # them used anywhere else in the set, and one pane with no photograph.
+        "spec": [
+            # Only photographs no other door uses, and only services the clinic
+            # lists. Two rules of the brief keep this door off immunisation (no
+            # unrepeated frame of a baby being immunised) and off a second
+            # dispensary pane (no unrepeated frame of tablets being handed out),
+            # so the diagnostics panes take the weight instead.
+            ("PHARMACY",     WIDE,   "pharmacy_counter", ("Left leaf", "upper outer", "900 × 500")),
+            ("LABORATORY",   NARROW, "lab_scientist",   ("Left leaf", "upper middle", "900 × 400")),
+            ("CBC",          WIDE,   "cbc_rack",        ("Left leaf", "lower outer", "900 × 500")),
+            ("ULTRASOUND",   NARROW, "ultrasound",      ("Left leaf", "lower middle", "900 × 400")),
+            ("LABORATORY",   WIDE,   "lab_micro",       ("Right leaf", "upper outer", "900 × 500")),
+            ("CBC",          NARROW, "cbc_rack_2",      ("Right leaf", "upper middle", "900 × 400")),
+            ("OPEN 24 HOURS", NARROW, None,             ("Right leaf", "lower middle", "900 × 400")),
+            ("OUR SERVICES", WIDE,   None,              ("Right leaf", "lower outer", "900 × 500")),
+        ],
+        "zoom": {"pharmacy_counter": 1.06, "lab_scientist": 1.05, "cbc_rack": 1.45},
+        "focus": {"pharmacy_counter": (0.44, 0.46), "lab_scientist": (0.46, 0.46),
+                  "cbc_rack": (0.50, 0.78), "ultrasound": (0.44, 0.72),
+                  "lab_micro": (0.50, 0.48), "cbc_rack_2": (0.46, 0.50)},
+        "web_head": "The dispensary door.<br>Tests, scans and medicines.",
+        "web_blurb": "A fourth doorway in the same measured scheme — the dispensary, the "
+                     "laboratory, the blood bench, the scanning room and the vaccines, with one "
+                     "pane carrying the 24-hour access lines instead of a photograph. Seven new "
+                     "photographs, none of them used on doors 1 to 3.",
+    },
 ]
 
 SUB = {
@@ -146,9 +181,22 @@ SUB = {
     "ULTRASOUND": "SCANNING", "OBS & GYN": "WOMEN'S HEALTH",
     "EYE SERVICES": "VISION & EYE CARE", "ENT": "EAR, NOSE & THROAT",
     "INPATIENT CARE": "WARD & NURSING CARE",
+    "OPEN 24 HOURS": "WALK-IN, DAY OR NIGHT",
 }
 
 DOOR3_SUB = {"IMMUNISATION": "CHILD HEALTH & VACCINES"}
+
+DOOR4_SUB = {
+    # SUB already gives PHARMACY "DISPENSARY", LABORATORY "TESTS & RESULTS",
+    # CBC "FULL BLOOD COUNT" and ULTRASOUND "SCANNING". The second pane of each
+    # pair gets its own descriptor so the door does not read as a repeat.
+    "LABORATORY": "TESTS & RESULTS", "CBC": "FULL BLOOD COUNT",
+}
+DOOR4_SUB_2 = {"LABORATORY": "MICROSCOPY", "CBC": "BLOOD SAMPLES"}
+
+# the one pane on door 4 that carries no photograph — the access lines, all of them
+# the clinic's own words. Nothing here is a service claim.
+OPEN24 = ["Open 24 hours", "Walk-in clinic", "Pharmacy on site", "Laboratory on site"]
 
 # every frame whose people were recoloured to Black African, so the doors show the
 # community BCM serves. Recorded in each README and on the licence line.
@@ -161,7 +209,11 @@ EDITS = {"pharmacy": "ph-pharmacy.jpg", "lab": "ph-lab.jpg", "consult": "ph-cons
          "scan_obgyn": "ph-scan-obgyn.jpg", "pharm_handover": "ph-pharm-handover.jpg",
          "tablets_hands": "ph-tablets-hands.jpg", "eye_exam": "ph-eye-exam.jpg",
          "ent_exam": "ph-ent-exam2.jpg",
-         "immunisation_baby": "ph-immunisation-baby.jpg"}
+         "immunisation_baby": "ph-immunisation-baby.jpg",
+         # door 4 — retouched frames of photographs no other door uses
+         "pharmacy_counter": "ph-pharmacy-counter.jpg",
+         "lab_scientist": "ph-lab-scientist.jpg",
+         "lab_micro": "ph-lab-micro.jpg"}
 
 
 # -------------------------------------------------------------------- panels
@@ -187,11 +239,18 @@ def panels(door):
     subs = dict(SUB)
     if door["n"] == 3:
         subs.update(DOOR3_SUB)
+    if door["n"] == 4:
+        subs.update(DOOR4_SUB)
     # global pane number: door 1 holds 1-8, door 2 holds 9-16, door 3 holds 17-24
-    offset = {1: 0, 2: 8, 3: 16}[door["n"]]
+    offset = {1: 0, 2: 8, 3: 16, 4: 24}[door["n"]]
+    seen = {}
     for i, (service, w, photo, _pos) in enumerate(door["spec"], start=1):
+        sub = subs[service]
+        seen[service] = seen.get(service, 0) + 1
+        if door["n"] == 4 and seen[service] == 2:
+            sub = DOOR4_SUB_2.get(service, sub)
         p = {
-            "id": f"{door['prefix']}-P{i}", "service": service, "sub": subs[service],
+            "id": f"{door['prefix']}-P{i}", "service": service, "sub": sub,
             "w": w, "h": PANE_H, "photo": photo,
             "focus": door["focus"].get(photo, (0.5, 0.4)) if photo else (0.5, 0.4),
             "zoom": door.get("zoom", {}).get(photo, 1.0),
@@ -200,10 +259,13 @@ def panels(door):
             "orientation": "PORTRAIT — GLAZED DOOR PANE (MEASURED)",
             "aspect": f"1 : {PANE_H / w:.2f}",
             "note": "",
-            "list_items": SERVICES if service == "OUR SERVICES" else None,
+            "list_items": (SERVICES if service == "OUR SERVICES"
+                           else (OPEN24 if service == "OPEN 24 HOURS" else None)),
             # 0788 323 815 on panes 1-18 only (door 1, door 2, door 3 P1-P2);
             # the rest of door 3 keeps the number off the clinic's own boards
-            "tel": B.TEL_ALT if offset + i <= 18 else None,
+            # door 4 is new work, so it carries the current line throughout
+            "tel": (B.TEL_ALT if (door.get("tel_alt") or offset + i <= 18)
+                    else None),
         }
         out.append(p)
     # no photograph may appear twice on a door
@@ -337,7 +399,7 @@ def schedule(door, panels_list):
                "Eight panes on one double door. Four measure 900 × 500 mm and four measure "
                "900 × 400 mm — all 900 mm high, so every design is portrait and the width is the "
                "only variable. The sizes are the client's own measurement, repeated across the "
-               "three doorways; confirm each pane on site before the film is plotted.",
+               "the doorways; confirm each pane on site before the film is plotted.",
                (D.PW - 2 * D.M) / MM, 3.3, B.NAVY_MID)
     y -= 2 * MM
     cols = [("Pane", 16, "left"), ("Service", 34, "left"), ("Glass H × W", 26, "left"),
@@ -756,7 +818,7 @@ def readme(door, panels_list):
 
 Eight panes on the {ordinal(door['n'])} doorway, built from the client's own measurement rather
 than from a photograph: four panes at **900 × 500 mm** and four at **900 × 400 mm**, all 900 mm
-high. The geometry is identical on all three doors; only the subject matter and the film change.
+high. The geometry is identical on every door; only the subject matter and the film change.
 
 {film_line}
 
@@ -818,6 +880,31 @@ def ordinal(n):
 
 
 # ---------------------------------------------------------------------- main
+def package(door, base):
+    """The per-door zip — artwork, docs, lookbook, web previews, index, README.
+
+    Written by the builder so a re-run can never leave a stale package behind
+    (the old zips predated the telephone change).
+    """
+    import zipfile
+    zpath = os.path.join(base, f"BCM-Door-{door['n']}-package.zip")
+    if os.path.exists(zpath):
+        os.remove(zpath)
+    folder = f"BCM-Door-{door['n']}"
+    with zipfile.ZipFile(zpath, "w", zipfile.ZIP_DEFLATED, compresslevel=6) as z:
+        for sub in ("artwork", "docs", "lookbook", "web"):
+            d = os.path.join(base, sub)
+            if not os.path.isdir(d):
+                continue
+            for f in sorted(os.listdir(d)):
+                z.write(os.path.join(d, f), os.path.join(folder, sub, f))
+        for f in (f"BCM-Door-{door['n']}-Panels.pdf", "index.html", "README.md"):
+            fp = os.path.join(base, f)
+            if os.path.exists(fp):
+                z.write(fp, os.path.join(folder, f))
+    return zpath
+
+
 def build(door):
     base = configure(door)
     art_dir = os.path.join(base, "artwork")
@@ -837,6 +924,7 @@ def build(door):
     print(combined(door, paths))
     print(web(door, plist))
     print(readme(door, plist))
+    print(package(door, base))
 
 
 def main():

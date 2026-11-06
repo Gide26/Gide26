@@ -2,7 +2,7 @@
 
 Eight panes on the third doorway, built from the client's own measurement rather
 than from a photograph: four panes at **900 × 500 mm** and four at **900 × 400 mm**, all 900 mm
-high. The geometry is identical on all three doors; only the subject matter and the film change.
+high. The geometry is identical on every door; only the subject matter and the film change.
 
 Opaque white blockout vinyl — nothing shows through, and the print carries full detail because there is no mesh over it.
 

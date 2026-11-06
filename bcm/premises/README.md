@@ -4,7 +4,7 @@ The set in place, drawn to scale from the same print files that go to the printe
 
 | File | What it is |
 | --- | --- |
-| `lookbook/M-01-premises-day.png` | The front by day — three black doorways, three banners, the sign post |
+| `lookbook/M-01-premises-day.png` | The front by day — four black doorways, three banners, the sign post |
 | `lookbook/M-02-premises-night.png` | The front at night, with the eaves downlights |
 | `lookbook/M-1N-door-N-black.png` | Each doorway close up, banner above it |
 | `lookbook/M-04-setout.png` | Set-out drawing, all dimensions in mm |
@@ -16,7 +16,8 @@ The set in place, drawn to scale from the same print files that go to the printe
 - Doorways: 2220 mm wide overall, 1980 mm door head, two leaves, black frame and
   black leaves, eight panes of film each — 900 mm high, 500 mm outer, 400 mm at the
   meeting stile, exactly as scheduled on the door pages.
-- Banners: B-1 (3.8 m) over door 1, B-2 (3.4 m) over door 2, B-3 (2.4 m) over door 3.
+- Banners: B-1 (3.8 m) over door 1, B-2 (3.4 m) over door 2, B-3 (2.4 m) over door 3. Door 4
+  has no banner ordered, so its wall is drawn clear.
   Underside 2560 mm above the paving, 580 mm clear of the door head.
 - Sign post at the kerb: 944.9 × 643.1 mm panel, centre 1500 mm above ground.
 

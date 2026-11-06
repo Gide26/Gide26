@@ -48,9 +48,19 @@ CORNICE = 4020
 SKY_TOP = 4700
 PLINTH = 250
 
-CENTRES = {1: 2100.0, 2: 6300.0, 3: 9700.0}
-SIGN_X = 11800.0                 # sign post centre
-SCENE_L, SCENE_R = -700.0, 13000.0
+CENTRES = {1: 2100.0, 2: 6300.0, 3: 9700.0, 4: 13100.0}
+SIGN_X = 16500.0                 # sign post centre, clear of the fourth doorway
+SCENE_L, SCENE_R = -700.0, 17700.0
+
+
+def banner_for(n):
+    """The banner over a door, if it has one.
+
+    Only three banners were specified, so doors 1-3 carry B-1, B-2 and B-3.
+    Door 4 is drawn without a banner: it is new work and no banner is ordered
+    for it yet.
+    """
+    return BAN.BANNERS[n - 1] if n <= len(BAN.BANNERS) else None
 
 BLACK = (18, 20, 24)
 BLACK_HI = (44, 47, 52)
@@ -236,7 +246,7 @@ def sign_block(s, night=False):
 
 
 def facade(s=0.20, night=False):
-    """The front: three black doorways, a banner above each, the sign post."""
+    """The front: black doorways, a banner above the three that have one, sign post."""
     w = int((SCENE_R - SCENE_L) * s)
     h = int((SKY_TOP + 600) * s)
     img = wall_field(w, h, s, night).convert("RGBA")
@@ -257,8 +267,11 @@ def facade(s=0.20, night=False):
         blk = door_block(door, s, night)
         img.paste(blk, (X(dx), Y(DOOR_H)))
 
-    # ---- banners above their doors
-    for door, b in zip(DOORS.DOORS, BAN.BANNERS):
+    # ---- banners above their doors, where a banner is ordered
+    for door in DOORS.DOORS:
+        b = banner_for(door["n"])
+        if b is None:
+            continue
         cx = CENTRES[door["n"]]
         bx = cx - b["w"] / 2
         by = BANNER_BOTTOM
@@ -323,11 +336,15 @@ def facade(s=0.20, night=False):
 
 
 def door_view(door, b, s=0.5, night=False):
-    """One doorway with its banner above it — the close view, with ground below."""
+    """One doorway with its banner above it — the close view, with ground below.
+
+    b may be None: a doorway with no banner ordered still gets its close view,
+    framed on the door itself.
+    """
     pad = 300
     TOP_MM = CORNICE + pad           # top of the picture
     BOT_MM = -340                    # paving at the foot
-    w_mm = max(b["w"], DOOR_W) + pad * 2
+    w_mm = max(b["w"] if b else DOOR_W, DOOR_W) + pad * 2
     w, h = int(w_mm * s), int((TOP_MM - BOT_MM) * s)
 
     img = Image.new("RGB", (w, h), (238, 236, 230))
@@ -372,25 +389,26 @@ def door_view(door, b, s=0.5, night=False):
     d.rectangle([X(-DOOR_W / 2), Y(DOOR_H), X(DOOR_W / 2), Y(0)],
                 outline=(8, 8, 10), width=max(1, int(2 * s)))
 
-    # banner, its shadow and its four stand-off fixings
-    bx = -b["w"] / 2
-    by = BANNER_BOTTOM
-    d.rectangle([X(bx) + 7, Y(by + b["h"]) + 9, X(bx + b["w"]) + 9, Y(by) + 11],
-                fill=(0, 0, 0, 60))
-    bimg = banner_block(b, s, night)
-    img.paste(bimg, (X(bx), Y(by + b["h"])))
-    d.rectangle([X(bx), Y(by + b["h"]), X(bx + b["w"]), Y(by)],
-                outline=(46, 50, 56), width=max(1, int(2 * s)))
-    for fx in (bx + 70, bx + b["w"] - 70):
-        for fy in (by + 70, by + b["h"] - 70):
-            r = max(2, int(14 * s))
-            d.ellipse([X(fx) - r, Y(fy) - r, X(fx) + r, Y(fy) + r],
-                      fill=(152, 156, 162) if not night else (72, 76, 82))
-            d.ellipse([X(fx) - r // 2, Y(fy) - r // 2, X(fx) + r // 2, Y(fy) + r // 2],
-                      fill=(196, 200, 206) if not night else (96, 100, 108))
+    # banner, its shadow and its four stand-off fixings (only where ordered)
+    if b is not None:
+        bx = -b["w"] / 2
+        by = BANNER_BOTTOM
+        d.rectangle([X(bx) + 7, Y(by + b["h"]) + 9, X(bx + b["w"]) + 9, Y(by) + 11],
+                    fill=(0, 0, 0, 60))
+        bimg = banner_block(b, s, night)
+        img.paste(bimg, (X(bx), Y(by + b["h"])))
+        d.rectangle([X(bx), Y(by + b["h"]), X(bx + b["w"]), Y(by)],
+                    outline=(46, 50, 56), width=max(1, int(2 * s)))
+        for fx in (bx + 70, bx + b["w"] - 70):
+            for fy in (by + 70, by + b["h"] - 70):
+                r = max(2, int(14 * s))
+                d.ellipse([X(fx) - r, Y(fy) - r, X(fx) + r, Y(fy) + r],
+                          fill=(152, 156, 162) if not night else (72, 76, 82))
+                d.ellipse([X(fx) - r // 2, Y(fy) - r // 2, X(fx) + r // 2, Y(fy) + r // 2],
+                          fill=(196, 200, 206) if not night else (96, 100, 108))
 
     # a wall-washer over the banner
-    for x in (-b["w"] / 2 + 400, b["w"] / 2 - 400):
+    for x in ((-b["w"] / 2 + 400, b["w"] / 2 - 400) if b is not None else ()):
         d.rounded_rectangle([X(x) - int(90 * s), Y(WALL_TOP - 55),
                              X(x) + int(90 * s), Y(WALL_TOP - 95)],
                             radius=max(2, int(6 * s)),
@@ -399,19 +417,21 @@ def door_view(door, b, s=0.5, night=False):
 
 
 def setout(s=0.12):
-    """A dimensioned set-out drawing of the three doorways and the banners."""
+    """A dimensioned set-out drawing of the doorways and the banners."""
     from reportlab.pdfgen import canvas as rl_canvas
 
     os.makedirs(WORK, exist_ok=True)
     path = os.path.join(WORK, "setout.pdf")
-    pw, ph = 380 * MM, 190 * MM
+    pw, ph = 380 * MM, 150 * MM
     c = rl_canvas.Canvas(path, pagesize=(pw, ph))
     c.scale(MM, MM)
     c.setFillColor(B.WHITE)
     c.rect(0, 0, 380, 190, stroke=0, fill=1)
 
-    sc = 0.0215                      # mm on the page per mm on site
+    # page scale is worked out from the scene, so a new doorway cannot run the
+    # sign post off the right edge of the sheet
     ox, oy = 70.0, 46.0              # page origin for scene x=0, ground
+    sc = (pw / MM - ox - 14.0) / (SIGN_X + 950.0)
 
     def PX(x):
         return ox + x * sc
@@ -422,9 +442,9 @@ def setout(s=0.12):
     # ground and wall line
     c.setStrokeColor(B.NAVY_MID)
     c.setLineWidth(0.4)
-    c.line(PX(-260), PY(0), PX(12600), PY(0))
+    c.line(PX(-260), PY(0), PX(SIGN_X + 900), PY(0))
     c.setStrokeColor(B.MIST)
-    c.line(PX(-260), PY(WALL_TOP), PX(12600), PY(WALL_TOP))
+    c.line(PX(-260), PY(WALL_TOP), PX(SIGN_X + 900), PY(WALL_TOP))
 
     for door in DOORS.DOORS:
         cx = CENTRES[door["n"]]
@@ -437,7 +457,9 @@ def setout(s=0.12):
         B.label(c, PX(cx), PY(0) - 7, f"DOOR {door['n']}", 3.0, B.CP_NAVY,
                 "Inter-600", 1.0, "center")
 
-        b = BAN.BANNERS[door["n"] - 1]
+        b = banner_for(door["n"])
+        if b is None:
+            continue
         c.setFillColor(B.CP_CYAN)
         c.setFillAlpha(0.35)
         c.rect(PX(cx - b["w"] / 2), PY(BANNER_BOTTOM), b["w"] * sc, BANNER_H * sc,
@@ -462,16 +484,20 @@ def setout(s=0.12):
     dim(CENTRES[1] + DOOR_W / 2, CENTRES[2] - DOOR_W / 2, 170, "1980")
     dim(CENTRES[2] - DOOR_W / 2, CENTRES[2] + DOOR_W / 2, 170, "2220")
     dim(CENTRES[2] + DOOR_W / 2, CENTRES[3] - DOOR_W / 2, 170, "980")
+    dim(CENTRES[3] - DOOR_W / 2, CENTRES[3] + DOOR_W / 2, 170, "2220")
+    dim(CENTRES[3] + DOOR_W / 2, CENTRES[4] - DOOR_W / 2, 170, "1180")
+    dim(CENTRES[4] - DOOR_W / 2, CENTRES[4] + DOOR_W / 2, 170, "2220")
 
     # door centres above the banners, banner widths in the band below them
     dim(CENTRES[1], CENTRES[2], 3790, "4200 door centres")
     dim(CENTRES[2], CENTRES[3], 3790, "3400 door centres")
+    dim(CENTRES[3], CENTRES[4], 3790, "3400 door centres")
 
     c.setStrokeColor(B.TEAL)
     c.setLineWidth(0.2)
     c.setDash(1.2, 1.2)
     for n in (1, 2, 3):
-        b = BAN.BANNERS[n - 1]
+        b = banner_for(n)
         cx = CENTRES[n]
         for x in (cx - b["w"] / 2, cx + b["w"] / 2):
             c.line(PX(x), PY(BANNER_BOTTOM), PX(x), PY(2190))
@@ -542,8 +568,8 @@ def proof(path, day, night, doors, setout_img):
     B.caps(c, D.M, D.PH - 27 * MM, "The front, in place", 7.0, B.WHITE, "Manrope-800",
            0.4)
     B.label(c, D.M, D.PH - 33 * MM,
-            "Three black doorways in one-way vision film, a banner on the wall above "
-            "each, and the sign post at the kerb. Drawn to scale from the print files.",
+            "Four black doorways in film, a banner on the wall above each of the first "
+            "three, and the sign post at the kerb. Drawn to scale from the print files.",
             2.9, B.CP_MIST, "Inter-400", 0.4)
     iw, ih = Image.open(day).size
     bw = D.PW                      # full bleed — the elevation runs edge to edge
@@ -562,7 +588,7 @@ def proof(path, day, night, doors, setout_img):
            0.4)
     B.label(c, D.M, D.PH - 33 * MM,
             "With the eaves downlights on: the banners are washed, the film stays legible "
-            "and the doors read as three lit panels.", 2.9, B.CP_MIST, "Inter-400", 0.4)
+            "and the doors read as lit panels.", 2.9, B.CP_MIST, "Inter-400", 0.4)
     iw, ih = Image.open(night).size
     bh = bw * ih / iw
     c.drawImage(night, 0, 44 * MM, bw, bh, mask=None)
@@ -571,16 +597,21 @@ def proof(path, day, night, doors, setout_img):
             2.8, B.CP_MIST, "Inter-500", 1.0)
 
     # ---- pages 3-5: each doorway close up
-    for i, (door, b, img) in enumerate(zip(DOORS.DOORS, BAN.BANNERS, doors), start=3):
+    for i, (door, img) in enumerate(zip(DOORS.DOORS, doors), start=3):
+        b = banner_for(door["n"])
         c.showPage()
         D.page_bg(c, f"DOOR {door['n']}", f"{REV}", i, eyebrow=eyebrow)
-        y = D.h1(c, D.PH - 34 * MM, f"Door {door['n']} — black frame, {b['id']} above",
+        y = D.h1(c, D.PH - 34 * MM,
+                 f"Door {door['n']} — black frame" + (f", {b['id']} above" if b else ""),
                  7.4)
         D.para(c, D.M, y + 2 * MM,
                f"Eight panes of {'one-way vision film' if door['film'] == 'one-way' else 'opaque film'} "
                f"in a black-painted frame — 900 mm high, 500 mm panes on the outer edges "
-               f"and 400 mm against the meeting stile. {b['id']} sits on the wall above "
-               f"the door, centred, its underside at 2560 mm.",
+               f"and 400 mm against the meeting stile. "
+               + (f"{b['id']} sits on the wall above the door, centred, its underside at "
+                  f"2560 mm." if b else
+                  "No banner is ordered for this doorway yet, so the wall above it is "
+                  "left clear."),
                (D.PW - 2 * D.M) / MM * 0.66, 3.2, B.NAVY_MID)
 
         iw, ih = Image.open(img).size
@@ -600,8 +631,8 @@ def proof(path, day, night, doors, setout_img):
         D.bullets(c, tx, 144 * MM, [
             f"Frame and leaves: black. Panes: {len(door['spec'])} per door, 900 mm high.",
             "Door head 1980 mm; banner underside 2560 mm; 580 mm of wall between.",
-            f"Banner: {b['w']:,.0f} × 1,000 mm, centred on the door.",
-        ] + rows, tw, 2.9, B.NAVY_MID)
+        ] + ([f"Banner: {b['w']:,.0f} × 1,000 mm, centred on the door."] if b else
+             ["Banner: none ordered for this doorway."]) + rows, tw, 2.9, B.NAVY_MID)
 
         B.label(c, tx, 92 * MM, "CHECK ON SITE", 4.0, B.TEAL, "Inter-600", 1.6)
         D.bullets(c, tx, 84 * MM, [
@@ -615,11 +646,12 @@ def proof(path, day, night, doors, setout_img):
     # ---- page 6: set out
     c.showPage()
     D.page_bg(c, "SET OUT", f"{REV}", 6, eyebrow=eyebrow)
-    y = D.h1(c, D.PH - 34 * MM, "How the three sit together", 7.4)
+    y = D.h1(c, D.PH - 34 * MM, "How the doors sit together", 7.4)
     D.para(c, D.M, y + 2 * MM,
            "One elevation, all dimensions in millimetres. The banners are wider than the "
-           "doors, so the doors are spaced to suit: 4.2 m and 3.4 m between centres, "
-           "which leaves 600 mm and 500 mm of wall between the banner ends.",
+           "doors, so doors 1 to 3 are spaced to suit: 4.2 m, 3.4 m and 3.4 m between "
+           "centres, which leaves 600 mm and 500 mm of wall between the banner ends. "
+           "Door 4 carries no banner, so it sits a clear 1.18 m pier from door 3.",
            (D.PW - 2 * D.M) / MM * 0.8, 3.2, B.NAVY_MID)
     iw, ih = Image.open(setout_img).size
     bw3 = D.PW - 2 * D.M                     # points
@@ -729,14 +761,17 @@ def write_standalone():
                 f'<figcaption><b>{title}</b><span>{sub}</span></figcaption></figure>')
 
     front = (fig("M-01-premises-day.png", "The front — day",
-                 "three black doorways, three banners, the sign post at the kerb", 1600) +
+                 "four black doorways, three banners, the sign post at the kerb", 1600) +
              fig("M-02-premises-night.png", "The front — night",
                  "with the eaves downlights on", 1600))
+    def door_sub(d):
+        b = banner_for(d["n"])
+        return (f"{b['id']} above · {b['w'] / 1000:.1f} m × 1.0 m" if b
+                else "no banner ordered for this doorway")
+
     doors = "".join(
         fig(f"M-{10 + d['n']}-door-{d['n']}-black.png",
-            f"Door {d['n']} — black frame",
-            f"{BAN.BANNERS[d['n'] - 1]['id']} above · "
-            f"{BAN.BANNERS[d['n'] - 1]['w'] / 1000:.1f} m × 1.0 m", 900)
+            f"Door {d['n']} — black frame", door_sub(d), 900)
         for d in DOORS.DOORS)
     so = fig("M-04-setout.png", "Set out",
              "door centres, banner height and widths, all in millimetres", 1500)
@@ -802,8 +837,8 @@ def main():
     print("front: day, night")
 
     doors = []
-    for door, b in zip(DOORS.DOORS, BAN.BANNERS):
-        img = door_view(door, b, s=0.5)
+    for door in DOORS.DOORS:
+        img = door_view(door, banner_for(door["n"]), s=0.5)
         img.save(os.path.join(OUT, "lookbook",
                               f"M-{10 + door['n']}-door-{door['n']}-black.png"),
                  "PNG", optimize=True)

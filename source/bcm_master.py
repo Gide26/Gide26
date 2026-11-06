@@ -2,7 +2,7 @@
 
 Assembles one folder and one zip holding everything built so far:
 
-    the three door film packages (24 panes), the sign post panel,
+    the four door film packages (32 panes), the sign post panel,
     the three roadside banners,
 
 plus a master proof (`BCM-Complete-Set.pdf`), a manifest, a README and a web
@@ -45,10 +45,13 @@ GROUPS = [
     {"key": "door-3", "n": "03", "title": "Door 3 — family, eye, ENT and ward",
      "kind": "Opaque film · 8 panes",
      "cover": "door-3/lookbook/M-01-door-3-day.png"},
-    {"key": "sign", "n": "04", "title": "Sign post panel",
+    {"key": "door-4", "n": "04", "title": "Door 4 — dispensary and diagnostics",
+     "kind": "One-way vision film · 8 panes",
+     "cover": "door-4/lookbook/M-01-door-4-day.png"},
+    {"key": "sign", "n": "05", "title": "Sign post panel",
      "kind": "Double-sided panel · 945 × 643 mm",
      "cover": "sign/lookbook/M-01-sign-day.png"},
-    {"key": "banners", "n": "05", "title": "Roadside banners",
+    {"key": "banners", "n": "06", "title": "Roadside banners",
      "kind": "PVC banners · 3.8 / 3.4 / 2.4 m × 1.0 m",
      "cover": "banners/lookbook/M-00-banner-set.png"},
 ]
@@ -214,7 +217,7 @@ def contents(c):
         "MANIFEST.csv — every file in the set with its type and size, for checking the "
         "handover.",
         "index.html — the set as a web page; open it in a browser and everything links.",
-        "print/ — one print PDF per piece: 24 panes, 3 sign faces, 3 banners, numbered "
+        "print/ — one print PDF per piece: 32 panes, 3 sign faces, 3 banners, numbered "
         "01–30, with PRINT-INDEX.pdf and a manifest. This is the folder the printer "
         "wants; the multi-page proofs are for approval only.",
         "complete/ — the master proof, manifest, README and index on their own, if you "
@@ -527,7 +530,7 @@ three roadside banners, with one master proof describing the lot.
 | `door-1/` `door-2/` `door-3/` | Eight panes each. Print files at 1 : 1 (900 × 500 and 900 × 400 mm), a panel proof, a schedule, a specification, day and night elevations, a licence record, a web preview |
 | `sign/` | Name-only sign post panel, 944.9 × 643.1 mm, two lockups, four-page proof, elevations, dimensioned drawing |
 | `banners/` | Three PVC banners — 3.8 m, 3.4 m, 2.4 m × 1.0 m — print files, six-page proof, fence elevations, licence page |
-| `print/` | **One print PDF per piece** — 24 panes, 3 sign faces, 3 banners, numbered 01–30, with `PRINT-INDEX.pdf`, a manifest and `BCM-Print-Files.zip` |
+| `print/` | **One print PDF per piece** — 32 panes, 3 sign faces, 3 banners, numbered 01–38, with `PRINT-INDEX.pdf`, a manifest, `BCM-Print-Files-ALL.pdf` and `BCM-Print-Files.zip` |
 | `complete/` | This README, the master proof, the manifest and the web index |
 
 At the top of the folder: `BCM-Complete-Set.pdf` (master proof, nine pages),
@@ -572,7 +575,7 @@ files on their own, numbered in running order.
 
 ```sh
 cd source
-python3 bcm_doors.py      # all three doors
+python3 bcm_doors.py      # all doors
 python3 bcm_sign.py       # sign post panel
 python3 bcm_banners.py    # three banners
 python3 bcm_master.py     # this set: master proof, manifest, README, zip
@@ -642,6 +645,7 @@ def index_html():
             "door-1": "door-1/BCM-Door-1-package.zip",
             "door-2": "door-2/BCM-Door-2-package.zip",
             "door-3": "door-3/BCM-Door-3-package.zip",
+            "door-4": "door-4/BCM-Door-4-package.zip",
             "sign": "sign/BCM-Sign-Package.zip",
             "banners": "banners/BCM-Banners-Package.zip",
         }

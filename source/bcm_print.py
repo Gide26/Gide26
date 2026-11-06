@@ -145,14 +145,23 @@ def index_pdf(path, pieces):
     for n, job, title, ref, folder, kind, size, name in pieces:
         rows.append([f"{n:02d}", job, title, kind, size, name])
 
-    D.table(c, D.M, 158 * MM,
-            [("#", 10, "left"), ("Job", 18, "left"), ("Piece", 62, "left"),
-             ("Type", 22, "left"), ("Finished size", 32, "left"),
-             ("File", 110, "left")],
-            rows, row_h=4.05 * MM, head_h=6.0 * MM, cap=2.9, head_cap=2.6)
+    cols = [("#", 10, "left"), ("Job", 18, "left"), ("Piece", 62, "left"),
+            ("Type", 22, "left"), ("Finished size", 32, "left"),
+            ("File", 110, "left")]
+    # the set grew past one sheet, so the table breaks over as many pages as it
+    # needs — 30 rows to a page, header repeated
+    step = 30
+    for i in range(0, len(rows), step):
+        if i:
+            c.showPage()
+            D.page_bg(c, "PRINT INDEX", f"{REV}", 1 + i // step,
+                      eyebrow="BCM  ·  MEDICAL CENTRE  ·  ONE FILE PER PIECE")
+        D.table(c, D.M, (D.PH - 42 * MM) if i else 158 * MM, cols,
+                rows[i:i + step], row_h=4.05 * MM, head_h=6.0 * MM, cap=2.9,
+                head_cap=2.6)
 
     B.caps(c, D.M, 18 * MM,
-           f"TOTAL {len(pieces)} FILES  ·  24 DOOR PANES OF FILM  ·  3 SIGN FACES  ·  "
+           f"TOTAL {len(pieces)} FILES  ·  32 DOOR PANES OF FILM  ·  3 SIGN FACES  ·  "
            "3 BANNERS. SIGN FACES: A IS THE PRINT FILE, B IS THE SAME PANEL'S SECOND "
            "FACE — PRINT ONE PER SIDE OF THE BOARD.",
            2.6, B.GREY, "Inter-500", 0.4)

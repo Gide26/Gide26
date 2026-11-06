@@ -3,7 +3,7 @@
 Everything in one folder: the three door film packages, the sign post panel and the
 three roadside banners, with one master proof describing the lot.
 
-**24 door panes · 1 sign post panel (2 faces) · 3 banners · 23 licensed photographs**
+**32 door panes · 1 sign post panel (2 faces) · 3 banners · 29 licensed photographs**
 
 ## What is where
 
@@ -12,7 +12,7 @@ three roadside banners, with one master proof describing the lot.
 | `door-1/` `door-2/` `door-3/` | Eight panes each. Print files at 1 : 1 (900 × 500 and 900 × 400 mm), a panel proof, a schedule, a specification, day and night elevations, a licence record, a web preview |
 | `sign/` | Name-only sign post panel, 944.9 × 643.1 mm, two lockups, four-page proof, elevations, dimensioned drawing |
 | `banners/` | Three PVC banners — 3.8 m, 3.4 m, 2.4 m × 1.0 m — print files, six-page proof, fence elevations, licence page |
-| `print/` | **One print PDF per piece** — 24 panes, 3 sign faces, 3 banners, numbered 01–30, with `PRINT-INDEX.pdf`, a manifest and `BCM-Print-Files.zip` |
+| `print/` | **One print PDF per piece** — 32 panes, 3 sign faces, 3 banners, numbered 01–38, with `PRINT-INDEX.pdf`, a manifest, `BCM-Print-Files-ALL.pdf` and `BCM-Print-Files.zip` |
 | `complete/` | This README, the master proof, the manifest and the web index |
 
 At the top of the folder: `BCM-Complete-Set.pdf` (master proof, nine pages),
@@ -57,7 +57,7 @@ files on their own, numbered in running order.
 
 ```sh
 cd source
-python3 bcm_doors.py      # all three doors
+python3 bcm_doors.py      # all doors
 python3 bcm_sign.py       # sign post panel
 python3 bcm_banners.py    # three banners
 python3 bcm_master.py     # this set: master proof, manifest, README, zip
