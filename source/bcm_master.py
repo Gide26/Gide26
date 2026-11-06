@@ -288,7 +288,8 @@ def sign_page(c):
            f"mm, the client's {SIGN.FT_TXT}, double-sided, for a lighting board. The board "
            "does the lighting, so the face stays quiet: a white field with every word in "
            "bright red, set as large as the panel takes — EDDWALIRO and MEDICAL CENTRE edge "
-           "to edge, BCM between them, the motto under a short rule. No monogram.",
+           "to edge, BCM between them, the motto under a short rule, then a foot strip with "
+           "OPEN 24 HOURS and the two premises numbers. No monogram.",
            (D.PW - 2 * D.M) / MM * 0.72, 3.2, B.NAVY_MID)
 
     img_box(c, "sign/lookbook/M-01-sign-day.png", D.M, 40 * MM, 108 * MM,
@@ -690,7 +691,7 @@ def index_html():
 <header>
   <div class="eyebrow">BCM · MEDICAL CENTRE · COMPLETE SET</div>
   <h1>Eddwaliro. Medical Centre.</h1>
-  <p>Everything in one folder: three glazed doorways in film, a name-only sign post
+  <p>Everything in one folder: three glazed doorways in film, a lit sign post
      panel, and three roadside banners. Print-ready artwork, proofs, elevations and
      schedules — all measured to the clinic's own premises.</p>
   <div class="facts">

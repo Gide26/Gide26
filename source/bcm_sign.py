@@ -1,4 +1,4 @@
-"""BCM Medical Centre — name-only sign post panel.
+"""BCM Medical Centre — sign post panel, name plus the foot line.
 
 Separate deliverable from the door film set: one panel, no services, no
 photographs. Built to the client's measurement — 46 in × 22 in, landscape.
@@ -118,16 +118,21 @@ VARIANT_NAME = {"R": "LIT — RED ON WHITE", "L": "LIT — CYAN FIELD",
                 "C": "UNLIT — FASCIA"}
 
 
-def bright_face(c, w, h, pal, slogan=True, tel=False):
-    """The lit lockup: EDDWALIRO / BCM / MEDICAL CENTRE / motto, sized to the panel.
+def bright_face(c, w, h, pal, slogan=True, tel=True):
+    """The lit lockup: EDDWALIRO / BCM / MEDICAL CENTRE / motto / foot line.
 
     Width is the only real limit here — at 46 × 22 in, three lines of type stacked
     cannot each be as tall as the panel, so each line is set to the full measure and
     the leftover height goes into generous spacing, evenly, so the block sits as one
     composition rather than three lines jammed in the middle.
+
+    The foot carries the two things a passer-by needs once the name has landed: that
+    the clinic is open all night, and the numbers to ring. Same wording as the
+    banners, so the whole set reads as one set.
     """
     m = w * 0.040                       # just clear of the trim
     A = w - 2 * m
+    foot = h * 0.105 if tel else 0.0    # the open-24 / telephone strip
 
     cap_m = fit_cap(NAME, "Manrope-800", "Manrope", A)
     cap_e = fit_cap(WORD, "Manrope-800", "Manrope", A)
@@ -138,12 +143,12 @@ def bright_face(c, w, h, pal, slogan=True, tel=False):
     # gaps take whatever height is left, in these proportions
     wts = (0.30, 0.24, 0.13, 0.23)      # e→bcm, bcm→name, name→rule, rule→motto
     fixed = cap_e + cap_b + cap_m + rule_h + (cap_s if slogan else 0.0)
-    room = max(h * 0.94 - fixed, 0.0)
+    room = max((h - foot) * 0.94 - fixed, 0.0)
     g_e, g_b, g_rule, g_sl = (room * x for x in wts)
 
     block = cap_e + g_e + cap_b + g_b + cap_m
     tail = (g_rule + rule_h + g_sl + cap_s) if slogan else 0.0
-    top = h / 2 + (block + tail) / 2
+    top = foot + (h - foot) / 2 + (block + tail) / 2
 
     B.caps(c, w / 2, top - cap_e, WORD, cap_e, pal["word"], "Manrope-800",
            ED_TRACK * 0.6, align="center", max_w=A)
@@ -161,11 +166,18 @@ def bright_face(c, w, h, pal, slogan=True, tel=False):
         B.label(c, w / 2, ry - g_sl - cap_s, B.SLOGAN, cap_s, pal["slogan"],
                 "Inter-500", 3.0, align="center")
     if tel:
-        B.label(c, w / 2, 30.0, f"TEL {B.TEL}", 16.0, pal["name"],
-                "Inter-600", 2.2, align="center")
+        # ruled foot strip: open all night at the left, the numbers at the right
+        cap_f = cap_m * 0.185
+        fy = h * 0.052
+        c.setFillColor(pal["rule"])
+        c.rect(m, fy + cap_f * 2.05, w - 2 * m, max(2.4, rule_h * 0.55),
+               stroke=0, fill=1)
+        B.caps(c, m, fy, "OPEN 24 HOURS", cap_f, pal["word"], "Inter-600", 5.0)
+        B.caps(c, w - m, fy, f"TEL  {B.TEL}", cap_f, pal["name"], "Inter-600", 3.0,
+               align="right")
 
 
-def face(c, w=W, h=H, variant=FACE, slogan=True, tel=False):
+def face(c, w=W, h=H, variant=FACE, slogan=True, tel=True):
     """Draw the sign face at trim size, origin bottom-left, in millimetres."""
     M = 46.0
     pal = LIT.get(variant)
@@ -319,7 +331,7 @@ def face(c, w=W, h=H, variant=FACE, slogan=True, tel=False):
 
 
 # --------------------------------------------------------------------- artwork
-def artwork(path, variant=FACE, faces=("FACE A", "FACE B"), tel=False):
+def artwork(path, variant=FACE, faces=("FACE A", "FACE B"), tel=True):
     pw, ph = W + BLEED * 2, H + BLEED * 2 + SLUG
     c = canvas.Canvas(path, pagesize=(pw * MM, ph * MM))
     c.setTitle(f"BCM Medical Centre — sign post panel {W:.0f} x {H:.0f} mm ({variant})")
@@ -361,8 +373,8 @@ def artwork(path, variant=FACE, faces=("FACE A", "FACE B"), tel=False):
                "DOUBLE-SIDED — BOTH FACES IDENTICAL",
                2.3, B.CP_NAVY, "Inter-500", 0.25)
         B.caps(c, 3, SLUG - 15.4,
-               ("FOR A LIT BOX — BACKLIT MEDIA, EVEN LIGHT FIELD. NO MONOGRAM ON THIS FACE: "
-                "BCM STANDS IN ITS PLACE."
+               ("FOR A LIT BOX — BACKLIT MEDIA, EVEN LIGHT FIELD. NAME + OPEN 24 HOURS + "
+                "THE TWO PREMISES NUMBERS. NO MONOGRAM: BCM STANDS IN ITS PLACE."
                 if variant in LIT else
                 "NAME ONLY — EDDWALIRO / MEDICAL CENTRE, NO SERVICE LIST, NO PHOTOGRAPH. "
                 "MONOGRAM IS A RECREATION: REPLACE WITH CLIENT VECTOR LOGO BEFORE PLOT."),
@@ -375,7 +387,7 @@ def artwork(path, variant=FACE, faces=("FACE A", "FACE B"), tel=False):
 
 
 
-def artwork_exact(path, variant=FACE, faces=("FACE A", "FACE B"), tel=False):
+def artwork_exact(path, variant=FACE, faces=("FACE A", "FACE B"), tel=True):
     """The face at exactly the client's size: page = trim, 46 x 22 in.
 
     The print file carries bleed and a slug, so its page is deliberately larger than
@@ -396,7 +408,7 @@ def artwork_exact(path, variant=FACE, faces=("FACE A", "FACE B"), tel=False):
     return path
 
 
-def face_pdf(path, variant=FACE, tel=False):
+def face_pdf(path, variant=FACE, tel=True):
     """Trim-only face, for mockups and previews."""
     c = canvas.Canvas(path, pagesize=(W * MM, H * MM))
     c.scale(MM, MM)
@@ -407,7 +419,7 @@ def face_pdf(path, variant=FACE, tel=False):
 
 
 # --------------------------------------------------------------------- mockups
-def _panel_png(variant=FACE, px_w=1200, tel=False):
+def _panel_png(variant=FACE, px_w=1200, tel=True):
     import pypdfium2 as pdfium
     os.makedirs(WORK, exist_ok=True)
     pdf = os.path.join(WORK, f"sign_{variant}{'_tel' if tel else ''}.pdf")
@@ -428,7 +440,7 @@ POST_WORD = {2: "TWO", 3: "THREE", 4: "FOUR", 5: "FIVE", 6: "SIX"}
 POST_LC = {2: "Two", 3: "Three", 4: "Four", 5: "Five", 6: "Six"}
 
 
-def mockup(night=False, variant=FACE, tel=False):
+def mockup(night=False, variant=FACE, tel=True):
     """Elevation: the panel on its posts, to scale, day and night variants."""
     S = 0.95
     panel = _panel_png(variant, tel=tel)
@@ -564,7 +576,8 @@ def proof(path):
     D.page_bg(c, "SIGN POST PANEL", f"{REV}", 1, eyebrow=eyebrow)
     y = D.h1(c, D.PH - 34 * MM, "The name, on a post", 8.0)
     y = D.para(c, D.M, y + 2 * MM,
-               "One panel, the name only — no service list, no photograph. Trim "
+               "One panel: the name, and the two facts a passer-by needs — open all "
+               "night, and the numbers to ring. No service list, no photograph. Trim "
                f"{W:.0f} × {H:.0f} mm, the client's {FT_TXT}, double-sided, for a lighting "
                "board. EDDWALIRO heads the panel, BCM stands under it, and the English name "
                "keeps the widest line.",
@@ -645,6 +658,9 @@ def proof(path):
         "second colour.",
         "The field is white, not cyan. The board's light makes the panel bright; the red "
         "makes the words loud. Two things shouting at once is one too many.",
+        "The foot line is back, as on the earlier sign and the banners: OPEN 24 HOURS at "
+        "the left, 0771 240 104 · 0754 132 715 at the right, under a red rule. It sits in "
+        "its own strip so it never crowds the name.",
         "No monogram — BCM stands where it stood, in the display face.",
     ], 200 * MM, 3.0, B.NAVY_MID)
 
@@ -846,9 +862,16 @@ def printer_pack():
             f"  BCM-Sign-Post-SPARE-CYAN-FIELD-{tag}mm.pdf    the earlier cyan face, spare\n\n"
             "THE SETTING\n"
             "EDDWALIRO across the full measure in red, BCM in red under it, MEDICAL CENTRE\n"
-            "across the full measure in red, a short red rule, the motto in deep red.\n"
-            "No monogram. Every line is set as wide as the panel allows, so the type is as\n"
-            "large as 46 x 22 in will carry.\n\n"
+            "across the full measure in red, a short red rule, the motto in deep red, and a\n"
+            "foot strip under a red rule: OPEN 24 HOURS at the left, the two premises numbers\n"
+            "at the right - the same wording the banners carry. No monogram. Every line is\n"
+            "set as wide as the panel allows, so the type is as large as 46 x 22 in will\n"
+            "carry.\n\n"
+            "THE NUMBERS\n"
+            "0771 240 104 and 0754 132 715 are the clinic's own, off its premises boards. The\n"
+            "sign keeps 0771 240 104 as the first number, as it always has; the newer\n"
+            "0788 323 815 sits on door panes 1-18 only, on the client's instruction. If the\n"
+            "sign should lead with 0788 323 815 instead, that is a one-line change.\n\n"
             "WHICH FILE TO USE\n"
             "For the box: send the EXACT file if the face is being made to the panel size,\n"
             "or the bleed file if the printer wants bleed and crop marks. They are the same\n"
@@ -922,9 +945,10 @@ def main():
   <div class="eyebrow">BCM · MEDICAL CENTRE · SIGN POST PANEL</div>
   <h1>Eddwaliro. Medical Centre.</h1>
   <p>{FT_TXT} — {W:.0f} × {H:.0f} mm, landscape, double-sided, for a lighting board.
-     Name only: no service list, no photograph. The board lights the sign, so the face is a
-     plain white field with the words in bright red, set as large as the panel takes —
-     EDDWALIRO and MEDICAL CENTRE edge to edge, BCM between them. No monogram.</p>
+     No service list, no photograph: the name, plus OPEN 24 HOURS and the two premises
+     numbers in a strip at the foot. The board lights the sign, so the face is a plain white
+     field with the words in bright red, set as large as the panel takes — EDDWALIRO and
+     MEDICAL CENTRE edge to edge, BCM between them. No monogram.</p>
 </header>
 <nav><a href="../index.html">All artwork</a>
      <a href="../door-1/index.html">Door 1</a>
