@@ -13,6 +13,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import numpy as np
 from PIL import Image, ImageDraw
+from reportlab.lib.colors import Color
 from reportlab.lib.units import mm as MM
 from reportlab.pdfgen import canvas
 from reportlab.pdfbase import pdfmetrics
@@ -95,59 +96,72 @@ def lockscale(w, h, m=_REF_M, fill=0.88):
 
 
 # ------------------------------------------------------------------ bright faces
-# The sign is going into a lighting board (an internally lit box), so the face is
-# built light: a bright field, white display type, and the initials BCM where the
-# monogram used to sit. Navy is kept for the name only, so the widest line is the
-# darkest thing on a lit panel and the ink coverage stays low enough to light
-# evenly. Dense ink over a large area is what makes a backlit sign look blotchy.
+# The sign is going into a lighting board (an internally lit box). The board's own
+# light does the shouting, so the face is kept quiet — a white field — and the
+# words do it instead: full-width, in bright red, as large as the panel will carry.
+# White is the best field to light evenly; the red lettering is what reads from the
+# road, lit or not.
+LIT_RED = Color(0.929, 0.106, 0.141)      # #ED1B24 — bright red, the shouting colour
+DEEP_RED = Color(0.741, 0.078, 0.098)     # #BD1419 — the same red, for small type
+
 LIT = {
-    # cyan field — saturated, glows hard behind a diffuser
+    # the shipping face: white field, red lettering
+    "R": dict(ground=B.WHITE, word=LIT_RED, bcm=LIT_RED, name=LIT_RED,
+              rule=LIT_RED, slogan=DEEP_RED, key=(B.CP_GREY, 0.45)),
+    # spare: the cyan field, if the client would rather the field shout
     "L": dict(ground=B.CP_CYAN, word=B.WHITE, bcm=B.WHITE, name=B.CP_NAVY,
               rule=B.CP_NAVY, slogan=B.CP_NAVY, key=(B.WHITE, 0.34)),
-    # white field — maximum light through the face, for a bright day sign too
-    "W": dict(ground=B.WHITE, word=B.CP_CYAN, bcm=B.CP_NAVY, name=B.CP_NAVY,
-              rule=B.CP_CYAN, slogan=B.CP_NAVY, key=(B.CP_CYAN, 0.42)),
 }
-FACE = "L"                       # what the print files carry
-VARIANT_NAME = {"L": "LIT — CYAN FIELD", "W": "LIT — WHITE FIELD",
+FACE = "R"                       # what the print files carry
+VARIANT_NAME = {"R": "LIT — RED ON WHITE", "L": "LIT — CYAN FIELD",
                 "A": "UNLIT — NAVY FACE", "B": "UNLIT — BADGE-LEFT",
                 "C": "UNLIT — FASCIA"}
 
 
 def bright_face(c, w, h, pal, slogan=True, tel=False):
-    """The lit lockup: EDDWALIRO / BCM / MEDICAL CENTRE / rule / motto."""
-    # keep the name clear of the keyline: it is the one line that runs edge to edge
-    m = w * 0.085
-    cap_m = min(fit_cap(NAME, "Manrope-800", "Manrope", w - 2 * m), h * 0.30)
-    cap_e = cap_m * 0.56
-    cap_b = cap_m * 0.50
-    cap_s = cap_m * 0.155
-    gap_e, gap_b = cap_m * 0.26, cap_m * 0.24
-    gap_rule = cap_m * 0.30
-    rule_h = max(4.0, cap_m * 0.045)
-    gap_sl = cap_m * 0.30
+    """The lit lockup: EDDWALIRO / BCM / MEDICAL CENTRE / motto, sized to the panel.
 
-    block = cap_e + gap_e + cap_b + gap_b + cap_m
-    tail = (gap_rule + rule_h + gap_sl + cap_s) if slogan else 0.0
+    Width is the only real limit here — at 46 × 22 in, three lines of type stacked
+    cannot each be as tall as the panel, so each line is set to the full measure and
+    the leftover height goes into generous spacing, evenly, so the block sits as one
+    composition rather than three lines jammed in the middle.
+    """
+    m = w * 0.040                       # just clear of the trim
+    A = w - 2 * m
+
+    cap_m = fit_cap(NAME, "Manrope-800", "Manrope", A)
+    cap_e = fit_cap(WORD, "Manrope-800", "Manrope", A)
+    cap_b = cap_m * 0.40
+    cap_s = cap_m * 0.135
+    rule_h = max(3.5, cap_m * 0.026)
+
+    # gaps take whatever height is left, in these proportions
+    wts = (0.30, 0.24, 0.13, 0.23)      # e→bcm, bcm→name, name→rule, rule→motto
+    fixed = cap_e + cap_b + cap_m + rule_h + (cap_s if slogan else 0.0)
+    room = max(h * 0.94 - fixed, 0.0)
+    g_e, g_b, g_rule, g_sl = (room * x for x in wts)
+
+    block = cap_e + g_e + cap_b + g_b + cap_m
+    tail = (g_rule + rule_h + g_sl + cap_s) if slogan else 0.0
     top = h / 2 + (block + tail) / 2
 
     B.caps(c, w / 2, top - cap_e, WORD, cap_e, pal["word"], "Manrope-800",
-           ED_TRACK, align="center", max_w=w - 2 * m)
-    y_b = top - cap_e - gap_e - cap_b
-    B.caps(c, w / 2, y_b, "BCM", cap_b, pal["bcm"], "Manrope-800", 26.0,
-           align="center", max_w=w - 2 * m)
-    y_m = y_b - gap_b - cap_m
-    B.caps(c, w / 2, y_m, NAME, cap_m, pal["name"], "Manrope-800", 1.6,
-           align="center", max_w=w - 2 * m)
+           ED_TRACK * 0.6, align="center", max_w=A)
+    y_b = top - cap_e - g_e - cap_b
+    B.caps(c, w / 2, y_b, "BCM", cap_b, pal["bcm"], "Manrope-800", 18.0,
+           align="center", max_w=A)
+    y_m = y_b - g_b - cap_m
+    B.caps(c, w / 2, y_m, NAME, cap_m, pal["name"], "Manrope-800", 0.4,
+           align="center", max_w=A)
 
-    ry = y_m - gap_rule
+    ry = y_m - g_rule - rule_h
     c.setFillColor(pal["rule"])
-    c.rect(w / 2 - w * 0.115, ry, w * 0.23, rule_h, stroke=0, fill=1)
+    c.rect(w / 2 - w * 0.075, ry, w * 0.15, rule_h, stroke=0, fill=1)
     if slogan:
-        B.label(c, w / 2, ry - gap_sl - cap_s, B.SLOGAN, cap_s, pal["slogan"],
-                "Inter-400", 3.4, align="center")
+        B.label(c, w / 2, ry - g_sl - cap_s, B.SLOGAN, cap_s, pal["slogan"],
+                "Inter-500", 3.0, align="center")
     if tel:
-        B.label(c, w / 2, 40.0, f"TEL {B.TEL}", 16.0, pal["name"],
+        B.label(c, w / 2, 30.0, f"TEL {B.TEL}", 16.0, pal["name"],
                 "Inter-600", 2.2, align="center")
 
 
@@ -570,25 +584,23 @@ def proof(path):
     # ---- page 2 — the lit faces
     c.showPage()
     D.page_bg(c, "OPTIONS", f"{REV}", 2, eyebrow=eyebrow)
-    y = D.h1(c, D.PH - 34 * MM, "Three faces, one lockup", 8.0)
+    y = D.h1(c, D.PH - 34 * MM, "The words shout, the light doesn't", 8.0)
     D.para(c, D.M, y + 2 * MM,
-           "The post is going into a lighting board, so the face is built light instead of "
-           "dark: a bright field, white display type, and the initials BCM where the "
-           "monogram used to sit. Navy is kept for MEDICAL CENTRE alone, so the widest line "
-           "is the darkest thing on a lit panel and the ink coverage stays low enough to "
-           "light evenly — dense ink over a large area is what makes a backlit sign blotchy. "
-           "Cyan is the recommended field; white is the spare, and it will also hold up in "
-           "daylight if the box is switched off.",
+           "The box lights the sign, so the face does not have to. The field is plain white — "
+           "the one colour that lights evenly edge to edge — and every word is set in bright "
+           "red, as wide as the panel takes. The lettering is the shouting, not the panel: "
+           "a white field with huge red words reads from across the road, lit or not, and it "
+           "cannot go patchy the way a dense field does behind tubes.",
            (D.PW - 2 * D.M) / MM * 0.90, 3.2, B.NAVY_MID)
 
     sw = 82.0                                   # three across the measure
     sc = sw / W
     ph_mm = H * sc
     for i, (v, cap_txt) in enumerate((
-            ("L", "LIT — CYAN FIELD  ·  IN THE PRINT FILES"),
-            ("W", "LIT — WHITE FIELD  ·  SPARE"),
-            ("A", "UNLIT — THE OLD NAVY FACE  ·  NOT FOR THE BOX"))):
-        px = D.M + i * 88 * MM              # D.M is in points; add mm properly
+            ("R", "RED ON WHITE  ·  IN THE PRINT FILES"),
+            ("L", "CYAN FIELD  ·  SPARE"),
+            ("A", "THE OLD NAVY FACE  ·  NOT FOR THE BOX"))):
+        px = D.M + i * 88 * MM              # D.M is in points; add mm here
         py = 104 * MM
         c.saveState()
         c.translate(px, py)
@@ -602,14 +614,21 @@ def proof(path):
 
     B.label(c, D.M, 90 * MM, "WHAT CHANGED", 4.0, B.TEAL, "Inter-600", 1.6)
     D.bullets(c, D.M, 83 * MM, [
-        "The monogram is gone. BCM now stands where it stood, in the display face, so the "
-        "initials read at the same weight as the rest of the block.",
-        "EDDWALIRO is white on the cyan field, BCM below it, MEDICAL CENTRE in navy as the "
-        "widest line, the motto under a short rule.",
-        "The panel is still name-only: no service list, no photograph, no telephone unless "
-        "the client asks for it.",
-        "The keyline is drawn in white at 34 % on the cyan field — a bare 2 mm line, for the "
-        "edge of the box, not decoration.",
+        "The type is much larger: all three lines are set to the full measure and the "
+        "leftover height is shared out as spacing, so the words fill the panel without "
+        "crowding each other. MEDICAL CENTRE is 89 mm cap height over a 559 mm panel.",
+        "Everything is in red #ED1B24 — EDDWALIRO, BCM, MEDICAL CENTRE and the rule. The "
+        "motto is the same red a shade deeper, so it sits back without introducing a "
+        "second colour.",
+        "The field is white, not cyan. The board's light makes the panel bright; the red "
+        "makes the words loud. Two things shouting at once is one too many.",
+        "No monogram — BCM stands where it stood, in the display face.",
+    ], 200 * MM, 3.0, B.NAVY_MID)
+
+    B.label(c, D.M, 46 * MM, "IF THE RED IS TOO LOUD", 4.0, B.TEAL, "Inter-600", 1.6)
+    D.bullets(c, D.M, 39 * MM, [
+        "Say so and I will pull the red back to the clinic's cyan #2BA9E0 at the same size — "
+        "the layout does not care which colour it is set in.",
     ], 200 * MM, 3.0, B.NAVY_MID)
 
     # ---- page 3 — on the post
@@ -678,12 +697,15 @@ def proof(path):
         f"The face is {area:.2f} m². The artwork is supplied at 1 : 1 in millimetres, so it "
         "can go straight onto the box's print or be plotted as a spare.",
         "Double-sided: the artwork is identical on both faces, so the same file prints twice.",
-        "Print the light field as a solid, even coat — no gradient, no vignette. Banding in "
+        "Print the white field as a solid, even coat — no gradient, no vignette. Banding in "
         "a large flat field shows up far more when it is lit from behind.",
+        "Red is the colour to watch: #ED1B24 bleeds slightly into white when it is lit from "
+        "behind, so the letter edges soften and the red can warm towards orange. Hold it as "
+        "a flat spot colour if the process allows, and check a lit sample before the run.",
     ]
     D.bullets(c, D.M, y - 10 * MM, sub, 172 * MM, 3.0, B.NAVY_MID)
 
-    B.label(c, D.M, 138 * MM, "FIXING  —  CONFIRM WITH THE INSTALLER", 4.0, B.TEAL,
+    B.label(c, D.M, 130 * MM, "FIXING  —  CONFIRM WITH THE INSTALLER", 4.0, B.TEAL,
             "Inter-600", 1.6)
     n = post_count()
     fix = [f"Illumination: internally lit box, face lit from behind. Panel centre 1500 mm "
@@ -693,14 +715,14 @@ def proof(path):
            f"{W:.0f} × {H:.0f} mm, so the visible opening should be that size or the artwork "
            "will be cropped by the rebate.",
            "One rule for a lit face: the light must be even across the whole panel. That is "
-           "what the low ink coverage is for.",
+           "why the field is white and the ink is confined to the lettering and the rule.",
            f"If it is also to stand on posts rather than in the box, {POST_LC[n].lower()} "
            "galvanised posts at 520 mm centres, 600 mm into concrete, is the "
            "industry-typical proposal. Not a quotation."]
-    D.bullets(c, D.M, 130 * MM, fix, 172 * MM, 3.0, B.NAVY_MID)
+    D.bullets(c, D.M, 122 * MM, fix, 172 * MM, 3.0, B.NAVY_MID)
 
-    B.label(c, D.M, 102 * MM, "BEFORE PLOT", 4.0, B.TEAL, "Inter-600", 1.6)
-    D.bullets(c, D.M, 94 * MM, [
+    B.label(c, D.M, 92 * MM, "BEFORE PLOT", 4.0, B.TEAL, "Inter-600", 1.6)
+    D.bullets(c, D.M, 84 * MM, [
         f"Measurement is the client's: {FT_TXT}. Check it against the panel the "
         "signwriter is actually making before the file is plotted.",
         ("The sheet is supplied at 1 : 1 in millimetres and is close to the largest page a "
@@ -710,12 +732,11 @@ def proof(path):
          "plotter, and leave the crop marks outside the bleed."),
         "Confirm the fascia wording and the spelling of EDDWALIRO with the client before "
         "plot. The old navy face kept a recreated monogram; the lit faces carry BCM instead.",
-        "Check the light field against a printed sample before the full run — cyan reads "
-        "clearly cooler when it is backlit.",
+        "Check the red against a printed sample lit from behind before the full run.",
     ], 172 * MM, 3.0, B.NAVY_MID)
 
-    B.label(c, D.M, 62 * MM, "THE FILE", 4.0, B.TEAL, "Inter-600", 1.6)
-    D.bullets(c, D.M, 54 * MM, [
+    B.label(c, D.M, 52 * MM, "THE FILE", 4.0, B.TEAL, "Inter-600", 1.6)
+    D.bullets(c, D.M, 44 * MM, [
         f"Trim {W:.1f} × {H:.1f} mm, bleed {BLEED:.0f} mm all round, so the page is "
         f"{W + 2 * BLEED:.1f} × {H + 2 * BLEED + SLUG:.1f} mm — 1 : 1, no scaling.",
         f"A {SLUG:.0f} mm slug runs along the foot with the file name, the trim and the "
@@ -724,8 +745,8 @@ def proof(path):
            "hold (5080 mm), so nothing may be added around it."
            if W + 2 * BLEED > 4500 else ""),
         f"Safe area {SAFE:.0f} mm inside trim. Crop marks at the four corners, outside the bleed.",
-        "Colour: navy #16233F, cyan #2BA9E0, mist #E8EEF4, white. Supply as CMYK or let the "
-        "printer convert — do not colour-manage the navy towards black.",
+        "Colour: red #ED1B24 on white; motto in deep red #BD1419. Nothing else on the face. "
+        "Supply as CMYK or let the printer convert — do not let the red drift towards orange.",
     ], 172 * MM, 3.0, B.NAVY_MID)
 
     c.save()
@@ -748,15 +769,15 @@ def printer_pack():
         os.remove(os.path.join(out, f))
 
     tag = f"{W:.0f}x{H:.0f}"                      # 1168x559
-    both = os.path.join(out, f"BCM-Sign-Post-LIT-BOTH-FACES-{tag}mm.pdf")
-    face_a = os.path.join(out, f"BCM-Sign-Post-LIT-FACE-A-{tag}mm.pdf")
-    face_b = os.path.join(out, f"BCM-Sign-Post-LIT-FACE-B-{tag}mm.pdf")
-    white = os.path.join(out, f"BCM-Sign-Post-LIT-WHITE-FIELD-{tag}mm.pdf")
+    both = os.path.join(out, f"BCM-Sign-Post-RED-BOTH-FACES-{tag}mm.pdf")
+    face_a = os.path.join(out, f"BCM-Sign-Post-RED-FACE-A-{tag}mm.pdf")
+    face_b = os.path.join(out, f"BCM-Sign-Post-RED-FACE-B-{tag}mm.pdf")
+    spare = os.path.join(out, f"BCM-Sign-Post-SPARE-CYAN-FIELD-{tag}mm.pdf")
 
     artwork(both, faces=("FACE A", "FACE B"))
     artwork(face_a, faces=("FACE A",))
     artwork(face_b, faces=("FACE B",))
-    artwork(white, variant="W", faces=("FACE A",))
+    artwork(spare, variant="L", faces=("FACE A",))
 
     note = os.path.join(out, "READ-ME-FIRST.txt")
     with open(note, "w") as fh:
@@ -771,30 +792,34 @@ def printer_pack():
             "SAFE AREA:             25 mm from trim\n"
             f"PRINT SIZE IN FILE:    {W + 20:.1f} x {H + 20 + 22:.1f} mm\n"
             "CROP MARKS:            yes, at all four corners\n"
-            "COLOUR:                cyan #2BA9E0 field, white type, navy #16233F name\n"
+            "COLOUR:                red #ED1B24 on white; motto in deep red #BD1419\n"
             "PLOT AT 100% - NEVER SCALE.\n\n"
             "THIS FACE IS FOR AN INTERNALLY LIT BOX\n"
-            "The field is bright on purpose: a lit sign is read as light, not as ink, and a\n"
-            "dark face in a light box comes up patchy and grey. Navy is used only for\n"
-            "MEDICAL CENTRE, the widest line, so the ink coverage stays low and the tubes\n"
-            "light the panel evenly. Print on backlit-grade media - a translucent diffusing\n"
-            "acrylic or backlit film, or backlit banner media if the box takes a soft face.\n"
-            "Vinyl on opaque composite will block the light.\n\n"
+            "The field is plain white and the words carry the sign: EDDWALIRO and MEDICAL\n"
+            "CENTRE set edge to edge in red, BCM between them. White is the field that\n"
+            "lights most evenly, so the box glows quietly and the red lettering is what\n"
+            "shouts - that is the instruction behind this version. Print on backlit-grade\n"
+            "media: translucent diffusing acrylic or backlit film, or backlit banner media\n"
+            "if the box takes a soft face. Vinyl on opaque composite blocks the light.\n\n"
+            "RED IS THE ONE COLOUR TO WATCH IN A LIGHT BOX\n"
+            "A red this bright will bleed slightly into the white when it is lit from\n"
+            "behind - the letter edges soften and the red can warm towards orange. Two\n"
+            "things fix it: keep the tube close behind the face and even, and ask the\n"
+            "printer to hold the red as a flat spot colour rather than four-colour build\n"
+            "if the process allows. Check a lit sample before the full run.\n\n"
             "FILES\n"
-            f"  BCM-Sign-Post-LIT-BOTH-FACES-{tag}mm.pdf       2 pages: face A, face B\n"
-            f"  BCM-Sign-Post-LIT-FACE-A-{tag}mm.pdf           face A on its own\n"
-            f"  BCM-Sign-Post-LIT-FACE-B-{tag}mm.pdf           face B on its own\n"
-            f"  BCM-Sign-Post-LIT-WHITE-FIELD-{tag}mm.pdf      white field instead of cyan, spare\n\n"
-            "CYAN IS THE RECOMMENDED FIELD\n"
-            "EDDWALIRO in white, BCM in white under it, MEDICAL CENTRE in navy, the motto\n"
-            "in navy under a short rule. The monogram is gone - BCM stands in its place.\n"
-            "The white-field file is the same layout on white: it is the brightest option in\n"
-            "the box, and it is the one that still reads with the light switched off.\n\n"
+            f"  BCM-Sign-Post-RED-BOTH-FACES-{tag}mm.pdf      2 pages: face A, face B\n"
+            f"  BCM-Sign-Post-RED-FACE-A-{tag}mm.pdf          face A on its own\n"
+            f"  BCM-Sign-Post-RED-FACE-B-{tag}mm.pdf          face B on its own\n"
+            f"  BCM-Sign-Post-SPARE-CYAN-FIELD-{tag}mm.pdf    the earlier cyan face, spare\n\n"
+            "THE SETTING\n"
+            "EDDWALIRO across the full measure in red, BCM in red under it, MEDICAL CENTRE\n"
+            "across the full measure in red, a short red rule, the motto in deep red.\n"
+            "No monogram. Every line is set as wide as the panel allows, so the type is as\n"
+            "large as 46 x 22 in will carry.\n\n"
             "ONE THING TO CHECK BEFORE THE RUN\n"
             "The face must fit the box's aperture, not its outer frame: the visible opening\n"
-            "should be the trim size above, or the rebate will crop the artwork. Ask for a\n"
-            "printed sample of the cyan field lit from behind before the full run - backlit\n"
-            "cyan reads cooler and brighter than the same ink on paper.\n\n"
+            "should be the trim size above, or the rebate will crop the lettering.\n\n"
             "STRUCTURE - CONFIRM WITH THE SIGNWRITER\n"
             f"The face is about {(W*H)/1e6:.2f} m2. Panel centre 1500 mm above finished ground\n"
             "is a proposal only. Nothing here is a quotation.\n")
@@ -813,12 +838,10 @@ def main():
     os.makedirs(WORK, exist_ok=True)
     os.makedirs(os.path.join(OUT_DIR, "lookbook"), exist_ok=True)
 
-    a = artwork(os.path.join(ART_DIR, "BCM-Sign-Name-Only-Lit.pdf"))
-    w = artwork(os.path.join(ART_DIR, "BCM-Sign-Name-Only-Lit-White.pdf"),
-                variant="W", faces=("FACE A",))
-    c = artwork(os.path.join(ART_DIR, "BCM-Sign-Name-Only-Option-C-Fascia.pdf"),
-                variant="C", faces=("FACE A",))
-    print("artwork:", os.path.basename(a), os.path.basename(w), os.path.basename(c))
+    a = artwork(os.path.join(ART_DIR, "BCM-Sign-Name-Only-Red.pdf"))
+    c = artwork(os.path.join(ART_DIR, "BCM-Sign-Name-Only-Spare-Cyan.pdf"),
+                variant="L", faces=("FACE A",))
+    print("artwork:", os.path.basename(a), os.path.basename(c))
 
     for night, name in ((False, "M-01-sign-day.png"), (True, "M-02-sign-night.png")):
         img = mockup(night=night)
@@ -863,9 +886,9 @@ def main():
   <div class="eyebrow">BCM · MEDICAL CENTRE · SIGN POST PANEL</div>
   <h1>Eddwaliro. Medical Centre.</h1>
   <p>{FT_TXT} — {W:.0f} × {H:.0f} mm, landscape, double-sided, for a lighting board.
-     Name only: no service list, no photograph. The face is built light — a cyan field,
-     EDDWALIRO and BCM in white, MEDICAL CENTRE in navy as the widest line. No monogram:
-     the initials stand in its place.</p>
+     Name only: no service list, no photograph. The board lights the sign, so the face is a
+     plain white field with the words in bright red, set as large as the panel takes —
+     EDDWALIRO and MEDICAL CENTRE edge to edge, BCM between them. No monogram.</p>
 </header>
 <nav><a href="../index.html">All artwork</a>
      <a href="../door-1/index.html">Door 1</a>
@@ -884,12 +907,12 @@ def main():
   </div>
   <table>
     <tr><th>File</th><th>What it is</th></tr>
-    <tr><td><a href="artwork/BCM-Sign-Name-Only-Lit.pdf">BCM-Sign-Name-Only-Lit.pdf</a></td>
-        <td>Print file — the lit cyan face, both faces, 10 mm bleed, crop marks, 1 : 1 mm</td></tr>
-    <tr><td><a href="artwork/BCM-Sign-Name-Only-Lit-White.pdf">BCM-Sign-Name-Only-Lit-White.pdf</a></td>
-        <td>Print file — the same layout on a white field, spare</td></tr>
-    <tr><td><a href="print/BCM-Sign-Post-LIT-BOTH-FACES-{W:.0f}x{H:.0f}mm.pdf">BCM-Sign-Post-LIT-BOTH-FACES-{W:.0f}x{H:.0f}mm.pdf</a></td>
-        <td><b>Send this to the signwriter</b> — the sign post only, the lit face, both faces,
+    <tr><td><a href="artwork/BCM-Sign-Name-Only-Red.pdf">BCM-Sign-Name-Only-Red.pdf</a></td>
+        <td>Print file — the red-on-white lit face, both faces, 10 mm bleed, crop marks, 1 : 1 mm</td></tr>
+    <tr><td><a href="artwork/BCM-Sign-Name-Only-Spare-Cyan.pdf">BCM-Sign-Name-Only-Spare-Cyan.pdf</a></td>
+        <td>Print file — the cyan field at the same type size, spare</td></tr>
+    <tr><td><a href="print/BCM-Sign-Post-RED-BOTH-FACES-{W:.0f}x{H:.0f}mm.pdf">BCM-Sign-Post-RED-BOTH-FACES-{W:.0f}x{H:.0f}mm.pdf</a></td>
+        <td><b>Send this to the signwriter</b> — the sign post only, the red face, both faces,
             1 : 1 mm, 10 mm bleed, crop marks, backlit media</td></tr>
     <tr><td><a href="BCM-Sign-Post-Print-{W:.0f}x{H:.0f}mm.zip">BCM-Sign-Post-Print-{W:.0f}x{H:.0f}mm.zip</a></td>
         <td>The sign post only, as a zip: the two-face file, each face on its own, the

@@ -54,21 +54,22 @@ def place(src, dest_name):
 
 
 def sign_tag():
-    """'5055x1245' — the sign's finished size, for the print file names."""
+    """'1168x559' — the sign's finished size, for the print file names."""
     return f"{SIGN.W:.0f}x{SIGN.H:.0f}"
 
 
 def sign_faces():
-    """Split the sign post into a file per face, and add the fascia option."""
+    """Split the sign post into a file per face, and add the spare field."""
     os.makedirs(SIGN.WORK, exist_ok=True)
     made = []
     for label, fname in (("FACE A", "SIGN-A-FACE-A"), ("FACE B", "SIGN-A-FACE-B")):
         tmp = os.path.join(SIGN.WORK, f"sign_{label.replace(' ', '_').lower()}.pdf")
-        SIGN.artwork(tmp, variant="A", faces=(label,))
+        SIGN.artwork(tmp, faces=(label,))          # the lit red face, both sides
         made.append((place(tmp, f"{fname}-{sign_tag()}.pdf"), fname))
-    tmp = os.path.join(SIGN.WORK, "sign_c_face_a.pdf")
-    SIGN.artwork(tmp, variant="C", faces=("FACE A",))
-    made.append((place(tmp, f"SIGN-C-FACE-A-{sign_tag()}.pdf"), "SIGN-C-FACE-A"))
+    tmp = os.path.join(SIGN.WORK, "sign_spare_face_a.pdf")
+    SIGN.artwork(tmp, variant="L", faces=("FACE A",))
+    made.append((place(tmp, f"SIGN-SPARE-CYAN-FIELD-{sign_tag()}.pdf"),
+                 "SIGN-SPARE-CYAN-FIELD"))
     return made
 
 
@@ -83,7 +84,7 @@ def pieces_list():
             pieces.append((n, f"{prefix}-P{i}", service, f"{prefix}-P{i}",
                            door["folder"], "Door film", f"900 × {w} mm",
                            f"{n:02d}-{prefix}-P{i}-{slug_service(service)}-900x{w}.pdf"))
-    for job in ("SIGN-A-FACE-A", "SIGN-A-FACE-B", "SIGN-C-FACE-A"):
+    for job in ("SIGN-A-FACE-A", "SIGN-A-FACE-B", "SIGN-SPARE-CYAN-FIELD"):
         n += 1
         pieces.append((n, job, "Sign post panel", job, "sign", "Sign post",
                        f"{SIGN.W:.1f} × {SIGN.H:.1f} mm",
@@ -168,8 +169,8 @@ def index_pdf(path, pieces):
 
     B.caps(c, D.M, 18 * MM,
            f"TOTAL {len(pieces)} FILES  ·  32 DOOR PANES OF FILM  ·  3 SIGN FACES  ·  "
-           "3 BANNERS. SIGN FACES: 33 AND 34 ARE THE APPROVED SETTING, ONE PER SIDE OF "
-           "THE BOARD; 35 IS THE FASCIA ALTERNATIVE, A SPARE.",
+           "3 BANNERS. SIGN FACES: 33 AND 34 ARE THE LIT RED FACE, ONE PER SIDE OF THE "
+           "LIGHTING BOARD; 35 IS THE CYAN-FIELD SPARE.",
            2.6, B.GREY, "Inter-500", 0.4)
     c.save()
     return path

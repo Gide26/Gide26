@@ -47,14 +47,16 @@ landscape, which is **1168.4 × 558.8 mm**. No service list, no photograph — `
 `BCM` where the badge used to sit, then `MEDICAL CENTRE` set at the largest size the panel will
 take. Double-sided; both faces are in the one print PDF.
 
-**It is going into an internally lit box, so the face is built light**: a cyan field, white
-`EDDWALIRO` and `BCM`, the name in navy. Low ink coverage keeps the light even; a dark face in a
-light box comes up patchy. A white-field version is supplied as a spare.
+**It is going into an internally lit box, so the words carry it**: a plain white field with
+`EDDWALIRO`, `BCM` and `MEDICAL CENTRE` all in bright red `#ED1B24`, set edge to edge and as
+large as the panel takes. The board lights the sign; the red lettering shouts. Low ink coverage
+also keeps the light even — a dense field in a light box comes up patchy. The earlier cyan face
+is kept as a spare.
 
 | Path | What it is |
 | --- | --- |
-| `sign/artwork/BCM-Sign-Name-Only-Lit.pdf` | Print file, lit cyan face — 1 : 1 mm, 10 mm bleed, crop marks, two faces |
-| `sign/artwork/BCM-Sign-Name-Only-Lit-White.pdf` | Print file, lit white field — spare |
+| `sign/artwork/BCM-Sign-Name-Only-Red.pdf` | Print file, red on white — 1 : 1 mm, 10 mm bleed, crop marks, two faces |
+| `sign/artwork/BCM-Sign-Name-Only-Spare-Cyan.pdf` | Print file, cyan field — spare |
 | `sign/print/` + `sign/BCM-Sign-Post-Print-1168x559mm.zip` | The signwriter's pack: the two-face file, each face alone, the spare fascia setting, READ-ME-FIRST |
 | `sign/BCM-Sign-Panel.pdf` | 4 pages — panel to scale with dimensions, the three settings, on the post, specification |
 | `sign/lookbook/` | Day and night elevations, dimensioned panel |

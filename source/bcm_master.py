@@ -285,10 +285,10 @@ def sign_page(c):
     y = D.h1(c, D.PH - 34 * MM, "The sign post panel", 7.6)
     D.para(c, D.M, y + 2 * MM,
            f"Name only — no service list, no photograph. Trim {SIGN.W:.1f} × {SIGN.H:.1f} "
-           f"mm, the client's {SIGN.FT_TXT}, double-sided, for a lighting board. The face is "
-           "built light: a cyan field, EDDWALIRO and BCM in white, MEDICAL CENTRE in navy as "
-           "the widest line, the motto under a short rule. No monogram — BCM stands in its "
-           "place. Low ink coverage keeps the light even across the panel.",
+           f"mm, the client's {SIGN.FT_TXT}, double-sided, for a lighting board. The board "
+           "does the lighting, so the face stays quiet: a white field with every word in "
+           "bright red, set as large as the panel takes — EDDWALIRO and MEDICAL CENTRE edge "
+           "to edge, BCM between them, the motto under a short rule. No monogram.",
            (D.PW - 2 * D.M) / MM * 0.72, 3.2, B.NAVY_MID)
 
     img_box(c, "sign/lookbook/M-01-sign-day.png", D.M, 40 * MM, 108 * MM,
@@ -299,11 +299,11 @@ def sign_page(c):
     B.label(c, D.M + 124 * MM, 156 * MM, "WHAT IS SUPPLIED", 4.0, B.TEAL,
             "Inter-600", 1.6)
     sy = D.bullets(c, D.M + 124 * MM, 148 * MM, [
-        "print/ — the signwriter's pack: the lit face, both faces in one file, each face "
-        "alone, the white-field spare and READ-ME-FIRST.txt.",
-        "artwork/BCM-Sign-Name-Only-Lit.pdf — the lit cyan face, 1 : 1 mm.",
-        "artwork/BCM-Sign-Name-Only-Lit-White.pdf — the same on white, spare.",
-        "BCM-Sign-Panel.pdf — four pages: the panel to scale, the two options, on the "
+        "print/ — the signwriter's pack: the red face, both faces in one file, each face "
+        "alone, the cyan-field spare and READ-ME-FIRST.txt.",
+        "artwork/BCM-Sign-Name-Only-Red.pdf — the red-on-white lit face, 1 : 1 mm.",
+        "artwork/BCM-Sign-Name-Only-Spare-Cyan.pdf — the cyan field, same size, spare.",
+        "BCM-Sign-Panel.pdf — four pages: the panel to scale, the three faces, on the "
         "post, specification.",
         "lookbook/ — day and night elevations and the dimensioned drawing.",
     ], 150 * MM, 3.0, B.NAVY_MID)
@@ -313,7 +313,8 @@ def sign_page(c):
             "Inter-600", 1.6)
     D.bullets(c, D.M + 124 * MM, sy - 8 * MM, [
         "Backlit-grade face: translucent diffusing acrylic or backlit film, not vinyl on "
-        "opaque composite. Industry-typical, not a quotation.",
+        "opaque composite. The red bleeds into white when lit from behind, so hold it as a "
+        "spot colour and check a lit sample. Industry-typical, not a quotation.",
         "Proposal: two 76 mm galvanised posts at 520 mm centres; panel centre 1500 mm above "
         "finished ground level.",
         f"Check {SIGN.FT_TXT} against the panel the signwriter is actually making "
@@ -380,8 +381,7 @@ def print_page(c, pieces):
     groups = [("DOOR FILM — 24 PANES", "Door film", 4,
                "One file per pane, pane plus 10 mm bleed, cut to the size in the name."),
               ("SIGN POST — 3 FACES", "Sign post", 3,
-               "Option A face A, option A face B, and the fascia alternative face A — "
-               "one file per side of the board."),
+               "The lit red face, once per side of the board, plus the cyan-field spare."),
               ("BANNERS — 3", "Banner", 3,
                "One file per banner, 60 mm clear of the trim for the hem and the eyelets.")]
 

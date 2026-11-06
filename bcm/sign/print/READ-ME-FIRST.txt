@@ -9,34 +9,39 @@ SLUG:                  22 mm at the foot (in the file, trim it off)
 SAFE AREA:             25 mm from trim
 PRINT SIZE IN FILE:    1188.4 x 600.8 mm
 CROP MARKS:            yes, at all four corners
-COLOUR:                cyan #2BA9E0 field, white type, navy #16233F name
+COLOUR:                red #ED1B24 on white; motto in deep red #BD1419
 PLOT AT 100% - NEVER SCALE.
 
 THIS FACE IS FOR AN INTERNALLY LIT BOX
-The field is bright on purpose: a lit sign is read as light, not as ink, and a
-dark face in a light box comes up patchy and grey. Navy is used only for
-MEDICAL CENTRE, the widest line, so the ink coverage stays low and the tubes
-light the panel evenly. Print on backlit-grade media - a translucent diffusing
-acrylic or backlit film, or backlit banner media if the box takes a soft face.
-Vinyl on opaque composite will block the light.
+The field is plain white and the words carry the sign: EDDWALIRO and MEDICAL
+CENTRE set edge to edge in red, BCM between them. White is the field that
+lights most evenly, so the box glows quietly and the red lettering is what
+shouts - that is the instruction behind this version. Print on backlit-grade
+media: translucent diffusing acrylic or backlit film, or backlit banner media
+if the box takes a soft face. Vinyl on opaque composite blocks the light.
+
+RED IS THE ONE COLOUR TO WATCH IN A LIGHT BOX
+A red this bright will bleed slightly into the white when it is lit from
+behind - the letter edges soften and the red can warm towards orange. Two
+things fix it: keep the tube close behind the face and even, and ask the
+printer to hold the red as a flat spot colour rather than four-colour build
+if the process allows. Check a lit sample before the full run.
 
 FILES
-  BCM-Sign-Post-LIT-BOTH-FACES-1168x559mm.pdf       2 pages: face A, face B
-  BCM-Sign-Post-LIT-FACE-A-1168x559mm.pdf           face A on its own
-  BCM-Sign-Post-LIT-FACE-B-1168x559mm.pdf           face B on its own
-  BCM-Sign-Post-LIT-WHITE-FIELD-1168x559mm.pdf      white field instead of cyan, spare
+  BCM-Sign-Post-RED-BOTH-FACES-1168x559mm.pdf      2 pages: face A, face B
+  BCM-Sign-Post-RED-FACE-A-1168x559mm.pdf          face A on its own
+  BCM-Sign-Post-RED-FACE-B-1168x559mm.pdf          face B on its own
+  BCM-Sign-Post-SPARE-CYAN-FIELD-1168x559mm.pdf    the earlier cyan face, spare
 
-CYAN IS THE RECOMMENDED FIELD
-EDDWALIRO in white, BCM in white under it, MEDICAL CENTRE in navy, the motto
-in navy under a short rule. The monogram is gone - BCM stands in its place.
-The white-field file is the same layout on white: it is the brightest option in
-the box, and it is the one that still reads with the light switched off.
+THE SETTING
+EDDWALIRO across the full measure in red, BCM in red under it, MEDICAL CENTRE
+across the full measure in red, a short red rule, the motto in deep red.
+No monogram. Every line is set as wide as the panel allows, so the type is as
+large as 46 x 22 in will carry.
 
 ONE THING TO CHECK BEFORE THE RUN
 The face must fit the box's aperture, not its outer frame: the visible opening
-should be the trim size above, or the rebate will crop the artwork. Ask for a
-printed sample of the cyan field lit from behind before the full run - backlit
-cyan reads cooler and brighter than the same ink on paper.
+should be the trim size above, or the rebate will crop the lettering.
 
 STRUCTURE - CONFIRM WITH THE SIGNWRITER
 The face is about 0.65 m2. Panel centre 1500 mm above finished ground

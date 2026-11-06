@@ -38,7 +38,7 @@
 | 32 | D4-P8 | OUR SERVICES | Door film | 900 × 500 mm | `32-D4-P8-OUR-SERVICES-900x500.pdf` |
 | 33 | SIGN-A-FACE-A | Sign post panel | Sign post | 1168.4 × 558.8 mm | `33-SIGN-A-FACE-A-1168x559.pdf` |
 | 34 | SIGN-A-FACE-B | Sign post panel | Sign post | 1168.4 × 558.8 mm | `34-SIGN-A-FACE-B-1168x559.pdf` |
-| 35 | SIGN-C-FACE-A | Sign post panel | Sign post | 1168.4 × 558.8 mm | `35-SIGN-C-FACE-A-1168x559.pdf` |
+| 35 | SIGN-SPARE-CYAN-FIELD | Sign post panel | Sign post | 1168.4 × 558.8 mm | `35-SIGN-SPARE-CYAN-FIELD-1168x559.pdf` |
 | 36 | B-1 | The road banner | Banner | 3800 × 1000 mm | `36-B1-ROAD-3800x1000.pdf` |
 | 37 | B-2 | The services banner | Banner | 3400 × 1000 mm | `37-B2-SERVICES-3400x1000.pdf` |
 | 38 | B-3 | The compact banner | Banner | 2400 × 1000 mm | `38-B3-COMPACT-2400x1000.pdf` |
@@ -88,7 +88,7 @@
 
 - `33-SIGN-A-FACE-A-1168x559.pdf`
 - `34-SIGN-A-FACE-B-1168x559.pdf`
-- `35-SIGN-C-FACE-A-1168x559.pdf`
+- `35-SIGN-SPARE-CYAN-FIELD-1168x559.pdf`
 
 ### Banner printer — one file per banner
 
