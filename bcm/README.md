@@ -57,6 +57,7 @@ is kept as a spare.
 | --- | --- |
 | `sign/artwork/BCM-Sign-Name-Only-Red.pdf` | Print file, red on white — 1 : 1 mm, 10 mm bleed, crop marks, two faces |
 | `sign/artwork/BCM-Sign-Name-Only-Spare-Cyan.pdf` | Print file, cyan field — spare |
+| `sign/print/BCM-Sign-Post-RED-EXACT-46x22in.pdf` | The face at exactly 46 × 22 in — page = trim |
 | `sign/print/` + `sign/BCM-Sign-Post-Print-1168x559mm.zip` | The signwriter's pack: the two-face file, each face alone, the spare fascia setting, READ-ME-FIRST |
 | `sign/BCM-Sign-Panel.pdf` | 4 pages — panel to scale with dimensions, the three settings, on the post, specification |
 | `sign/lookbook/` | Day and night elevations, dimensioned panel |

@@ -353,7 +353,8 @@ def artwork(path, variant=FACE, faces=("FACE A", "FACE B"), tel=False):
         c.line(0, SLUG, pw, SLUG)
         B.caps(c, 3, SLUG - 6.6,
                f"BCM SIGN POST PANEL  |  {label}  |  {VARIANT_NAME.get(variant, variant)}  |  "
-               f"TRIM {W:.1f} x {H:.1f} mm  ({ftin(W_IN)} x {ftin(H_IN)})",
+               f"TRIM {W_IN:.0f} x {H_IN:.0f} IN  =  {W:.1f} x {H:.1f} mm  |  "
+               f"PAGE {W + 2 * BLEED:.1f} x {H + 2 * BLEED + SLUG:.1f} mm (BLEED + SLUG)",
                2.7, B.CP_NAVY, "Inter-600", 0.3)
         B.caps(c, 3, SLUG - 11.2,
                f"BLEED {BLEED:.0f} mm  |  SAFE {SAFE:.0f} mm  |  {REV}  |  "
@@ -368,6 +369,28 @@ def artwork(path, variant=FACE, faces=("FACE A", "FACE B"), tel=False):
                2.1, B.CP_NAVY_MD, "Inter-500", 0.2)
         B.caps(c, pw - 3, 3.2, "CROP MARKS — TRIM AT THE MARKS", 2.2, B.CP_GREY,
                "Inter-500", 0.4, "right")
+        c.showPage()
+    c.save()
+    return path
+
+
+
+def artwork_exact(path, variant=FACE, faces=("FACE A", "FACE B"), tel=False):
+    """The face at exactly the client's size: page = trim, 46 x 22 in.
+
+    The print file carries bleed and a slug, so its page is deliberately larger than
+    the panel. This one is for anyone who measures the file or drops it straight into
+    the box's own template: 1168.4 x 558.8 mm, to the millimetre.
+    """
+    c = canvas.Canvas(path, pagesize=(W * MM, H * MM))
+    c.setTitle(f"BCM Medical Centre — sign face {W_IN:.0f} x {H_IN:.0f} in "
+               f"({W:.1f} x {H:.1f} mm)")
+    c.setAuthor("BCM Medical Centre — sign post project")
+    for _ in faces:
+        c.saveState()
+        c.scale(MM, MM)
+        face(c, variant=variant, tel=tel)
+        c.restoreState()
         c.showPage()
     c.save()
     return path
@@ -769,11 +792,13 @@ def printer_pack():
         os.remove(os.path.join(out, f))
 
     tag = f"{W:.0f}x{H:.0f}"                      # 1168x559
+    exact = os.path.join(out, f"BCM-Sign-Post-RED-EXACT-{W_IN:.0f}x{H_IN:.0f}in.pdf")
     both = os.path.join(out, f"BCM-Sign-Post-RED-BOTH-FACES-{tag}mm.pdf")
     face_a = os.path.join(out, f"BCM-Sign-Post-RED-FACE-A-{tag}mm.pdf")
     face_b = os.path.join(out, f"BCM-Sign-Post-RED-FACE-B-{tag}mm.pdf")
     spare = os.path.join(out, f"BCM-Sign-Post-SPARE-CYAN-FIELD-{tag}mm.pdf")
 
+    artwork_exact(exact, faces=("FACE A", "FACE B"))
     artwork(both, faces=("FACE A", "FACE B"))
     artwork(face_a, faces=("FACE A",))
     artwork(face_b, faces=("FACE B",))
@@ -784,13 +809,18 @@ def printer_pack():
         fh.write(
             "BCM MEDICAL CENTRE - SIGN POST PANEL, FOR A LIGHTING BOARD\n"
             "===========================================================\n\n"
-            f"TRIM (finished size):  {W:.1f} x {H:.1f} mm\n"
+            f"TRIM (finished size):  {W_IN:.0f} in x {H_IN:.0f} in\n"
+            f"                       = {W:.1f} x {H:.1f} mm exactly (25.4 mm to the inch)\n"
             f"                       = {ftin(W_IN)} long x {ftin(H_IN)} high\n"
-            f"                       = {W_IN:.0f} in x {H_IN:.0f} in (25.4 mm to the inch)\n"
             "BLEED:                 10 mm all round (in the file)\n"
             "SLUG:                  22 mm at the foot (in the file, trim it off)\n"
             "SAFE AREA:             25 mm from trim\n"
-            f"PRINT SIZE IN FILE:    {W + 20:.1f} x {H + 20 + 22:.1f} mm\n"
+            f"PAGE, PRINT FILE:      {W + 2 * BLEED:.1f} x {H + 2 * BLEED + SLUG:.1f} mm\n"
+            "                       (trim + 10 mm bleed all round + 22 mm slug at the foot.\n"
+            "                       The page is LARGER than the panel on purpose.)\n"
+            f"PAGE, EXACT FILE:      {W:.1f} x {H:.1f} mm = {W_IN:.0f} x {H_IN:.0f} in,\n"
+            "                       trim only, no bleed, no slug - this is the one that\n"
+            "                       measures the panel size.\n"
             "CROP MARKS:            yes, at all four corners\n"
             "COLOUR:                red #ED1B24 on white; motto in deep red #BD1419\n"
             "PLOT AT 100% - NEVER SCALE.\n\n"
@@ -808,6 +838,8 @@ def printer_pack():
             "printer to hold the red as a flat spot colour rather than four-colour build\n"
             "if the process allows. Check a lit sample before the full run.\n\n"
             "FILES\n"
+            f"  BCM-Sign-Post-RED-EXACT-{W_IN:.0f}x{H_IN:.0f}in.pdf          "
+            f"{W_IN:.0f} x {H_IN:.0f} in page, trim only - measures the panel\n"
             f"  BCM-Sign-Post-RED-BOTH-FACES-{tag}mm.pdf      2 pages: face A, face B\n"
             f"  BCM-Sign-Post-RED-FACE-A-{tag}mm.pdf          face A on its own\n"
             f"  BCM-Sign-Post-RED-FACE-B-{tag}mm.pdf          face B on its own\n"
@@ -817,6 +849,10 @@ def printer_pack():
             "across the full measure in red, a short red rule, the motto in deep red.\n"
             "No monogram. Every line is set as wide as the panel allows, so the type is as\n"
             "large as 46 x 22 in will carry.\n\n"
+            "WHICH FILE TO USE\n"
+            "For the box: send the EXACT file if the face is being made to the panel size,\n"
+            "or the bleed file if the printer wants bleed and crop marks. They are the same\n"
+            "artwork - only the page edge differs.\n\n"
             "ONE THING TO CHECK BEFORE THE RUN\n"
             "The face must fit the box's aperture, not its outer frame: the visible opening\n"
             "should be the trim size above, or the rebate will crop the lettering.\n\n"
@@ -911,9 +947,14 @@ def main():
         <td>Print file — the red-on-white lit face, both faces, 10 mm bleed, crop marks, 1 : 1 mm</td></tr>
     <tr><td><a href="artwork/BCM-Sign-Name-Only-Spare-Cyan.pdf">BCM-Sign-Name-Only-Spare-Cyan.pdf</a></td>
         <td>Print file — the cyan field at the same type size, spare</td></tr>
+    <tr><td><a href="print/BCM-Sign-Post-RED-EXACT-{W_IN:.0f}x{H_IN:.0f}in.pdf">BCM-Sign-Post-RED-EXACT-{W_IN:.0f}x{H_IN:.0f}in.pdf</a></td>
+        <td><b>Exactly {W_IN:.0f} × {H_IN:.0f} in</b> — the page <i>is</i> the panel,
+            {W:.1f} × {H:.1f} mm, no bleed, no slug. This is the file to send if the face is
+            being made to the panel size, and the one whose size can be measured.</td></tr>
     <tr><td><a href="print/BCM-Sign-Post-RED-BOTH-FACES-{W:.0f}x{H:.0f}mm.pdf">BCM-Sign-Post-RED-BOTH-FACES-{W:.0f}x{H:.0f}mm.pdf</a></td>
-        <td><b>Send this to the signwriter</b> — the sign post only, the red face, both faces,
-            1 : 1 mm, 10 mm bleed, crop marks, backlit media</td></tr>
+        <td>The same artwork with 10 mm bleed and crop marks — page is deliberately larger
+            ({(W + 2 * BLEED):.1f} × {(H + 2 * BLEED + SLUG):.1f} mm). For a printer who needs
+            bleed.</td></tr>
     <tr><td><a href="BCM-Sign-Post-Print-{W:.0f}x{H:.0f}mm.zip">BCM-Sign-Post-Print-{W:.0f}x{H:.0f}mm.zip</a></td>
         <td>The sign post only, as a zip: the two-face file, each face on its own, the
             spare fascia setting, and the printer's note</td></tr>

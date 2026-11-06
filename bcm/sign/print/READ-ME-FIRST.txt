@@ -1,13 +1,18 @@
 BCM MEDICAL CENTRE - SIGN POST PANEL, FOR A LIGHTING BOARD
 ===========================================================
 
-TRIM (finished size):  1168.4 x 558.8 mm
+TRIM (finished size):  46 in x 22 in
+                       = 1168.4 x 558.8 mm exactly (25.4 mm to the inch)
                        = 3 ft 10 in long x 1 ft 10 in high
-                       = 46 in x 22 in (25.4 mm to the inch)
 BLEED:                 10 mm all round (in the file)
 SLUG:                  22 mm at the foot (in the file, trim it off)
 SAFE AREA:             25 mm from trim
-PRINT SIZE IN FILE:    1188.4 x 600.8 mm
+PAGE, PRINT FILE:      1188.4 x 600.8 mm
+                       (trim + 10 mm bleed all round + 22 mm slug at the foot.
+                       The page is LARGER than the panel on purpose.)
+PAGE, EXACT FILE:      1168.4 x 558.8 mm = 46 x 22 in,
+                       trim only, no bleed, no slug - this is the one that
+                       measures the panel size.
 CROP MARKS:            yes, at all four corners
 COLOUR:                red #ED1B24 on white; motto in deep red #BD1419
 PLOT AT 100% - NEVER SCALE.
@@ -28,6 +33,7 @@ printer to hold the red as a flat spot colour rather than four-colour build
 if the process allows. Check a lit sample before the full run.
 
 FILES
+  BCM-Sign-Post-RED-EXACT-46x22in.pdf          46 x 22 in page, trim only - measures the panel
   BCM-Sign-Post-RED-BOTH-FACES-1168x559mm.pdf      2 pages: face A, face B
   BCM-Sign-Post-RED-FACE-A-1168x559mm.pdf          face A on its own
   BCM-Sign-Post-RED-FACE-B-1168x559mm.pdf          face B on its own
@@ -38,6 +44,11 @@ EDDWALIRO across the full measure in red, BCM in red under it, MEDICAL CENTRE
 across the full measure in red, a short red rule, the motto in deep red.
 No monogram. Every line is set as wide as the panel allows, so the type is as
 large as 46 x 22 in will carry.
+
+WHICH FILE TO USE
+For the box: send the EXACT file if the face is being made to the panel size,
+or the bleed file if the printer wants bleed and crop marks. They are the same
+artwork - only the page edge differs.
 
 ONE THING TO CHECK BEFORE THE RUN
 The face must fit the box's aperture, not its outer frame: the visible opening

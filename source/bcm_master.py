@@ -299,8 +299,8 @@ def sign_page(c):
     B.label(c, D.M + 124 * MM, 156 * MM, "WHAT IS SUPPLIED", 4.0, B.TEAL,
             "Inter-600", 1.6)
     sy = D.bullets(c, D.M + 124 * MM, 148 * MM, [
-        "print/ — the signwriter's pack: the red face, both faces in one file, each face "
-        "alone, the cyan-field spare and READ-ME-FIRST.txt.",
+        "print/ — the signwriter's pack: the exact-size file (page = 46 × 22 in), the "
+        "bleed version, each face alone, the cyan-field spare and READ-ME-FIRST.txt.",
         "artwork/BCM-Sign-Name-Only-Red.pdf — the red-on-white lit face, 1 : 1 mm.",
         "artwork/BCM-Sign-Name-Only-Spare-Cyan.pdf — the cyan field, same size, spare.",
         "BCM-Sign-Panel.pdf — four pages: the panel to scale, the three faces, on the "

@@ -27,7 +27,8 @@ are identical.
 
 | File | What it is |
 | --- | --- |
-| `print/BCM-Sign-Post-RED-BOTH-FACES-1168x559mm.pdf` | **Send this to the signwriter** — the sign post only, both faces, 1 : 1 in mm, 10 mm bleed, crop marks |
+| `print/BCM-Sign-Post-RED-EXACT-46x22in.pdf` | **Exactly 46 × 22 in** — the page *is* the panel (1168.4 × 558.8 mm), two pages, no bleed, no slug. Send this if the face is made to the panel size; it is the file whose page measures the client's measurement. |
+| `print/BCM-Sign-Post-RED-BOTH-FACES-1168x559mm.pdf` | The same artwork with 10 mm bleed and crop marks — page deliberately larger (1188.4 × 600.8 mm) |
 | `print/BCM-Sign-Post-RED-FACE-A-1168x559mm.pdf` | Face A alone |
 | `print/BCM-Sign-Post-RED-FACE-B-1168x559mm.pdf` | Face B alone |
 | `print/BCM-Sign-Post-SPARE-CYAN-FIELD-1168x559mm.pdf` | The earlier cyan field at the same type size — spare |
@@ -43,8 +44,11 @@ are identical.
 
 ## Measurements
 
-- Trim 1168.4 × 558.8 mm (46 in × 22 in at 25.4 mm to the inch; 3 ft 10 in × 1 ft 10 in)
-- Bleed 10 mm all round → 1188.4 × 578.8 mm, plus a 22 mm slug at the foot → page 1188.4 × 600.8 mm
+- **Trim 46 × 22 in = 1168.4 × 558.8 mm** (3 ft 10 in × 1 ft 10 in; 25.4 mm to the inch)
+- **Exact file: page = 1168.4 × 558.8 mm.** Nothing else on the page.
+- Bleed file: trim + 10 mm bleed all round → 1188.4 × 578.8 mm, + 22 mm slug at the foot →
+  page 1188.4 × 600.8 mm. **That page is larger than the panel on purpose** — it is the trim
+  plus what the printer needs to trim back to. Measure the artwork, not the page edge.
 - Safe area 25 mm in from trim
 - Both faces identical; print the two-page file once and turn the sheet
 - Plot at 1 : 1. The file is drawn in millimetres; do not scale it.
