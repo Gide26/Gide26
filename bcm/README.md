@@ -48,14 +48,15 @@ in the one print PDF.
 
 **Built to the sign the clinic already has.** The client sent a night photograph of the lit box
 on the road and asked for the new face to be made like it, so the arrangement is the one people
-there already read: the badge and `Bactrimed` on a white band, `COMMUNITY MEDICAL CENTRE` in
-white on navy, `EDDWALIRO` knocked out of a full-width red block, an arrow at each end of the
-`Open  24 Hrs` row, and a navy foot strip with `TEL 0788 323 815 · 0754 132 715` at the left
-and `NABINGO BRANCH` at the right.
+there already read: `BCM` on a white band, `MEDICAL CENTRE` in navy on a light blue band,
+`EDDWALIRO` knocked out of a full-width red block, an arrow at each end of the `Open  24 Hrs`
+row, and a navy foot strip with `TEL 0788 323 815 · 0754 132 715` at the left and `BUSSABALA`
+at the right.
 
 Red `#ED1B24` still carries the flag — the block behind the name and the OPEN 24 HRS row — with
-the clinic's navy in two thin bands and white either side, so the box lights evenly rather than
-through one dense field. The earlier cyan field is kept as a spare.
+the clinic's navy, a light blue band `#C9E4F6` and white around it; the coloured bands are thin,
+so the box lights evenly rather than through one dense field. The earlier cyan field is kept as
+a spare.
 
 | Path | What it is |
 | --- | --- |

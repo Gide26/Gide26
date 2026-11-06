@@ -4,31 +4,31 @@
 standing on the road, and asked for the new face to be made like it — so the arrangement is the
 one people there already read:
 
-1. white band: the badge at the left, `Bactrimed` at the right
-2. navy band: `COMMUNITY MEDICAL CENTRE`, white, tracked across the measure
+1. white band: `BCM` — where the badge and the Bactrimed wordmark used to be
+2. **light blue** band (`#C9E4F6`): `MEDICAL CENTRE` in navy, across the measure
 3. red block, full width: `EDDWALIRO` knocked out in white
 4. white row: an arrow at each end, `Open` and `24 Hrs` in red between them
-5. navy foot strip: `TEL 0788 323 815 · 0754 132 715` at the left, `NABINGO BRANCH` at the
-   right
+5. navy foot strip: `TEL 0788 323 815 · 0754 132 715` at the left, `BUSSABALA` at the right
 
-No service list, no photograph, **no motto**. The brand line, the community name, the branch,
-the arrows and the numbers are all read off the client's own sign — nothing on the face is
-invented.
+No service list, no photograph, **no motto**. Nothing on the face is invented: the initials,
+the name, the branch and the numbers are the client's, and the arrangement is the sign already
+standing on the road.
 
 **Red still carries the flag.** The block behind the name and the OPEN 24 HRS row are `#ED1B24`;
-everything else is the clinic's navy `#16233F` and white. The navy sits in two thin bands with
-white either side, so the box lights evenly rather than through one dense field.
+the rest is the clinic's navy `#16233F`, a light blue band (`#C9E4F6`, a tint of the clinic's
+cyan) and white. The coloured bands are thin and sit with white between them, so the box lights
+evenly rather than through one dense field.
 
 Type sizes on the shipped face (1168.4 × 558.8 mm):
 
 | Line | Cap height | How it is set |
 | --- | --- | --- |
 | EDDWALIRO | 117.4 mm | white, knocked out of the red block, full measure |
-| COMMUNITY MEDICAL CENTRE | 35.2 mm | white, on the navy band, tracked |
+| MEDICAL CENTRE | 39.4 mm | navy, on the light blue band, tracked |
 | Open · 24 Hrs | 61.0 mm | red, between two solid red arrows |
-| Bactrimed | 19.0 mm | navy wordmark, right of the badge band |
+| BCM | 33.5 mm | navy, centred on the white band |
 | TEL 0788 323 815 · 0754 132 715 | 18.6 mm | white on the navy foot strip, left |
-| NABINGO BRANCH | 18.6 mm | white on the navy foot strip, right |
+| BUSSABALA | 18.6 mm | white on the navy foot strip, right |
 
 **Trim: 1168.4 × 558.8 mm — the client's 46 in long × 22 in high, landscape.**
 Revised on 2026-11-06 from 16 ft 7 in × 49 in, which itself replaced 4 ft × 2 ft
@@ -90,9 +90,9 @@ are identical.
 4. The numbers on the face — **0788 323 815 · 0754 132 715** — are the client's, as given for
    the sign. 0788 323 815 is the newer line, already on door panes 1–18. The banners and panes
    19–24 still carry 0771 240 104 as their first number.
-5. **`NABINGO BRANCH` and `Bactrimed` are copied from the client's existing sign.** If this
-   face is for a different branch, or the brand line should come off, each is one word in
-   `source/bcm_sign.py` (`SIGN_BRANCH`, `SIGN_BRAND`).
+5. The branch line reads **`BUSSABALA`**, the initials **`BCM`** and the name line
+   **`MEDICAL CENTRE`** — each is one constant in `source/bcm_sign.py` (`SIGN_BRANCH`,
+   `SIGN_BRAND`, `SIGN_COMMUNITY`) if the wording changes again.
 
 If the red is too loud, say so: the same layout can be set on the clinic's cyan `#2BA9E0`
 field, and the cyan spare is already in the pack.

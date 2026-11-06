@@ -286,11 +286,11 @@ def sign_page(c):
     D.para(c, D.M, y + 2 * MM,
            f"Name only — no service list, no photograph, no motto. Trim {SIGN.W:.1f} × "
            f"{SIGN.H:.1f} mm, the client's {SIGN.FT_TXT}, double-sided, for a lighting "
-           "board. The face is built to the sign already standing on the road: Bactrimed and "
-           "the badge on a white band, COMMUNITY MEDICAL CENTRE in white on navy, EDDWALIRO "
-           "knocked out of a full-width red block, OPEN 24 HRS between two arrows, then a "
-           "navy foot strip with 0788 323 815 · 0754 132 715 and NABINGO BRANCH. Red carries "
-           "the colour; the navy sits in two thin bands so the box still lights evenly.",
+           "board. The face is built to the sign already standing on the road: BCM on a white "
+           "band, MEDICAL CENTRE in navy on a light blue band, EDDWALIRO knocked out of a "
+           "full-width red block, OPEN 24 HRS between two arrows, then a navy foot strip with "
+           "0788 323 815 · 0754 132 715 and BUSSABALA. Red carries the colour; the bands are "
+           "thin and sit with white between them, so the box still lights evenly.",
            (D.PW - 2 * D.M) / MM * 0.72, 3.2, B.NAVY_MID)
 
     img_box(c, "sign/lookbook/M-01-sign-day.png", D.M, 40 * MM, 108 * MM,

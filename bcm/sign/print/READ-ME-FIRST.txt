@@ -21,9 +21,9 @@ PLOT AT 100% - NEVER SCALE.
 
 THIS FACE IS FOR AN INTERNALLY LIT BOX
 The face is the arrangement of the sign already standing on the road, brought
-up to date: badge and Bactrimed on a white band, COMMUNITY MEDICAL CENTRE in
-white on navy, EDDWALIRO knocked out of a full-width red block, OPEN 24 HRS
-between two arrows, and a navy foot strip with the numbers and NABINGO BRANCH.
+up to date: BCM on a white band, MEDICAL CENTRE in navy on a light blue band,
+EDDWALIRO knocked out of a full-width red block, OPEN 24 HRS between two arrows,
+and a navy foot strip with the numbers and BUSSABALA.
 The navy sits in thin bands with white either side, so the box lights evenly.
 Print on backlit-grade media: translucent diffusing acrylic or backlit film, or
 backlit banner media if the box takes a soft face. Vinyl on opaque composite
@@ -44,11 +44,11 @@ FILES
   BCM-Sign-Post-SPARE-CYAN-FIELD-1168x559mm.pdf    the earlier cyan face, spare
 
 THE SETTING
-Top band, white: the badge at the left, Bactrimed at the right. Then the navy
-band COMMUNITY MEDICAL CENTRE in white. Then the red block, full width, with
+Top band, white: BCM, centred. Then the light blue band MEDICAL CENTRE in navy.
+Then the red block, full width, with
 EDDWALIRO knocked out of it in white at the largest size the panel will take.
 Then the white row: an arrow at each end, Open and 24 Hrs between them in red.
-Then the navy foot strip: the numbers at the left, NABINGO BRANCH at the right.
+Then the navy foot strip: the numbers at the left, BUSSABALA at the right.
 There is NO MOTTO on this face - the client asked for it off.
 
 THE NUMBERS
