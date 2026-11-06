@@ -288,8 +288,8 @@ def sign_page(c):
            f"mm, the client's {SIGN.FT_TXT}, double-sided, for a lighting board. The board "
            "does the lighting, so the face stays quiet: a white field with every word in "
            "bright red, set as large as the panel takes — EDDWALIRO and MEDICAL CENTRE edge "
-           "to edge, BCM between them, the motto under a short rule, then a foot strip with "
-           "OPEN 24 HOURS and the two premises numbers. No monogram.",
+           "to edge, BCM between them, then a foot strip with OPEN 24 HOURS and the numbers "
+           "0788 323 815 · 0754 132 715. No motto, no monogram.",
            (D.PW - 2 * D.M) / MM * 0.72, 3.2, B.NAVY_MID)
 
     img_box(c, "sign/lookbook/M-01-sign-day.png", D.M, 40 * MM, 108 * MM,

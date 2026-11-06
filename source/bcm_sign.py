@@ -113,13 +113,19 @@ LIT = {
               rule=B.CP_NAVY, slogan=B.CP_NAVY, key=(B.WHITE, 0.34)),
 }
 FACE = "R"                       # what the print files carry
+# The client's number for the sign: 0788 323 815 first, 0754 132 715 kept. This is the
+# newer line they gave (it went onto door panes 1-18); the sign now carries it too.
+SIGN_TEL = "0788 323 815  ·  0754 132 715"
 VARIANT_NAME = {"R": "LIT — RED ON WHITE", "L": "LIT — CYAN FIELD",
                 "A": "UNLIT — NAVY FACE", "B": "UNLIT — BADGE-LEFT",
                 "C": "UNLIT — FASCIA"}
 
 
-def bright_face(c, w, h, pal, slogan=True, tel=True):
-    """The lit lockup: EDDWALIRO / BCM / MEDICAL CENTRE / motto / foot line.
+def bright_face(c, w, h, pal, slogan=False, tel=True):
+    """The lit lockup: EDDWALIRO / BCM / MEDICAL CENTRE / foot line.
+
+    No motto on this face — the client asked for it off. The name and the foot line
+    are the whole message, so the three lines get the height the motto used to take.
 
     Width is the only real limit here — at 46 × 22 in, three lines of type stacked
     cannot each be as tall as the panel, so each line is set to the full measure and
@@ -137,7 +143,7 @@ def bright_face(c, w, h, pal, slogan=True, tel=True):
     cap_m = fit_cap(NAME, "Manrope-800", "Manrope", A)
     cap_e = fit_cap(WORD, "Manrope-800", "Manrope", A)
     cap_b = cap_m * 0.40
-    cap_s = cap_m * 0.135
+    cap_s = cap_m * 0.135               # only used if the motto is switched back on
     rule_h = max(3.5, cap_m * 0.026)
 
     # gaps take whatever height is left, in these proportions
@@ -148,7 +154,10 @@ def bright_face(c, w, h, pal, slogan=True, tel=True):
 
     block = cap_e + g_e + cap_b + g_b + cap_m
     tail = (g_rule + rule_h + g_sl + cap_s) if slogan else 0.0
-    top = foot + (h - foot) / 2 + (block + tail) / 2
+    # with no motto the block would sit high in its own band, leaving a dead strip
+    # between the name and the foot rule; nudge it down so the space reads as even
+    nudge = 0.0 if slogan else h * 0.020 * (1.0 if tel else 0.0)
+    top = foot + (h - foot) / 2 + (block + tail) / 2 - nudge
 
     B.caps(c, w / 2, top - cap_e, WORD, cap_e, pal["word"], "Manrope-800",
            ED_TRACK * 0.6, align="center", max_w=A)
@@ -159,10 +168,10 @@ def bright_face(c, w, h, pal, slogan=True, tel=True):
     B.caps(c, w / 2, y_m, NAME, cap_m, pal["name"], "Manrope-800", 0.4,
            align="center", max_w=A)
 
-    ry = y_m - g_rule - rule_h
-    c.setFillColor(pal["rule"])
-    c.rect(w / 2 - w * 0.075, ry, w * 0.15, rule_h, stroke=0, fill=1)
     if slogan:
+        ry = y_m - g_rule - rule_h
+        c.setFillColor(pal["rule"])
+        c.rect(w / 2 - w * 0.075, ry, w * 0.15, rule_h, stroke=0, fill=1)
         B.label(c, w / 2, ry - g_sl - cap_s, B.SLOGAN, cap_s, pal["slogan"],
                 "Inter-500", 3.0, align="center")
     if tel:
@@ -173,11 +182,11 @@ def bright_face(c, w, h, pal, slogan=True, tel=True):
         c.rect(m, fy + cap_f * 2.05, w - 2 * m, max(2.4, rule_h * 0.55),
                stroke=0, fill=1)
         B.caps(c, m, fy, "OPEN 24 HOURS", cap_f, pal["word"], "Inter-600", 5.0)
-        B.caps(c, w - m, fy, f"TEL  {B.TEL}", cap_f, pal["name"], "Inter-600", 3.0,
+        B.caps(c, w - m, fy, f"TEL  {SIGN_TEL}", cap_f, pal["name"], "Inter-600", 3.0,
                align="right")
 
 
-def face(c, w=W, h=H, variant=FACE, slogan=True, tel=True):
+def face(c, w=W, h=H, variant=FACE, slogan=False, tel=True):
     """Draw the sign face at trim size, origin bottom-left, in millimetres."""
     M = 46.0
     pal = LIT.get(variant)
@@ -653,14 +662,15 @@ def proof(path):
         "The type is much larger: all three lines are set to the full measure and the "
         "leftover height is shared out as spacing, so the words fill the panel without "
         "crowding each other. MEDICAL CENTRE is 89 mm cap height over a 559 mm panel.",
-        "Everything is in red #ED1B24 — EDDWALIRO, BCM, MEDICAL CENTRE and the rule. The "
-        "motto is the same red a shade deeper, so it sits back without introducing a "
-        "second colour.",
+        "Everything is in red #ED1B24 — EDDWALIRO, BCM, MEDICAL CENTRE and the rules. One "
+        "colour, so nothing competes with the name.",
         "The field is white, not cyan. The board's light makes the panel bright; the red "
         "makes the words loud. Two things shouting at once is one too many.",
-        "The foot line is back, as on the earlier sign and the banners: OPEN 24 HOURS at "
-        "the left, 0771 240 104 · 0754 132 715 at the right, under a red rule. It sits in "
-        "its own strip so it never crowds the name.",
+        "The motto is off this face, as asked. The name and the foot line are the whole "
+        "message, and the three lines take the height the motto used to occupy.",
+        "The foot strip carries OPEN 24 HOURS at the left and the clinic's numbers at the "
+        "right — 0788 323 815 · 0754 132 715 — under a red rule, in its own band so it "
+        "never crowds the name.",
         "No monogram — BCM stands where it stood, in the display face.",
     ], 200 * MM, 3.0, B.NAVY_MID)
 
@@ -784,8 +794,8 @@ def proof(path):
            "hold (5080 mm), so nothing may be added around it."
            if W + 2 * BLEED > 4500 else ""),
         f"Safe area {SAFE:.0f} mm inside trim. Crop marks at the four corners, outside the bleed.",
-        "Colour: red #ED1B24 on white; motto in deep red #BD1419. Nothing else on the face. "
-        "Supply as CMYK or let the printer convert — do not let the red drift towards orange.",
+        "Colour: red #ED1B24 on white, nothing else. Supply as CMYK or let the printer "
+        "convert — do not let the red drift towards orange.",
     ], 172 * MM, 3.0, B.NAVY_MID)
 
     c.save()
@@ -838,7 +848,7 @@ def printer_pack():
             "                       trim only, no bleed, no slug - this is the one that\n"
             "                       measures the panel size.\n"
             "CROP MARKS:            yes, at all four corners\n"
-            "COLOUR:                red #ED1B24 on white; motto in deep red #BD1419\n"
+            "COLOUR:                red #ED1B24 on white, nothing else\n"
             "PLOT AT 100% - NEVER SCALE.\n\n"
             "THIS FACE IS FOR AN INTERNALLY LIT BOX\n"
             "The field is plain white and the words carry the sign: EDDWALIRO and MEDICAL\n"
@@ -862,16 +872,15 @@ def printer_pack():
             f"  BCM-Sign-Post-SPARE-CYAN-FIELD-{tag}mm.pdf    the earlier cyan face, spare\n\n"
             "THE SETTING\n"
             "EDDWALIRO across the full measure in red, BCM in red under it, MEDICAL CENTRE\n"
-            "across the full measure in red, a short red rule, the motto in deep red, and a\n"
-            "foot strip under a red rule: OPEN 24 HOURS at the left, the two premises numbers\n"
-            "at the right - the same wording the banners carry. No monogram. Every line is\n"
-            "set as wide as the panel allows, so the type is as large as 46 x 22 in will\n"
-            "carry.\n\n"
+            "across the full measure in red, then a foot strip under a red rule: OPEN 24\n"
+            "HOURS at the left, the numbers at the right. There is NO MOTTO on this face -\n"
+            "the client asked for it off - and no monogram. Every line is set as wide as the\n"
+            "panel allows, so the type is as large as 46 x 22 in will carry.\n\n"
             "THE NUMBERS\n"
-            "0771 240 104 and 0754 132 715 are the clinic's own, off its premises boards. The\n"
-            "sign keeps 0771 240 104 as the first number, as it always has; the newer\n"
-            "0788 323 815 sits on door panes 1-18 only, on the client's instruction. If the\n"
-            "sign should lead with 0788 323 815 instead, that is a one-line change.\n\n"
+            "The sign carries 0788 323 815 and 0754 132 715 - the client's numbers for it.\n"
+            "0788 323 815 is the newer line, already on door panes 1-18; the sign now leads\n"
+            "with it too. The banners still carry 0771 240 104 as their first number, and\n"
+            "pane 19-24 keep it. If you want the banners changed to match, say so.\n\n"
             "WHICH FILE TO USE\n"
             "For the box: send the EXACT file if the face is being made to the panel size,\n"
             "or the bleed file if the printer wants bleed and crop marks. They are the same\n"

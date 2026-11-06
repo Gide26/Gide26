@@ -41,11 +41,12 @@ carries its own artwork, schedule, specification, elevations, web preview, READM
 
 ## The sign post panel
 
-A separate deliverable, name only: **46 in × 22 in** as the client measured it (revised on
-2026-11-06 from 16 ft 7 in × 49 in, which followed 4 ft × 2 ft and 3.10 × 2.11 ft),
-landscape, which is **1168.4 × 558.8 mm**. No service list, no photograph — `EDDWALIRO`, then
-`BCM` where the badge used to sit, then `MEDICAL CENTRE` set at the largest size the panel will
-take. Double-sided; both faces are in the one print PDF.
+A separate deliverable: **46 in × 22 in** as the client measured it (revised on 2026-11-06
+from 16 ft 7 in × 49 in, which followed 4 ft × 2 ft and 3.10 × 2.11 ft), landscape, which is
+**1168.4 × 558.8 mm**. No service list, no photograph, no motto — `EDDWALIRO`, then `BCM`
+where the badge used to sit, then `MEDICAL CENTRE` set at the largest size the panel will take,
+with a foot strip carrying `OPEN 24 HOURS` and `0788 323 815 · 0754 132 715`. Double-sided;
+both faces are in the one print PDF.
 
 **It is going into an internally lit box, so the words carry it**: a plain white field with
 `EDDWALIRO`, `BCM` and `MEDICAL CENTRE` all in bright red `#ED1B24`, set edge to edge and as

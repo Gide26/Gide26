@@ -1,14 +1,12 @@
 # BCM Medical Centre — sign post panel, for a lighting board
 
-No service list, no photograph, no monogram. The name, plus the two facts a passer-by needs:
-**OPEN 24 HOURS** and the two premises numbers, in a ruled strip at the foot — the same
-wording the banners carry.
+No service list, no photograph, no monogram, **no motto**. The name, plus the two facts a
+passer-by needs: **OPEN 24 HOURS** and the numbers to ring, in a ruled strip at the foot.
 
 **The board lights the sign, so the words do the shouting.** The face is a plain white field
 with every word in bright red `#ED1B24`, set as large as a 46 × 22 in panel will carry:
-`EDDWALIRO` edge to edge, `BCM` between, `MEDICAL CENTRE` edge to edge, a short red rule, the
-motto in the same red a shade deeper, then the foot strip: OPEN 24 HOURS left, the numbers
-right. No second colour, no dense field.
+`EDDWALIRO` edge to edge, `BCM` between, `MEDICAL CENTRE` edge to edge, then the foot strip:
+OPEN 24 HOURS left, the numbers right. No second colour, no dense field, no motto.
 
 Why white and not a colour: a lit face reads evenly when there is little ink on it. White is
 the field the tubes light most cleanly, so the panel glows quietly from end to end and the red
@@ -21,8 +19,8 @@ Type sizes on the shipped face (1168.4 × 558.8 mm):
 | EDDWALIRO | 128.7 mm | full measure, red, tight tracking |
 | BCM | 35.8 mm | centred under it, red |
 | MEDICAL CENTRE | 89.4 mm | full measure, red |
-| motto | 12.1 mm | deep red, under a short rule |
-| OPEN 24 HOURS · TEL 0771 240 104 · 0754 132 715 | 16.5 mm | ruled foot strip, both ends |
+| OPEN 24 HOURS | 16.2 mm | ruled foot strip, left |
+| TEL 0788 323 815 · 0754 132 715 | 16.2 mm | ruled foot strip, right |
 
 **Trim: 1168.4 × 558.8 mm — the client's 46 in long × 22 in high, landscape.**
 Revised on 2026-11-06 from 16 ft 7 in × 49 in, which itself replaced 4 ft × 2 ft
@@ -80,10 +78,9 @@ are identical.
 1. Check 46 × 22 in against the box's aperture.
 2. Get a lit sample of the red before the full run.
 3. Confirm the spelling EDDWALIRO before plot.
-4. The numbers on the face — 0771 240 104 · 0754 132 715 — are the clinic's own, off its
-   premises boards, and the sign keeps 0771 240 104 as the first number as it always has. The
-   newer 0788 323 815 sits on door panes 1–18 only, on the client's instruction. If the sign
-   should lead with it, that is a one-line change in `source/bcm_brand.py`.
+4. The numbers on the face — **0788 323 815 · 0754 132 715** — are the client's, as given for
+   the sign. 0788 323 815 is the newer line, already on door panes 1–18. The banners and panes
+   19–24 still carry 0771 240 104 as their first number.
 
 If the red is too loud, say so: the same layout can be set in the clinic's cyan `#2BA9E0` at
 the same size, and the cyan field spare is already in the pack.
