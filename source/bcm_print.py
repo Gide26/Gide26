@@ -53,6 +53,11 @@ def place(src, dest_name):
     return dest
 
 
+def sign_tag():
+    """'1219x610' — the sign's finished size, for the print file names."""
+    return f"{SIGN.W:.0f}x{SIGN.H:.0f}"
+
+
 def sign_faces():
     """Split the sign post into a file per face, and add option B."""
     os.makedirs(SIGN.WORK, exist_ok=True)
@@ -60,10 +65,10 @@ def sign_faces():
     for label, fname in (("FACE A", "SIGN-A-FACE-A"), ("FACE B", "SIGN-A-FACE-B")):
         tmp = os.path.join(SIGN.WORK, f"sign_{label.replace(' ', '_').lower()}.pdf")
         SIGN.artwork(tmp, variant="A", faces=(label,))
-        made.append((place(tmp, f"{fname}-944x643.pdf"), fname))
+        made.append((place(tmp, f"{fname}-{sign_tag()}.pdf"), fname))
     tmp = os.path.join(SIGN.WORK, "sign_b_face_a.pdf")
     SIGN.artwork(tmp, variant="B", faces=("FACE A",))
-    made.append((place(tmp, "SIGN-B-FACE-A-944x643.pdf"), "SIGN-B-FACE-A"))
+    made.append((place(tmp, f"SIGN-B-FACE-A-{sign_tag()}.pdf"), "SIGN-B-FACE-A"))
     return made
 
 
@@ -81,7 +86,8 @@ def pieces_list():
     for job in ("SIGN-A-FACE-A", "SIGN-A-FACE-B", "SIGN-B-FACE-A"):
         n += 1
         pieces.append((n, job, "Sign post panel", job, "sign", "Sign post",
-                       "944.9 × 643.1 mm", f"{n:02d}-{job}-944x643.pdf"))
+                       f"{SIGN.W:.1f} × {SIGN.H:.1f} mm",
+                       f"{n:02d}-{job}-{sign_tag()}.pdf"))
     for b in BAN.BANNERS:
         n += 1
         label = {1: "ROAD", 2: "SERVICES", 3: "COMPACT"}[int(b["id"].split("-")[1])]

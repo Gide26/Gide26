@@ -1,7 +1,7 @@
 """BCM Medical Centre — name-only sign post panel.
 
 Separate deliverable from the door film set: one panel, no services, no
-photographs. Built to the client's measurement — 3.10 ft × 2.11 ft, landscape.
+photographs. Built to the client's measurement — 4 ft × 2 ft, landscape.
 
 Everything is drawn in millimetres on the trim rectangle; the artwork file adds
 10 mm bleed, crop marks and a slug strip the same way the door panes do.
@@ -20,15 +20,18 @@ from reportlab.pdfbase import pdfmetrics
 import bcm_brand as B
 import cp_docutil as D
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(HERE)
 OUT_DIR = os.path.join(ROOT, "bcm", "sign")
 ART_DIR = os.path.join(OUT_DIR, "artwork")
 WORK = os.path.join(ROOT, "source", ".work", "bcm_sign")
 
 # --- the client's measurement -------------------------------------------------
 FT = 304.8
-W_FT, H_FT = 3.10, 2.11
-W, H = round(W_FT * FT, 1), round(H_FT * FT, 1)     # 944.9 × 643.1 mm
+W_FT, H_FT = 4.0, 2.0                               # client, 2026-11-02
+W, H = round(W_FT * FT, 1), round(H_FT * FT, 1)     # 1219.2 × 609.6 mm
+FT_TXT = f"{W_FT:.2f} ft × {H_FT:.2f} ft"           # 4.00 ft × 2.00 ft
+MM_TXT = f"{W:.1f} × {H:.1f} mm"
 BLEED, SLUG = 10.0, 22.0
 SAFE = 25.0
 REV = "Rev A  ·  2026-10-30"
@@ -49,6 +52,37 @@ def fit_cap(text, weight, family, target_w):
     return cap * target_w / w
 
 
+# The lockup was approved at 944.9 × 643.1 mm. A 4 ft × 2 ft panel is much wider
+# and slightly shallower, so the block is SCALED from that approved arrangement
+# rather than re-fitted: proportions stay identical, and the type never runs to
+# the edge or crowds the top and bottom.
+REF_W, REF_H = 944.9, 643.1
+_REF_M = 46.0
+_REF = None
+
+
+def _ref():
+    """The approved lockup's own numbers, at the reference panel."""
+    global _REF
+    if _REF is None:
+        cap_m = fit_cap(NAME, "Manrope-800", "Manrope", REF_W - 2 * _REF_M)
+        cap_e = cap_m * ED_RATIO
+        ms, cap_b, cap_s = 112.0, 26.0, 22.0
+        gap_e, gap_badge, gap_bm, gap_rule = 24.0, 20.0, 16.0, 44.0
+        block = cap_e + gap_e + ms + gap_badge + cap_b + gap_bm + cap_m
+        tail = gap_rule + 5.0 + 22.0 + cap_s
+        _REF = {"cap_m": cap_m, "block": block, "tail": tail}
+    return _REF
+
+
+def lockscale(w, h, m=_REF_M, fill=0.84):
+    """Scale factor for the approved lockup on a panel of w × h mm."""
+    r = _ref()
+    by_width = fit_cap(NAME, "Manrope-800", "Manrope", w - 2 * m) / r["cap_m"]
+    by_height = (fill * h) / (r["block"] + r["tail"])
+    return min(by_width, by_height)
+
+
 def face(c, w=W, h=H, variant="A", slogan=True, tel=False):
     """Draw the sign face at trim size, origin bottom-left, in millimetres."""
     M = 46.0
@@ -56,14 +90,16 @@ def face(c, w=W, h=H, variant="A", slogan=True, tel=False):
     c.rect(0, 0, w, h, stroke=0, fill=1)
 
     if variant == "A":                       # centred, typographic
-        ms, cap_b, cap_s = 112.0, 26.0, 22.0
-        gap_e, gap_badge, gap_bm, gap_rule = 24.0, 20.0, 16.0, 44.0
-        cap_m = min(fit_cap(NAME, "Manrope-800", "Manrope", w - 2 * M), 150.0)
+        k = lockscale(w, h, M)
+        ms, cap_b, cap_s = 112.0 * k, 26.0 * k, 22.0 * k
+        gap_e, gap_badge = 24.0 * k, 20.0 * k
+        gap_bm, gap_rule = 16.0 * k, 44.0 * k
+        cap_m = _ref()["cap_m"] * k
         cap_e = cap_m * ED_RATIO
         block = cap_e + gap_e + ms + gap_badge + cap_b + gap_bm + cap_m
         # the rule and motto hang below the name: carry them in the centring, or
         # the panel reads top-heavy with the motto crowding the bottom edge
-        tail = (gap_rule + 5.0 + 22.0 + cap_s) if slogan else 0.0
+        tail = (gap_rule + 5.0 * k + 22.0 * k + cap_s) if slogan else 0.0
         top = h / 2 + (block + tail) / 2
 
         # EDDWALIRO heads the panel, above the badge
@@ -81,20 +117,22 @@ def face(c, w=W, h=H, variant="A", slogan=True, tel=False):
 
         ry = y_m - gap_rule
         c.setFillColor(B.CP_CYAN)
-        c.rect(w / 2 - 130, ry, 260, 5.0, stroke=0, fill=1)
+        c.rect(w / 2 - 130 * k, ry, 260 * k, 5.0 * k, stroke=0, fill=1)
         if slogan:
-            B.label(c, w / 2, ry - 44.0, B.SLOGAN, cap_s, B.CP_MIST,
+            B.label(c, w / 2, ry - 44.0 * k, B.SLOGAN, cap_s, B.CP_MIST,
                     "Inter-400", 3.4, align="center")
         if tel:
             B.label(c, w / 2, 56.0, f"TEL {B.TEL}", 16.0, B.CP_CYAN,
                     "Inter-600", 2.2, align="center")
 
     else:                                    # B: badge-left lockup
-        ms, cap_b, cap_s = 112.0, 26.0, 22.0
-        gap_e, gap_bm, gap_badge = 24.0, 16.0, 30.0
-        gap_rule, gap_sl = 34.0, 30.0
+        k = lockscale(w, h, M)
+        ms, cap_b, cap_s = 112.0 * k, 26.0 * k, 22.0 * k
+        gap_e, gap_bm, gap_badge = 24.0 * k, 16.0 * k, 30.0 * k
+        gap_rule, gap_sl = 34.0 * k, 30.0 * k
         meas = w - 2 * M - ms - gap_badge
-        cap_m = min(fit_cap(NAME, "Manrope-800", "Manrope", meas), 132.0)
+        cap_m = min(fit_cap(NAME, "Manrope-800", "Manrope", meas),
+                    _ref()["cap_m"] * k)
         cap_e = cap_m * ED_RATIO
         name_w = pdfmetrics.stringWidth(NAME, "Manrope-800", B.font_for(cap_m))
         word_w = (pdfmetrics.stringWidth(WORD, "Manrope-800", B.font_for(cap_e))
@@ -102,7 +140,7 @@ def face(c, w=W, h=H, variant="A", slogan=True, tel=False):
         block_w = max(ms + gap_badge + name_w, word_w)
         lower_h = max(ms, cap_b + gap_bm + cap_m)
         block_h = cap_e + gap_e + lower_h + (
-            (gap_rule + 5.0 + gap_sl + cap_s) if slogan else 0)
+            (gap_rule + 5.0 * k + gap_sl + cap_s) if slogan else 0)
         top = h / 2 + block_h / 2
         x0 = (w - block_w) / 2
 
@@ -123,7 +161,7 @@ def face(c, w=W, h=H, variant="A", slogan=True, tel=False):
         if slogan:
             ry = y_m - gap_rule
             c.setFillColor(B.CP_CYAN)
-            c.rect(tx, ry, name_w * 0.32, 5.0, stroke=0, fill=1)
+            c.rect(tx, ry, name_w * 0.32, 5.0 * k, stroke=0, fill=1)
             B.label(c, tx - 0.6, ry - gap_sl - cap_s, B.SLOGAN, cap_s,
                     B.CP_MIST, "Inter-400", 3.2)
         if tel:
@@ -174,7 +212,7 @@ def artwork(path, variant="A", faces=("FACE A", "FACE B"), tel=False):
         c.line(0, SLUG, pw, SLUG)
         B.caps(c, 3, SLUG - 6.6,
                f"BCM SIGN POST PANEL  |  {label}  |  OPTION {variant}  |  "
-               f"TRIM {W:.1f} x {H:.1f} mm  (3.10 ft x 2.11 ft)",
+               f"TRIM {W:.1f} x {H:.1f} mm  ({W_FT:.2f} ft x {H_FT:.2f} ft)",
                2.7, B.CP_NAVY, "Inter-600", 0.3)
         B.caps(c, 3, SLUG - 11.2,
                f"BLEED {BLEED:.0f} mm  |  SAFE {SAFE:.0f} mm  |  {REV}  |  "
@@ -265,33 +303,60 @@ def mockup(night=False, variant="A", tel=False):
 
 
 def dimensioned(variant="A"):
-    """Scale drawing of the panel with its measurements called out."""
-    S, pad = 0.42, 210
-    w, h = int((W + pad * 2) * S), int((H + pad * 2) * S)
+    """Scale drawing of the panel with its measurements called out, in mm and ft."""
+    from PIL import ImageFont
+
+    S, pad = 0.42, 340
+    w, h = int((W + pad * 2) * S), int((H + pad * 2 + 150) * S)
     img = Image.new("RGB", (w, h), (255, 255, 255))
     d = ImageDraw.Draw(img)
-    panel = _panel_png(variant, px_w=1800).resize((int(W * S), int(H * S)),
-                                                  Image.LANCZOS)
+    panel = _panel_png(variant, px_w=2400).resize((int(W * S), int(H * S)),
+                                                 Image.LANCZOS)
     x0, y0 = int(pad * S), int(pad * S)
     img.paste(panel, (x0, y0))
-    d.rectangle([x0, y0, x0 + panel.width, y0 + panel.height],
+    d.rectangle([x0, y0, x0 + panel.width - 1, y0 + panel.height - 1],
                 outline=(22, 35, 63), width=2)
-    cyan = (43, 169, 224)
-    yy = y0 + panel.height + 90
+
+    navy, cyan = (22, 35, 63), (43, 169, 224)
+    f_big = ImageFont.truetype(os.path.join(HERE, "fonts", "Inter-600.ttf"), 30)
+    f_sm = ImageFont.truetype(os.path.join(HERE, "fonts", "Inter-500.ttf"), 19)
+
+    def centred(cx, y, text, font, fill):
+        tw = d.textbbox((0, 0), text, font=font)[2]
+        d.text((cx - tw / 2, y), text, font=font, fill=fill)
+
+    # width, under the panel
+    yy = y0 + panel.height + 66
     d.line([x0, yy, x0 + panel.width, yy], fill=cyan, width=2)
     for x in (x0, x0 + panel.width):
-        d.line([x, yy - 14, x, yy + 14], fill=cyan, width=2)
-    xx = x0 - 90
+        d.line([x, yy - 16, x, yy + 16], fill=cyan, width=2)
+    centred(x0 + panel.width / 2, yy + 26,
+            f"{W:.1f} MM   ·   {W_FT:.2f} FT", f_big, navy)
+
+    # height, to the left of the panel
+    xx = x0 - 72
     d.line([xx, y0, xx, y0 + panel.height], fill=cyan, width=2)
     for y in (y0, y0 + panel.height):
-        d.line([xx - 14, y, xx + 14, y], fill=cyan, width=2)
+        d.line([xx - 16, y, xx + 16, y], fill=cyan, width=2)
+    label = f"{H:.1f} MM   ·   {H_FT:.2f} FT"
+    tw = d.textbbox((0, 0), label, font=f_big)[2]
+    tmp = Image.new("RGBA", (tw + 8, 40), (255, 255, 255, 0))
+    ImageDraw.Draw(tmp).text((0, 0), label, font=f_big, fill=navy)
+    tmp = tmp.rotate(90, expand=True)
+    img.paste(tmp, (int(xx - 52), int(y0 + panel.height / 2 - tmp.height / 2)), tmp)
+
+    # the two facts that matter at the signwriter's bench
+    foot = f"TRIM  {W:.1f} × {H:.1f} MM   ·   {FT_TXT}   ·   LANDSCAPE, DOUBLE-SIDED"
+    fw = d.textbbox((0, 0), foot, font=f_sm)[2]
+    d.text((max(8, x0 + panel.width / 2 - fw / 2), y0 + panel.height + 128), foot,
+           font=f_sm, fill=(100, 110, 128))
     return img
 
 
 # ----------------------------------------------------------------------- proof
 def proof(path):
     c = D.new_doc(path, "BCM Medical Centre — sign post panel",
-                  subject="Name-only sign post panel 3.10 ft x 2.11 ft")
+                  subject=f"Name-only sign post panel {FT_TXT}")
     eyebrow = "BCM  ·  MEDICAL CENTRE  ·  SIGN POST PANEL"
 
     # ---- page 1 — the panel, to scale, measured
@@ -299,7 +364,7 @@ def proof(path):
     y = D.h1(c, D.PH - 34 * MM, "The name, on a post", 8.0)
     y = D.para(c, D.M, y + 2 * MM,
                "One panel, the name only — no service list, no photograph. Trim "
-               f"{W:.0f} × {H:.0f} mm, the client's 3.10 ft × 2.11 ft, double-sided. "
+               f"{W:.0f} × {H:.0f} mm, the client's {FT_TXT}, double-sided. "
                "EDDWALIRO heads the panel above the badge: the road reads Luganda first, "
                "and the English name keeps the widest line.",
                (D.PW - 2 * D.M) / MM * 0.56, 3.3, B.NAVY_MID)
@@ -325,7 +390,7 @@ def proof(path):
     yy = D.PH - 92 * MM
     B.label(c, tx, yy, "MEASUREMENTS", 4.0, B.TEAL, "Inter-600", 1.6)
     D.bullets(c, tx, yy - 8 * MM, [
-        f"Trim: {W:.1f} × {H:.1f} mm — 3.10 ft × 2.11 ft at 304.8 mm to the foot.",
+        f"Trim: {MM_TXT} — {FT_TXT} at 304.8 mm to the foot.",
         f"Bleed: {BLEED:.0f} mm all round, so the printed sheet is "
         f"{W + 2 * BLEED:.0f} × {H + 2 * BLEED:.0f} mm. Safe area {SAFE:.0f} mm in from trim.",
         "Artwork is supplied at 1 : 1 in millimetres — plot it, do not scale it.",
@@ -433,7 +498,7 @@ def proof(path):
 
     B.label(c, D.M, 70 * MM, "BEFORE PLOT", 4.0, B.TEAL, "Inter-600", 1.6)
     D.bullets(c, D.M, 62 * MM, [
-        "Measurement is the client's: 3.10 ft × 2.11 ft. Check it against the panel the "
+        f"Measurement is the client's: {FT_TXT}. Check it against the panel the "
         "signwriter is actually making before the file is plotted.",
         "The monogram is a recreation, not BCM's official logo — swap the vector in.",
         "Confirm the fascia wording: the clinic's own board reads Community Health Centre; "
@@ -496,14 +561,15 @@ def main():
 <header>
   <div class="eyebrow">BCM · MEDICAL CENTRE · SIGN POST PANEL</div>
   <h1>Eddwaliro. Medical Centre.</h1>
-  <p>3.10 ft × 2.11 ft — {W:.0f} × {H:.0f} mm, landscape, double-sided. Name only:
+  <p>{FT_TXT} — {W:.0f} × {H:.0f} mm, landscape, double-sided. Name only:
      no service list, no photograph. EDDWALIRO, the Luganda word for hospital, heads
      the panel above the badge, bold and in cyan.</p>
 </header>
 <nav><a href="../index.html">All artwork</a>
      <a href="../door-1/index.html">Door 1</a>
      <a href="../door-2/index.html">Door 2</a>
-     <a href="../door-3/index.html">Door 3</a></nav>
+     <a href="../door-3/index.html">Door 3</a>
+     <a href="../door-4/index.html">Door 4</a></nav>
 <main>
   <figure><img src="lookbook/M-01-sign-day.png" alt="Sign post panel, day elevation">
     <figcaption>On the post — day. Panel centre 1500 mm above finished ground level,

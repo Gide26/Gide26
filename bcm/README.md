@@ -41,8 +41,8 @@ carries its own artwork, schedule, specification, elevations, web preview, READM
 
 ## The sign post panel
 
-A separate deliverable, name only: **3.10 ft × 2.11 ft** as the client measured it, landscape,
-which is **944.9 × 643.1 mm**. No service list, no photograph — the badge, `BCM`, then
+A separate deliverable, name only: **4 ft × 2 ft** as the client measured it (revised on
+2026-11-02 from the earlier 3.10 × 2.11 ft), landscape, which is **1219.2 × 609.6 mm**. No service list, no photograph — the badge, `BCM`, then
 `MEDICAL CENTRE` set at the largest size the panel will take, so the name points from across the
 road. Double-sided; both faces are in the one print PDF.
 

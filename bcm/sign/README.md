@@ -6,7 +6,10 @@ Name only. No service list, no photograph.
 same cap height as the English name, so the panel reads in Luganda first and English second.
 MEDICAL CENTRE keeps the widest line and the white ink, so it stays the headline.
 
-**Trim: 944.9 × 643.1 mm — the client's 3.10 ft × 2.11 ft, landscape.**
+**Trim: 1219.2 × 609.6 mm — the client's 4 ft × 2 ft, landscape.** (Revised from
+3.10 × 2.11 ft on 2026-11-02. The approved lockup is scaled proportionally from the old
+panel, so the proportions, the type hierarchy and MEDICAL CENTRE's widest line are
+unchanged.)
 Double-sided: both faces are in the one print PDF.
 
 | File | What it is |
@@ -30,7 +33,7 @@ that, it is one number in `source/bcm_sign.py` (`ED_RATIO`).
 
 ## Measurements
 
-- Trim 944.9 × 643.1 mm (3.10 ft × 2.11 ft at 304.8 mm to the foot)
+- Trim 1219.2 × 609.6 mm (4 ft × 2 ft at 304.8 mm to the foot)
 - Bleed 10 mm all round → printed sheet 964.9 × 663.1 mm
 - Safe area 25 mm in from trim
 - Plot at 1 : 1. The file is drawn in millimetres; do not scale it.
@@ -47,7 +50,7 @@ that, it is one number in `source/bcm_sign.py` (`ED_RATIO`).
 
 ## Before plot
 
-1. Check 3.10 × 2.11 ft against the panel the signwriter is actually making.
+1. Check 4 × 2 ft against the panel the signwriter is actually making.
 2. The B monogram is a recreation, not BCM's official logo — supply the vector and it is a
    one-line swap in `source/bcm_brand.py`.
 3. Wording: the clinic's own board reads Community **Health** Centre; this sign reads

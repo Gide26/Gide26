@@ -517,13 +517,15 @@ def setout(s=0.12):
         c.line(xd, PY(y), xd + 6, PY(y))
         B.label(c, xd - 2.0, PY(y) - 1.1, lab, 2.9, B.GREY, "Inter-500", 0.4, "right")
 
-    # the sign post
+    # the sign post — 4 ft × 2 ft, centre 1500 mm above finished ground
+    hw, hh = SIGN.W / 2, SIGN.H / 2
+    base = 1500 - hh
     c.setFillColor(B.CP_NAVY)
-    c.rect(PX(SIGN_X - 472), PY(1179), 944 * sc, 643 * sc, stroke=0, fill=1)
+    c.rect(PX(SIGN_X - hw), PY(base), SIGN.W * sc, SIGN.H * sc, stroke=0, fill=1)
     c.setStrokeColor(B.NAVY_MID)
     c.setLineWidth(0.8)
     for off in (-260, 260):
-        c.line(PX(SIGN_X + off), PY(0), PX(SIGN_X + off), PY(1179))
+        c.line(PX(SIGN_X + off), PY(0), PX(SIGN_X + off), PY(base))
     B.label(c, PX(SIGN_X), PY(0) - 7, "SIGN POST", 3.0, B.CP_NAVY, "Inter-600", 1.0,
             "center")
 
@@ -882,7 +884,8 @@ The set in place, drawn to scale from the same print files that go to the printe
   meeting stile, exactly as scheduled on the door pages.
 - Banners: B-1 (3.8 m) over door 1, B-2 (3.4 m) over door 2, B-3 (2.4 m) over door 3.
   Underside 2560 mm above the paving, 580 mm clear of the door head.
-- Sign post at the kerb: 944.9 × 643.1 mm panel, centre 1500 mm above ground.
+- Sign post at the kerb: 1219.2 × 609.6 mm panel (4 ft × 2 ft), centre 1500 mm
+  above finished ground.
 
 Door centres — 4.2 m and 3.4 m — and the 2560 mm banner height are proposals chosen so
 the banners clear each other. Confirm them, and the wall height above each door, before
