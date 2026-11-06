@@ -3,6 +3,9 @@ BCM-Complete-Set.pdf,pdf,2178
 MANIFEST.csv,csv,7
 README.md,md,3
 index.html,html,9
+banner-1168x559/BCM-Banner.pdf,pdf,320
+banner-1168x559/README.md,md,2
+banner-1168x559/index.html,html,3
 banners/BCM-Banners.pdf,pdf,2964
 banners/README.md,md,3
 banners/index.html,html,3
@@ -68,6 +71,11 @@ print/print-manifest.csv,csv,3
 sign/BCM-Sign-Panel.pdf,pdf,343
 sign/README.md,md,6
 sign/index.html,html,4
+banner-1168x559/lookbook/M-01-banner-day.png,png,90
+banner-1168x559/lookbook/M-02-banner-dimensions.png,png,146
+banner-1168x559/print/BCM-Banner-1168x559mm-BLEED.pdf,pdf,40
+banner-1168x559/print/BCM-Banner-1168x559mm-EXACT.pdf,pdf,29
+banner-1168x559/print/READ-ME-FIRST.txt,txt,2
 banners/artwork/BCM-Banner-B-1.pdf,pdf,147
 banners/artwork/BCM-Banner-B-2.pdf,pdf,244
 banners/artwork/BCM-Banner-B-3.pdf,pdf,150

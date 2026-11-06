@@ -1,0 +1,37 @@
+BCM MEDICAL CENTRE - BANNER, THE SIGN POST'S OWN SETTING
+========================================================
+
+TRIM (finished size):  46 in x 22 in
+                       = 1168.4 x 558.8 mm exactly (25.4 mm to the inch)
+                       = 3 ft 10 in × 1 ft 10 in
+BLEED:                 10 mm all round (in the bleed file)
+SLUG:                  20 mm at the foot (trim it off)
+HEM:                   25 mm welded all round
+EYELETS:               300 mm centres, incl. every corner
+SAFE AREA:             45 mm from trim - no type inside it
+PAGE, BLEED FILE:      1188.4 x 598.8 mm
+                       (trim + bleed + slug. The page is LARGER than the
+                       banner on purpose.)
+PAGE, EXACT FILE:      1168.4 x 558.8 mm = 46 x 22 in,
+                       trim only - this is the one that measures the banner.
+COLOUR:                white field; navy #16233F bands with white type;
+                       red #ED1B24 block with EDDWALIRO knocked out in
+                       white; red OPEN 24 HRS row. Nothing else.
+PLOT AT 100% - NEVER SCALE.
+
+THE SETTING
+The same arrangement and the same colours as the sign post panel: BCM on a
+white band, MEDICAL CENTRE in white on navy, EDDWALIRO knocked out of a
+full-width red block, OPEN 24 HRS between two arrows, then the navy foot
+strip with 0788 323 815 - 0754 132 715 at the left and BUSSABALA at the
+right. There is NO MOTTO on this piece.
+
+MATERIAL AND FINISH - CONFIRM WITH THE PRINTER
+PVC banner 510 g, matte finish, welded hem all round, eyelets at the pitch
+above. These are industry-typical values, not a quotation, and the printer
+should be allowed to substitute their own standard.
+
+FILES
+  BCM-Banner-1168x559mm-EXACT.pdf   page = trim, 46 x 22 in
+  BCM-Banner-1168x559mm-BLEED.pdf   trim + 10 mm bleed + slug + crop marks
+  READ-ME-FIRST.txt              this note

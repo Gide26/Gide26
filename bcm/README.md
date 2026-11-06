@@ -134,7 +134,22 @@ Two consequences, stated in every door document:
 
 ## Banners
 
-Three roadside banners on the fence, built in `source/bcm_banners.py`:
+### The 46 × 22 in banner — the sign's own setting
+
+`banner-1168x559/`, built in `source/bcm_banner_46.py`: one banner at the sign post's
+measurement, **1168.4 × 558.8 mm (46 × 22 in)**, in the sign's colours and the same band
+arrangement — `BCM` on white, `MEDICAL CENTRE` in white on navy, `EDDWALIRO` knocked out of the
+red block, `Open 24 Hrs` between two arrows, and the navy foot strip with
+`TEL 0788 323 815 · 0754 132 715` and `BUSSABALA`. No motto.
+
+It is PVC on a fence, not a light box, so the artwork keeps **45 mm clear of the trim** for a
+25 mm welded hem and eyelets at 300 mm centres, where the sign runs to the edge. Print files come
+as an exact-size page (= 46 × 22 in) and a bleed version; there is a two-page proof, a
+dimensioned sheet, a README and a zip.
+
+### The three roadside banners
+
+Three larger roadside banners on the fence, built in `source/bcm_banners.py`:
 
 | ID | Size | Layout |
 | --- | --- | --- |
