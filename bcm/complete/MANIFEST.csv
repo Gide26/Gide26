@@ -67,7 +67,7 @@ print/REPORT.md,md,6
 print/print-manifest.csv,csv,3
 sign/BCM-Sign-Panel.pdf,pdf,319
 sign/README.md,md,3
-sign/index.html,html,3
+sign/index.html,html,4
 banners/artwork/BCM-Banner-B-1.pdf,pdf,147
 banners/artwork/BCM-Banner-B-2.pdf,pdf,244
 banners/artwork/BCM-Banner-B-3.pdf,pdf,150
@@ -170,3 +170,8 @@ sign/artwork/BCM-Sign-Name-Only.pdf,pdf,43
 sign/lookbook/M-01-sign-day.png,png,103
 sign/lookbook/M-02-sign-night.png,png,97
 sign/lookbook/M-03-sign-dimensions.png,png,57
+sign/print/BCM-Sign-Post-BOTH-FACES-1219x610mm.pdf,pdf,43
+sign/print/BCM-Sign-Post-FACE-A-1219x610mm.pdf,pdf,41
+sign/print/BCM-Sign-Post-FACE-B-1219x610mm.pdf,pdf,41
+sign/print/BCM-Sign-Post-OPTION-B-FACE-A-1219x610mm.pdf,pdf,41
+sign/print/READ-ME-FIRST.txt,txt,1

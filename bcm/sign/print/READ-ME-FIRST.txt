@@ -1,0 +1,26 @@
+BCM MEDICAL CENTRE - SIGN POST PANEL
+=====================================
+
+TRIM (finished size):  1219.2 x 609.6 mm  =  4.00 ft x 2.00 ft
+                       48 in long  x  24 in high
+BLEED:                 10 mm all round (in the file)
+SLUG:                  22 mm at the foot (in the file, trim it off)
+SAFE AREA:             25 mm from trim
+PRINT SIZE IN FILE:    1239.2 x 651.6 mm
+CROP MARKS:            yes, at all four corners
+COLOUR:                navy #16233F, cyan #2BA9E0, white
+PLOT AT 100% - NEVER SCALE. Do not colour-manage the navy.
+
+FILES
+  BCM-Sign-Post-BOTH-FACES-1219x610mm.pdf        2 pages: face A, face B
+  BCM-Sign-Post-FACE-A-1219x610mm.pdf            face A on its own
+  BCM-Sign-Post-FACE-B-1219x610mm.pdf            face B on its own
+  BCM-Sign-Post-OPTION-B-FACE-A-1219x610mm.pdf   alternative lockup, spare
+
+Double-sided: print face A and face B back to back.
+Recommended face: OPTION A (the two-face file). Option B is a spare for
+continuity with the door panes; it is not needed for the post.
+
+The badge is a recreated monogram, not the clinic's official logo.
+Compare the trim size against the panel the signwriter is actually
+making before plotting.

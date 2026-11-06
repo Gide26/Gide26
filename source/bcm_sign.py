@@ -513,6 +513,67 @@ def proof(path):
 
 
 # ------------------------------------------------------------------------ main
+# ----------------------------------------------------------------- to printer
+def printer_pack():
+    """Just the sign post, ready to send: one two-face PDF and a small zip.
+
+    The sign is a separate deliverable from the door film, so a signwriter should
+    not have to hunt through a 38-page print set to find it. These files hold the
+    panel and nothing else.
+    """
+    import zipfile
+
+    out = os.path.join(OUT_DIR, "print")
+    os.makedirs(out, exist_ok=True)
+    for f in os.listdir(out):
+        os.remove(os.path.join(out, f))
+
+    tag = f"{W:.0f}x{H:.0f}"                      # 1219x610
+    both = os.path.join(out, f"BCM-Sign-Post-BOTH-FACES-{tag}mm.pdf")
+    face_a = os.path.join(out, f"BCM-Sign-Post-FACE-A-{tag}mm.pdf")
+    face_b = os.path.join(out, f"BCM-Sign-Post-FACE-B-{tag}mm.pdf")
+    opt_b = os.path.join(out, f"BCM-Sign-Post-OPTION-B-FACE-A-{tag}mm.pdf")
+
+    artwork(both, variant="A", faces=("FACE A", "FACE B"))
+    artwork(face_a, variant="A", faces=("FACE A",))
+    artwork(face_b, variant="A", faces=("FACE B",))
+    artwork(opt_b, variant="B", faces=("FACE A",))
+
+    note = os.path.join(out, "READ-ME-FIRST.txt")
+    with open(note, "w") as fh:
+        fh.write(
+            "BCM MEDICAL CENTRE - SIGN POST PANEL\n"
+            "=====================================\n\n"
+            f"TRIM (finished size):  {W:.1f} x {H:.1f} mm  =  {W_FT:.2f} ft x {H_FT:.2f} ft\n"
+            f"                       {W_FT * 12:.0f} in long  x  {H_FT * 12:.0f} in high\n"
+            "BLEED:                 10 mm all round (in the file)\n"
+            "SLUG:                  22 mm at the foot (in the file, trim it off)\n"
+            "SAFE AREA:             25 mm from trim\n"
+            f"PRINT SIZE IN FILE:    {W + 20:.1f} x {H + 20 + 22:.1f} mm\n"
+            "CROP MARKS:            yes, at all four corners\n"
+            "COLOUR:                navy #16233F, cyan #2BA9E0, white\n"
+            "PLOT AT 100% - NEVER SCALE. Do not colour-manage the navy.\n\n"
+            "FILES\n"
+            f"  BCM-Sign-Post-BOTH-FACES-{tag}mm.pdf        2 pages: face A, face B\n"
+            f"  BCM-Sign-Post-FACE-A-{tag}mm.pdf            face A on its own\n"
+            f"  BCM-Sign-Post-FACE-B-{tag}mm.pdf            face B on its own\n"
+            f"  BCM-Sign-Post-OPTION-B-FACE-A-{tag}mm.pdf   alternative lockup, spare\n\n"
+            "Double-sided: print face A and face B back to back.\n"
+            "Recommended face: OPTION A (the two-face file). Option B is a spare for\n"
+            "continuity with the door panes; it is not needed for the post.\n\n"
+            "The badge is a recreated monogram, not the clinic's official logo.\n"
+            "Compare the trim size against the panel the signwriter is actually\n"
+            "making before plotting.\n")
+
+    zpath = os.path.join(OUT_DIR, f"BCM-Sign-Post-Print-{tag}mm.zip")
+    if os.path.exists(zpath):
+        os.remove(zpath)
+    with zipfile.ZipFile(zpath, "w", zipfile.ZIP_DEFLATED, compresslevel=6) as z:
+        for f in sorted(os.listdir(out)):
+            z.write(os.path.join(out, f), os.path.join("BCM-Sign-Post", f))
+    return zpath, both
+
+
 def main():
     os.makedirs(ART_DIR, exist_ok=True)
     os.makedirs(WORK, exist_ok=True)
@@ -532,6 +593,10 @@ def main():
 
     print("proof:", os.path.basename(
         proof(os.path.join(OUT_DIR, "BCM-Sign-Panel.pdf"))))
+
+    zpath, both = printer_pack()
+    print("printer pack:", os.path.basename(zpath),
+          f"({os.path.getsize(zpath) / 1e6:.1f} MB)")
 
     html = f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
@@ -586,6 +651,12 @@ def main():
         <td>Print file — option A, both faces, 10 mm bleed, crop marks, 1 : 1 mm</td></tr>
     <tr><td><a href="artwork/BCM-Sign-Name-Only-Option-B.pdf">BCM-Sign-Name-Only-Option-B.pdf</a></td>
         <td>Print file — option B, badge-left lockup</td></tr>
+    <tr><td><a href="print/BCM-Sign-Post-BOTH-FACES-1219x610mm.pdf">BCM-Sign-Post-BOTH-FACES-1219x610mm.pdf</a></td>
+        <td><b>Send this to the signwriter</b> — the sign post only, both faces, 1 : 1 mm,
+            10 mm bleed, crop marks</td></tr>
+    <tr><td><a href="BCM-Sign-Post-Print-1219x610mm.zip">BCM-Sign-Post-Print-1219x610mm.zip</a></td>
+        <td>The sign post only, as a zip: the two-face file, each face on its own, the
+            spare option, and the printer's note</td></tr>
     <tr><td><a href="BCM-Sign-Panel.pdf">BCM-Sign-Panel.pdf</a></td>
         <td>Four pages — panel to scale, options, on the post, specification</td></tr>
   </table>
