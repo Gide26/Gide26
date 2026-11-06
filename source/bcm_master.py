@@ -49,7 +49,7 @@ GROUPS = [
      "kind": "One-way vision film · 8 panes",
      "cover": "door-4/lookbook/M-01-door-4-day.png"},
     {"key": "sign", "n": "05", "title": "Sign post panel",
-     "kind": "Double-sided panel · 1219 × 610 mm",
+     "kind": "Double-sided panel · 5055 × 1245 mm",
      "cover": "sign/lookbook/M-01-sign-day.png"},
     {"key": "banners", "n": "06", "title": "Roadside banners",
      "kind": "PVC banners · 3.8 / 3.4 / 2.4 m × 1.0 m",
@@ -155,7 +155,7 @@ def cover(c):
     panes, photos = counts()
     rows = [
         ("01 – 03", "Door film", "Three glazed doorways, 8 panes each", f"{panes} panes"),
-        ("04", "Sign post", "Name-only panel, double sided", "1219 × 610 mm"),
+        ("04", "Sign post", "Name-only panel, double sided", "16 ft 7 in × 49 in"),
         ("05", "Banners", "Roadside fence, three lengths", "3.8 / 3.4 / 2.4 m"),
     ]
     yy = 118 * MM
@@ -284,11 +284,12 @@ def sign_page(c):
               eyebrow="BCM  ·  MEDICAL CENTRE  ·  SIGN POST")
     y = D.h1(c, D.PH - 34 * MM, "The sign post panel", 7.6)
     D.para(c, D.M, y + 2 * MM,
-           "Name only — no service list, no photograph. Trim 1219.2 × 609.6 mm, the "
-           "client's 4 ft × 2 ft, double-sided. EDDWALIRO heads the panel in cyan, "
-           "the badge and BCM sit under it, MEDICAL CENTRE keeps the widest line in "
-           "white, the motto closes the block. Two lockups are supplied; A is the "
-           "recommendation.", (D.PW - 2 * D.M) / MM * 0.72, 3.2, B.NAVY_MID)
+           "Name only — no service list, no photograph. Trim 5054.6 × 1244.6 mm, the "
+           "client's 16 ft 7 in × 49 in, double-sided: a 6.3 m² face, not a sticker. "
+           "EDDWALIRO heads the panel in cyan, the badge and BCM sit under it, MEDICAL "
+           "CENTRE keeps the widest line in white, the motto closes the block. A is the "
+           "approved setting; C is the fascia alternative, supplied as a spare.",
+           (D.PW - 2 * D.M) / MM * 0.72, 3.2, B.NAVY_MID)
 
     img_box(c, "sign/lookbook/M-01-sign-day.png", D.M, 40 * MM, 108 * MM,
             116 * MM)
@@ -299,8 +300,7 @@ def sign_page(c):
             "Inter-600", 1.6)
     sy = D.bullets(c, D.M + 124 * MM, 148 * MM, [
         "artwork/BCM-Sign-Name-Only.pdf — option A, both faces in the one file, 1 : 1 mm.",
-        "artwork/BCM-Sign-Name-Only-Option-B.pdf — badge-left lockup, for continuity "
-        "with the door panes.",
+        "artwork/BCM-Sign-Name-Only-Option-C-Fascia.pdf — the fascia setting, spare.",
         "BCM-Sign-Panel.pdf — four pages: the panel to scale, the two options, on the "
         "post, specification.",
         "lookbook/ — day and night elevations and the dimensioned drawing.",
@@ -310,10 +310,11 @@ def sign_page(c):
     B.label(c, D.M + 124 * MM, sy, "FIXING — CONFIRM ON SITE", 4.0, B.TEAL,
             "Inter-600", 1.6)
     D.bullets(c, D.M + 124 * MM, sy - 8 * MM, [
-        "3 mm aluminium composite, matte anti-glare laminate, 3 mm radius, sealed edges.",
-        "Two 76 mm galvanised posts at 520 mm centres; panel centre 1500 mm above "
-        "finished ground level.",
-        "Check 4 ft × 2 ft against the panel the signwriter is actually making "
+        "6.3 m² face: propose 4 mm ACM or 3 mm ACM on a rail frame — confirm with the "
+        "signwriter, not a quotation.",
+        "Proposal: four galvanised posts, or a cleat frame across four posts; panel "
+        "centre 1500 mm above finished ground level.",
+        "Check 16 ft 7 in × 49 in against the panel the signwriter is actually making "
         "before plotting.",
     ], 150 * MM, 3.0, B.NAVY_MID)
 
@@ -377,8 +378,8 @@ def print_page(c, pieces):
     groups = [("DOOR FILM — 24 PANES", "Door film", 4,
                "One file per pane, pane plus 10 mm bleed, cut to the size in the name."),
               ("SIGN POST — 3 FACES", "Sign post", 3,
-               "Option A face A, option A face B, and option B face A — one file per side "
-               "of the board."),
+               "Option A face A, option A face B, and the fascia alternative face A — "
+               "one file per side of the board."),
               ("BANNERS — 3", "Banner", 3,
                "One file per banner, 60 mm clear of the trim for the hem and the eyelets.")]
 
@@ -394,10 +395,10 @@ def print_page(c, pieces):
 
     B.label(c, D.M, yy, "ALSO IN print/", 3.8, B.TEAL, "Inter-600", 1.6)
     D.bullets(c, D.M, yy - 6.5 * MM, [
-        "PRINT-INDEX.pdf and print-manifest.csv — all 30 jobs with piece, type, "
+        "PRINT-INDEX.pdf and print-manifest.csv — every job with piece, type, "
         "finished size and file name, as a document and as a job sheet.",
         "REPORT.md — the folder explained, grouped by the three suppliers.",
-        "BCM-Print-Files.zip — the 30 files and the index on their own, 3 MB.",
+        "BCM-Print-Files.zip — the print files and the index on their own.",
     ], 168 * MM, 3.0, B.NAVY_MID)
 
 
@@ -528,7 +529,7 @@ three roadside banners, with one master proof describing the lot.
 | Folder | What it holds |
 | --- | --- |
 | `door-1/` `door-2/` `door-3/` | Eight panes each. Print files at 1 : 1 (900 × 500 and 900 × 400 mm), a panel proof, a schedule, a specification, day and night elevations, a licence record, a web preview |
-| `sign/` | Name-only sign post panel, 1219.2 × 609.6 mm (4 ft × 2 ft), two lockups, four-page proof, elevations, dimensioned drawing |
+| `sign/` | Name-only sign post panel, 5054.6 × 1244.6 mm (16 ft 7 in × 49 in), a signwriter's pack of its own, two settings, four-page proof, elevations, dimensioned drawing |
 | `banners/` | Three PVC banners — 3.8 m, 3.4 m, 2.4 m × 1.0 m — print files, six-page proof, fence elevations, licence page |
 | `print/` | **One print PDF per piece** — 32 panes, 3 sign faces, 3 banners, numbered 01–38, with `PRINT-INDEX.pdf`, a manifest, `BCM-Print-Files-ALL.pdf` and `BCM-Print-Files.zip` |
 | `complete/` | This README, the master proof, the manifest and the web index |

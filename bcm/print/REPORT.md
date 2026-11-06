@@ -36,9 +36,9 @@
 | 30 | D4-P6 | CBC | Door film | 900 × 400 mm | `30-D4-P6-CBC-900x400.pdf` |
 | 31 | D4-P7 | OPEN 24 HOURS | Door film | 900 × 400 mm | `31-D4-P7-OPEN-24-HOURS-900x400.pdf` |
 | 32 | D4-P8 | OUR SERVICES | Door film | 900 × 500 mm | `32-D4-P8-OUR-SERVICES-900x500.pdf` |
-| 33 | SIGN-A-FACE-A | Sign post panel | Sign post | 1219.2 × 609.6 mm | `33-SIGN-A-FACE-A-1219x610.pdf` |
-| 34 | SIGN-A-FACE-B | Sign post panel | Sign post | 1219.2 × 609.6 mm | `34-SIGN-A-FACE-B-1219x610.pdf` |
-| 35 | SIGN-B-FACE-A | Sign post panel | Sign post | 1219.2 × 609.6 mm | `35-SIGN-B-FACE-A-1219x610.pdf` |
+| 33 | SIGN-A-FACE-A | Sign post panel | Sign post | 5054.6 × 1244.6 mm | `33-SIGN-A-FACE-A-5055x1245.pdf` |
+| 34 | SIGN-A-FACE-B | Sign post panel | Sign post | 5054.6 × 1244.6 mm | `34-SIGN-A-FACE-B-5055x1245.pdf` |
+| 35 | SIGN-C-FACE-A | Sign post panel | Sign post | 5054.6 × 1244.6 mm | `35-SIGN-C-FACE-A-5055x1245.pdf` |
 | 36 | B-1 | The road banner | Banner | 3800 × 1000 mm | `36-B1-ROAD-3800x1000.pdf` |
 | 37 | B-2 | The services banner | Banner | 3400 × 1000 mm | `37-B2-SERVICES-3400x1000.pdf` |
 | 38 | B-3 | The compact banner | Banner | 2400 × 1000 mm | `38-B3-COMPACT-2400x1000.pdf` |
@@ -86,9 +86,9 @@
 
 3 files:
 
-- `33-SIGN-A-FACE-A-1219x610.pdf`
-- `34-SIGN-A-FACE-B-1219x610.pdf`
-- `35-SIGN-B-FACE-A-1219x610.pdf`
+- `33-SIGN-A-FACE-A-5055x1245.pdf`
+- `34-SIGN-A-FACE-B-5055x1245.pdf`
+- `35-SIGN-C-FACE-A-5055x1245.pdf`
 
 ### Banner printer — one file per banner
 
@@ -102,11 +102,11 @@
 
 `BCM-Print-Files.zip` holds exactly this folder — the 30 single print files, the index and `BCM-Print-Files-ALL.pdf`, nothing else.
 
-`BCM-Print-Files-ALL.pdf` is all 30 pieces in one document, one piece per page, in job order — for checking or for a printer who would rather have a single attachment. Every page keeps its own finished size, so it plots the same as the single files; the single files are still what to send.
+`BCM-Print-Files-ALL.pdf` is every piece in one document, one piece per page, in job order — for checking or for a printer who would rather have a single attachment. Every page keeps its own finished size, so it plots the same as the single files; the single files are still what to send.
 
 ## Notes
 
-The sign post is supplied as three files: face A and face B of the recommended option A lockup, and face A of the same panel in the option B lockup. Print one file per side of the board.
+The sign post is supplied as three files: face A and face B of the recommended option A lockup, and face A of the same panel in the fascia setting. Print one file per side of the board.
 
 The multi-page proofs elsewhere in the set are for approval only — these single files are the ones to send to a printer.
 

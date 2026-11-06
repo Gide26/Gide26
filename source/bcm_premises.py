@@ -49,8 +49,9 @@ SKY_TOP = 4700
 PLINTH = 250
 
 CENTRES = {1: 2100.0, 2: 6300.0, 3: 9700.0, 4: 13100.0}
-SIGN_X = 16500.0                 # sign post centre, clear of the fourth doorway
-SCENE_L, SCENE_R = -700.0, 17700.0
+SIGN_X = 19500.0                 # sign post centre: 5 m of panel, clear of door 4
+SCENE_L, SCENE_R = -700.0, 22800.0
+SIGN_POSTS = 4                   # 5 m of panel needs more than two posts
 
 
 def banner_for(n):
@@ -315,7 +316,9 @@ def facade(s=0.20, night=False):
     post_w = max(2, int(76 * s))
     panel_cx = int(SIGN_X * s - SCENE_L * s)
     panel_y = Y(1500 + SIGN.H / 2)
-    for off in (-520 / 2, 520 / 2):
+    span = SIGN.W / 2 - 420.0
+    for i in range(SIGN_POSTS):
+        off = -span + 2 * span * i / (SIGN_POSTS - 1)
         px = panel_cx + int(off * s)
         d.rectangle([px - post_w // 2, panel_y, px + post_w // 2, Y(0)],
                     fill=(58, 62, 68) if not night else (30, 33, 38))
@@ -431,7 +434,8 @@ def setout(s=0.12):
     # page scale is worked out from the scene, so a new doorway cannot run the
     # sign post off the right edge of the sheet
     ox, oy = 70.0, 46.0              # page origin for scene x=0, ground
-    sc = (pw / MM - ox - 14.0) / (SIGN_X + 950.0)
+    edge = SIGN_X + SIGN.W / 2 + 300.0     # the sign's outer post, plus clearance
+    sc = (pw / MM - ox - 14.0) / edge
 
     def PX(x):
         return ox + x * sc
@@ -442,9 +446,9 @@ def setout(s=0.12):
     # ground and wall line
     c.setStrokeColor(B.NAVY_MID)
     c.setLineWidth(0.4)
-    c.line(PX(-260), PY(0), PX(SIGN_X + 900), PY(0))
+    c.line(PX(-260), PY(0), PX(edge), PY(0))
     c.setStrokeColor(B.MIST)
-    c.line(PX(-260), PY(WALL_TOP), PX(SIGN_X + 900), PY(WALL_TOP))
+    c.line(PX(-260), PY(WALL_TOP), PX(edge), PY(WALL_TOP))
 
     for door in DOORS.DOORS:
         cx = CENTRES[door["n"]]
@@ -517,14 +521,16 @@ def setout(s=0.12):
         c.line(xd, PY(y), xd + 6, PY(y))
         B.label(c, xd - 2.0, PY(y) - 1.1, lab, 2.9, B.GREY, "Inter-500", 0.4, "right")
 
-    # the sign post — 4 ft × 2 ft, centre 1500 mm above finished ground
+    # the sign post — 16 ft 7 in × 49 in, centre 1500 mm above finished ground
     hw, hh = SIGN.W / 2, SIGN.H / 2
     base = 1500 - hh
     c.setFillColor(B.CP_NAVY)
     c.rect(PX(SIGN_X - hw), PY(base), SIGN.W * sc, SIGN.H * sc, stroke=0, fill=1)
     c.setStrokeColor(B.NAVY_MID)
     c.setLineWidth(0.8)
-    for off in (-260, 260):
+    _span = SIGN.W / 2 - 420.0
+    for i in range(SIGN_POSTS):
+        off = -_span + 2 * _span * i / (SIGN_POSTS - 1)
         c.line(PX(SIGN_X + off), PY(0), PX(SIGN_X + off), PY(base))
     B.label(c, PX(SIGN_X), PY(0) - 7, "SIGN POST", 3.0, B.CP_NAVY, "Inter-600", 1.0,
             "center")
@@ -884,8 +890,9 @@ The set in place, drawn to scale from the same print files that go to the printe
   meeting stile, exactly as scheduled on the door pages.
 - Banners: B-1 (3.8 m) over door 1, B-2 (3.4 m) over door 2, B-3 (2.4 m) over door 3.
   Underside 2560 mm above the paving, 580 mm clear of the door head.
-- Sign post at the kerb: 1219.2 × 609.6 mm panel (4 ft × 2 ft), centre 1500 mm
-  above finished ground.
+- Sign post at the kerb: 5054.6 × 1244.6 mm panel (16 ft 7 in × 49 in), centre
+  1500 mm above finished ground, on four posts — the support is a proposal for the
+  signwriter to confirm.
 
 Door centres — 4.2 m and 3.4 m — and the 2560 mm banner height are proposals chosen so
 the banners clear each other. Confirm them, and the wall height above each door, before

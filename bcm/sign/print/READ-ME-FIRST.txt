@@ -1,26 +1,43 @@
 BCM MEDICAL CENTRE - SIGN POST PANEL
 =====================================
 
-TRIM (finished size):  1219.2 x 609.6 mm  =  4.00 ft x 2.00 ft
-                       48 in long  x  24 in high
+TRIM (finished size):  5054.6 x 1244.6 mm
+                       = 16 ft 7 in long x 4 ft 1 in high
+                       = 199 in x 49 in (25.4 mm to the inch)
 BLEED:                 10 mm all round (in the file)
 SLUG:                  22 mm at the foot (in the file, trim it off)
 SAFE AREA:             25 mm from trim
-PRINT SIZE IN FILE:    1239.2 x 651.6 mm
+PRINT SIZE IN FILE:    5074.6 x 1286.6 mm
 CROP MARKS:            yes, at all four corners
-COLOUR:                navy #16233F, cyan #2BA9E0, white
-PLOT AT 100% - NEVER SCALE. Do not colour-manage the navy.
+COLOUR:                navy #16233F, cyan #2BA9E0, mist #E8EEF4, white
+PLOT AT 100% - NEVER SCALE. Do not colour-manage the navy towards black.
+
+THIS SHEET IS DELIBERATELY AT FULL SIZE
+A PDF page cannot exceed 5080 mm, and the sheet is 5074.6 mm wide. There is
+no room for a margin around the artwork, and the file must not be scaled up
+or down. If your plotter cannot take a 5.07 m sheet, ask for a seamed or
+half-size version rather than scaling this one - the letterforms are set for
+1:1 and a rescale changes the stroke weights.
 
 FILES
-  BCM-Sign-Post-BOTH-FACES-1219x610mm.pdf        2 pages: face A, face B
-  BCM-Sign-Post-FACE-A-1219x610mm.pdf            face A on its own
-  BCM-Sign-Post-FACE-B-1219x610mm.pdf            face B on its own
-  BCM-Sign-Post-OPTION-B-FACE-A-1219x610mm.pdf   alternative lockup, spare
+  BCM-Sign-Post-BOTH-FACES-5055x1245mm.pdf         2 pages: face A, face B
+  BCM-Sign-Post-FACE-A-5055x1245mm.pdf             face A on its own
+  BCM-Sign-Post-FACE-B-5055x1245mm.pdf             face B on its own
+  BCM-Sign-Post-OPTION-C-FASCIA-5055x1245mm.pdf    fascia setting, one face, spare
 
-Double-sided: print face A and face B back to back.
-Recommended face: OPTION A (the two-face file). Option B is a spare for
-continuity with the door panes; it is not needed for the post.
+FACE A IS THE APPROVED SETTING (OPTION A)
+EDDWALIRO heads the panel, the badge sits under it, BCM above MEDICAL CENTRE,
+the motto at the foot. This is the arrangement approved on the earlier sample,
+kept at this length. It sits centred with wide navy margins either side -
+that is what the proportions do at 16 ft 7 in.
 
-The badge is a recreated monogram, not the clinic's official logo.
-Compare the trim size against the panel the signwriter is actually
-making before plotting.
+OPTION C is the alternative: the same elements turned on their side, badge at
+the left, EDDWALIRO / MEDICAL CENTRE / motto run beside it. The name is about
+four times the size and fills the length. Use it only if the client asks -
+it is not the approved setting.
+
+STRUCTURE - CONFIRM WITH THE SIGNWRITER
+The face is about 6.29 m2. 3 mm ACM over this span is marginal: ask for 4 mm
+ACM or 3 mm ACM on a rail frame, four posts, or a cleat frame. Panel centre
+1500 mm above finished ground is a proposal only. Nothing here is a quotation.
+The monogram is a recreated mark, not the clinic's official logo.

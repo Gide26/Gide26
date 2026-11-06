@@ -54,21 +54,21 @@ def place(src, dest_name):
 
 
 def sign_tag():
-    """'1219x610' — the sign's finished size, for the print file names."""
+    """'5055x1245' — the sign's finished size, for the print file names."""
     return f"{SIGN.W:.0f}x{SIGN.H:.0f}"
 
 
 def sign_faces():
-    """Split the sign post into a file per face, and add option B."""
+    """Split the sign post into a file per face, and add the fascia option."""
     os.makedirs(SIGN.WORK, exist_ok=True)
     made = []
     for label, fname in (("FACE A", "SIGN-A-FACE-A"), ("FACE B", "SIGN-A-FACE-B")):
         tmp = os.path.join(SIGN.WORK, f"sign_{label.replace(' ', '_').lower()}.pdf")
         SIGN.artwork(tmp, variant="A", faces=(label,))
         made.append((place(tmp, f"{fname}-{sign_tag()}.pdf"), fname))
-    tmp = os.path.join(SIGN.WORK, "sign_b_face_a.pdf")
-    SIGN.artwork(tmp, variant="B", faces=("FACE A",))
-    made.append((place(tmp, f"SIGN-B-FACE-A-{sign_tag()}.pdf"), "SIGN-B-FACE-A"))
+    tmp = os.path.join(SIGN.WORK, "sign_c_face_a.pdf")
+    SIGN.artwork(tmp, variant="C", faces=("FACE A",))
+    made.append((place(tmp, f"SIGN-C-FACE-A-{sign_tag()}.pdf"), "SIGN-C-FACE-A"))
     return made
 
 
@@ -83,7 +83,7 @@ def pieces_list():
             pieces.append((n, f"{prefix}-P{i}", service, f"{prefix}-P{i}",
                            door["folder"], "Door film", f"900 × {w} mm",
                            f"{n:02d}-{prefix}-P{i}-{slug_service(service)}-900x{w}.pdf"))
-    for job in ("SIGN-A-FACE-A", "SIGN-A-FACE-B", "SIGN-B-FACE-A"):
+    for job in ("SIGN-A-FACE-A", "SIGN-A-FACE-B", "SIGN-C-FACE-A"):
         n += 1
         pieces.append((n, job, "Sign post panel", job, "sign", "Sign post",
                        f"{SIGN.W:.1f} × {SIGN.H:.1f} mm",
@@ -185,7 +185,7 @@ def manifest(path, pieces):
 
 
 def bundle(path, pieces):
-    """All 30 pieces in one PDF, in job order — to open and check, not to plot.
+    """Every piece in the set in one PDF, in job order — to open and check, not to plot.
 
     Each page keeps its own finished size and trim box, so printing this file
     page-for-page gives the same 30 sheets as the single files. The single
@@ -204,7 +204,7 @@ def bundle(path, pieces):
             w.add_page(pg)
     w.add_metadata({"/Title": "BCM Medical Centre — all print files, one per page",
                     "/Author": "BCM Medical Centre — one-way vision film project",
-                    "/Subject": "30 pieces, 1 : 1 in millimetres, plot at 100 %"})
+                    "/Subject": "All pieces, 1 : 1 in millimetres, plot at 100 %"})
     with open(path, "wb") as fh:
         w.write(fh)
     return path
@@ -241,14 +241,14 @@ def main():
     lines += ["## Print files zip", "",
               "`BCM-Print-Files.zip` holds exactly this folder — the 30 single print "
               "files, the index and `BCM-Print-Files-ALL.pdf`, nothing else.", "",
-              "`BCM-Print-Files-ALL.pdf` is all 30 pieces in one document, one piece per "
+              "`BCM-Print-Files-ALL.pdf` is every piece in one document, one piece per "
               "page, in job order — for checking or for a printer who would rather have a "
               "single attachment. Every page keeps its own finished size, so it plots the "
               "same as the single files; the single files are still what to send.", ""]
     lines += ["## Notes", "",
               "The sign post is supplied as three files: face A and face B of the "
-              "recommended option A lockup, and face A of the same panel in the option B "
-              "lockup. Print one file per side of the board.",
+              "recommended option A lockup, and face A of the same panel in the fascia "
+              "setting. Print one file per side of the board.",
               "",
               "The multi-page proofs elsewhere in the set are for approval only — these "
               "single files are the ones to send to a printer.",

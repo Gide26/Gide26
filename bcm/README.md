@@ -41,16 +41,18 @@ carries its own artwork, schedule, specification, elevations, web preview, READM
 
 ## The sign post panel
 
-A separate deliverable, name only: **4 ft × 2 ft** as the client measured it (revised on
-2026-11-02 from the earlier 3.10 × 2.11 ft), landscape, which is **1219.2 × 609.6 mm**. No service list, no photograph — the badge, `BCM`, then
+A separate deliverable, name only: **16 ft 7 in × 49 in** as the client measured it (revised
+on 2026-11-06 from 4 ft × 2 ft, which itself replaced 3.10 × 2.11 ft), landscape, which is
+**5054.6 × 1244.6 mm** — a 6.3 m² face. No service list, no photograph — the badge, `BCM`, then
 `MEDICAL CENTRE` set at the largest size the panel will take, so the name points from across the
 road. Double-sided; both faces are in the one print PDF.
 
 | Path | What it is |
 | --- | --- |
 | `sign/artwork/BCM-Sign-Name-Only.pdf` | Print file, option A (centred) — 1 : 1 mm, 10 mm bleed, crop marks, two faces |
-| `sign/artwork/BCM-Sign-Name-Only-Option-B.pdf` | Print file, option B (badge-left lockup) |
-| `sign/BCM-Sign-Panel.pdf` | 4 pages — panel to scale with dimensions, the two options, on the post, specification |
+| `sign/artwork/BCM-Sign-Name-Only-Option-C-Fascia.pdf` | Print file, option C (fascia setting) |
+| `sign/print/` + `sign/BCM-Sign-Post-Print-5055x1245mm.zip` | The signwriter's pack: the two-face file, each face alone, the spare fascia setting, READ-ME-FIRST |
+| `sign/BCM-Sign-Panel.pdf` | 4 pages — panel to scale with dimensions, the three settings, on the post, specification |
 | `sign/lookbook/` | Day and night elevations, dimensioned panel |
 | `sign/index.html` | Web preview |
 
