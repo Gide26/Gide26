@@ -23,12 +23,12 @@ Type sizes on the shipped face (1168.4 × 558.8 mm):
 
 | Line | Cap height | How it is set |
 | --- | --- | --- |
-| EDDWALIRO | 117.7 mm | white, knocked out of the red block, full measure |
-| MEDICAL CENTRE | 64.5 mm | navy, on the light blue band, tracked |
-| Open · 24 Hrs | 57.4 mm | red, between two solid red arrows |
-| BCM | 50.5 mm | navy, centred on the white band |
-| TEL 0788 323 815 · 0754 132 715 | 16.8 mm | white on the navy foot strip, left |
-| BUSSABALA | 16.8 mm | white on the navy foot strip, right |
+| EDDWALIRO | 124.4 mm | white, knocked out of the red block, full measure |
+| MEDICAL CENTRE | 84.0 mm | navy, on the light blue band, tracked |
+| Open · 24 Hrs | 45.9 mm | red, between two solid red arrows |
+| BCM | 75.9 mm | navy, centred on the white band |
+| TEL 0788 323 815 · 0754 132 715 | 18.0 mm | white on the navy foot strip, left |
+| BUSSABALA | 18.0 mm | white on the navy foot strip, right |
 
 **Trim: 1168.4 × 558.8 mm — the client's 46 in long × 22 in high, landscape.**
 Revised on 2026-11-06 from 16 ft 7 in × 49 in, which itself replaced 4 ft × 2 ft

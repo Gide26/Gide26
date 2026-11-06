@@ -144,7 +144,7 @@ SIGN_BRANCH = "BUSSABALA"
 SIGN_OPEN = ("Open", "24 Hrs")
 
 # band heights as weights of the inner height (they are normalised to fit)
-BAND_W = (12.4, 15.4, 2.0, 26.0, 23.6, 2.0, 11.4)     # brand, navy, gap, red, open, gap, foot
+BAND_W = (84.0, 100.0, 10.0, 148.0, 91.0, 10.0, 57.0)     # brand, navy, gap, red, open, gap, foot
 
 
 def _arrow(c, x, y, length, thick, head_len, head_h, colour, direction=-1):
@@ -201,14 +201,14 @@ def bright_face(c, w, h, pal, slogan=False, tel=True):
     y_foot = y_open - g2 - h_foot
 
     # ---- white band: BCM, where the badge and the Bactrimed wordmark used to be
-    cap_w = h_brand * 0.72
+    cap_w = h_brand * 0.86
     B.caps(c, w / 2, y_brand + (h_brand - cap_w) / 2 - cap_w * 0.02, SIGN_BRAND, cap_w,
            pal["band_txt_alt"], "Manrope-800", cap_w * 0.16, align="center")
 
     # ---- light blue band: MEDICAL CENTRE
     c.setFillColor(pal["mc_band"])
     c.rect(mxx, y_navy, IW, h_navy, stroke=0, fill=1)
-    cap_c = min(h_navy * 0.74, fit_cap(SIGN_COMMUNITY, "Manrope-800", "Manrope",
+    cap_c = min(h_navy * 0.80, fit_cap(SIGN_COMMUNITY, "Manrope-800", "Manrope",
                                        IW * 0.94))
     B.caps(c, w / 2, y_navy + (h_navy - cap_c) / 2 - cap_c * 0.02, SIGN_COMMUNITY,
            cap_c, pal["mc_txt"], "Manrope-800", cap_c * 0.12, align="center",
@@ -224,7 +224,7 @@ def bright_face(c, w, h, pal, slogan=False, tel=True):
 
     # ---- open row: arrow, Open 24 Hrs, arrow
     al = IW * 0.135                       # arrow length
-    acap = h_open * 0.43
+    acap = h_open * 0.48
     w1 = pdfmetrics.stringWidth(SIGN_OPEN[0], "Manrope-700", B.font_for(acap, "Manrope"))
     w2 = pdfmetrics.stringWidth(SIGN_OPEN[1], "Manrope-700", B.font_for(acap, "Manrope"))
     gap = IW * 0.055
@@ -246,7 +246,7 @@ def bright_face(c, w, h, pal, slogan=False, tel=True):
     if tel:
         c.setFillColor(pal["band"])
         c.rect(mxx, y_foot, IW, h_foot, stroke=0, fill=1)
-        cap_f = min(h_foot * 0.26, fit_cap("TEL " + SIGN_TEL, "Inter-600", "Inter",
+        cap_f = min(h_foot * 0.30, fit_cap("TEL " + SIGN_TEL, "Inter-600", "Inter",
                                            IW * 0.62))
         B.caps(c, mxx + IW * 0.014, y_foot + (h_foot - cap_f) / 2, f"TEL  {SIGN_TEL}",
                cap_f, pal["band_txt"], "Inter-600", cap_f * 0.06)
@@ -648,8 +648,9 @@ def proof(path):
                "One panel: the name, and the two facts a passer-by needs — open all "
                "night, and the numbers to ring. No service list, no photograph. Trim "
                f"{W:.0f} × {H:.0f} mm, the client's {FT_TXT}, double-sided, for a lighting "
-               "board. EDDWALIRO heads the panel, BCM stands under it, and the English name "
-               "keeps the widest line.",
+               "board. BCM sits at the head, MEDICAL CENTRE on its light blue band, and "
+               "EDDWALIRO across the full measure below — the name at the largest size the "
+               "panel will take.",
                (D.PW - 2 * D.M) / MM * 0.56, 3.3, B.NAVY_MID)
 
     # fit the panel to the measure, whichever of width or height binds
