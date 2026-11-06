@@ -1,26 +1,34 @@
 # BCM Medical Centre — sign post panel, for a lighting board
 
-No service list, no photograph, no monogram, **no motto**. The name, plus the two facts a
-passer-by needs: **OPEN 24 HOURS** and the numbers to ring, in a ruled strip at the foot.
+**Built to the sign the clinic already has.** The client sent a night photograph of the lit box
+standing on the road, and asked for the new face to be made like it — so the arrangement is the
+one people there already read:
 
-**The board lights the sign, so the words do the shouting.** The face is a plain white field
-with every word in bright red `#ED1B24`, set as large as a 46 × 22 in panel will carry:
-`EDDWALIRO` edge to edge, `BCM` between, `MEDICAL CENTRE` edge to edge, then the foot strip:
-OPEN 24 HOURS left, the numbers right. No second colour, no dense field, no motto.
+1. white band: the badge at the left, `Bactrimed` at the right
+2. navy band: `COMMUNITY MEDICAL CENTRE`, white, tracked across the measure
+3. red block, full width: `EDDWALIRO` knocked out in white
+4. white row: an arrow at each end, `Open` and `24 Hrs` in red between them
+5. navy foot strip: `TEL 0788 323 815 · 0754 132 715` at the left, `NABINGO BRANCH` at the
+   right
 
-Why white and not a colour: a lit face reads evenly when there is little ink on it. White is
-the field the tubes light most cleanly, so the panel glows quietly from end to end and the red
-lettering is what carries — from across the road, lit or not.
+No service list, no photograph, **no motto**. The brand line, the community name, the branch,
+the arrows and the numbers are all read off the client's own sign — nothing on the face is
+invented.
+
+**Red still carries the flag.** The block behind the name and the OPEN 24 HRS row are `#ED1B24`;
+everything else is the clinic's navy `#16233F` and white. The navy sits in two thin bands with
+white either side, so the box lights evenly rather than through one dense field.
 
 Type sizes on the shipped face (1168.4 × 558.8 mm):
 
 | Line | Cap height | How it is set |
 | --- | --- | --- |
-| EDDWALIRO | 128.7 mm | full measure, red, tight tracking |
-| BCM | 35.8 mm | centred under it, red |
-| MEDICAL CENTRE | 89.4 mm | full measure, red |
-| OPEN 24 HOURS | 16.2 mm | ruled foot strip, left |
-| TEL 0788 323 815 · 0754 132 715 | 16.2 mm | ruled foot strip, right |
+| EDDWALIRO | 117.4 mm | white, knocked out of the red block, full measure |
+| COMMUNITY MEDICAL CENTRE | 35.2 mm | white, on the navy band, tracked |
+| Open · 24 Hrs | 61.0 mm | red, between two solid red arrows |
+| Bactrimed | 19.0 mm | navy wordmark, right of the badge band |
+| TEL 0788 323 815 · 0754 132 715 | 18.6 mm | white on the navy foot strip, left |
+| NABINGO BRANCH | 18.6 mm | white on the navy foot strip, right |
 
 **Trim: 1168.4 × 558.8 mm — the client's 46 in long × 22 in high, landscape.**
 Revised on 2026-11-06 from 16 ft 7 in × 49 in, which itself replaced 4 ft × 2 ft
@@ -33,10 +41,10 @@ are identical.
 | `print/BCM-Sign-Post-RED-BOTH-FACES-1168x559mm.pdf` | The same artwork with 10 mm bleed and crop marks — page deliberately larger (1188.4 × 600.8 mm) |
 | `print/BCM-Sign-Post-RED-FACE-A-1168x559mm.pdf` | Face A alone |
 | `print/BCM-Sign-Post-RED-FACE-B-1168x559mm.pdf` | Face B alone |
-| `print/BCM-Sign-Post-SPARE-CYAN-FIELD-1168x559mm.pdf` | The earlier cyan field at the same type size — spare |
+| `print/BCM-Sign-Post-SPARE-CYAN-FIELD-1168x559mm.pdf` | The same arrangement on the cyan field — spare |
 | `print/READ-ME-FIRST.txt` | Trim, bleed, safe area, backlit media, the red-in-a-light-box note |
 | `BCM-Sign-Post-Print-1168x559mm.zip` | All of the above in one zip |
-| `artwork/BCM-Sign-Name-Only-Red.pdf` | Print file, red on white, both faces |
+| `artwork/BCM-Sign-Name-Only-Red.pdf` | Print file, the lit face, both faces |
 | `artwork/BCM-Sign-Name-Only-Spare-Cyan.pdf` | Print file, cyan field, spare |
 | `BCM-Sign-Panel.pdf` | 4 pages — the face to scale with dimensions, the three faces side by side, on the post, specification |
 | `lookbook/M-01-sign-day.png` | Day elevation, panel on two posts, to scale |
@@ -64,7 +72,8 @@ are identical.
   behind: letter edges soften and the red can warm towards orange. Hold it as a flat spot
   colour if the process allows, keep the tube close behind the face and even, and check a lit
   sample before the full run.
-- Print the white field as one solid, even coat — no gradient, no vignette.
+- Print the white and the navy as flat, even coats — no gradient, no vignette. Navy is the
+  field most likely to band behind the tubes.
 - Double-sided: the artwork is identical on both faces, so the same file prints twice.
 - **The face fits the box's aperture, not its outer frame.** The visible opening should be the
   trim size above, or the rebate will crop the lettering.
@@ -81,8 +90,11 @@ are identical.
 4. The numbers on the face — **0788 323 815 · 0754 132 715** — are the client's, as given for
    the sign. 0788 323 815 is the newer line, already on door panes 1–18. The banners and panes
    19–24 still carry 0771 240 104 as their first number.
+5. **`NABINGO BRANCH` and `Bactrimed` are copied from the client's existing sign.** If this
+   face is for a different branch, or the brand line should come off, each is one word in
+   `source/bcm_sign.py` (`SIGN_BRANCH`, `SIGN_BRAND`).
 
-If the red is too loud, say so: the same layout can be set in the clinic's cyan `#2BA9E0` at
-the same size, and the cyan field spare is already in the pack.
+If the red is too loud, say so: the same layout can be set on the clinic's cyan `#2BA9E0`
+field, and the cyan spare is already in the pack.
 
 Rebuild: `cd source && python3 bcm_sign.py`

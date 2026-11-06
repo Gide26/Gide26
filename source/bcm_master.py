@@ -284,12 +284,13 @@ def sign_page(c):
               eyebrow="BCM  ·  MEDICAL CENTRE  ·  SIGN POST")
     y = D.h1(c, D.PH - 34 * MM, "The sign post panel", 7.6)
     D.para(c, D.M, y + 2 * MM,
-           f"Name only — no service list, no photograph. Trim {SIGN.W:.1f} × {SIGN.H:.1f} "
-           f"mm, the client's {SIGN.FT_TXT}, double-sided, for a lighting board. The board "
-           "does the lighting, so the face stays quiet: a white field with every word in "
-           "bright red, set as large as the panel takes — EDDWALIRO and MEDICAL CENTRE edge "
-           "to edge, BCM between them, then a foot strip with OPEN 24 HOURS and the numbers "
-           "0788 323 815 · 0754 132 715. No motto, no monogram.",
+           f"Name only — no service list, no photograph, no motto. Trim {SIGN.W:.1f} × "
+           f"{SIGN.H:.1f} mm, the client's {SIGN.FT_TXT}, double-sided, for a lighting "
+           "board. The face is built to the sign already standing on the road: Bactrimed and "
+           "the badge on a white band, COMMUNITY MEDICAL CENTRE in white on navy, EDDWALIRO "
+           "knocked out of a full-width red block, OPEN 24 HRS between two arrows, then a "
+           "navy foot strip with 0788 323 815 · 0754 132 715 and NABINGO BRANCH. Red carries "
+           "the colour; the navy sits in two thin bands so the box still lights evenly.",
            (D.PW - 2 * D.M) / MM * 0.72, 3.2, B.NAVY_MID)
 
     img_box(c, "sign/lookbook/M-01-sign-day.png", D.M, 40 * MM, 108 * MM,

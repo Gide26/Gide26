@@ -43,30 +43,34 @@ carries its own artwork, schedule, specification, elevations, web preview, READM
 
 A separate deliverable: **46 in × 22 in** as the client measured it (revised on 2026-11-06
 from 16 ft 7 in × 49 in, which followed 4 ft × 2 ft and 3.10 × 2.11 ft), landscape, which is
-**1168.4 × 558.8 mm**. No service list, no photograph, no motto — `EDDWALIRO`, then `BCM`
-where the badge used to sit, then `MEDICAL CENTRE` set at the largest size the panel will take,
-with a foot strip carrying `OPEN 24 HOURS` and `0788 323 815 · 0754 132 715`. Double-sided;
-both faces are in the one print PDF.
+**1168.4 × 558.8 mm**. No service list, no photograph, no motto. Double-sided; both faces are
+in the one print PDF.
 
-**It is going into an internally lit box, so the words carry it**: a plain white field with
-`EDDWALIRO`, `BCM` and `MEDICAL CENTRE` all in bright red `#ED1B24`, set edge to edge and as
-large as the panel takes. The board lights the sign; the red lettering shouts. Low ink coverage
-also keeps the light even — a dense field in a light box comes up patchy. The earlier cyan face
-is kept as a spare.
+**Built to the sign the clinic already has.** The client sent a night photograph of the lit box
+on the road and asked for the new face to be made like it, so the arrangement is the one people
+there already read: the badge and `Bactrimed` on a white band, `COMMUNITY MEDICAL CENTRE` in
+white on navy, `EDDWALIRO` knocked out of a full-width red block, an arrow at each end of the
+`Open  24 Hrs` row, and a navy foot strip with `TEL 0788 323 815 · 0754 132 715` at the left
+and `NABINGO BRANCH` at the right.
+
+Red `#ED1B24` still carries the flag — the block behind the name and the OPEN 24 HRS row — with
+the clinic's navy in two thin bands and white either side, so the box lights evenly rather than
+through one dense field. The earlier cyan field is kept as a spare.
 
 | Path | What it is |
 | --- | --- |
-| `sign/artwork/BCM-Sign-Name-Only-Red.pdf` | Print file, red on white — 1 : 1 mm, 10 mm bleed, crop marks, two faces |
+| `sign/artwork/BCM-Sign-Name-Only-Red.pdf` | Print file, the lit face — 1 : 1 mm, 10 mm bleed, crop marks, two faces |
 | `sign/artwork/BCM-Sign-Name-Only-Spare-Cyan.pdf` | Print file, cyan field — spare |
 | `sign/print/BCM-Sign-Post-RED-EXACT-46x22in.pdf` | The face at exactly 46 × 22 in — page = trim |
-| `sign/print/` + `sign/BCM-Sign-Post-Print-1168x559mm.zip` | The signwriter's pack: the two-face file, each face alone, the spare fascia setting, READ-ME-FIRST |
+| `sign/print/` + `sign/BCM-Sign-Post-Print-1168x559mm.zip` | The signwriter's pack: the two-face file, each face alone, the cyan spare, READ-ME-FIRST |
 | `sign/BCM-Sign-Panel.pdf` | 4 pages — panel to scale with dimensions, the three settings, on the post, specification |
 | `sign/lookbook/` | Day and night elevations, dimensioned panel |
 | `sign/index.html` | Web preview |
 
-Substrate (3 mm ACM, matte laminate), fixing (two 76 mm posts at 520 mm centres, panel centre
-1500 mm above finished ground) and finish are industry-typical proposals flagged for the
-signwriter; none of them is a quotation.
+The face is backlit-grade (translucent diffusing acrylic or backlit film), not vinyl on opaque
+composite. Substrate, fixing (two 76 mm posts at 520 mm centres, panel centre 1500 mm above
+finished ground) and finish are industry-typical proposals flagged for the signwriter; none of
+them is a quotation.
 
 ## What each door folder holds
 

@@ -96,94 +96,160 @@ def lockscale(w, h, m=_REF_M, fill=0.88):
 
 
 # ------------------------------------------------------------------ bright faces
-# The sign is going into a lighting board (an internally lit box). The board's own
-# light does the shouting, so the face is kept quiet — a white field — and the
-# words do it instead: full-width, in bright red, as large as the panel will carry.
-# White is the best field to light evenly; the red lettering is what reads from the
-# road, lit or not.
+# The sign replaces the lit box the clinic already has on the road, and is built to
+# that sign's own arrangement (client photograph, 2026-11-06): badge and Bactrimed on a
+# white band, COMMUNITY MEDICAL CENTRE in white on navy, EDDWALIRO knocked out of a
+# full-width red block, OPEN 24 HRS between two arrows, navy foot strip with the
+# numbers. The red block is what carries the colour, so the face still shouts in the
+# box without a dense field behind the tubes.
 LIT_RED = Color(0.929, 0.106, 0.141)      # #ED1B24 — bright red, the shouting colour
 DEEP_RED = Color(0.741, 0.078, 0.098)     # #BD1419 — the same red, for small type
 
 LIT = {
-    # the shipping face: white field, red lettering
-    "R": dict(ground=B.WHITE, word=LIT_RED, bcm=LIT_RED, name=LIT_RED,
-              rule=LIT_RED, slogan=DEEP_RED, key=(B.CP_GREY, 0.45)),
-    # spare: the cyan field, if the client would rather the field shout
-    "L": dict(ground=B.CP_CYAN, word=B.WHITE, bcm=B.WHITE, name=B.CP_NAVY,
-              rule=B.CP_NAVY, slogan=B.CP_NAVY, key=(B.WHITE, 0.34)),
+    # the shipping face: the client's own sign arrangement — navy bands, red block,
+    # EDDWALIRO knocked out in white, red OPEN 24 HRS row, navy foot strip
+    "R": dict(ground=B.WHITE, band=B.CP_NAVY, band_txt=B.WHITE, band_txt_alt=B.CP_NAVY,
+              block=LIT_RED, block_txt=B.WHITE, mark=B.CP_NAVY, open=LIT_RED,
+              slogan=DEEP_RED, key=(B.CP_GREY, 0.45)),
+    # spare: the same arrangement on the cyan field, if the client would rather the
+    # field carry the colour
+    "L": dict(ground=B.CP_CYAN, band=B.CP_NAVY, band_txt=B.WHITE, band_txt_alt=B.CP_NAVY,
+              block=B.WHITE, block_txt=LIT_RED, mark=B.CP_NAVY, open=B.WHITE,
+              slogan=B.CP_NAVY, key=(B.WHITE, 0.34)),
 }
 FACE = "R"                       # what the print files carry
 # The client's number for the sign: 0788 323 815 first, 0754 132 715 kept. This is the
 # newer line they gave (it went onto door panes 1-18); the sign now carries it too.
 SIGN_TEL = "0788 323 815  ·  0754 132 715"
-VARIANT_NAME = {"R": "LIT — RED ON WHITE", "L": "LIT — CYAN FIELD",
+VARIANT_NAME = {"R": "LIT — THE CLINIC'S SIGN", "L": "LIT — CYAN FIELD · SPARE",
                 "A": "UNLIT — NAVY FACE", "B": "UNLIT — BADGE-LEFT",
                 "C": "UNLIT — FASCIA"}
 
 
+# --- the installed sign, read off the client's own night photograph ----------
+# The clinic already has a lit box on the road: a thin brand band at the top with the
+# badge and the Bactrimed wordmark, a navy band carrying COMMUNITY MEDICAL CENTRE, the
+# branch name EDDWALIRO in white knocked out of a red block, an OPEN 24 HRS row with
+# arrows at both ends, and a navy foot strip with the telephone. The new 46 x 22 in
+# face keeps that arrangement — it is the sign people on this road already know — and
+# only brings it up to date: the client's current numbers, and the motto left off.
+SIGN_BRAND = "Bactrimed"
+SIGN_COMMUNITY = "COMMUNITY MEDICAL CENTRE"
+SIGN_BRANCH = "NABINGO BRANCH"
+SIGN_OPEN = ("Open", "24 Hrs")
+
+# band heights as weights of the inner height (they are normalised to fit)
+BAND_W = (9.5, 12.0, 2.4, 25.0, 26.0, 2.4, 12.2)     # brand, navy, gap, red, open, gap, foot
+
+
+def _arrow(c, x, y, length, thick, head_len, head_h, colour, direction=-1):
+    """A solid horizontal arrow. direction -1 points left, +1 points right."""
+    c.setFillColor(colour)
+    hl = min(head_len, length * 0.55)
+    if direction < 0:                     # tip at x, shaft runs to the right
+        x_tip = x
+        p = c.beginPath()
+        p.moveTo(x_tip, y)
+        p.lineTo(x_tip + hl, y + head_h / 2)
+        p.lineTo(x_tip + hl, y - head_h / 2)
+        p.close()
+        c.drawPath(p, stroke=0, fill=1)
+        c.rect(x_tip + hl, y - thick / 2, length - hl, thick, stroke=0, fill=1)
+    else:                                 # tip at x + length, shaft runs to the left
+        x_tip = x + length
+        p = c.beginPath()
+        p.moveTo(x_tip, y)
+        p.lineTo(x_tip - hl, y + head_h / 2)
+        p.lineTo(x_tip - hl, y - head_h / 2)
+        p.close()
+        c.drawPath(p, stroke=0, fill=1)
+        c.rect(x, y - thick / 2, length - hl, thick, stroke=0, fill=1)
+
+
 def bright_face(c, w, h, pal, slogan=False, tel=True):
-    """The lit lockup: EDDWALIRO / BCM / MEDICAL CENTRE / foot line.
+    """The lit face, built to the client's installed sign.
 
-    No motto on this face — the client asked for it off. The name and the foot line
-    are the whole message, so the three lines get the height the motto used to take.
+    Top to bottom: brand band (badge + Bactrimed), navy COMMUNITY MEDICAL CENTRE,
+    red block with EDDWALIRO knocked out in white, the OPEN 24 HRS row with an arrow
+    at each end, and the navy foot strip with the numbers.
 
-    Width is the only real limit here — at 46 × 22 in, three lines of type stacked
-    cannot each be as tall as the panel, so each line is set to the full measure and
-    the leftover height goes into generous spacing, evenly, so the block sits as one
-    composition rather than three lines jammed in the middle.
-
-    The foot carries the two things a passer-by needs once the name has landed: that
-    the clinic is open all night, and the numbers to ring. Same wording as the
-    banners, so the whole set reads as one set.
+    `slogan` is accepted for the callers that still pass it, but nothing on this face
+    carries the motto — the client asked for it off. `tel=False` drops the foot strip.
     """
-    m = w * 0.040                       # just clear of the trim
-    A = w - 2 * m
-    foot = h * 0.105 if tel else 0.0    # the open-24 / telephone strip
+    mxx = w * 0.028                       # side margin: the light border round the bands
+    my = h * 0.030                        # top / bottom margin
+    IW = w - 2 * mxx
+    IH = h - 2 * my
+    weights = list(BAND_W)
+    if not tel:
+        weights[-2] = 0.0                 # drop the second gap
+        weights[-1] = 0.0                 # and the foot strip
+    total = sum(weights)
+    band = [IH * x / total for x in weights]
+    h_brand, h_navy, g1, h_red, h_open, g2, h_foot = band
 
-    cap_m = fit_cap(NAME, "Manrope-800", "Manrope", A)
-    cap_e = fit_cap(WORD, "Manrope-800", "Manrope", A)
-    cap_b = cap_m * 0.40
-    cap_s = cap_m * 0.135               # only used if the motto is switched back on
-    rule_h = max(3.5, cap_m * 0.026)
+    top = my + IH                          # the top edge of the stack
+    y_brand = top - h_brand
+    y_navy = y_brand - h_navy
+    y_red = y_navy - g1 - h_red
+    y_open = y_red - h_open
+    y_foot = y_open - g2 - h_foot
 
-    # gaps take whatever height is left, in these proportions
-    wts = (0.30, 0.24, 0.13, 0.23)      # e→bcm, bcm→name, name→rule, rule→motto
-    fixed = cap_e + cap_b + cap_m + rule_h + (cap_s if slogan else 0.0)
-    room = max((h - foot) * 0.94 - fixed, 0.0)
-    g_e, g_b, g_rule, g_sl = (room * x for x in wts)
+    # ---- brand band: badge left, wordmark right
+    size = min(h_brand * 0.82, IW * 0.10)
+    B.monogram(c, mxx + IW * 0.012, y_brand + (h_brand - size) / 2, size,
+               dark=pal["mark"], accent=pal["mark"])
+    cap_w = h_brand * 0.34
+    B.caps(c, mxx + IW - IW * 0.012, y_brand + h_brand * 0.335, SIGN_BRAND, cap_w,
+           pal["band_txt_alt"], "Manrope-500", 2.0, align="right")
 
-    block = cap_e + g_e + cap_b + g_b + cap_m
-    tail = (g_rule + rule_h + g_sl + cap_s) if slogan else 0.0
-    # with no motto the block would sit high in its own band, leaving a dead strip
-    # between the name and the foot rule; nudge it down so the space reads as even
-    nudge = 0.0 if slogan else h * 0.020 * (1.0 if tel else 0.0)
-    top = foot + (h - foot) / 2 + (block + tail) / 2 - nudge
+    # ---- navy band: COMMUNITY MEDICAL CENTRE
+    c.setFillColor(pal["band"])
+    c.rect(mxx, y_navy, IW, h_navy, stroke=0, fill=1)
+    cap_c = min(h_navy * 0.50, fit_cap(SIGN_COMMUNITY, "Manrope-700", "Manrope",
+                                       IW * 0.94))
+    B.caps(c, w / 2, y_navy + (h_navy - cap_c) / 2 - cap_c * 0.02, SIGN_COMMUNITY,
+           cap_c, pal["band_txt"], "Manrope-700", cap_c * 0.10, align="center",
+           max_w=IW * 0.94)
 
-    B.caps(c, w / 2, top - cap_e, WORD, cap_e, pal["word"], "Manrope-800",
-           ED_TRACK * 0.6, align="center", max_w=A)
-    y_b = top - cap_e - g_e - cap_b
-    B.caps(c, w / 2, y_b, "BCM", cap_b, pal["bcm"], "Manrope-800", 18.0,
-           align="center", max_w=A)
-    y_m = y_b - g_b - cap_m
-    B.caps(c, w / 2, y_m, NAME, cap_m, pal["name"], "Manrope-800", 0.4,
-           align="center", max_w=A)
+    # ---- red block: EDDWALIRO knocked out in white
+    c.setFillColor(pal["block"])
+    c.rect(mxx, y_red, IW, h_red, stroke=0, fill=1)
+    cap_e = min(h_red * 0.80, fit_cap(WORD, "Manrope-800", "Manrope", IW * 0.94))
+    B.caps(c, w / 2, y_red + (h_red - cap_e) / 2 - cap_e * 0.03, WORD, cap_e,
+           pal["block_txt"], "Manrope-800", cap_e * 0.045, align="center",
+           max_w=IW * 0.98)
 
-    if slogan:
-        ry = y_m - g_rule - rule_h
-        c.setFillColor(pal["rule"])
-        c.rect(w / 2 - w * 0.075, ry, w * 0.15, rule_h, stroke=0, fill=1)
-        B.label(c, w / 2, ry - g_sl - cap_s, B.SLOGAN, cap_s, pal["slogan"],
-                "Inter-500", 3.0, align="center")
+    # ---- open row: arrow, Open 24 Hrs, arrow
+    al = IW * 0.135                       # arrow length
+    acap = h_open * 0.40
+    w1 = pdfmetrics.stringWidth(SIGN_OPEN[0], "Manrope-700", B.font_for(acap, "Manrope"))
+    w2 = pdfmetrics.stringWidth(SIGN_OPEN[1], "Manrope-700", B.font_for(acap, "Manrope"))
+    gap = IW * 0.055
+    tw = w1 + gap + w2
+    cy = y_open + h_open / 2
+    tgap = cap_e * 0.10
+    x0 = w / 2 - tw / 2
+    B.caps(c, x0, cy - acap / 2, SIGN_OPEN[0], acap, pal["open"], "Manrope-700", tgap)
+    B.caps(c, x0 + w1 + gap, cy - acap / 2, SIGN_OPEN[1], acap, pal["open"],
+           "Manrope-700", tgap)
+    arm = h_open * 0.052                  # shaft thickness
+    ahl = IW * 0.052                      # head length
+    ahh = h_open * 0.150                  # head height
+    _arrow(c, mxx + IW * 0.008, cy, al, arm, ahl, ahh, pal["open"], direction=-1)
+    _arrow(c, mxx + IW - IW * 0.008 - al, cy, al, arm, ahl, ahh, pal["open"],
+           direction=+1)
+
+    # ---- foot strip: numbers left, branch right
     if tel:
-        # ruled foot strip: open all night at the left, the numbers at the right
-        cap_f = cap_m * 0.185
-        fy = h * 0.052
-        c.setFillColor(pal["rule"])
-        c.rect(m, fy + cap_f * 2.05, w - 2 * m, max(2.4, rule_h * 0.55),
-               stroke=0, fill=1)
-        B.caps(c, m, fy, "OPEN 24 HOURS", cap_f, pal["word"], "Inter-600", 5.0)
-        B.caps(c, w - m, fy, f"TEL  {SIGN_TEL}", cap_f, pal["name"], "Inter-600", 3.0,
-               align="right")
+        c.setFillColor(pal["band"])
+        c.rect(mxx, y_foot, IW, h_foot, stroke=0, fill=1)
+        cap_f = min(h_foot * 0.26, fit_cap("TEL " + SIGN_TEL, "Inter-600", "Inter",
+                                           IW * 0.62))
+        B.caps(c, mxx + IW * 0.014, y_foot + (h_foot - cap_f) / 2, f"TEL  {SIGN_TEL}",
+               cap_f, pal["band_txt"], "Inter-600", cap_f * 0.06)
+        B.caps(c, mxx + IW - IW * 0.014, y_foot + (h_foot - cap_f) / 2, SIGN_BRANCH,
+               cap_f, pal["band_txt"], "Inter-600", cap_f * 0.12, align="right")
 
 
 def face(c, w=W, h=H, variant=FACE, slogan=False, tel=True):
@@ -195,14 +261,6 @@ def face(c, w=W, h=H, variant=FACE, slogan=False, tel=True):
 
     if pal:                                  # the lit faces
         bright_face(c, w, h, pal, slogan=slogan, tel=tel)
-        c.saveState()
-        key, alpha = pal["key"]
-        c.setStrokeColor(key)
-        c.setStrokeAlpha(alpha)
-        c.setLineWidth(1.6)
-        inset = min(30.0, h * 0.05)
-        c.rect(inset, inset, w - inset * 2, h - inset * 2, stroke=1, fill=0)
-        c.restoreState()
         return
 
     if variant == "A":                       # centred, typographic
@@ -629,20 +687,22 @@ def proof(path):
     # ---- page 2 — the lit faces
     c.showPage()
     D.page_bg(c, "OPTIONS", f"{REV}", 2, eyebrow=eyebrow)
-    y = D.h1(c, D.PH - 34 * MM, "The words shout, the light doesn't", 8.0)
+    y = D.h1(c, D.PH - 34 * MM, "Built to the sign you already have", 8.0)
     D.para(c, D.M, y + 2 * MM,
-           "The box lights the sign, so the face does not have to. The field is plain white — "
-           "the one colour that lights evenly edge to edge — and every word is set in bright "
-           "red, as wide as the panel takes. The lettering is the shouting, not the panel: "
-           "a white field with huge red words reads from across the road, lit or not, and it "
-           "cannot go patchy the way a dense field does behind tubes.",
+           "The clinic's own lit box is on the road already, so the new face keeps that "
+           "arrangement rather than inventing one: the badge and the Bactrimed wordmark on a "
+           "white band, COMMUNITY MEDICAL CENTRE in white on navy, EDDWALIRO knocked out of a "
+           "full-width red block, OPEN 24 HRS between two arrows, and a navy foot strip with "
+           "the numbers. Only what has to changes — the numbers are the client's current "
+           "ones, and the motto is off. The navy sits in two thin bands with white either "
+           "side, so the box still lights evenly.",
            (D.PW - 2 * D.M) / MM * 0.90, 3.2, B.NAVY_MID)
 
     sw = 82.0                                   # three across the measure
     sc = sw / W
     ph_mm = H * sc
     for i, (v, cap_txt) in enumerate((
-            ("R", "RED ON WHITE  ·  IN THE PRINT FILES"),
+            ("R", "THE CLINIC'S SIGN  ·  IN THE PRINT FILES"),
             ("L", "CYAN FIELD  ·  SPARE"),
             ("A", "THE OLD NAVY FACE  ·  NOT FOR THE BOX"))):
         px = D.M + i * 88 * MM              # D.M is in points; add mm here
@@ -659,19 +719,19 @@ def proof(path):
 
     B.label(c, D.M, 90 * MM, "WHAT CHANGED", 4.0, B.TEAL, "Inter-600", 1.6)
     D.bullets(c, D.M, 83 * MM, [
-        "The type is much larger: all three lines are set to the full measure and the "
-        "leftover height is shared out as spacing, so the words fill the panel without "
-        "crowding each other. MEDICAL CENTRE is 89 mm cap height over a 559 mm panel.",
-        "Everything is in red #ED1B24 — EDDWALIRO, BCM, MEDICAL CENTRE and the rules. One "
-        "colour, so nothing competes with the name.",
-        "The field is white, not cyan. The board's light makes the panel bright; the red "
-        "makes the words loud. Two things shouting at once is one too many.",
-        "The motto is off this face, as asked. The name and the foot line are the whole "
-        "message, and the three lines take the height the motto used to occupy.",
-        "The foot strip carries OPEN 24 HOURS at the left and the clinic's numbers at the "
-        "right — 0788 323 815 · 0754 132 715 — under a red rule, in its own band so it "
-        "never crowds the name.",
-        "No monogram — BCM stands where it stood, in the display face.",
+        "The arrangement is the one already standing at the roadside: brand band, "
+        "COMMUNITY MEDICAL CENTRE, the red EDDWALIRO block, OPEN 24 HRS, foot strip. People "
+        "on this road already read that sign, so the new face does not make them learn it "
+        "again.",
+        "EDDWALIRO is set across 94 % of the panel — the whole measure — and knocked out of "
+        "the red block in white, so it is the loudest thing on the face, lit or not.",
+        "Red #ED1B24 carries the colour: the block behind the name and the OPEN 24 HRS row. "
+        "Everything else is the clinic's navy and white, so nothing competes with the name.",
+        "The motto is off this face, as asked. The OPEN 24 HRS row takes the room it used.",
+        "The foot strip carries the numbers — 0788 323 815 · 0754 132 715 — with NABINGO "
+        "BRANCH at the right, as on the sign that is there now.",
+        "Nothing here is invented: the brand line, the community name, the branch, the "
+        "arrows and the foot strip are all read off the client's own sign photograph.",
     ], 200 * MM, 3.0, B.NAVY_MID)
 
     B.label(c, D.M, 46 * MM, "IF THE RED IS TOO LOUD", 4.0, B.TEAL, "Inter-600", 1.6)
@@ -746,8 +806,9 @@ def proof(path):
         f"The face is {area:.2f} m². The artwork is supplied at 1 : 1 in millimetres, so it "
         "can go straight onto the box's print or be plotted as a spare.",
         "Double-sided: the artwork is identical on both faces, so the same file prints twice.",
-        "Print the white field as a solid, even coat — no gradient, no vignette. Banding in "
-        "a large flat field shows up far more when it is lit from behind.",
+        "Print the white field and the navy bands as flat, even coats — no gradient, no "
+        "vignette. Banding in a large flat field shows up far more when it is lit from "
+        "behind, and navy is the field most likely to show it.",
         "Red is the colour to watch: #ED1B24 bleeds slightly into white when it is lit from "
         "behind, so the letter edges soften and the red can warm towards orange. Hold it as "
         "a flat spot colour if the process allows, and check a lit sample before the run.",
@@ -764,7 +825,8 @@ def proof(path):
            f"{W:.0f} × {H:.0f} mm, so the visible opening should be that size or the artwork "
            "will be cropped by the rebate.",
            "One rule for a lit face: the light must be even across the whole panel. That is "
-           "why the field is white and the ink is confined to the lettering and the rule.",
+           "why the bands are thin, the gaps between them are white, and no band is set in a "
+           "dense tint.",
            f"If it is also to stand on posts rather than in the box, {POST_LC[n].lower()} "
            "galvanised posts at 520 mm centres, 600 mm into concrete, is the "
            "industry-typical proposal. Not a quotation."]
@@ -848,15 +910,19 @@ def printer_pack():
             "                       trim only, no bleed, no slug - this is the one that\n"
             "                       measures the panel size.\n"
             "CROP MARKS:            yes, at all four corners\n"
-            "COLOUR:                red #ED1B24 on white, nothing else\n"
+            "COLOUR:                navy #16233F bands, white type on them; red #ED1B24\n"
+            "                       block with EDDWALIRO knocked out in white; red\n"
+            "                       OPEN 24 HRS row. Nothing else.\n"
             "PLOT AT 100% - NEVER SCALE.\n\n"
             "THIS FACE IS FOR AN INTERNALLY LIT BOX\n"
-            "The field is plain white and the words carry the sign: EDDWALIRO and MEDICAL\n"
-            "CENTRE set edge to edge in red, BCM between them. White is the field that\n"
-            "lights most evenly, so the box glows quietly and the red lettering is what\n"
-            "shouts - that is the instruction behind this version. Print on backlit-grade\n"
-            "media: translucent diffusing acrylic or backlit film, or backlit banner media\n"
-            "if the box takes a soft face. Vinyl on opaque composite blocks the light.\n\n"
+            "The face is the arrangement of the sign already standing on the road, brought\n"
+            "up to date: badge and Bactrimed on a white band, COMMUNITY MEDICAL CENTRE in\n"
+            "white on navy, EDDWALIRO knocked out of a full-width red block, OPEN 24 HRS\n"
+            "between two arrows, and a navy foot strip with the numbers and NABINGO BRANCH.\n"
+            "The navy sits in thin bands with white either side, so the box lights evenly.\n"
+            "Print on backlit-grade media: translucent diffusing acrylic or backlit film, or\n"
+            "backlit banner media if the box takes a soft face. Vinyl on opaque composite\n"
+            "blocks the light.\n\n"
             "RED IS THE ONE COLOUR TO WATCH IN A LIGHT BOX\n"
             "A red this bright will bleed slightly into the white when it is lit from\n"
             "behind - the letter edges soften and the red can warm towards orange. Two\n"
@@ -871,11 +937,12 @@ def printer_pack():
             f"  BCM-Sign-Post-RED-FACE-B-{tag}mm.pdf          face B on its own\n"
             f"  BCM-Sign-Post-SPARE-CYAN-FIELD-{tag}mm.pdf    the earlier cyan face, spare\n\n"
             "THE SETTING\n"
-            "EDDWALIRO across the full measure in red, BCM in red under it, MEDICAL CENTRE\n"
-            "across the full measure in red, then a foot strip under a red rule: OPEN 24\n"
-            "HOURS at the left, the numbers at the right. There is NO MOTTO on this face -\n"
-            "the client asked for it off - and no monogram. Every line is set as wide as the\n"
-            "panel allows, so the type is as large as 46 x 22 in will carry.\n\n"
+            "Top band, white: the badge at the left, Bactrimed at the right. Then the navy\n"
+            "band COMMUNITY MEDICAL CENTRE in white. Then the red block, full width, with\n"
+            "EDDWALIRO knocked out of it in white at the largest size the panel will take.\n"
+            "Then the white row: an arrow at each end, Open and 24 Hrs between them in red.\n"
+            "Then the navy foot strip: the numbers at the left, NABINGO BRANCH at the right.\n"
+            "There is NO MOTTO on this face - the client asked for it off.\n\n"
             "THE NUMBERS\n"
             "The sign carries 0788 323 815 and 0754 132 715 - the client's numbers for it.\n"
             "0788 323 815 is the newer line, already on door panes 1-18; the sign now leads\n"
@@ -955,9 +1022,10 @@ def main():
   <h1>Eddwaliro. Medical Centre.</h1>
   <p>{FT_TXT} — {W:.0f} × {H:.0f} mm, landscape, double-sided, for a lighting board.
      No service list, no photograph: the name, plus OPEN 24 HOURS and the two premises
-     numbers in a strip at the foot. The board lights the sign, so the face is a plain white
-     field with the words in bright red, set as large as the panel takes — EDDWALIRO and
-     MEDICAL CENTRE edge to edge, BCM between them. No monogram.</p>
+     numbers in a strip at the foot. Built to the arrangement of the sign already on the
+     road: badge and Bactrimed on a white band, COMMUNITY MEDICAL CENTRE in white on navy,
+     EDDWALIRO knocked out of a full-width red block, OPEN 24 HRS between two arrows, navy
+     foot strip with the numbers and NABINGO BRANCH. No motto.</p>
 </header>
 <nav><a href="../index.html">All artwork</a>
      <a href="../door-1/index.html">Door 1</a>
@@ -977,9 +1045,9 @@ def main():
   <table>
     <tr><th>File</th><th>What it is</th></tr>
     <tr><td><a href="artwork/BCM-Sign-Name-Only-Red.pdf">BCM-Sign-Name-Only-Red.pdf</a></td>
-        <td>Print file — the red-on-white lit face, both faces, 10 mm bleed, crop marks, 1 : 1 mm</td></tr>
+        <td>Print file — the lit face, both faces, 10 mm bleed, crop marks, 1 : 1 mm</td></tr>
     <tr><td><a href="artwork/BCM-Sign-Name-Only-Spare-Cyan.pdf">BCM-Sign-Name-Only-Spare-Cyan.pdf</a></td>
-        <td>Print file — the cyan field at the same type size, spare</td></tr>
+        <td>Print file — the same face on the cyan field, spare</td></tr>
     <tr><td><a href="print/BCM-Sign-Post-RED-EXACT-{W_IN:.0f}x{H_IN:.0f}in.pdf">BCM-Sign-Post-RED-EXACT-{W_IN:.0f}x{H_IN:.0f}in.pdf</a></td>
         <td><b>Exactly {W_IN:.0f} × {H_IN:.0f} in</b> — the page <i>is</i> the panel,
             {W:.1f} × {H:.1f} mm, no bleed, no slug. This is the file to send if the face is

@@ -14,16 +14,20 @@ PAGE, EXACT FILE:      1168.4 x 558.8 mm = 46 x 22 in,
                        trim only, no bleed, no slug - this is the one that
                        measures the panel size.
 CROP MARKS:            yes, at all four corners
-COLOUR:                red #ED1B24 on white, nothing else
+COLOUR:                navy #16233F bands, white type on them; red #ED1B24
+                       block with EDDWALIRO knocked out in white; red
+                       OPEN 24 HRS row. Nothing else.
 PLOT AT 100% - NEVER SCALE.
 
 THIS FACE IS FOR AN INTERNALLY LIT BOX
-The field is plain white and the words carry the sign: EDDWALIRO and MEDICAL
-CENTRE set edge to edge in red, BCM between them. White is the field that
-lights most evenly, so the box glows quietly and the red lettering is what
-shouts - that is the instruction behind this version. Print on backlit-grade
-media: translucent diffusing acrylic or backlit film, or backlit banner media
-if the box takes a soft face. Vinyl on opaque composite blocks the light.
+The face is the arrangement of the sign already standing on the road, brought
+up to date: badge and Bactrimed on a white band, COMMUNITY MEDICAL CENTRE in
+white on navy, EDDWALIRO knocked out of a full-width red block, OPEN 24 HRS
+between two arrows, and a navy foot strip with the numbers and NABINGO BRANCH.
+The navy sits in thin bands with white either side, so the box lights evenly.
+Print on backlit-grade media: translucent diffusing acrylic or backlit film, or
+backlit banner media if the box takes a soft face. Vinyl on opaque composite
+blocks the light.
 
 RED IS THE ONE COLOUR TO WATCH IN A LIGHT BOX
 A red this bright will bleed slightly into the white when it is lit from
@@ -40,11 +44,12 @@ FILES
   BCM-Sign-Post-SPARE-CYAN-FIELD-1168x559mm.pdf    the earlier cyan face, spare
 
 THE SETTING
-EDDWALIRO across the full measure in red, BCM in red under it, MEDICAL CENTRE
-across the full measure in red, then a foot strip under a red rule: OPEN 24
-HOURS at the left, the numbers at the right. There is NO MOTTO on this face -
-the client asked for it off - and no monogram. Every line is set as wide as the
-panel allows, so the type is as large as 46 x 22 in will carry.
+Top band, white: the badge at the left, Bactrimed at the right. Then the navy
+band COMMUNITY MEDICAL CENTRE in white. Then the red block, full width, with
+EDDWALIRO knocked out of it in white at the largest size the panel will take.
+Then the white row: an arrow at each end, Open and 24 Hrs between them in red.
+Then the navy foot strip: the numbers at the left, NABINGO BRANCH at the right.
+There is NO MOTTO on this face - the client asked for it off.
 
 THE NUMBERS
 The sign carries 0788 323 815 and 0754 132 715 - the client's numbers for it.
