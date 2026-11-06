@@ -1,5 +1,5 @@
-BCM MEDICAL CENTRE - SIGN POST PANEL
-=====================================
+BCM MEDICAL CENTRE - SIGN POST PANEL, FOR A LIGHTING BOARD
+===========================================================
 
 TRIM (finished size):  1168.4 x 558.8 mm
                        = 3 ft 10 in long x 1 ft 10 in high
@@ -9,28 +9,35 @@ SLUG:                  22 mm at the foot (in the file, trim it off)
 SAFE AREA:             25 mm from trim
 PRINT SIZE IN FILE:    1188.4 x 600.8 mm
 CROP MARKS:            yes, at all four corners
-COLOUR:                navy #16233F, cyan #2BA9E0, mist #E8EEF4, white
-PLOT AT 100% - NEVER SCALE. Do not colour-manage the navy towards black.
+COLOUR:                cyan #2BA9E0 field, white type, navy #16233F name
+PLOT AT 100% - NEVER SCALE.
 
-THE SHEET IS 1:1 - PLOT IT, DO NOT RESCALE IT.
-Crop marks sit outside the 10 mm bleed; trim to the marks.
+THIS FACE IS FOR AN INTERNALLY LIT BOX
+The field is bright on purpose: a lit sign is read as light, not as ink, and a
+dark face in a light box comes up patchy and grey. Navy is used only for
+MEDICAL CENTRE, the widest line, so the ink coverage stays low and the tubes
+light the panel evenly. Print on backlit-grade media - a translucent diffusing
+acrylic or backlit film, or backlit banner media if the box takes a soft face.
+Vinyl on opaque composite will block the light.
 
 FILES
-  BCM-Sign-Post-BOTH-FACES-1168x559mm.pdf         2 pages: face A, face B
-  BCM-Sign-Post-FACE-A-1168x559mm.pdf             face A on its own
-  BCM-Sign-Post-FACE-B-1168x559mm.pdf             face B on its own
-  BCM-Sign-Post-OPTION-C-FASCIA-1168x559mm.pdf    fascia setting, one face, spare
+  BCM-Sign-Post-LIT-BOTH-FACES-1168x559mm.pdf       2 pages: face A, face B
+  BCM-Sign-Post-LIT-FACE-A-1168x559mm.pdf           face A on its own
+  BCM-Sign-Post-LIT-FACE-B-1168x559mm.pdf           face B on its own
+  BCM-Sign-Post-LIT-WHITE-FIELD-1168x559mm.pdf      white field instead of cyan, spare
 
-FACE A IS THE APPROVED SETTING (OPTION A)
-EDDWALIRO heads the panel, the badge sits under it, BCM above MEDICAL CENTRE,
-the motto at the foot - the arrangement approved on the earlier sample.
+CYAN IS THE RECOMMENDED FIELD
+EDDWALIRO in white, BCM in white under it, MEDICAL CENTRE in navy, the motto
+in navy under a short rule. The monogram is gone - BCM stands in its place.
+The white-field file is the same layout on white: it is the brightest option in
+the box, and it is the one that still reads with the light switched off.
 
-OPTION C is the alternative: the same elements turned on their side, badge at
-the left, EDDWALIRO / MEDICAL CENTRE / motto run beside it, so the name reads
-larger. Use it only if the client asks - it is not the approved setting.
+ONE THING TO CHECK BEFORE THE RUN
+The face must fit the box's aperture, not its outer frame: the visible opening
+should be the trim size above, or the rebate will crop the artwork. Ask for a
+printed sample of the cyan field lit from behind before the full run - backlit
+cyan reads cooler and brighter than the same ink on paper.
 
 STRUCTURE - CONFIRM WITH THE SIGNWRITER
-The face is about 0.65 m2. 3 mm ACM is the industry-typical substrate, on two
-posts at 520 mm centres.
-Panel centre 1500 mm above finished ground is a proposal only. Nothing here
-is a quotation. The monogram is a recreated mark, not the clinic's own logo.
+The face is about 0.65 m2. Panel centre 1500 mm above finished ground
+is a proposal only. Nothing here is a quotation.

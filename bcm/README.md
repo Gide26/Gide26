@@ -43,14 +43,18 @@ carries its own artwork, schedule, specification, elevations, web preview, READM
 
 A separate deliverable, name only: **46 in × 22 in** as the client measured it (revised on
 2026-11-06 from 16 ft 7 in × 49 in, which followed 4 ft × 2 ft and 3.10 × 2.11 ft),
-landscape, which is **1168.4 × 558.8 mm**. No service list, no photograph — the badge, `BCM`, then
-`MEDICAL CENTRE` set at the largest size the panel will take, so the name points from across the
-road. Double-sided; both faces are in the one print PDF.
+landscape, which is **1168.4 × 558.8 mm**. No service list, no photograph — `EDDWALIRO`, then
+`BCM` where the badge used to sit, then `MEDICAL CENTRE` set at the largest size the panel will
+take. Double-sided; both faces are in the one print PDF.
+
+**It is going into an internally lit box, so the face is built light**: a cyan field, white
+`EDDWALIRO` and `BCM`, the name in navy. Low ink coverage keeps the light even; a dark face in a
+light box comes up patchy. A white-field version is supplied as a spare.
 
 | Path | What it is |
 | --- | --- |
-| `sign/artwork/BCM-Sign-Name-Only.pdf` | Print file, option A (centred) — 1 : 1 mm, 10 mm bleed, crop marks, two faces |
-| `sign/artwork/BCM-Sign-Name-Only-Option-C-Fascia.pdf` | Print file, option C (fascia setting) |
+| `sign/artwork/BCM-Sign-Name-Only-Lit.pdf` | Print file, lit cyan face — 1 : 1 mm, 10 mm bleed, crop marks, two faces |
+| `sign/artwork/BCM-Sign-Name-Only-Lit-White.pdf` | Print file, lit white field — spare |
 | `sign/print/` + `sign/BCM-Sign-Post-Print-1168x559mm.zip` | The signwriter's pack: the two-face file, each face alone, the spare fascia setting, READ-ME-FIRST |
 | `sign/BCM-Sign-Panel.pdf` | 4 pages — panel to scale with dimensions, the three settings, on the post, specification |
 | `sign/lookbook/` | Day and night elevations, dimensioned panel |

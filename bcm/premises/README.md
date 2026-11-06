@@ -20,7 +20,8 @@ The set in place, drawn to scale from the same print files that go to the printe
   Underside 2560 mm above the paving, 580 mm clear of the door head.
 - Sign post at the kerb: 1168.4 × 558.8 mm panel (46 × 22 in), centre 1500 mm above
   finished ground, on two 76 mm posts at 520 mm centres — the support is a proposal
-  for the signwriter to confirm.
+  for the signwriter to confirm. The face is drawn as it is built: the lit cyan face
+  for the lighting board, not the old navy one.
 
 Door centres — 4.2 m and 3.4 m — and the 2560 mm banner height are proposals chosen so
 the banners clear each other. Confirm them, and the wall height above each door, before

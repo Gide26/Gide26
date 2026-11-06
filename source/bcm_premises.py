@@ -236,7 +236,7 @@ def sign_block(s, night=False):
     import pypdfium2 as pdfium
     os.makedirs(WORK, exist_ok=True)
     pdf = os.path.join(WORK, "sign_face.pdf")
-    SIGN.face_pdf(pdf, "A")
+    SIGN.face_pdf(pdf, SIGN.FACE)          # the lit face, as it is built
     doc = pdfium.PdfDocument(pdf)
     page = doc[0]
     w_mm, h_mm = SIGN.W, SIGN.H
@@ -892,7 +892,8 @@ The set in place, drawn to scale from the same print files that go to the printe
   Underside 2560 mm above the paving, 580 mm clear of the door head.
 - Sign post at the kerb: 1168.4 × 558.8 mm panel (46 × 22 in), centre 1500 mm above
   finished ground, on two 76 mm posts at 520 mm centres — the support is a proposal
-  for the signwriter to confirm.
+  for the signwriter to confirm. The face is drawn as it is built: the lit cyan face
+  for the lighting board, not the old navy one.
 
 Door centres — 4.2 m and 3.4 m — and the 2560 mm banner height are proposals chosen so
 the banners clear each other. Confirm them, and the wall height above each door, before

@@ -285,10 +285,10 @@ def sign_page(c):
     y = D.h1(c, D.PH - 34 * MM, "The sign post panel", 7.6)
     D.para(c, D.M, y + 2 * MM,
            f"Name only — no service list, no photograph. Trim {SIGN.W:.1f} × {SIGN.H:.1f} "
-           f"mm, the client's {SIGN.FT_TXT}, double-sided. EDDWALIRO heads the panel in "
-           "cyan, the badge and BCM sit under it, MEDICAL CENTRE keeps the widest line in "
-           "white, the motto closes the block. A is the approved setting; C is the fascia "
-           "alternative, supplied as a spare.",
+           f"mm, the client's {SIGN.FT_TXT}, double-sided, for a lighting board. The face is "
+           "built light: a cyan field, EDDWALIRO and BCM in white, MEDICAL CENTRE in navy as "
+           "the widest line, the motto under a short rule. No monogram — BCM stands in its "
+           "place. Low ink coverage keeps the light even across the panel.",
            (D.PW - 2 * D.M) / MM * 0.72, 3.2, B.NAVY_MID)
 
     img_box(c, "sign/lookbook/M-01-sign-day.png", D.M, 40 * MM, 108 * MM,
@@ -299,8 +299,10 @@ def sign_page(c):
     B.label(c, D.M + 124 * MM, 156 * MM, "WHAT IS SUPPLIED", 4.0, B.TEAL,
             "Inter-600", 1.6)
     sy = D.bullets(c, D.M + 124 * MM, 148 * MM, [
-        "artwork/BCM-Sign-Name-Only.pdf — option A, both faces in the one file, 1 : 1 mm.",
-        "artwork/BCM-Sign-Name-Only-Option-C-Fascia.pdf — the fascia setting, spare.",
+        "print/ — the signwriter's pack: the lit face, both faces in one file, each face "
+        "alone, the white-field spare and READ-ME-FIRST.txt.",
+        "artwork/BCM-Sign-Name-Only-Lit.pdf — the lit cyan face, 1 : 1 mm.",
+        "artwork/BCM-Sign-Name-Only-Lit-White.pdf — the same on white, spare.",
         "BCM-Sign-Panel.pdf — four pages: the panel to scale, the two options, on the "
         "post, specification.",
         "lookbook/ — day and night elevations and the dimensioned drawing.",
@@ -310,8 +312,8 @@ def sign_page(c):
     B.label(c, D.M + 124 * MM, sy, "FIXING — CONFIRM ON SITE", 4.0, B.TEAL,
             "Inter-600", 1.6)
     D.bullets(c, D.M + 124 * MM, sy - 8 * MM, [
-        "3 mm ACM, matte anti-glare laminate, 3 mm radius, sealed edges — industry-typical, "
-        "not a quotation.",
+        "Backlit-grade face: translucent diffusing acrylic or backlit film, not vinyl on "
+        "opaque composite. Industry-typical, not a quotation.",
         "Proposal: two 76 mm galvanised posts at 520 mm centres; panel centre 1500 mm above "
         "finished ground level.",
         f"Check {SIGN.FT_TXT} against the panel the signwriter is actually making "
