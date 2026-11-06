@@ -144,7 +144,7 @@ SIGN_BRANCH = "BUSSABALA"
 SIGN_OPEN = ("Open", "24 Hrs")
 
 # band heights as weights of the inner height (they are normalised to fit)
-BAND_W = (9.5, 12.0, 2.4, 25.0, 26.0, 2.4, 12.2)     # brand, navy, gap, red, open, gap, foot
+BAND_W = (12.4, 15.4, 2.0, 26.0, 23.6, 2.0, 11.4)     # brand, navy, gap, red, open, gap, foot
 
 
 def _arrow(c, x, y, length, thick, head_len, head_h, colour, direction=-1):
@@ -201,15 +201,15 @@ def bright_face(c, w, h, pal, slogan=False, tel=True):
     y_foot = y_open - g2 - h_foot
 
     # ---- white band: BCM, where the badge and the Bactrimed wordmark used to be
-    cap_w = h_brand * 0.60
+    cap_w = h_brand * 0.72
     B.caps(c, w / 2, y_brand + (h_brand - cap_w) / 2 - cap_w * 0.02, SIGN_BRAND, cap_w,
            pal["band_txt_alt"], "Manrope-800", cap_w * 0.16, align="center")
 
     # ---- light blue band: MEDICAL CENTRE
     c.setFillColor(pal["mc_band"])
     c.rect(mxx, y_navy, IW, h_navy, stroke=0, fill=1)
-    cap_c = min(h_navy * 0.56, fit_cap(SIGN_COMMUNITY, "Manrope-800", "Manrope",
-                                       IW * 0.90))
+    cap_c = min(h_navy * 0.74, fit_cap(SIGN_COMMUNITY, "Manrope-800", "Manrope",
+                                       IW * 0.94))
     B.caps(c, w / 2, y_navy + (h_navy - cap_c) / 2 - cap_c * 0.02, SIGN_COMMUNITY,
            cap_c, pal["mc_txt"], "Manrope-800", cap_c * 0.12, align="center",
            max_w=IW * 0.94)
@@ -224,7 +224,7 @@ def bright_face(c, w, h, pal, slogan=False, tel=True):
 
     # ---- open row: arrow, Open 24 Hrs, arrow
     al = IW * 0.135                       # arrow length
-    acap = h_open * 0.40
+    acap = h_open * 0.43
     w1 = pdfmetrics.stringWidth(SIGN_OPEN[0], "Manrope-700", B.font_for(acap, "Manrope"))
     w2 = pdfmetrics.stringWidth(SIGN_OPEN[1], "Manrope-700", B.font_for(acap, "Manrope"))
     gap = IW * 0.055
