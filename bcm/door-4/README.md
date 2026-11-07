@@ -59,8 +59,8 @@ point of the table.
 - The B monogram is a recreation, not BCM's official logo.
 - Telephone numbers on the foot of each pane: panes 1-18 (door 1, door 2, door 3 P1-P2)
   carry **0788 323 815** with 0754 132 715, changed at the client's instruction on
-  2026-11-02. Panes 19-24 (door 3 P3-P8) keep 0771 240 104 with 0754 132 715 from the
-  clinic's own boards, as do the sign post and the banners. Confirm all three lines are
-  current before plotting.
+  2026-11-02, as do the sign post and the three roadside banners (the banners changed on
+  2026-11-07). Panes 19-24 (door 3 P3-P8) keep 0771 240 104 with 0754 132 715 from the
+  clinic's own boards. Confirm which lines are current before plotting.
 - Doors 1 and 2 use the same perforated film; door 3 is opaque vinyl and will not match it exactly.
 Rebuild: `cd source && python3 bcm_doors.py 4`

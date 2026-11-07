@@ -30,7 +30,7 @@ import bcm_banners as BAN
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SET = os.path.join(ROOT, "bcm")
 OUT = os.path.join(SET, "print")
-REV = "Rev A  ·  2026-11-02"
+REV = "Rev B  ·  2026-11-07"
 
 B.register_fonts()
 D.use_brand(B)

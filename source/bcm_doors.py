@@ -681,9 +681,9 @@ def open_items(door):
     items = [
         "Confirm the column order on the leaf: 500 mm on the left as drawn, or mirrored?",
         "BCM's own vector logo, to replace the recreated badge on all eight panes.",
-        "Telephone: panes 1-18 print 0788 323 815 and 0754 132 715; panes 19-24, the "
-        "sign post and the banners print 0771 240 104 and 0754 132 715. Confirm all "
-        "three lines are current before plotting.",
+        "Telephone: panes 1-18, the sign post and the three roadside banners print "
+        "0788 323 815 and 0754 132 715; panes 19-24 print 0771 240 104 and 0754 132 715. "
+        "Confirm which lines are current before plotting.",
         "The printer's own film standard, to replace the flagged values.",
         "Print-resolution originals: the working files are desktop previews. Pull the full-size "
         "files from the recorded Pexels links, or shoot the real team.",
@@ -859,9 +859,9 @@ point of the table.
 - The B monogram is a recreation, not BCM's official logo.
 - Telephone numbers on the foot of each pane: panes 1-18 (door 1, door 2, door 3 P1-P2)
   carry **0788 323 815** with 0754 132 715, changed at the client's instruction on
-  2026-11-02. Panes 19-24 (door 3 P3-P8) keep 0771 240 104 with 0754 132 715 from the
-  clinic's own boards, as do the sign post and the banners. Confirm all three lines are
-  current before plotting.
+  2026-11-02, as do the sign post and the three roadside banners (the banners changed on
+  2026-11-07). Panes 19-24 (door 3 P3-P8) keep 0771 240 104 with 0754 132 715 from the
+  clinic's own boards. Confirm which lines are current before plotting.
 {provisional_extra}
 Rebuild: `cd source && python3 bcm_doors.py {door['n']}`
 """

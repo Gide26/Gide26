@@ -13,11 +13,31 @@ door.
 | --- | --- | --- | --- | --- |
 | **B-1** | 16 ft × 49 in | 4876.8 × 1244.6 mm | Read at speed, from the road | Photograph left, the name and list right |
 | **B-2** | 16 ft × 49 in | 4876.8 × 1244.6 mm | Read standing at the gate | Type left, two photographs stacked right |
-| **B-3** | 16 ft × 49 in | 4876.8 × 1244.6 mm | The long run along the fence | The name centred in its column and as large as it will go, one photograph at the right hand end |
+| **B-3** | 16 ft × 49 in | 4876.8 × 1244.6 mm | The long run along the fence | The bands across the full width, the name as large as it will go, one photograph at the right hand end |
 
-Every banner carries, in this order: **EDDWALIRO** (cyan, bold, at the head) → the badge and
-`BCM` → **MEDICAL CENTRE** (the widest line, in white) → the motto → a service list from the
-clinic's own board → the two premises numbers → *Open 24 hours*.
+**The colour pattern is the sign post's, at the client's instruction of 2026-11-07.** The three
+banners used to run a plain navy panel; they now carry the banded face the clinic already has on
+the road, in the same red `#ED1B24` and navy `#16233F`, so fence and light box read as one set:
+
+1. `BCM` on the white field
+2. `MEDICAL CENTRE` in white, knocked out of the navy band
+3. `EDDWALIRO` in white on the full-width red block
+4. the `Open  24 Hrs` row in red, an arrow at each end
+5. a service list from the clinic's own board — a red dash, the service in navy
+6. the navy foot strip: `TEL 0788 323 815 · 0754 132 715` at the left, the motto
+   *We listen. We treat. We care.* centred, `BUSSABALA` at the right
+
+The motto sits in the foot strip because the client took it off the sign face; it stays on the
+banners as directed, without disturbing the red block. The bands are fitted by proportion, not
+by fixed offsets (`column_layout()` in `source/bcm_banners.py`), so nothing can overlap at any
+panel size and the type scales with the banner. What differs between the three is the layout,
+not the pattern:
+
+| | Layout |
+| --- | --- |
+| B-1 | the bands beside a near-square photograph at the left end |
+| B-2 | the bands at the left, two photographs stacked at the right |
+| B-3 | the bands across the full width, one photograph at the right hand end |
 
 ## Files
 

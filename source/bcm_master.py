@@ -31,7 +31,7 @@ SET = os.path.join(ROOT, "bcm")
 OUT_DIR = os.path.join(SET, "complete")
 ZIP = os.path.join(SET, "BCM-Complete-Set.zip")
 WORK = os.path.join(ROOT, "source", ".work", "bcm_master")
-REV = "Rev A  ·  2026-11-02"
+REV = "Rev B  ·  2026-11-07"
 SET_NAME = "BCM-Signage-Set"
 
 # the four groups, in the order the client should read them
@@ -329,10 +329,12 @@ def banner_page(c):
               eyebrow="BCM  ·  MEDICAL CENTRE  ·  BANNERS")
     y = D.h1(c, D.PH - 34 * MM, "The roadside banners", 7.6)
     D.para(c, D.M, y + 2 * MM,
-           "Three lengths on the fence, three different layouts, one identity. Each "
-           "carries EDDWALIRO at the head, the badge and BCM, MEDICAL CENTRE as the "
-           "widest line, the motto, a service list from the clinic's own board, the two "
-           "premises numbers and Open 24 hours.", (D.PW - 2 * D.M) / MM * 0.74, 3.2,
+           "Three lengths on the fence, three different layouts, one identity - and, since "
+           "the client asked for it on 2026-11-07, the sign post's own banded pattern: BCM on "
+           "the white field, MEDICAL CENTRE in white on navy, EDDWALIRO in white on the red "
+           "block, Open 24 Hrs between the arrows, then a service list from the clinic's "
+           "board and a navy foot strip with the numbers, the motto and BUSSABALA. Only the "
+           "layout differs from banner to banner.", (D.PW - 2 * D.M) / MM * 0.74, 3.2,
            B.NAVY_MID)
 
     yy = 152 * MM
@@ -355,7 +357,7 @@ def banner_page(c):
             "Inter-600", 1.6)
     D.bullets(c, D.M, 36 * MM, [
         "510 g/m² PVC, matte, 40 mm welded hem, eyelets at 500 mm centres; the artwork "
-        "keeps 60 mm clear of the trim. Fix every eyelet — a 3.8 m banner sails.",
+        "keeps 60 mm clear of the trim. Fix every eyelet — a 4.9 m banner sails.",
         "One print file per banner in banners/artwork/, 1 : 1 mm with 10 mm bleed.",
     ], 168 * MM, 3.0, B.NAVY_MID)
 

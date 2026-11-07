@@ -92,8 +92,11 @@ General outpatient, inpatient care, HIV care, immunisation, pharmacy, laboratory
 antenatal & postnatal, obs & gyn, paediatrics, minor surgery, family planning, ENT, eye
 services, orthopaedics, travel medical exam — plus the help-line numbers printed on the foot
 of each pane. Panes 1–18 (door 1, door 2 and door 3 P1–P2) carry **0788 323 815** and
-0754 132 715, changed at the client's instruction on 2026-11-02. Panes 19–24, the sign post
-and the banners carry 0771 240 104 and 0754 132 715 from the premises boards. Nothing on the
+0754 132 715, changed at the client's instruction on 2026-11-02; the sign post leads with the
+same two numbers, and on 2026-11-07 the client asked for the three banners to be changed to
+the same line, so fence and light box read as one set. Panes 19–24 (door 3 P3–P8) still print
+0771 240 104 and 0754 132 715 from the premises boards — an asymmetry the client confirmed;
+say the word and they change too. Nothing on the
 artwork is invented: no address, no hours beyond the client's own 24-hour statement, no
 accreditation, no clinical claim.
 
@@ -158,10 +161,26 @@ re-measured on 2026-11-07 to **16 ft × 49 in (4876.8 × 1244.6 mm)**:
 | B-2 | 16 ft × 49 in (4876.8 × 1244.6 mm) | type left, two photographs stacked right |
 | B-3 | 16 ft × 49 in (4876.8 × 1244.6 mm) | the name centred in its column, one photograph at the right hand end |
 
-Each carries EDDWALIRO at the head, the badge and `BCM`, MEDICAL CENTRE as the widest line,
-the motto, a service list from the clinic's own board, the two premises numbers and
-*Open 24 hours*. Four Pexels frames, all colour-retouched, all recorded on the licence page
-of `bcm/banners/BCM-Banners.pdf`. No photograph and no service repeats across the three.
+**Set in the sign post's pattern.** These three no longer run the plain navy panel. On
+2026-11-07 the client asked for the colour pattern of the sign post — the face already on the
+road — so each banner is now banded the same way, cut from the same red `#ED1B24` and navy
+`#16233F`: `BCM` on the white field, `MEDICAL CENTRE` knocked out of the navy band, `EDDWALIRO`
+in white on the full-width red block, the `Open  24 Hrs` row in red between an arrow at each
+end, then the navy foot strip with `TEL 0788 323 815 · 0754 132 715` at the left, the motto
+*We listen. We treat. We care.* centred and `BUSSABALA` at the right. The motto has no place
+on the sign face (the client took it off there) but it stays on the banners, as directed, in
+the strip where it does no harm to the red block.
+
+What still differs is the layout, not the pattern: B-1 puts the photograph at the left end and
+the bands beside it, B-2 sets the bands at the left with two photographs stacked at the right,
+B-3 runs the bands across the full width with one photograph at the right hand end. Each
+carries a service list from the clinic's own board. Four Pexels frames, all colour-retouched,
+all recorded on the licence page of `bcm/banners/BCM-Banners.pdf`. No photograph and no
+service repeats across the three.
+
+The bands are proportioned, not hand-placed: `column_layout()` in `source/bcm_banners.py`
+fits one column of bands to the panel, so the type scales with the banner and no band can ever
+overlap another. That is why three banners cut to one measurement read as one set.
 
 ```sh
 cd source
