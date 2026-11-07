@@ -171,11 +171,47 @@ def band_base(top, cap):
     return top - cap * BAND_PAD - cap
 
 
-def badge_row(c, x, y, ms=96.0, cap_b=30.0, gap=26.0):
-    """Badge with the initials beside it; returns the height used."""
-    B.monogram(c, x, y, ms, dark=NAVY, accent=RED)
-    B.caps(c, x + ms + gap, y + ms * 0.36, "BCM", cap_b, NAVY, "Inter-600", 14.0)
-    return ms
+def bcm_line(c, x, w, y, cap, colour=None):
+    """BCM alone, centred across the measure — no badge, as the client asked."""
+    B.caps(c, x + w / 2.0, y, "BCM", cap, colour or NAVY, "Inter-600", cap * 0.22,
+           align="center", max_w=w * 0.96)
+
+
+def services_centre(c, items, xc, y, cols=3, av=3000.0, row=62.0, cap=32.0,
+                    color=None, k=1.0, dash=None):
+    """The service list centred: each row of `cols` set as one centred group.
+
+    Same type and same rules as before, only the rows are centred instead of sitting on
+    a left-hand grid, so the whole stack above them reads down one axis. If a row would
+    not fit the measure, the type comes down a step rather than the gap closing up.
+    """
+    color = color or NAVY
+    dash = dash or RED
+
+    def measure(cap):
+        d = 34.0 * (cap / 32.0)
+        tw = {s: pdfmetrics.stringWidth(s, "Inter-600", B.font_for(cap, "Inter")) + 3.0
+              for s in items}
+        rows = [items[i:i + cols] for i in range(0, len(items), cols)]
+        gap = cap * 2.4
+        widest = max(sum(d * 1.6 + tw[s] for s in r) + gap * (len(r) - 1) for r in rows)
+        return d, tw, rows, gap, widest
+
+    d, tw, rows, gap, widest = measure(cap)
+    for _ in range(6):
+        if widest <= av:
+            break
+        cap *= av / widest * 0.98
+        d, tw, rows, gap, widest = measure(cap)
+    for j, r in enumerate(rows):
+        cy = y - j * row
+        total = sum(d * 1.6 + tw[s] for s in r) + gap * (len(r) - 1)
+        cx = xc - total / 2.0
+        for s in r:
+            c.setFillColor(dash)
+            c.rect(cx, cy + cap * 0.30, d, max(3.0, 4.0 * k), stroke=0, fill=1)
+            B.caps(c, cx + d * 1.6, cy, s, cap, color, "Inter-600", 3.0)
+            cx += d * 1.6 + tw[s] + gap
 
 
 def services_block(c, items, x, y, cols=2, col_w=1120.0, row=62.0, cap=32.0,
@@ -276,12 +312,12 @@ def face_road(c, w, h):
     x0 = px + pw + gap
     col = w - m - x0
 
-    # the stack: EDDWALIRO, the badge, MEDICAL CENTRE, the motto, the list, the numbers
+    # the stack: EDDWALIRO, BCM, MEDICAL CENTRE, the motto, the list, the numbers
     elems = [
         ("block", "word", 0.300, lambda: fit_cap(WORD, "Manrope-800", "Manrope",
                                                  col * 0.96, tracking=9.0), BAND_HM),
         ("gap", 0.040),
-        ("block", "badge", 0.240, None),
+        ("block", "bcm", 0.165, None),
         ("gap", 0.026),
         ("block", "name", 0.205, lambda: fit_cap(NAME, "Manrope-800", "Manrope",
                                                  col * 0.96), BAND_HM),
@@ -295,26 +331,26 @@ def face_road(c, w, h):
         ("block", "open", 0.029, None),
     ]
     caps, tops, total = layout_stack(h, m, elems)
-    ms = caps["badge"]
     cap_sc = caps["services"] * 0.30
     row_sc = caps["services"] - cap_sc           # two rows fill the block exactly
 
     band(c, x0, tops["word"], col, band_h(caps, "word"), RED)
-    word(c, x0 + 14.0 * k, tops["word"] + caps["word"] * BAND_PAD, caps["word"],
-         track=9.0, max_w=col - 28.0 * k)
-    badge_row(c, x0, tops["badge"], ms, ms * 0.52, ms * 0.20)
+    word(c, x0 + col / 2.0, tops["word"] + caps["word"] * BAND_PAD, caps["word"],
+         track=9.0, align="center", max_w=col - 28.0 * k)
+    bcm_line(c, x0, col, tops["bcm"], caps["bcm"])
     band(c, x0, tops["name"], col, band_h(caps, "name"), NAVY)
-    B.caps(c, x0 + 14.0 * k, tops["name"] + caps["name"] * BAND_PAD, NAME,
-           caps["name"], B.WHITE, "Manrope-800", 2.0, max_w=col - 28.0 * k)
-    B.label(c, x0 + 6.0 * k, tops["motto"], B.SLOGAN, caps["motto"], RED,
-            "Inter-400", 4.0, max_w=col)
+    B.caps(c, x0 + col / 2.0, tops["name"] + caps["name"] * BAND_PAD, NAME,
+           caps["name"], B.WHITE, "Manrope-800", 2.0, align="center",
+           max_w=col - 28.0 * k)
+    B.label(c, x0 + col / 2.0, tops["motto"], B.SLOGAN, caps["motto"], RED,
+            "Inter-400", 4.0, align="center", max_w=col)
     # the stack reserves the block's TOP; the list draws down from its first baseline
-    services_block(c, BANNERS[0]["services"], x0 + 4.0,
-                   tops["services"] + caps["services"] - cap_sc, cols=3,
-                   col_w=col / 3.0, row=row_sc, cap=cap_sc, k=k)
-    phone_line(c, x0, tops["tel"], caps["tel"])
-    B.caps(c, x0, tops["open"], "OPEN 24 HOURS", caps["open"], RED,
-           "Inter-600", 3.0)
+    services_centre(c, BANNERS[0]["services"], x0 + col / 2.0,
+                    tops["services"] + caps["services"] - cap_sc, cols=3,
+                    av=col * 0.92, row=row_sc, cap=cap_sc, k=k)
+    phone_line(c, x0 + col / 2.0, tops["tel"], caps["tel"], align="center")
+    B.caps(c, x0 + col / 2.0, tops["open"], "OPEN 24 HOURS", caps["open"], RED,
+           "Inter-600", 3.0, align="center")
 
     keyline(c, 32, 32, w - 64, h - 64, NAVY, 0.12, 2.0)
 
@@ -349,7 +385,7 @@ def face_services(c, w, h):
         ("block", "word", 0.300, lambda: fit_cap(WORD, "Manrope-800", "Manrope",
                                                  col * 0.96, tracking=8.0), BAND_HM),
         ("gap", 0.040),
-        ("block", "badge", 0.240, None),
+        ("block", "bcm", 0.165, None),
         ("gap", 0.026),
         ("block", "name", 0.205, lambda: fit_cap(NAME, "Manrope-800", "Manrope",
                                                  col * 0.96), BAND_HM),
@@ -365,27 +401,27 @@ def face_services(c, w, h):
         ("block", "open", 0.029, None),
     ]
     caps, tops, total = layout_stack(h, m, elems)
-    ms = caps["badge"]
     cap_sc = caps["services"] * 0.30
     row_sc = caps["services"] - cap_sc
 
     band(c, x0, tops["word"], col, band_h(caps, "word"), RED)
-    word(c, x0 + 14.0 * k, tops["word"] + caps["word"] * BAND_PAD, caps["word"],
-         track=8.0, max_w=col - 28.0 * k)
-    badge_row(c, x0, tops["badge"], ms, ms * 0.52, ms * 0.20)
+    word(c, x0 + col / 2.0, tops["word"] + caps["word"] * BAND_PAD, caps["word"],
+         track=8.0, align="center", max_w=col - 28.0 * k)
+    bcm_line(c, x0, col, tops["bcm"], caps["bcm"])
     band(c, x0, tops["name"], col, band_h(caps, "name"), NAVY)
-    B.caps(c, x0 + 14.0 * k, tops["name"] + caps["name"] * BAND_PAD, NAME,
-           caps["name"], B.WHITE, "Manrope-800", 1.8, max_w=col - 28.0 * k)
-    B.label(c, x0 + 5.0 * k, tops["motto"], B.SLOGAN, caps["motto"], RED, "Inter-400",
-            3.6, max_w=col)
-    services_block(c, BANNERS[1]["services"], x0 + 3.0,
-                   tops["services"] + caps["services"] - cap_sc, cols=3,
-                   col_w=col / 3.0, row=row_sc, cap=cap_sc, k=k)
+    B.caps(c, x0 + col / 2.0, tops["name"] + caps["name"] * BAND_PAD, NAME,
+           caps["name"], B.WHITE, "Manrope-800", 1.8, align="center",
+           max_w=col - 28.0 * k)
+    B.label(c, x0 + col / 2.0, tops["motto"], B.SLOGAN, caps["motto"], RED,
+            "Inter-400", 3.6, align="center", max_w=col)
+    services_centre(c, BANNERS[1]["services"], x0 + col / 2.0,
+                    tops["services"] + caps["services"] - cap_sc, cols=3,
+                    av=col * 0.92, row=row_sc, cap=cap_sc, k=k)
     c.setFillColor(RED)
     c.rect(x0, tops["rail"], col, max(3.0, caps["rail"]), stroke=0, fill=1)
-    phone_line(c, x0, tops["tel"], caps["tel"])
-    B.caps(c, x0, tops["open"], "OPEN 24 HOURS", caps["open"], RED,
-           "Inter-600", 3.0)
+    phone_line(c, x0 + col / 2.0, tops["tel"], caps["tel"], align="center")
+    B.caps(c, x0 + col / 2.0, tops["open"], "OPEN 24 HOURS", caps["open"], RED,
+           "Inter-600", 3.0, align="center")
 
     keyline(c, 32, 32, w - 64, h - 64, NAVY, 0.12, 2.0)
 
@@ -427,13 +463,13 @@ def face_compact(c, w, h):
     cap_o = h * 0.023
     clear = h - 2 * m
 
-    # the badge and the initials are set large, but they must not squeeze the lines
+    # BCM is set large, but it must not squeeze the lines
     # under the name: back the two big lines off until the small type keeps its air
     for sc in (1.0, 0.97, 0.94, 0.91, 0.88, 0.85, 0.82, 0.79, 0.76, 0.73, 0.70,
                0.67, 0.64, 0.61, 0.58, 0.55):
         ce, cm = cap_e * sc, cap_m * sc
-        cb = min(cm * 0.50, 200.0)
-        msz = cm * 0.95
+        cb = min(cm * 0.58, 240.0)
+        msz = 0.0
         he, hm = ce * BAND_HM, cm * BAND_HM
         fixed = (he + msz + cb + hm + cap_rule + cap_s + cap_r + cap_p + cap_o)
         room = clear * 0.96 - fixed
@@ -464,11 +500,10 @@ def face_compact(c, w, h):
            align="center", max_w=col - 20.0)
     y -= h_e + g[0]
 
-    # the badge, then the initials
-    B.monogram(c, xc - ms / 2.0, y - ms, ms, dark=NAVY, accent=RED)
-    y -= ms + g[1]
-    B.caps(c, xc, y - cap_b, "BCM", cap_b, NAVY, "Inter-600", 20.0,
-           align="center")
+    # the initials, alone and centred
+    y -= g[1]
+    B.caps(c, xc, y - cap_b, "BCM", cap_b, NAVY, "Inter-600", cap_b * 0.22,
+           align="center", max_w=col * 0.96)
     y -= cap_b + g[2]
 
     # the English name, the widest line on the banner, white on the navy band
@@ -787,7 +822,8 @@ def proof(path):
         "goes on the fence.",
         "The service lists are split across the three banners so no service repeats. "
         "Tell us if any list must change.",
-        "The monogram is a recreation, not BCM's official logo.",
+        "No monogram on the banners: the client asked for the badge off, so BCM "
+        "stands alone — centred, and set large.",
     ], 150 * MM, 3.0, B.NAVY_MID)
 
     # ---- page 6 — photographs and licence
@@ -958,7 +994,8 @@ def write_index():
   </table>
   <p class="note">Sizes are the client's: all three at 16 ft × 49 in. Substrate,
      hem and eyelets are industry-typical for a fence banner — confirm with the printer.
-     The monogram is a recreation, not BCM's official logo.</p>
+     No monogram on the banners: the badge came off at the client's request, so BCM
+     stands alone, centred and set large.</p>
 </main></body></html>
 """
     open(os.path.join(OUT_DIR, "index.html"), "w").write(html)

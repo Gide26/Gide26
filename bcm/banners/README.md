@@ -31,20 +31,17 @@ cyan accents went; the sign's own colours came in, at the sign's own ratio (its 
 Nothing moved: EDDWALIRO still heads each banner, MEDICAL CENTRE is still the widest line,
 the photograph still sits where the layout puts it.
 
-Two things were then set larger at the client's request (2026-11-07): the B badge and the
-`BCM` beside it are now several times their old size on all three banners (monogram 223 mm
-with `BCM` at 116 mm on B-1, 219 / 114 mm on B-2, 159 / 84 mm on B-3), and the service list
-stays dark blue throughout — names and their rules both in the navy, so nothing in the list
-competes with the red block.
+Three changes followed at the client's request on 2026-11-07, all on top of the approved
+layouts:
 
-| | Layout (unchanged) |
-| --- | --- |
-| B-1 | photograph at the left end, the type column beside it |
-| B-2 | the type column at the left, two photographs stacked at the right |
-| B-3 | the type centred in its column, one photograph at the right hand end |
-
-Because the red and navy are the sign's own values, the fence and the light box read as one
-set — and the banners stay the designs the client approved.
+- **The B badge came off.** There is no monogram anywhere on the three banners; `BCM` stands
+  alone.
+- **`BCM` is set large and centred.** 152 mm cap on B-1 and B-2 (was 23 mm beside the badge),
+  104 mm on B-3 — big enough to hold its own between EDDWALIRO and MEDICAL CENTRE.
+- **The words are centred.** EDDWALIRO, BCM, MEDICAL CENTRE, the motto, the service list and
+  the numbers all sit on the column's centre line, on all three banners. The service list is
+  centred row by row — three names to a row, a red rule before each — instead of on a
+  left-hand grid, so the stack reads down one axis. The dark blue stays throughout.
 
 ## Files
 
