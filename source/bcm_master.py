@@ -329,13 +329,12 @@ def banner_page(c):
               eyebrow="BCM  ·  MEDICAL CENTRE  ·  BANNERS")
     y = D.h1(c, D.PH - 34 * MM, "The roadside banners", 7.6)
     D.para(c, D.M, y + 2 * MM,
-           "Three lengths on the fence, three different layouts, one identity - and, since "
-           "the client asked for it on 2026-11-07, the sign post's own banded pattern: BCM on "
-           "the white field, MEDICAL CENTRE in white on navy, EDDWALIRO in white on the red "
-           "block, Open 24 Hrs between the arrows, then a service list from the clinic's "
-           "board and a navy foot strip with the numbers, the motto and BUSSABALA. Only the "
-           "layout differs from banner to banner.", (D.PW - 2 * D.M) / MM * 0.74, 3.2,
-           B.NAVY_MID)
+           "Three lengths on the fence, three different layouts, one identity. The designs "
+           "are unchanged; the colour is the sign post's, copied over on 2026-11-07 - white "
+           "ground, EDDWALIRO in white on the red block #ED1B24, MEDICAL CENTRE in white on "
+           "the navy band #16233F, red again for the motto, the service rules and OPEN 24 "
+           "HOURS, navy for the badge, the numbers and the service names.",
+           (D.PW - 2 * D.M) / MM * 0.74, 3.2, B.NAVY_MID)
 
     yy = 152 * MM
     for b in BAN.BANNERS:

@@ -40,10 +40,18 @@ SAFE = 60.0                    # hem + eyelet zone: nothing important goes here
 REV = "Rev B  ·  2026-11-07"
 NAME = "MEDICAL CENTRE"
 WORD = "EDDWALIRO"
-MOTTO = "We listen.  We treat.  We care."
-# the client's number, agreed for the signage: 0788 323 815 first, 0754 132 715 kept
-# (the same string the sign post face carries)
+# the client's number, the same string the sign post face carries
 PHONE = SGN.SIGN_TEL
+
+# The banners keep the layout they were approved with. What changes here is only the
+# colour, taken from the sign post the client already has on the road: white ground,
+# the navy band (#16233F) with white type, the red block (#ED1B24) with white type,
+# and that red again for the small accents. Nothing is moved, nothing is re-sized.
+RED = SGN.LIT_RED
+NAVY = B.CP_NAVY
+GROUND = B.WHITE
+BAND_HM = 1.19          # the sign post's own ratio: its band is 1.19 x the cap it carries
+BAND_PAD = (BAND_HM - 1.0) / 2.0
 
 # every frame used here has been colour-retouched so the people read Black African,
 # and is recorded on the licence page. Working files are web-resolution.
@@ -148,326 +156,328 @@ def keyline(c, x, y, w, h, color=None, alpha=0.14, lw=1.4):
 
 
 def word(c, x, y, cap, color=None, align="left", track=10.0, max_w=None):
-    return B.caps(c, x, y, WORD, cap, color or B.CP_CYAN, "Manrope-800", track,
+    return B.caps(c, x, y, WORD, cap, color or B.WHITE, "Manrope-800", track,
                   align=align, max_w=max_w)
+
+
+def band(c, x, y, w, h, colour):
+    """A solid band behind a line of type. y is the bottom edge."""
+    c.setFillColor(colour)
+    c.rect(x, y, w, h, stroke=0, fill=1)
+
+
+def band_base(top, cap):
+    """Baseline for a cap sitting in a band whose top edge is `top`."""
+    return top - cap * BAND_PAD - cap
 
 
 def badge_row(c, x, y, ms=96.0, cap_b=30.0, gap=26.0):
     """Badge with the initials beside it; returns the height used."""
-    B.monogram(c, x, y, ms, dark=B.WHITE, accent=B.CP_CYAN)
-    B.caps(c, x + ms + gap, y + ms * 0.36, "BCM", cap_b, B.CP_CYAN, "Inter-600", 14.0)
+    B.monogram(c, x, y, ms, dark=NAVY, accent=RED)
+    B.caps(c, x + ms + gap, y + ms * 0.36, "BCM", cap_b, NAVY, "Inter-600", 14.0)
     return ms
 
 
 def services_block(c, items, x, y, cols=2, col_w=1120.0, row=62.0, cap=32.0,
-                   color=None, k=1.0):
-    """Service list: a cyan rule then the name, two columns. `k` scales the rule."""
-    color = color or B.CP_MIST
-    dash = 34.0 * k
+                   color=None, k=1.0, dash=None):
+    """Service list: a red rule then the name. `k` scales the rule."""
+    color = color or NAVY
+    dash = dash or RED
+    d = 34.0 * k
     for i, s in enumerate(items):
         cx = x + (i % cols) * col_w
         # y is the first row's BASELINE and `row` is the pitch, so the ink starts at the
         # block's top edge and ends on its bottom edge — never into the gap below it
         cy = y - (i // cols) * row
-        c.setFillColor(B.CP_CYAN)
-        c.rect(cx, cy + cap * 0.30, dash, max(3.0, 4.0 * k), stroke=0, fill=1)
-        B.caps(c, cx + dash * 1.6, cy, s, cap, color, "Inter-600", 3.0, max_w=col_w * 0.92)
+        c.setFillColor(dash)
+        c.rect(cx, cy + cap * 0.30, d * (cap / 32.0), max(3.0, 4.0 * k), stroke=0, fill=1)
+        B.caps(c, cx + d * (cap / 32.0) * 1.6, cy, s, cap, color, "Inter-600", 3.0,
+               max_w=col_w * 0.92)
 
 
 def phone_line(c, x, y, cap=30.0, align="left", color=None):
-    B.caps(c, x, y, f"TEL {PHONE}", cap, color or B.CP_CYAN, "Inter-600", 3.0,
+    B.caps(c, x, y, f"TEL {PHONE}", cap, color or NAVY, "Inter-600", 3.0,
            align=align)
 
 
 # ----------------------------------------------------------------------- faces
-# --- the sign post's setting, applied to the banners --------------------------
-# The sign face is the clinic's own arrangement and the colour pattern the client asked
-# for on the banners too: a white field, a navy band carrying MEDICAL CENTRE in white,
-# EDDWALIRO knocked out of a full-width red block, the Open 24 Hrs row in red between two
-# red arrows, and a navy foot strip with the numbers at the left and the branch at the
-# right. Same red (#ED1B24), same navy (#16233F), same type.
-RED = SGN.LIT_RED
-NAVY = B.CP_NAVY
-BRANCH = SGN.SIGN_BRANCH
+def layout_stack(h, m, elems, share=0.94):
+    """Lay a column of type out on a banner face, top edge first.
 
-WORD_HM = 1.80          # the height of a band, as a multiple of the cap it carries
-NAME_HM = 1.76
-BCM_HM = 1.72
-OPEN_HM = 1.62
-SERV_HM = 3.00          # two rows on a 2 × cap pitch
-FOOT_SHARE = 0.105      # the foot strip, as a share of the banner's height
+    `elems` is the stack in order: `("block", name, coeff, fit)` — or
+    `("block", name, coeff, fit, hm)` where the block is a coloured band `hm` times the
+    cap it carries — and `("gap", coeff)`. Heights are multiples of one unit U, so the
+    column is in proportion; U is chosen so blocks and gaps together take `share` of the
+    clear height. Where a block is width-limited it comes out smaller than its share and
+    the slack is handed back to the gaps, so nothing overlaps whatever the size.
 
-
-def _arrow(c, x, y, length, thick, head_len, head_h, colour, direction=-1):
-    """A solid horizontal arrow. direction -1 points left, +1 points right."""
-    c.setFillColor(colour)
-    hl = min(head_len, length * 0.55)
-    if direction < 0:
-        p = c.beginPath()
-        p.moveTo(x, y)
-        p.lineTo(x + hl, y + head_h / 2)
-        p.lineTo(x + hl, y - head_h / 2)
-        p.close()
-        c.drawPath(p, stroke=0, fill=1)
-        c.rect(x + hl, y - thick / 2, length - hl, thick, stroke=0, fill=1)
-    else:
-        tip = x + length
-        p = c.beginPath()
-        p.moveTo(tip, y)
-        p.lineTo(tip - hl, y + head_h / 2)
-        p.lineTo(tip - hl, y - head_h / 2)
-        p.close()
-        c.drawPath(p, stroke=0, fill=1)
-        c.rect(x, y - thick / 2, length - hl, thick, stroke=0, fill=1)
-
-
-def column_layout(top, bot, elems, share=0.98):
-    """Fit a column of bands between `top` and `bot`, filling it.
-
-    `elems` is the column in order — {"t": "block", "name", "c", "hm", "fit"} or
-    {"t": "gap", "c"} — where `c` is the band's share of the column and `hm` is its
-    height as a multiple of the cap it carries (a band of 1.8 x cap, say). Caps fall out
-    of the shares, so the type is proportional to the banner rather than guessed at; a
-    band that is width-limited comes out smaller and hands its slack back to the gaps,
-    so nothing can ever overlap.
-
-    Returns (caps, bands): bands[name] = (top, bottom, baseline).
+    Returns (caps, tops, total).
     """
-    span = (top - bot) * share
-    unit = span / sum(e["c"] for e in elems)
-    caps, heights = {}, {}
+    def blk(e):
+        return (e[1], e[2], e[3], e[4] if len(e) > 4 else 1.0)
+
+    coeffs = sum(e[2] if e[0] == "block" else e[1] for e in elems)
+    U = (h - 2 * m) * share / coeffs
+    caps, heights, order = {}, {}, []
     for e in elems:
-        if e["t"] != "block":
+        if e[0] != "block":
             continue
-        hm = e.get("hm", 1.0)
-        cap = e["c"] * unit / hm
-        if e.get("fit") is not None:
-            cap = min(cap, e["fit"]())
-        caps[e["name"]] = cap
-        heights[e["name"]] = cap * hm
+        name, coeff, fit, hm = blk(e)
+        cap = coeff * U / hm
+        if fit is not None:
+            cap = min(cap, fit())
+        caps[name] = cap
+        heights[name] = cap * hm
+        order.append(e)
     fixed = sum(heights.values())
-    gap_c = sum(e["c"] for e in elems if e["t"] == "gap") or 1.0
-    gap_total = max(span - fixed, 0.0)
-    y = top - ((top - bot) - span) / 2
-    bands = {}
+    gap_coeffs = sum(e[1] for e in elems if e[0] == "gap") or 1.0
+    gap_total = max((h - 2 * m) * share - fixed, 0.0)
+    tops = {}
+    y = m + (h - 2 * m) / 2 + (fixed + gap_total) / 2
     for e in elems:
-        if e["t"] == "block":
-            hgt, cap = heights[e["name"]], caps[e["name"]]
-            bands[e["name"]] = (y, y - hgt, y - (hgt + cap) / 2)
-            y -= hgt
+        if e[0] == "block":
+            name = e[1]
+            y -= heights[name]
+            tops[name] = y
         else:
-            y -= e["c"] / gap_c * gap_total
-    return caps, bands
+            y -= e[1] / gap_coeffs * gap_total
+    return caps, tops, fixed + gap_total
 
 
-def draw_band(c, x, w, band, bg, text, cap, fg, weight="Manrope-800",
-              tracking=None, align="center"):
-    """A full-measure band: the colour behind, the type on it."""
-    top, bot, base = band
-    if bg is not None:
-        c.setFillColor(bg)
-        c.rect(x, bot, w, top - bot, stroke=0, fill=1)
-    if tracking is None:
-        tracking = cap * 0.06
-    tx = x + w / 2 if align == "center" else x
-    B.caps(c, tx, base, text, cap, fg, weight, tracking, align=align, max_w=w * 0.97)
-
-
-def draw_services(c, items, x, top, col_w, cap, cols=3, colour=None, dash=None):
-    """The service rail on the white field: a red dash, then the service in navy."""
-    colour = colour or NAVY
-    dash = dash or RED
-    d = cap * 1.3
-    for i, s in enumerate(items):
-        cx = x + (i % cols) * col_w
-        cy = top - cap - (i // cols) * (cap * 2.0)
-        c.setFillColor(dash)
-        c.rect(cx, cy + cap * 0.30, d, max(3.0, cap * 0.16), stroke=0, fill=1)
-        B.caps(c, cx + d * 1.35, cy, s, cap, colour, "Inter-600", 3.0,
-               max_w=col_w * 0.94 - d * 1.35)
-
-
-def draw_open(c, x, w, band, cap):
-    """The Open 24 Hrs row: an arrow at each end, the words in red between them."""
-    top, bot, base = band
-    al = w * 0.135
-    cy = base + cap / 2
-    _arrow(c, x + w * 0.008, cy, al, max(4.0, cap * 0.10), w * 0.052, cap * 1.05, RED,
-           direction=-1)
-    _arrow(c, x + w - w * 0.008 - al, cy, al, max(4.0, cap * 0.10), w * 0.052,
-           cap * 1.05, RED, direction=+1)
-    w1 = pdfmetrics.stringWidth("Open", "Manrope-700", B.font_for(cap, "Manrope"))
-    w2 = pdfmetrics.stringWidth("24 Hrs", "Manrope-700", B.font_for(cap, "Manrope"))
-    gap = w * 0.055
-    x0 = x + w / 2 - (w1 + w2 + gap) / 2
-    B.caps(c, x0, base, "Open", cap, RED, "Manrope-700", cap * 0.10)
-    B.caps(c, x0 + w1 + gap, base, "24 Hrs", cap, RED, "Manrope-700", cap * 0.10)
-
-
-def foot_strip(c, w, h, m):
-    """The navy foot strip: the numbers at the left, the branch at the right."""
-    fh = h * FOOT_SHARE
-    c.setFillColor(NAVY)
-    c.rect(m, m, w - 2 * m, fh, stroke=0, fill=1)
-    cap = min(fh * 0.30, fit_cap("TEL " + PHONE, "Inter-600", "Inter",
-                                 (w - 2 * m) * 0.60))
-    tel = "TEL  " + PHONE
-    tel_w = pdfmetrics.stringWidth(tel, "Inter-600", B.font_for(cap, "Inter"))
-    br_w = pdfmetrics.stringWidth(BRANCH, "Inter-600", B.font_for(cap, "Inter"))
-    lx = m + (w - 2 * m) * 0.014
-    rx = w - m - (w - 2 * m) * 0.014
-    B.caps(c, lx, m + (fh - cap) / 2, tel, cap, B.WHITE, "Inter-600", cap * 0.06)
-    B.caps(c, rx, m + (fh - cap) / 2, BRANCH, cap, B.WHITE, "Inter-600", cap * 0.12,
-           align="right")
-    # the spare width between the numbers and the branch, for the motto
-    return fh, (lx + tel_w, rx - br_w)
-
-
-def draw_motto(c, h, m, fh, gap_lr):
-    """The motto, set in the foot strip between the numbers and the branch."""
-    left, right = gap_lr
-    cap = min(fh * 0.28, fit_cap(MOTTO, "Inter-500", "Inter",
-                                 (right - left) * 0.90))
-    B.caps(c, (left + right) / 2, m + (fh - cap) / 2, MOTTO, cap, B.WHITE,
-           "Inter-500", cap * 0.08)
-
-
-# the column every banner shares: BCM, MEDICAL CENTRE, EDDWALIRO, Open 24 Hrs, services
-COLUMN = [
-    {"t": "block", "name": "bcm", "c": 0.070, "hm": BCM_HM},
-    {"t": "gap", "c": 0.014},
-    {"t": "block", "name": "name", "c": 0.200, "hm": NAME_HM},
-    {"t": "gap", "c": 0.014},
-    {"t": "block", "name": "word", "c": 0.380, "hm": WORD_HM},
-    {"t": "gap", "c": 0.014},
-    {"t": "block", "name": "open", "c": 0.075, "hm": OPEN_HM},
-    {"t": "gap", "c": 0.014},
-    {"t": "block", "name": "services", "c": 0.190, "hm": SERV_HM},
-]
-
-
-def draw_column(c, x, w, top, bot, services, cols=3, photo_share=0.0):
-    """Draw the sign's column of bands in the rectangle (x, top) — (x + w, bot)."""
-    longest = max(services, key=lambda t: pdfmetrics.stringWidth(
-        t, "Inter-600", B.font_for(40.0, "Inter")))
-    fits = {
-        "bcm": (lambda: fit_cap("BCM", "Manrope-800", "Manrope", w * 0.16)),
-        "name": (lambda: fit_cap(NAME, "Manrope-800", "Manrope", w * 0.97)),
-        "word": (lambda: fit_cap(WORD, "Manrope-800", "Manrope", w * 0.97,
-                                 tracking=10.0)),
-        # the rail never crowds: the longest service, dash included, must sit in its column
-        "services": (lambda: fit_cap(longest, "Inter-600", "Inter", (w / cols) * 0.86)),
-    }
-    elems = [dict(e, fit=fits.get(e.get("name"))) for e in COLUMN]
-    caps, bands = column_layout(top, bot, elems)
-
-    draw_band(c, x, w, bands["bcm"], None, "BCM", caps["bcm"], NAVY,
-              tracking=caps["bcm"] * 0.16)
-    draw_band(c, x, w, bands["name"], NAVY, NAME, caps["name"], B.WHITE)
-    draw_band(c, x, w, bands["word"], RED, WORD, caps["word"], B.WHITE,
-              tracking=caps["word"] * 0.045)
-    draw_open(c, x, w, bands["open"], caps["open"])
-    draw_services(c, services, x, bands["services"][0], w / cols, caps["services"],
-                  cols=cols)
-    return caps, bands
-
-
-def zone(w, h, m, fh):
-    """The clear area the column lives in, above the foot strip."""
-    top = h - m
-    bot = m + fh + h * 0.026
-    return top, bot
+def band_h(caps, name):
+    """The height of a band around the cap of block `name`."""
+    return caps[name] * BAND_HM
 
 
 def road_photo(w, h):
-    """B-1's photograph: a tall crop against the left edge, the full clear height."""
+    """B-1's photograph: a tall crop against the left edge, full clear height."""
     m = SAFE
-    top, bot = zone(w, h, m, h * FOOT_SHARE)
-    ph = top - bot
-    pw = min(ph * 0.98, w * 0.200)          # a near-square frame: the whole scene fits
-    return (m, bot, pw, ph)
+    ph = h - 2 * m
+    pw = min(ph * 0.80, w * 0.235)
+    return (m, m, pw, ph)
 
 
 def face_road(c, w, h):
-    """B-1 — 16 ft x 49 in, in the sign post's setting. Photo left, the bands right."""
-    c.setFillColor(B.WHITE)
+    """B-1 — 16 ft x 49 in. Photograph left, the name right, the list under it.
+
+    The design is untouched; it is only coloured the way the sign post is: white
+    ground, EDDWALIRO white on the red block, MEDICAL CENTRE white on the navy band.
+    """
+    c.setFillColor(GROUND)
     c.rect(0, 0, w, h, stroke=0, fill=1)
+
     m = SAFE
-    fh, gap_lr = foot_strip(c, w, h, m)
-
+    k = h / 1244.6
     px, py, pw, ph = road_photo(w, h)
-    photo(c, "pharmacy", px, py, pw, ph, (0.50, 0.42))
-    keyline(c, px, py, pw, ph, NAVY, 0.28, max(1.8, h * 0.0022))
+    photo(c, "pharmacy", px, py, pw, ph, (0.52, 0.42))
+    keyline(c, px, py, pw, ph, NAVY, 0.22, max(1.8, h * 0.0022))
 
-    top, bot = zone(w, h, m, fh)
-    x0 = px + pw + w * 0.028
+    gap = w * 0.030
+    x0 = px + pw + gap
     col = w - m - x0
-    draw_column(c, x0, col, top, bot, BANNERS[0]["services"], cols=3)
-    draw_motto(c, h, m, fh, gap_lr)
 
-    keyline(c, 32, 32, w - 64, h - 64)
+    # the stack: EDDWALIRO, the badge, MEDICAL CENTRE, the motto, the list, the numbers
+    elems = [
+        ("block", "word", 0.300, lambda: fit_cap(WORD, "Manrope-800", "Manrope",
+                                                 col * 0.96, tracking=9.0), BAND_HM),
+        ("gap", 0.040),
+        ("block", "badge", 0.072, None),
+        ("gap", 0.026),
+        ("block", "name", 0.205, lambda: fit_cap(NAME, "Manrope-800", "Manrope",
+                                                 col * 0.96), BAND_HM),
+        ("gap", 0.034),
+        ("block", "motto", 0.030, None),
+        ("gap", 0.030),
+        ("block", "services", 0.128, None),        # two rows of three
+        ("gap", 0.030),
+        ("block", "tel", 0.034, None),
+        ("gap", 0.014),
+        ("block", "open", 0.029, None),
+    ]
+    caps, tops, total = layout_stack(h, m, elems)
+    ms = caps["badge"]
+    cap_sc = caps["services"] * 0.30
+    row_sc = caps["services"] - cap_sc           # two rows fill the block exactly
+
+    band(c, x0, tops["word"], col, band_h(caps, "word"), RED)
+    word(c, x0 + 14.0 * k, tops["word"] + caps["word"] * BAND_PAD, caps["word"],
+         track=9.0, max_w=col - 28.0 * k)
+    badge_row(c, x0, tops["badge"], ms, ms * 0.32, ms * 0.26)
+    band(c, x0, tops["name"], col, band_h(caps, "name"), NAVY)
+    B.caps(c, x0 + 14.0 * k, tops["name"] + caps["name"] * BAND_PAD, NAME,
+           caps["name"], B.WHITE, "Manrope-800", 2.0, max_w=col - 28.0 * k)
+    B.label(c, x0 + 6.0 * k, tops["motto"], B.SLOGAN, caps["motto"], RED,
+            "Inter-400", 4.0, max_w=col)
+    # the stack reserves the block's TOP; the list draws down from its first baseline
+    services_block(c, BANNERS[0]["services"], x0 + 4.0,
+                   tops["services"] + caps["services"] - cap_sc, cols=3,
+                   col_w=col / 3.0, row=row_sc, cap=cap_sc, k=k)
+    phone_line(c, x0, tops["tel"], caps["tel"])
+    B.caps(c, x0, tops["open"], "OPEN 24 HOURS", caps["open"], RED,
+           "Inter-600", 3.0)
+
+    keyline(c, 32, 32, w - 64, h - 64, NAVY, 0.12, 2.0)
 
 
 def services_photos(w, h):
     """B-2's two photographs, stacked against the right edge; ((x,y,w,h), focus)."""
     m = SAFE
-    top, bot = zone(w, h, m, h * FOOT_SHARE)
-    gap = h * 0.028
-    ph = (top - bot - gap) / 2
-    pw = min(ph * 0.95, w * 0.150)          # two square-ish frames stacked
+    gap = h * 0.034
+    ph = (h - 2 * m - gap) / 2
+    pw = min(h * 0.86, w * 0.225)
     px = w - m - pw
-    return [((px, top - ph, pw, ph), (0.50, 0.06)),
-            ((px, bot, pw, ph), (0.62, 0.10))]
+    return [((px, h - m - ph, pw, ph), (0.50, 0.06)),          # top
+            ((px, m, pw, ph), (0.62, 0.10))]                    # bottom
 
 
 def face_services(c, w, h):
-    """B-2 — 16 ft x 49 in, in the sign post's setting. Bands left, two photos right."""
-    c.setFillColor(B.WHITE)
+    """B-2 — 16 ft x 49 in. Type left, two photographs stacked right, a red foot rail."""
+    c.setFillColor(GROUND)
     c.rect(0, 0, w, h, stroke=0, fill=1)
-    m = SAFE
-    fh, gap_lr = foot_strip(c, w, h, m)
 
+    m = SAFE
+    k = h / 1244.6
     rects = services_photos(w, h)
     for (rect, focus), (key, *_rest) in zip(rects, BANNERS[1]["photos"]):
         photo(c, key, *rect, focus)
-        keyline(c, *rect, NAVY, 0.26, max(1.6, h * 0.0018))
+        keyline(c, *rect, NAVY, 0.20, max(1.6, h * 0.0018))
 
-    top, bot = zone(w, h, m, fh)
     x0 = m
-    col = rects[0][0][0] - w * 0.028 - x0
-    draw_column(c, x0, col, top, bot, BANNERS[1]["services"], cols=3)
-    draw_motto(c, h, m, fh, gap_lr)
+    col = rects[0][0][0] - w * 0.030 - x0
 
-    keyline(c, 32, 32, w - 64, h - 64)
+    elems = [
+        ("block", "word", 0.300, lambda: fit_cap(WORD, "Manrope-800", "Manrope",
+                                                 col * 0.96, tracking=8.0), BAND_HM),
+        ("gap", 0.040),
+        ("block", "badge", 0.072, None),
+        ("gap", 0.026),
+        ("block", "name", 0.205, lambda: fit_cap(NAME, "Manrope-800", "Manrope",
+                                                 col * 0.96), BAND_HM),
+        ("gap", 0.032),
+        ("block", "motto", 0.030, None),
+        ("gap", 0.028),
+        ("block", "services", 0.128, None),
+        ("gap", 0.026),
+        ("block", "rail", 0.006, None),
+        ("gap", 0.024),
+        ("block", "tel", 0.034, None),
+        ("gap", 0.014),
+        ("block", "open", 0.029, None),
+    ]
+    caps, tops, total = layout_stack(h, m, elems)
+    ms = caps["badge"]
+    cap_sc = caps["services"] * 0.30
+    row_sc = caps["services"] - cap_sc
+
+    band(c, x0, tops["word"], col, band_h(caps, "word"), RED)
+    word(c, x0 + 14.0 * k, tops["word"] + caps["word"] * BAND_PAD, caps["word"],
+         track=8.0, max_w=col - 28.0 * k)
+    badge_row(c, x0, tops["badge"], ms, ms * 0.32, ms * 0.26)
+    band(c, x0, tops["name"], col, band_h(caps, "name"), NAVY)
+    B.caps(c, x0 + 14.0 * k, tops["name"] + caps["name"] * BAND_PAD, NAME,
+           caps["name"], B.WHITE, "Manrope-800", 1.8, max_w=col - 28.0 * k)
+    B.label(c, x0 + 5.0 * k, tops["motto"], B.SLOGAN, caps["motto"], RED, "Inter-400",
+            3.6, max_w=col)
+    services_block(c, BANNERS[1]["services"], x0 + 3.0,
+                   tops["services"] + caps["services"] - cap_sc, cols=3,
+                   col_w=col / 3.0, row=row_sc, cap=cap_sc, k=k)
+    c.setFillColor(RED)
+    c.rect(x0, tops["rail"], col, max(3.0, caps["rail"]), stroke=0, fill=1)
+    phone_line(c, x0, tops["tel"], caps["tel"])
+    B.caps(c, x0, tops["open"], "OPEN 24 HOURS", caps["open"], RED,
+           "Inter-600", 3.0)
+
+    keyline(c, 32, 32, w - 64, h - 64, NAVY, 0.12, 2.0)
 
 
 def compact_photo(w, h):
     """Where B-3's photograph sits, as (x, y, w, h) — shared by the face and the proof."""
     m = SAFE
-    top, bot = zone(w, h, m, h * FOOT_SHARE)
-    ph = top - bot
-    pw = min(ph * 0.92, w * 0.200)
-    return (w - m - pw, bot, pw, ph)
+    ph = h - 2 * m
+    pw = min(ph * 0.80, w * 0.255)
+    return (w - m - pw, m, pw, ph)
 
 
 def face_compact(c, w, h):
-    """B-3 — 16 ft x 49 in, in the sign post's setting. Bands centred, one photo right."""
-    c.setFillColor(B.WHITE)
+    """B-3 — 16 ft x 49 in. The name centred in its column, one photograph at the right.
+
+    Same design as approved; only the colour is the sign post's — white ground,
+    EDDWALIRO white on the red block, MEDICAL CENTRE white on the navy band.
+    """
+    c.setFillColor(GROUND)
     c.rect(0, 0, w, h, stroke=0, fill=1)
-    m = SAFE
-    fh, gap_lr = foot_strip(c, w, h, m)
 
+    m = SAFE                                        # hem + eyelet zone
     px, py, pw, ph = compact_photo(w, h)
-    photo(c, "reception", px, py, pw, ph, (0.52, 0.50))
-    keyline(c, px, py, pw, ph, NAVY, 0.30, max(1.8, h * 0.0022))
+    photo(c, "reception", px, py, pw, ph, (0.50, 0.55))
+    keyline(c, px, py, pw, ph, NAVY, 0.22, max(1.8, h * 0.0022))
 
-    top, bot = zone(w, h, m, fh)
     x0 = m
-    col = px - w * 0.028 - x0
-    draw_column(c, x0, col, top, bot, BANNERS[2]["services"], cols=4)
-    draw_motto(c, h, m, fh, gap_lr)
+    col = px - x0 - w * 0.035                       # the type column, up to the photograph
+    xc = x0 + col / 2.0
 
-    keyline(c, 32, 32, w - 64, h - 64)
+    # type: fitted to the column first, then capped against the height
+    cap_e = min(fit_cap(WORD, "Manrope-800", "Manrope", col * 0.94, tracking=10.0),
+                h * 0.280)
+    cap_m = min(fit_cap(NAME, "Manrope-800", "Manrope", col * 0.94), h * 0.220)
+    cap_b = min(cap_m * 0.17, 30.0)
+    ms = cap_m * 0.34
+    cap_rule = max(5.0, h * 0.006)
+    cap_s = h * 0.024
+    cap_r = h * 0.021
+    cap_p = h * 0.027
+    cap_o = h * 0.023
+    h_e = cap_e * BAND_HM                            # the red block
+    h_m = cap_m * BAND_HM                            # the navy band
+
+    fixed = (h_e + ms + cap_b + h_m + cap_rule + cap_s + cap_r + cap_p + cap_o)
+    room = max((h - 2 * m) * 0.96 - fixed, 0.0)
+    wts = (0.055, 0.030, 0.055, 0.075, 0.050, 0.060, 0.075, 0.030)
+    total_gap = sum(wts)
+    g = [room * x / total_gap for x in wts]
+    total = fixed + room
+    top = m + (h - 2 * m) / 2 + total / 2           # the stack, centred in the clear area
+
+    y = top
+    # EDDWALIRO heads it, white on the red block
+    band(c, x0, y - h_e, col, h_e, RED)
+    B.caps(c, xc, band_base(y, cap_e), WORD, cap_e, B.WHITE, "Manrope-800", 10.0,
+           align="center", max_w=col - 20.0)
+    y -= h_e + g[0]
+
+    # the badge, then the initials
+    B.monogram(c, xc - ms / 2.0, y - ms, ms, dark=NAVY, accent=RED)
+    y -= ms + g[1]
+    B.caps(c, xc, y - cap_b, "BCM", cap_b, NAVY, "Inter-600", 20.0,
+           align="center")
+    y -= cap_b + g[2]
+
+    # the English name, the widest line on the banner, white on the navy band
+    band(c, x0, y - h_m, col, h_m, NAVY)
+    B.caps(c, xc, band_base(y, cap_m), NAME, cap_m, B.WHITE, "Manrope-800", 1.8,
+           align="center", max_w=col - 24.0)
+    y -= h_m + g[3]
+
+    # a short rule, then the motto
+    rw = min(col * 0.16, 300.0)
+    c.setFillColor(RED)
+    c.rect(xc - rw / 2, y - cap_rule, rw, cap_rule, stroke=0, fill=1)
+    y -= cap_rule + g[4]
+    B.label(c, xc, y - cap_s, B.SLOGAN, cap_s, RED, "Inter-400", 3.4,
+            align="center", max_w=col)
+    y -= cap_s + g[5]
+
+    # the rail of services, then the numbers and the hours
+    rail = "   ·   ".join(BANNERS[2]["services"])
+    B.caps(c, xc, y - cap_r, rail, cap_r, NAVY, "Inter-500", 1.6,
+           align="center", max_w=col)
+    y -= cap_r + g[6]
+    phone_line(c, xc, y - cap_p, cap_p, align="center")
+    y -= cap_p + g[7]
+    B.caps(c, xc, y - cap_o, "OPEN 24 HOURS", cap_o, RED, "Inter-600", 4.0,
+           align="center")
+
+    keyline(c, 32, 32, w - 64, h - 64, NAVY, 0.12, 2.0)
 
 
 FACES = {"road": face_road, "services": face_services, "compact": face_compact}
@@ -636,10 +646,10 @@ def proof(path):
     D.para(c, D.M, y + 2 * MM,
            "Three different banners, each doing a different job: B-1 is read from the road "
            "at speed, B-2 is read standing at the gate, B-3 runs the long stretch of fence. "
-           "same pattern, cut from the clinic's sign post: BCM over the white field, "
-           "MEDICAL CENTRE knocked out of navy, EDDWALIRO in white on the red block, "
-           "Open 24 Hrs between the arrows, then the numbers, the motto and BUSSABALA in "
-           "the navy foot strip.",
+           "The layouts are the ones approved, unchanged. What changed on 2026-11-07 is the "
+           "colour, taken from the clinic's sign post: white ground, EDDWALIRO in white on "
+           "the red block #ED1B24, MEDICAL CENTRE in white on the navy band #16233F, and "
+           "that red again for the motto, the service rules and OPEN 24 HOURS.",
            (D.PW - 2 * D.M) / MM * 0.72, 3.2, B.NAVY_MID)
 
     yy = 126 * MM
@@ -905,11 +915,11 @@ def write_index():
 <header>
   <div class="eyebrow">BCM · MEDICAL CENTRE · BANNERS</div>
   <h1>Three banners for the fence</h1>
-  <p>All three at 16 ft × 49 in (4.88 m × 1.24 m). Three different layouts, one
-     identity. Each is set the way the clinic's own sign post is set — BCM over the white
-     field, MEDICAL CENTRE knocked out of navy, EDDWALIRO in white on the red block,
-     Open 24 Hrs between the arrows, then the numbers, the motto and BUSSABALA in the
-     navy foot strip — with a licensed photograph and a list from the clinic's board.</p>
+  <p>All three at 16 ft × 49 in (4.88 m × 1.24 m). The layouts are the ones approved —
+     EDDWALIRO at the head, MEDICAL CENTRE the widest line, the motto, a service list and
+     a licensed photograph — now coloured from the clinic's sign post: white ground,
+     EDDWALIRO white on the red block, MEDICAL CENTRE white on the navy band, red for
+     the accents. Same red, same navy, so fence and light box read as one set.</p>
 </header>
 <nav><a href="../index.html">All artwork</a>
      <a href="../door-1/index.html">Door 1</a>

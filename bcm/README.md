@@ -161,26 +161,23 @@ re-measured on 2026-11-07 to **16 ft × 49 in (4876.8 × 1244.6 mm)**:
 | B-2 | 16 ft × 49 in (4876.8 × 1244.6 mm) | type left, two photographs stacked right |
 | B-3 | 16 ft × 49 in (4876.8 × 1244.6 mm) | the name centred in its column, one photograph at the right hand end |
 
-**Set in the sign post's pattern.** These three no longer run the plain navy panel. On
-2026-11-07 the client asked for the colour pattern of the sign post — the face already on the
-road — so each banner is now banded the same way, cut from the same red `#ED1B24` and navy
-`#16233F`: `BCM` on the white field, `MEDICAL CENTRE` knocked out of the navy band, `EDDWALIRO`
-in white on the full-width red block, the `Open  24 Hrs` row in red between an arrow at each
-end, then the navy foot strip with `TEL 0788 323 815 · 0754 132 715` at the left, the motto
-*We listen. We treat. We care.* centred and `BUSSABALA` at the right. The motto has no place
-on the sign face (the client took it off there) but it stays on the banners, as directed, in
-the strip where it does no harm to the red block.
+**Same design, the sign post's colours.** These three keep the layout they were approved
+with — EDDWALIRO at the head, the badge and `BCM`, MEDICAL CENTRE as the widest line, the
+motto, the service list, the numbers and OPEN 24 HOURS, photograph at the left on B-1, two
+photographs stacked at the right on B-2, one at the right with the type centred on B-3.
+Nothing moved, nothing was re-sized.
 
-What still differs is the layout, not the pattern: B-1 puts the photograph at the left end and
-the bands beside it, B-2 sets the bands at the left with two photographs stacked at the right,
-B-3 runs the bands across the full width with one photograph at the right hand end. Each
-carries a service list from the clinic's own board. Four Pexels frames, all colour-retouched,
-all recorded on the licence page of `bcm/banners/BCM-Banners.pdf`. No photograph and no
-service repeats across the three.
+On 2026-11-07 the client asked for the sign post's colour to be copied onto them, so the
+navy field and its cyan went and the sign's own colours came in — the same red `#ED1B24` and
+navy `#16233F`, band for band, at the same ratio the sign uses (its band is 1.19 × the cap it
+carries): white ground, EDDWALIRO in white on the red block, MEDICAL CENTRE in white on the
+navy band, and that red again for the motto, the service rules and OPEN 24 HOURS. The badge,
+the numbers and the service names sit in the navy. Because the red and the navy are the sign's
+own values, fence and light box read as one set.
 
-The bands are proportioned, not hand-placed: `column_layout()` in `source/bcm_banners.py`
-fits one column of bands to the panel, so the type scales with the banner and no band can ever
-overlap another. That is why three banners cut to one measurement read as one set.
+Each banner still carries a service list from the clinic's own board. Four Pexels frames, all
+colour-retouched, all recorded on the licence page of `bcm/banners/BCM-Banners.pdf`. No
+photograph and no service repeats across the three.
 
 ```sh
 cd source

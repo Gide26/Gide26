@@ -15,29 +15,30 @@ door.
 | **B-2** | 16 ft × 49 in | 4876.8 × 1244.6 mm | Read standing at the gate | Type left, two photographs stacked right |
 | **B-3** | 16 ft × 49 in | 4876.8 × 1244.6 mm | The long run along the fence | The bands across the full width, the name as large as it will go, one photograph at the right hand end |
 
-**The colour pattern is the sign post's, at the client's instruction of 2026-11-07.** The three
-banners used to run a plain navy panel; they now carry the banded face the clinic already has on
-the road, in the same red `#ED1B24` and navy `#16233F`, so fence and light box read as one set:
+**The layouts are the ones approved — only the colour is new.** On 2026-11-07 the client
+asked for the sign post's colour to be copied onto the three banners. The navy field and its
+cyan accents went; the sign's own colours came in, at the sign's own ratio (its band is
+1.19 × the cap it carries):
 
-1. `BCM` on the white field
-2. `MEDICAL CENTRE` in white, knocked out of the navy band
-3. `EDDWALIRO` in white on the full-width red block
-4. the `Open  24 Hrs` row in red, an arrow at each end
-5. a service list from the clinic's own board — a red dash, the service in navy
-6. the navy foot strip: `TEL 0788 323 815 · 0754 132 715` at the left, the motto
-   *We listen. We treat. We care.* centred, `BUSSABALA` at the right
+1. ground white, as the sign face is white
+2. `EDDWALIRO` in white on the red block `#ED1B24`
+3. the badge and `BCM` in navy
+4. `MEDICAL CENTRE` in white on the navy band `#16233F`
+5. the motto *We listen. We treat. We care.* and the service rules in that red, the service
+   names in navy
+6. `TEL 0788 323 815 · 0754 132 715` in navy, `OPEN 24 HOURS` in red
 
-The motto sits in the foot strip because the client took it off the sign face; it stays on the
-banners as directed, without disturbing the red block. The bands are fitted by proportion, not
-by fixed offsets (`column_layout()` in `source/bcm_banners.py`), so nothing can overlap at any
-panel size and the type scales with the banner. What differs between the three is the layout,
-not the pattern:
+Nothing moved, nothing was re-sized: EDDWALIRO still heads each banner, MEDICAL CENTRE is
+still the widest line, the photograph still sits where the layout puts it.
 
-| | Layout |
+| | Layout (unchanged) |
 | --- | --- |
-| B-1 | the bands beside a near-square photograph at the left end |
-| B-2 | the bands at the left, two photographs stacked at the right |
-| B-3 | the bands across the full width, one photograph at the right hand end |
+| B-1 | photograph at the left end, the type column beside it |
+| B-2 | the type column at the left, two photographs stacked at the right |
+| B-3 | the type centred in its column, one photograph at the right hand end |
+
+Because the red and navy are the sign's own values, the fence and the light box read as one
+set — and the banners stay the designs the client approved.
 
 ## Files
 
