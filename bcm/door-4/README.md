@@ -10,15 +10,14 @@ Perforated one-way vision vinyl — you can see out through the print from insid
 | --- | --- | --- | --- | --- |
 | D4-P1 | Pharmacy | 900 × 500 | PH-17 Pharmacist handing medicine across a dispensary counter | left leaf · upper outer |
 | D4-P2 | Laboratory | 900 × 400 | PH-21 Scientist examining samples at a microscope | left leaf · upper middle |
-| D4-P3 | CBC | 900 × 500 | PH-15 Blood sample tubes in a rack beside a centrifuge | left leaf · lower outer |
+| D4-P3 | Orthopaedics | 900 × 500 | AI-01 Fictional knee examination | left leaf · lower outer |
 | D4-P4 | Ultrasound | 900 × 400 | PH-07 Ultrasound scanner and examination couch in a clinic scanning room | left leaf · lower middle |
-| D4-P5 | Laboratory | 900 × 500 | PH-16 Scientist working at a microscope | right leaf · upper outer |
+| D4-P5 | Laboratory | 900 × 500 | AI-02 Fictional laboratory microscopy | right leaf · upper outer |
 | D4-P6 | CBC | 900 × 400 | PH-23 Blood samples in a rack with a centrifuge | right leaf · upper middle |
 | D4-P7 | Open 24 Hours | 900 × 400 | none — type only | right leaf · lower middle |
 | D4-P8 | Our Services | 900 × 500 | none — type only | right leaf · lower outer |
 
-Seven different photographs and one type-only directory. No image on this door appears on either
-of the other two.
+Every image on this door is distinct and none is reused on another door.
 
 ## Files
 
@@ -31,25 +30,22 @@ of the other two.
 
 ## Photography
 
-All photographs are Pexels Free licence, checked 29 October 2026: free commercial use, no
-attribution required, modification allowed. The ones carrying an AI colour retouch so the people
+Panels D4-P3 (AI-01) and D4-P5 (AI-02) are newly AI-generated scenes at the client’s request; they are not Pexels images and the people are fictional. No Pexels licence applies to them; confirm applicable AI-output rights and printer suitability before production. Other photographic images are Pexels stock under its free licence, checked 29 October 2026. Stock terms permit commercial use and modification, with no attribution required. The stock images carrying an AI colour retouch so the people
 reflect the community BCM serves are marked in the table below; the people in those frames are
 models, never staff or patients, and no pane captions them as such.
 
-| Asset | Pexels ID | Creator | Pexels original | Working file | Retouch |
+| Asset | Pexels ID | Creator | Original | Working file | Retouch / provenance |
 | --- | --- | --- | --- | --- | --- |
 | PH-17 | 8657358 | cottonbro studio | 6720 × 4480 px | 1264 × 842 px | yes — colour retouch |
 | PH-21 | 8851548 | Mikhail Nilov | 7952 × 5304 px | 843 × 1264 px | yes — colour retouch |
-| PH-15 | 6627696 | Karola G | 4480 × 6720 px | 500 × 750 px | no |
+| AI-01 | AI | AI-generated | 768 × 1376 px | 768 × 1376 px | AI-generated scene, not Pexels |
 | PH-07 | 7089304 | MART PRODUCTION | 6123 × 4082 px | 1125 × 750 px | no |
-| PH-16 | 9768447 | Ron Lach | 2987 × 4480 px | 843 × 1264 px | yes — colour retouch |
+| AI-02 | AI | AI-generated | 848 × 1264 px | 848 × 1264 px | AI-generated scene, not Pexels |
 | PH-23 | 6627697 | Karola G | 6580 × 4387 px | 500 × 333 px | no |
 
-At final size these working crops land between 25 and 71 ppi, so the PDFs are proofs for approval, not files to plot.
+At final size these working crops land between 31 and 71 ppi, so the PDFs are proofs for approval, not files to plot.
 
-Working files are desktop previews, not print files. Pull the full-size original from the Pexels
-link for each ID before plotting — the record of what was used, and where it came from, is the
-point of the table.
+Working images are proof resolution. For Pexels stock, obtain higher-resolution originals before printing. AI-01 and AI-02 have no Pexels originals; check quality with the printer or replace with higher-resolution imagery.
 
 ## Provisional
 

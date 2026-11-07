@@ -274,8 +274,7 @@ def door_page(c, door, page_no):
         f"and crop marks. All eight pages also in {folder}/BCM-Door-{n}-Panels.pdf.",
         f"Schedule and specification in {folder}/docs/ — pane positions, film, "
         f"installation, open items.",
-        "No photograph on this door appears on either of the other two, and no service "
-        "repeats door to door.",
+        "No image on this door appears on another door. Some services recur across doors.",
     ], 158 * MM, 3.0, B.NAVY_MID)
 
 
@@ -412,12 +411,12 @@ def licence_page(c):
               eyebrow="BCM  ·  MEDICAL CENTRE  ·  LICENCE")
     y = D.h1(c, D.PH - 34 * MM, "Every photograph, and its licence", 7.6)
     D.para(c, D.M, y + 2 * MM,
-           "All photography is licensed from Pexels under its free licence: commercial "
+           "Stock photography is licensed from Pexels under its free licence: commercial "
            "use, modification, no attribution required. Frames marked R were colour-"
            "retouched with AI assistance so the people read Black African, as asked. The "
            "people are models — no pane, sign or banner names them as BCM staff or "
            "patients. Working files are web resolution; repeat the retouch on the "
-           "full-resolution originals before any of this is printed large.",
+           "full-resolution originals before any of this is printed large. D4-P3 and D4-P5 are AI-generated scenes, not Pexels stock; confirm AI-output rights and image quality before production.",
            (D.PW - 2 * D.M) / MM * 0.86, 3.1, B.NAVY_MID)
 
     where = used_in()
@@ -425,13 +424,13 @@ def licence_page(c):
     for key, uses in sorted(where.items(), key=lambda kv: P.PHOTOS[kv[0]]["asset"]):
         m = P.PHOTOS[key]
         rows.append([m["asset"], m["title"][:52], m.get("creator", "—"),
-                     str(m["id"]), "R" if m.get("edit") else "—",
+                     str(m["id"]), "AI" if m.get("ai_generated") else ("R" if key in DOORS.EDITS else "—"),
                      ", ".join(uses)[:44]])
 
     D.table(c, D.M, 148 * MM,
             [("Asset", 15, "left"), ("Photograph", 84, "left"), ("Creator", 34, "left"),
              ("Pexels", 17, "left"), ("", 8, "left"), ("Used in", 58, "left")],
-            rows, row_h=4.9 * MM, head_h=6.0 * MM, cap=2.6, head_cap=2.5)
+            rows, row_h=3.7 * MM, head_h=6.0 * MM, cap=2.3, head_cap=2.5)
 
     B.caps(c, D.M, 26 * MM,
            "PEXELS FREE LICENCE — COMMERCIAL USE, MODIFICATION AND NO ATTRIBUTION "
@@ -527,7 +526,7 @@ def readme_text():
 Everything in one folder: the three door film packages, the sign post panel and the
 three roadside banners, with one master proof describing the lot.
 
-**{panes} door panes · 1 sign post panel (2 faces) · 3 banners · {photos} licensed photographs**
+**{panes} door panes · 1 sign post panel (2 faces) · 3 banners · {photos} image assets**
 
 ## What is where
 
@@ -573,8 +572,7 @@ files on their own, numbered in running order.
 1. The official logo vector. The monogram is a recreation.
 2. Confirmation of the spelling **EDDWALIRO**.
 3. The sign post measurement, checked against the panel being made.
-4. The photographs: working files are 843–1264 px — approve the look, then repeat the
-   retouch on the Pexels originals, or photograph the clinic's own team.
+4. The images are proof resolution. D4-P3 and D4-P5 use AI-generated scenes, not Pexels stock; confirm AI-output rights and image quality with the printer or replace them with higher-resolution images. For stock, obtain higher-resolution Pexels originals and repeat retouches as needed.
 5. Each doorway measured on site: 900 mm high panes, 500 mm outer, 400 mm at the stile.
 
 ## Rebuild
@@ -718,7 +716,7 @@ def index_html():
     {"".join(links)}
   </table>
   <p class="note">Group packages are also available on their own pages, if you want to
-     send one door to one supplier. Photographs are Pexels Free licence, recorded in the
+     send one door to one supplier. Stock photographs are Pexels Free licence; D4-P3 and D4-P5 are AI-generated, recorded in the
      master proof and in each group README; the B monogram is a recreation, not BCM's
      official logo. Printer, film and fixing values marked “confirm” are industry-typical,
      not quotations.</p>

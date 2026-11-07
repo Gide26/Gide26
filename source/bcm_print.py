@@ -224,6 +224,7 @@ def main():
     lines = ["# BCM Medical Centre — print files", "",
              f"{len(pieces)} pieces, one print PDF each. All 1 : 1 in millimetres with "
              "bleed, crop marks and a slug strip. Plot at 100 %, never scale.", "",
+             "D4-P3 and D4-P5 contain AI-generated images at proof resolution; confirm quality with the printer or replace with higher-resolution images before production.", "",
              "| # | Job | Piece | Type | Finished size | File |",
              "| --- | --- | --- | --- | --- | --- |"]
     for n, job, title, ref, folder, kind, size, name in pieces:

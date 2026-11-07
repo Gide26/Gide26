@@ -27,7 +27,7 @@ only the subject matter and the film change.
 | 1 | [`door-1/`](door-1/) | Testing and treatment — HIV care, pharmacy (tablets in hand), malaria, CBC, antenatal, laboratory, outpatient | One-way vision | 7 photographs + directory |
 | 2 | [`door-2/`](door-2/) | The welcome door — WELCOME (open 24 hours), immunisation, general outpatient, obs & gyn, minor surgery, pharmacy (medicine handed over the counter), HIV care | One-way vision | 7 photographs + directory |
 | 3 | [`door-3/`](door-3/) | Family, eye, ENT and ward care — antenatal & postnatal, eye services, paediatrics, ENT, minor surgery, ultrasound, inpatient care | Opaque, no see-through | 7 photographs + directory |
-| 4 | [`door-4/`](door-4/) | Dispensary and diagnostics — pharmacy (medicine over the counter), laboratory ×2, CBC ×2, ultrasound, and a pane of the 24-hour access lines | One-way vision | 6 photographs + access pane + directory |
+| 4 | [`door-4/`](door-4/) | Dispensary and diagnostics — pharmacy, laboratory ×2, orthopaedics, CBC, ultrasound, and a pane of the 24-hour access lines | One-way vision | 6 photographs + access pane + directory |
 
 Twenty-eight different photographs across the four doors — **no photograph is used twice**, and the
 services are spread rather than repeated: pharmacy appears on doors 1, 2 and 4 (a strip of tablets in
@@ -102,10 +102,12 @@ accreditation, no clinical claim.
 
 ## Photography — read this before printing
 
-The base photographs are licensed Pexels stock (free commercial use, no attribution,
+Door 4 panels 3 and 5 use AI-generated imagery, not Pexels photographs. These depict fictional people and do not have Pexels originals; confirm AI-output rights and image quality before production.
+
+The stock photographs are licensed Pexels stock (free commercial use, no attribution,
 modification permitted — terms checked 29 October 2026). The frames that carry people were
 retouched with an AI image editor: skin tone only, so the people read as Black African.
-Scenes, poses, clothing, equipment and lighting are the original photographs. Every retouch
+For these retouched stock images, scenes, poses, clothing, equipment and lighting are the original photographs. Every retouch
 is recorded in the table in each door's README, and in the licence log in its schedule.
 
 Two consequences, stated in every door document:
@@ -116,7 +118,7 @@ Two consequences, stated in every door document:
   right for approval and for the mockups, not for a printed 900 mm pane; each door README
   states the ppi the crops actually resolve to. For production, the retouch is repeated on
   the full-resolution original from the Pexels link recorded against each asset, or the
-  clinic's own team is photographed.
+  clinic's own team is photographed. For the two AI scenes, check print quality with the printer or replace with higher-resolution images.
 
 ## Identity
 

@@ -33,6 +33,17 @@ WORK = os.path.join(ROOT, "source", ".work")
 
 WIDE, NARROW, PANE_H = 500, 400, 900
 
+# These two scenes were generated for this revision, not sourced from Pexels.
+# They depict fictional people and are not photographs of BCM's staff or clinic.
+P.PHOTOS.update({
+    "ai_orthopaedics": {"asset": "AI-01", "src": "ai-orthopaedics.jpg", "id": "AI",
+        "creator": "AI-generated", "px": (768, 1376),
+        "title": "Fictional knee examination", "use": "Orthopaedics", "ai_generated": True},
+    "ai_laboratory": {"asset": "AI-02", "src": "ai-laboratory.jpg", "id": "AI",
+        "creator": "AI-generated", "px": (848, 1264),
+        "title": "Fictional laboratory microscopy", "use": "Laboratory", "ai_generated": True},
+})
+
 
 def leaf_cols(leaf):
     """Pane widths left-to-right on one leaf.
@@ -135,7 +146,7 @@ DOORS = [
     {
         "n": 4, "folder": "door-4", "prefix": "D4", "film": "one-way",
         "film_name": "ONE-WAY VISION FILM",
-        "role": "dispensary, laboratory and scanning",
+        "role": "dispensary, orthopaedics, laboratory and scanning",
         "tel_alt": True,
         "edits": {},
         # The same measured doorway as doors 1-3: 2220 overall, 1980 head, two
@@ -150,9 +161,9 @@ DOORS = [
             # so the diagnostics panes take the weight instead.
             ("PHARMACY",     WIDE,   "pharmacy_counter", ("Left leaf", "upper outer", "900 × 500")),
             ("LABORATORY",   NARROW, "lab_scientist",   ("Left leaf", "upper middle", "900 × 400")),
-            ("CBC",          WIDE,   "cbc_rack",        ("Left leaf", "lower outer", "900 × 500")),
+            ("ORTHOPAEDICS", WIDE,   "ai_orthopaedics",        ("Left leaf", "lower outer", "900 × 500")),
             ("ULTRASOUND",   NARROW, "ultrasound",      ("Left leaf", "lower middle", "900 × 400")),
-            ("LABORATORY",   WIDE,   "lab_micro",       ("Right leaf", "upper outer", "900 × 500")),
+            ("LABORATORY",   WIDE,   "ai_laboratory",       ("Right leaf", "upper outer", "900 × 500")),
             ("CBC",          NARROW, "cbc_rack_2",      ("Right leaf", "upper middle", "900 × 400")),
             ("OPEN 24 HOURS", NARROW, None,             ("Right leaf", "lower middle", "900 × 400")),
             ("OUR SERVICES", WIDE,   None,              ("Right leaf", "lower outer", "900 × 500")),
@@ -161,11 +172,11 @@ DOORS = [
         "focus": {"pharmacy_counter": (0.44, 0.46), "lab_scientist": (0.46, 0.46),
                   "cbc_rack": (0.50, 0.78), "ultrasound": (0.44, 0.72),
                   "lab_micro": (0.50, 0.48), "cbc_rack_2": (0.46, 0.50)},
-        "web_head": "The dispensary door.<br>Tests, scans and medicines.",
+        "web_head": "The care door.<br>Orthopaedics, tests and medicines.",
         "web_blurb": "A fourth doorway in the same measured scheme — the dispensary, the "
-                     "laboratory, the blood bench, the scanning room and the vaccines, with one "
-                     "pane carrying the 24-hour access lines instead of a photograph. Seven new "
-                     "photographs, none of them used on doors 1 to 3.",
+                     "laboratory, orthopaedics, the blood bench and the scanning room, with one "
+                     "pane carrying 24-hour access lines. The orthopaedics and microscopy "
+                     "scenes are AI-generated; other scenes are stock photographs.",
     },
 ]
 
@@ -180,7 +191,7 @@ SUB = {
     "WELCOME": "OPEN 24 HOURS", "PAEDIATRICS": "CHILD HEALTH",
     "ULTRASOUND": "SCANNING", "OBS & GYN": "WOMEN'S HEALTH",
     "EYE SERVICES": "VISION & EYE CARE", "ENT": "EAR, NOSE & THROAT",
-    "INPATIENT CARE": "WARD & NURSING CARE",
+    "INPATIENT CARE": "WARD & NURSING CARE", "ORTHOPAEDICS": "ORTHOPAEDIC SERVICES",
     "OPEN 24 HOURS": "WALK-IN, DAY OR NIGHT",
 }
 
@@ -247,14 +258,14 @@ def panels(door):
     for i, (service, w, photo, _pos) in enumerate(door["spec"], start=1):
         sub = subs[service]
         seen[service] = seen.get(service, 0) + 1
-        if door["n"] == 4 and seen[service] == 2:
+        if door["n"] == 4 and (seen[service] == 2 or (i == 6 and service == "CBC")):
             sub = DOOR4_SUB_2.get(service, sub)
         p = {
             "id": f"{door['prefix']}-P{i}", "service": service, "sub": sub,
             "w": w, "h": PANE_H, "photo": photo,
             "focus": door["focus"].get(photo, (0.5, 0.4)) if photo else (0.5, 0.4),
             "zoom": door.get("zoom", {}).get(photo, 1.0),
-            "fit": photo in door.get("fit", set()), "title_cap": 64,
+            "fit": photo in door.get("fit", set()), "photo_contain": photo in {"ai_orthopaedics", "ai_laboratory"}, "title_cap": 64,
             "accent": "cyan", "film": door["film"],
             "orientation": "PORTRAIT — GLAZED DOOR PANE (MEASURED)",
             "aspect": f"1 : {PANE_H / w:.2f}",
@@ -491,6 +502,10 @@ def door_schedule_notes(door):
             "doors 1 and 3, and the services are spread rather than repeated.",
             "The directory repeats door 1's nine lines so the two doors can never disagree.",
         ]
+    if n == 4:
+        return ["Eight panes on the same measured doorway; one-way vision film.",
+                "Panel 3 is orthopaedics; panel 5 is laboratory microscopy. Both scenes are AI-generated, not photos of BCM.",
+                "AI images are proof resolution: confirm image quality with the printer before production."]
     return [
         "Same door, same eight panes, same measurements — but opaque film, so nothing shows "
         "through the glass.",
@@ -533,6 +548,10 @@ def door_layout_notes(door):
             "another door.",
             "Bleed is 10 mm on every edge, so the printed piece is 920 × 520 and 920 × 420 mm.",
         ]
+    if n == 4:
+        return ["Leaf A includes pharmacy, laboratory, orthopaedics and ultrasound.",
+                "Leaf B includes laboratory microscopy, CBC, open 24 hours and the directory.",
+                "500 mm outer panes, 400 mm at the meeting stile; 10 mm bleed on each edge."]
     return [
         "Leaf A is the family leaf: antenatal & postnatal and paediatrics on the outer edge at "
         "full width, eye services and minor surgery against the centre stile.",
@@ -592,7 +611,7 @@ def spec(door):
            "The PDFs are the artwork: true size, 10 mm bleed, 4 mm marks and a 20 mm slug, in "
            "CMYK with the fonts embedded. The placed photographs are desktop previews, roughly "
            "25–40 ppi at final size, so plot from the full-size originals recorded in the README "
-           "rather than from this package — every frame has its Pexels ID and link listed. If BCM "
+           "rather than from this package — stock frames have Pexels IDs; door 4 panels 3 and 5 are AI-generated and have no Pexels original. If BCM "
            "prefers its own team on the door, one morning with a phone on the same eight subjects "
            "beats any stock image, and the artwork takes new files without a single change.",
            168 * MM, 3.0, B.NAVY_MID)
@@ -686,7 +705,7 @@ def open_items(door):
         "Confirm which lines are current before plotting.",
         "The printer's own film standard, to replace the flagged values.",
         "Print-resolution originals: the working files are desktop previews. Pull the full-size "
-        "files from the recorded Pexels links, or shoot the real team.",
+        "stock files from the recorded Pexels links. Door 4 panels 3 and 5 use AI-generated images: confirm quality or replace with higher-resolution images.",
     ]
     if door["film"] == "opaque":
         items.insert(3, "Confirm the client wants a solid pane on this door — it blocks the view "
@@ -728,8 +747,9 @@ def web(door, panels_list):
     </figure>""")
     retouched = [p["photo"] for p in panels_list if p["photo"] and
                  P.PHOTOS[p["photo"]].get("edit")]
-    retouch = (" Four frames carry an AI colour retouch so the people reflect the community BCM "
+    retouch = (" Some stock frames carry an AI colour retouch so the people reflect the community BCM "
                "serves; they are models, not staff." if retouched else "")
+    provenance = ("Door 4 panels 3 and 5 use AI-generated scenes, not Pexels photographs; they depict fictional people. Other images are Pexels stock." if door["n"] == 4 else "Photographs are Pexels Free licence.")
     html = f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>BCM Medical Centre — door {door['n']}</title>
@@ -756,9 +776,8 @@ a{{color:#2ba9e0}}
      <a href="docs/BCM-Door-{door['n']}-Specification.pdf">Specification</a></p>
 </header>
 <main class="grid">{''.join(cards)}</main>
-<footer>Rev B — {door['film_name'].title()}. Photographs are Pexels Free licence, recorded pane by
-pane in the README.{retouch} Working files are preview resolution; pull the full-size originals
-from the recorded links before plotting.</footer>
+<footer>Rev B — {door['film_name'].title()}. {provenance} Sources are recorded pane by
+pane in the README.{retouch} Images are proof resolution; confirm quality with the printer before production.</footer>
 </body></html>"""
     path = os.path.join(base, "index.html")
     open(path, "w").write(html)
@@ -783,7 +802,7 @@ def readme(door, panels_list):
         rows.append(f"| {p['id']} | {pretty(p['service'])} | {p['h']} × {p['w']} | {label} "
                     f"| {pos[0].lower()} · {pos[1]} |")
 
-    credits = ["| Asset | Pexels ID | Creator | Pexels original | Working file | Retouch |",
+    credits = ["| Asset | Pexels ID | Creator | Original | Working file | Retouch / provenance |",
                "| --- | --- | --- | --- | --- | --- |"]
     for p in panels_list:
         if not p["photo"]:
@@ -793,7 +812,7 @@ def readme(door, panels_list):
         file_px = working_px(ph)
         credits.append(f"| {ph['asset']} | {ph['id']} | {ph['creator']} | "
                        f"{orig[0]} × {orig[1]} px | {file_px[0]} × {file_px[1]} px | "
-                       f"{'yes — colour retouch' if ph.get('edit') else 'no'} |")
+                       f"{'AI-generated scene, not Pexels' if ph.get('ai_generated') else ('yes — colour retouch' if ph.get('edit') else 'no')} |")
 
     ppis = []
     for p in panels_list:
@@ -814,6 +833,7 @@ def readme(door, panels_list):
                          "lit from the street and the fascia: an opaque pane cannot be backlit." if door["film"] == "opaque" else
                          "- Doors 1 and 2 use the same perforated film; door 3 is opaque vinyl and "
                          "will not match it exactly.")
+    provenance = ("Panels D4-P3 (AI-01) and D4-P5 (AI-02) are newly AI-generated scenes at the client’s request; they are not Pexels images and the people are fictional. No Pexels licence applies to them; confirm applicable AI-output rights and printer suitability before production. Other photographic images are Pexels stock under its free licence, checked 29 October 2026." if door["n"] == 4 else "Photographs are Pexels stock under its free licence, checked 29 October 2026.")
     text = f"""# BCM Medical Centre — door {door['n']}
 
 Eight panes on the {ordinal(door['n'])} doorway, built from the client's own measurement rather
@@ -824,8 +844,7 @@ high. The geometry is identical on every door; only the subject matter and the f
 
 {chr(10).join(rows)}
 
-Seven different photographs and one type-only directory. No image on this door appears on either
-of the other two.
+Every image on this door is distinct and none is reused on another door.
 
 ## Files
 
@@ -838,8 +857,7 @@ of the other two.
 
 ## Photography
 
-All photographs are Pexels Free licence, checked 29 October 2026: free commercial use, no
-attribution required, modification allowed. The ones carrying an AI colour retouch so the people
+{provenance} Stock terms permit commercial use and modification, with no attribution required. The stock images carrying an AI colour retouch so the people
 reflect the community BCM serves are marked in the table below; the people in those frames are
 models, never staff or patients, and no pane captions them as such.
 
@@ -847,9 +865,7 @@ models, never staff or patients, and no pane captions them as such.
 
 {res_line}
 
-Working files are desktop previews, not print files. Pull the full-size original from the Pexels
-link for each ID before plotting — the record of what was used, and where it came from, is the
-point of the table.
+Working images are proof resolution. For Pexels stock, obtain higher-resolution originals before printing. AI-01 and AI-02 have no Pexels originals; check quality with the printer or replace with higher-resolution imagery.
 
 ## Provisional
 

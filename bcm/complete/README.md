@@ -3,7 +3,7 @@
 Everything in one folder: the three door film packages, the sign post panel and the
 three roadside banners, with one master proof describing the lot.
 
-**32 door panes · 1 sign post panel (2 faces) · 3 banners · 29 licensed photographs**
+**32 door panes · 1 sign post panel (2 faces) · 3 banners · 29 image assets**
 
 ## What is where
 
@@ -49,8 +49,7 @@ files on their own, numbered in running order.
 1. The official logo vector. The monogram is a recreation.
 2. Confirmation of the spelling **EDDWALIRO**.
 3. The sign post measurement, checked against the panel being made.
-4. The photographs: working files are 843–1264 px — approve the look, then repeat the
-   retouch on the Pexels originals, or photograph the clinic's own team.
+4. The images are proof resolution. D4-P3 and D4-P5 use AI-generated scenes, not Pexels stock; confirm AI-output rights and image quality with the printer or replace them with higher-resolution images. For stock, obtain higher-resolution Pexels originals and repeat retouches as needed.
 5. Each doorway measured on site: 900 mm high panes, 500 mm outer, 400 mm at the stile.
 
 ## Rebuild

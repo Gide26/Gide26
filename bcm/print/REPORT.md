@@ -2,6 +2,8 @@
 
 38 pieces, one print PDF each. All 1 : 1 in millimetres with bleed, crop marks and a slug strip. Plot at 100 %, never scale.
 
+D4-P3 and D4-P5 contain AI-generated images at proof resolution; confirm quality with the printer or replace with higher-resolution images before production.
+
 | # | Job | Piece | Type | Finished size | File |
 | --- | --- | --- | --- | --- | --- |
 | 01 | D1-P1 | HIV CARE | Door film | 900 × 500 mm | `01-D1-P1-HIV-CARE-900x500.pdf` |
@@ -30,7 +32,7 @@
 | 24 | D3-P8 | OUR SERVICES | Door film | 900 × 500 mm | `24-D3-P8-OUR-SERVICES-900x500.pdf` |
 | 25 | D4-P1 | PHARMACY | Door film | 900 × 500 mm | `25-D4-P1-PHARMACY-900x500.pdf` |
 | 26 | D4-P2 | LABORATORY | Door film | 900 × 400 mm | `26-D4-P2-LABORATORY-900x400.pdf` |
-| 27 | D4-P3 | CBC | Door film | 900 × 500 mm | `27-D4-P3-CBC-900x500.pdf` |
+| 27 | D4-P3 | ORTHOPAEDICS | Door film | 900 × 500 mm | `27-D4-P3-ORTHOPAEDICS-900x500.pdf` |
 | 28 | D4-P4 | ULTRASOUND | Door film | 900 × 400 mm | `28-D4-P4-ULTRASOUND-900x400.pdf` |
 | 29 | D4-P5 | LABORATORY | Door film | 900 × 500 mm | `29-D4-P5-LABORATORY-900x500.pdf` |
 | 30 | D4-P6 | CBC | Door film | 900 × 400 mm | `30-D4-P6-CBC-900x400.pdf` |
@@ -75,7 +77,7 @@
 - `24-D3-P8-OUR-SERVICES-900x500.pdf`
 - `25-D4-P1-PHARMACY-900x500.pdf`
 - `26-D4-P2-LABORATORY-900x400.pdf`
-- `27-D4-P3-CBC-900x500.pdf`
+- `27-D4-P3-ORTHOPAEDICS-900x500.pdf`
 - `28-D4-P4-ULTRASOUND-900x400.pdf`
 - `29-D4-P5-LABORATORY-900x500.pdf`
 - `30-D4-P6-CBC-900x400.pdf`

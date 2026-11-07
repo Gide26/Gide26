@@ -146,7 +146,24 @@ def draw(c, panel, bleed=BLEED):
 
     if panel["photo"]:
         # full-bleed photograph
-        photo(c, panel, -bleed, h + bleed)
+        if panel.get("photo_contain"):
+            from PIL import Image, ImageFilter
+            import os
+            # Full scene centred without distortion over a softly blurred backdrop.
+            src = Image.open(os.path.join(P.SRC_DIR, P.PHOTOS[panel["photo"]]["src"])).convert("RGB")
+            src = P.grade(src)
+            ww, hh = int((w + 2 * bleed) * 3), int((h + bleed - (block - bleed)) * 3)
+            from PIL import ImageOps
+            bg = ImageOps.fit(src, (ww, hh), method=Image.Resampling.LANCZOS).filter(ImageFilter.GaussianBlur(45))
+            scale = min(ww / src.width, hh / src.height)
+            fg = src.resize((int(src.width * scale), int(src.height * scale)), Image.Resampling.LANCZOS)
+            bg.paste(fg, ((ww - fg.width) // 2, (hh - fg.height) // 2))
+            os.makedirs(P.CACHE_DIR, exist_ok=True)
+            path = os.path.join(P.CACHE_DIR, panel["photo"] + "_visible.jpg")
+            bg.save(path, quality=90)
+            c.drawImage(path, -bleed, block - bleed, w + 2 * bleed, h + bleed - (block - bleed))
+        else:
+            photo(c, panel, -bleed, h + bleed)
         # top scrim so the identity stays legible over any image
         fade(c, -bleed, h - 230, w + bleed * 2, 230, top=True)
         # navy caption block
