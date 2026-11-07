@@ -34,7 +34,7 @@ D4-P3 and D4-P5 contain AI-generated images at proof resolution; confirm quality
 | 26 | D4-P2 | LABORATORY | Door film | 900 × 400 mm | `26-D4-P2-LABORATORY-900x400.pdf` |
 | 27 | D4-P3 | ORTHOPAEDICS | Door film | 900 × 500 mm | `27-D4-P3-ORTHOPAEDICS-900x500.pdf` |
 | 28 | D4-P4 | ULTRASOUND | Door film | 900 × 400 mm | `28-D4-P4-ULTRASOUND-900x400.pdf` |
-| 29 | D4-P5 | LABORATORY | Door film | 900 × 500 mm | `29-D4-P5-LABORATORY-900x500.pdf` |
+| 29 | D4-P5 | FAMILY PLANNING | Door film | 900 × 500 mm | `29-D4-P5-FAMILY-PLANNING-900x500.pdf` |
 | 30 | D4-P6 | CBC | Door film | 900 × 400 mm | `30-D4-P6-CBC-900x400.pdf` |
 | 31 | D4-P7 | OPEN 24 HOURS | Door film | 900 × 400 mm | `31-D4-P7-OPEN-24-HOURS-900x400.pdf` |
 | 32 | D4-P8 | OUR SERVICES | Door film | 900 × 500 mm | `32-D4-P8-OUR-SERVICES-900x500.pdf` |
@@ -79,7 +79,7 @@ D4-P3 and D4-P5 contain AI-generated images at proof resolution; confirm quality
 - `26-D4-P2-LABORATORY-900x400.pdf`
 - `27-D4-P3-ORTHOPAEDICS-900x500.pdf`
 - `28-D4-P4-ULTRASOUND-900x400.pdf`
-- `29-D4-P5-LABORATORY-900x500.pdf`
+- `29-D4-P5-FAMILY-PLANNING-900x500.pdf`
 - `30-D4-P6-CBC-900x400.pdf`
 - `31-D4-P7-OPEN-24-HOURS-900x400.pdf`
 - `32-D4-P8-OUR-SERVICES-900x500.pdf`

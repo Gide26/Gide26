@@ -27,16 +27,15 @@ only the subject matter and the film change.
 | 1 | [`door-1/`](door-1/) | Testing and treatment — HIV care, pharmacy (tablets in hand), malaria, CBC, antenatal, laboratory, outpatient | One-way vision | 7 photographs + directory |
 | 2 | [`door-2/`](door-2/) | The welcome door — WELCOME (open 24 hours), immunisation, general outpatient, obs & gyn, minor surgery, pharmacy (medicine handed over the counter), HIV care | One-way vision | 7 photographs + directory |
 | 3 | [`door-3/`](door-3/) | Family, eye, ENT and ward care — antenatal & postnatal, eye services, paediatrics, ENT, minor surgery, ultrasound, inpatient care | Opaque, no see-through | 7 photographs + directory |
-| 4 | [`door-4/`](door-4/) | Dispensary and diagnostics — pharmacy, laboratory ×2, orthopaedics, CBC, ultrasound, and a pane of the 24-hour access lines | One-way vision | 6 photographs + access pane + directory |
+| 4 | [`door-4/`](door-4/) | Dispensary and diagnostics — pharmacy, laboratory, orthopaedics, family planning, CBC, ultrasound, and a pane of the 24-hour access lines | One-way vision | 6 images (2 AI) + access pane + directory |
 
-Twenty-eight different photographs across the four doors — **no photograph is used twice**, and the
+Twenty-eight different images across the four doors — **no photograph is used twice**, and the
 services are spread rather than repeated: pharmacy appears on doors 1, 2 and 4 (a strip of tablets in
 hand, medicine handed across the counter, and a dispensary counter), HIV care on doors 1 and 2,
 laboratory on doors 1 and 4, CBC on doors 1 and 4, ultrasound on doors 1, 3 and 4, minor surgery on
 doors 2 and 3; every other service is pictured once. Door 4 exists because of a client instruction
 and is drawn on the same measured door as the first three: it repeats no photograph from any other
-door, and where it repeats a *service* the second pane is cropped and captioned differently. Every frame with people in it has been retouched so the
-faces and hands read as Black African, matching the community BCM serves. Each door folder
+door, and where it repeats a *service* the second pane is cropped and captioned differently. Some stock frames with people have been retouched so the faces and hands read as Black African; door 4 panels 3 and 5 use separate AI-generated scenes. Each door folder
 carries its own artwork, schedule, specification, elevations, web preview, README and package zip.
 
 ## The sign post panel

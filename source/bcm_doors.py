@@ -39,9 +39,9 @@ P.PHOTOS.update({
     "ai_orthopaedics": {"asset": "AI-01", "src": "ai-orthopaedics.jpg", "id": "AI",
         "creator": "AI-generated", "px": (768, 1376),
         "title": "Fictional knee examination", "use": "Orthopaedics", "ai_generated": True},
-    "ai_laboratory": {"asset": "AI-02", "src": "ai-laboratory.jpg", "id": "AI",
-        "creator": "AI-generated", "px": (848, 1264),
-        "title": "Fictional laboratory microscopy", "use": "Laboratory", "ai_generated": True},
+    "ai_family_planning": {"asset": "AI-03", "src": "ai-family-planning.jpg", "id": "AI",
+        "creator": "AI-generated", "px": (768, 1376),
+        "title": "Fictional family planning consultation", "use": "Family planning", "ai_generated": True},
 })
 
 
@@ -146,13 +146,13 @@ DOORS = [
     {
         "n": 4, "folder": "door-4", "prefix": "D4", "film": "one-way",
         "film_name": "ONE-WAY VISION FILM",
-        "role": "dispensary, orthopaedics, laboratory and scanning",
+        "role": "dispensary, orthopaedics, family planning and diagnostics",
         "tel_alt": True,
         "edits": {},
         # The same measured doorway as doors 1-3: 2220 overall, 1980 head, two
         # 1080 leaves, eight 900 mm high panes — 500 mm at the outer edges and
-        # 400 mm against the meeting stiles. Seven new photographs, none of
-        # them used anywhere else in the set, and one pane with no photograph.
+        # 400 mm against the meeting stiles. Six distinct images, including two AI scenes,
+        # and two type-only panes.
         "spec": [
             # Only photographs no other door uses, and only services the clinic
             # lists. Two rules of the brief keep this door off immunisation (no
@@ -163,7 +163,7 @@ DOORS = [
             ("LABORATORY",   NARROW, "lab_scientist",   ("Left leaf", "upper middle", "900 × 400")),
             ("ORTHOPAEDICS", WIDE,   "ai_orthopaedics",        ("Left leaf", "lower outer", "900 × 500")),
             ("ULTRASOUND",   NARROW, "ultrasound",      ("Left leaf", "lower middle", "900 × 400")),
-            ("LABORATORY",   WIDE,   "ai_laboratory",       ("Right leaf", "upper outer", "900 × 500")),
+            ("FAMILY PLANNING", WIDE, "ai_family_planning",       ("Right leaf", "upper outer", "900 × 500")),
             ("CBC",          NARROW, "cbc_rack_2",      ("Right leaf", "upper middle", "900 × 400")),
             ("OPEN 24 HOURS", NARROW, None,             ("Right leaf", "lower middle", "900 × 400")),
             ("OUR SERVICES", WIDE,   None,              ("Right leaf", "lower outer", "900 × 500")),
@@ -175,7 +175,7 @@ DOORS = [
         "web_head": "The care door.<br>Orthopaedics, tests and medicines.",
         "web_blurb": "A fourth doorway in the same measured scheme — the dispensary, the "
                      "laboratory, orthopaedics, the blood bench and the scanning room, with one "
-                     "pane carrying 24-hour access lines. The orthopaedics and microscopy "
+                     "and family planning, plus a pane carrying 24-hour access lines. The orthopaedics and family planning "
                      "scenes are AI-generated; other scenes are stock photographs.",
     },
 ]
@@ -192,6 +192,7 @@ SUB = {
     "ULTRASOUND": "SCANNING", "OBS & GYN": "WOMEN'S HEALTH",
     "EYE SERVICES": "VISION & EYE CARE", "ENT": "EAR, NOSE & THROAT",
     "INPATIENT CARE": "WARD & NURSING CARE", "ORTHOPAEDICS": "ORTHOPAEDIC SERVICES",
+    "FAMILY PLANNING": "FAMILY PLANNING SERVICES",
     "OPEN 24 HOURS": "WALK-IN, DAY OR NIGHT",
 }
 
@@ -265,7 +266,7 @@ def panels(door):
             "w": w, "h": PANE_H, "photo": photo,
             "focus": door["focus"].get(photo, (0.5, 0.4)) if photo else (0.5, 0.4),
             "zoom": door.get("zoom", {}).get(photo, 1.0),
-            "fit": photo in door.get("fit", set()), "photo_contain": photo in {"ai_orthopaedics", "ai_laboratory"}, "title_cap": 64,
+            "fit": photo in door.get("fit", set()), "photo_contain": photo in {"ai_orthopaedics", "ai_family_planning"}, "title_cap": 64,
             "accent": "cyan", "film": door["film"],
             "orientation": "PORTRAIT — GLAZED DOOR PANE (MEASURED)",
             "aspect": f"1 : {PANE_H / w:.2f}",
@@ -504,7 +505,7 @@ def door_schedule_notes(door):
         ]
     if n == 4:
         return ["Eight panes on the same measured doorway; one-way vision film.",
-                "Panel 3 is orthopaedics; panel 5 is laboratory microscopy. Both scenes are AI-generated, not photos of BCM.",
+                "Panel 3 is orthopaedics; panel 5 is family planning. Both scenes are AI-generated, not photos of BCM.",
                 "AI images are proof resolution: confirm image quality with the printer before production."]
     return [
         "Same door, same eight panes, same measurements — but opaque film, so nothing shows "
@@ -550,7 +551,7 @@ def door_layout_notes(door):
         ]
     if n == 4:
         return ["Leaf A includes pharmacy, laboratory, orthopaedics and ultrasound.",
-                "Leaf B includes laboratory microscopy, CBC, open 24 hours and the directory.",
+                "Leaf B includes family planning, CBC, open 24 hours and the directory.",
                 "500 mm outer panes, 400 mm at the meeting stile; 10 mm bleed on each edge."]
     return [
         "Leaf A is the family leaf: antenatal & postnatal and paediatrics on the outer edge at "
@@ -833,7 +834,7 @@ def readme(door, panels_list):
                          "lit from the street and the fascia: an opaque pane cannot be backlit." if door["film"] == "opaque" else
                          "- Doors 1 and 2 use the same perforated film; door 3 is opaque vinyl and "
                          "will not match it exactly.")
-    provenance = ("Panels D4-P3 (AI-01) and D4-P5 (AI-02) are newly AI-generated scenes at the client’s request; they are not Pexels images and the people are fictional. No Pexels licence applies to them; confirm applicable AI-output rights and printer suitability before production. Other photographic images are Pexels stock under its free licence, checked 29 October 2026." if door["n"] == 4 else "Photographs are Pexels stock under its free licence, checked 29 October 2026.")
+    provenance = ("Panels D4-P3 (AI-01) and D4-P5 (AI-03) are newly AI-generated scenes at the client’s request; they are not Pexels images and the people are fictional. No Pexels licence applies to them; confirm applicable AI-output rights and printer suitability before production. Other photographic images are Pexels stock under its free licence, checked 29 October 2026." if door["n"] == 4 else "Photographs are Pexels stock under its free licence, checked 29 October 2026.")
     text = f"""# BCM Medical Centre — door {door['n']}
 
 Eight panes on the {ordinal(door['n'])} doorway, built from the client's own measurement rather
@@ -865,7 +866,7 @@ models, never staff or patients, and no pane captions them as such.
 
 {res_line}
 
-Working images are proof resolution. For Pexels stock, obtain higher-resolution originals before printing. AI-01 and AI-02 have no Pexels originals; check quality with the printer or replace with higher-resolution imagery.
+Working images are proof resolution. For Pexels stock, obtain higher-resolution originals before printing. AI-01 and AI-03 have no Pexels originals; check quality with the printer or replace with higher-resolution imagery.
 
 ## Provisional
 
