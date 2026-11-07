@@ -2,11 +2,17 @@
 
 Three banners, three different layouts, one identity. On a fence, PVC with eyelets.
 
+**B-3 was re-measured on 2026-11-07 to 16 ft × 49 in (4876.8 × 1244.6 mm)**, as the client
+gave it. Its layout is derived from the panel rather than fixed: the photograph keeps a portrait
+crop at the right hand end, and the type takes the rest of the width and 96 % of the clear
+height, so the same code holds at the new size. At 4.88 m it is more than twice a doorway wide,
+so on the premises it runs the long stretch above door 4 rather than sitting over one door.
+
 | ID | Size | Trim | Job | Layout |
 | --- | --- | --- | --- | --- |
 | **B-1** | 3.8 m × 1.0 m | 3800 × 1000 mm | Read at speed, from the road | Photograph left, the name and list right |
 | **B-2** | 3.4 m × 1.0 m | 3400 × 1000 mm | Read standing at the gate | Type left, two photographs stacked right |
-| **B-3** | 2.4 m × 1.0 m | 2400 × 1000 mm | The short run | The name centred and as large as it will go, one photograph |
+| **B-3** | 16 ft × 49 in | 4876.8 × 1244.6 mm | The long run along the fence | The name centred in its column and as large as it will go, one photograph at the right hand end |
 
 Every banner carries, in this order: **EDDWALIRO** (cyan, bold, at the head) → the badge and
 `BCM` → **MEDICAL CENTRE** (the widest line, in white) → the motto → a service list from the

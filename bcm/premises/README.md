@@ -16,7 +16,9 @@ The set in place, drawn to scale from the same print files that go to the printe
 - Doorways: 2220 mm wide overall, 1980 mm door head, two leaves, black frame and
   black leaves, eight panes of film each — 900 mm high, 500 mm outer, 400 mm at the
   meeting stile, exactly as scheduled on the door pages.
-- Banners: B-1 (3.8 m) over door 1, B-2 (3.4 m) over door 2, B-3 (2.4 m) over door 3.
+- Banners: B-1 (3.8 m) over door 1, B-2 (3.4 m) over door 2, and B-3 — 16 ft × 49 in
+  (4.88 × 1.24 m) since 2026-11-07 — on the long run above door 4; it is more than twice a
+  doorway wide, so it no longer fits over a single door and door 3's wall is left clear.
   Underside 2560 mm above the paving, 580 mm clear of the door head.
 - Sign post at the kerb: 1168.4 × 558.8 mm panel (46 × 22 in), centre 1500 mm above
   finished ground, on two 76 mm posts at 520 mm centres — the support is a proposal

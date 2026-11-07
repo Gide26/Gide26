@@ -57,11 +57,12 @@ SIGN_POSTS = 2                   # 1.17 m of panel: two posts, as specified
 def banner_for(n):
     """The banner over a door, if it has one.
 
-    Only three banners were specified, so doors 1-3 carry B-1, B-2 and B-3.
-    Door 4 is drawn without a banner: it is new work and no banner is ordered
-    for it yet.
+    B-1 and B-2 sit over doors 1 and 2. B-3 became 16 ft × 49 in on 2026-11-07 — 4.88 m
+    is more than twice a 2.22 m doorway — so it no longer fits over one door: it runs the
+    long stretch above door 4 instead, which is the only run on this front long enough for
+    it. Door 3's wall is left clear.
     """
-    return BAN.BANNERS[n - 1] if n <= len(BAN.BANNERS) else None
+    return {1: BAN.BANNERS[0], 2: BAN.BANNERS[1], 4: BAN.BANNERS[2]}.get(n)
 
 BLACK = (18, 20, 24)
 BLACK_HI = (44, 47, 52)
@@ -466,11 +467,11 @@ def setout(s=0.12):
             continue
         c.setFillColor(B.CP_CYAN)
         c.setFillAlpha(0.35)
-        c.rect(PX(cx - b["w"] / 2), PY(BANNER_BOTTOM), b["w"] * sc, BANNER_H * sc,
+        c.rect(PX(cx - b["w"] / 2), PY(BANNER_BOTTOM), b["w"] * sc, b["h"] * sc,
                stroke=1, fill=1)
         c.setFillAlpha(1)
-        B.label(c, PX(cx), PY(BANNER_BOTTOM + BANNER_H / 2) - 1.2,
-                f"{b['id']}  {b['w'] / 1000:.1f} m", 3.2, B.CP_NAVY, "Inter-600", 1.0,
+        B.label(c, PX(cx), PY(BANNER_BOTTOM + b["h"] / 2) - 1.2,
+                f"{b['id']}  {b['w'] / 1000:.2f} m", 3.2, B.CP_NAVY, "Inter-600", 1.0,
                 "center")
 
     # dimension strings
@@ -500,15 +501,20 @@ def setout(s=0.12):
     c.setStrokeColor(B.TEAL)
     c.setLineWidth(0.2)
     c.setDash(1.2, 1.2)
-    for n in (1, 2, 3):
+    for n in (1, 2, 4):
         b = banner_for(n)
+        if b is None:
+            continue
         cx = CENTRES[n]
         for x in (cx - b["w"] / 2, cx + b["w"] / 2):
             c.line(PX(x), PY(BANNER_BOTTOM), PX(x), PY(2190))
     c.setDash()
-    dim(CENTRES[1] - 3800 / 2, CENTRES[1] + 3800 / 2, 2290, "3800")
-    dim(CENTRES[2] - 3400 / 2, CENTRES[2] + 3400 / 2, 2290, "3400")
-    dim(CENTRES[3] - 2400 / 2, CENTRES[3] + 2400 / 2, 2290, "2400")
+    for n, dy in ((1, 0), (2, 0), (4, 0)):
+        b = banner_for(n)
+        if b is None:
+            continue
+        dim(CENTRES[n] - b["w"] / 2, CENTRES[n] + b["w"] / 2, 2290 + dy,
+            f"{b['w']:.0f}  ({b['id']})")
 
     # heights, on the left
     c.setStrokeColor(B.TEAL)
@@ -516,7 +522,9 @@ def setout(s=0.12):
     xd = PX(-260)
     for y, lab in ((0, "0"), (DOOR_H, "1980 door head"),
                    (BANNER_BOTTOM, "2560 banner underside"),
-                   (BANNER_BOTTOM + BANNER_H, "3560 banner head"),
+                   (BANNER_BOTTOM + BANNER_H, "3560 head, B-1 / B-2"),
+                   (BANNER_BOTTOM + BAN.BANNERS[2]["h"],
+                    f"{BANNER_BOTTOM + BAN.BANNERS[2]['h']:.0f} head, B-3"),
                    (WALL_TOP, "3900 wall top")):
         c.line(xd, PY(y), xd + 6, PY(y))
         B.label(c, xd - 2.0, PY(y) - 1.1, lab, 2.9, B.GREY, "Inter-500", 0.4, "right")
@@ -576,16 +584,17 @@ def proof(path, day, night, doors, setout_img):
     B.caps(c, D.M, D.PH - 27 * MM, "The front, in place", 7.0, B.WHITE, "Manrope-800",
            0.4)
     B.label(c, D.M, D.PH - 33 * MM,
-            "Four black doorways in film, a banner on the wall above each of the first "
-            "three, and the sign post at the kerb. Drawn to scale from the print files.",
+            "Four black doorways in film, a banner over doors 1 and 2 and B-3 on the long "
+            "run above door 4, with the sign post at the kerb. Drawn to scale from the "
+            "print files.",
             2.9, B.CP_MIST, "Inter-400", 0.4)
     iw, ih = Image.open(day).size
     bw = D.PW                      # full bleed — the elevation runs edge to edge
     bh = bw * ih / iw
     c.drawImage(day, 0, 44 * MM, bw, bh, mask=None)
     B.label(c, D.M, 32 * MM,
-            "DAY  ·  B-1 OVER DOOR 1, B-2 OVER DOOR 2, B-3 OVER DOOR 3  ·  "
-            "SIGN POST AT THE KERB", 2.8, B.CP_MIST, "Inter-500", 1.0)
+            "DAY  ·  B-1 OVER DOOR 1, B-2 OVER DOOR 2, B-3 ON THE LONG RUN ABOVE "
+            "DOOR 4  ·  SIGN POST AT THE KERB", 2.8, B.CP_MIST, "Inter-500", 1.0)
 
     # ---- page 2: the front, night
     c.showPage()
@@ -707,8 +716,9 @@ def write_index(day, night, doors):
 <header>
   <div class="eyebrow">BCM · MEDICAL CENTRE · ON THE PREMISES</div>
   <h1>The set, in place</h1>
-  <p>Three black doorways in film, a banner on the wall above each, and the sign post at
-     the kerb — drawn to scale from the same print files that go to the printer.</p>
+  <p>Four black doorways in film, a banner over doors 1 and 2 and the 16 ft B-3 on the
+     long run above door 4, and the sign post at the kerb — drawn to scale from the same
+     print files that go to the printer.</p>
 </header>
 <nav><a href="../index.html">All artwork</a>
      <a href="../door-1/index.html">Door 1</a>
@@ -810,8 +820,8 @@ def write_standalone():
 <header>
   <div class="eyebrow">BCM · MEDICAL CENTRE · ON THE PREMISES</div>
   <h1>The set, in place</h1>
-  <p>Three black doorways in one-way vision film, a banner on the wall above each,
-     and the sign post at the kerb — drawn to scale from the print files themselves.
+  <p>Four black doorways in film, a banner over doors 1 and 2 and the 16 ft B-3 above
+     door 4, and the sign post at the kerb — drawn to scale from the print files.
      This page is self-contained: the images travel inside the file.</p>
 </header>
 <main>
@@ -888,7 +898,9 @@ The set in place, drawn to scale from the same print files that go to the printe
 - Doorways: 2220 mm wide overall, 1980 mm door head, two leaves, black frame and
   black leaves, eight panes of film each — 900 mm high, 500 mm outer, 400 mm at the
   meeting stile, exactly as scheduled on the door pages.
-- Banners: B-1 (3.8 m) over door 1, B-2 (3.4 m) over door 2, B-3 (2.4 m) over door 3.
+- Banners: B-1 (3.8 m) over door 1, B-2 (3.4 m) over door 2, and B-3 — 16 ft × 49 in
+  (4.88 × 1.24 m) since 2026-11-07 — on the long run above door 4; it is more than twice a
+  doorway wide, so it no longer fits over a single door and door 3's wall is left clear.
   Underside 2560 mm above the paving, 580 mm clear of the door head.
 - Sign post at the kerb: 1168.4 × 558.8 mm panel (46 × 22 in), centre 1500 mm above
   finished ground, on two 76 mm posts at 520 mm centres — the support is a proposal

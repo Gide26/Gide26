@@ -3,7 +3,7 @@
 Everything in the set broken out into single, self-contained print files, in a
 numbered folder that a printer can work straight down:
 
-    bcm/print/01-D1-P1-HIV-CARE-900x500.pdf   …   bcm/print/30-B3-COMPACT-2400x1000.pdf
+    bcm/print/01-D1-P1-HIV-CARE-900x500.pdf   …   bcm/print/38-B3-LONG-4877x1245.pdf
 
 Nothing is re-drawn: the pane PDFs, the banner PDFs and the sign faces are the
 same files that are proved elsewhere in the set. The sign post, which was one
@@ -91,7 +91,7 @@ def pieces_list():
                        f"{n:02d}-{job}-{sign_tag()}.pdf"))
     for b in BAN.BANNERS:
         n += 1
-        label = {1: "ROAD", 2: "SERVICES", 3: "COMPACT"}[int(b["id"].split("-")[1])]
+        label = {1: "ROAD", 2: "SERVICES", 3: "LONG"}[int(b["id"].split("-")[1])]
         pieces.append((n, b["id"], b["title"], b["id"], "banners", "Banner",
                        f"{b['w']:.0f} × {b['h']:.0f} mm",
                        f"{n:02d}-{b['id'].replace('-', '')}-{label}-"

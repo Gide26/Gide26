@@ -41,7 +41,7 @@
 | 35 | SIGN-SPARE-CYAN-FIELD | Sign post panel | Sign post | 1168.4 × 558.8 mm | `35-SIGN-SPARE-CYAN-FIELD-1168x559.pdf` |
 | 36 | B-1 | The road banner | Banner | 3800 × 1000 mm | `36-B1-ROAD-3800x1000.pdf` |
 | 37 | B-2 | The services banner | Banner | 3400 × 1000 mm | `37-B2-SERVICES-3400x1000.pdf` |
-| 38 | B-3 | The compact banner | Banner | 2400 × 1000 mm | `38-B3-COMPACT-2400x1000.pdf` |
+| 38 | B-3 | The long banner | Banner | 4877 × 1245 mm | `38-B3-LONG-4877x1245.pdf` |
 
 ## Suppliers
 
@@ -96,7 +96,7 @@
 
 - `36-B1-ROAD-3800x1000.pdf`
 - `37-B2-SERVICES-3400x1000.pdf`
-- `38-B3-COMPACT-2400x1000.pdf`
+- `38-B3-LONG-4877x1245.pdf`
 
 ## Print files zip
 

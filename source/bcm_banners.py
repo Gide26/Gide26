@@ -4,7 +4,8 @@ Three different banners, three different jobs, one identity:
 
     B-1  3800 × 1000 mm   the road banner — photo left, the name right
     B-2  3400 × 1000 mm   the services banner — type left, two photos right
-    B-3  2400 × 1000 mm   the compact banner — the name centred, one photo
+    B-3  4876.8 × 1244.6 mm  the long banner (16 ft × 49 in) — the name centred,
+                            one photograph at the right
 
 Everything is drawn in millimetres on the trim rectangle. The artwork files add
 10 mm bleed, eyelet-safe margins, crop marks and a slug strip. Mockups place each
@@ -71,11 +72,14 @@ BANNERS = [
         "layout": "services",
     },
     {
-        "id": "B-3", "slug": "B-03", "w": 2400.0, "h": 1000.0,
-        "title": "The compact banner", "sub": "2.4 m × 1.0 m",
-        "job": "The short run: the name set as large as it will go, one photograph, one line of services.",
+        # the client's measurement, 2026-11-07: 16 ft long x 49 in high
+        "id": "B-3", "slug": "B-03",
+        "w": 16 * 304.8, "h": 49 * 25.4,          # 4876.8 x 1244.6 mm
+        "title": "The long banner", "sub": "16 ft × 49 in  (4.88 m × 1.24 m)",
+        "job": "The long run along the fence: the name set as large as it will go, one "
+               "photograph at the right hand end, one line of services.",
         "services": ["INPATIENT CARE", "ENT", "ORTHOPAEDICS", "TRAVEL MEDICAL EXAM"],
-        "photos": [("reception", 1740.0, 60.0, 600.0, 880.0, (0.50, 0.55))],
+        "photos": [("reception", 0.0, 0.0, 0.0, 0.0, (0.50, 0.55))],   # placed by the layout
         "layout": "compact",
     },
 ]
@@ -221,53 +225,90 @@ def face_services(c, w, h):
     keyline(c, 32, 32, w - 64, h - 64)
 
 
+def compact_photo(w, h):
+    """Where B-3's photograph sits, as (x, y, w, h) — shared by the face and the proof."""
+    m = SAFE
+    ph = h - 2 * m
+    pw = min(ph * 0.80, w * 0.255)
+    return (w - m - pw, m, pw, ph)
+
+
 def face_compact(c, w, h):
-    """B-3 — the name centred, one photograph at the right hand edge."""
+    """B-3 — 16 ft x 49 in. The name centred in its column, one photograph at the right.
+
+    Aspect 3.92 : 1, so nothing here is a fixed offset: the column, the photograph and
+    every line of type are derived from w and h, and each line is fitted to the measure
+    it actually sits in. Height is the constraint, so the stack takes 96 % of the clear
+    height and the leftover is shared out as spacing in fixed proportions — the type is
+    as large as the banner will carry, and the same layout holds at any width.
+    """
     c.setFillColor(B.CP_NAVY)
     c.rect(0, 0, w, h, stroke=0, fill=1)
 
-    px, py, pw, ph = 1740.0, 60.0, 600.0, 880.0
+    m = SAFE                                        # hem + eyelet zone
+    px, py, pw, ph = compact_photo(w, h)
     photo(c, "reception", px, py, pw, ph, (0.50, 0.55))
-    keyline(c, px, py, pw, ph, B.CP_CYAN, 0.30, 2.0)
+    keyline(c, px, py, pw, ph, B.CP_CYAN, 0.30, max(1.8, h * 0.0022))
 
-    col, x0 = 1620.0, 60.0              # the type column, left of the photograph
+    x0 = m
+    col = px - x0 - w * 0.035                       # the type column, up to the photograph
     xc = x0 + col / 2.0
 
-    cap_e, cap_b, cap_s, cap_r = 96.0, 26.0, 30.0, 24.0
-    ms = 84.0
-    g_eb, g_bb, g_bm, g_mr, g_rs, g_rp = 24.0, 14.0, 24.0, 34.0, 28.0, 46.0
-    stack = (cap_e + g_eb + ms + g_bb + cap_b + g_bm + 0.0 + g_mr + 5.0 + g_rs
-             + cap_s + g_rp + cap_r)
-    top = h / 2 + stack / 2 + 24.0      # optical centre, a touch high
+    # type: fitted to the column first, then capped against the height
+    cap_e = min(fit_cap(WORD, "Manrope-800", "Manrope", col * 0.94, tracking=10.0),
+                h * 0.280)
+    cap_m = min(fit_cap(NAME, "Manrope-800", "Manrope", col * 0.94), h * 0.220)
+    cap_b = min(cap_m * 0.17, 30.0)
+    ms = cap_m * 0.34
+    cap_rule = max(5.0, h * 0.006)
+    cap_s = h * 0.024
+    cap_r = h * 0.021
+    cap_p = h * 0.027
+    cap_o = h * 0.023
 
+    fixed = (cap_e + ms + cap_b + cap_m + cap_rule + cap_s + cap_r + cap_p + cap_o)
+    room = max((h - 2 * m) * 0.96 - fixed, 0.0)
+    wts = (0.055, 0.030, 0.055, 0.075, 0.050, 0.060, 0.075, 0.030)
+    total_gap = sum(wts)
+    g = [room * x / total_gap for x in wts]
+    total = fixed + room
+    top = m + (h - 2 * m) / 2 + total / 2           # the stack, centred in the clear area
+
+    y = top
     # EDDWALIRO heads it
-    B.caps(c, xc, top - cap_e, WORD, cap_e, B.CP_CYAN, "Manrope-800", 8.0,
+    B.caps(c, xc, y - cap_e, WORD, cap_e, B.CP_CYAN, "Manrope-800", 10.0,
            align="center", max_w=col)
+    y -= cap_e + g[0]
 
-    y_b = top - cap_e - g_eb - ms
-    B.monogram(c, xc - ms / 2.0, y_b, ms, dark=B.WHITE, accent=B.CP_CYAN)
+    # the badge, then the initials
+    B.monogram(c, xc - ms / 2.0, y - ms, ms, dark=B.WHITE, accent=B.CP_CYAN)
+    y -= ms + g[1]
+    B.caps(c, xc, y - cap_b, "BCM", cap_b, B.CP_CYAN, "Inter-600", 20.0,
+           align="center")
+    y -= cap_b + g[2]
 
-    y_bc = y_b - g_bb - cap_b
-    B.caps(c, xc, y_bc, "BCM", cap_b, B.CP_CYAN, "Inter-600", 20.0, align="center")
+    # the English name, the widest line on the banner
+    B.caps(c, xc, y - cap_m, NAME, cap_m, B.WHITE, "Manrope-800", 1.8,
+           align="center", max_w=col)
+    y -= cap_m + g[3]
 
-    cap_m = min(fit_cap(NAME, "Manrope-800", "Manrope", col), 150.0)
-    y_m = y_bc - g_bm - cap_m
-    B.caps(c, xc, y_m, NAME, cap_m, B.WHITE, "Manrope-800", 1.8, align="center")
-
-    y_r = y_m - g_mr
+    # a short rule, then the motto
+    rw = min(col * 0.16, 300.0)
     c.setFillColor(B.CP_CYAN)
-    c.rect(xc - 150.0, y_r, 300.0, 5.0, stroke=0, fill=1)
+    c.rect(xc - rw / 2, y - cap_rule, rw, cap_rule, stroke=0, fill=1)
+    y -= cap_rule + g[4]
+    B.label(c, xc, y - cap_s, B.SLOGAN, cap_s, B.CP_MIST, "Inter-400", 3.4,
+            align="center", max_w=col)
+    y -= cap_s + g[5]
 
-    y_s = y_r - g_rs - cap_s
-    B.label(c, xc, y_s, B.SLOGAN, cap_s, B.CP_MIST, "Inter-400", 3.4,
-            align="center")
-
+    # the rail of services, then the numbers and the hours
     rail = "   ·   ".join(BANNERS[2]["services"])
-    B.caps(c, xc, y_s - g_rp - cap_r, rail, cap_r, B.CP_MIST, "Inter-500", 1.6,
+    B.caps(c, xc, y - cap_r, rail, cap_r, B.CP_MIST, "Inter-500", 1.6,
            align="center", max_w=col)
-
-    phone_line(c, xc, 122.0, 28.0, align="center")
-    B.caps(c, xc, 76.0, "OPEN 24 HOURS", 24.0, B.CP_MIST, "Inter-600", 4.0,
+    y -= cap_r + g[6]
+    phone_line(c, xc, y - cap_p, cap_p, align="center")
+    y -= cap_p + g[7]
+    B.caps(c, xc, y - cap_o, "OPEN 24 HOURS", cap_o, B.CP_MIST, "Inter-600", 4.0,
            align="center")
 
     keyline(c, 32, 32, w - 64, h - 64)
@@ -366,8 +407,11 @@ def mockup(b, night=False):
     GROUND, SKY = 120.0, 240.0
     FENCE_TOP = 2150.0              # top rail of the fence
     LIFT = 1150.0                   # bottom edge above finished ground
-    width_mm = 4200.0               # one frame width for all three, so they compare
-    above = FENCE_TOP + SKY
+    # one frame for all three, so they compare — sized for the longest banner (B-3 at
+    # 16 ft) with air either side and above it
+    width_mm = max(4200.0, max(x["w"] for x in BANNERS) + 1500.0)
+    above = max(FENCE_TOP + SKY,
+                LIFT + max(x["h"] for x in BANNERS) + 300.0)
     w, h = int(width_mm * S), int((above + GROUND) * S)
 
     # sky
@@ -435,7 +479,8 @@ def proof(path):
     y = D.h1(c, D.PH - 34 * MM, "Three banners, one identity", 8.0)
     D.para(c, D.M, y + 2 * MM,
            "Three different banners, each doing a different job: B-1 is read from the road "
-           "at speed, B-2 is read standing at the gate, B-3 covers the short run. Same "
+           "at speed, B-2 is read standing at the gate, B-3 runs the long stretch of fence. "
+           "Same "
            "navy, same type, same badge, same motto — EDDWALIRO at the head of each.",
            (D.PW - 2 * D.M) / MM * 0.72, 3.2, B.NAVY_MID)
 
@@ -443,8 +488,10 @@ def proof(path):
     for b in BANNERS:
         png = os.path.join(WORK, f"{b['slug']}_mock.png")
         iw, ih = Image.open(png).size
-        bw = 62 * MM                     # every mockup is framed the same width,
-        bh = bw * ih / iw                # so the three lengths read against each other
+        # the three mockups share one frame and one scale, so the banners inside them
+        # read against each other: drawn at the same width or not at all
+        bw = 72 * MM
+        bh = bw * ih / iw
         c.drawImage(png, D.M, yy, bw, bh, mask=None)
         c.setStrokeColor(B.GREY)
         c.setLineWidth(0.2)
@@ -483,7 +530,10 @@ def proof(path):
         # notes: two columns under the banner, full measure
         ty = 84 * MM
         rows = []
-        for key, x, y2, ww, hh, focus in b["photos"]:
+        rects = ([(k, *compact_photo(b["w"], b["h"])[0:1], *compact_photo(b["w"], b["h"])[1:])
+                  for k, *_ in b["photos"]] if b["layout"] == "compact"
+                 else [(k, x, y2, ww, hh) for k, x, y2, ww, hh, _f in b["photos"]])
+        for key, _x, _y, ww, hh in rects:
             d, st = P.ppi(key, ww, hh)
             rows.append(f"{P.PHOTOS[key]['asset']} — {P.PHOTOS[key]['title']}, "
                         f"{ww:.0f} × {hh:.0f} mm at {d} ppi ({st}).")
@@ -494,10 +544,14 @@ def proof(path):
         B.label(c, D.M, ty, "HOW IT IS SET", 4.0, B.TEAL, "Inter-600", 1.6)
         D.bullets(c, D.M, ty - 8 * MM, left, 118 * MM, 3.0, B.NAVY_MID)
 
+        notes = list(rows)
+        if any("FAIL" in r for r in rows):
+            notes.append("FAIL is measured on the working file. At this length the "
+                         "photograph is placed large, so B-3 must be printed from the "
+                         "full-resolution original, or the frame dropped — say which.")
+        notes.append("Colour-retouched so the people read Black African; licence on page 6.")
         B.label(c, D.M + 130 * MM, ty, "PHOTOGRAPHS", 4.0, B.TEAL, "Inter-600", 1.6)
-        D.bullets(c, D.M + 130 * MM, ty - 8 * MM, rows +
-                  ["Colour-retouched so the people read Black African; licence on page 6."],
-                  118 * MM, 3.0, B.NAVY_MID)
+        D.bullets(c, D.M + 130 * MM, ty - 8 * MM, notes, 118 * MM, 3.0, B.NAVY_MID)
 
 
     # ---- page 5 — production
@@ -512,7 +566,7 @@ def proof(path):
         "40 mm welded hem all round, eyelets at 500 mm centres, stainless or brass. "
         "The artwork keeps 60 mm clear of the trim so nothing important is hemmed away.",
         "Finish: matte, not gloss. Gloss mirrors the sky and kills the navy.",
-        "Fix at every eyelet, not every second one: a 3.8 m banner sails in wind and "
+        "Fix at every eyelet, not every second one: a 4.9 m banner sails in wind and "
         "will tear at the corners if it is tied off at four points only.",
     ], 150 * MM, 3.0, B.NAVY_MID)
 
@@ -539,7 +593,8 @@ def proof(path):
 
     B.label(c, D.M, 52 * MM, "BEFORE PRINT", 4.0, B.TEAL, "Inter-600", 1.6)
     D.bullets(c, D.M, 44 * MM, [
-        "Confirm the three sizes with the fence: 3.8 m, 3.4 m and 2.4 m, all 1.0 m high.",
+        "Confirm the three sizes with the fence: 3.8 m, 3.4 m, and B-3 at 16 ft × 49 in "
+        "(4.88 m × 1.24 m) — the client's measurement, 2026-11-07.",
         "Confirm the spelling EDDWALIRO, and that BCM Medical Centre is the wording that "
         "goes on the fence.",
         "The service lists are split across the three banners so no service repeats. "
@@ -691,7 +746,7 @@ def write_index():
 <header>
   <div class="eyebrow">BCM · MEDICAL CENTRE · BANNERS</div>
   <h1>Three banners for the fence</h1>
-  <p>3.8 m, 3.4 m and 2.4 m long, all 1.0 m high. Three different layouts, one
+  <p>3.8 m, 3.4 m and 16 ft × 49 in (4.88 m × 1.24 m). Three different layouts, one
      identity: navy field, EDDWALIRO at the head, MEDICAL CENTRE the widest line,
      the motto under it, a licensed photograph and the clinic's own service list.</p>
 </header>
@@ -711,7 +766,7 @@ def write_index():
     <tr><td><a href="BCM-Banners-Package.zip">BCM-Banners-Package.zip</a></td>
         <td>Everything: artwork, elevations, proof</td></tr>
   </table>
-  <p class="note">Sizes are the client's: 3.8 m, 3.4 m and 2.4 m by 1.0 m. Substrate,
+  <p class="note">Sizes are the client's: 3.8 m, 3.4 m, and B-3 at 16 ft × 49 in. Substrate,
      hem and eyelets are industry-typical for a fence banner — confirm with the printer.
      The monogram is a recreation, not BCM's official logo.</p>
 </main></body></html>
