@@ -2,10 +2,13 @@
 
 Three different banners, three different jobs, one identity:
 
-    B-1  3800 × 1000 mm   the road banner — photo left, the name right
-    B-2  3400 × 1000 mm   the services banner — type left, two photos right
-    B-3  4876.8 × 1244.6 mm  the long banner (16 ft × 49 in) — the name centred,
-                            one photograph at the right
+    B-1  4876.8 × 1244.6 mm  the road banner (16 ft × 49 in) — photo left, the name right
+    B-2  4876.8 × 1244.6 mm  the services banner — type left, two photos right
+    B-3  4876.8 × 1244.6 mm  the long banner — the name centred, one photograph right
+
+All three are cut to the client's measurement of 2026-11-07 — 16 ft long × 49 in high,
+4876.8 × 1244.6 mm — and each layout is drawn from the panel size, not from fixed
+offsets, so the three read as one set and hold if the size is changed again.
 
 Everything is drawn in millimetres on the trim rectangle. The artwork files add
 10 mm bleed, eyelet-safe margins, crop marks and a slug strip. Mockups place each
@@ -53,22 +56,25 @@ EDITS = {"pharmacy": "ph-pharmacy.jpg", "lab": "ph-lab.jpg",
 
 BANNERS = [
     {
-        "id": "B-1", "slug": "B-01", "w": 3800.0, "h": 1000.0,
-        "title": "The road banner", "sub": "3.8 m × 1.0 m",
+        # the client's measurement, 2026-11-07: every banner 16 ft long x 49 in high
+        "id": "B-1", "slug": "B-01",
+        "w": 16 * 304.8, "h": 49 * 25.4,          # 4876.8 x 1244.6 mm
+        "title": "The road banner", "sub": "16 ft × 49 in  (4.88 m × 1.24 m)",
         "job": "Read at speed, from the road. Photograph on the left, the name on the right.",
         "services": ["GENERAL OUTPATIENT", "LABORATORY", "PHARMACY",
                      "ULTRASOUND", "MINOR SURGERY", "HIV CARE"],
-        "photos": [("pharmacy", 60.0, 60.0, 1040.0, 880.0, (0.70, 0.30))],
+        "photos": [("pharmacy", 0.0, 0.0, 0.0, 0.0, (0.52, 0.42))],   # placed by the layout
         "layout": "road",
     },
     {
-        "id": "B-2", "slug": "B-02", "w": 3400.0, "h": 1000.0,
-        "title": "The services banner", "sub": "3.4 m × 1.0 m",
+        "id": "B-2", "slug": "B-02",
+        "w": 16 * 304.8, "h": 49 * 25.4,          # 4876.8 x 1244.6 mm
+        "title": "The services banner", "sub": "16 ft × 49 in  (4.88 m × 1.24 m)",
         "job": "Read standing still, at the gate. The list does the work, two photographs carry it.",
         "services": ["PAEDIATRICS", "IMMUNISATION", "ANTENATAL & POSTNATAL",
                      "OBS & GYN", "FAMILY PLANNING", "EYE SERVICES"],
-        "photos": [("lab", 2380.0, 540.0, 960.0, 400.0, (0.50, 0.06)),
-                   ("pharmacy_shelf", 2380.0, 80.0, 960.0, 400.0, (0.62, 0.10))],
+        "photos": [("lab", 0.0, 0.0, 0.0, 0.0, (0.50, 0.06)),          # placed by the layout
+                   ("pharmacy_shelf", 0.0, 0.0, 0.0, 0.0, (0.62, 0.10))],
         "layout": "services",
     },
     {
@@ -83,6 +89,20 @@ BANNERS = [
         "layout": "compact",
     },
 ]
+
+def _apply_photo_rects():
+    """Give every banner its real photograph rectangles, from the panel size."""
+    x, y, pw, ph = road_photo(BANNERS[0]["w"], BANNERS[0]["h"])
+    BANNERS[0]["photos"] = [("pharmacy", x, y, pw, ph, (0.52, 0.42))]
+    rects = []
+    for (key, *_old), (rect, focus) in zip(BANNERS[1]["photos"],
+                                           services_photos(BANNERS[1]["w"],
+                                                           BANNERS[1]["h"])):
+        rects.append((key, *rect, focus))
+    BANNERS[1]["photos"] = rects
+    x, y, pw, ph = compact_photo(BANNERS[2]["w"], BANNERS[2]["h"])
+    BANNERS[2]["photos"] = [("reception", x, y, pw, ph, (0.50, 0.55))]
+
 
 B.register_fonts()
 
@@ -136,15 +156,18 @@ def badge_row(c, x, y, ms=96.0, cap_b=30.0, gap=26.0):
 
 
 def services_block(c, items, x, y, cols=2, col_w=1120.0, row=62.0, cap=32.0,
-                   color=None):
-    """Service list: a cyan rule then the name, two columns."""
+                   color=None, k=1.0):
+    """Service list: a cyan rule then the name, two columns. `k` scales the rule."""
     color = color or B.CP_MIST
+    dash = 34.0 * k
     for i, s in enumerate(items):
         cx = x + (i % cols) * col_w
+        # y is the first row's BASELINE and `row` is the pitch, so the ink starts at the
+        # block's top edge and ends on its bottom edge — never into the gap below it
         cy = y - (i // cols) * row
         c.setFillColor(B.CP_CYAN)
-        c.rect(cx, cy + cap * 0.30, 34.0, 4.0, stroke=0, fill=1)
-        B.caps(c, cx + 54.0, cy, s, cap, color, "Inter-600", 3.0)
+        c.rect(cx, cy + cap * 0.30, dash, max(3.0, 4.0 * k), stroke=0, fill=1)
+        B.caps(c, cx + dash * 1.6, cy, s, cap, color, "Inter-600", 3.0, max_w=col_w * 0.92)
 
 
 def phone_line(c, x, y, cap=30.0, align="left", color=None):
@@ -153,74 +176,176 @@ def phone_line(c, x, y, cap=30.0, align="left", color=None):
 
 
 # ----------------------------------------------------------------------- faces
+def layout_stack(h, m, elems, share=0.94):
+    """Lay a column of type out on a banner face, top edge first.
+
+    `elems` is the stack in order: `("block", name, coeff, fit)` where `fit` is a callable
+    returning the largest cap the measure allows (or None for a fixed element), and
+    `("gap", coeff)`. Heights are multiples of one unit U, so the whole column is in
+    proportion; U is chosen so the blocks and gaps together take `share` of the clear
+    height. Where a block is width-limited it comes out smaller than its share, and the
+    slack is handed back to the gaps — so the column always fills the panel without ever
+    overlapping, whatever the sizes are set to.
+
+    Returns (caps, tops, total) — cap heights by name, the y of each block's top edge,
+    and the total height used.
+    """
+    coeffs = sum(e[2] if e[0] == "block" else e[1] for e in elems)
+    U = (h - 2 * m) * share / coeffs
+    caps, blocks = {}, []
+    for e in elems:
+        if e[0] != "block":
+            continue
+        _k, name, coeff, fit = e
+        cap = coeff * U
+        if fit is not None:
+            cap = min(cap, fit())
+        caps[name] = cap
+        blocks.append(cap)
+    fixed = sum(blocks)
+    gap_coeffs = sum(e[1] for e in elems if e[0] == "gap") or 1.0
+    slack = max((h - 2 * m) * share - fixed, 0.0)
+    gap_total = (h - 2 * m) * share - fixed
+    gaps = {}
+    tops = {}
+    y = m + (h - 2 * m) / 2 + (fixed + gap_total) / 2
+    for e in elems:
+        if e[0] == "block":
+            _k, name, coeff, fit = e
+            y -= caps[name]
+            tops[name] = y
+        else:
+            y -= e[1] / gap_coeffs * gap_total
+    return caps, tops, fixed + gap_total
+
+
+def road_photo(w, h):
+    """B-1's photograph: a tall crop against the left edge, full clear height."""
+    m = SAFE
+    ph = h - 2 * m
+    pw = min(ph * 0.80, w * 0.235)
+    return (m, m, pw, ph)
+
+
 def face_road(c, w, h):
-    """B-1 — photograph left, the name right, the list under it."""
+    """B-1 — 16 ft x 49 in. Photograph left, the name right, the list under it."""
     c.setFillColor(B.CP_NAVY)
     c.rect(0, 0, w, h, stroke=0, fill=1)
 
-    px, py, pw, ph = 60.0, 60.0, 1040.0, 880.0
+    m = SAFE
+    k = h / 1244.6
+    px, py, pw, ph = road_photo(w, h)
     photo(c, "pharmacy", px, py, pw, ph, (0.52, 0.42))
-    keyline(c, px, py, pw, ph, B.CP_CYAN, 0.30, 2.0)
+    keyline(c, px, py, pw, ph, B.CP_CYAN, 0.30, max(1.8, h * 0.0022))
 
-    x0 = 1230.0
-    cap_e = 118.0
-    y_e = 940.0 - cap_e
-    word(c, x0, y_e, cap_e, track=9.0, max_w=w - x0 - 60.0)
+    gap = w * 0.030
+    x0 = px + pw + gap
+    col = w - m - x0
 
-    ms = 96.0
-    y_b = y_e - 34.0 - ms
-    badge_row(c, x0, y_b, ms)
+    # the stack: EDDWALIRO, the badge, MEDICAL CENTRE, the motto, the list, the numbers
+    elems = [
+        ("block", "word", 0.300, lambda: fit_cap(WORD, "Manrope-800", "Manrope",
+                                                 col * 0.96, tracking=9.0)),
+        ("gap", 0.040),
+        ("block", "badge", 0.072, None),
+        ("gap", 0.026),
+        ("block", "name", 0.205, lambda: fit_cap(NAME, "Manrope-800", "Manrope",
+                                                 col * 0.96)),
+        ("gap", 0.034),
+        ("block", "motto", 0.030, None),
+        ("gap", 0.030),
+        ("block", "services", 0.128, None),        # two rows of three
+        ("gap", 0.030),
+        ("block", "tel", 0.034, None),
+        ("gap", 0.014),
+        ("block", "open", 0.029, None),
+    ]
+    caps, tops, total = layout_stack(h, m, elems)
+    ms = caps["badge"]
+    cap_sc = caps["services"] * 0.30
+    row_sc = caps["services"] - cap_sc           # two rows fill the block exactly
 
-    cap_m = fit_cap(NAME, "Manrope-800", "Manrope", 2060.0)
-    y_m = y_b - 40.0 - cap_m
-    B.caps(c, x0 + 4.0, y_m, NAME, cap_m, B.WHITE, "Manrope-800", 2.0)
-
-    B.label(c, x0 + 6.0, y_m - 62.0, B.SLOGAN, 36.0, B.CP_MIST, "Inter-400", 4.0)
-
-    services_block(c, ["GENERAL OUTPATIENT", "LABORATORY", "PHARMACY",
-                       "ULTRASOUND", "MINOR SURGERY", "HIV CARE"],
-                   x0 + 4.0, y_m - 196.0, cols=2, col_w=1130.0, row=64.0, cap=32.0)
-
-    phone_line(c, w - 60.0, 96.0, 30.0, align="right")
-    B.caps(c, w - 60.0, 150.0, "OPEN 24 HOURS", 26.0, B.CP_MIST, "Inter-600", 3.0,
-           align="right")
+    word(c, x0, tops["word"], caps["word"], track=9.0, max_w=col)
+    badge_row(c, x0, tops["badge"], ms, ms * 0.32, ms * 0.26)
+    B.caps(c, x0 + 4.0 * k, tops["name"], NAME, caps["name"], B.WHITE, "Manrope-800",
+           2.0, max_w=col)
+    B.label(c, x0 + 6.0 * k, tops["motto"], B.SLOGAN, caps["motto"], B.CP_MIST,
+            "Inter-400", 4.0, max_w=col)
+    # the stack reserves the block's TOP; the list draws down from its first baseline
+    services_block(c, BANNERS[0]["services"], x0 + 4.0,
+                   tops["services"] + caps["services"] - cap_sc, cols=3,
+                   col_w=col / 3.0, row=row_sc, cap=cap_sc, k=k)
+    phone_line(c, x0, tops["tel"], caps["tel"])
+    B.caps(c, x0, tops["open"], "OPEN 24 HOURS", caps["open"], B.CP_MIST,
+           "Inter-600", 3.0)
 
     keyline(c, 32, 32, w - 64, h - 64)
 
 
+def services_photos(w, h):
+    """B-2's two photographs, stacked against the right edge; ((x,y,w,h), focus)."""
+    m = SAFE
+    gap = h * 0.034
+    ph = (h - 2 * m - gap) / 2
+    pw = min(h * 0.86, w * 0.225)
+    px = w - m - pw
+    return [((px, h - m - ph, pw, ph), (0.50, 0.06)),          # top
+            ((px, m, pw, ph), (0.62, 0.10))]                    # bottom
+
+
 def face_services(c, w, h):
-    """B-2 — type left, two photographs stacked right, a cyan foot rail."""
+    """B-2 — 16 ft x 49 in. Type left, two photographs stacked right, a cyan foot rail."""
     c.setFillColor(B.CP_NAVY)
     c.rect(0, 0, w, h, stroke=0, fill=1)
 
-    for key, x, y, ww, hh, focus in BANNERS[1]["photos"]:
-        photo(c, key, x, y, ww, hh, focus)
-        keyline(c, x, y, ww, hh, B.CP_CYAN, 0.26, 1.8)
+    m = SAFE
+    k = h / 1244.6
+    for (rect, focus), (key, *_rest) in zip(services_photos(w, h), BANNERS[1]["photos"]):
+        photo(c, key, *rect, focus)
+        keyline(c, *rect, B.CP_CYAN, 0.26, max(1.6, h * 0.0018))
 
-    x0 = 60.0
-    cap_e = 100.0
-    y_e = 940.0 - cap_e
-    word(c, x0, y_e, cap_e, track=8.0, max_w=2100.0)
+    gap = w * 0.030
+    x0 = m
+    col = services_photos(w, h)[0][0][0] - gap - x0
 
-    ms = 88.0
-    y_b = y_e - 30.0 - ms
-    badge_row(c, x0, y_b, ms, 28.0, 24.0)
+    elems = [
+        ("block", "word", 0.285, lambda: fit_cap(WORD, "Manrope-800", "Manrope",
+                                                 col * 0.96, tracking=8.0)),
+        ("gap", 0.040),
+        ("block", "badge", 0.070, None),
+        ("gap", 0.026),
+        ("block", "name", 0.196, lambda: fit_cap(NAME, "Manrope-800", "Manrope",
+                                                 col * 0.96)),
+        ("gap", 0.032),
+        ("block", "motto", 0.029, None),
+        ("gap", 0.030),
+        ("block", "services", 0.124, None),
+        ("gap", 0.028),
+        ("block", "rail", 0.004, None),
+        ("gap", 0.024),
+        ("block", "tel", 0.033, None),
+        ("gap", 0.014),
+        ("block", "open", 0.028, None),
+    ]
+    caps, tops, total = layout_stack(h, m, elems)
+    ms = caps["badge"]
+    cap_sc = caps["services"] * 0.30
+    row_sc = caps["services"] - cap_sc
 
-    cap_m = fit_cap(NAME, "Manrope-800", "Manrope", 2180.0)
-    y_m = y_b - 34.0 - cap_m
-    B.caps(c, x0 + 3.0, y_m, NAME, cap_m, B.WHITE, "Manrope-800", 1.8)
-
-    B.label(c, x0 + 5.0, y_m - 64.0, B.SLOGAN, 32.0, B.CP_MIST, "Inter-400", 3.6)
-
-    services_block(c, BANNERS[1]["services"], x0 + 3.0, y_m - 216.0,
-                   cols=2, col_w=1090.0, row=62.0, cap=30.0)
-
-    # foot rail: phone left, the promise right
+    word(c, x0, tops["word"], caps["word"], track=8.0, max_w=col)
+    badge_row(c, x0, tops["badge"], ms, ms * 0.32, ms * 0.26)
+    B.caps(c, x0 + 3.0, tops["name"], NAME, caps["name"], B.WHITE, "Manrope-800", 1.8,
+           max_w=col)
+    B.label(c, x0 + 5.0, tops["motto"], B.SLOGAN, caps["motto"], B.CP_MIST, "Inter-400",
+            3.6, max_w=col)
+    services_block(c, BANNERS[1]["services"], x0 + 3.0,
+                   tops["services"] + caps["services"] - cap_sc, cols=3,
+                   col_w=col / 3.0, row=row_sc, cap=cap_sc, k=k)
     c.setFillColor(B.CP_CYAN)
-    c.rect(60.0, 150.0, 2260.0, 3.0, stroke=0, fill=1)
-    phone_line(c, 60.0, 96.0, 28.0)
-    B.caps(c, 2320.0, 96.0, "OPEN 24 HOURS", 26.0, B.CP_MIST, "Inter-600", 3.0,
-           align="right")
+    c.rect(x0, tops["rail"], col, max(3.0, caps["rail"]), stroke=0, fill=1)
+    phone_line(c, x0, tops["tel"], caps["tel"])
+    B.caps(c, x0, tops["open"], "OPEN 24 HOURS", caps["open"], B.CP_MIST,
+           "Inter-600", 3.0)
 
     keyline(c, 32, 32, w - 64, h - 64)
 
@@ -593,8 +718,9 @@ def proof(path):
 
     B.label(c, D.M, 52 * MM, "BEFORE PRINT", 4.0, B.TEAL, "Inter-600", 1.6)
     D.bullets(c, D.M, 44 * MM, [
-        "Confirm the three sizes with the fence: 3.8 m, 3.4 m, and B-3 at 16 ft × 49 in "
-        "(4.88 m × 1.24 m) — the client's measurement, 2026-11-07.",
+        "Confirm the size with the fence: all three banners are 16 ft × 49 in — 4876.8 × "
+        "1244.6 mm — the client's measurement of 2026-11-07. Three of them need about "
+        "15.6 m of fence with gaps.",
         "Confirm the spelling EDDWALIRO, and that BCM Medical Centre is the wording that "
         "goes on the fence.",
         "The service lists are split across the three banners so no service repeats. "
@@ -746,7 +872,7 @@ def write_index():
 <header>
   <div class="eyebrow">BCM · MEDICAL CENTRE · BANNERS</div>
   <h1>Three banners for the fence</h1>
-  <p>3.8 m, 3.4 m and 16 ft × 49 in (4.88 m × 1.24 m). Three different layouts, one
+  <p>All three at 16 ft × 49 in (4.88 m × 1.24 m). Three different layouts, one
      identity: navy field, EDDWALIRO at the head, MEDICAL CENTRE the widest line,
      the motto under it, a licensed photograph and the clinic's own service list.</p>
 </header>
@@ -766,12 +892,15 @@ def write_index():
     <tr><td><a href="BCM-Banners-Package.zip">BCM-Banners-Package.zip</a></td>
         <td>Everything: artwork, elevations, proof</td></tr>
   </table>
-  <p class="note">Sizes are the client's: 3.8 m, 3.4 m, and B-3 at 16 ft × 49 in. Substrate,
+  <p class="note">Sizes are the client's: all three at 16 ft × 49 in. Substrate,
      hem and eyelets are industry-typical for a fence banner — confirm with the printer.
      The monogram is a recreation, not BCM's official logo.</p>
 </main></body></html>
 """
     open(os.path.join(OUT_DIR, "index.html"), "w").write(html)
+
+
+_apply_photo_rects()          # the panel size decides where the photographs sit
 
 
 if __name__ == "__main__":

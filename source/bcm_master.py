@@ -52,7 +52,7 @@ GROUPS = [
      "kind": "Double-sided panel · 1168 × 559 mm",
      "cover": "sign/lookbook/M-01-sign-day.png"},
     {"key": "banners", "n": "06", "title": "Roadside banners",
-     "kind": "PVC banners · 3.8 m · 3.4 m · 16 ft × 49 in",
+     "kind": "PVC banners · three at 16 ft × 49 in",
      "cover": "banners/lookbook/M-00-banner-set.png"},
 ]
 
@@ -156,7 +156,7 @@ def cover(c):
     rows = [
         ("01 – 03", "Door film", "Three glazed doorways, 8 panes each", f"{panes} panes"),
         ("04", "Sign post", "Name-only panel, double sided", "3 ft 10 in × 1 ft 10 in"),
-        ("05", "Banners", "Roadside fence, three lengths", "3.8 / 3.4 m · 16 ft"),
+        ("05", "Banners", "Roadside fence, three designs", "16 ft × 49 in each"),
     ]
     yy = 118 * MM
     c.setFillColor(B.CP_CYAN)
@@ -534,7 +534,7 @@ three roadside banners, with one master proof describing the lot.
 | --- | --- |
 | `door-1/` `door-2/` `door-3/` | Eight panes each. Print files at 1 : 1 (900 × 500 and 900 × 400 mm), a panel proof, a schedule, a specification, day and night elevations, a licence record, a web preview |
 | `sign/` | Name-only sign post panel, 1168.4 × 558.8 mm (46 × 22 in, 3 ft 10 in × 1 ft 10 in), a signwriter's pack of its own, two settings, four-page proof, elevations, dimensioned drawing |
-| `banners/` | Three PVC banners — 3.8 m, 3.4 m, and 16 ft × 49 in (4876.8 × 1244.6 mm) — print files, six-page proof, fence elevations, licence page |
+| `banners/` | Three PVC banners, all 16 ft × 49 in (4876.8 × 1244.6 mm) — print files, six-page proof, fence elevations, licence page |
 | `print/` | **One print PDF per piece** — 32 panes, 3 sign faces, 3 banners, numbered 01–38, with `PRINT-INDEX.pdf`, a manifest, `BCM-Print-Files-ALL.pdf` and `BCM-Print-Files.zip` |
 | `complete/` | This README, the master proof, the manifest and the web index |
 

@@ -149,13 +149,13 @@ dimensioned sheet, a README and a zip.
 
 ### The three roadside banners
 
-Three larger roadside banners on the fence, built in `source/bcm_banners.py`. B-3 was
-re-measured on 2026-11-07 to **16 ft × 49 in**:
+Three larger roadside banners on the fence, built in `source/bcm_banners.py`. All three were
+re-measured on 2026-11-07 to **16 ft × 49 in (4876.8 × 1244.6 mm)**:
 
 | ID | Size | Layout |
 | --- | --- | --- |
-| B-1 | 3.8 m × 1.0 m | photograph left, the name and service list right |
-| B-2 | 3.4 m × 1.0 m | type left, two photographs stacked right |
+| B-1 | 16 ft × 49 in (4876.8 × 1244.6 mm) | photograph left, the name and service list right |
+| B-2 | 16 ft × 49 in (4876.8 × 1244.6 mm) | type left, two photographs stacked right |
 | B-3 | 16 ft × 49 in (4876.8 × 1244.6 mm) | the name centred in its column, one photograph at the right hand end |
 
 Each carries EDDWALIRO at the head, the badge and `BCM`, MEDICAL CENTRE as the widest line,

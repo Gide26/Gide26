@@ -42,6 +42,26 @@ DOOR_W = LEAF_W * 2 + FRAME                      # 2220
 DOOR_H = LEAF_H
 
 BANNER_BOTTOM = 2560             # underside of each banner above ground
+BANNER_GAP = 300.0               # between banners in the row
+BANNER_LEFT = -200.0             # the row starts a little left of door 1, and ends a
+                                 # little right of door 4 — the widest run on this front
+
+# The three banners are all 16 ft x 49 in (4876.8 x 1244.6 mm) since 2026-11-07, which is
+# more than twice a 2220 mm doorway — so they no longer sit one-per-door. They run as one
+# band above the shopfront, left to right B-1, B-2, B-3, and each doorview shows whichever
+# banner is over it, cropped by the frame.
+
+
+def _banner_row():
+    """x of the left edge of each banner in the row."""
+    x, out = BANNER_LEFT, []
+    for b in BAN.BANNERS:
+        out.append(x)
+        x += b["w"] + BANNER_GAP
+    return out
+
+
+BANNER_X = _banner_row()
 BANNER_H = 1000
 WALL_TOP = 3900
 CORNICE = 4020
@@ -55,14 +75,26 @@ SIGN_POSTS = 2                   # 1.17 m of panel: two posts, as specified
 
 
 def banner_for(n):
-    """The banner over a door, if it has one.
+    """The banner over a door: whichever one in the row covers that door's centre.
 
-    B-1 and B-2 sit over doors 1 and 2. B-3 became 16 ft × 49 in on 2026-11-07 — 4.88 m
-    is more than twice a 2.22 m doorway — so it no longer fits over one door: it runs the
-    long stretch above door 4 instead, which is the only run on this front long enough for
-    it. Door 3's wall is left clear.
+    All three banners are 16 ft x 49 in — 4.88 m, more than twice a 2220 mm doorway — so
+    they run as one band above the shopfront rather than one per door. A doorview shows
+    the banner that is over it, cropped by the frame, which is what you would see
+    standing in front of that door.
     """
-    return {1: BAN.BANNERS[0], 2: BAN.BANNERS[1], 4: BAN.BANNERS[2]}.get(n)
+    cx = CENTRES[n]
+    for b, x in zip(BAN.BANNERS, BANNER_X):
+        if x <= cx <= x + b["w"]:
+            return b
+    return None
+
+
+def banner_left(n):
+    """x of the left edge of the banner over a door."""
+    b = banner_for(n)
+    if b is None:
+        return 0.0
+    return BANNER_X[BAN.BANNERS.index(b)]
 
 BLACK = (18, 20, 24)
 BLACK_HI = (44, 47, 52)
@@ -269,14 +301,9 @@ def facade(s=0.20, night=False):
         blk = door_block(door, s, night)
         img.paste(blk, (X(dx), Y(DOOR_H)))
 
-    # ---- banners above their doors, where a banner is ordered
-    for door in DOORS.DOORS:
-        b = banner_for(door["n"])
-        if b is None:
-            continue
-        cx = CENTRES[door["n"]]
-        bx = cx - b["w"] / 2
-        by = BANNER_BOTTOM
+    # ---- the banner row, above the shopfront
+    by = BANNER_BOTTOM
+    for b, bx in zip(BAN.BANNERS, BANNER_X):
         # stand-off shadow
         d.rectangle([X(bx) + 6, Y(by + b["h"]) + 8, X(bx + b["w"]) + 8, Y(by) + 10],
                     fill=(0, 0, 0, 70))
@@ -343,12 +370,13 @@ def door_view(door, b, s=0.5, night=False):
     """One doorway with its banner above it — the close view, with ground below.
 
     b may be None: a doorway with no banner ordered still gets its close view,
-    framed on the door itself.
+    framed on the door itself. The banner is placed where it really is in the row, so a
+    4.88 m banner is cropped by the frame the way it would be standing at that door.
     """
     pad = 300
     TOP_MM = CORNICE + pad           # top of the picture
     BOT_MM = -340                    # paving at the foot
-    w_mm = max(b["w"] if b else DOOR_W, DOOR_W) + pad * 2
+    w_mm = DOOR_W + pad * 2
     w, h = int(w_mm * s), int((TOP_MM - BOT_MM) * s)
 
     img = Image.new("RGB", (w, h), (238, 236, 230))
@@ -395,7 +423,7 @@ def door_view(door, b, s=0.5, night=False):
 
     # banner, its shadow and its four stand-off fixings (only where ordered)
     if b is not None:
-        bx = -b["w"] / 2
+        bx = banner_left(door["n"]) - CENTRES[door["n"]]
         by = BANNER_BOTTOM
         d.rectangle([X(bx) + 7, Y(by + b["h"]) + 9, X(bx + b["w"]) + 9, Y(by) + 11],
                     fill=(0, 0, 0, 60))
@@ -462,17 +490,17 @@ def setout(s=0.12):
         B.label(c, PX(cx), PY(0) - 7, f"DOOR {door['n']}", 3.0, B.CP_NAVY,
                 "Inter-600", 1.0, "center")
 
-        b = banner_for(door["n"])
-        if b is None:
-            continue
+        pass
+
+    # the banner row, above the shopfront
+    for b, bx in zip(BAN.BANNERS, BANNER_X):
         c.setFillColor(B.CP_CYAN)
         c.setFillAlpha(0.35)
-        c.rect(PX(cx - b["w"] / 2), PY(BANNER_BOTTOM), b["w"] * sc, b["h"] * sc,
-               stroke=1, fill=1)
+        c.rect(PX(bx), PY(BANNER_BOTTOM), b["w"] * sc, b["h"] * sc, stroke=1, fill=1)
         c.setFillAlpha(1)
-        B.label(c, PX(cx), PY(BANNER_BOTTOM + b["h"] / 2) - 1.2,
-                f"{b['id']}  {b['w'] / 1000:.2f} m", 3.2, B.CP_NAVY, "Inter-600", 1.0,
-                "center")
+        B.label(c, PX(bx + b["w"] / 2), PY(BANNER_BOTTOM + b["h"] / 2) - 1.2,
+                f"{b['id']}  {b['w']:.0f} × {b['h']:.0f}", 3.2, B.CP_NAVY,
+                "Inter-600", 1.0, "center")
 
     # dimension strings
     def dim(x1, x2, y, label):
@@ -498,36 +526,28 @@ def setout(s=0.12):
     dim(CENTRES[2], CENTRES[3], 3790, "3400 door centres")
     dim(CENTRES[3], CENTRES[4], 3790, "3400 door centres")
 
-    c.setStrokeColor(B.TEAL)
-    c.setLineWidth(0.2)
-    c.setDash(1.2, 1.2)
-    for n in (1, 2, 4):
-        b = banner_for(n)
-        if b is None:
-            continue
-        cx = CENTRES[n]
-        for x in (cx - b["w"] / 2, cx + b["w"] / 2):
-            c.line(PX(x), PY(BANNER_BOTTOM), PX(x), PY(2190))
-    c.setDash()
-    for n, dy in ((1, 0), (2, 0), (4, 0)):
-        b = banner_for(n)
-        if b is None:
-            continue
-        dim(CENTRES[n] - b["w"] / 2, CENTRES[n] + b["w"] / 2, 2290 + dy,
-            f"{b['w']:.0f}  ({b['id']})")
+    for b, bx in zip(BAN.BANNERS, BANNER_X):
+        dim(bx, bx + b["w"], 2290, f"{b['w']:.0f}  ({b['id']})")
 
     # heights, on the left
     c.setStrokeColor(B.TEAL)
     c.setLineWidth(0.3)
     xd = PX(-260)
-    for y, lab in ((0, "0"), (DOOR_H, "1980 door head"),
-                   (BANNER_BOTTOM, "2560 banner underside"),
-                   (BANNER_BOTTOM + BANNER_H, "3560 head, B-1 / B-2"),
-                   (BANNER_BOTTOM + BAN.BANNERS[2]["h"],
-                    f"{BANNER_BOTTOM + BAN.BANNERS[2]['h']:.0f} head, B-3"),
-                   (WALL_TOP, "3900 wall top")):
+    marks = [(0, "0"), (DOOR_H, "1980 door head"),
+             (BANNER_BOTTOM, "2560 banner underside"),
+             (BANNER_BOTTOM + BAN.BANNERS[0]["h"],
+              f"{BANNER_BOTTOM + BAN.BANNERS[0]['h']:.0f} banner head"),
+             (WALL_TOP, "3900 wall top")]
+    # the banner head and the wall top land ~95 mm apart, so nudge a label that would
+    # otherwise sit on its neighbour
+    last = None
+    for y, lab in marks:
+        ly = PY(y) - 1.1
+        if last is not None and abs(ly - last) < 4.2:
+            ly = last - 4.6
+        last = ly
         c.line(xd, PY(y), xd + 6, PY(y))
-        B.label(c, xd - 2.0, PY(y) - 1.1, lab, 2.9, B.GREY, "Inter-500", 0.4, "right")
+        B.label(c, xd - 2.0, ly, lab, 2.9, B.GREY, "Inter-500", 0.4, "right")
 
     # the sign post — 46 × 22 in, centre 1500 mm above finished ground
     hw, hh = SIGN.W / 2, SIGN.H / 2
@@ -584,17 +604,17 @@ def proof(path, day, night, doors, setout_img):
     B.caps(c, D.M, D.PH - 27 * MM, "The front, in place", 7.0, B.WHITE, "Manrope-800",
            0.4)
     B.label(c, D.M, D.PH - 33 * MM,
-            "Four black doorways in film, a banner over doors 1 and 2 and B-3 on the long "
-            "run above door 4, with the sign post at the kerb. Drawn to scale from the "
-            "print files.",
+            "Four black doorways in film, the three 16 ft banners in one band above the "
+            "shopfront, and the sign post at the kerb. Drawn to scale from the print "
+            "files.",
             2.9, B.CP_MIST, "Inter-400", 0.4)
     iw, ih = Image.open(day).size
     bw = D.PW                      # full bleed — the elevation runs edge to edge
     bh = bw * ih / iw
     c.drawImage(day, 0, 44 * MM, bw, bh, mask=None)
     B.label(c, D.M, 32 * MM,
-            "DAY  ·  B-1 OVER DOOR 1, B-2 OVER DOOR 2, B-3 ON THE LONG RUN ABOVE "
-            "DOOR 4  ·  SIGN POST AT THE KERB", 2.8, B.CP_MIST, "Inter-500", 1.0)
+            "DAY  ·  B-1, B-2 AND B-3 IN ONE BAND ABOVE THE SHOPFRONT  ·  SIGN POST AT "
+            "THE KERB", 2.8, B.CP_MIST, "Inter-500", 1.0)
 
     # ---- page 2: the front, night
     c.showPage()
@@ -716,9 +736,9 @@ def write_index(day, night, doors):
 <header>
   <div class="eyebrow">BCM · MEDICAL CENTRE · ON THE PREMISES</div>
   <h1>The set, in place</h1>
-  <p>Four black doorways in film, a banner over doors 1 and 2 and the 16 ft B-3 on the
-     long run above door 4, and the sign post at the kerb — drawn to scale from the same
-     print files that go to the printer.</p>
+  <p>Four black doorways in film, the three 16 ft × 49 in banners in one band above the
+     shopfront, and the sign post at the kerb — drawn to scale from the same print files
+     that go to the printer.</p>
 </header>
 <nav><a href="../index.html">All artwork</a>
      <a href="../door-1/index.html">Door 1</a>
@@ -729,7 +749,7 @@ def write_index(day, night, doors):
 <main>
   <div class="two">
     <figure class="card"><img src="lookbook/M-01-premises-day.png" alt="The front, day">
-      <figcaption><b>The front — day</b><span>all three doors, three banners, sign post</span></figcaption></figure>
+      <figcaption><b>The front — day</b><span>four doors, the three 16 ft banners above, sign post</span></figcaption></figure>
     <figure class="card"><img src="lookbook/M-02-premises-night.png" alt="The front, night">
       <figcaption><b>The front — night</b><span>with the eaves downlights on</span></figcaption></figure>
   </div>
@@ -779,7 +799,8 @@ def write_standalone():
                 f'<figcaption><b>{title}</b><span>{sub}</span></figcaption></figure>')
 
     front = (fig("M-01-premises-day.png", "The front — day",
-                 "four black doorways, three banners, the sign post at the kerb", 1600) +
+                 "four black doorways, the three 16 ft banners above, the sign post "
+                 "at the kerb", 1600) +
              fig("M-02-premises-night.png", "The front — night",
                  "with the eaves downlights on", 1600))
     def door_sub(d):
@@ -820,8 +841,8 @@ def write_standalone():
 <header>
   <div class="eyebrow">BCM · MEDICAL CENTRE · ON THE PREMISES</div>
   <h1>The set, in place</h1>
-  <p>Four black doorways in film, a banner over doors 1 and 2 and the 16 ft B-3 above
-     door 4, and the sign post at the kerb — drawn to scale from the print files.
+  <p>Four black doorways in film, the three 16 ft banners in one band above the
+     shopfront, and the sign post at the kerb — drawn to scale from the print files.
      This page is self-contained: the images travel inside the file.</p>
 </header>
 <main>
@@ -886,7 +907,7 @@ The set in place, drawn to scale from the same print files that go to the printe
 
 | File | What it is |
 | --- | --- |
-| `lookbook/M-01-premises-day.png` | The front by day — three black doorways, three banners, the sign post |
+| `lookbook/M-01-premises-day.png` | The front by day — four black doorways, the three 16 ft banners above, the sign post |
 | `lookbook/M-02-premises-night.png` | The front at night, with the eaves downlights |
 | `lookbook/M-1N-door-N-black.png` | Each doorway close up, banner above it |
 | `lookbook/M-04-setout.png` | Set-out drawing, all dimensions in mm |
@@ -898,18 +919,20 @@ The set in place, drawn to scale from the same print files that go to the printe
 - Doorways: 2220 mm wide overall, 1980 mm door head, two leaves, black frame and
   black leaves, eight panes of film each — 900 mm high, 500 mm outer, 400 mm at the
   meeting stile, exactly as scheduled on the door pages.
-- Banners: B-1 (3.8 m) over door 1, B-2 (3.4 m) over door 2, and B-3 — 16 ft × 49 in
-  (4.88 × 1.24 m) since 2026-11-07 — on the long run above door 4; it is more than twice a
-  doorway wide, so it no longer fits over a single door and door 3's wall is left clear.
+- Banners: all three are now 16 ft × 49 in (4876.8 × 1244.6 mm) — the client's measurement
+  of 2026-11-07 — so they run as one band above the shopfront, B-1, B-2, B-3 left to right,
+  rather than one per door. At 4.88 m each is more than twice a 2220 mm doorway, so the row
+  is a proposal: it starts a little left of door 1 and ends a little right of door 4.
   Underside 2560 mm above the paving, 580 mm clear of the door head.
 - Sign post at the kerb: 1168.4 × 558.8 mm panel (46 × 22 in), centre 1500 mm above
   finished ground, on two 76 mm posts at 520 mm centres — the support is a proposal
   for the signwriter to confirm. The face is drawn as it is built: the red-on-white
   lit face for the lighting board, not the old navy one.
 
-Door centres — 4.2 m and 3.4 m — and the 2560 mm banner height are proposals chosen so
-the banners clear each other. Confirm them, and the wall height above each door, before
-anything is fixed.
+Door centres — 4.2 m and 3.4 m — and the 2560 mm banner height are proposals. The banner
+row is a proposal too: three 4877 mm banners need 15.2 m of clear wall between them, which
+is close to the whole front, so confirm the run and the pier widths before anything is
+fixed. The artwork itself is unchanged by any of this.
 
 Rebuild: `cd source && python3 bcm_premises.py`
 """
