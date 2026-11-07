@@ -28,8 +28,14 @@ cyan accents went; the sign's own colours came in, at the sign's own ratio (its 
    names in navy
 6. `TEL 0788 323 815 · 0754 132 715` in navy, `OPEN 24 HOURS` in red
 
-Nothing moved, nothing was re-sized: EDDWALIRO still heads each banner, MEDICAL CENTRE is
-still the widest line, the photograph still sits where the layout puts it.
+Nothing moved: EDDWALIRO still heads each banner, MEDICAL CENTRE is still the widest line,
+the photograph still sits where the layout puts it.
+
+Two things were then set larger at the client's request (2026-11-07): the B badge and the
+`BCM` beside it are now several times their old size on all three banners (monogram 223 mm
+with `BCM` at 116 mm on B-1, 219 / 114 mm on B-2, 159 / 84 mm on B-3), and the service list
+stays dark blue throughout — names and their rules both in the navy, so nothing in the list
+competes with the red block.
 
 | | Layout (unchanged) |
 | --- | --- |

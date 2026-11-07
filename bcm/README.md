@@ -175,6 +175,10 @@ navy band, and that red again for the motto, the service rules and OPEN 24 HOURS
 the numbers and the service names sit in the navy. Because the red and the navy are the sign's
 own values, fence and light box read as one set.
 
+The B badge and the `BCM` beside it were then set several times larger on the client's
+request of the same day, and the service list is kept in dark blue throughout — the names and
+their rules both in the navy, so the list never competes with the red block.
+
 Each banner still carries a service list from the clinic's own board. Four Pexels frames, all
 colour-retouched, all recorded on the licence page of `bcm/banners/BCM-Banners.pdf`. No
 photograph and no service repeats across the three.

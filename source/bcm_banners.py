@@ -182,7 +182,7 @@ def services_block(c, items, x, y, cols=2, col_w=1120.0, row=62.0, cap=32.0,
                    color=None, k=1.0, dash=None):
     """Service list: a red rule then the name. `k` scales the rule."""
     color = color or NAVY
-    dash = dash or RED
+    dash = dash or NAVY
     d = 34.0 * k
     for i, s in enumerate(items):
         cx = x + (i % cols) * col_w
@@ -281,7 +281,7 @@ def face_road(c, w, h):
         ("block", "word", 0.300, lambda: fit_cap(WORD, "Manrope-800", "Manrope",
                                                  col * 0.96, tracking=9.0), BAND_HM),
         ("gap", 0.040),
-        ("block", "badge", 0.072, None),
+        ("block", "badge", 0.240, None),
         ("gap", 0.026),
         ("block", "name", 0.205, lambda: fit_cap(NAME, "Manrope-800", "Manrope",
                                                  col * 0.96), BAND_HM),
@@ -302,7 +302,7 @@ def face_road(c, w, h):
     band(c, x0, tops["word"], col, band_h(caps, "word"), RED)
     word(c, x0 + 14.0 * k, tops["word"] + caps["word"] * BAND_PAD, caps["word"],
          track=9.0, max_w=col - 28.0 * k)
-    badge_row(c, x0, tops["badge"], ms, ms * 0.32, ms * 0.26)
+    badge_row(c, x0, tops["badge"], ms, ms * 0.52, ms * 0.20)
     band(c, x0, tops["name"], col, band_h(caps, "name"), NAVY)
     B.caps(c, x0 + 14.0 * k, tops["name"] + caps["name"] * BAND_PAD, NAME,
            caps["name"], B.WHITE, "Manrope-800", 2.0, max_w=col - 28.0 * k)
@@ -349,7 +349,7 @@ def face_services(c, w, h):
         ("block", "word", 0.300, lambda: fit_cap(WORD, "Manrope-800", "Manrope",
                                                  col * 0.96, tracking=8.0), BAND_HM),
         ("gap", 0.040),
-        ("block", "badge", 0.072, None),
+        ("block", "badge", 0.240, None),
         ("gap", 0.026),
         ("block", "name", 0.205, lambda: fit_cap(NAME, "Manrope-800", "Manrope",
                                                  col * 0.96), BAND_HM),
@@ -372,7 +372,7 @@ def face_services(c, w, h):
     band(c, x0, tops["word"], col, band_h(caps, "word"), RED)
     word(c, x0 + 14.0 * k, tops["word"] + caps["word"] * BAND_PAD, caps["word"],
          track=8.0, max_w=col - 28.0 * k)
-    badge_row(c, x0, tops["badge"], ms, ms * 0.32, ms * 0.26)
+    badge_row(c, x0, tops["badge"], ms, ms * 0.52, ms * 0.20)
     band(c, x0, tops["name"], col, band_h(caps, "name"), NAVY)
     B.caps(c, x0 + 14.0 * k, tops["name"] + caps["name"] * BAND_PAD, NAME,
            caps["name"], B.WHITE, "Manrope-800", 1.8, max_w=col - 28.0 * k)
@@ -420,27 +420,46 @@ def face_compact(c, w, h):
     cap_e = min(fit_cap(WORD, "Manrope-800", "Manrope", col * 0.94, tracking=10.0),
                 h * 0.280)
     cap_m = min(fit_cap(NAME, "Manrope-800", "Manrope", col * 0.94), h * 0.220)
-    cap_b = min(cap_m * 0.17, 30.0)
-    ms = cap_m * 0.34
     cap_rule = max(5.0, h * 0.006)
     cap_s = h * 0.024
     cap_r = h * 0.021
     cap_p = h * 0.027
     cap_o = h * 0.023
-    h_e = cap_e * BAND_HM                            # the red block
-    h_m = cap_m * BAND_HM                            # the navy band
+    clear = h - 2 * m
 
-    fixed = (h_e + ms + cap_b + h_m + cap_rule + cap_s + cap_r + cap_p + cap_o)
-    room = max((h - 2 * m) * 0.96 - fixed, 0.0)
+    # the badge and the initials are set large, but they must not squeeze the lines
+    # under the name: back the two big lines off until the small type keeps its air
+    for sc in (1.0, 0.97, 0.94, 0.91, 0.88, 0.85, 0.82, 0.79, 0.76, 0.73, 0.70,
+               0.67, 0.64, 0.61, 0.58, 0.55):
+        ce, cm = cap_e * sc, cap_m * sc
+        cb = min(cm * 0.50, 200.0)
+        msz = cm * 0.95
+        he, hm = ce * BAND_HM, cm * BAND_HM
+        fixed = (he + msz + cb + hm + cap_rule + cap_s + cap_r + cap_p + cap_o)
+        room = clear * 0.96 - fixed
+        if room >= clear * 0.22:
+            break
+    cap_e, cap_m, cap_b, ms = ce, cm, cb, msz
+    h_e, h_m = he, hm
+    room = max(room, 0.0)
     wts = (0.055, 0.030, 0.055, 0.075, 0.050, 0.060, 0.075, 0.030)
     total_gap = sum(wts)
     g = [room * x / total_gap for x in wts]
     total = fixed + room
     top = m + (h - 2 * m) / 2 + total / 2           # the stack, centred in the clear area
 
+    # the bands hug their line here, because this banner is a centred lockup: a
+    # full-measure bar would sit proud of the type on both sides
+    def _tw(txt, cap, track):
+        return (pdfmetrics.stringWidth(txt, "Manrope-800", B.font_for(cap, "Manrope"))
+                + track * (len(txt) - 1))
+
+    bw_e = min(col, _tw(WORD, cap_e, 10.0) + 2 * cap_e * 0.14)
+    bw_m = min(col, _tw(NAME, cap_m, 1.8) + 2 * cap_m * 0.14)
+
     y = top
     # EDDWALIRO heads it, white on the red block
-    band(c, x0, y - h_e, col, h_e, RED)
+    band(c, xc - bw_e / 2.0, y - h_e, bw_e, h_e, RED)
     B.caps(c, xc, band_base(y, cap_e), WORD, cap_e, B.WHITE, "Manrope-800", 10.0,
            align="center", max_w=col - 20.0)
     y -= h_e + g[0]
@@ -453,7 +472,7 @@ def face_compact(c, w, h):
     y -= cap_b + g[2]
 
     # the English name, the widest line on the banner, white on the navy band
-    band(c, x0, y - h_m, col, h_m, NAVY)
+    band(c, xc - bw_m / 2.0, y - h_m, bw_m, h_m, NAVY)
     B.caps(c, xc, band_base(y, cap_m), NAME, cap_m, B.WHITE, "Manrope-800", 1.8,
            align="center", max_w=col - 24.0)
     y -= h_m + g[3]
