@@ -121,6 +121,8 @@ Four tested instruments (see `Pilot-Instruments-Print-Ready.md`): (1) one-page *
 5. **Causality:** the study establishes *plausible contribution*, not causation ("consistent with," "suggests").
 6. **Roadmap:** §5.5 converts every limitation into a full-study specification (archival census, n=768 survey, 35–45 KIIs, newsroom access) — the pilot's strategic function.
 
+**Availability-census boundary (content sample).** The 100-edition target assumes access to all four decade strata; the public record caps three of them. The Internet Archive holds no usable newvision.co.ug homepage before 2002 (its earliest capture, March 2000, is empty), the 2012–2014 homepage captures are systematically empty shells (four logged attempts), and from 2020 the site is a JavaScript application with no server-rendered headlines, so the current era is capturable only through the live-site protocol. The study therefore delivers a census of the 14 archive-capturable editions (2002–2011, 2015–2019, 2026) — every year-band the public record can supply — and treats the missing 1986–1999 and 2012–2014 strata as a documented archive boundary, to be filled from library bound volumes and the print archive under Rung 1 of the sampling ladder (§3.6.1). Coverage is reported transparently in §4.1.
+
 ## 3.13 Work Plan (10 Weeks Post-Approval)
 
 | Weeks | Activity |

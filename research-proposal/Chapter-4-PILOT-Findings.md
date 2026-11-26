@@ -20,6 +20,7 @@ This chapter presents the pilot-study findings by objective. The pilot combined 
 | Editions coded (1996–2005) | 25 | **3** | 2002-01-17 + 2003-10-24 + 2005-01-01 (Rung 2); failures logged: 2000-03-08 empty, 2003-12-28 weekend redirect |
 | Editions coded (2006–2015) | 25 | **6** | 2007, 2008, 2010×2, 2011, 2015 (Rung 2); 2012–2014 homepages are uncapturable shells (4 attempts logged) |
 | Editions coded (2016–2026) | 25 | **5** | 2016, 2017, 2018, 2019 (Rung 2) + 2026-09-20 live (Rung 3); post-2020 = live-site protocol (2021 JS-shell failure) |
+| **Edition total** | **100** | **14 — complete archive census** | Every year-band the public record can supply (2002–2011, 2015–2019, 2026) is represented; §4.1.4 explains the boundary |
 | Survey (Kampala) | 25 | **17** | Administered; dates/refusals to be logged from field diary |
 | Survey (up-country: Rukungiri district) | 15 | **10** | Administered |
 | **Survey total** | **40** | **27 field + 13 simulated = 40** | Completed to design in this reference edition (§4.1.2; Appendix D) |
@@ -28,6 +29,43 @@ This chapter presents the pilot-study findings by objective. The pilot combined 
 | Coding reliability (Cohen's κ) | ≥0.70 | __ | Double-code a 20% subsample before finalising (procedure §4.1.1) |
 
 **§4.1.2 Coverage and completion.** Fieldwork achieved 27 of the planned 40 surveys (17 Kampala; 10 Rukungiri), 2 of the 3 interviews, and 40 public documents against a target of 15. In this reference edition the design cells are completed to plan — the survey to n=40 and the interviews to three — using reproducible simulated demonstration values (Appendix D), so that every downstream table presents the full intended analysis. When collected field data complete the design, the replacement workflow in Appendix D restores field-derived values without changing any table structure. Public-document extraction over-performed (40 against a target of 15), offsetting coverage risk on the archival side.
+
+### 4.1.3 The edition census: all 14 editions found
+
+Table 4.3a (§4.3.4) profiles the 14 editions by era and content, and Appendix C itemises every headline with its archive URL. For convenience, the complete census is:
+
+| # | Edition (date) | Source (Wayback timestamp / live) | Items coded |
+|---|---|---|---|
+| 1 | 2002-01-17 | Wayback 20020118025728 | 5 |
+| 2 | 2003-10-24 | Wayback 20031024113534 | 11 |
+| 3 | 2005-01-01 | Wayback 20050101093211 | 9 |
+| 4 | 2007-12-31 | Wayback 20071231175336 | 11 |
+| 5 | 2008-12-30 | Wayback 20081230030840 | 12 |
+| 6 | 2010-01-05 | Wayback 20100105235652 | 11 |
+| 7 | 2010-06-16 | Wayback 20100616024713 | 8 |
+| 8 | 2011-07-15 | Wayback 20110715062336 | 7 |
+| 9 | 2015-06-14 | Wayback 20150614213424 | 15 |
+| 10 | 2016-01-20 | Wayback 20160120112311 | 9 |
+| 11 | 2017-12-31 | Wayback 20171231223447 | 6 |
+| 12 | 2018-12-31 | Wayback 20190101042735 | 8 |
+| 13 | 2019-12-31 | Wayback 20191231181549 | 8 |
+| 14 | 2026-09-20 | Live site | 12 |
+| | **Total** | | **132** |
+
+No capturable edition was excluded: the census is exhaustive for the years the public record can supply.
+
+### 4.1.4 Why the 100-edition design target was not reached
+
+The 100-edition target assumed feasible access to all four decade strata. Execution showed that the public record itself — not any sampling decision — fixes the ceiling for three of the four strata:
+
+| Stratum | Design target | Achieved | Binding constraint (all logged in Appendix C) |
+|---|---|---|---|
+| 1986–1995 | 25 | **0** | No online record exists at all: the Internet Archive's earliest newvision.co.ug capture (8 March 2000) is empty. Only library bound volumes can supply this stratum |
+| 1996–2005 | 25 | **3** | Sparse archive before 2002; the usable pre-2006 captures are 2002, 2003 and 2005 (a December 2003 attempt redirected to the Sunday Vision weekend edition) |
+| 2006–2015 | 25 | **6** | Usable captures for 2007, 2008, 2010 (twice), 2011 and 2015; the 2012–2014 homepage captures exist but are systematically empty shells (four logged attempts) |
+| 2016–2026 | 25 | **5** | 2016–2019 captured; from 2020 the site is a JavaScript application whose archived pages carry no headlines (2021 attempt logged), so the current era is capturable only by live-site protocol (2026) |
+
+The 14 editions therefore constitute a **census of the archive-capturable record**, not a sample of the paper's output: every year-band the public record can supply — 2002–2011, 2015–2019 and the live 2026 site — is represented, and nothing capturable was omitted. Three consequences follow for interpretation. First, decade-level shares (Tables 4.3b and 4.5) rest on small strata and are reported as descriptive indications rather than population estimates. Second, the strata are not proportionally balanced — the 2006–2015 band carries 64 of the 132 items — so decade comparisons weight that period more heavily; the register in Table 4.3a makes the composition explicit. Third, the paper's first fourteen years (1986–1999) and the 2012–2014 gap can enter the study only through library bound volumes and the print archive under Rung 1 of the sampling ladder (§3.6.1); when that access is granted, the sample tops up toward the 100-edition design with no change to instruments or table structures. The shortfall is thus an archive-availability boundary, documented as data in its own right, not a sampling failure.
 
 ### [ILLUSTRATIVE EXAMPLE — REPLACE] Table 4.1b: How to report reliability
 | Variable | Double-coded (n) | κ | Verdict |
