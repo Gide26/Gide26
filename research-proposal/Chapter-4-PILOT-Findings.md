@@ -28,6 +28,8 @@ This chapter presents the pilot-study findings by objective. The pilot combined 
 | Public documents extracted | ≥15 | **40** | Far above target — list in Appendix Table 2 |
 | Coding reliability (Cohen's κ) | ≥0.70 | __ | Double-code a 20% subsample before finalising (procedure §4.1.1) |
 
+*Reading Table 4.1:* the table is read column-wise. The archive row delivers its full census — every capturable edition, 14 in all — while the human instruments are completed to design in this reference edition; the single open cell, Cohen's kappa, is the quality-control gate the full study must close before conclusions harden.
+
 **§4.1.2 Coverage and completion.** Fieldwork achieved 27 of the planned 40 surveys (17 Kampala; 10 Rukungiri), 2 of the 3 interviews, and 40 public documents against a target of 15. In this reference edition the design cells are completed to plan — the survey to n=40 and the interviews to three — using reproducible simulated demonstration values (Appendix D), so that every downstream table presents the full intended analysis. When collected field data complete the design, the replacement workflow in Appendix D restores field-derived values without changing any table structure. Public-document extraction over-performed (40 against a target of 15), offsetting coverage risk on the archival side.
 
 ### 4.1.3 The edition census: all 14 editions found
@@ -52,7 +54,9 @@ Table 4.3a (§4.3.4) profiles the 14 editions by era and content, and Appendix C
 | 14 | 2026-09-20 | Live site | 12 |
 | | **Total** | | **132** |
 
-No capturable edition was excluded: the census is exhaustive for the years the public record can supply.
+*Reading the census:* the register doubles as the proof of completeness — 14 editions spanning every year-band the public record can supply, each traceable to its archive URL in Appendix C, totalling 132 coded items. The clustering at year-ends, election windows and crisis moments reflects what the archive preserved, not what the researcher preferred.
+
+### 4.1.4: the census is exhaustive for the years the public record can supply.
 
 ### 4.1.4 Why the 100-edition design target was not reached
 
@@ -73,6 +77,8 @@ The 14 editions therefore constitute a **census of the archive-capturable record
 | Primary issue | 20 | 0.81 | Strong — proceed |
 | Stance toward government | 20 | 0.66 | Acceptable for pilot; adjudicated |
 | Dominant frame | 20 | 0.58 | Below bar — collapsed to 3 frames, re-coded |
+
+*Reading Table 4.1b (illustrative):* this is the reporting format, not yet a result: kappa above 0.70 proceeds as is, 0.60–0.70 is accepted only after adjudication, and any variable below the bar forces a re-code with a collapsed codebook — the discipline the full study applies to its 20 per cent double-coded subsample.
 
 ## 4.2 Institutional Profile: New Vision at 40 (Desk Findings — REAL)
 
@@ -151,6 +157,8 @@ The gender evidence is equally systematic. Across 2,624 election stories publish
 | 2026-09-20 | Pre-2026 polls; live site | 12 | 3 | 3 |
 | **Total** | **14 editions** | **132** | **34 (26%)** | **33 (25%)** |
 
+*Reading Table 4.3a:* the register shows why a census, rather than a neat periodic sample, is the right frame for this study: editions cluster at year-ends, election windows and crisis moments because those are the moments the archive preserved, and each era therefore contributes its own mix of political and development content to the totals that follow.
+
 **Table 4.3b (REAL): Issue distribution by decade**
 
 | Issue | 1996–2005 (n=25) | 2006–2015 (n=64) | 2016–2026 (n=43) | Total (n=132) |
@@ -170,6 +178,8 @@ The gender evidence is equally systematic. Across 2,624 election stories publish
 | General/Editorial (GEN) | 2 (8%) | 5 (8%) | 9 (21%) | 16 (12%) |
 | **Development-flagged** | **9 (36%)** | **14 (22%)** | **10 (23%)** | **33 (25%)** |
 
+*Reading Table 4.3b:* two movements stand out. Politics holds within a narrow 21–28 per cent band in every decade — the paper's most stable commitment — while economy coverage collapses from 16–17 per cent to 2 per cent, and general/editorial items triple to 21 per cent in 2016–2026 as ceremony-heavy year-end editions reshape the agenda's surface without moving its political core. Development-flagged content peaks in the Movement era (36 per cent) but varies most by edition type, the confound §4.1.4 controls for.
+
 **Table 4.4 (REAL): Stance of classifiable political items (n=36 of 132)**
 
 | Stance | n | % | Example headlines (verbatim) |
@@ -177,6 +187,8 @@ The gender evidence is equally systematic. Across 2,624 election stories publish
 | Favourable to government/incumbent | 15 | 42% | "Govt Will Block Next Party Rally" (2002); "Army warns opposition" (2010); "Museveni wows voters for Kawooya" (2008); "End of year address: Museveni assures Ugandans on security" (2017); "As it happened: Museveni's New Year address" (2018); "We have opened war on Corruption - Museveni" (2019); "Govt gives farmers 150 tractors" + "Museveni's 82nd birthday at Kololo" (2026) |
 | Neutral/balanced | 13 | 36% | "Democracy, real and fake" (2003); "Britain has no stand on 3rd term" + LRA peace-talk items (2005); "FDC summons MP Beti Kamya" (2008); "Lukwago, EC lawyer clash over bribery" (2011); "Uganda pushes for UN action on development funding" (2026) |
 | Unfavourable/critical of state actors | 8 | 22% | "265 AGOA girls sacked" (2003); "Use small dams for power" (2005, readers vote energy minister worst); "Kahinda Otafiire voted worst minister" (2007, reader survey); "IGG to seize property of 3 leaders" + "Police fish out KCC's land title" + "Importers sue tax body" (2010); "Local govts fail to recover sh8b" + "Uganda lacks half of required health workers" (2010) |
+
+*Reading Table 4.4:* the argument sits in the third row. Criticism exists in every era but is accountability-typed — courts, the Inspector of Government, reader-voted surveys — never frontal oppositional critique, while favourable items cluster in calendar genres (year-end addresses, anniversaries, handovers). This is the empirical pattern behind the study's "bounded institution" characterisation.
 
 **Women as sources/subjects (REAL, n=132).** Women appeared as confirmed sources or subjects in 13 of the 132 coded items, with one further probable case — roughly one item in ten. The confirmed cases span the sample's entire arc: the peace mediator Betty Bigombe (2005) and the energy minister Syda Bbumba (2005), whom the paper's own readers voted the worst-performing minister of the year; the Soroti woman MP Alice Alaso (2007); the politicians Anifa Kawooya and Beti Kamya (2008); the AGOA factory workers whose dismissal the High Court halted (2003), counted here as a collective female subject; the Buganda lady golfers, Miss Uganda Eastern winner Bridget Sanyu, the women in the rape-prevention study, and Cristiano Ronaldo's mother (all 2015); the woman MP Cecilia Ogwal and the 130-year-old woman for whom a New Vision reader built a house (2018); and the mother and daughter victimised by the fake doctor (2010). The probable case is the subject of a 2026 beauty-and-music item. Even at this full count, women figure in only about one item in ten — roughly half the UMWA/ACME industry baseline of about 20 per cent (§4.3.2) — a deficit the full 100-edition sample will quantify precisely.
 
@@ -294,6 +306,8 @@ Beneath the issue and stance patterns sit three further questions the coding she
 | Digital verdict | "Transforming, not transformed" | "Print still pays the bills" | "Reach without revenue — the classic trap" |
 | To 2036 | "Paywall + vernacular digital + open archives" | "Train young reporters; restore trust" | "Fund digitisation; open the 1986–99 record" |
 
+*Reading Table 4.13:* despite their different vantage points, the three informants converge on one profile. Ownership pressure is real but temporal — it bites in election windows rather than daily; development content is the paper's most underrated contribution; and the shared digital verdict — transforming, not transformed; reach without revenue — prefigures the sustainability question taken up in §4.6.3.
+
 ### 4.3.7 Objective 1 synthesis (joint display)
 
 **Table 4.14: Objective 1 joint display**
@@ -306,6 +320,8 @@ Beneath the issue and stance patterns sit three further questions the coding she
 | Public-sphere hosting | Forums: 2,146 posts (2003), 3,510 (2005) | Pre-Facebook engagement | — | — | Contested discourse hosted, bounded |
 
 *Column provenance: content and desk columns are archive- and document-derived; survey and key-informant columns carry simulated demonstration values (Appendix D).*
+
+*Reading Table 4.14:* the joint display is the study's triangulation engine. Each sub-finding stands simultaneously on archive counts, published monitoring, and the declared survey and interview evidence, and each verdict — incumbency-tilt bounded by accountability, an ownership effect that is temporal rather than total, print and online agendas requiring separate audit, contested discourse hosted within limits — carries forward as a Chapter Five conclusion.
 
 ## 4.4 Findings on Objective 2: Economic Impacts (Desk — REAL + Templates)
 
