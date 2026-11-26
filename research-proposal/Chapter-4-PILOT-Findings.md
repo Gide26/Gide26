@@ -3,7 +3,7 @@
 **Research Topic: Assessing the Impacts of New Vision Over the Past 40 Years of Its Existence (1986–2026)**
 
 > **Status:** PILOT DRAFT — a mix of (a) **REAL desk findings already compiled from public sources** ( §§4.2–4.6 desk subsections, past tense, fully sourced) and (b) **EMPTY templates awaiting your 100-edition coding, 40 questionnaires, and 3 interviews**.  
-> Anything labelled **[YOUR DATA — PENDING]** must be filled after fieldwork. Anything labelled **[ILLUSTRATIVE EXAMPLE — REPLACE]** is a formatting example with invented numbers: **never submit it as real.**  
+> **Reference-edition note:** the archive-derived results in this chapter are real and URL-traceable; the survey, interview, actor-share and frame-share values are reproducible simulated demonstration values (Appendix D) completing the intended design. The §4.1.1 reliability table is retained as the reporting format pending the full study's double-coding exercise.  
 > Percentages from small samples must always be shown **beside raw counts**.
 
 ---
