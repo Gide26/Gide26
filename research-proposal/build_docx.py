@@ -4,6 +4,7 @@ import re
 from docx import Document
 from docx.shared import Pt, RGBColor
 from docx.enum.text import WD_ALIGN_PARAGRAPH
+from docx.shared import Inches
 
 PARTS = [
     ("TITLE", None),
@@ -95,6 +96,16 @@ def process_md(path, override_title=None):
             buf.append(ln); i += 1; continue
         flush_table()
         if not s:
+            i += 1; continue
+        m_img = re.match(r"^!\[([^\]]*)\]\(([^)]+)\)\s*$", s)
+        if m_img:
+            import os
+            p_img = m_img.group(2).strip()
+            if os.path.exists(p_img):
+                p = doc.add_paragraph(); p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+                p.add_run().add_picture(p_img, width=Inches(6.3))
+                cap = doc.add_paragraph(); cap.alignment = WD_ALIGN_PARAGRAPH.CENTER
+                r = cap.add_run(m_img.group(1)); r.italic = True; r.font.size = Pt(10)
             i += 1; continue
         if s.startswith("```"):
             i += 1

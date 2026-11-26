@@ -107,31 +107,7 @@ The study covers the period **March 1986 – March 2026 (40 years)**, divided fo
 
 The study is guided by the following conceptual framework, which operationalises the five theories in Chapter Two [Ch.2 §2.2]:
 
-```
-INDEPENDENT VARIABLE                    DEPENDENT VARIABLE
-New Vision as Institution:              Impacts (1986–2026):
-- Editorial content & agenda-setting    1. POLITICAL: governance quality,
-  (what issues, whose voices,             electoral knowledge/participation,
-  what frames)                            discourse diversity
-- Business & ownership model            2. ECONOMIC: employment, advertising
-  (state-majority, USE-listed,             market, printing sector, talent
-  advertising-dependent)                   pipeline
-- Outreach & language strategy          3. SOCIAL/DEVELOPMENT: health
-  (multilingual titles, regional           knowledge/behaviour, education/
-   distribution, expos, CSR)               literacy, national unity
-- Digital adaptation                    4. DIGITAL/SUSTAINABILITY: online
-  (website, e-paper, apps,                 reach, engagement, digital revenue,
-  social media)                            future viability
-
-              MODERATING / INTERVENING VARIABLES
-              - Political & regulatory environment (press freedom,
-                media laws, electoral cycles)
-              - Economic environment (GDP, advertising spend, competition)
-              - Technological environment (literacy, electrification,
-                internet/smartphone penetration)
-              - Audience agency (Uses & Gratifications: selective
-                exposure, interpretation, alternative sources)
-```
+![Figure 1.1: Conceptual framework showing the relationship between New Vision as an institution (independent variable) and its 40-year impacts (dependent variable), with moderating/intervening variables](Conceptual-Framework.png)
 
 **Narrative:** New Vision's institutional inputs (content, business model, outreach, digital strategy) produce political, economic, social, and digital impacts over 40 years. These relationships are moderated by Uganda's political, economic, and technological environments and by active audience interpretation. Political Economy theory explains the ownership→content link; Agenda-Setting and Framing explain the content→public-discourse link; Development Media Theory provides evaluative criteria for development contributions; Uses and Gratifications explains audience mediation of all impacts.
 

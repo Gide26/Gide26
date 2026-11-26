@@ -151,9 +151,13 @@ The gender evidence is equally systematic. Across 2,624 election stories publish
 
 #### Tables 4.5–4.7 and Figures 4.1–4.2 (pilot versions inserted)
 
-**Figure 4.1 (REAL):** clustered bar chart of issue shares by decade — file `Figure-4.1-Issue-Shares-REAL.png`. Politics+elections is stable at 23–28% across all three decades; economy+agriculture falls from 24% to 5% (edition-mix effect: ceremony-heavy recent editions); general/editorial rises to 21% (year-end review editions). Insert the PNG here.
+![Figure 4.1: Issue shares by decade — REAL pilot data (14 editions, n=132 coded items)](Figure-4.1-Issue-Shares-REAL.png)
 
-**Figure 4.2 (REAL):** stance trend by decade — file `Figure-4.2-Stance-Trend-REAL.png`. The archive-visible trajectory is **non-linear**: neutral-dominated in 1996–2005 (67%), an accountability peak in 2006–2015 (UNF 33% — the IGG/AGOA/reader-survey era), then 91% favourable in 2016–2026 with **zero critical items coded**. ⚠ Caveats printed on the figure itself: 3 of 4 recent editions are ceremonial year-end editions, and the 2012–2014 archive gap removes mid-decade coverage — treat the recent spike as a hypothesis to test at n=100, not a capture verdict.
+**Reading Figure 4.1 (REAL):** politics+elections is stable at 23–28% across all three decades; economy+agriculture falls from 24% to 5% (edition-mix effect: ceremony-heavy recent editions); general/editorial rises to 21% (year-end review editions).
+
+![Figure 4.2: Stance toward state actors by decade — REAL pilot data (n=36 classifiable political items)](Figure-4.2-Stance-Trend-REAL.png)
+
+**Reading Figure 4.2 (REAL):** the archive-visible trajectory is **non-linear**: neutral-dominated in 1996–2005 (67%), an accountability peak in 2006–2015 (UNF 33% — the IGG/AGOA/reader-survey era), then 91% favourable in 2016–2026 with **zero critical items coded**. ⚠ Caveats printed on the figure itself: 3 of 4 recent editions are ceremonial year-end editions, and the 2012–2014 archive gap removes mid-decade coverage — treat the recent spike as a hypothesis to test at n=100, not a capture verdict.
 
 **Table 4.5 (REAL denominators; ⛔ SIMULATED actor shares): Actor presence by decade (share of political items naming each actor; multiple actors possible)**
 
