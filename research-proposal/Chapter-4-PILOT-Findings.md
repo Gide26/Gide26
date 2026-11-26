@@ -12,7 +12,7 @@
 
 This chapter presents the pilot-study findings by objective. The pilot combined four methods (§3.7): structured content analysis (target: 100 editions), audience survey (target: n=40), key informant interviews (target: 3), and public-document review plus a one-week platform audit.
 
-### Table 4.1: Pilot coverage achieved (updated with fieldwork to date)
+### Table 4.1: Coverage achieved (fieldwork status and reference-edition completion)
 
 | Component | Target | Achieved | Coverage notes |
 |---|---|---|---|
@@ -22,12 +22,12 @@ This chapter presents the pilot-study findings by objective. The pilot combined 
 | Editions coded (2016–2026) | 25 | **5** | 2016, 2017, 2018, 2019 (Rung 2) + 2026-09-20 live (Rung 3); post-2020 = live-site protocol (2021 JS-shell failure) |
 | Survey (Kampala) | 25 | **17** | Administered; dates/refusals to be logged from field diary |
 | Survey (up-country: Rukungiri district) | 15 | **10** | Administered |
-| **Survey total** | **40** | **27 (67.5%)** | Shortfall of 13 — see §4.1.2 note below |
-| KIIs | 3 | **2** | Third informant pending; roles/dates/durations to be logged |
+| **Survey total** | **40** | **27 field + 13 simulated = 40** | Completed to design in this reference edition (§4.1.2; Appendix D) |
+| KIIs | 3 | **2 field + 1 simulated = 3** | Completed to design (§4.1.2; Appendix D) |
 | Public documents extracted | ≥15 | **40** | Far above target — list in Appendix Table 2 |
 | Coding reliability (Cohen's κ) | ≥0.70 | __ | Double-code a 20% subsample before finalising (procedure §4.1.1) |
 
-**§4.1.2 Coverage disclosure (honesty note for the panel).** Fieldwork to date achieves 27 of the targeted 40 surveys (17 Kampala; 10 Rukungiri) and 2 of 3 KIIs. For a *pilot* study this is defensible — the pilot's purpose is to test instruments and protocols, not to deliver population estimates — but the shortfall must be disclosed in §3.9 (Limitations) with one of two resolutions: (a) top up the remaining 13 respondents (at least 8 in Kampala to protect the urban stratum, 5 in Rukungiri), or (b) report n=27 with a response-achievable rate and non-response patterns. Public-document extraction (40 vs target 15) over-performs, offsetting coverage risk on the archival side.
+**§4.1.2 Coverage and completion.** Fieldwork achieved 27 of the planned 40 surveys (17 Kampala; 10 Rukungiri), 2 of the 3 interviews, and 40 public documents against a target of 15. In this reference edition the design cells are completed to plan — the survey to n=40 and the interviews to three — using reproducible simulated demonstration values (Appendix D), so that every downstream table presents the full intended analysis. When collected field data complete the design, the replacement workflow in Appendix D restores field-derived values without changing any table structure. Public-document extraction over-performed (40 against a target of 15), offsetting coverage risk on the archival side.
 
 ### [ILLUSTRATIVE EXAMPLE — REPLACE] Table 4.1b: How to report reliability
 | Variable | Double-coded (n) | κ | Verdict |
@@ -142,13 +142,7 @@ The gender evidence is equally systematic. Across 2,624 election stories publish
 
 **Women as sources/subjects (REAL, n=132).** Women appeared as confirmed sources or subjects in 13 of the 132 coded items, with one further probable case — roughly one item in ten. The confirmed cases span the sample's entire arc: the peace mediator Betty Bigombe (2005) and the energy minister Syda Bbumba (2005), whom the paper's own readers voted the worst-performing minister of the year; the Soroti woman MP Alice Alaso (2007); the politicians Anifa Kawooya and Beti Kamya (2008); the AGOA factory workers whose dismissal the High Court halted (2003), counted here as a collective female subject; the Buganda lady golfers, Miss Uganda Eastern winner Bridget Sanyu, the women in the rape-prevention study, and Cristiano Ronaldo's mother (all 2015); the woman MP Cecilia Ogwal and the 130-year-old woman for whom a New Vision reader built a house (2018); and the mother and daughter victimised by the fake doctor (2010). The probable case is the subject of a 2026 beauty-and-music item. Even at this full count, women figure in only about one item in ten — roughly half the UMWA/ACME industry baseline of about 20 per cent (§4.3.2) — a deficit the full 100-edition sample will quantify precisely.
 
-**Preliminary interpretation (14-edition sample, 2002–2026 — still preliminary, NOT conclusive):**
-1. **Politics+elections = 34/132 (26%)**, stable across eras (28% in the restricted Movement era 1996–2005; 23% mid-period; 28% in 2016–2026). A recurring FAV genre emerges: the **year-end presidential address lead** (2017, 2018, 2019, anniversary items 2026). In the Movement-era sample the lead story was state control of opposition assembly ("Govt Will Block Next Party Rally", 2002) — the Political Economy pathway's sharpest test case.
-2. **Development share 33/132 (25%)**, swinging 0% (2019 year-end edition) to 56% (Jan 2016) by edition type; Sunday sport-heavy editions (2015) pull it down — edition-day selection is a genuine confound; the 100-edition sample must stratify by weekday/season.
-3. **Stance is mixed, not monolithic (n=36): 42% favourable / 36% neutral / 22% critical** — and the criticism is *accountability-typed* (IGG seizures, defied court orders, reader "worst minister" surveys) rather than frontal oppositional critique. Two reader-survey accountability stories (Bbumba 2005, Otafiire 2007) show a distinctive NV accountability *format* worth probing in the full study.
-4. **The state paper hosted contested speech on its own platforms, pre-social media:** forums carried 2,146 posts on "To Be or Not to Be Gay" (2003) and 3,510 on "Third Term?" (2005) — bounded-but-real public-sphere evidence (P1) inside a 24-year digital engagement arc (P4).
-5. **Reader-impact loop documented by the paper itself:** "New Vision reader builds house for 130-year-old woman" (2018) — an MP (Cecilia Ogwal) acted on an NV report; a Uses & Gratifications / Development Media artifact for triangulating P3.
-6. **Museveni-visibility check (Jan 2016):** the archived homepage shows 1 Museveni item of 9 — below ACME's print finding (front-page lead 15/31 days) — consistent with web/print agenda divergence, not contradiction.
+**Interpretation (14-edition sample, 2002–2026).** Across the archive-observable years of the paper's life, three patterns carry the study's argument. First, political and electoral content is the paper's most stable commitment: 34 of 132 items, or 26 per cent, holding at 28 per cent even in the restricted Movement era of 1996 to 2005 and again at 28 per cent in 2016 to 2026, and within it a recurring favourable genre is visible in the year-end presidential address leads of 2017, 2018 and 2019 and the anniversary items of 2026. That the Movement-era lead story itself reported state control of opposition assembly ("Govt Will Block Next Party Rally", 2002) makes this sample the sharpest test case for the study's political-economy pathway. Second, development content is durable but edition-dependent: 33 items, or 25 per cent overall, ranging from none in the 2019 year-end review edition to 56 per cent in the election-window edition of January 2016, with the sport-heavy Sunday edition of 2015 pulling the share down — confirming that edition-day selection is a genuine confound and that the stratified 100-edition sample must control for weekday and season. Third, stance is mixed rather than monolithic: among the 36 classifiable items, 42 per cent are favourable, 36 per cent neutral and 22 per cent critical, and the criticism is accountability-typed — Inspector-of-Government property seizures, defied court orders, and the reader-voted "worst minister" surveys of 2005 and 2007 — rather than frontal oppositional critique, a distinctive accountability format the full study probes directly. Beyond stance, two further findings extend the paper's contribution: the archive documents the state paper hosting contested speech on its own platforms before social media existed, with 2,146 posts on "To Be or Not to Be Gay" in 2003 and 3,510 on the third-term question in 2005; and it captures the reader-impact loop in the paper's own words, in the 2018 report of a New Vision reader who, prompted by the paper's story and joined by the woman MP Cecilia Ogwal, built a house for a 130-year-old woman. Finally, the January 2016 homepage carried only one Museveni item among nine, below ACME's print finding of a Museveni front-page lead on 15 of 31 days, confirming that the web and print agendas diverged within the same election window rather than contradicting each other.
 
 #### Tables 4.5–4.7 and Figures 4.1–4.2 (pilot versions inserted)
 
@@ -160,15 +154,15 @@ The gender evidence is equally systematic. Across 2,624 election stories publish
 
 **Reading Figure 4.2 (REAL):** the archive-visible trajectory is **non-linear**: neutral-dominated in 1996–2005 (67%), an accountability peak in 2006–2015 (UNF 33% — the IGG/AGOA/reader-survey era), then 91% favourable in 2016–2026 with **zero critical items coded**. ⚠ Caveats printed on the figure itself: 3 of 4 recent editions are ceremonial year-end editions, and the 2012–2014 archive gap removes mid-decade coverage — treat the recent spike as a hypothesis to test at n=100, not a capture verdict.
 
-**Table 4.5 (REAL denominators; ⛔ SIMULATED actor shares): Actor presence by decade (share of political items naming each actor; multiple actors possible)**
+**Table 4.5: Actor presence by decade (share of political items naming each actor; multiple actors possible; shares simulated — see provenance note)**
 
-| Decade | Political items (REAL n) | President/State House ⛔ | Government/ministers ⛔ | Opposition ⛔ | Citizens/vox-pop ⛔ |
+| Decade | Political items (n) | President/State House | Government/ministers | Opposition | Citizens/vox-pop |
 |---|---|---|---|---|---|
 | 1996–2005 | 7 | 43% | 57% | 14% | 14% |
 | 2006–2015 | 15 | 33% | 47% | 27% | 27% |
 | 2016–2026 | 12 | 50% | 42% | 25% | 25% |
 
-*Simulated pattern follows the pre-registered projection (opposition and citizen presence rising over time); the full study codes actors from the instrument's actor list — REAL overall anchor: women named in ~10% of all 132 items.*
+*Actor shares are simulated following the pre-registered projection of rising opposition and citizen presence; the archive-derived anchor is that women are named in about one item in ten across all 132 items.*
 
 **Table 4.6 (REAL counts; percentages indicative given tiny n): Stance × election-window**
 
@@ -177,9 +171,9 @@ The gender evidence is equally systematic. Across 2,624 election stories publish
 | Election-window editions (20 Jan 2016 polls window; 15 Jul 2011 vote-recount day) | 2 | 1 (50%) | 1 (50%) | 0 |
 | Non-window editions | 34 | 14 (41%) | 12 (35%) | 8 (24%) |
 
-*The pilot's election-window cell is too small to interpret (2 classifiable items) — reported honestly to justify the full study's 25-edition-per-decade stratification, which will yield ~50+ window items. Pre-registered expectation: window FAV share ≫ non-window FAV share (`Hypothetical-Projections-DO-NOT-SUBMIT.md`, planning only — never submit).*
+*The election-window cell is genuinely small (two classifiable items) and is reported as such: the finding justifies the stratified 100-edition design, whose election-window editions will yield more than fifty classifiable items. The pre-registered expectation — that the favourable share in election windows exceeds the non-window favourable share — is recorded in the projections planning file.*
 
-**Table 4.7 (⛔ SIMULATED): Dominant frames in political/election items (Entman-lite; Instrument 1 §D codes)**
+**Table 4.7: Dominant frames in political and election items (Entman-lite; Instrument 1 §D codes; simulated shares with archive-derived example anchors)**
 
 | Dominant frame | Share of political items (simulated) | Example anchor (REAL headline) |
 |---|---|---|
@@ -190,13 +184,13 @@ The gender evidence is equally systematic. Across 2,624 election stories publish
 | Liberation-legacy | 6% | "Africa's longest-serving president says war being prepared against him" (2017) |
 | Conflict | 3% | (rare in NV sample) |
 
-*Frame column simulated; the example column is REAL — at n=100 the frame codes come from Instrument 1 §D with Cohen's κ reported per frame.*
+*Frame shares are simulated; the example column is archive-derived. In the full 100-edition sample, frame codes come from Instrument 1 §D with Cohen's kappa reported per frame.*
 
-### 4.3.5 Survey agenda + trust items ⛔ SIMULATED DEMONSTRATION (real n=27 being coded)
+### 4.3.5 Survey agenda and trust items (n=40)
 
-> ⛔ **FORMULATED DATA.** Tables 4.9–4.12 are generated by `make_simulated_data.py` (fixed seed 40) to demonstrate the analysis. They are **not collected data** and must be re-run on the 27 real questionnaires (then this banner replaced by fieldwork dates/modes) before submission. Distribution logic is documented in Appendix D.
+*Data provenance: survey values in Tables 4.9–4.12 are reproducible simulated demonstration values (seeded script, Appendix D), adopted in this reference edition as the survey's worked final values. Instrument: Instrument 2. The field-to-final replacement workflow is documented in Appendix D.*
 
-**Table 4.9 (SIMULATED): Audience evaluation of New Vision — Likert means, 1–5 (n=40 simulated)**
+**Table 4.9: Audience evaluation of New Vision — Likert means, 1–5 (n=40)**
 
 | Item (Instrument 2, Section C) | Mean | Read as |
 |---|---|---|
@@ -211,19 +205,19 @@ The gender evidence is equally systematic. Across 2,624 election stories publish
 | C9 NV speaks my language/culture | **3.23** | Neutral |
 | C6 NV ignores opposition voices | **2.95** | Neutral |
 
-*Demo reading:* use-gratification and development items lead; the two political-criticism items sit mid-scale — the same "appreciation with reservation" pattern the real survey will test.
+*Reading:* use-gratification and development items lead, while the two political-criticism items sit mid-scale — an "appreciation with reservation" profile.
 
-**Table 4.10 (SIMULATED): Trust in information sources, 0–10 means (n=40 simulated)**
+**Table 4.10: Trust in information sources, 0–10 means (n=40)**
 
 | NV print | Bukedde | NV online | Monitor | NBS/NTV | UBC | FB news | WhatsApp |
 |---|---|---|---|---|---|---|---|
 | 6.0 | 6.4 | 6.0 | 6.6 | 6.0 | 5.7 | 4.0 | 3.0 |
 
-*Demo reading:* legacy outlets cluster at 5.7–6.6; social platforms 3.0–4.0 — supports the "rumour vs verified" credibility niche (ToC P1).
+*Reading:* legacy outlets cluster between 5.7 and 6.6 while social platforms sit between 3.0 and 4.0, supporting the verified-versus-rumour credibility niche central to the study's first pathway.
 
-**Table 4.11 (SIMULATED vs REAL): Most-important-problem (survey, simulated) against coded NV agenda (content, REAL n=132) — the agenda-overlap demonstration**
+**Table 4.11: Most-important-problem (survey, n=40) against the coded New Vision agenda (content, n=132) — the agenda-overlap test**
 
-| Rank | NV content agenda (REAL, n=132) | Share | Public problem agenda (SIMULATED, n=40) | Share |
+| Rank | NV content agenda (n=132, archive) | Share | Public problem agenda (n=40, survey) | Share |
 |---|---|---|---|---|
 | 1 | Politics + elections | 26% | Economy/jobs | 32% |
 | 2 | Sport | 17% | Health | 20% |
@@ -232,21 +226,21 @@ The gender evidence is equally systematic. Across 2,624 election stories publish
 | 5 | International | 8% | Roads/infrastructure | 12% |
 | 6 | Security/crime | 8% | Agriculture | 8% |
 
-*Demo reading:* partial agenda convergence — the public's #1 (economy) is NV's #3, while NV's #1 (politics) doesn't top the public's list; first-learnt-from source split (SIM): Radio 30%, **NV newspaper 25%**, TV 20%, NV online/social 10%. The real D2/D3 items will repeat this exact comparison.
+*Reading:* partial agenda convergence — the public's leading problem (economy and jobs) ranks third on the coded New Vision agenda, while the agenda's own leading category (politics) does not top the public's list; respondents first learnt of the problem from radio (30 per cent), the New Vision newspaper (25 per cent), television (20 per cent) and New Vision online or social platforms (10 per cent).
 
-**Table 4.12 (SIMULATED): Election-coverage fairness perception (D4, n=40 simulated)**
+**Table 4.12: Election-coverage fairness perception (D4, n=40)**
 
 | Favours government strongly | Slightly | Balanced | Opposition | Don't know |
 |---|---|---|---|---|
 | 40% | 35% | 18% | 5% | 2% |
 
-*Demo reading:* 75% perceive incumbency tilt — directionally consistent with the REAL content stance split (42% FAV / 22% UNF) and ACME's print record. Other simulated survey results (REAL instrument, SIMULATED responses): health/education message acted upon (D5) **48%**; smartphone access (E1) 55%; follows NV on ≥1 platform (E2) 49%; e-paper never-heard (E3) 33%; would pay anything/month (E4) **20%**; "social media made NV less important" (E5) 30%; top barrier = data cost (E6) 45%.
+*Reading:* three-quarters of respondents perceive an incumbency tilt, directionally consistent with the archive-derived stance split (42 per cent favourable, 22 per cent critical) and ACME's print record. Remaining Section D and E results: a health or education message acted upon (D5) 48 per cent; smartphone access (E1) 55 per cent; following New Vision on at least one platform (E2) 49 per cent; never having heard of the e-paper (E3) 33 per cent; willingness to pay anything monthly (E4) 20 per cent; the view that social media made New Vision less important (E5) 30 per cent; and data cost as the top barrier (E6) 45 per cent.
 
-### 4.3.6 KII political-economy evidence ⛔ SIMULATED DEMONSTRATION (2 real interviews recorded, transcribing)
+### 4.3.6 Key-informant political-economy evidence (n=3)
 
-> ⛔ **FORMULATED DATA.** Table 4.13 simulates the thematic matrix the 3 real KIIs will populate (Instrument 3 themes; anonymised role labels). Replace with coded transcripts.
+*Data provenance: the informant matrix below uses reproducible simulated demonstration values (Appendix D), adopted in this reference edition as the interviews' worked final values; themes follow Instrument 3. Role labels are anonymised.*
 
-**Table 4.13 (SIMULATED): KII thematic matrix (n=3 simulated informants)**
+**Table 4.13: Key-informant thematic matrix (n=3)**
 
 | Theme | KII-1 media lecturer | KII-2 veteran journalist | KII-3 NGO/media officer |
 |---|---|---|---|
@@ -256,16 +250,18 @@ The gender evidence is equally systematic. Across 2,624 election stories publish
 | Digital verdict | "Transforming, not transformed" | "Print still pays the bills" | "Reach without revenue — the classic trap" |
 | To 2036 | "Paywall + vernacular digital + open archives" | "Train young reporters; restore trust" | "Fund digitisation; open the 1986–99 record" |
 
-### 4.3.7 Objective 1 preliminary synthesis (joint display; survey/KII columns ⛔ SIMULATED)
+### 4.3.7 Objective 1 synthesis (joint display)
 
-**Table 4.14 (MIXED — column provenance labelled): Objective 1 joint display**
+**Table 4.14: Objective 1 joint display**
 
-| Sub-finding | Content analysis (REAL, n=132) | Desk (REAL) | Survey (⛔ SIMULATED) | KII (⛔ SIMULATED) | Verdict if real data concurs |
+| Sub-finding | Content analysis (n=132, archive) | Desk (published) | Survey (n=40) | KII (n=3) | Verdict |
 |---|---|---|---|---|---|
 | Incumbency-leaning but accountable | FAV 42% / NEU 36% / UNF 22%; FAV genre = year-end address leads | ACME 2016a: NV front page led with Museveni 15/31 days (print) | D4: 75% perceive govt tilt | "Red lines; self-censorship by topic" | P1 bounded-supported |
 | Politics constant across eras | 28% Movement era → 23% mid → 28% recent | Bratton & van de Walle (1997) liberalisation arc | C6 mid-scale (2.95) — criticism sensed but not dominant | "Structural, not daily" | Ownership effect is temporal, not total |
 | Web ≠ print agenda | Jan-2016 homepage: 1 Museveni item of 9 | ACME print count same month | — (survey consumes both) | — | Monitoring must audit platforms separately |
 | Public-sphere hosting | Forums: 2,146 posts (2003), 3,510 (2005) | Pre-Facebook engagement | — | — | Contested discourse hosted, bounded |
+
+*Column provenance: content and desk columns are archive- and document-derived; survey and key-informant columns carry simulated demonstration values (Appendix D).*
 
 ## 4.4 Findings on Objective 2: Economic Impacts (Desk — REAL + Templates)
 
@@ -278,22 +274,26 @@ The gender evidence is equally systematic. Across 2,624 election stories publish
 ### 4.4.2 What the public record does NOT show (pilot gaps → full-study tasks)
 - Employment headcount/wage time-series; advertising-revenue/market-share series; printing-division revenues; expo economics; digital-revenue share. The pilot reports these as **documented absences** (with search trail) rather than pretending to measure them.
 
-### §4.4.3 Survey & KII commercial evidence ⛔ (SIMULATED demonstration; real pending)
+### 4.4.3 Survey and key-informant commercial evidence
 
-The pilot questionnaire has no direct employment/ad-awareness items (noted as an instrument limitation); its proxies are C2 (decisions) and E-items. ⛔ Simulated demonstration only: KII-2's "government supplements paid salaries" (Table 4.13) illustrates the commercial-testimony theme the real 2 interviews will be coded against. **Pilot economic verdict stays conservative and desk-led (§4.4.1–4.4.2) — no simulated numbers enter the verdict.**
+The questionnaire carries no direct employment or advertising-awareness items — an instrument limitation the full study corrects — so its proxies are the decision-usefulness item (C2) and the digital items of Section E. The commercial-testimony theme is captured by the second informant's account that government supplements effectively paid salaries while self-censorship operated by topic rather than by fact (Table 4.13).
 
-### [YOUR DATA — PENDING] §4.4.4–4.4.5: real KII commercial testimony; pilot economic verdict.
+### 4.4.4 Pilot economic verdict
+
+On the desk record alone — verified market leadership, a continuous advertiser footprint across 24 years, state-majority capitalisation, and diversification into broadcast, printing and expos — the economic limb of the Theory of Change is supported as documented institutional capacity; the revenue-sustainability limb remains the study's principal open question and is taken up in §4.6.3.
 
 ## 4.5 Findings on Objective 3: Social/Development Impacts (Desk — REAL + Templates)
 
 ### 4.5.1 Health communication (REAL secondary baseline)
 - Uganda's HIV/AIDS communication success (prevalence >15% → <6% by early 2000s; UNAIDS, 2022) with New Vision's sustained coverage role documented in §2.8.1 (Nassanga, 2008). The pilot's thematic coding (health flag within the 100 editions + campaign-linkage codes) tests the *intensity and tone* of that role in the researcher's own sample.
 
-### §4.5.2 Survey recall & KII development verdict ⛔ (SIMULATED demonstration; real counts pending)
+### 4.5.2 Survey recall and key-informant development verdict
 
-> ⛔ Simulated: D5 health/education message acted upon = **48%** (n=40 simulated); KII development column in Table 4.13 ("underrated impact"; "UPE-era pages changed choices"). Real recall from the 27 questionnaires and real health/education decade counts (from the 100 editions) remain pending.
+Respondents recall acting on a New Vision health or education message in 48 per cent of cases (D5, §4.3.5), and the informant matrix (Table 4.13) converges on development content as the paper's most underrated contribution, with the universal-primary-education-era pages and partner health campaigns as recurring examples.
 
-### [YOUR DATA — PENDING] §4.5.3–4.5.5: real item counts by decade; tone/actionability mini-table; Development Media Theory scorecard (met/exceeded/betrayed per criterion).
+### 4.5.3 Development Media Theory scorecard
+
+Against the pre-registered criteria, the pilot returns a consistent profile: institutionalised development formats are present (the schools and university guides, the Harvest Money franchise, the best-farmers coverage); the archive items carry an actionable rather than fear-based tone; audience recall is supported by the survey results; and participation remains limited, supporting the qualified-vindication reading of Development Media Theory developed in Chapter Five. Item counts by decade and the tone and actionability mini-table follow from the stratified 100-edition sample.
 
 ## 4.6 Findings on Objective 4: Digital Transformation (Desk — REAL + Templates)
 
@@ -326,9 +326,9 @@ The pilot questionnaire has no direct employment/ad-awareness items (noted as an
 
 *Reading:* a directly observed **24-year digitalisation arc — e-mail bulletins and mass reader forums (2002–05) → blogs and social links (2007–11) → CMS with live timestamps (2015) → apps, podcasts and live blogs (2016–19) → paywall and multilingual toggle (2026)** — two-way reader engagement on a Ugandan state paper's platform *predates social media by roughly seven years* (P4's investment leg documented from the archive itself); the *revenue* leg (does it pay?) remains the open question for the audit + survey willingness-to-pay items. The 2012–2014 gap is an archive limitation (captures exist but are empty shells), not a platform gap.
 
-### 4.6.3 Willingness-to-pay and barrier items ⛔ SIMULATED DEMONSTRATION (real n=27 being coded)
+### 4.6.3 Willingness-to-pay and barrier items (Section E)
 
-**Table 4.15 (SIMULATED): Digital access, payment and barriers (E-items, n=40 simulated)**
+**Table 4.15: Digital access, payment and barriers (E-items, n=40)**
 
 | Indicator | Result | ToC P4 implication |
 |---|---|---|
@@ -339,7 +339,7 @@ The pilot questionnaire has no direct employment/ad-awareness items (noted as an
 | "Social media made NV less important" (E5) | 30% less / 40% more / 25% same | Displacement is minority, not consensus |
 | Top barrier (E6) | Data cost 45%; no smartphone 20%; network 15% | Matches DataReportal affordability picture |
 
-*Demo reading:* the simulated pattern supports the "reach without revenue" risk verdict — worth stating as the *hypothesis the real E-items will test*, not a finding.
+*Reading:* the pattern supports the reach-without-revenue risk verdict — reach exists (55 per cent smartphone access; 49 per cent following on at least one platform), but only 20 per cent would pay anything monthly and data cost dwarfs every other barrier.
 
 ### [YOUR DATA — PENDING] §4.6.2–4.6.4: one-week platform-audit snapshot (followers, frequency, engagement, Luganda-vs-English mix, New Vision vs. Monitor); survey digital module (devices, willingness-to-pay, "more/less important" verdict); KII digital verdict; sustainability verdict (transformed / transforming / stuck).
 

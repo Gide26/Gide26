@@ -19,7 +19,8 @@
 | `Chapter-3-Research-Methodology-PILOT.md` | **PILOT Chapter 3 (100/40/3, public sources, Wayback protocol)** | Draft for review |
 | `Chapter-4-PILOT-Findings.md` | **Real desk findings compiled + empty templates for your field data** | In progress |
 | `Chapter-4-Findings-Framework.md` | Full-study Chapter 4 shell (roadmap) | Framework |
-| `Chapter-5-Summary-Conclusions-DRAFT.md` | Shell for Chapter 5 | Framework |
+| `Chapter-5-Summary-Conclusions-DRAFT.md` | **Chapter Five — final conclusions (bounded-institution verdict; conclusive voice)** | Reference edition |
+| `Provenance-Note-REFERENCE-EDITION.md` | **Note on data provenance and the research pipeline (real vs simulated; replacement workflow)** | Reference edition |
 | `Pilot-Instruments-Print-Ready.md` | **4 print-ready instruments (coding sheet, questionnaire, KII guide, audit)** | Ready to pretest |
 | `Gathered-Editions-Log.md` | **Edition coverage log: 14 coded (2002–2026) + failures + runbook to 100** | 14/100 — real data |
 | `Dataset-NewVision-Editions-PILOT.csv` | **Structured coded dataset, one row per item (n=132), every row URL-traceable** | Main findings source — real |

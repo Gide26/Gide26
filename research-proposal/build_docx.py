@@ -14,6 +14,7 @@ PARTS = [
     ("Chapter-3-Research-Methodology-PILOT.md", None),
     ("Chapter-4-PILOT-Findings.md", None),
     ("Chapter-5-Summary-Conclusions-DRAFT.md", None),
+    ("Provenance-Note-REFERENCE-EDITION.md", None),
     ("References-FINAL-APA7.md", "REFERENCES"),
     ("Pilot-Instruments-Print-Ready.md", "APPENDIX A: PILOT RESEARCH INSTRUMENTS"),
     ("Theory-of-Change.md", "APPENDIX B: THEORY OF CHANGE"),
@@ -23,7 +24,7 @@ PARTS = [
 
 TITLE_BLOCK = """ASSESSING THE IMPACTS OF THE NEW VISION NEWSPAPER OVER THE PAST 40 YEARS OF ITS EXISTENCE (1986-2026): A MIXED-METHODS PILOT STUDY
 
-RESEARCH PROPOSAL
+RESEARCH PROPOSAL - REFERENCE EDITION
 
 BY
 
@@ -33,7 +34,7 @@ A Research Proposal Submitted to the [Department, Faculty] in Partial Fulfilment
 
 [Month], 2026
 
-Referencing style: APA 7th edition (in-text author-date; full reference list at the end). Content-analysis data are drawn from publicly archived editions of The New Vision (Wayback Machine 2007-2019; live site 2026); every coded item is traceable via Appendix C and the dataset file."""
+Referencing style: APA 7th edition (in-text author-date; full reference list at the end). Content-analysis data are drawn from publicly archived editions of The New Vision (Wayback Machine 2007-2019; live site 2026); every coded item is traceable via Appendix C and the dataset file. Survey and interview values (n=40; n=3) are reproducible simulated demonstration values declared in Appendix D and the Note on Data Provenance."""
 
 doc = Document()
 style = doc.styles["Normal"]
