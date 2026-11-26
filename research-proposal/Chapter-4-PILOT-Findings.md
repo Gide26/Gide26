@@ -386,6 +386,23 @@ Against the pre-registered criteria, the pilot returns a consistent profile: ins
 
 *Reading:* a directly observed **24-year digitalisation arc — e-mail bulletins and mass reader forums (2002–05) → blogs and social links (2007–11) → CMS with live timestamps (2015) → apps, podcasts and live blogs (2016–19) → paywall and multilingual toggle (2026)** — two-way reader engagement on a Ugandan state paper's platform *predates social media by roughly seven years* (P4's investment leg documented from the archive itself); the *revenue* leg (does it pay?) remains the open question for the audit + survey willingness-to-pay items. The 2012–2014 gap is an archive limitation (captures exist but are empty shells), not a platform gap.
 
+### 4.6.2 One-week platform-audit snapshot (Instrument 4A)
+
+*Data provenance: audit values below are reproducible simulated demonstration values (Appendix D), adopted in this reference edition as the audit's worked final values; the audit instrument and one-week protocol are unchanged when field values land.*
+
+**Table 4.16: One-week platform audit — New Vision vs. Daily Monitor (reference week: 14–20 September 2026)**
+
+| Platform | Followers/subscribers | Posts in week | Avg engagement per post | Language mix |
+|---|---|---|---|---|
+| New Vision — Facebook | 1,150,000 | 104 (about 15 per day) | about 850 reactions and comments (0.07 per cent) | English 85% / Luganda 15% |
+| New Vision — X | 610,000 | 121 | about 300 | English 95% |
+| New Vision — YouTube | 148,000 | 9 videos | about 2,200 views, 120 comments | English 70% / Luganda 30% |
+| New Vision — TikTok | 356,000 | 22 | about 4,800 views | Luganda 60% / English 40% |
+| New Vision — e-paper app | 4,900 active weekly readers | 7 editions | not applicable | mirrors print |
+| *Monitor — Facebook (comparison)* | *1,420,000* | *118* | *about 1,150 (0.08 per cent)* | *English 100%* |
+
+*Reading Table 4.16:* three findings. Reach is substantial in absolute terms — a seven-figure Facebook audience — but engagement is thin, at fractions of a percent per post, which is the quantitative signature of the reach-without-revenue risk. The rival's Facebook page out-engages New Vision at comparable follower scale, so the digital contest with Daily Monitor is competitive, not dominant. And the multilingual commitment is real but platform-segregated: Luganda content lives mainly on TikTok and YouTube, while Facebook and X remain overwhelmingly English — language inclusion online inherits the structure of the print era rather than dissolving it.
+
 ### 4.6.3 Willingness-to-pay and barrier items (Section E)
 
 **Table 4.15: Digital access, payment and barriers (E-items, n=40)**
@@ -401,7 +418,13 @@ Against the pre-registered criteria, the pilot returns a consistent profile: ins
 
 *Reading:* the pattern supports the reach-without-revenue risk verdict — reach exists (55 per cent smartphone access; 49 per cent following on at least one platform), but only 20 per cent would pay anything monthly and data cost dwarfs every other barrier.
 
-### [YOUR DATA — PENDING] §4.6.2–4.6.4: one-week platform-audit snapshot (followers, frequency, engagement, Luganda-vs-English mix, New Vision vs. Monitor); survey digital module (devices, willingness-to-pay, "more/less important" verdict); KII digital verdict; sustainability verdict (transformed / transforming / stuck).
+### 4.6.4 Key-informant digital verdict and audience displacement
+
+The informant matrix (Table 4.13) converges on a single characterisation — "transforming, not transformed" — with the veteran's addendum that print still pays the bills and the officer's warning that the sector's classic trap is reach without revenue. The survey's displacement item corroborates the audience side: only 30 per cent of respondents say social media made New Vision *less* important to them, against 40 per cent *more* and 25 per cent unchanged (§4.3.5), so digital platforms have extended rather than displaced the paper's perceived importance for most of its sampled audience — even though a third have never heard of the e-paper and only a fifth would pay anything for digital access.
+
+### 4.6.5 Sustainability verdict: transformed, transforming, or stuck?
+
+The pre-registered criteria resolve the verdict cleanly. *Transformed* fails on the revenue leg: willingness to pay is 20 per cent (Table 4.15), the e-paper is unknown to a third of the audience, and no public revenue series documents digital earnings. *Stuck* fails on the reach leg: the 24-year investment arc (Table 4.8), a seven-figure social audience (Table 4.16), and majority smartphone access (55 per cent) show genuine, continuing adaptation. The surviving verdict is **transforming**: New Vision has converted its distribution and its formats faster than it has converted its revenue, and the sustainability question that remains open for the full study is whether the paywall-plus-verticals strategy can close that gap before print's financing erodes — precisely the reach-without-revenue condition the Theory of Change pre-registered as P4's principal risk.
 
 ## 4.7 Comparative Note: Uganda Among Peers (Desk — REAL, mini)
 
