@@ -40,7 +40,7 @@ This study set out to assess the impacts of The New Vision newspaper across 40 y
 
 - A **24-year digitalisation arc** is directly observed from the archive: e-mail bulletins and bulletin boards (2002) → mass reader forums (2003–2005) → weblogs and social links (2007–2011) → a live-timestamp CMS (2015) → apps, podcasts, elections portal, live blogs (2016–2019) → Premium paywall, multilingual toggle and social distribution (2026) (Table 4.8).
 - **Two-way audience engagement predates social media in Uganda by roughly seven years** — the 2003–2005 forums were, in effect, the country's earliest large-scale news comment spaces on a state-owned paper's own platform (§4.6).
-- The demand environment remains the binding constraint: 28% internet penetration, 72% rural population, median age 16.9 (DataReportal, 2025), inside Uganda's worst recorded press-freedom band (143rd, "very serious"; RSF, 2025) (§4.3.3, §4.6.2).
+- The demand environment remains the binding constraint: 28% internet penetration, 72% rural population, median age 16.9 (DataReportal, 2025), inside a press-freedom climate that hit its worst band in 2025 (143rd, "very serious") before a partial 2026 rebound to 131st ("Difficult"), still below the 2019–2023 band (RSF, 2025, 2026) (§4.3.3, §4.6.2).
 - The open question is **revenue**: the investment leg of the digital pathway is documented; whether the paywall/verticals strategy pays, for a young mostly-offline audience, is what the audit and willingness-to-pay items must resolve (§4.6.3).
 - ⛔ (SIM) Simulated willingness-to-pay demonstration: only 20% would pay anything monthly; data cost is the top barrier (45%) — the "reach without revenue" risk quantified for demonstration (§4.6.3, Table 4.15).
 

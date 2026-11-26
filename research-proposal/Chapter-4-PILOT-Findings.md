@@ -85,8 +85,9 @@ The gender evidence is equally systematic. Across 2,624 election stories publish
 |---|---|---|---|
 | 2023 | **125th** | RSF, 2023 (via Ch.2 §2.3.2) | Lower-half global ranking |
 | 2025 | **143rd** — "very serious" category | RSF Africa 2025 page; DW, 6 May 2025 | RSF: ownership concentrated among groups close to power; journalists face "intimidation and violence on a nearly daily basis" (DW) |
+| 2026 | **131st** — score 41.98, "Difficult" category | RSF, 2026 | 12-place rebound from 2025, but still below every 2019–2023 position (125th–133rd at scores 46+) |
 
-**Pilot interpretation:** the 2023→2025 slide (125th→143rd) sharpens the study's problem statement (§1.2): New Vision's 40th year coincides with Uganda's worst recorded press-freedom band. The final thesis must add the RSF 2026 figure at write-up (check `rsf.org/en/ranking`).
+**Pilot interpretation:** the 2023→2025 slide (125th→143rd) sharpened the study's problem statement (§1.2), and the 2026 index adds nuance the thesis must carry: Uganda rebounded 12 places to **131st (score 41.98, "Difficult")** in 2026 (RSF, 2026) — yet still sits below every position held from 2019 through 2023 (125th–133rd at scores above 46), and the East African comparison still flatters only Kenya (106th) ahead of Uganda (Afrobarometer, 2026). New Vision's 40th anniversary year therefore coincides with a *partially recovered but structurally degraded* press-freedom environment: better than the 2025 trough, worse than the decade's earlier band. Citizen attitudes reinforce the stakes — 67% of Ugandans judge the media "somewhat" or "completely free," and 82% want constant media scrutiny of government mistakes and corruption (Afrobarometer, 2026).
 
 ### 4.3.4 Researcher's content results — 14 editions coded (REAL, n=132 items)
 
@@ -350,6 +351,6 @@ The pilot questionnaire has no direct employment/ad-awareness items (noted as an
 
 **What the pilot already establishes (desk + 3 coded editions, preliminary):** (1) New Vision's 40-year institutional exceptionalism is publicly verifiable; (2) two election cycles of independent monitoring support the pro-incumbent electoral-coverage expectation; (3) industry-wide gender-source deficits set the baseline the 100-edition sample must beat or match; (4) press-freedom context deteriorated into "very serious" in 2025; (5) the digital environment is young, rural, and still mostly offline — the hard constraint on digital sustainability; **(6) the researcher's own 14-edition archive sample (n=132 items, 2002–2026, every item URL-traceable) already shows the ToC-expected mixed pattern — politics/elections 26%, development-flagged 25% (0–56% by edition type), stance 42% favourable / 36% neutral / 22% accountability-critical, women ~10% — plus a directly observed 24-year digitalisation arc (2002 forums → 2026 paywall), pre-social-media reader forums, and a continuous advertiser footprint.** The full 100/40/3 will test whether these patterns hold under stratified sampling.
 
-**Priority desk tasks before defence:** [ ] verify first-issue date from library holdings; [ ] verify 53.3%/NVL via USE/CMA filings; [ ] retrieve original ABC Q4 2019 report; [ ] add RSF 2026 + DataReportal 2026 figures; [ ] verify June-2026 editorship report.
+**Priority desk tasks before defence:** [ ] verify first-issue date from library holdings; [ ] verify 53.3%/NVL via USE/CMA filings; [ ] retrieve original ABC Q4 2019 report; [x] RSF 2026 figure added (§4.3.3); [ ] add DataReportal 2026 at write-up; [ ] verify June-2026 editorship report.
 
 **Pilot limitations restated:** small samples; no newsroom access; convenience survey; thin pre-2000 holdings expected — all converted into the full-study roadmap in §5.5.

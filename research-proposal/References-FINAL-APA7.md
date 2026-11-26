@@ -88,6 +88,10 @@ Picard, R. G. (2014). Twilight or new dawn of journalism? Evidence from the evol
 
 Reporters Without Borders. (2025). *2025 World Press Freedom Index: Africa — the reddening map*. Paris, France: RSF. https://rsf.org/en/classement/2025/africa
 
+Reporters Without Borders. (2026). *2026 World Press Freedom Index* (Uganda: 131st of 180; score 41.98, "Difficult"). Paris, France: RSF. https://rsf.org/en/index
+
+Afrobarometer. (2026). *AD1221: Ugandans want free media that helps hold government accountable* (Dispatch No. 1221; written by L. Draku). https://www.afrobarometer.org/publication/ad1221-ugandans-want-free-media-that-helps-hold-government-accountable/
+
 Schramm, W. (1964). *Mass media and national development: The role of information in the developing countries*. Stanford, CA: Stanford University Press.
 
 Sengati-Kauma, M. (2003). *New Vision at 17: An assessment of Uganda's leading newspaper* [Unpublished academic exercise]. Makerere University, Kampala.
