@@ -50,7 +50,17 @@ Declaration • Approval • Dedication • Acknowledgements • Acronyms • Ab
 3. Methodology (design; population & sampling; instruments; procedure incl. public-source ladder §3.6; ethics; quality assurance)
 4. Findings (4.1 pilot coverage; 4.2 institutional profile; 4.3 content analysis results; 4.4 economic/industry; 4.5 survey placeholder; 4.6 digital audit; 4.7 triangulation; 4.8 synthesis)
 5. Summary, conclusions & recommendations
-References (APA 7th) • Appendix A Instruments • Appendix B Theory of Change • Appendix C Editions log & dataset
+References (APA 7th) • Appendix A Instruments • Appendix B Theory of Change • Appendix C Editions log & dataset • Appendix D Simulated data (provenance-declared)
+
+## List of figures
+
+The three figures form one connected visual argument: Figure 1.1 states the causal chain the study tests; Figures 4.1 and 4.2 deliver the evidence the chain predicts.
+
+| Figure | Title | Location |
+|---|---|---|
+| Figure 1.1 | Conceptual framework: New Vision as institution and its 40-year impacts, with moderating variables | §1.8 |
+| Figure 4.1 | Issue shares by decade — the shape of the paper's agenda (REAL pilot data, n=132) | §4.3.4.1 |
+| Figure 4.2 | Stance toward state actors by decade — the trajectory of the paper's political voice (REAL pilot data, n=36) | §4.3.4.1 |
 
 ## Work plan (indicative)
 
